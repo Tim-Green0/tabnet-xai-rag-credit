@@ -1,0 +1,16 @@
+{
+  "n_explanations": 10,
+  "model": "gemini-2.5-flash",
+  "files": [
+    "22226_accept.json",
+    "36556_reject.json",
+    "39518_reject.json",
+    "40525_accept.json",
+    "45114_reject.json",
+    "54421_reject.json",
+    "54529_reject.json",
+    "57037_accept.json",
+    "5886_accept.json",
+    "60717_accept.json"
+  ]
+}

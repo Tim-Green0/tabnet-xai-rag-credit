@@ -1,0 +1,17 @@
+{
+  "n_contexts": 10,
+  "files": [
+    "D:\\paper\\results\\contexts\\54529_reject.json",
+    "D:\\paper\\results\\contexts\\54421_reject.json",
+    "D:\\paper\\results\\contexts\\36556_reject.json",
+    "D:\\paper\\results\\contexts\\39518_reject.json",
+    "D:\\paper\\results\\contexts\\45114_reject.json",
+    "D:\\paper\\results\\contexts\\5886_accept.json",
+    "D:\\paper\\results\\contexts\\57037_accept.json",
+    "D:\\paper\\results\\contexts\\60717_accept.json",
+    "D:\\paper\\results\\contexts\\40525_accept.json",
+    "D:\\paper\\results\\contexts\\22226_accept.json"
+  ],
+  "model": "XGBoost",
+  "threshold": 0.476
+}

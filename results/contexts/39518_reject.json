@@ -1,0 +1,95 @@
+{
+  "sample_idx": 39518,
+  "decision": "REJECT",
+  "default_probability": 0.8951,
+  "threshold": 0.476,
+  "top_drivers_for_default": [
+    {
+      "feature": "외부 신용평가 점수 3",
+      "feature_raw": "EXT_SOURCE_3",
+      "value": "0.197475",
+      "value_raw": 0.1974745115685422,
+      "shap": 0.6825,
+      "rank": 1
+    },
+    {
+      "feature": "외부 신용평가 점수 2",
+      "feature_raw": "EXT_SOURCE_2",
+      "value": "0.121854",
+      "value_raw": 0.1218544520280016,
+      "shap": 0.4949,
+      "rank": 2
+    },
+    {
+      "feature": "구매 대상 상품 가격",
+      "feature_raw": "AMT_GOODS_PRICE",
+      "value": "450,000",
+      "value_raw": 450000.0,
+      "shap": 0.2182,
+      "rank": 3
+    },
+    {
+      "feature": "DEF_30_CNT_SOCIAL_CIRCLE",
+      "feature_raw": "DEF_30_CNT_SOCIAL_CIRCLE",
+      "value": "2",
+      "value_raw": 2.0,
+      "shap": 0.1936,
+      "rank": 4
+    },
+    {
+      "feature": "재직 일수(음수: 신청일 기준)",
+      "feature_raw": "DAYS_EMPLOYED",
+      "value": "1년 재직",
+      "value_raw": -440.0,
+      "shap": 0.1348,
+      "rank": 5
+    }
+  ],
+  "top_drivers_against_default": [
+    {
+      "feature": "신분증 발급 후 경과 일수",
+      "feature_raw": "DAYS_ID_PUBLISH",
+      "value": "-4662",
+      "value_raw": -4662.0,
+      "shap": -0.0968,
+      "rank": 1
+    },
+    {
+      "feature": "직업 분류 (타깃 인코딩 값)",
+      "feature_raw": "OCCUPATION_TYPE_TE",
+      "value": "0.0640 (타깃 인코딩 값)",
+      "value_raw": 0.06398996235884567,
+      "shap": -0.0735,
+      "rank": 2
+    },
+    {
+      "feature": "AMT_REQ_CREDIT_BUREAU_QRT",
+      "feature_raw": "AMT_REQ_CREDIT_BUREAU_QRT",
+      "value": "2",
+      "value_raw": 2.0,
+      "shap": -0.061,
+      "rank": 3
+    },
+    {
+      "feature": "외부 신용평가 1 결측 여부",
+      "feature_raw": "EXT_SOURCE_1_MISSING_FLAG",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "shap": -0.053,
+      "rank": 4
+    },
+    {
+      "feature": "BASEMENTAREA_MEDI",
+      "feature_raw": "BASEMENTAREA_MEDI",
+      "value": "0",
+      "value_raw": 0.0,
+      "shap": -0.0404,
+      "rank": 5
+    }
+  ],
+  "fairness_flags": [],
+  "model": "XGBoost",
+  "explanation_policy": "fact_only",
+  "masked_sensitive_features": [],
+  "_meta_true_label": 1
+}

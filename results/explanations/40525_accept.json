@@ -1,0 +1,101 @@
+{
+  "sample_idx": 40525,
+  "decision": "APPROVE",
+  "true_label": 0,
+  "model": "gemini-2.5-flash",
+  "elapsed_sec": 11.3,
+  "explanation": "[결정 요약]\n신청 결과: 대출 신청이 승인되었습니다(예측 부도 확률 3.53%).\n\n[긍정적으로 평가된 요인]\n- 외부 신용평가 점수 1이 0.746985로 매우 우수하게 평가되었습니다.\n- 신청하신 대출 금액 135,000원이 고객님의 상환 능력에 적절한 수준으로 평가되었습니다.\n- 외부 신용평가 점수 2도 0.63158로 매우 양호합니다.\n\n[개선 권고]\n- 현재의 우수한 신용도를 꾸준히 유지하시도록 신용 관리에 지속적으로 힘써주시기를 권장합니다.\n- 향후 거래 시에도 안정적인 상환 능력을 유지하시는 것이 중요합니다.\n\n[면책 고지]\n본 안내는 모델의 자동화된 평가 결과를 자연어로 정리한 것이며, 최종 의사결정은 담당자의 검토를 거칩니다. 미래 신청 결과를 보장하지 않습니다.",
+  "usage_metadata": {
+    "prompt_token_count": 1681,
+    "candidates_token_count": 228,
+    "total_token_count": 3851
+  },
+  "context_sent": {
+    "sample_idx": 40525,
+    "decision": "APPROVE",
+    "default_probability": 0.0353,
+    "threshold": 0.476,
+    "top_drivers_for_default": [
+      {
+        "feature": "구매 대상 상품 가격",
+        "feature_raw": "AMT_GOODS_PRICE",
+        "value": "135,000",
+        "value_raw": 135000.0,
+        "shap": 0.0985,
+        "rank": 1
+      },
+      {
+        "feature": "NAME_FAMILY_STATUS_Married",
+        "feature_raw": "NAME_FAMILY_STATUS_Married",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "shap": 0.0654,
+        "rank": 2
+      },
+      {
+        "feature": "FLAG_OWN_CAR_N",
+        "feature_raw": "FLAG_OWN_CAR_N",
+        "value": "예",
+        "value_raw": 1.0,
+        "shap": 0.0257,
+        "rank": 3
+      },
+      {
+        "feature": "근무 조직 유형 (타깃 인코딩 값)",
+        "feature_raw": "ORGANIZATION_TYPE_TE",
+        "value": "0.0920 (타깃 인코딩 값)",
+        "value_raw": 0.09198407075321884,
+        "shap": 0.0217,
+        "rank": 4
+      }
+    ],
+    "top_drivers_against_default": [
+      {
+        "feature": "외부 신용평가 점수 1",
+        "feature_raw": "EXT_SOURCE_1",
+        "value": "0.746985",
+        "value_raw": 0.7469847683542197,
+        "shap": -0.897,
+        "rank": 1
+      },
+      {
+        "feature": "대출 신청 금액",
+        "feature_raw": "AMT_CREDIT",
+        "value": "135,000",
+        "value_raw": 135000.0,
+        "shap": -0.4047,
+        "rank": 2
+      },
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "0.63158",
+        "value_raw": 0.631579692851382,
+        "shap": -0.3347,
+        "rank": 3
+      },
+      {
+        "feature": "직업 분류 (타깃 인코딩 값)",
+        "feature_raw": "OCCUPATION_TYPE_TE",
+        "value": "0.0449 (타깃 인코딩 값)",
+        "value_raw": 0.044859813084112146,
+        "shap": -0.3146,
+        "rank": 4
+      },
+      {
+        "feature": "연 환산 상환액",
+        "feature_raw": "AMT_ANNUITY",
+        "value": "6,750",
+        "value_raw": 6750.0,
+        "shap": -0.2619,
+        "rank": 5
+      }
+    ],
+    "fairness_flags": [],
+    "model": "XGBoost",
+    "explanation_policy": "fact_only",
+    "masked_sensitive_features": [
+      "DAYS_BIRTH"
+    ]
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "sample_idx": 54529,
+  "decision": "REJECT",
+  "true_label": 0,
+  "model": "gemini-2.5-flash",
+  "elapsed_sec": 9.8,
+  "explanation": "[결정 요약]\n신청 결과: 대출 신청이 거절되었습니다(예측 부도 확률 90%).\n\n[주요 거절 사유]\n1. 외부 신용평가 점수 3이 0.0633754로 매우 낮게 평가되어 부도 가능성을 높였습니다.\n2. 외부 신용평가 점수 2 또한 0.0444795로 낮게 평가되어 부도 가능성에 부정적인 영향을 주었습니다.\n3. 구매 대상 상품 가격이 337,500원으로 책정되어 부도 가능성을 높이는 요인으로 작용했습니다.\n\n[긍정적으로 평가된 요인]\n- 대출 신청 금액이 375,368원으로 부도 가능성을 낮추는 데 긍정적으로 작용했습니다.\n- 분기당 신용조회 요청 건수가 2회인 점이 긍정적으로 반영되었습니다.\n- 가족 구성원 수가 4명인 점도 긍정적으로 평가되었습니다.\n\n[개선 권고]\n- 외부 신용평가 점수 향상을 위해 신용 기록을 관리(예: 연체 해소, 신용카드 사용률 조정)하시는 것을 권장합니다.\n- 재신청 시 구매 대상 상품 가격 등 대출 관련 조건을 재검토해 보실 수 있습니다.\n- 일정 기간 후 재신청을 검토하실 수 있습니다.\n\n[면책 고지]\n본 안내는 모델의 자동화된 평가 결과를 자연어로 정리한 것이며, 최종 의사결정은 담당자의 검토를 거칩니다. 미래 신청 결과를 보장하지 않습니다.",
+  "usage_metadata": {
+    "prompt_token_count": 1664,
+    "candidates_token_count": 362,
+    "total_token_count": 3851
+  },
+  "context_sent": {
+    "sample_idx": 54529,
+    "decision": "REJECT",
+    "default_probability": 0.9044,
+    "threshold": 0.476,
+    "top_drivers_for_default": [
+      {
+        "feature": "외부 신용평가 점수 3",
+        "feature_raw": "EXT_SOURCE_3",
+        "value": "0.0633754",
+        "value_raw": 0.0633753623099886,
+        "shap": 1.1114,
+        "rank": 1
+      },
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "0.0444795",
+        "value_raw": 0.0444795326872776,
+        "shap": 0.885,
+        "rank": 2
+      },
+      {
+        "feature": "구매 대상 상품 가격",
+        "feature_raw": "AMT_GOODS_PRICE",
+        "value": "337,500",
+        "value_raw": 337500.0,
+        "shap": 0.2072,
+        "rank": 3
+      },
+      {
+        "feature": "근무 조직 유형 (타깃 인코딩 값)",
+        "feature_raw": "ORGANIZATION_TYPE_TE",
+        "value": "0.1029 (타깃 인코딩 값)",
+        "value_raw": 0.10291033036182486,
+        "shap": 0.1282,
+        "rank": 4
+      },
+      {
+        "feature": "DEF_30_CNT_SOCIAL_CIRCLE",
+        "feature_raw": "DEF_30_CNT_SOCIAL_CIRCLE",
+        "value": "1",
+        "value_raw": 1.0,
+        "shap": 0.0601,
+        "rank": 5
+      }
+    ],
+    "top_drivers_against_default": [
+      {
+        "feature": "대출 신청 금액",
+        "feature_raw": "AMT_CREDIT",
+        "value": "375,368",
+        "value_raw": 375367.5,
+        "shap": -0.1222,
+        "rank": 1
+      },
+      {
+        "feature": "AMT_REQ_CREDIT_BUREAU_QRT",
+        "feature_raw": "AMT_REQ_CREDIT_BUREAU_QRT",
+        "value": "2",
+        "value_raw": 2.0,
+        "shap": -0.0438,
+        "rank": 2
+      },
+      {
+        "feature": "가족 구성원 수",
+        "feature_raw": "CNT_FAM_MEMBERS",
+        "value": "4",
+        "value_raw": 4.0,
+        "shap": -0.0371,
+        "rank": 3
+      },
+      {
+        "feature": "FLAG_OWN_CAR_N",
+        "feature_raw": "FLAG_OWN_CAR_N",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "shap": -0.0342,
+        "rank": 4
+      }
+    ],
+    "fairness_flags": [],
+    "model": "XGBoost",
+    "explanation_policy": "fact_only",
+    "masked_sensitive_features": [
+      "DAYS_BIRTH"
+    ]
+  }
+}
