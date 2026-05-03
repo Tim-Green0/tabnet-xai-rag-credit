@@ -1,0 +1,75 @@
+# ─── Python ───────────────────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.ipynb_checkpoints/
+*.egg-info/
+.coverage
+htmlcov/
+
+# ─── Virtual environment ──────────────────────────────────
+.venv/
+venv/
+env/
+ENV/
+
+# ─── Data (Kaggle 라이선스 + 대용량) ──────────────────────
+data/
+*.parquet
+*.csv.zip
+*.7z
+
+# ─── Model weights / 직렬화 (대용량) ──────────────────────
+results/baseline_models/
+*.pkl
+*.zip
+*.h5
+*.ckpt
+*.pt
+*.pth
+*.bin
+*.safetensors
+*.joblib
+
+# ─── 사용자 식별 정보 (학번/이름 포함) ────────────────────
+paper/
+*.docx
+*.docx.bak
+
+# ─── Logs / 임시 ─────────────────────────────────────────
+*.log
+*.bak
+*.tmp
+tabnet_run.log
+*.out
+
+# ─── Optuna study DB (선택) ──────────────────────────────
+*.db
+optuna.db
+optuna_studies/
+
+# ─── 시크릿 / 환경 변수 ──────────────────────────────────
+.env
+.envrc
+*.env
+secrets.json
+kaggle.json
+
+# ─── IDE / 에디터 ─────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+.spyproject/
+
+# ─── OS ───────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ─── Claude / LLM 캐시 (선택) ────────────────────────────
+.claude/
+.claude_cache/

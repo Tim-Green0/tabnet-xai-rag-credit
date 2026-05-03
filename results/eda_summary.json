@@ -1,0 +1,104 @@
+{
+  "shape": [
+    307511,
+    122
+  ],
+  "memory_mb": 536.6915979385376,
+  "dtypes": {
+    "float64": 65,
+    "int64": 41,
+    "object": 16
+  },
+  "target": {
+    "n_pos": 24825,
+    "n_neg": 282686,
+    "pos_rate": 0.08072881945686496
+  },
+  "missing": {
+    "n_columns_with_missing": 67,
+    "n_columns_no_missing": 55,
+    "max_missing_pct": 69.87,
+    "median_missing_pct": 50.75,
+    "n_cols_above_50pct": 41
+  },
+  "protected_attrs": {
+    "gender": {
+      "counts": {
+        "F": 202448,
+        "M": 105059,
+        "XNA": 4
+      },
+      "default_rate": {
+        "XNA": 0.0,
+        "F": 0.06999328222555916,
+        "M": 0.1014192025433328
+      }
+    },
+    "age": {
+      "mean": 43.9068995669901,
+      "median": 43.121149897330596,
+      "default_rate_by_bin": {
+        "~25": 0.12294612932232486,
+        "25-35": 0.1066009471344351,
+        "35-45": 0.08408397716618601,
+        "45-55": 0.07046587833024648,
+        "55-65": 0.05421169161627177,
+        "65+": 0.036566785170137124
+      }
+    }
+  },
+  "target_corr_top10_neg": {
+    "EXT_SOURCE_3": -0.1789,
+    "EXT_SOURCE_2": -0.1605,
+    "DAYS_EMPLOYED": -0.0449,
+    "FLOORSMAX_AVG": -0.044,
+    "FLOORSMAX_MEDI": -0.0438,
+    "FLOORSMAX_MODE": -0.0432,
+    "AMT_GOODS_PRICE": -0.0396,
+    "REGION_POPULATION_RELATIVE": -0.0372,
+    "TOTALAREA_MODE": -0.0326,
+    "AMT_CREDIT": -0.0304
+  },
+  "target_corr_top10_pos": {
+    "DAYS_REGISTRATION": 0.042,
+    "FLAG_DOCUMENT_3": 0.0443,
+    "REG_CITY_NOT_LIVE_CITY": 0.0444,
+    "FLAG_EMP_PHONE": 0.046,
+    "REG_CITY_NOT_WORK_CITY": 0.051,
+    "DAYS_ID_PUBLISH": 0.0515,
+    "DAYS_LAST_PHONE_CHANGE": 0.0552,
+    "REGION_RATING_CLIENT": 0.0589,
+    "REGION_RATING_CLIENT_W_CITY": 0.0609,
+    "DAYS_BIRTH": 0.0782
+  },
+  "categorical": {
+    "n_columns": 16,
+    "cardinality": {
+      "NAME_CONTRACT_TYPE": 2,
+      "FLAG_OWN_CAR": 2,
+      "FLAG_OWN_REALTY": 2,
+      "EMERGENCYSTATE_MODE": 2,
+      "HOUSETYPE_MODE": 3,
+      "CODE_GENDER": 3,
+      "FONDKAPREMONT_MODE": 4,
+      "NAME_EDUCATION_TYPE": 5,
+      "NAME_FAMILY_STATUS": 6,
+      "NAME_HOUSING_TYPE": 6,
+      "WEEKDAY_APPR_PROCESS_START": 7,
+      "NAME_TYPE_SUITE": 7,
+      "WALLSMATERIAL_MODE": 7,
+      "NAME_INCOME_TYPE": 8,
+      "OCCUPATION_TYPE": 18,
+      "ORGANIZATION_TYPE": 58
+    },
+    "high_card_cols": [
+      "OCCUPATION_TYPE",
+      "ORGANIZATION_TYPE"
+    ]
+  },
+  "data_quality_flags": {
+    "DAYS_EMPLOYED_sentinel_365243_count": 55374,
+    "DAYS_EMPLOYED_sentinel_pct": 18.00716071945394,
+    "note": "365243 = 약 1000년, 사실상 '무직' 의미의 sentinel 값. 전처리에서 NaN 변환 권장."
+  }
+}

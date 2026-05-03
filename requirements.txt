@@ -1,0 +1,34 @@
+# Core ML / DL
+# torch는 CUDA 버전에 따라 별도 설치 권장:
+#   pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cu121
+torch==2.5.1
+pytorch-tabnet==4.1.0
+xgboost==3.2.0
+lightgbm==4.6.0
+
+# Tabular / preprocess
+pandas==2.3.3
+numpy==2.2.6
+scikit-learn==1.7.2
+category_encoders==2.8.1
+pyarrow==24.0.0
+
+# XAI
+shap==0.49.1
+
+# HPO
+optuna==4.8.0
+
+# 시각화
+matplotlib==3.10.9
+seaborn==0.13.2
+
+# 유틸
+tqdm==4.67.3
+joblib==1.5.3
+python-dotenv==1.2.2
+kaggle==1.7.4.5
+
+# LLM API SDK (Day 6에서 사용)
+anthropic==0.97.0
+google-genai==1.74.0

@@ -1,0 +1,44 @@
+{
+  "config": {
+    "seed": 42,
+    "missing_flag_threshold": 0.5,
+    "onehot_cardinality_max": 8,
+    "clip_quantiles": [
+      0.01,
+      0.99
+    ],
+    "high_card_target_encoded": [
+      "OCCUPATION_TYPE",
+      "ORGANIZATION_TYPE"
+    ]
+  },
+  "shapes": {
+    "input_train": [
+      184506,
+      120
+    ],
+    "output_train": [
+      184506,
+      214
+    ]
+  },
+  "n_flag_cols": 43,
+  "n_onehot_input_cols": 14,
+  "n_target_encoded_cols": 2,
+  "n_features_out": 214,
+  "class_rates": {
+    "train": 0.08072908198107379,
+    "val": 0.08072908198107379,
+    "test": 0.08072776937710356
+  },
+  "files": {
+    "train_scaled": "data\\processed\\train_scaled.parquet",
+    "val_scaled": "data\\processed\\val_scaled.parquet",
+    "test_scaled": "data\\processed\\test_scaled.parquet",
+    "train_unscaled": "data\\processed\\train_unscaled.parquet",
+    "val_unscaled": "data\\processed\\val_unscaled.parquet",
+    "test_unscaled": "data\\processed\\test_unscaled.parquet",
+    "protected_attrs": "data\\processed\\test_protected_attrs.parquet",
+    "preprocessor": "D:\\paper\\results\\preprocessor.pkl"
+  }
+}

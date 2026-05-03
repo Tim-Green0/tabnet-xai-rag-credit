@@ -1,0 +1,131 @@
+{
+  "config": {
+    "seed": 42,
+    "models": {
+      "Logistic": {
+        "input": "scaled",
+        "class_weight": "balanced",
+        "solver": "lbfgs",
+        "max_iter": 2000
+      },
+      "XGBoost": {
+        "input": "unscaled",
+        "n_estimators": 500,
+        "max_depth": 6,
+        "learning_rate": 0.05,
+        "scale_pos_weight": "auto",
+        "early_stopping_rounds": 30,
+        "tree_method": "hist"
+      },
+      "LightGBM": {
+        "input": "unscaled",
+        "n_estimators": 500,
+        "num_leaves": 63,
+        "learning_rate": 0.05,
+        "class_weight": "balanced",
+        "early_stopping": 30
+      }
+    },
+    "threshold_strategy": "Youden's J on validation, applied to test"
+  },
+  "results": [
+    {
+      "model": "Logistic",
+      "split": "val",
+      "time_sec": 87.96,
+      "auroc": 0.747453983071019,
+      "auprc": 0.226693352409509,
+      "ks": 0.3658091597939561,
+      "threshold": 0.5129242637308221,
+      "f1": 0.262662518943926,
+      "precision": 0.16375752150778258,
+      "recall": 0.6632426988922457,
+      "accuracy": 0.699391889694644
+    },
+    {
+      "model": "Logistic",
+      "split": "test",
+      "time_sec": 87.96,
+      "auroc": 0.7546873428656223,
+      "auprc": 0.2345630960426554,
+      "ks": 0.3787391716546228,
+      "threshold": 0.5129242637308221,
+      "f1": 0.26633468535400184,
+      "precision": 0.1663322632423756,
+      "recall": 0.6678751258811682,
+      "accuracy": 0.7029575793050745
+    },
+    {
+      "model": "XGBoost",
+      "split": "val",
+      "time_sec": 21.17,
+      "auroc": 0.7564591277916353,
+      "auprc": 0.24360700392524773,
+      "ks": 0.3826351576375022,
+      "threshold": 0.47579801082611084,
+      "f1": 0.2683023662061299,
+      "precision": 0.16708698017109233,
+      "recall": 0.6805639476334341,
+      "accuracy": 0.7003349484569608
+    },
+    {
+      "model": "XGBoost",
+      "split": "test",
+      "time_sec": 21.17,
+      "auroc": 0.760497309387439,
+      "auprc": 0.2458811511598461,
+      "ks": 0.3891528612844299,
+      "threshold": 0.47579801082611084,
+      "f1": 0.2704586420989385,
+      "precision": 0.1688,
+      "recall": 0.6799597180261833,
+      "accuracy": 0.703868103994927
+    },
+    {
+      "model": "LightGBM",
+      "split": "val",
+      "time_sec": 16.83,
+      "auroc": 0.7511362386877054,
+      "auprc": 0.23579651665153492,
+      "ks": 0.3730719240780588,
+      "threshold": 0.4109444113744873,
+      "f1": 0.25945579767415605,
+      "precision": 0.15953901693973896,
+      "recall": 0.6942598187311179,
+      "accuracy": 0.6800591850671522
+    },
+    {
+      "model": "LightGBM",
+      "split": "test",
+      "time_sec": 16.83,
+      "auroc": 0.7548511446836974,
+      "auprc": 0.24142198046607857,
+      "ks": 0.3785092057433981,
+      "threshold": 0.4109444113744873,
+      "f1": 0.26225387515710097,
+      "precision": 0.1617039263573173,
+      "recall": 0.6934541792547835,
+      "accuracy": 0.6850397541583337
+    }
+  ],
+  "chosen_thresholds": {
+    "Logistic": 0.5129242637308221,
+    "XGBoost": 0.47579801082611084,
+    "LightGBM": 0.4109444113744873
+  },
+  "best_iterations": {
+    "XGBoost": 253,
+    "LightGBM": 500
+  },
+  "files": {
+    "metrics_csv": "D:\\paper\\results\\baseline_metrics.csv",
+    "roc_pr": "D:\\paper\\figures\\08_roc_pr_curves.png",
+    "threshold_sweep": "D:\\paper\\figures\\09_threshold_sweep.png",
+    "feature_importance": "D:\\paper\\figures\\10_feature_importance.png",
+    "models": {
+      "Logistic": "D:\\paper\\results\\baseline_models\\logistic.pkl",
+      "XGBoost": "D:\\paper\\results\\baseline_models\\xgboost.pkl",
+      "LightGBM": "D:\\paper\\results\\baseline_models\\lightgbm.pkl"
+    }
+  }
+}
