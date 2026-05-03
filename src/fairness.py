@@ -364,7 +364,6 @@ def main(skip_mitigation: bool = False) -> None:
 
     # TabNet ablated
     print("  [TabNet ablated 학습 — best params 사용]")
-    from src.tabnet_train import TABNET_BEST_PARAMS as _UNUSED  # noqa
     # Day 3 best params 그대로 사용
     tabnet_best_params = {
         "n_d": 16, "n_a": 16, "n_steps": 3,
