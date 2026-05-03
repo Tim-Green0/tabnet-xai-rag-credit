@@ -1,0 +1,622 @@
+[
+  {
+    "idx": 54529,
+    "tag": "reject",
+    "true_label": 0,
+    "predicted_proba": 0.9044190645217896,
+    "shap_base_value": 0.019985025748610497,
+    "shap_sum": 2.238179922103882,
+    "top_5_positive_drivers": [
+      {
+        "feature": "EXT_SOURCE_3",
+        "shap": 1.1113725900650024,
+        "value": 0.0633753623099886
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "shap": 0.8850030899047852,
+        "value": 0.0444795326872776
+      },
+      {
+        "feature": "AMT_GOODS_PRICE",
+        "shap": 0.2071971595287323,
+        "value": 337500.0
+      },
+      {
+        "feature": "ORGANIZATION_TYPE_TE",
+        "shap": 0.12818807363510132,
+        "value": 0.10291033036182486
+      },
+      {
+        "feature": "DEF_30_CNT_SOCIAL_CIRCLE",
+        "shap": 0.060064900666475296,
+        "value": 1.0
+      }
+    ],
+    "top_5_negative_drivers": [
+      {
+        "feature": "DAYS_BIRTH",
+        "shap": -0.15377186238765717,
+        "value": -8853.0
+      },
+      {
+        "feature": "AMT_CREDIT",
+        "shap": -0.12219676375389099,
+        "value": 375367.5
+      },
+      {
+        "feature": "AMT_REQ_CREDIT_BUREAU_QRT",
+        "shap": -0.04378417134284973,
+        "value": 2.0
+      },
+      {
+        "feature": "CNT_FAM_MEMBERS",
+        "shap": -0.03707241266965866,
+        "value": 4.0
+      },
+      {
+        "feature": "FLAG_OWN_CAR_N",
+        "shap": -0.03423929959535599,
+        "value": 0.0
+      }
+    ]
+  },
+  {
+    "idx": 54421,
+    "tag": "reject",
+    "true_label": 1,
+    "predicted_proba": 0.9333469867706299,
+    "shap_base_value": 0.019985025748610497,
+    "shap_sum": 2.6576120853424072,
+    "top_5_positive_drivers": [
+      {
+        "feature": "EXT_SOURCE_2",
+        "shap": 0.9788845181465149,
+        "value": 0.0511432767870244
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "shap": 0.8304202556610107,
+        "value": 0.1446481462546413
+      },
+      {
+        "feature": "AMT_GOODS_PRICE",
+        "shap": 0.26898548007011414,
+        "value": 225000.0
+      },
+      {
+        "feature": "DAYS_ID_PUBLISH",
+        "shap": 0.1458926945924759,
+        "value": -341.0
+      },
+      {
+        "feature": "REGION_RATING_CLIENT_W_CITY",
+        "shap": 0.10072915256023407,
+        "value": 3.0
+      }
+    ],
+    "top_5_negative_drivers": [
+      {
+        "feature": "AMT_CREDIT",
+        "shap": -0.07454768568277359,
+        "value": 314100.0
+      },
+      {
+        "feature": "CODE_GENDER_F",
+        "shap": -0.04013754054903984,
+        "value": 1.0
+      },
+      {
+        "feature": "AMT_ANNUITY",
+        "shap": -0.032802119851112366,
+        "value": 17167.5
+      },
+      {
+        "feature": "AMT_REQ_CREDIT_BUREAU_YEAR",
+        "shap": -0.03155685216188431,
+        "value": 0.0
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "shap": -0.031221237033605576,
+        "value": 0.0
+      }
+    ]
+  },
+  {
+    "idx": 36556,
+    "tag": "reject",
+    "true_label": 0,
+    "predicted_proba": 0.9251750111579895,
+    "shap_base_value": 0.019985025748610497,
+    "shap_sum": 2.546380043029785,
+    "top_5_positive_drivers": [
+      {
+        "feature": "EXT_SOURCE_3",
+        "shap": 0.9980955719947815,
+        "value": 0.0969483170508572
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "shap": 0.3984471559524536,
+        "value": 0.2037426956956333
+      },
+      {
+        "feature": "AMT_GOODS_PRICE",
+        "shap": 0.2553786337375641,
+        "value": 450000.0
+      },
+      {
+        "feature": "AMT_CREDIT",
+        "shap": 0.18653827905654907,
+        "value": 640080.0
+      },
+      {
+        "feature": "AMT_ANNUITY",
+        "shap": 0.15986810624599457,
+        "value": 31261.5
+      }
+    ],
+    "top_5_negative_drivers": [
+      {
+        "feature": "ORGANIZATION_TYPE_TE",
+        "shap": -0.04950553923845291,
+        "value": 0.07493540051679587
+      },
+      {
+        "feature": "DAYS_BIRTH",
+        "shap": -0.027295991778373718,
+        "value": -10035.0
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "shap": -0.025494199246168137,
+        "value": 0.0
+      },
+      {
+        "feature": "AMT_INCOME_TOTAL",
+        "shap": -0.025188766419887543,
+        "value": 225000.0
+      },
+      {
+        "feature": "CODE_GENDER_F",
+        "shap": -0.019178548827767372,
+        "value": 1.0
+      }
+    ]
+  },
+  {
+    "idx": 39518,
+    "tag": "reject",
+    "true_label": 1,
+    "predicted_proba": 0.8950796723365784,
+    "shap_base_value": 0.019985025748610497,
+    "shap_sum": 2.115684747695923,
+    "top_5_positive_drivers": [
+      {
+        "feature": "EXT_SOURCE_3",
+        "shap": 0.6825451254844666,
+        "value": 0.1974745115685422
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "shap": 0.4948945939540863,
+        "value": 0.1218544520280016
+      },
+      {
+        "feature": "AMT_GOODS_PRICE",
+        "shap": 0.21820078790187836,
+        "value": 450000.0
+      },
+      {
+        "feature": "DEF_30_CNT_SOCIAL_CIRCLE",
+        "shap": 0.19364780187606812,
+        "value": 2.0
+      },
+      {
+        "feature": "DAYS_EMPLOYED",
+        "shap": 0.13478489220142365,
+        "value": -440.0
+      }
+    ],
+    "top_5_negative_drivers": [
+      {
+        "feature": "DAYS_ID_PUBLISH",
+        "shap": -0.096767358481884,
+        "value": -4662.0
+      },
+      {
+        "feature": "OCCUPATION_TYPE_TE",
+        "shap": -0.07350514084100723,
+        "value": 0.06398996235884567
+      },
+      {
+        "feature": "AMT_REQ_CREDIT_BUREAU_QRT",
+        "shap": -0.06095103919506073,
+        "value": 2.0
+      },
+      {
+        "feature": "EXT_SOURCE_1_MISSING_FLAG",
+        "shap": -0.052971042692661285,
+        "value": 0.0
+      },
+      {
+        "feature": "BASEMENTAREA_MEDI",
+        "shap": -0.040378130972385406,
+        "value": 0.0
+      }
+    ]
+  },
+  {
+    "idx": 45114,
+    "tag": "reject",
+    "true_label": 0,
+    "predicted_proba": 0.8994806408882141,
+    "shap_base_value": 0.019985025748610497,
+    "shap_sum": 2.129518985748291,
+    "top_5_positive_drivers": [
+      {
+        "feature": "EXT_SOURCE_2",
+        "shap": 0.9404363632202148,
+        "value": 0.029543963437184073
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "shap": 0.7201223969459534,
+        "value": 0.1528662291550415
+      },
+      {
+        "feature": "ORGANIZATION_TYPE_TE",
+        "shap": 0.21346117556095123,
+        "value": 0.1266025641025641
+      },
+      {
+        "feature": "AMT_GOODS_PRICE",
+        "shap": 0.16797737777233124,
+        "value": 225000.0
+      },
+      {
+        "feature": "DAYS_EMPLOYED",
+        "shap": 0.10187596082687378,
+        "value": -489.0
+      }
+    ],
+    "top_5_negative_drivers": [
+      {
+        "feature": "AMT_CREDIT",
+        "shap": -0.17800365388393402,
+        "value": 225000.0
+      },
+      {
+        "feature": "DAYS_BIRTH",
+        "shap": -0.13571850955486298,
+        "value": -8261.0
+      },
+      {
+        "feature": "FLAG_OWN_CAR_N",
+        "shap": -0.05745350196957588,
+        "value": 0.0
+      },
+      {
+        "feature": "NAME_FAMILY_STATUS_Married",
+        "shap": -0.02558024413883686,
+        "value": 1.0
+      },
+      {
+        "feature": "FLAG_WORK_PHONE",
+        "shap": -0.02153436653316021,
+        "value": 0.0
+      }
+    ]
+  },
+  {
+    "idx": 5886,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba": 0.03504383936524391,
+    "shap_base_value": 0.019985025748610497,
+    "shap_sum": -3.340717315673828,
+    "top_5_positive_drivers": [
+      {
+        "feature": "AMT_CREDIT",
+        "shap": 0.09836732596158981,
+        "value": 900000.0
+      },
+      {
+        "feature": "BASEMENTAREA_MODE",
+        "shap": 0.09482894092798233,
+        "value": 0.1443
+      },
+      {
+        "feature": "AMT_ANNUITY",
+        "shap": 0.08861912041902542,
+        "value": 45000.0
+      },
+      {
+        "feature": "DAYS_EMPLOYED",
+        "shap": 0.06545615941286087,
+        "value": -1110.0
+      },
+      {
+        "feature": "NONLIVINGAPARTMENTS_MODE",
+        "shap": 0.06375570595264435,
+        "value": 0.0311
+      }
+    ],
+    "top_5_negative_drivers": [
+      {
+        "feature": "EXT_SOURCE_1",
+        "shap": -0.9006140828132629,
+        "value": 0.8831566376432007
+      },
+      {
+        "feature": "NAME_CONTRACT_TYPE_Cash loans",
+        "shap": -0.4155888855457306,
+        "value": 0.0
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "shap": -0.39969927072525024,
+        "value": 0.6235402066450932
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "shap": -0.25577613711357117,
+        "value": 1.0
+      },
+      {
+        "feature": "AMT_GOODS_PRICE",
+        "shap": -0.22375333309173584,
+        "value": 900000.0
+      }
+    ]
+  },
+  {
+    "idx": 57037,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba": 0.021647771820425987,
+    "shap_base_value": 0.019985025748610497,
+    "shap_sum": -4.110788345336914,
+    "top_5_positive_drivers": [
+      {
+        "feature": "AMT_GOODS_PRICE",
+        "shap": 0.09403043240308762,
+        "value": 247500.0
+      },
+      {
+        "feature": "DAYS_BIRTH",
+        "shap": 0.0823274478316307,
+        "value": -14979.0
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "shap": 0.06430250406265259,
+        "value": 0.0
+      },
+      {
+        "feature": "REGION_POPULATION_RELATIVE",
+        "shap": 0.05261100083589554,
+        "value": 0.04622
+      },
+      {
+        "feature": "COMMONAREA_MEDI",
+        "shap": 0.04815532639622688,
+        "value": 0.001
+      }
+    ],
+    "top_5_negative_drivers": [
+      {
+        "feature": "EXT_SOURCE_2",
+        "shap": -0.8803868889808655,
+        "value": 0.7625693717655919
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "shap": -0.7454743981361389,
+        "value": 0.7407990879702335
+      },
+      {
+        "feature": "ORGANIZATION_TYPE_TE",
+        "shap": -0.4031866192817688,
+        "value": 0.0472972972972973
+      },
+      {
+        "feature": "DAYS_EMPLOYED",
+        "shap": -0.32721251249313354,
+        "value": -5822.0
+      },
+      {
+        "feature": "DAYS_ID_PUBLISH",
+        "shap": -0.3247990906238556,
+        "value": -4954.0
+      }
+    ]
+  },
+  {
+    "idx": 60717,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba": 0.03235635533928871,
+    "shap_base_value": 0.019985025748610497,
+    "shap_sum": -3.494764804840088,
+    "top_5_positive_drivers": [
+      {
+        "feature": "AMT_GOODS_PRICE",
+        "shap": 0.09693633764982224,
+        "value": 112500.0
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "shap": 0.03903109207749367,
+        "value": 0.0
+      },
+      {
+        "feature": "AMT_REQ_CREDIT_BUREAU_YEAR",
+        "shap": 0.03744443878531456,
+        "value": 3.0
+      },
+      {
+        "feature": "REGION_POPULATION_RELATIVE",
+        "shap": 0.030400950461626053,
+        "value": 0.031329
+      },
+      {
+        "feature": "FLAG_OWN_CAR_N",
+        "shap": 0.027012767270207405,
+        "value": 1.0
+      }
+    ],
+    "top_5_negative_drivers": [
+      {
+        "feature": "EXT_SOURCE_1",
+        "shap": -1.0665888786315918,
+        "value": 0.8896803989328954
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "shap": -0.6616880297660828,
+        "value": 0.7981372313187245
+      },
+      {
+        "feature": "AMT_CREDIT",
+        "shap": -0.6528525352478027,
+        "value": 127350.0
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "shap": -0.6512014865875244,
+        "value": 0.7387924521679454
+      },
+      {
+        "feature": "AMT_ANNUITY",
+        "shap": -0.13903824985027313,
+        "value": 7920.0
+      }
+    ]
+  },
+  {
+    "idx": 40525,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba": 0.03526460751891136,
+    "shap_base_value": 0.019985025748610497,
+    "shap_sum": -3.3824658393859863,
+    "top_5_positive_drivers": [
+      {
+        "feature": "AMT_GOODS_PRICE",
+        "shap": 0.09848146140575409,
+        "value": 135000.0
+      },
+      {
+        "feature": "DAYS_BIRTH",
+        "shap": 0.06667518615722656,
+        "value": -14844.0
+      },
+      {
+        "feature": "NAME_FAMILY_STATUS_Married",
+        "shap": 0.06543060392141342,
+        "value": 0.0
+      },
+      {
+        "feature": "FLAG_OWN_CAR_N",
+        "shap": 0.025682944804430008,
+        "value": 1.0
+      },
+      {
+        "feature": "ORGANIZATION_TYPE_TE",
+        "shap": 0.021727388724684715,
+        "value": 0.09198407075321884
+      }
+    ],
+    "top_5_negative_drivers": [
+      {
+        "feature": "EXT_SOURCE_1",
+        "shap": -0.8969882726669312,
+        "value": 0.7469847683542197
+      },
+      {
+        "feature": "AMT_CREDIT",
+        "shap": -0.40466368198394775,
+        "value": 135000.0
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "shap": -0.3347351849079132,
+        "value": 0.631579692851382
+      },
+      {
+        "feature": "OCCUPATION_TYPE_TE",
+        "shap": -0.31459152698516846,
+        "value": 0.044859813084112146
+      },
+      {
+        "feature": "AMT_ANNUITY",
+        "shap": -0.26186367869377136,
+        "value": 6750.0
+      }
+    ]
+  },
+  {
+    "idx": 22226,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba": 0.030545856803655624,
+    "shap_base_value": 0.019985025748610497,
+    "shap_sum": -3.5957884788513184,
+    "top_5_positive_drivers": [
+      {
+        "feature": "DAYS_BIRTH",
+        "shap": 0.09689666330814362,
+        "value": -14740.0
+      },
+      {
+        "feature": "EXT_SOURCE_1_MISSING_FLAG",
+        "shap": 0.026393311098217964,
+        "value": 1.0
+      },
+      {
+        "feature": "NAME_CONTRACT_TYPE_Cash loans",
+        "shap": 0.02555917203426361,
+        "value": 1.0
+      },
+      {
+        "feature": "FLAG_DOCUMENT_3",
+        "shap": 0.02403201162815094,
+        "value": 1.0
+      },
+      {
+        "feature": "APARTMENTS_MODE",
+        "shap": 0.02367701567709446,
+        "value": 0.125
+      }
+    ],
+    "top_5_negative_drivers": [
+      {
+        "feature": "EXT_SOURCE_2",
+        "shap": -0.8407864570617676,
+        "value": 0.7530545035149758
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "shap": -0.813946545124054,
+        "value": 0.7688075728291359
+      },
+      {
+        "feature": "DAYS_EMPLOYED",
+        "shap": -0.4155900478363037,
+        "value": -6818.0
+      },
+      {
+        "feature": "FLAG_DOCUMENT_16",
+        "shap": -0.32013967633247375,
+        "value": 1.0
+      },
+      {
+        "feature": "AMT_CREDIT",
+        "shap": -0.15433074533939362,
+        "value": 495000.0
+      }
+    ]
+  }
+]

@@ -191,20 +191,30 @@ D:\paper\
 
 ---
 
-## 10. 7일 일정 (미팅용 프로토타입)
+## 10. 일정 — 8일 강화판 (Day 1-3은 2026-05-03 단일에 압축)
+
+진행 속도가 빨라 패키지 A(학술 신뢰성) + Demo를 추가 적용:
+- 5-fold CV로 베이스라인/TabNet 재평가
+- AIF360 공정성 완화 재학습 (계획서 3.5.2 회복)
+- G-Eval (LLM-as-a-Judge, 계획서 3.8.4)
+- LLM 비교 (Gemini + 추가 1종)
+- Counterfactual Test (계획서 3.8.1.d)
+- Demo 노트북 + 발표 자료
 
 | 날짜 | Day | 작업 | 산출물 |
 |---|---|---|---|
-| 05-03 (오늘) | 1 | 환경/계획서 점검 (완료) → 데이터 다운로드 확인, EDA, 전처리 모듈 | `results/eda.md`, `figures/eda_*.png`, `src/data_loader.py`, `src/preprocess.py` |
-| 05-04 | 2 | 베이스라인 모델 (Logistic, XGBoost, LightGBM) 학습 + 평가 | `results/baseline_metrics.csv`, 모델 weight |
-| 05-05 | 3 | TabNet 구현 + Optuna 축소 튜닝 + 학습 | `results/tabnet_metrics.csv`, 어텐션 마스크 분석 |
-| 05-06 | 4 | SHAP 분석 (global/local) + 어텐션–SHAP 일관성 비교 | `figures/shap_*.png`, `results/attention_vs_shap.csv` |
-| 05-07 | 5 | 공정성 지표 측정 + XAI-RAG JSON 컨텍스트 빌더 + 프롬프트 템플릿 | `src/context_builder.py`, `results/fairness.csv` |
-| 05-08 | 6 | LLM API 호출(GPT-4o or Claude) → 설명 리포트 생성 → Faithfulness/Hallucination 평가 | `results/explanations/*.json`, `results/explanation_eval.csv` |
-| 05-09 | 7 | 결과 종합, 발표 자료(슬라이드 또는 docx), 데모 시나리오 정리 | `paper/midterm_slides.pptx` 또는 `.docx` |
-| 05-10 | — | 미팅 |
+| 05-03 ✅ | 1 | 환경/EDA/전처리 모듈 | `results/{environment,eda,day1_summary}.md`, `data/processed/*.parquet` |
+| 05-03 ✅ | 2 | 베이스라인 (Logistic/XGB/LGBM) | `results/baseline_metrics.csv`, `figures/08~10` |
+| 05-03 ✅ | 3 | TabNet + Optuna 10 trials + 어텐션 추출 | `results/tabnet_metrics.csv`, `figures/11~12` |
+| 05-04 | **4** | **5-fold CV 재평가** (베이스라인+TabNet) + SHAP global/local + 어텐션–SHAP 일관성 | `results/{cv_metrics,attention_vs_shap}.csv`, `figures/13~16` |
+| 05-05 | **5** | 공정성 측정 (DP/EO/EOdds/DI) + **AIF360 변수 ablation·재학습 mitigation 비교** | `results/{fairness_metrics,fairness_mitigation}.csv` |
+| 05-06 | **6** | XAI-RAG 컨텍스트 빌더 + 프롬프트 템플릿 + **LLM 비교 (Gemini + Claude/GPT-4o)** 호출 | `src/{context_builder,llm_explainer}.py`, `results/explanations/` |
+| 05-07 | **7** | Faithfulness + Hallucination Rate + **G-Eval** + **Counterfactual Test** + LLM 간 비교 | `results/explanation_eval.csv`, `figures/17~19` |
+| 05-08 | **8** | Demo 노트북 (5명 샘플 end-to-end) + 발표 슬라이드/문서 + 결과 종합 | `notebooks/demo.ipynb`, `paper/midterm_slides.pptx` |
+| 05-09 | (예비) | 미팅 직전 점검, 누락 보완, 디테일 정리 | — |
+| 05-10 | — | **지도교수 미팅** | 발표 |
 
-여유분: 매일 마지막 1~2시간은 다음날 준비 + 막힘 해결.
+미팅용 빠진 항목 (future work 명시): 인간 평가, FT-Transformer, Llama 3 70B, 보조 테이블, UCI German Credit, MLflow.
 
 ---
 
