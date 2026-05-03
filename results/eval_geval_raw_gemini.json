@@ -1,0 +1,98 @@
+{
+  "22226_accept": {
+    "model": "gemini-2.5-flash",
+    "elapsed_sec": 7.7,
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 3,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "설명은 사실적으로 정확하고, 스타일이 친절하며 민감 정보를 포함하지 않았으나, '부도 가능성을 높이는 요인' 중 일부만 언급하여 완전성이 떨어집니다."
+    },
+    "raw_response": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 3,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"설명은 사실적으로 정확하고, 스타일이 친절하며 민감 정보를 포함하지 않았으나, '부도 가능성을 높이는 요인' 중 일부만 언급하여 완전성이 떨어집니다.\"\n}\n```"
+  },
+  "36556_reject": {
+    "model": "gemini-2.5-flash",
+    "elapsed_sec": 8.28,
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 4,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "모든 사실 정보는 정확하며, 민감 정보 노출 없이 고객에게 적절한 톤으로 설명되었습니다. 다만, 거절 사유 중 일부 세부 요인(4, 5순위)이 생략되었습니다."
+    },
+    "raw_response": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 4,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"모든 사실 정보는 정확하며, 민감 정보 노출 없이 고객에게 적절한 톤으로 설명되었습니다. 다만, 거절 사유 중 일부 세부 요인(4, 5순위)이 생략되었습니다.\"\n}\n```"
+  },
+  "39518_reject": {
+    "model": "gemini-2.5-flash",
+    "elapsed_sec": 11.45,
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 4,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "설명은 결정 요약, 주요 거절 사유, 긍정적 요인, 개선 권고, 면책 고지를 일관되고 정확하게 제시하며 고객 친화적인 스타일을 유지했으나, 컨텍스트의 모든 top driver를 다루지는 않았습니다."
+    },
+    "raw_response": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 4,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"설명은 결정 요약, 주요 거절 사유, 긍정적 요인, 개선 권고, 면책 고지를 일관되고 정확하게 제시하며 고객 친화적인 스타일을 유지했으나, 컨텍스트의 모든 top driver를 다루지는 않았습니다.\"\n}\n```"
+  },
+  "40525_accept": {
+    "model": "gemini-2.5-flash",
+    "elapsed_sec": 8.26,
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 2,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "결정 요약과 긍정 요인은 정확하지만, 부도 위험을 높이는 요인들이 전혀 언급되지 않아 설명의 완전성이 부족합니다."
+    },
+    "raw_response": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 2,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"결정 요약과 긍정 요인은 정확하지만, 부도 위험을 높이는 요인들이 전혀 언급되지 않아 설명의 완전성이 부족합니다.\"\n}\n```"
+  },
+  "45114_reject": {
+    "model": "gemini-2.5-flash",
+    "elapsed_sec": 8.91,
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 3,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "생성된 설명은 제공된 컨텍스트와 일치하는 정확한 사실을 전달하고 있으며, 민감 정보 노출 없이 고객에게 친근하고 전문적인 어조를 유지합니다. 다만, 컨텍스트에 제시된 주요 부도 위험 요인 및 긍정 요인 중 일부가 설명에서 누락되어 완전성이 다소 떨어집니다."
+    },
+    "raw_response": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 3,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"생성된 설명은 제공된 컨텍스트와 일치하는 정확한 사실을 전달하고 있으며, 민감 정보 노출 없이 고객에게 친근하고 전문적인 어조를 유지합니다. 다만, 컨텍스트에 제시된 주요 부도 위험 요인 및 긍정 요인 중 일부가 설명에서 누락되어 완전성이 다소 떨어집니다.\"\n}\n```"
+  },
+  "54421_reject": {
+    "model": "gemini-2.5-flash",
+    "elapsed_sec": 8.28,
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 3,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "설명의 모든 변수명, 수치, SHAP 부호가 컨텍스트와 일치하고 스타일이 적절하며 민감 정보 유출이 없으나, 거절 사유 중 2개가 누락되어 완전성이 떨어집니다."
+    },
+    "raw_response": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 3,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"설명의 모든 변수명, 수치, SHAP 부호가 컨텍스트와 일치하고 스타일이 적절하며 민감 정보 유출이 없으나, 거절 사유 중 2개가 누락되어 완전성이 떨어집니다.\"\n}\n```"
+  },
+  "54529_reject": {
+    "model": "gemini-2.5-flash",
+    "elapsed_sec": 8.84,
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 4,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "설명의 모든 변수명, 수치, SHAP 부호가 참조 컨텍스트와 정확히 일치하며 환각이 없습니다. 주요 거절/긍정 요인을 잘 다루었으나, 일부 하위 순위 드라이버(4, 5위 거절 요인, 4위 긍정 요인)는 설명에서 누락되었습니다. 민감 변수를 언급하지 않았고, 고객에게 친절하고 중립적인 톤으로 설명이 잘 구성되어 있습니다."
+    },
+    "raw_response": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 4,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"설명의 모든 변수명, 수치, SHAP 부호가 참조 컨텍스트와 정확히 일치하며 환각이 없습니다. 주요 거절/긍정 요인을 잘 다루었으나, 일부 하위 순위 드라이버(4, 5위 거절 요인, 4위 긍정 요인)는 설명에서 누락되었습니다. 민감 변수를 언급하지 않았고, 고객에게 친절하고 중립적인 톤으로 설명이 잘 구성되어 있습니다.\"\n}\n```"
+  },
+  "57037_accept": {
+    "model": "gemini-2.5-flash",
+    "elapsed_sec": 8.12,
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 4,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "결정, 부도 확률, 주요 긍정적 요인들이 모두 정확하게 제시되었고, 부정적 요인은 개선 권고로 잘 변환되었으며, 민감 정보 노출 없이 친절한 톤을 유지합니다. 일부 세부 요인은 생략되었지만 핵심은 충분히 전달됩니다."
+    },
+    "raw_response": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 4,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"결정, 부도 확률, 주요 긍정적 요인들이 모두 정확하게 제시되었고, 부정적 요인은 개선 권고로 잘 변환되었으며, 민감 정보 노출 없이 친절한 톤을 유지합니다. 일부 세부 요인은 생략되었지만 핵심은 충분히 전달됩니다.\"\n}\n```"
+  }
+}

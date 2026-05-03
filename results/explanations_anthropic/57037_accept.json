@@ -1,0 +1,102 @@
+{
+  "sample_idx": 57037,
+  "decision": "APPROVE",
+  "true_label": 0,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "elapsed_sec": 7.46,
+  "explanation": "[결정 요약]\n신청 결과: 대출 신청이 승인되었습니다(예측 부도 확률 2.16%).\n\n[주요 거절 사유]\n(승인 건이므로 해당 없음)\n\n[긍정적으로 평가된 요인]\n1. 외부 신용평가 점수 2(0.762569)와 외부 신용평가 점수 3(0.740799)이 우수하여 부도 가능성을 크게 낮추는 요인으로 작용했습니다.\n2. 15년의 안정적인 재직 기간이 긍정적으로 평가되었습니다.\n3. 근무 조직 유형(타깃 인코딩 값 0.0473)이 양호한 그룹으로 분류되었습니다.\n\n[개선 권고]\n- 현재 우수한 신용 상태를 유지하시기 바랍니다.\n- 외부 신용평가 점수를 지속적으로 관리하여 향후 더 유리한 조건의 금융 서비스를 이용하실 수 있습니다.\n\n[면책 고지]\n본 안내는 모델의 자동화된 평가 결과를 자연어로 정리한 것이며, 최종 의사결정은 담당자의 검토를 거칩니다. 본 설명이 미래의 신용 거래 결과를 보장하지는 않습니다.",
+  "usage_metadata": {
+    "input_tokens": 1992,
+    "output_tokens": 447,
+    "total_token_count": 2439
+  },
+  "context_sent": {
+    "sample_idx": 57037,
+    "decision": "APPROVE",
+    "default_probability": 0.0216,
+    "threshold": 0.476,
+    "top_drivers_for_default": [
+      {
+        "feature": "구매 대상 상품 가격",
+        "feature_raw": "AMT_GOODS_PRICE",
+        "value": "247,500",
+        "value_raw": 247500.0,
+        "shap": 0.094,
+        "rank": 1
+      },
+      {
+        "feature": "학력: 고등교육 이상",
+        "feature_raw": "NAME_EDUCATION_TYPE_Higher education",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "shap": 0.0643,
+        "rank": 2
+      },
+      {
+        "feature": "거주지 인구 밀도(상대값)",
+        "feature_raw": "REGION_POPULATION_RELATIVE",
+        "value": "0.04622",
+        "value_raw": 0.04622,
+        "shap": 0.0526,
+        "rank": 3
+      },
+      {
+        "feature": "COMMONAREA_MEDI",
+        "feature_raw": "COMMONAREA_MEDI",
+        "value": "0.001",
+        "value_raw": 0.001,
+        "shap": 0.0482,
+        "rank": 4
+      }
+    ],
+    "top_drivers_against_default": [
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "0.762569",
+        "value_raw": 0.7625693717655919,
+        "shap": -0.8804,
+        "rank": 1
+      },
+      {
+        "feature": "외부 신용평가 점수 3",
+        "feature_raw": "EXT_SOURCE_3",
+        "value": "0.740799",
+        "value_raw": 0.7407990879702335,
+        "shap": -0.7455,
+        "rank": 2
+      },
+      {
+        "feature": "근무 조직 유형 (타깃 인코딩 값)",
+        "feature_raw": "ORGANIZATION_TYPE_TE",
+        "value": "0.0473 (타깃 인코딩 값)",
+        "value_raw": 0.0472972972972973,
+        "shap": -0.4032,
+        "rank": 3
+      },
+      {
+        "feature": "재직 일수(음수: 신청일 기준)",
+        "feature_raw": "DAYS_EMPLOYED",
+        "value": "15년 재직",
+        "value_raw": -5822.0,
+        "shap": -0.3272,
+        "rank": 4
+      },
+      {
+        "feature": "신분증 발급 후 경과 일수",
+        "feature_raw": "DAYS_ID_PUBLISH",
+        "value": "-4954",
+        "value_raw": -4954.0,
+        "shap": -0.3248,
+        "rank": 5
+      }
+    ],
+    "fairness_flags": [],
+    "model": "XGBoost",
+    "explanation_policy": "fact_only",
+    "masked_sensitive_features": [
+      "DAYS_BIRTH"
+    ]
+  }
+}

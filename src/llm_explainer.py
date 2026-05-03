@@ -30,11 +30,17 @@ from dotenv import load_dotenv
 
 from src.utils import RESULTS_DIR
 
-load_dotenv("D:/paper/.env")
+load_dotenv("D:/paper/.env", override=True)
 
 CONTEXTS_DIR = RESULTS_DIR / "contexts"
-EXPLANATIONS_DIR = RESULTS_DIR / "explanations"
-EXPLANATIONS_DIR.mkdir(parents=True, exist_ok=True)
+# 기본 출력 디렉토리 — provider별 분리 가능
+EXPLANATIONS_DIR_DEFAULT = RESULTS_DIR / "explanations"
+EXPLANATIONS_DIR_DEFAULT.mkdir(parents=True, exist_ok=True)
+
+PROVIDER_DEFAULTS = {
+    "gemini":   {"model": "gemini-2.5-flash",       "output_subdir": "explanations"},
+    "anthropic": {"model": "claude-sonnet-4-5",      "output_subdir": "explanations_anthropic"},
+}
 
 
 # ─────────────────────────────────────────────────────────────
@@ -105,18 +111,55 @@ PROMPT_TEMPLATE = """당신은 고객에게 신용 평가 결과를 친절히 �
 # ─────────────────────────────────────────────────────────────
 # Gemini 클라이언트
 # ─────────────────────────────────────────────────────────────
-def make_client():
+def make_client(provider: str = "gemini"):
     import os
-    from google import genai
-    api_key = os.environ.get("GEMINI_API_KEY")
-    if not api_key:
-        raise RuntimeError("GEMINI_API_KEY가 .env에 없습니다")
-    return genai.Client(api_key=api_key)
+    if provider == "gemini":
+        from google import genai
+        api_key = os.environ.get("GEMINI_API_KEY")
+        if not api_key:
+            raise RuntimeError("GEMINI_API_KEY가 .env에 없습니다")
+        return ("gemini", genai.Client(api_key=api_key))
+    elif provider == "anthropic":
+        import anthropic
+        api_key = os.environ.get("ANTHROPIC_API_KEY")
+        if not api_key:
+            raise RuntimeError("ANTHROPIC_API_KEY가 .env에 없습니다")
+        return ("anthropic", anthropic.Anthropic(api_key=api_key))
+    else:
+        raise ValueError(f"unknown provider: {provider}")
 
 
-def generate_one(client, context: Dict, model: str = "gemini-2.5-flash") -> Dict:
-    """단일 컨텍스트 → 자연어 설명."""
-    # _meta_true_label은 LLM에게 노출 안 함
+def _call_llm(client_tuple, prompt: str, model: str,
+                max_tokens: int = 1500) -> Tuple[str, Dict]:
+    """provider 추상화. (text, usage_dict) 반환."""
+    provider, client = client_tuple
+    if provider == "gemini":
+        resp = client.models.generate_content(model=model, contents=prompt)
+        text = resp.text
+        usage = {
+            "prompt_token_count": getattr(resp.usage_metadata, "prompt_token_count", None),
+            "candidates_token_count": getattr(resp.usage_metadata, "candidates_token_count", None),
+            "total_token_count": getattr(resp.usage_metadata, "total_token_count", None),
+        } if getattr(resp, "usage_metadata", None) else {}
+    elif provider == "anthropic":
+        resp = client.messages.create(
+            model=model,
+            max_tokens=max_tokens,
+            messages=[{"role": "user", "content": prompt}],
+        )
+        text = resp.content[0].text
+        usage = {
+            "input_tokens": resp.usage.input_tokens,
+            "output_tokens": resp.usage.output_tokens,
+            "total_token_count": resp.usage.input_tokens + resp.usage.output_tokens,
+        }
+    else:
+        raise ValueError(f"unknown provider: {provider}")
+    return text, usage
+
+
+def generate_one(client_tuple, context: Dict, model: str) -> Dict:
+    """단일 컨텍스트 → 자연어 설명. provider 자동 추상화."""
     ctx_for_prompt = {k: v for k, v in context.items() if not k.startswith("_meta")}
     prompt = PROMPT_TEMPLATE.format(
         few_shot=FEW_SHOT_EXAMPLES,
@@ -124,21 +167,18 @@ def generate_one(client, context: Dict, model: str = "gemini-2.5-flash") -> Dict
     )
 
     t0 = time.time()
-    resp = client.models.generate_content(model=model, contents=prompt)
+    text, usage = _call_llm(client_tuple, prompt, model=model)
     elapsed = time.time() - t0
 
     return {
         "sample_idx": context.get("sample_idx"),
         "decision": context.get("decision"),
         "true_label": context.get("_meta_true_label"),
+        "provider": client_tuple[0],
         "model": model,
         "elapsed_sec": round(elapsed, 2),
-        "explanation": resp.text,
-        "usage_metadata": {
-            "prompt_token_count": getattr(resp.usage_metadata, "prompt_token_count", None),
-            "candidates_token_count": getattr(resp.usage_metadata, "candidates_token_count", None),
-            "total_token_count": getattr(resp.usage_metadata, "total_token_count", None),
-        } if getattr(resp, "usage_metadata", None) else {},
+        "explanation": text,
+        "usage_metadata": usage,
         "context_sent": ctx_for_prompt,
     }
 
@@ -146,15 +186,23 @@ def generate_one(client, context: Dict, model: str = "gemini-2.5-flash") -> Dict
 # ─────────────────────────────────────────────────────────────
 # 일괄 처리
 # ─────────────────────────────────────────────────────────────
-def run_all(model: str = "gemini-2.5-flash", sleep_sec: float = 4.0,
-              dry_run: bool = False) -> List[Path]:
+def run_all(provider: str = "gemini", model: str | None = None,
+             sleep_sec: float = 4.0, dry_run: bool = False,
+             output_dir: Path | None = None) -> List[Path]:
+    if model is None:
+        model = PROVIDER_DEFAULTS[provider]["model"]
+    if output_dir is None:
+        output_dir = RESULTS_DIR / PROVIDER_DEFAULTS[provider]["output_subdir"]
+    output_dir.mkdir(parents=True, exist_ok=True)
+
     files = sorted([p for p in CONTEXTS_DIR.glob("*.json")
                      if p.name != "_index.json"])
     if dry_run:
         files = files[:1]
         print(f"[dry-run] 첫 1개만 처리: {files[0].name}")
 
-    client = make_client()
+    print(f"[provider] {provider} / model={model} / output={output_dir}")
+    client_tuple = make_client(provider=provider)
     out_paths = []
     for i, ctx_path in enumerate(files, start=1):
         with open(ctx_path, "r", encoding="utf-8") as f:
@@ -162,32 +210,29 @@ def run_all(model: str = "gemini-2.5-flash", sleep_sec: float = 4.0,
         print(f"[{i}/{len(files)}] {ctx_path.stem}  decision={ctx['decision']}  "
               f"true_label={ctx.get('_meta_true_label')}  prob={ctx['default_probability']:.3f}")
         try:
-            result = generate_one(client, ctx, model=model)
+            result = generate_one(client_tuple, ctx, model=model)
         except Exception as e:
             print(f"  ERROR: {e}")
-            # 429일 가능성 — 잠시 대기 후 재시도 1회
             print("  60초 대기 후 재시도...")
             time.sleep(60)
-            result = generate_one(client, ctx, model=model)
+            result = generate_one(client_tuple, ctx, model=model)
 
-        # 저장
-        out = EXPLANATIONS_DIR / f"{ctx_path.stem}.json"
+        out = output_dir / f"{ctx_path.stem}.json"
         with open(out, "w", encoding="utf-8") as f:
             json.dump(result, f, indent=2, ensure_ascii=False)
         out_paths.append(out)
         print(f"  elapsed={result['elapsed_sec']}s, "
               f"tokens={result['usage_metadata'].get('total_token_count', '?')}")
-        # free tier RPM 제한 회피
         if i < len(files):
             time.sleep(sleep_sec)
 
-    # index 파일
     index = {
         "n_explanations": len(out_paths),
+        "provider": provider,
         "model": model,
         "files": [p.name for p in out_paths],
     }
-    with open(EXPLANATIONS_DIR / "_index.json", "w", encoding="utf-8") as f:
+    with open(output_dir / "_index.json", "w", encoding="utf-8") as f:
         json.dump(index, f, indent=2, ensure_ascii=False)
 
     return out_paths
@@ -195,10 +240,18 @@ def run_all(model: str = "gemini-2.5-flash", sleep_sec: float = 4.0,
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("--model", default="gemini-2.5-flash")
+    ap.add_argument("--provider", default="gemini",
+                    choices=list(PROVIDER_DEFAULTS.keys()))
+    ap.add_argument("--model", default=None,
+                    help="provider별 기본 모델 사용. 명시 시 override.")
+    ap.add_argument("--output-dir", default=None,
+                    help="기본은 results/explanations(_anthropic).")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--sleep", type=float, default=4.0,
                     help="호출 간 대기 시간(초). free tier RPM 회피.")
     args = ap.parse_args()
-    paths = run_all(model=args.model, sleep_sec=args.sleep, dry_run=args.dry_run)
-    print(f"\n[OK] {len(paths)}개 설명 생성 완료 → {EXPLANATIONS_DIR}")
+    output_dir = Path(args.output_dir) if args.output_dir else None
+    paths = run_all(provider=args.provider, model=args.model,
+                     sleep_sec=args.sleep, dry_run=args.dry_run,
+                     output_dir=output_dir)
+    print(f"\n[OK] {len(paths)}개 설명 생성 완료 → {paths[0].parent if paths else '?'}")

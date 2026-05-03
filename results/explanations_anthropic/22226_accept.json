@@ -1,0 +1,102 @@
+{
+  "sample_idx": 22226,
+  "decision": "APPROVE",
+  "true_label": 0,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "elapsed_sec": 8.46,
+  "explanation": "[결정 요약]\n신청 결과: 대출 신청이 승인되었습니다(예측 부도 확률 3.05%).\n\n[주요 거절 사유]\n(승인 건으로 본 섹션은 생략됩니다)\n\n[긍정적으로 평가된 요인]\n1. 외부 신용평가 점수 2가 0.753055로 우수하여 부도 가능성을 크게 낮추는 요인으로 작용했습니다.\n2. 외부 신용평가 점수 3도 0.768808로 높게 평가되어 긍정적으로 반영되었습니다.\n3. 18년의 안정적인 재직 기간이 신용도에 긍정적으로 기여했습니다.\n\n[개선 권고]\n- 외부 신용평가 1 정보를 제공하시면 향후 더욱 정확한 평가가 가능합니다.\n- 현재의 우수한 신용 상태를 유지하시고, 안정적인 상환 이력을 만들어가시기 바랍니다.\n- FLAG_DOCUMENT_16 등 제출하신 서류는 긍정적으로 평가되었으니, 향후에도 필요 서류를 빠짐없이 준비해주세요.\n\n[면책 고지]\n본 안내는 모델의 자동화된 평가 결과를 자연어로 정리한 것이며, 최종 의사결정은 담당자의 검토를 거칩니다. 미래 신청 결과를 보장하지 않습니다.",
+  "usage_metadata": {
+    "input_tokens": 1934,
+    "output_tokens": 492,
+    "total_token_count": 2426
+  },
+  "context_sent": {
+    "sample_idx": 22226,
+    "decision": "APPROVE",
+    "default_probability": 0.0305,
+    "threshold": 0.476,
+    "top_drivers_for_default": [
+      {
+        "feature": "외부 신용평가 1 결측 여부",
+        "feature_raw": "EXT_SOURCE_1_MISSING_FLAG",
+        "value": "예",
+        "value_raw": 1.0,
+        "shap": 0.0264,
+        "rank": 1
+      },
+      {
+        "feature": "신청 대출 유형: 현금대출",
+        "feature_raw": "NAME_CONTRACT_TYPE_Cash loans",
+        "value": "예",
+        "value_raw": 1.0,
+        "shap": 0.0256,
+        "rank": 2
+      },
+      {
+        "feature": "FLAG_DOCUMENT_3",
+        "feature_raw": "FLAG_DOCUMENT_3",
+        "value": "예",
+        "value_raw": 1.0,
+        "shap": 0.024,
+        "rank": 3
+      },
+      {
+        "feature": "APARTMENTS_MODE",
+        "feature_raw": "APARTMENTS_MODE",
+        "value": "0.125",
+        "value_raw": 0.125,
+        "shap": 0.0237,
+        "rank": 4
+      }
+    ],
+    "top_drivers_against_default": [
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "0.753055",
+        "value_raw": 0.7530545035149758,
+        "shap": -0.8408,
+        "rank": 1
+      },
+      {
+        "feature": "외부 신용평가 점수 3",
+        "feature_raw": "EXT_SOURCE_3",
+        "value": "0.768808",
+        "value_raw": 0.7688075728291359,
+        "shap": -0.8139,
+        "rank": 2
+      },
+      {
+        "feature": "재직 일수(음수: 신청일 기준)",
+        "feature_raw": "DAYS_EMPLOYED",
+        "value": "18년 재직",
+        "value_raw": -6818.0,
+        "shap": -0.4156,
+        "rank": 3
+      },
+      {
+        "feature": "FLAG_DOCUMENT_16",
+        "feature_raw": "FLAG_DOCUMENT_16",
+        "value": "예",
+        "value_raw": 1.0,
+        "shap": -0.3201,
+        "rank": 4
+      },
+      {
+        "feature": "대출 신청 금액",
+        "feature_raw": "AMT_CREDIT",
+        "value": "495,000",
+        "value_raw": 495000.0,
+        "shap": -0.1543,
+        "rank": 5
+      }
+    ],
+    "fairness_flags": [],
+    "model": "XGBoost",
+    "explanation_policy": "fact_only",
+    "masked_sensitive_features": [
+      "DAYS_BIRTH"
+    ]
+  }
+}

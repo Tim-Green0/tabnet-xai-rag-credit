@@ -1,0 +1,53 @@
+{
+  "feat_match_rate": {
+    "mean": 0.44214285714285717,
+    "std": 0.16090592141210172,
+    "n": 10
+  },
+  "val_match_rate": {
+    "mean": 0.8111507936507936,
+    "std": 0.12283801929513087,
+    "n": 10
+  },
+  "sign_match_rate": {
+    "mean": 0.7833333333333333,
+    "std": 0.20861092617242877,
+    "n": 10
+  },
+  "full_match_rate": {
+    "mean": 0.36630952380952386,
+    "std": 0.19542659936027476,
+    "n": 10
+  },
+  "halluc_rate_strict": {
+    "mean": 0.0,
+    "std": 0.0,
+    "n": 10
+  },
+  "halluc_rate_broad": {
+    "mean": 0.0,
+    "std": 0.0,
+    "n": 10
+  },
+  "_provider": "gemini",
+  "geval_factual_accuracy": {
+    "mean": 5.0,
+    "std": 0.0,
+    "n": 8
+  },
+  "geval_completeness": {
+    "mean": 3.375,
+    "std": 0.7440238091428449,
+    "n": 8
+  },
+  "geval_sensitive_leak": {
+    "mean": 5.0,
+    "std": 0.0,
+    "n": 8
+  },
+  "geval_style": {
+    "mean": 5.0,
+    "std": 0.0,
+    "n": 8
+  }
+}

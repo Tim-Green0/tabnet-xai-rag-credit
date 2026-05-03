@@ -1,0 +1,11 @@
+sample_id,decision,true_label,model_llm,default_proba,feat_match_rate,val_match_rate,sign_match_rate,full_match_rate,halluc_rate_strict,halluc_rate_broad,n_raw_candidates,n_raw_outside_dataset
+22226_accept,APPROVE,0,claude-sonnet-4-5,0.0305,0.3333333333333333,0.7777777777777778,1.0,0.3333333333333333,0.0,0.0,1,0
+36556_reject,REJECT,0,claude-sonnet-4-5,0.9252,0.8571428571428571,1.0,0.6666666666666666,0.5714285714285714,0.0,0.0,0,0
+39518_reject,REJECT,1,claude-sonnet-4-5,0.8951,0.5,0.9,1.0,0.5,0.0,0.0,0,0
+40525_accept,APPROVE,0,claude-sonnet-4-5,0.0353,0.4444444444444444,1.0,1.0,0.4444444444444444,0.0,0.0,0,0
+45114_reject,REJECT,0,claude-sonnet-4-5,0.8995,0.3333333333333333,0.8888888888888888,1.0,0.3333333333333333,0.0,0.0,0,0
+54421_reject,REJECT,1,claude-sonnet-4-5,0.9333,0.625,0.875,1.0,0.625,0.0,0.0,0,0
+54529_reject,REJECT,0,claude-sonnet-4-5,0.9044,0.5555555555555556,1.0,1.0,0.5555555555555556,0.0,0.0,0,0
+57037_accept,APPROVE,0,claude-sonnet-4-5,0.0216,0.2222222222222222,0.6666666666666666,1.0,0.2222222222222222,0.0,0.0,0,0
+5886_accept,APPROVE,0,claude-sonnet-4-5,0.035,0.3,0.9,0.6666666666666666,0.2,0.0,0.0,0,0
+60717_accept,APPROVE,0,claude-sonnet-4-5,0.0324,0.6,1.0,0.3333333333333333,0.2,0.0,0.0,0,0
