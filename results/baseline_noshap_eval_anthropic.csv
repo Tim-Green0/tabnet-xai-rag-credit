@@ -1,0 +1,12 @@
+sample_id,decision,true_label,provider,n_raw_candidates,n_outside_dataset,halluc_rate_strict,outside_dataset_list
+22226_accept,APPROVE,0,anthropic,1,1,1.0,['DSR']
+36556_reject,REJECT,0,anthropic,0,0,0.0,[]
+39518_reject,REJECT,1,anthropic,1,1,1.0,['DEF_30_CNT']
+40525_accept,APPROVE,0,anthropic,1,1,1.0,['LTV']
+45114_reject,REJECT,0,anthropic,4,2,0.5,"['DTI', 'XXXX']"
+54421_reject,REJECT,1,anthropic,1,1,1.0,['XXXX']
+54529_reject,REJECT,0,anthropic,2,1,0.5,['XXXX']
+57037_accept,APPROVE,0,anthropic,0,0,0.0,[]
+5886_accept,APPROVE,0,anthropic,0,0,0.0,[]
+59291_demo,REJECT,1,anthropic,1,0,0.0,[]
+60717_accept,APPROVE,0,anthropic,0,0,0.0,[]

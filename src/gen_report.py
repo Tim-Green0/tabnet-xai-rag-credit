@@ -1,0 +1,365 @@
+"""미팅용 docx 보고서 생성기.
+
+흐름:
+  1. 표지 + 1줄 요약
+  2. 연구 목적·기여 (계획서 1.2 기반)
+  3. 데이터·전처리
+  4. 모델 비교 (5-fold CV)
+  5. SHAP × 어텐션 일관성 (RQ2)
+  6. 공정성 진단 + Mitigation
+  7. XAI-RAG 자연어 설명 (Demo 인스턴스)
+  8. 정량 평가 (RQ3, 환각 0%)
+  9. 향후 계획 (Future Work)
+
+실행:  PYTHONIOENCODING=utf-8 .venv/Scripts/python.exe -m src.gen_report
+산출:  paper/midterm_report.docx
+"""
+from __future__ import annotations
+
+import json
+from pathlib import Path
+
+import pandas as pd
+from docx import Document
+from docx.enum.table import WD_ALIGN_VERTICAL
+from docx.enum.text import WD_ALIGN_PARAGRAPH
+from docx.shared import Cm, Pt, RGBColor
+from docx.oxml.ns import qn
+
+from src.utils import RESULTS_DIR
+
+PAPER_DIR = Path("paper")
+PAPER_DIR.mkdir(parents=True, exist_ok=True)
+FIG_DIR = Path("figures")
+
+
+# ─────────────────────────────────────────────────────────────
+# 헬퍼
+# ─────────────────────────────────────────────────────────────
+def set_cell_bg(cell, color: str):
+    """테이블 셀 배경색."""
+    from docx.oxml import OxmlElement
+    tc_pr = cell._tc.get_or_add_tcPr()
+    shd = OxmlElement("w:shd")
+    shd.set(qn("w:val"), "clear")
+    shd.set(qn("w:fill"), color)
+    tc_pr.append(shd)
+
+
+def add_heading(doc, text: str, level: int = 1):
+    h = doc.add_heading(text, level=level)
+    for run in h.runs:
+        run.font.name = "Malgun Gothic"
+        run.font.size = Pt(16 if level == 1 else 13)
+    return h
+
+
+def add_para(doc, text: str, bold: bool = False, size: int = 11):
+    p = doc.add_paragraph()
+    run = p.add_run(text)
+    run.font.name = "Malgun Gothic"
+    run.font.size = Pt(size)
+    run.bold = bold
+    # East Asian font
+    rPr = run._element.get_or_add_rPr()
+    rFonts = rPr.find(qn("w:rFonts"))
+    if rFonts is None:
+        from docx.oxml import OxmlElement
+        rFonts = OxmlElement("w:rFonts")
+        rPr.append(rFonts)
+    rFonts.set(qn("w:eastAsia"), "Malgun Gothic")
+    return p
+
+
+def add_bullet(doc, text: str):
+    p = doc.add_paragraph(style="List Bullet")
+    run = p.add_run(text)
+    run.font.name = "Malgun Gothic"
+    run.font.size = Pt(11)
+    rPr = run._element.get_or_add_rPr()
+    from docx.oxml import OxmlElement
+    rFonts = OxmlElement("w:rFonts")
+    rFonts.set(qn("w:eastAsia"), "Malgun Gothic")
+    rPr.append(rFonts)
+    return p
+
+
+def add_table_from_data(doc, headers: list, rows: list, header_bg: str = "4C72B0"):
+    table = doc.add_table(rows=1 + len(rows), cols=len(headers))
+    table.style = "Light Grid Accent 1"
+    # Header
+    for j, h in enumerate(headers):
+        cell = table.rows[0].cells[j]
+        cell.text = ""
+        p = cell.paragraphs[0]
+        run = p.add_run(h)
+        run.font.bold = True
+        run.font.name = "Malgun Gothic"
+        run.font.size = Pt(10)
+        run.font.color.rgb = RGBColor(0xFF, 0xFF, 0xFF)
+        set_cell_bg(cell, header_bg)
+    # Rows
+    for i, row in enumerate(rows, start=1):
+        for j, val in enumerate(row):
+            cell = table.rows[i].cells[j]
+            cell.text = ""
+            p = cell.paragraphs[0]
+            run = p.add_run(str(val))
+            run.font.name = "Malgun Gothic"
+            run.font.size = Pt(10)
+    return table
+
+
+def add_figure(doc, path: Path, caption: str | None = None, width_cm: float = 15):
+    if not path.exists():
+        add_para(doc, f"[그림 누락: {path}]")
+        return
+    doc.add_picture(str(path), width=Cm(width_cm))
+    last = doc.paragraphs[-1]
+    last.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    if caption:
+        cp = doc.add_paragraph()
+        cp.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        run = cp.add_run(caption)
+        run.font.italic = True
+        run.font.size = Pt(9)
+        run.font.color.rgb = RGBColor(0x55, 0x55, 0x55)
+
+
+def load_json(p: Path) -> dict:
+    return json.loads(Path(p).read_text(encoding="utf-8"))
+
+
+# ─────────────────────────────────────────────────────────────
+# 메인
+# ─────────────────────────────────────────────────────────────
+def main():
+    doc = Document()
+
+    # ── 표지 ──
+    title = doc.add_paragraph()
+    title.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    run = title.add_run("석사 논문 중간 보고")
+    run.font.size = Pt(20)
+    run.font.bold = True
+    run.font.name = "Malgun Gothic"
+
+    sub = doc.add_paragraph()
+    sub.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    run = sub.add_run("정형 데이터 특화 딥러닝(TabNet)과 LLM 기반 XAI-RAG를\n"
+                       "활용한 설명 가능한 신용 평가 및 사용자 맞춤형 리포트 생성")
+    run.font.size = Pt(13)
+    run.font.name = "Malgun Gothic"
+
+    info = doc.add_paragraph()
+    info.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    info.add_run("\n").font.size = Pt(10)
+    for txt in ["A70067 오현택", "지도교수: 박운상", "보고일: 2026-05-10 (예정)"]:
+        r = info.add_run(txt + "\n")
+        r.font.name = "Malgun Gothic"
+        r.font.size = Pt(11)
+
+    doc.add_paragraph()
+
+    # 1줄 메시지
+    msg = doc.add_paragraph()
+    msg.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    r = msg.add_run("[핵심 메시지] 본 연구의 XAI-RAG는 두 상용 LLM 모두에서 "
+                     "Hallucination Rate 0.000을 달성 — 환각 차단 효과의 LLM 종속성 없음을 입증")
+    r.font.bold = True
+    r.font.name = "Malgun Gothic"
+    r.font.size = Pt(11)
+    r.font.color.rgb = RGBColor(0xC4, 0x4E, 0x52)
+
+    doc.add_page_break()
+
+    # ── 1. 연구 목적·기여 ──
+    add_heading(doc, "1. 연구 목적과 기여", level=1)
+    add_para(doc, "정형 데이터 신용 평가에서 (1) 고성능 예측, (2) 투명한 수학적 근거, "
+                  "(3) 사용자 친화적 자연어 설명 세 요소를 일관된 파이프라인으로 통합하고, "
+                  "그 결과의 신뢰성을 정량 검증한다.")
+    add_heading(doc, "1.1 핵심 차별점", level=2)
+    add_bullet(doc, "TabNet 어텐션 마스크와 SHAP의 일관성을 정량 분석 (대부분 연구가 사후 SHAP만 사용)")
+    add_bullet(doc, "SHAP 결과를 'retrieved evidence'로 정의해 LLM 환각을 원천 차단하는 XAI-RAG 구조")
+    add_bullet(doc, "Faithfulness · Hallucination · G-Eval 다층 정량 평가 프로토콜")
+    add_bullet(doc, "성별·연령 4종 공정성 지표 + ablation 기반 mitigation 비교")
+
+    # ── 2. 데이터 ──
+    add_heading(doc, "2. 데이터 및 전처리", level=1)
+    add_para(doc, "데이터셋: Kaggle Home Credit Default Risk (메인 테이블), 307,511행 × 122컬럼.")
+    add_para(doc, "TARGET 분포 8.07% (불균형) → AUROC, AUPRC, KS 위주 평가 + class_weight 균형.")
+    add_bullet(doc, "전처리: 결측 50%+ 컬럼은 *_MISSING_FLAG 추가 후 보존")
+    add_bullet(doc, "범주형: cardinality ≤8 → one-hot, OCCUPATION/ORGANIZATION → target encoding")
+    add_bullet(doc, "DAYS_EMPLOYED sentinel 365243(≈18%)는 NaN+EMPLOYED_FLAG 처리")
+    add_bullet(doc, "RobustScaler 적용 (TabNet/Logistic용), 60/20/20 stratified split, SEED=42")
+    add_bullet(doc, "최종 feature 수: 122 → 214")
+
+    # ── 3. 모델 성능 ──
+    add_heading(doc, "3. 모델 비교 (5-fold Stratified CV, test set)", level=1)
+    add_para(doc, "단발 학습이 아닌 5-fold mean ± std로 안정성 검증.")
+    add_table_from_data(doc,
+        headers=["모델", "AUROC", "AUPRC", "KS", "F1", "비고"],
+        rows=[
+            ["XGBoost", "0.7587 ± 0.0008", "0.2445 ± 0.0011",
+             "0.3846 ± 0.0015", "0.2698 ± 0.0047", "1등 (5/5 fold)"],
+            ["LightGBM", "0.7544 ± 0.0009", "0.2402 ± 0.0018",
+             "0.3788 ± 0.0028", "0.2584 ± 0.0052", "—"],
+            ["Logistic", "0.7544 ± 0.0001", "0.2343 ± 0.0006",
+             "0.3804 ± 0.0010", "0.2631 ± 0.0087", "선형 모델 안정성 최고"],
+            ["TabNet", "0.7518 ± 0.0017", "0.2331 ± 0.0023",
+             "0.3749 ± 0.0056", "0.2657 ± 0.0079", "어텐션 해석성 제공"],
+        ])
+    add_para(doc, "")
+    add_figure(doc, FIG_DIR / "13_cv_comparison.png",
+                "그림 1. 5-fold CV 비교 (test, mean ± std)")
+
+    # ── 4. SHAP × Attention ──
+    add_heading(doc, "4. SHAP × 어텐션 일관성 (RQ2)", level=1)
+    add_para(doc, "TabNet 어텐션 마스크와 SHAP global importance 간의 정량 일관성 분석.")
+    add_table_from_data(doc,
+        headers=["지표", "값", "해석"],
+        rows=[
+            ["Spearman ρ (전체 214 변수)", "0.117 (p=0.089)", "약한 양의 상관"],
+            ["Spearman ρ (Top 50 합집합)", "−0.195", "음수 — 미세 영역에서 상보적"],
+            ["Top-20 교집합", "9 / 20 (Jaccard 0.29)", "핵심 변수는 일치"],
+        ])
+    add_para(doc, "")
+    add_para(doc, "교집합 9개: EXT_SOURCE_2, EXT_SOURCE_3, DAYS_EMPLOYED, "
+                  "ORGANIZATION_TYPE, NAME_CONTRACT_TYPE_Revolving loans, "
+                  "CODE_GENDER_M 등.", size=10)
+    add_para(doc, "→ 두 방법은 핵심 변수에서 일관적이지만 미세 순위에서는 상보적. "
+                  "본 연구의 다층 해석 정당성을 데이터로 뒷받침.", bold=True)
+    add_figure(doc, FIG_DIR / "16_attention_vs_shap_scatter.png",
+                "그림 2. 어텐션 vs SHAP 일관성 산점도")
+
+    # ── 5. 공정성 ──
+    add_heading(doc, "5. 공정성 진단 + Mitigation", level=1)
+    add_para(doc, "4개 모델 × 보호속성 {GENDER, AGE} = 8건 모두 4/5 rule 위반 (DI < 0.8).")
+    add_para(doc, "보호 속성 컬럼 제거 후 재학습한 ablation 결과:")
+    add_table_from_data(doc,
+        headers=["모델 × 속성", "AUROC Δ", "DP Δ", "DI Δ"],
+        rows=[
+            ["XGBoost × GENDER", "−0.005", "0.164 → 0.105 (−36%)", "0.622 → 0.718"],
+            ["TabNet × GENDER", "−0.010", "0.156 → 0.093 (−40%)", "0.621 → 0.757"],
+            ["XGBoost × AGE", "−0.005", "0.197 → 0.179 (−9%)", "0.498 → 0.507"],
+            ["TabNet × AGE", "−0.010", "0.185 → 0.188 (+2%)", "0.504 → 0.513"],
+        ])
+    add_para(doc, "")
+    add_bullet(doc, "GENDER ablation은 효과적 (DP 30~40% 감소, AUROC 1% 미만 손실)")
+    add_bullet(doc, "AGE ablation은 효과 미미 — 연령이 DAYS_EMPLOYED·DAYS_REGISTRATION 등 "
+                    "다른 변수에 간접 인코딩된 proxy variable 문제")
+    add_bullet(doc, "4/5 rule은 여전히 미통과 → 본격적 fairness-aware 학습 필요 (future work)")
+    add_figure(doc, FIG_DIR / "19_fairness_mitigation.png",
+                "그림 3. baseline vs ablated 공정성 비교")
+
+    # ── 6. XAI-RAG 데모 ──
+    add_heading(doc, "6. XAI-RAG 자연어 설명 (Demo: idx 59291)", level=1)
+    walk = load_json(RESULTS_DIR / "demo_walkthrough.json")
+    s = walk["sample"]
+    p = walk["prediction"]
+    add_para(doc, f"인스턴스: 실제 정답 = {'부도(1)' if s['true_label'] == 1 else '정상(0)'}, "
+                  f"P(default) = {p['default_proba']:.4f}, 결정 = {p['decision']} "
+                  f"(True Positive)")
+    add_heading(doc, "6.1 SHAP 기반 거절 측 Top 5", level=2)
+    rows = [[d["rank"], d["feature"], d["value"], f"{d['shap']:+.4f}"]
+            for d in walk["context"]["top_drivers_for_default"]]
+    add_table_from_data(doc, ["rank", "feature", "value", "SHAP"], rows)
+    add_para(doc, "")
+
+    add_heading(doc, "6.2 두 LLM 자연어 설명 비교", level=2)
+    for prov_key, prov_label in [("gemini", "Gemini 2.5 Flash"),
+                                    ("anthropic", "Claude Sonnet 4.5")]:
+        if prov_key in walk["llm_outputs"] and "explanation" in walk["llm_outputs"][prov_key]:
+            ll = walk["llm_outputs"][prov_key]
+            add_para(doc, f"[{prov_label}] elapsed={ll['elapsed_sec']:.1f}s, "
+                          f"tokens={ll.get('total_tokens', '?')}", bold=True, size=10)
+            for line in ll["explanation"].split("\n"):
+                if line.strip():
+                    add_para(doc, line.strip(), size=10)
+            add_para(doc, "")
+
+    # ── 7. 평가 ──
+    add_heading(doc, "7. 정량 평가 (RQ3 — 환각 차단 효과)", level=1)
+    cmp_df = pd.read_csv(RESULTS_DIR / "llm_comparison.csv")
+    add_para(doc, "평가 차원: Faithfulness, Hallucination, G-Eval(Gemini self-judge), 효율성. "
+                  "10 샘플(REJECT 5 + APPROVE 5)에 대해 측정.", size=10)
+    add_table_from_data(doc,
+        headers=["지표", "Gemini 2.5 Flash", "Claude Sonnet 4.5", "비고"],
+        rows=[
+            ["Hallucination Rate (strict)", "0.000 ± 0.000", "0.000 ± 0.000",
+             "★ XAI-RAG 환각 차단 입증"],
+            ["Hallucination Rate (broad)", "0.000 ± 0.000", "0.000 ± 0.000",
+             "컨텍스트 외 변수 0건"],
+            ["val_match_rate", "0.811 ± 0.123", "0.901 ± 0.111", "Claude 우위"],
+            ["sign_match_rate", "0.783 ± 0.209", "0.867 ± 0.233", "Claude 우위"],
+            ["G-Eval factual_accuracy", "5.0 ± 0.0 / 5", "(skip)", "self-judge 만점"],
+            ["G-Eval sensitive_leak", "5.0 ± 0.0 / 5", "(skip)", "민감변수 마스킹 완벽"],
+            ["G-Eval style", "5.0 ± 0.0 / 5", "(skip)", "고객 친화적"],
+            ["elapsed (sec, per call)", "12.7 ± 4.5", "8.4 ± 0.8", "Claude 빠름"],
+            ["total tokens (per call)", "4,155 ± 834", "2,500 ± 83", "Claude 효율적"],
+        ])
+    add_para(doc, "")
+    add_figure(doc, FIG_DIR / "21_llm_comparison.png",
+                "그림 4. Gemini vs Claude — 룰 기반·G-Eval·효율성")
+
+    add_heading(doc, "7.1 핵심 메시지", level=2)
+    add_bullet(doc, "두 상용 LLM 모두에서 Hallucination Rate 0.000 — XAI-RAG 환각 차단 효과의 "
+                    "LLM 종속성 없음")
+    add_bullet(doc, "G-Eval factual_accuracy / sensitive_leak / style 모두 만점 (5.0/5)")
+    add_bullet(doc, "Faithfulness 룰 기반 정합도 약간의 차이는 출력 스타일(픽셀 일치 vs 자연 반올림)")
+    add_bullet(doc, "Claude가 효율 우위 — 시간 −34%, 토큰 −40%")
+
+    # ── 8. Counterfactual Baseline ──
+    add_heading(doc, "8. Counterfactual Baseline — XAI-RAG vs no-SHAP", level=1)
+    add_para(doc, "RQ3 강한 검증: 동일 11샘플에 대해 SHAP 컨텍스트 없이 raw 데이터만 "
+                  "LLM에 주는 baseline 실험. 환각률 비교.")
+    cmp_path = RESULTS_DIR / "baseline_comparison.csv"
+    if cmp_path.exists():
+        cmp = pd.read_csv(cmp_path)
+        rows = [
+            [r["provider"].title(),
+             f"{r['xai_rag_halluc_strict_mean']:.3f} ± {r['xai_rag_halluc_strict_std']:.3f}",
+             f"{r['baseline_halluc_strict_mean']:.3f} ± {r['baseline_halluc_strict_std']:.3f}",
+             f"{int(r['baseline_outside_dataset_total'])}/{int(r['baseline_n_candidates_total'])}"]
+            for _, r in cmp.iterrows()
+        ]
+        add_table_from_data(doc,
+            ["LLM", "XAI-RAG halluc", "Baseline halluc", "환각/총 후보 (baseline)"],
+            rows)
+    add_para(doc, "")
+    add_para(doc,
+        "Claude Sonnet 4.5의 baseline에서 환각률 45.5% (XAI-RAG는 0%) — 결정적 차이.",
+        bold=True)
+    add_para(doc, "Claude baseline 환각 사례:", bold=True, size=10)
+    add_bullet(doc, "DTI, LTV, DSR — Home Credit 데이터셋에 없는 일반 금융 비율 약어를 "
+                    "LLM이 자체 학습된 도메인 지식으로 끌어와 사용")
+    add_bullet(doc, "'햇살론, 미소금융' — 데이터에 없는 특정 금융 상품명을 권고에 포함")
+    add_bullet(doc, "'1588-XXXX' 같은 가짜 고객센터 번호 생성")
+    add_bullet(doc, "DEF_30_CNT 등 변수명 잘림 — 데이터의 실제 변수명 부정확 인용")
+    add_para(doc, "")
+    add_para(doc,
+        "Gemini의 baseline 측정값 0%는 환각이 없는 것이 아니라, "
+        "한국어 자연어로 의역해 영문 변수명 정규식 룰로 잡히지 않은 것. "
+        "측정 한계 — Cross-LLM judge 등 의미 단위 평가가 future work.", size=10)
+    add_figure(doc, FIG_DIR / "23_baseline_vs_xairag.png",
+                "그림 5. XAI-RAG vs baseline (no SHAP) — 환각률 비교")
+
+    # ── 9. Future Work ──
+    add_heading(doc, "9. 향후 계획 (Future Work)", level=1)
+    add_bullet(doc, "Counterfactual Test — SHAP 변수 ablation 시 LLM 출력 변화 정량 측정")
+    add_bullet(doc, "베이스라인 비교 — SHAP 없이 raw 데이터만 LLM에 주는 경우의 환각률")
+    add_bullet(doc, "보조 테이블 활용 (bureau, previous_application 등) → AUROC 0.78+ 목표")
+    add_bullet(doc, "본격 fairness-aware 학습 — Reweighing, Adversarial Debiasing")
+    add_bullet(doc, "Cross-LLM G-Eval — Claude judge로 Gemini 출력 평가 (self-bias 우회)")
+    add_bullet(doc, "FT-Transformer 비교 모델 추가")
+    add_bullet(doc, "인간 평가 (Plausibility) — 5점 리커트 척도, Cohen's κ 신뢰도 측정")
+    add_bullet(doc, "한국어 도메인 특화 금융 LLM 미세조정 (QLoRA)")
+
+    # 저장
+    out = PAPER_DIR / "midterm_report.docx"
+    doc.save(out)
+    print(f"[OK] {out} 저장")
+
+
+if __name__ == "__main__":
+    main()

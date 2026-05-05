@@ -34,9 +34,11 @@ results/baseline_models/
 *.joblib
 
 # ─── 사용자 식별 정보 (학번/이름 포함) ────────────────────
-paper/
+paper/*
 *.docx
 *.docx.bak
+# 예외: 미팅 보고서는 commit 허용 (학번 미포함, 결과 정리)
+!paper/midterm_report.docx
 
 # ─── Logs / 임시 ─────────────────────────────────────────
 *.log

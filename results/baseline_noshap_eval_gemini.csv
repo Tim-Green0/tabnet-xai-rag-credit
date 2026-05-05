@@ -1,0 +1,12 @@
+sample_id,decision,true_label,provider,n_raw_candidates,n_outside_dataset,halluc_rate_strict,outside_dataset_list
+22226_accept,APPROVE,0,gemini,0,0,0.0,[]
+36556_reject,REJECT,0,gemini,0,0,0.0,[]
+39518_reject,REJECT,1,gemini,2,0,0.0,[]
+40525_accept,APPROVE,0,gemini,1,0,0.0,[]
+45114_reject,REJECT,0,gemini,0,0,0.0,[]
+54421_reject,REJECT,1,gemini,0,0,0.0,[]
+54529_reject,REJECT,0,gemini,1,0,0.0,[]
+57037_accept,APPROVE,0,gemini,0,0,0.0,[]
+5886_accept,APPROVE,0,gemini,0,0,0.0,[]
+59291_demo,REJECT,1,gemini,0,0,0.0,[]
+60717_accept,APPROVE,0,gemini,0,0,0.0,[]
