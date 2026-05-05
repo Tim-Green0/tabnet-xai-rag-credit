@@ -686,11 +686,181 @@ def make_slides():
                   size=14, bold=True, color=COLOR_ACCENT, align="center")
 
     # ════════════════════════════════════════════════════════
-    # 슬라이드 12 — 종합 + 핵심 메시지
+    # 슬라이드 12 (NEW) — Step 2-A 평가 신뢰성 강화: 100명 결과
     # ════════════════════════════════════════════════════════
     s = add_blank_slide(prs)
-    add_header_bar(s, SW, "11. 종합 — 본 연구의 가치 3가지",
-                       "Step 1 (8일 작업) 마무리")
+    add_header_bar(s, SW, "11. ★ Step 2-A — 100명 표본에서도 환각 0%",
+                       "Step 1의 약점(표본 10명) 해소 + 통계적 안정성 입증")
+
+    # 좌측: 100명 결과
+    add_textbox(s, Cm(1.0), Cm(3.2), Cm(15), Cm(1),
+                  "표본 10배 확장 후 결과", size=18, bold=True,
+                  color=COLOR_PRIMARY)
+    box1 = s.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE,
+                                    Cm(1.0), Cm(4.3), Cm(15), Cm(7))
+    box1.fill.solid()
+    box1.fill.fore_color.rgb = COLOR_HIGHLIGHT
+    box1.line.fill.background()
+    add_textbox(s, Cm(1.5), Cm(5.0), Cm(14), Cm(1),
+                  "Hallucination Rate",
+                  size=16, color=RGBColor(0xFF, 0xFF, 0xFF), align="center")
+    add_textbox(s, Cm(1.5), Cm(6.2), Cm(14), Cm(2.5),
+                  "0.000 / 100",
+                  size=56, bold=True, color=RGBColor(0xFF, 0xFF, 0xFF),
+                  align="center")
+    add_textbox(s, Cm(1.5), Cm(9.0), Cm(14), Cm(1),
+                  "Gemini 100건 + Claude 100건",
+                  size=14, color=RGBColor(0xFF, 0xFF, 0xFF), align="center")
+    add_textbox(s, Cm(1.5), Cm(10.0), Cm(14), Cm(1),
+                  "Step 1 (10건) 결과가 견고함을 통계로 입증",
+                  size=12, color=RGBColor(0xFF, 0xFF, 0xFF), align="center")
+
+    # 우측: Cross-LLM G-Eval 결과
+    add_textbox(s, Cm(17.0), Cm(3.2), Cm(15), Cm(1),
+                  "Cross-LLM G-Eval (self-bias 우회)",
+                  size=18, bold=True, color=COLOR_PRIMARY)
+    cross_rows = [
+        ["Judge → Target", "Factual", "Sensitive", "Style"],
+        ["Claude → Gemini", "4.87", "5.00", "4.97"],
+        ["Gemini → Claude", "4.60", "5.00", "5.00"],
+    ]
+    col_widths_c = [Cm(4.5), Cm(3.5), Cm(3.5), Cm(3.5)]
+    row_h_c = Cm(1.0)
+    table_top_c = Cm(4.5)
+    x_offset_c = Cm(17.0)
+    for ri, row in enumerate(cross_rows):
+        for ci, cell in enumerate(row):
+            x = x_offset_c + sum(col_widths_c[:ci], Emu(0))
+            y = table_top_c + ri * row_h_c
+            shape = s.shapes.add_shape(MSO_SHAPE.RECTANGLE, x, y,
+                                            col_widths_c[ci], row_h_c)
+            if ri == 0:
+                shape.fill.solid()
+                shape.fill.fore_color.rgb = COLOR_PRIMARY
+                txt_color = RGBColor(0xFF, 0xFF, 0xFF)
+            else:
+                shape.fill.solid()
+                shape.fill.fore_color.rgb = (RGBColor(0xF4, 0xF6, 0xFA)
+                                                  if ri % 2 == 1
+                                                  else RGBColor(0xFF, 0xFF, 0xFF))
+                txt_color = COLOR_DARK
+            shape.line.color.rgb = RGBColor(0xCC, 0xCC, 0xCC)
+            tf = shape.text_frame
+            tf.margin_left = Cm(0.2)
+            tf.vertical_anchor = MSO_ANCHOR.MIDDLE
+            run = tf.paragraphs[0].add_run()
+            run.text = cell
+            _set_korean_font(run, size=11, bold=(ri == 0), color=txt_color)
+    add_bullets(s, Cm(17.0), Cm(8.5), Cm(15), Cm(8), [
+        "양 LLM 모두 factual ≥ 4.6/5",
+        "sensitive_leak 5.0/5 만점 (양방향)",
+        "Gemini self-bias가 자기 비판 방향",
+    ], size=12)
+
+    # ════════════════════════════════════════════════════════
+    # 슬라이드 13 (NEW) — Counterfactual + Robustness
+    # ════════════════════════════════════════════════════════
+    s = add_blank_slide(prs)
+    add_header_bar(s, SW, "12. ★ Step 2-A — Counterfactual + Robustness",
+                       "LLM이 컨텍스트에 의존하는가? 프롬프트 변형에 강건한가?")
+
+    # 좌: Counterfactual
+    add_textbox(s, Cm(1.0), Cm(3.0), Cm(15), Cm(1),
+                  "Counterfactual Test (top driver 1개 제거)",
+                  size=16, bold=True, color=COLOR_PRIMARY)
+    add_textbox(s, Cm(1.0), Cm(4.0), Cm(15), Cm(1),
+                  "원본 vs 변경 컨텍스트 출력 비교 (n=30)",
+                  size=11, color=COLOR_SUB)
+    cf_rows = [
+        ["LLM", "Cosine sim", "ROUGE-L"],
+        ["Claude Sonnet 4.5", "0.909 ± 0.069", "0.747"],
+        ["Gemini 2.5 Flash", "0.920 ± 0.040", "0.750"],
+    ]
+    col_widths_cf = [Cm(5.5), Cm(5.0), Cm(4.5)]
+    row_h_cf = Cm(1.0)
+    table_top_cf = Cm(5.0)
+    x_offset_cf = Cm(1.0)
+    for ri, row in enumerate(cf_rows):
+        for ci, cell in enumerate(row):
+            x = x_offset_cf + sum(col_widths_cf[:ci], Emu(0))
+            y = table_top_cf + ri * row_h_cf
+            shape = s.shapes.add_shape(MSO_SHAPE.RECTANGLE, x, y,
+                                            col_widths_cf[ci], row_h_cf)
+            if ri == 0:
+                shape.fill.solid()
+                shape.fill.fore_color.rgb = COLOR_PRIMARY
+                txt_color = RGBColor(0xFF, 0xFF, 0xFF)
+            else:
+                shape.fill.solid()
+                shape.fill.fore_color.rgb = RGBColor(0xF4, 0xF6, 0xFA)
+                txt_color = COLOR_DARK
+            shape.line.color.rgb = RGBColor(0xCC, 0xCC, 0xCC)
+            tf = shape.text_frame
+            tf.margin_left = Cm(0.2)
+            tf.vertical_anchor = MSO_ANCHOR.MIDDLE
+            run = tf.paragraphs[0].add_run()
+            run.text = cell
+            _set_korean_font(run, size=11, bold=(ri == 0), color=txt_color)
+    add_bullets(s, Cm(1.0), Cm(8.5), Cm(15), Cm(8), [
+        "cosine 0.91 → 의미는 90% 유지",
+        "ROUGE-L 0.75 → 어휘는 25% 변경",
+        "→ 부분 perturbation에 부분 반응 + 일관성 유지",
+    ], size=12)
+
+    # 우: Robustness
+    add_textbox(s, Cm(17.0), Cm(3.0), Cm(15), Cm(1),
+                  "Robustness (3 프롬프트 변형)",
+                  size=16, bold=True, color=COLOR_PRIMARY)
+    add_textbox(s, Cm(17.0), Cm(4.0), Cm(15), Cm(1),
+                  "role/example/driver_shuffle (n=20)",
+                  size=11, color=COLOR_SUB)
+    rb_rows = [
+        ["Variant", "Claude cosine", "Gemini cosine"],
+        ["role_swap", "0.923", "0.951"],
+        ["example_swap", "0.914", "0.908"],
+        ["driver_shuffle", "0.924", "0.942"],
+    ]
+    col_widths_rb = [Cm(5.5), Cm(5.0), Cm(4.5)]
+    row_h_rb = Cm(1.0)
+    table_top_rb = Cm(5.0)
+    x_offset_rb = Cm(17.0)
+    for ri, row in enumerate(rb_rows):
+        for ci, cell in enumerate(row):
+            x = x_offset_rb + sum(col_widths_rb[:ci], Emu(0))
+            y = table_top_rb + ri * row_h_rb
+            shape = s.shapes.add_shape(MSO_SHAPE.RECTANGLE, x, y,
+                                            col_widths_rb[ci], row_h_rb)
+            if ri == 0:
+                shape.fill.solid()
+                shape.fill.fore_color.rgb = COLOR_PRIMARY
+                txt_color = RGBColor(0xFF, 0xFF, 0xFF)
+            else:
+                shape.fill.solid()
+                shape.fill.fore_color.rgb = RGBColor(0xF4, 0xF6, 0xFA)
+                txt_color = COLOR_DARK
+            shape.line.color.rgb = RGBColor(0xCC, 0xCC, 0xCC)
+            tf = shape.text_frame
+            tf.margin_left = Cm(0.2)
+            tf.vertical_anchor = MSO_ANCHOR.MIDDLE
+            run = tf.paragraphs[0].add_run()
+            run.text = cell
+            _set_korean_font(run, size=11, bold=(ri == 0), color=txt_color)
+    add_bullets(s, Cm(17.0), Cm(9.5), Cm(15), Cm(8), [
+        "양 LLM 모두 cosine ≥ 0.90 (목표 0.85+)",
+        "Gemini가 약간 더 안정적",
+        "→ 운영 환경에서도 출력 일관성 기대 가능",
+    ], size=12)
+
+    add_textbox(s, Cm(1.0), Cm(16.5), Cm(31), Cm(1),
+                  "Step 1의 핵심 메시지(환각 0%, baseline 45.5%)가 통계적으로 견고함을 입증",
+                  size=14, bold=True, color=COLOR_ACCENT, align="center")
+
+    # ════════════════════════════════════════════════════════
+    # 슬라이드 14 — 종합 + 핵심 메시지 (기존 #12, 번호 갱신)
+    # ════════════════════════════════════════════════════════
+    s = add_blank_slide(prs)
+    add_header_bar(s, SW, "13. 종합 — 본 연구의 가치 3가지",
+                       "Step 1 + Step 2-A 마무리")
 
     # 3개 컬럼 카드
     cards = [
@@ -745,11 +915,11 @@ def make_slides():
                   size=18, bold=True, color=COLOR_DARK, align="center")
 
     # ════════════════════════════════════════════════════════
-    # 슬라이드 13 — 한계 + 향후 계획
+    # 슬라이드 15 — 한계 + 향후 계획
     # ════════════════════════════════════════════════════════
     s = add_blank_slide(prs)
-    add_header_bar(s, SW, "12. 한계와 향후 계획",
-                       "Step 2 ~ Step 3 — 본 논문 확장")
+    add_header_bar(s, SW, "14. 한계와 향후 계획",
+                       "Step 3 — 본 논문 확장 (보조 테이블, fairness-aware 등)")
 
     add_textbox(s, Cm(1.0), Cm(3.0), Cm(15), Cm(1),
                   "현재 한계", size=16, bold=True, color=COLOR_ACCENT)

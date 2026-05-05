@@ -344,8 +344,73 @@ def main():
     add_figure(doc, FIG_DIR / "23_baseline_vs_xairag.png",
                 "그림 5. XAI-RAG vs baseline (no SHAP) — 환각률 비교")
 
-    # ── 9. Future Work ──
-    add_heading(doc, "9. 향후 계획 (Future Work)", level=1)
+    # ── 9. Step 2-A 평가 신뢰성 강화 (NEW) ──
+    add_heading(doc, "9. Step 2-A — 평가 신뢰성 강화 (100명 표본)", level=1)
+    add_para(doc, "Step 1의 가장 큰 약점이었던 평가 표본 10명을 100명으로 확장하고, "
+                  "Cross-LLM G-Eval, Counterfactual Test, Robustness 평가를 추가했다.")
+
+    add_heading(doc, "9.1 100명 표본 환각률 — 0% 유지", level=2)
+    add_table_from_data(doc,
+        headers=["LLM", "Hallucination Rate (strict)", "n", "비고"],
+        rows=[
+            ["Gemini 2.5 Flash", "0.000 ± 0.000", "100", "Step 1 (n=10) 결과 견고"],
+            ["Claude Sonnet 4.5", "0.000 ± 0.000", "100", "Step 1 (n=10) 결과 견고"],
+        ])
+    add_para(doc, "")
+    add_para(doc, "10명 → 100명 확장 후에도 환각률 0% 유지. 통계적 안정성 확보.",
+              bold=True)
+
+    add_heading(doc, "9.2 Cross-LLM G-Eval (self-bias 우회)", level=2)
+    add_table_from_data(doc,
+        headers=["Judge → Target", "Factual", "Complete", "Sensitive", "Style"],
+        rows=[
+            ["Gemini → Gemini (Step 1, n=8, self)", "5.00", "3.38", "5.00", "5.00"],
+            ["Claude → Gemini (n=30)", "4.87 ± 0.51", "4.00 ± 0.64", "5.00 ± 0.00", "4.97 ± 0.18"],
+            ["Gemini → Claude (n=30)", "4.60 ± 0.89", "3.33 ± 0.96", "5.00 ± 0.00", "5.00 ± 0.00"],
+        ])
+    add_para(doc, "")
+    add_bullet(doc, "양 LLM 모두 factual ≥ 4.6 / 5, sensitive_leak 5.0 / 5 만점")
+    add_bullet(doc, "Gemini self-judge가 자기 비판 방향: comp 3.38 < Claude judge의 4.0")
+    add_bullet(doc, "본 시스템의 마스킹 정책이 두 LLM 모두에서 작동")
+    add_figure(doc, FIG_DIR / "26_cross_llm_geval.png",
+                "그림 9-1. Cross-LLM G-Eval (Judge × Target)")
+
+    add_heading(doc, "9.3 Counterfactual Test 정량화", level=2)
+    add_para(doc, "각 인스턴스 30개에서 SHAP top driver 1개를 컨텍스트에서 제거 후 "
+                  "LLM 재호출 → 원본과 비교. 변화가 명확할수록 LLM이 컨텍스트에 의존.")
+    add_table_from_data(doc,
+        headers=["LLM", "Cosine sim (mean ± std)", "ROUGE-L F1"],
+        rows=[
+            ["Claude Sonnet 4.5", "0.909 ± 0.069", "0.747 ± 0.112"],
+            ["Gemini 2.5 Flash", "0.920 ± 0.040", "0.750 ± 0.116"],
+        ])
+    add_para(doc, "")
+    add_para(doc, "두 LLM 모두 cosine 0.91~0.92 — top driver 1개 제거 시 의미는 90% 유지, "
+                  "어휘 25%가량 변경. 부분 perturbation에 부분적으로 반응하면서 일관성 유지.")
+    add_figure(doc, FIG_DIR / "24_counterfactual_anthropic.png",
+                "그림 9-2. Counterfactual cosine + ROUGE-L 분포 (Claude)")
+
+    add_heading(doc, "9.4 Robustness 평가 (프롬프트 변형)", level=2)
+    add_para(doc, "각 인스턴스 20개에서 프롬프트 3가지 변형 후 응답 일관성 측정.")
+    add_table_from_data(doc,
+        headers=["Variant", "Claude cosine", "Gemini cosine"],
+        rows=[
+            ["role_swap", "0.923 ± 0.057", "0.951 ± 0.034"],
+            ["example_swap", "0.914 ± 0.060", "0.908 ± 0.077"],
+            ["driver_shuffle", "0.924 ± 0.054", "0.942 ± 0.032"],
+        ])
+    add_para(doc, "")
+    add_para(doc, "두 LLM 모두 6 케이스 전부 cosine ≥ 0.90 (목표 0.85+ 달성). "
+                  "본 시스템 운영 안정성 입증.", bold=True)
+
+    add_heading(doc, "9.5 Step 2-A 핵심 메시지", level=2)
+    add_bullet(doc, "표본 10배 확장(10→100) 후에도 환각률 0% — 통계적 안정성 입증")
+    add_bullet(doc, "Cross-LLM 양방향 평가에서 sensitive_leak 5.0/5 만점 — 마스킹 정책 LLM 종속성 없음")
+    add_bullet(doc, "Counterfactual + Robustness 정량화로 시스템 안정성 + 컨텍스트 의존도 측정")
+    add_bullet(doc, "Step 1의 핵심 메시지(\"환각 0%, baseline 45.5%\")가 통계적으로 견고함을 입증")
+
+    # ── 10. Future Work ──
+    add_heading(doc, "10. 향후 계획 (Future Work)", level=1)
     add_bullet(doc, "Counterfactual Test — SHAP 변수 ablation 시 LLM 출력 변화 정량 측정")
     add_bullet(doc, "베이스라인 비교 — SHAP 없이 raw 데이터만 LLM에 주는 경우의 환각률")
     add_bullet(doc, "보조 테이블 활용 (bureau, previous_application 등) → AUROC 0.78+ 목표")
