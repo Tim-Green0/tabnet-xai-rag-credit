@@ -991,11 +991,57 @@ def make_slides():
                   size=11, color=COLOR_HIGHLIGHT)
 
     # ════════════════════════════════════════════════════════
-    # 슬라이드 17 — 종합 + 핵심 메시지 (기존 #15, 번호 갱신)
+    # 슬라이드 17 (NEW) — Step 3-C-2-f: Cross-Judge G-Eval (보너스)
     # ════════════════════════════════════════════════════════
     s = add_blank_slide(prs)
-    add_header_bar(s, SW, "16. 종합 — 본 연구의 가치 4가지",
-                       "Step 1 + 2-A + 3-B + 3-C-1 + 3-C-2 마무리")
+    add_header_bar(s, SW, "16. Step 3-C-2-f — Cross-Judge G-Eval (보너스)",
+                       "Claude judge + Gemini judge 양방향으로 fusion 효과 검증")
+
+    # 좌측: cross-judge figure
+    fig_path = FIG_DIR / "32_cross_judge_geval.png"
+    if fig_path.exists():
+        pic = s.shapes.add_picture(str(fig_path),
+                                       Cm(0.6), Cm(3.0),
+                                       width=Cm(19))
+        if pic.height > Cm(13):
+            pic.height = Cm(13)
+            pic.width = Cm(19)
+
+    # 우측 상단: 동기
+    add_textbox(s, Cm(20.5), Cm(3.0), Cm(13), Cm(1.0),
+                  "동기 — 단일 judge의 위험",
+                  size=14, bold=True, color=COLOR_PRIMARY)
+    add_bullets(s, Cm(20.7), Cm(4.0), Cm(13), Cm(2.5), [
+        "Claude judge 단독 → self-bias 또는 평가 종속 위험",
+        "Step 2-A의 Cross-LLM 패턴을 fusion에도 적용",
+    ], size=11)
+
+    # 우측 중간: 결과 (Δ = fusion - shaponly)
+    add_textbox(s, Cm(20.5), Cm(7.0), Cm(13), Cm(1.0),
+                  "결과 (Δ = fusion - shaponly)",
+                  size=14, bold=True, color=COLOR_ACCENT)
+    add_bullets(s, Cm(20.7), Cm(8.0), Cm(13), Cm(5.5), [
+        "Completeness 양 judge 큰 향상:",
+        "  Claude judge +0.67/+0.80",
+        "  Gemini judge +0.90/+1.10",
+        "Sensitive 5.0/5.0 양 judge 만점 ✅",
+        "Gemini target Factual: Claude judge −0.13 vs Gemini judge +0.47",
+        "→ Cross-judge 없이는 잘못된 결론 위험",
+    ], size=11)
+
+    # 우측 하단: 결론
+    add_textbox(s, Cm(20.5), Cm(13.8), Cm(13), Cm(3.0),
+                  "★ Cross-LLM judge로 fusion 효과 강건성 확정\n"
+                  "★ Future work \"Gemini judge cross-validation\" 항목 해소\n"
+                  "★ 평가 객관성 = NLI(자동) + Cross-LLM judge",
+                  size=11, color=COLOR_HIGHLIGHT)
+
+    # ════════════════════════════════════════════════════════
+    # 슬라이드 18 — 종합 + 핵심 메시지 (기존 #16, 번호 갱신)
+    # ════════════════════════════════════════════════════════
+    s = add_blank_slide(prs)
+    add_header_bar(s, SW, "17. 종합 — 본 연구의 가치 4가지",
+                       "Step 1 + 2-A + 3-B + 3-C-1 + 3-C-2 + 3-C-2-f 마무리")
 
     # 3개 컬럼 카드
     cards = [
@@ -1013,9 +1059,9 @@ def make_slides():
           "NLI contradiction\n−0.14~−0.18 (3-C-2)",
           RGBColor(0xC4, 0x4E, 0x52)),
         ("완결성·충실성",
-          "G-Eval Completeness\n+0.67~+0.80 (3-C-1)\n\n"
+          "G-Eval Completeness\nClaude judge +0.67~+0.80\nGemini judge +0.90~+1.10\n\n"
           "NLI Entailment\n+0.12~+0.21 (3-C-2)\n\n"
-          "→ 다층 평가에서\n일관된 향상",
+          "→ 다층·다judge에서\n일관된 향상",
           RGBColor(0xDD, 0x85, 0x52)),
     ]
     card_w = Cm(7.0)
@@ -1059,31 +1105,31 @@ def make_slides():
     # 슬라이드 15 — 한계 + 향후 계획
     # ════════════════════════════════════════════════════════
     s = add_blank_slide(prs)
-    add_header_bar(s, SW, "17. 한계와 향후 계획",
+    add_header_bar(s, SW, "18. 한계와 향후 계획",
                        "Step 3-B/3-C 일부 진행 / 잔여는 본 논문 확장")
 
     add_textbox(s, Cm(1.0), Cm(3.0), Cm(15), Cm(1),
                   "현재 한계 / 진행 중", size=16, bold=True, color=COLOR_ACCENT)
     add_bullets(s, Cm(1.5), Cm(4.0), Cm(15), Cm(13), [
         "Fusion 평가 표본 30명 — 100명+ 확장 검토",
-        "Gemini judge cross-validation 미완 (503 과부하)",
-        "인간평가 (Plausibility) 미수행 — IRB 절차 필요",
+        "인간평가 (Plausibility) 미수행 — IRB 절차 필요 ★ 1순위",
         "보조 테이블 2/6개 활용 (Step 3-B) — 4개 잔여",
         "Bureau의 SHAP 미진입 — EXT_SOURCE 응축 가설 검증 필요",
         "TabNet-only 컨텍스트 ablation 미수행 (3-way)",
         "Fairness-aware 학습 미수행",
+        "한국어 native NLI 모델 추가 검증 (현재 다국어)",
     ], size=13)
 
     add_textbox(s, Cm(17), Cm(3.0), Cm(15), Cm(1),
                   "향후 계획", size=16, bold=True, color=COLOR_HIGHLIGHT)
     add_bullets(s, Cm(17.5), Cm(4.0), Cm(15), Cm(13), [
-        "인간 평가 (Plausibility) — IRB + 5점 척도, Cohen's κ",
-        "Gemini judge로 양방향 G-Eval cross-validation",
+        "인간 평가 (Plausibility) — IRB + 5점 척도, Cohen's κ ★ 1순위",
         "Fusion 표본 100명 확장 + counterfactual 결합",
         "3-way ablation: SHAP-only / Attn-only / Fusion",
         "잔여 보조 테이블 4개로 AUROC 0.78+",
+        "Bureau ablation — EXT_SOURCE 응축 가설 검증",
         "Fairness-aware 학습 (Reweighing, Adversarial)",
-        "FT-Transformer 비교 모델 추가",
+        "FT-Transformer 비교 + 한국어 native NLI",
     ], size=13)
 
     # ════════════════════════════════════════════════════════

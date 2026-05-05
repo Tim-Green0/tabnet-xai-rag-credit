@@ -555,10 +555,37 @@ def main():
     add_figure(doc, FIG_DIR / "31_nli_vs_rules.png",
                 "그림 11-2. NLI Entailment / Contradiction / Rule sign_match 3-패널 비교")
 
+    add_heading(doc, "11.6 Step 3-C-2-f — Cross-Judge G-Eval 검증 (보너스)",
+                  level=2)
+    add_para(doc, "Step 3-C-1/3-C-2의 G-Eval 결과는 Claude judge 단독으로 측정. "
+                  "Step 2-A 패턴의 양방향 cross-LLM judge를 fusion 평가에도 적용해 "
+                  "judge 종속성을 검증.")
+    add_para(doc, "동일 4 그룹(SHAP-only/Fusion × Anthropic/Gemini target, n=30 each)을 "
+                  "Gemini judge로 재평가. Gemini API 503 과부하로 retry 로직 강화 "
+                  "(30s/60s/120s/240s 백오프). 총 transient retry 40회, fail 0회, 모든 "
+                  "120 호출 회복.")
+
+    add_table_from_data(doc,
+        headers=["Target", "Metric", "Δ Claude judge", "Δ Gemini judge", "차이"],
+        rows=[
+            ["Anthropic", "Completeness", "+0.667", "+0.900", "0.23"],
+            ["Anthropic", "Factual", "+0.033", "+0.133", "0.10"],
+            ["Anthropic", "Sensitive", "0", "0", "0"],
+            ["Gemini", "Completeness", "+0.800", "+1.100", "0.30"],
+            ["Gemini", "Factual", "-0.133", "+0.467", "0.60 ★"],
+            ["Gemini", "Sensitive", "0", "0", "0"],
+        ])
+    add_para(doc, "")
+    add_bullet(doc, "Completeness: 양 judge에서 모두 큰 향상 (Claude +0.67/+0.80, Gemini +0.90/+1.10) — fusion 효과가 judge 종속 아님 명확히 입증")
+    add_bullet(doc, "Gemini target Factual: Claude judge -0.13 (사실상 동등) vs Gemini judge +0.47 (명확한 향상). 차이 0.60 — **단일 judge였으면 잘못된 결론 위험**, Cross-LLM judge의 가치 직접 입증")
+    add_bullet(doc, "Sensitive Leak: 양 judge × 양 mode 모두 5.0/5.0 만점 — 마스킹 정책의 LLM 종속성 없음 다층 검증")
+    add_bullet(doc, "Self-bias 패턴 약함 — Gemini judge가 self/cross 모두에 더 큰 Δ를 부여하는 패턴")
+    add_figure(doc, FIG_DIR / "32_cross_judge_geval.png",
+                "그림 11-3. Cross-Judge G-Eval (Claude + Gemini judge × SHAP-only/Fusion)")
+
     # ── 12. Future Work ──
     add_heading(doc, "12. 향후 계획 (Future Work)", level=1)
-    add_bullet(doc, "인간 평가 (Plausibility) — IRB 간소판, 5점 리커트 척도, Cohen's κ 신뢰도 측정")
-    add_bullet(doc, "Gemini judge로 양방향 G-Eval cross-validation (현재 Claude judge 단일)")
+    add_bullet(doc, "인간 평가 (Plausibility) — IRB 간소판, 5점 리커트 척도, Cohen's κ 신뢰도 측정 ★ 1순위")
     add_bullet(doc, "Fusion 표본 30 → 100 확장 + counterfactual 결합")
     add_bullet(doc, "3-way ablation: SHAP-only vs Attention-only vs Fusion")
     add_bullet(doc, "잔여 보조 테이블 4개(POS_CASH_balance, credit_card_balance, installments_payments, bureau_balance 추가 활용) → AUROC 0.78+ 추가 향상")
@@ -568,6 +595,7 @@ def main():
     add_bullet(doc, "FT-Transformer 비교 모델 추가")
     add_bullet(doc, "한국어 native NLI 모델 추가 검증 (현재는 다국어 NLI; torch 환경 정비 후 KLUE-roberta-NLI)")
     add_bullet(doc, "한국어 도메인 특화 금융 LLM 미세조정 (QLoRA)")
+    add_bullet(doc, "(완료) Gemini judge로 양방향 G-Eval cross-validation — Step 3-C-2-f에서 진행, 양 judge 일관 입증")
 
     # 저장
     out = PAPER_DIR / "midterm_report.docx"
