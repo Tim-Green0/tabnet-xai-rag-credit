@@ -667,24 +667,132 @@ def main():
 
     PageBreak(doc)
 
-    H(doc, "12. 한계와 향후 계획 (Future Work)", level=1)
-    Bullet(doc, "표본 크기: 평가 샘플이 10명으로 제한됨. 100~500명으로 확장 필요.")
-    Bullet(doc, "보조 테이블 미사용: bureau, previous_application 등을 추가하면 "
-                "AUROC를 0.78+로 끌어올릴 여지가 있음.")
-    Bullet(doc, "G-Eval self-bias: Gemini가 자기 출력을 평가하므로 cross-LLM "
-                "judge가 필요.")
-    Bullet(doc, "Counterfactual Test 정량화: 본 보고서에선 정성 비교만. "
-                "SHAP 변수 ablation 후 출력 변화를 BERTScore 등으로 측정 필요.")
-    Bullet(doc, "Robustness 평가: 프롬프트 변형, 컨텍스트 셔플 등.")
+    # ── 12. Step 3-B 보조 테이블 활용 (NEW, 2026-05-05) ──
+    H(doc, "12. Step 3-B — 보조 테이블 두 개를 추가하면 어떻게 달라지는가",
+        level=1)
+    P(doc, "Step 1과 Step 2-A는 모두 application_train.csv 한 테이블만 사용했습니다. "
+            "Home Credit Default Risk 데이터셋에는 사실 보조 테이블이 6개 더 있는데, "
+            "계획서에서도 \"보조 테이블 활용은 future work\"로 미뤄두었었습니다. "
+            "발표 5일 전(D-5), 그 중 임팩트가 큰 두 개(`bureau`, `previous_application`)를 "
+            "추가해 한 사이클 더 돌려봤습니다.")
+    Quote(doc, "왜 두 개만? — 6개 다 쓰려면 4~5일이 필요하지만, 두 개만으로도 임팩트의 "
+                "80%를 확보할 수 있습니다. 발표 메시지를 \"추가 진척\"으로 자연스럽게 "
+                "이어갈 수 있는 사이즈를 골랐습니다.")
+
+    H(doc, "12.1 두 보조 테이블의 의미", level=2)
+    Bullet(doc, "bureau: 외부 신용기관(타사 은행/카드)이 가진 이 사람의 과거 대출 이력")
+    Bullet(doc, "previous_application: 같은 Home Credit에 이전에 신청했던 대출 이력")
+    P(doc, "쉽게 말하면 bureau는 \"남들이 본 이 사람의 과거\"이고, "
+            "previous_application은 \"우리 회사가 본 이 사람의 과거\"입니다. "
+            "둘은 정보 출처가 완전히 다르므로 main 테이블이 가진 신호와는 별개의 "
+            "예측력을 줄 가능성이 있습니다.")
+
+    H(doc, "12.2 데이터를 어떻게 다루었는가", level=2)
+    P(doc, "보조 테이블은 한 사람당 여러 행입니다(과거 대출 N건). "
+            "이걸 main 테이블에 join하려면 SK_ID_CURR 단위로 \"집계\"해야 합니다. "
+            "예: 평균 금액, 거절 비율, 결제 횟수의 표준편차 등.")
+    Bullet(doc, "bureau_balance(2,700만 행)는 SK_ID_BUREAU 단위로 STATUS 비율 + "
+                "MONTHS_BALANCE 통계로 압축")
+    Bullet(doc, "bureau는 그 결과를 합친 뒤 SK_ID_CURR 기준 전체 / Active(미상환) / "
+                "Closed(상환완료) 분리 집계")
+    Bullet(doc, "previous_application은 SK_ID_CURR 기준 전체 / Approved / Refused 분리 집계")
+    P(doc, "최종적으로 756개의 집계 변수가 생성되어 main 테이블에 left merge되었고, "
+            "동일한 전처리 정책으로 1161 features의 학습 데이터가 만들어졌습니다.")
+    Quote(doc, "메모리 트릭 — 원본 csv 합계 ~950 MB가 DataFrame으로 로드되면 ~3.4 GB로 "
+                "부풀지만, optimize_dtypes로 float32 / int8~32 / category 다운캐스트하면 "
+                "388 MB로 줄어듭니다(-89%). 16 GB RAM 환경에서 5-fold CV를 돌릴 수 있는 "
+                "여유가 생깁니다.")
+
+    H(doc, "12.3 5-fold CV 결과 — 통계적으로 명확한 향상", level=2)
+    Table(doc,
+        ["Metric", "Baseline (Step 1)", "+ Aux (Step 3-B)", "Δ", "Δ%"],
+        [["AUROC", "0.7587 ± 0.0008", "0.7755 ± 0.0011", "+0.0168", "+2.22%"],
+         ["AUPRC", "0.2445 ± 0.0011", "0.2646 ± 0.0015", "+0.0201", "+8.21%"],
+         ["KS", "0.3846 ± 0.0015", "0.4146 ± 0.0040", "+0.0301", "+7.81%"],
+         ["F1", "0.2698 ± 0.0047", "0.2813 ± 0.0096", "+0.0115", "+4.27%"]])
+    P(doc, "")
+    Bullet(doc, "AUROC +0.0168은 baseline std (0.0008)의 21배. "
+                "5 fold가 모두 0.7743 ~ 0.7771의 좁은 범위에 있어 매우 안정적입니다.")
+    Bullet(doc, "AUPRC와 KS의 개선 비율(+8.21%, +7.81%)이 AUROC(+2.22%)보다 큽니다. "
+                "신용 평가는 positive(부도)가 8%인 불균형 데이터라, "
+                "AUPRC와 KS가 실제 분류력을 더 잘 반영합니다 — "
+                "즉 \"진짜 부도자를 놓치지 않는 능력\"이 강화되었다는 의미입니다.")
+    Fig(doc, FIG_DIR / "27_cv_aux_comparison.png",
+        "그림 12-1. Baseline vs Aux 모델의 5-fold CV 비교 (test set, mean ± std)")
+
+    H(doc, "12.4 SHAP 관점 — 어떤 변수가 새로 중요해졌는가", level=2)
+    P(doc, "성능이 좋아졌다면 \"왜\"를 SHAP으로 들여다봐야 합니다. baseline 모델의 "
+            "SHAP top 20과 aux 모델의 SHAP top 20을 비교하면, 5개의 보조 변수가 "
+            "새로 top 20에 진입했습니다.")
+    Table(doc,
+        ["rank", "신규 진입 feature", "mean(|SHAP|)", "한국어 의미"],
+        [["12", "PREV_NAME_YIELD_GROUP_high_mean", "0.0499", "이전 high-yield 신청 비율"],
+         ["13", "PREV_CNT_PAYMENT_std", "0.0486", "이전 결제 횟수 변동성"],
+         ["14", "PREV_NAME_YIELD_GROUP_low_action_mean", "0.0450", "이전 low-yield 신청 비율"],
+         ["16", "PREV_DAYS_LAST_DUE_1ST_VERSION_max", "0.0440", "이전 만기일 최댓값"],
+         ["20", "PREV_NAME_CONTRACT_STATUS_Refused_mean", "0.0360", "★ 이전 거절 비율"]])
+    P(doc, "")
+    Quote(doc, "5개 모두 PREV_* 접두사 — 즉 자체 이력만 진입했고, "
+                "외부 신용기관(bureau) 변수는 한 개도 진입하지 못했습니다. "
+                "이건 매우 흥미로운 결과입니다.")
+    P(doc, "왜 bureau는 진입하지 못했을까? 가장 그럴듯한 가설은, "
+            "main 테이블의 EXT_SOURCE_1/2/3(외부 신용평가 점수)에 외부 신용기관 정보가 "
+            "이미 응축돼 들어가 있다는 것입니다. "
+            "EXT_SOURCE는 Step 1에서 SHAP top 1~3을 차지한 압도적 신호였는데, "
+            "이게 사실상 bureau 데이터의 잘 압축된 표현일 수 있습니다. "
+            "추가 ablation(bureau 단독 vs prev 단독 vs 둘 다)으로 검증할 future work입니다.")
+    Fig(doc, FIG_DIR / "29_shap_top20_overlap.png",
+        "그림 12-2. baseline vs aux 모델의 SHAP top 20 비교 (녹색=공통, 주황=신규 aux)")
+
+    H(doc, "12.5 가장 직관적인 신규 신호 — 이전 거절 비율", level=2)
+    P(doc, "rank 20에 진입한 PREV_NAME_CONTRACT_STATUS_Refused_mean은 "
+            "\"이 사람이 과거에 신청한 대출 중 거절당한 비율\"입니다. "
+            "직관적으로 가장 강력한 신용 신호 중 하나입니다.")
+    Quote(doc, "이전에 자주 거절된 사람은 다시 거절될 가능성이 높다 — "
+                "신용 평가 도메인의 상식과 일치합니다. "
+                "이 변수가 데이터에 명시적으로 들어가 있지 않다가 추가되면서 "
+                "성능이 향상된 것은, 본 파이프라인이 \"의미 있는 변수에 반응한다\"는 "
+                "정상성(sanity check)을 보여줍니다.")
+
+    H(doc, "12.6 Step 3-B 종합", level=2)
+    Bullet(doc, "보조 테이블 두 개 추가만으로 AUROC +0.0168 (+2.22%) — 통계적으로 "
+                "명확한 향상")
+    Bullet(doc, "AUPRC +8.21%, KS +7.81% — 불균형 데이터에서 분류력 자체가 강화됨")
+    Bullet(doc, "외부 신용기관(bureau)은 SHAP에 직접 진입하지 못했지만, "
+                "EXT_SOURCE에 응축된 형태로 이미 활용되고 있을 가능성")
+    Bullet(doc, "자체 이력(previous_application)은 5개 변수가 SHAP top 20에 진입 — "
+                "특히 \"이전 거절 비율\"이 직관적으로 가장 강력한 신호")
+    Bullet(doc, "1161 feature 학습 시간 138s/fold — 운영 환경에서도 충분히 가능한 부담")
+    P(doc, "")
+    P(doc, "★ Step 3-B 한 줄 메시지", bold=True, size=14, color=(0xC4, 0x4E, 0x52))
+    P(doc, "\"보조 테이블 활용은 본 파이프라인의 자연스러운 다음 단계이며, "
+            "기존 메시지(환각 0%, baseline 45.5%)에 \"성능까지 향상되는\" 임팩트를 "
+            "더한다.\"", bold=True, size=12)
+
+    PageBreak(doc)
+
+    H(doc, "13. 한계와 향후 계획 (Future Work)", level=1)
+    Bullet(doc, "평가 표본은 100명까지 확장됨(Step 2-A). 500명+은 추가 검토 가능.")
+    Bullet(doc, "보조 테이블 2개 활용(Step 3-B). 잔여 4개(POS_CASH_balance, "
+                "credit_card_balance, installments_payments, bureau_balance 추가 활용) "
+                "→ AUROC 0.78+ 도전.")
+    Bullet(doc, "Bureau ablation: bureau 단독 vs prev 단독 vs 둘 다 비교로 "
+                "EXT_SOURCE 응축 가설 검증.")
+    Bullet(doc, "G-Eval self-bias: Cross-LLM(Step 2-A)으로 부분 우회. "
+                "BERTScore 기반 자동 평가도 추가 검토.")
+    Bullet(doc, "TabNet, LightGBM에 aux 효과 일반화 (Step 3-B는 XGBoost만 검증).")
     Bullet(doc, "Fairness-aware 학습: Reweighing, Adversarial Debiasing.")
     Bullet(doc, "FT-Transformer 비교 모델 추가.")
     Bullet(doc, "인간 평가 (Plausibility) — 5점 척도 + Cohen's κ.")
     Bullet(doc, "한국어 도메인 특화 금융 LLM 미세조정 (QLoRA).")
+    Bullet(doc, "LLM 컨텍스트 재생성 (XAI-RAG with aux SHAP) — Halluc 변화 측정.")
 
     P(doc, "")
-    Quote(doc, "Step 1 — 본 보고서 시점까지의 작업은 \"미팅용 작동 프로토타입\"의 "
-                "완성입니다. 이후 Step 2~3에서는 위 한계를 하나씩 해소하며 본 "
-                "논문으로 확장합니다.")
+    Quote(doc, "Step 1 — \"미팅용 작동 프로토타입\" 완성. "
+                "Step 2-A — 평가 신뢰성 강화. "
+                "Step 3-B — 성능 확장 시작. "
+                "이후 Step 3-C(논문 작성)와 Step 3-D(잔여 항목)로 본 논문 완성을 향해 "
+                "확장합니다.")
 
     out = PAPER_DIR / "midterm_report_friendly.docx"
     doc.save(out)

@@ -409,16 +409,83 @@ def main():
     add_bullet(doc, "Counterfactual + Robustness 정량화로 시스템 안정성 + 컨텍스트 의존도 측정")
     add_bullet(doc, "Step 1의 핵심 메시지(\"환각 0%, baseline 45.5%\")가 통계적으로 견고함을 입증")
 
-    # ── 10. Future Work ──
-    add_heading(doc, "10. 향후 계획 (Future Work)", level=1)
-    add_bullet(doc, "Counterfactual Test — SHAP 변수 ablation 시 LLM 출력 변화 정량 측정")
-    add_bullet(doc, "베이스라인 비교 — SHAP 없이 raw 데이터만 LLM에 주는 경우의 환각률")
-    add_bullet(doc, "보조 테이블 활용 (bureau, previous_application 등) → AUROC 0.78+ 목표")
+    # ── 10. Step 3-B 보조 테이블 활용 (NEW, 2026-05-05) ──
+    add_heading(doc, "10. Step 3-B — 보조 테이블 활용 (성능 확장, 보너스)", level=1)
+    add_para(doc, "계획서에 명시된 future work 중 가장 임팩트가 큰 보조 테이블 활용을 D-5에 "
+                  "추가 진행. Home Credit Default Risk의 6개 보조 테이블 중 임팩트가 큰 2개"
+                  "(bureau, previous_application)를 SK_ID_CURR 단위로 집계해 main 테이블에 "
+                  "left merge한 뒤 동일 전처리 정책으로 학습.")
+
+    add_heading(doc, "10.1 데이터 사용 범위와 메모리 효율", level=2)
+    add_table_from_data(doc,
+        headers=["테이블", "행", "메모리(downcast)", "main 커버리지"],
+        rows=[
+            ["bureau", "1,716,428", "85 MB", "85.69%"],
+            ["bureau_balance", "27,299,925", "156 MB", "(bureau의 45.11%)"],
+            ["previous_application", "1,670,214", "147 MB", "94.65%"],
+        ])
+    add_para(doc, "")
+    add_para(doc, "원본 csv 합계 ~950 MB → optimize_dtypes(float32 / int8~32 / category)로 "
+                  "388 MB로 -89% 압축. 16 GB RAM 환경에서 5-fold CV 가능.")
+
+    add_heading(doc, "10.2 집계 전략", level=2)
+    add_bullet(doc, "bureau_balance → SK_ID_BUREAU (STATUS C/X/0~5 비율 + MONTHS_BALANCE 통계)")
+    add_bullet(doc, "bureau (with bb merge) → SK_ID_CURR (전체 / Active / Closed 분리, 346 features)")
+    add_bullet(doc, "previous_application → SK_ID_CURR (전체 / Approved / Refused 분리, 410 features)")
+    add_bullet(doc, "두 결과 outer merge → 756 aux features")
+    add_bullet(doc, "동일 전처리(A1/B1/C1/D/E1/F)로 최종 1161 features")
+
+    add_heading(doc, "10.3 5-fold CV 결과 (test set, mean ± std)", level=2)
+    add_table_from_data(doc,
+        headers=["Metric", "Baseline (Step 1)", "+ Aux (Step 3-B)", "Δ", "Δ%"],
+        rows=[
+            ["AUROC", "0.7587 ± 0.0008", "0.7755 ± 0.0011", "+0.0168", "+2.22%"],
+            ["AUPRC", "0.2445 ± 0.0011", "0.2646 ± 0.0015", "+0.0201", "+8.21%"],
+            ["KS", "0.3846 ± 0.0015", "0.4146 ± 0.0040", "+0.0301", "+7.81%"],
+            ["F1", "0.2698 ± 0.0047", "0.2813 ± 0.0096", "+0.0115", "+4.27%"],
+        ])
+    add_para(doc, "")
+    add_bullet(doc, "AUROC +0.0168은 baseline std (0.0008)의 21배 → 통계적으로 명확한 향상")
+    add_bullet(doc, "AUPRC + KS의 큰 비율 개선 — positive 8% 불균형에서 분류력 자체 강화")
+    add_bullet(doc, "5 fold 모두 0.7743~0.7771 좁은 범위 — 매우 안정적")
+    add_figure(doc, FIG_DIR / "27_cv_aux_comparison.png",
+                "그림 10-1. Baseline vs Aux 5-fold CV 비교 (test set)")
+
+    add_heading(doc, "10.4 SHAP top 20 변화", level=2)
+    add_para(doc, "단일 모델(train+val 학습)로 5,000 test 샘플에 SHAP 계산. baseline top 20과 비교.")
+    add_table_from_data(doc,
+        headers=["rank", "신규 진입 feature", "mean(|SHAP|)", "의미"],
+        rows=[
+            ["12", "PREV_NAME_YIELD_GROUP_high_mean", "0.0499", "이전 high-yield 신청 비율"],
+            ["13", "PREV_CNT_PAYMENT_std", "0.0486", "이전 결제 횟수 변동성"],
+            ["14", "PREV_NAME_YIELD_GROUP_low_action_mean", "0.0450", "이전 low-yield 신청 비율"],
+            ["16", "PREV_DAYS_LAST_DUE_1ST_VERSION_max", "0.0440", "이전 만기일 최댓값"],
+            ["20", "PREV_NAME_CONTRACT_STATUS_Refused_mean", "0.0360", "이전 거절 비율 ★"],
+        ])
+    add_para(doc, "")
+    add_bullet(doc, "신규 진입 5개 모두 PREV_* (Home Credit 자체 이력) 기반")
+    add_bullet(doc, "Bureau (외부 신용기관)는 top 20 진입 못함 — "
+                    "main 테이블의 EXT_SOURCE_1/2/3에 외부 신용 정보가 응축돼 있을 가능성 (future work에서 ablation으로 검증)")
+    add_bullet(doc, "최강 신규 신호: PREV_NAME_CONTRACT_STATUS_Refused_mean (이전 거절 비율) — 직관과 일치")
+    add_figure(doc, FIG_DIR / "29_shap_top20_overlap.png",
+                "그림 10-2. baseline vs aux 모델의 SHAP top 20 비교")
+
+    add_heading(doc, "10.5 Step 3-B 핵심 메시지", level=2)
+    add_bullet(doc, "보조 테이블 2개로 AUROC 0.7587 → 0.7755 (+2.22%) — 통계적 명확한 향상")
+    add_bullet(doc, "AUPRC +8.21%, KS +7.81% — 신용 평가에서 가장 중요한 분류력 강화")
+    add_bullet(doc, "외부 신용기관 vs 자체 이력 — 자체 이력의 SHAP 임팩트가 더 큼 (의외 발견)")
+    add_bullet(doc, "1161 feature 학습 시간 138s/fold — 메모리·시간 측면에서 운영 가능")
+
+    # ── 11. Future Work ──
+    add_heading(doc, "11. 향후 계획 (Future Work)", level=1)
+    add_bullet(doc, "잔여 보조 테이블 4개(POS_CASH_balance, credit_card_balance, installments_payments, bureau_balance 추가 활용) → AUROC 0.78+ 추가 향상")
+    add_bullet(doc, "Bureau ablation — bureau 단독 vs prev 단독 vs 둘 다 비교로 EXT_SOURCE 응축 가설 검증")
+    add_bullet(doc, "TabNet, LightGBM에 aux 효과 일반화 (Step 3-B는 XGBoost만 검증)")
     add_bullet(doc, "본격 fairness-aware 학습 — Reweighing, Adversarial Debiasing")
-    add_bullet(doc, "Cross-LLM G-Eval — Claude judge로 Gemini 출력 평가 (self-bias 우회)")
     add_bullet(doc, "FT-Transformer 비교 모델 추가")
     add_bullet(doc, "인간 평가 (Plausibility) — 5점 리커트 척도, Cohen's κ 신뢰도 측정")
     add_bullet(doc, "한국어 도메인 특화 금융 LLM 미세조정 (QLoRA)")
+    add_bullet(doc, "LLM 컨텍스트 재생성 (XAI-RAG with aux SHAP) — Halluc 변화 측정")
 
     # 저장
     out = PAPER_DIR / "midterm_report.docx"

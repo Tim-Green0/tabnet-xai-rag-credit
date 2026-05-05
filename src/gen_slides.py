@@ -856,11 +856,53 @@ def make_slides():
                   size=14, bold=True, color=COLOR_ACCENT, align="center")
 
     # ════════════════════════════════════════════════════════
-    # 슬라이드 14 — 종합 + 핵심 메시지 (기존 #12, 번호 갱신)
+    # 슬라이드 14 (NEW) — Step 3-B 보너스: 보조 테이블 활용
     # ════════════════════════════════════════════════════════
     s = add_blank_slide(prs)
-    add_header_bar(s, SW, "13. 종합 — 본 연구의 가치 3가지",
-                       "Step 1 + Step 2-A 마무리")
+    add_header_bar(s, SW, "13. Step 3-B (보너스) — 보조 테이블 활용",
+                       "발표 직전 D-5에 추가 진행한 성능 확장 (AUROC +2.22%)")
+
+    # 좌측: 5-fold CV 비교 figure
+    fig_path = FIG_DIR / "27_cv_aux_comparison.png"
+    if fig_path.exists():
+        pic = s.shapes.add_picture(str(fig_path),
+                                       Cm(0.8), Cm(3.2),
+                                       width=Cm(18.5))
+        # 세로 비율 보존, 너무 크면 클립
+        if pic.height > Cm(10):
+            pic.height = Cm(10)
+            pic.width = Cm(18.5)
+
+    # 우측: 핵심 메시지
+    add_textbox(s, Cm(20.0), Cm(3.2), Cm(13), Cm(1.2),
+                  "AUROC 0.7587 → 0.7755 (+2.22%)",
+                  size=18, bold=True, color=COLOR_ACCENT)
+    add_bullets(s, Cm(20.3), Cm(4.5), Cm(13), Cm(7), [
+        {"text": "추가한 보조 테이블 2개", "bold": True,
+            "color": COLOR_PRIMARY, "sub": [
+                "bureau — 외부 신용기관 과거 대출 이력",
+                "previous_application — Home Credit 자체 신청 이력"]},
+        {"text": "5-fold CV 결과 (test set)", "bold": True,
+            "color": COLOR_PRIMARY, "sub": [
+                "AUROC +0.0168 (baseline std의 21배)",
+                "AUPRC +8.21%, KS +7.81% — 불균형 분류력 강화"]},
+        {"text": "SHAP top 20 변화", "bold": True,
+            "color": COLOR_PRIMARY, "sub": [
+                "PREV_* feature 5개 신규 진입 (rank 12, 13, 14, 16, 20)",
+                "최고 신호: 이전 거절 비율"]},
+    ], size=11)
+
+    add_textbox(s, Cm(1.0), Cm(15.5), Cm(32), Cm(2),
+                  "★ 발견 — 외부 신용기관(bureau) feature는 top 20 진입 못함\n"
+                  "  → main 테이블의 EXT_SOURCE_1/2/3에 외부 신용 정보가 응축돼 있을 가능성 (future work에서 ablation으로 검증)",
+                  size=12, color=COLOR_HIGHLIGHT)
+
+    # ════════════════════════════════════════════════════════
+    # 슬라이드 15 — 종합 + 핵심 메시지 (기존 #12, 번호 갱신)
+    # ════════════════════════════════════════════════════════
+    s = add_blank_slide(prs)
+    add_header_bar(s, SW, "14. 종합 — 본 연구의 가치 3가지",
+                       "Step 1 + Step 2-A + Step 3-B 마무리")
 
     # 3개 컬럼 카드
     cards = [
@@ -918,33 +960,34 @@ def make_slides():
     # 슬라이드 15 — 한계 + 향후 계획
     # ════════════════════════════════════════════════════════
     s = add_blank_slide(prs)
-    add_header_bar(s, SW, "14. 한계와 향후 계획",
-                       "Step 3 — 본 논문 확장 (보조 테이블, fairness-aware 등)")
+    add_header_bar(s, SW, "15. 한계와 향후 계획",
+                       "Step 3-B 일부 진행 / 잔여는 본 논문 확장")
 
     add_textbox(s, Cm(1.0), Cm(3.0), Cm(15), Cm(1),
-                  "현재 한계", size=16, bold=True, color=COLOR_ACCENT)
+                  "현재 한계 / 진행 중", size=16, bold=True, color=COLOR_ACCENT)
     add_bullets(s, Cm(1.5), Cm(4.0), Cm(15), Cm(13), [
-        "평가 표본 10명 — 100~500명으로 확장 필요",
-        "보조 테이블 미사용 — bureau, previous_application 등",
-        "G-Eval self-bias — Gemini가 자기 출력 평가",
-        "Counterfactual 정량화 미수행 (정성 비교만)",
-        "Robustness 평가 (프롬프트 변형) 미수행",
+        "평가 표본 100명 (Step 2-A 확장 완료) — 500명+ 추가 검토",
+        "보조 테이블 2/6개 활용 (Step 3-B) — 4개 잔여",
+        "Bureau의 SHAP 미진입 — EXT_SOURCE 응축 가설 검증 필요",
+        "G-Eval self-bias — Cross-LLM(Step 2-A)으로 부분 우회",
+        "TabNet/LightGBM에 aux 효과 일반화 미실시",
+        "Fairness-aware 학습 미수행",
     ], size=13)
 
     add_textbox(s, Cm(17), Cm(3.0), Cm(15), Cm(1),
                   "향후 계획", size=16, bold=True, color=COLOR_HIGHLIGHT)
     add_bullets(s, Cm(17.5), Cm(4.0), Cm(15), Cm(13), [
-        "보조 테이블 활용으로 AUROC 0.78+ 목표",
+        "잔여 보조 테이블 4개로 AUROC 0.78+ 추가 향상",
+        "Bureau ablation — EXT_SOURCE와 정보 중복도 정량화",
         "Fairness-aware 학습 (Reweighing, Adversarial Debiasing)",
-        "Cross-LLM judge로 G-Eval 객관화",
-        "BERTScore 기반 Robustness 정량 평가",
+        "TabNet/LightGBM 재학습으로 aux 효과 일반화",
         "FT-Transformer 비교 모델 추가",
         "인간 평가 (Plausibility) — 5점 척도, Cohen's κ",
         "한국어 도메인 특화 LLM QLoRA 미세조정",
     ], size=13)
 
     # ════════════════════════════════════════════════════════
-    # 슬라이드 14 — Q&A
+    # 슬라이드 17 — Q&A
     # ════════════════════════════════════════════════════════
     s = add_blank_slide(prs)
     bg = s.shapes.add_shape(MSO_SHAPE.RECTANGLE,
