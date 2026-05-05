@@ -1,0 +1,31 @@
+{
+  "config": {
+    "seed": 42,
+    "aux_path": "data\\processed\\aux_features.parquet",
+    "missing_flag_threshold": 0.5,
+    "onehot_cardinality_max": 8,
+    "clip_quantiles": [
+      0.01,
+      0.99
+    ]
+  },
+  "shapes": {
+    "input_train": [
+      184506,
+      876
+    ],
+    "output_train": [
+      184506,
+      1161
+    ]
+  },
+  "n_flag_cols": 234,
+  "n_onehot_input_cols": 14,
+  "n_target_encoded_cols": 2,
+  "n_features_out": 1161,
+  "class_rates": {
+    "train": 0.08072908198107379,
+    "val": 0.08072908198107379,
+    "test": 0.08072776937710356
+  }
+}

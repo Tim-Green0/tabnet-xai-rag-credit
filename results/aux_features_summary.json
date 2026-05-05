@@ -1,0 +1,20 @@
+{
+  "n_rows": 353577,
+  "n_features": 756,
+  "memory_mb": 1027.1,
+  "missing_quartiles": {
+    "q25": 0.0416,
+    "q50": 0.1351,
+    "q75": 0.5431,
+    "max": 1.0
+  },
+  "n_features_high_missing": 191,
+  "feature_groups": {
+    "BUREAU": 162,
+    "BUREAU_ACTIVE": 92,
+    "BUREAU_CLOSED": 92,
+    "PREV": 258,
+    "PREV_APPROVED": 76,
+    "PREV_REFUSED": 76
+  }
+}

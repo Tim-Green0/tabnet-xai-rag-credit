@@ -1,0 +1,369 @@
+{
+  "bureau": {
+    "name": "bureau",
+    "n_rows": 1716428,
+    "n_cols": 17,
+    "memory_mb": 85.12,
+    "n_unique_sk_id_curr": 305811,
+    "n_dtypes": {
+      "float32": 8,
+      "int32": 3,
+      "int16": 2,
+      "category": 1,
+      "int8": 1
+    },
+    "n_cols_high_missing": 2,
+    "n_cols_any_missing": 7,
+    "max_missing_rate": 0.7147,
+    "main_id_coverage_pct": 85.69,
+    "n_sk_id_in_main": 263491,
+    "n_unique_sk_id_bureau": 1716428,
+    "missing_quartiles": {
+      "q25": 0.0,
+      "q50": 0.0,
+      "q75": 0.1501,
+      "max": 0.7147
+    },
+    "columns": [
+      {
+        "name": "SK_ID_CURR",
+        "dtype": "int32",
+        "missing_rate": 0.0
+      },
+      {
+        "name": "SK_ID_BUREAU",
+        "dtype": "int32",
+        "missing_rate": 0.0
+      },
+      {
+        "name": "CREDIT_ACTIVE",
+        "dtype": "category",
+        "missing_rate": 0.0
+      },
+      {
+        "name": "CREDIT_CURRENCY",
+        "dtype": "category",
+        "missing_rate": 0.0
+      },
+      {
+        "name": "DAYS_CREDIT",
+        "dtype": "int16",
+        "missing_rate": 0.0
+      },
+      {
+        "name": "CREDIT_DAY_OVERDUE",
+        "dtype": "int16",
+        "missing_rate": 0.0
+      },
+      {
+        "name": "DAYS_CREDIT_ENDDATE",
+        "dtype": "float32",
+        "missing_rate": 0.0615
+      },
+      {
+        "name": "DAYS_ENDDATE_FACT",
+        "dtype": "float32",
+        "missing_rate": 0.3692
+      },
+      {
+        "name": "AMT_CREDIT_MAX_OVERDUE",
+        "dtype": "float32",
+        "missing_rate": 0.6551
+      },
+      {
+        "name": "CNT_CREDIT_PROLONG",
+        "dtype": "int8",
+        "missing_rate": 0.0
+      },
+      {
+        "name": "AMT_CREDIT_SUM",
+        "dtype": "float32",
+        "missing_rate": 0.0
+      },
+      {
+        "name": "AMT_CREDIT_SUM_DEBT",
+        "dtype": "float32",
+        "missing_rate": 0.1501
+      },
+      {
+        "name": "AMT_CREDIT_SUM_LIMIT",
+        "dtype": "float32",
+        "missing_rate": 0.3448
+      },
+      {
+        "name": "AMT_CREDIT_SUM_OVERDUE",
+        "dtype": "float32",
+        "missing_rate": 0.0
+      },
+      {
+        "name": "CREDIT_TYPE",
+        "dtype": "category",
+        "missing_rate": 0.0
+      },
+      {
+        "name": "DAYS_CREDIT_UPDATE",
+        "dtype": "int32",
+        "missing_rate": 0.0
+      },
+      {
+        "name": "AMT_ANNUITY",
+        "dtype": "float32",
+        "missing_rate": 0.7147
+      }
+    ]
+  },
+  "bureau_balance": {
+    "name": "bureau_balance",
+    "n_rows": 27299925,
+    "n_cols": 3,
+    "memory_mb": 156.21,
+    "n_unique_sk_id_curr": null,
+    "n_dtypes": {
+      "int32": 1,
+      "int8": 1,
+      "category": 1
+    },
+    "n_cols_high_missing": 0,
+    "n_cols_any_missing": 0,
+    "max_missing_rate": 0.0,
+    "main_id_coverage_pct": null,
+    "n_sk_id_in_main": null,
+    "bureau_id_coverage_pct": 45.11,
+    "n_unique_sk_id_bureau_in_balance": 817395,
+    "missing_quartiles": {
+      "q25": 0.0,
+      "q50": 0.0,
+      "q75": 0.0,
+      "max": 0.0
+    },
+    "columns": [
+      {
+        "name": "SK_ID_BUREAU",
+        "dtype": "int32",
+        "missing_rate": 0.0
+      },
+      {
+        "name": "MONTHS_BALANCE",
+        "dtype": "int8",
+        "missing_rate": 0.0
+      },
+      {
+        "name": "STATUS",
+        "dtype": "category",
+        "missing_rate": 0.0
+      }
+    ]
+  },
+  "previous_application": {
+    "name": "previous_application",
+    "n_rows": 1670214,
+    "n_cols": 37,
+    "memory_mb": 146.56,
+    "n_unique_sk_id_curr": 338857,
+    "n_dtypes": {
+      "float32": 15,
+      "int32": 3,
+      "int8": 2,
+      "category": 1,
+      "int16": 1
+    },
+    "n_cols_high_missing": 4,
+    "n_cols_any_missing": 16,
+    "max_missing_rate": 0.9964,
+    "main_id_coverage_pct": 94.65,
+    "n_sk_id_in_main": 291057,
+    "missing_quartiles": {
+      "q25": 0.0,
+      "q50": 0.0,
+      "q75": 0.403,
+      "max": 0.9964
+    },
+    "columns": [
+      {
+        "name": "SK_ID_PREV",
+        "dtype": "int32",
+        "missing_rate": 0.0
+      },
+      {
+        "name": "SK_ID_CURR",
+        "dtype": "int32",
+        "missing_rate": 0.0
+      },
+      {
+        "name": "NAME_CONTRACT_TYPE",
+        "dtype": "category",
+        "missing_rate": 0.0
+      },
+      {
+        "name": "AMT_ANNUITY",
+        "dtype": "float32",
+        "missing_rate": 0.2229
+      },
+      {
+        "name": "AMT_APPLICATION",
+        "dtype": "float32",
+        "missing_rate": 0.0
+      },
+      {
+        "name": "AMT_CREDIT",
+        "dtype": "float32",
+        "missing_rate": 0.0
+      },
+      {
+        "name": "AMT_DOWN_PAYMENT",
+        "dtype": "float32",
+        "missing_rate": 0.5364
+      },
+      {
+        "name": "AMT_GOODS_PRICE",
+        "dtype": "float32",
+        "missing_rate": 0.2308
+      },
+      {
+        "name": "WEEKDAY_APPR_PROCESS_START",
+        "dtype": "category",
+        "missing_rate": 0.0
+      },
+      {
+        "name": "HOUR_APPR_PROCESS_START",
+        "dtype": "int8",
+        "missing_rate": 0.0
+      },
+      {
+        "name": "FLAG_LAST_APPL_PER_CONTRACT",
+        "dtype": "category",
+        "missing_rate": 0.0
+      },
+      {
+        "name": "NFLAG_LAST_APPL_IN_DAY",
+        "dtype": "int8",
+        "missing_rate": 0.0
+      },
+      {
+        "name": "RATE_DOWN_PAYMENT",
+        "dtype": "float32",
+        "missing_rate": 0.5364
+      },
+      {
+        "name": "RATE_INTEREST_PRIMARY",
+        "dtype": "float32",
+        "missing_rate": 0.9964
+      },
+      {
+        "name": "RATE_INTEREST_PRIVILEGED",
+        "dtype": "float32",
+        "missing_rate": 0.9964
+      },
+      {
+        "name": "NAME_CASH_LOAN_PURPOSE",
+        "dtype": "category",
+        "missing_rate": 0.0
+      },
+      {
+        "name": "NAME_CONTRACT_STATUS",
+        "dtype": "category",
+        "missing_rate": 0.0
+      },
+      {
+        "name": "DAYS_DECISION",
+        "dtype": "int16",
+        "missing_rate": 0.0
+      },
+      {
+        "name": "NAME_PAYMENT_TYPE",
+        "dtype": "category",
+        "missing_rate": 0.0
+      },
+      {
+        "name": "CODE_REJECT_REASON",
+        "dtype": "category",
+        "missing_rate": 0.0
+      },
+      {
+        "name": "NAME_TYPE_SUITE",
+        "dtype": "category",
+        "missing_rate": 0.4912
+      },
+      {
+        "name": "NAME_CLIENT_TYPE",
+        "dtype": "category",
+        "missing_rate": 0.0
+      },
+      {
+        "name": "NAME_GOODS_CATEGORY",
+        "dtype": "category",
+        "missing_rate": 0.0
+      },
+      {
+        "name": "NAME_PORTFOLIO",
+        "dtype": "category",
+        "missing_rate": 0.0
+      },
+      {
+        "name": "NAME_PRODUCT_TYPE",
+        "dtype": "category",
+        "missing_rate": 0.0
+      },
+      {
+        "name": "CHANNEL_TYPE",
+        "dtype": "category",
+        "missing_rate": 0.0
+      },
+      {
+        "name": "SELLERPLACE_AREA",
+        "dtype": "int32",
+        "missing_rate": 0.0
+      },
+      {
+        "name": "NAME_SELLER_INDUSTRY",
+        "dtype": "category",
+        "missing_rate": 0.0
+      },
+      {
+        "name": "CNT_PAYMENT",
+        "dtype": "float32",
+        "missing_rate": 0.2229
+      },
+      {
+        "name": "NAME_YIELD_GROUP",
+        "dtype": "category",
+        "missing_rate": 0.0
+      },
+      {
+        "name": "PRODUCT_COMBINATION",
+        "dtype": "category",
+        "missing_rate": 0.0002
+      },
+      {
+        "name": "DAYS_FIRST_DRAWING",
+        "dtype": "float32",
+        "missing_rate": 0.403
+      },
+      {
+        "name": "DAYS_FIRST_DUE",
+        "dtype": "float32",
+        "missing_rate": 0.403
+      },
+      {
+        "name": "DAYS_LAST_DUE_1ST_VERSION",
+        "dtype": "float32",
+        "missing_rate": 0.403
+      },
+      {
+        "name": "DAYS_LAST_DUE",
+        "dtype": "float32",
+        "missing_rate": 0.403
+      },
+      {
+        "name": "DAYS_TERMINATION",
+        "dtype": "float32",
+        "missing_rate": 0.403
+      },
+      {
+        "name": "NFLAG_INSURED_ON_APPROVAL",
+        "dtype": "float32",
+        "missing_rate": 0.403
+      }
+    ]
+  }
+}
