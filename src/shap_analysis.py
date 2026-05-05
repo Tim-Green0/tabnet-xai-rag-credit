@@ -215,7 +215,7 @@ def plot_attention_vs_shap_scatter(att: pd.Series, shap_imp: pd.Series,
     axes[0].set_xlabel("TabNet attention importance")
     axes[0].set_ylabel("SHAP global importance (mean |SHAP|)")
     axes[0].set_title(
-        f"전체 변수 ({len(df)}개)\nSpearman ρ = {stats['spearman_rho_all']:.3f} (p={stats['spearman_p_all']:.3g})"
+        f"All features ({len(df)})\nSpearman rho = {stats['spearman_rho_all']:.3f} (p={stats['spearman_p_all']:.3g})"
     )
     # Top 20 강조
     a_top = set(a.nlargest(20).index)
@@ -232,11 +232,11 @@ def plot_attention_vs_shap_scatter(att: pd.Series, shap_imp: pd.Series,
     axes[1].set_xlabel("TabNet attention importance")
     axes[1].set_ylabel("SHAP global importance")
     axes[1].set_title(
-        f"Top-20 합집합 ({len(union_top)}개)\n"
-        f"교집합 {stats['top20_overlap_count']}개 (Jaccard {stats['top20_jaccard']:.2f})\n"
-        f"빨강=교집합, 파랑=어텐션 only, 주황=SHAP only"
+        f"Top-20 union ({len(union_top)} features)\n"
+        f"intersection {stats['top20_overlap_count']} (Jaccard {stats['top20_jaccard']:.2f})\n"
+        f"red=intersection, blue=attention only, orange=SHAP only"
     )
-    plt.suptitle("어텐션 vs SHAP 일관성 (TabNet)")
+    plt.suptitle("Attention vs SHAP consistency (TabNet)")
     return savefig(fig, out_name)
 
 
@@ -252,10 +252,10 @@ def plot_local_waterfall(sv_local: np.ndarray, X_local: pd.DataFrame,
     colors = ["#C44E52" if v > 0 else "#4C72B0" for v in sub.values]
     ax.barh(sub.index, sub.values, color=colors)
     for i, (n, v) in enumerate(sub.items()):
-        ax.text(v, i, f" {v:+.3f}  (값={X_local.loc[X_local.index[0], n]:.3f})",
+        ax.text(v, i, f" {v:+.3f}  (val={X_local.loc[X_local.index[0], n]:.3f})",
                 va="center", fontsize=8)
     ax.axvline(0, color="black", lw=0.5)
-    ax.set_xlabel("SHAP contribution to log-odds (양: 부도 ↑, 음: 부도 ↓)")
+    ax.set_xlabel("SHAP contribution to log-odds (positive: default↑, negative: default↓)")
     ax.set_title(f"Local SHAP — sample idx={idx}, true label={label}, base={base_value:.3f}")
     return savefig(fig, f"17_local_waterfall_idx{idx}")
 

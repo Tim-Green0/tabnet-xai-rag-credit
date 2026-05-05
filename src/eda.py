@@ -74,16 +74,16 @@ def main() -> None:
     print("[2/8] TARGET 분포...")
     fig, ax = plt.subplots(1, 2, figsize=(12, 4))
     counts = df["TARGET"].value_counts().sort_index()
-    ax[0].bar(["0 (정상)", "1 (부도)"], counts.values, color=["#4C72B0", "#C44E52"])
+    ax[0].bar(["0 (non-default)", "1 (default)"], counts.values, color=["#4C72B0", "#C44E52"])
     for i, v in enumerate(counts.values):
         ax[0].text(i, v, f"{v:,}\n({v/len(df)*100:.2f}%)", ha="center", va="bottom")
-    ax[0].set_title("TARGET 클래스 카운트")
+    ax[0].set_title("TARGET class counts")
     ax[0].set_ylabel("count")
 
-    ax[1].pie(counts.values, labels=["정상", "부도"], autopct="%1.2f%%",
+    ax[1].pie(counts.values, labels=["non-default", "default"], autopct="%1.2f%%",
               colors=["#4C72B0", "#C44E52"], startangle=90)
-    ax[1].set_title(f"클래스 비율 (전체 N={len(df):,})")
-    plt.suptitle("Home Credit Default Risk — TARGET 분포 (불균형)")
+    ax[1].set_title(f"Class ratio (total N={len(df):,})")
+    plt.suptitle("Home Credit Default Risk — TARGET distribution (imbalanced)")
     savefig(fig, "01_target_distribution")
 
     # ─────────────────────────────────────────
@@ -107,8 +107,8 @@ def main() -> None:
     top30 = miss_df.head(30)
     fig, ax = plt.subplots(figsize=(10, 9))
     ax.barh(top30.index[::-1], top30["pct_missing"][::-1].values, color="#C44E52")
-    ax.set_xlabel("결측률 (%)")
-    ax.set_title("결측률 상위 30개 변수")
+    ax.set_xlabel("Missing rate (%)")
+    ax.set_title("Top 30 columns by missing rate")
     for i, v in enumerate(top30["pct_missing"][::-1].values):
         ax.text(v + 0.5, i, f"{v:.1f}%", va="center", fontsize=8)
     savefig(fig, "02_missing_top30")
@@ -122,16 +122,16 @@ def main() -> None:
     # 3-1 성별 분포
     g_counts = df["CODE_GENDER"].value_counts()
     ax[0, 0].bar(g_counts.index, g_counts.values, color=["#4C72B0", "#DD8452", "#55A868"][: len(g_counts)])
-    ax[0, 0].set_title("CODE_GENDER 분포")
+    ax[0, 0].set_title("CODE_GENDER distribution")
     for i, (k, v) in enumerate(g_counts.items()):
         ax[0, 0].text(i, v, f"{v:,}", ha="center", va="bottom")
 
     # 3-2 성별 × TARGET
     g_tgt = df.groupby("CODE_GENDER")["TARGET"].mean().sort_values()
     ax[0, 1].bar(g_tgt.index, g_tgt.values, color="#C44E52")
-    ax[0, 1].axhline(df["TARGET"].mean(), color="black", linestyle="--", label=f"전체 {df['TARGET'].mean():.3f}")
-    ax[0, 1].set_title("성별별 부도율(P(TARGET=1))")
-    ax[0, 1].set_ylabel("부도율")
+    ax[0, 1].axhline(df["TARGET"].mean(), color="black", linestyle="--", label=f"overall {df['TARGET'].mean():.3f}")
+    ax[0, 1].set_title("Default rate by gender (P(TARGET=1))")
+    ax[0, 1].set_ylabel("default rate")
     ax[0, 1].legend()
     for i, (k, v) in enumerate(g_tgt.items()):
         ax[0, 1].text(i, v, f"{v:.3f}", ha="center", va="bottom")
@@ -139,8 +139,8 @@ def main() -> None:
     # 3-3 연령 분포 (DAYS_BIRTH 음수)
     age = (-df["DAYS_BIRTH"] / 365.25).clip(0, 100)
     ax[1, 0].hist(age, bins=40, color="#4C72B0", edgecolor="white")
-    ax[1, 0].set_title(f"연령 분포 (mean={age.mean():.1f}, median={age.median():.1f})")
-    ax[1, 0].set_xlabel("연령 (년)")
+    ax[1, 0].set_title(f"Age distribution (mean={age.mean():.1f}, median={age.median():.1f})")
+    ax[1, 0].set_xlabel("Age (years)")
     ax[1, 0].set_ylabel("count")
 
     # 3-4 연령 구간 × TARGET
@@ -148,14 +148,14 @@ def main() -> None:
                       labels=["~25", "25-35", "35-45", "45-55", "55-65", "65+"])
     age_tgt = df.assign(_age_bin=age_bins).groupby("_age_bin", observed=True)["TARGET"].mean()
     ax[1, 1].bar(age_tgt.index.astype(str), age_tgt.values, color="#C44E52")
-    ax[1, 1].axhline(df["TARGET"].mean(), color="black", linestyle="--", label=f"전체 {df['TARGET'].mean():.3f}")
-    ax[1, 1].set_title("연령대별 부도율")
-    ax[1, 1].set_ylabel("부도율")
+    ax[1, 1].axhline(df["TARGET"].mean(), color="black", linestyle="--", label=f"overall {df['TARGET'].mean():.3f}")
+    ax[1, 1].set_title("Default rate by age bin")
+    ax[1, 1].set_ylabel("default rate")
     ax[1, 1].legend()
     for i, v in enumerate(age_tgt.values):
         ax[1, 1].text(i, v, f"{v:.3f}", ha="center", va="bottom")
 
-    plt.suptitle("보호 속성: 성별, 연령")
+    plt.suptitle("Protected attributes: gender and age")
     savefig(fig, "03_protected_attrs")
 
     summary["protected_attrs"] = {
@@ -190,7 +190,7 @@ def main() -> None:
         ax.set_yscale("log")
     for j in range(i + 1, len(axes)):
         axes[j].axis("off")
-    plt.suptitle("핵심 수치형 변수 분포 (1~99% 클립, y log)")
+    plt.suptitle("Core numeric distributions (1-99% clipped, y log scale)")
     savefig(fig, "04_numeric_distributions")
 
     # ─────────────────────────────────────────
@@ -208,7 +208,7 @@ def main() -> None:
     sns.heatmap(cm, annot=True, fmt=".2f", cmap="coolwarm", center=0,
                 square=True, cbar_kws={"shrink": 0.7}, ax=ax,
                 annot_kws={"size": 7})
-    ax.set_title("|상관계수| 상위 20개 변수 vs TARGET")
+    ax.set_title("Top 20 |correlation| vs TARGET")
     savefig(fig, "05_correlation_top")
 
     target_corr = num_df[keep].corr()["TARGET"].drop("TARGET").sort_values()
@@ -226,7 +226,7 @@ def main() -> None:
     axes = axes.flatten()
     for i, c in enumerate(top6):
         ax = axes[i]
-        for tgt, color, label in [(0, "#4C72B0", "정상(0)"), (1, "#C44E52", "부도(1)")]:
+        for tgt, color, label in [(0, "#4C72B0", "non-default (0)"), (1, "#C44E52", "default (1)")]:
             s = df.loc[df["TARGET"] == tgt, c].dropna()
             if len(s) == 0:
                 continue
@@ -234,7 +234,7 @@ def main() -> None:
             sns.kdeplot(s.clip(lo, hi), ax=ax, label=label, color=color, fill=True, alpha=0.3)
         ax.set_title(f"{c}  (|ρ|={target_corr[c]:.3f})", fontsize=9)
         ax.legend(fontsize=8)
-    plt.suptitle("TARGET별 분포 비교: |corr| 상위 6개 변수")
+    plt.suptitle("Distribution by TARGET: top 6 by |correlation|")
     savefig(fig, "06_target_vs_features")
 
     # ─────────────────────────────────────────
@@ -254,7 +254,7 @@ def main() -> None:
     for i, v in enumerate(cat_card.values):
         ax.text(v + 0.5, i, str(v), va="center", fontsize=8)
     ax.set_xlabel("unique values (cardinality)")
-    ax.set_title(f"범주형 변수 cardinality (총 {len(cat_cols)}개)")
+    ax.set_title(f"Categorical cardinality (total {len(cat_cols)} columns)")
     savefig(fig, "07_categorical_cardinality")
 
     # ─────────────────────────────────────────

@@ -354,7 +354,7 @@ def plot_eval_metrics(df: pd.DataFrame, out_name: str = "20_eval_metrics") -> Pa
         ax.set_title(f"{m}\nmean={s.mean():.3f}, std={s.std():.3f}",
                       fontsize=10)
         ax.set_ylabel("score")
-    plt.suptitle("LLM 설명 정량 평가 — 10 샘플 분포")
+    plt.suptitle("LLM explanation quantitative eval — 10 samples distribution")
     return savefig(fig, out_name)
 
 

@@ -214,7 +214,7 @@ def plot_cv_comparison(summary: pd.DataFrame, out_name: str = "13_cv_comparison"
         for i, (mn, sd) in enumerate(zip(sub["mean"].values, sub["std"].values)):
             ax.text(i, mn + sd + 0.005, f"{mn:.4f}\n±{sd:.4f}",
                     ha="center", va="bottom", fontsize=8)
-    plt.suptitle("5-fold Stratified CV — 모델 비교 (test set)")
+    plt.suptitle("5-fold Stratified CV — model comparison (test set)")
     return savefig(fig, out_name)
 
 

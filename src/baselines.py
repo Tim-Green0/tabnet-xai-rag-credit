@@ -200,7 +200,7 @@ def plot_roc_pr(test_scores: Dict[str, np.ndarray], y_test: np.ndarray) -> Path:
     axes[1].set_title("Precision-Recall Curve (Test)")
     axes[1].legend(loc="upper right")
 
-    plt.suptitle("베이스라인 비교 (Test set)")
+    plt.suptitle("Baseline comparison (Test set)")
     return savefig(fig, "08_roc_pr_curves")
 
 
@@ -219,7 +219,7 @@ def plot_threshold_sweep(test_scores: Dict[str, np.ndarray], y_test: np.ndarray,
                        edgecolor="black", label=f"{name} val-thr={t:.3f}")
     ax.set_xlabel("Threshold")
     ax.set_ylabel("F1 (Test)")
-    ax.set_title("임계치 sweep — validation에서 선택한 threshold(점)을 test에 적용")
+    ax.set_title("Threshold sweep — val-chosen threshold (markers) applied to test")
     ax.legend(loc="best", fontsize=9)
     return savefig(fig, "09_threshold_sweep")
 
@@ -261,7 +261,7 @@ def plot_feature_importance(
     axes[2].set_title(f"LightGBM Gain Top {top}")
     axes[2].set_xlabel("gain")
 
-    plt.suptitle("모델별 변수 중요도 (Top 20) — Day 4 SHAP과 비교 예정")
+    plt.suptitle("Per-model feature importance (Top 20) — for SHAP comparison")
     return savefig(fig, "10_feature_importance")
 
 

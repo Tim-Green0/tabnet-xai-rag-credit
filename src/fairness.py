@@ -222,12 +222,12 @@ def plot_fairness_metrics(rows: list, out_name: str = "18_fairness_metrics") -> 
                         label="4/5 rule = 0.8")
             ax.legend(fontsize=8)
         else:
-            # 일반적으로 0에 가까울수록 공정 — 임계 0.1
+            # 0에 가까울수록 공정 — 임계 0.1
             ax.axhline(0.1, color="orange", linestyle=":", alpha=0.5,
                         label="caution = 0.1")
             ax.legend(fontsize=8)
 
-    plt.suptitle("공정성 지표 — baseline 모델 비교 (test set)")
+    plt.suptitle("Fairness metrics — baseline models (test set)")
     return savefig(fig, out_name)
 
 
@@ -249,7 +249,7 @@ def plot_mitigation(df: pd.DataFrame, out_name: str = "19_fairness_mitigation") 
     axes[1].axhline(0.1, color="orange", linestyle=":", alpha=0.6)
     axes[1].tick_params(axis="x", rotation=15)
 
-    plt.suptitle("공정성 mitigation — 보호 속성 제거 후 재학습 효과")
+    plt.suptitle("Fairness mitigation — protected-feature ablation effect")
     return savefig(fig, out_name)
 
 

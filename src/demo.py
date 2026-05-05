@@ -148,25 +148,25 @@ def plot_walkthrough(walk: dict, out_name: str = "22_demo_walkthrough") -> Path:
     for i, v in enumerate(vals):
         axes[0].text(v, i, f"  {v:+.3f}", va="center", fontsize=8)
     axes[0].axvline(0, color="black", lw=0.5)
-    axes[0].set_xlabel("SHAP value (양: 부도↑, 음: 부도↓)")
+    axes[0].set_xlabel("SHAP value (positive: default↑, negative: default↓)")
     axes[0].set_title(f"SHAP Local — Top 10 (sample idx={s['idx']})")
 
     # (2) decision summary
     axes[1].axis("off")
     decision_color = "#C44E52" if p["decision"] == "REJECT" else "#55A868"
     text_lines = [
-        f"인스턴스 ID: {s['idx']}",
-        f"실제 정답: {'부도(1)' if s['true_label'] == 1 else '정상(0)'}",
-        f"연령: {s['age']:.0f}세 / 성별: {s['gender']}",
+        f"Instance ID: {s['idx']}",
+        f"True label : {'default (1)' if s['true_label'] == 1 else 'non-default (0)'}",
+        f"Age: {s['age']:.0f} y  /  Gender: {s['gender']}",
         "",
         f"P(default): {p['default_proba']:.4f}",
-        f"threshold:  {p['threshold']:.4f}",
-        f"결정: {p['decision']}",
+        f"threshold : {p['threshold']:.4f}",
+        f"Decision  : {p['decision']}",
         "",
-        "Gemini 응답: " + (f"{walk['llm_outputs']['gemini']['elapsed_sec']:.1f}s"
-                            if "gemini" in walk["llm_outputs"] else "n/a"),
-        "Claude 응답: " + (f"{walk['llm_outputs']['anthropic']['elapsed_sec']:.1f}s"
-                           if "anthropic" in walk["llm_outputs"] else "n/a"),
+        "Gemini latency: " + (f"{walk['llm_outputs']['gemini']['elapsed_sec']:.1f}s"
+                                if "gemini" in walk["llm_outputs"] else "n/a"),
+        "Claude latency: " + (f"{walk['llm_outputs']['anthropic']['elapsed_sec']:.1f}s"
+                                if "anthropic" in walk["llm_outputs"] else "n/a"),
     ]
     axes[1].text(0.05, 0.95, "\n".join(text_lines), transform=axes[1].transAxes,
                   va="top", fontsize=12, family="monospace",

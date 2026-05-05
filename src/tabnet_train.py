@@ -170,7 +170,7 @@ def plot_training_curve(history: dict, out_name: str = "11_tabnet_training_curve
     axes[1].set_ylabel("loss")
     axes[1].set_title("Train loss over epochs")
     axes[1].legend()
-    plt.suptitle("TabNet 학습 곡선 (best run)")
+    plt.suptitle("TabNet training curve (best run)")
     return savefig(fig, out_name)
 
 
@@ -179,7 +179,7 @@ def plot_attention_top(fi: pd.Series, out_name: str, top: int = 20) -> Path:
     top_fi = fi.head(top)[::-1]
     ax.barh(top_fi.index, top_fi.values, color="#8172B2")
     ax.set_xlabel("attention-based importance")
-    ax.set_title(f"TabNet 어텐션 기반 변수 중요도 Top {top}")
+    ax.set_title(f"TabNet attention-based feature importance — Top {top}")
     for i, v in enumerate(top_fi.values):
         ax.text(v, i, f" {v:.4f}", va="center", fontsize=8)
     return savefig(fig, out_name)

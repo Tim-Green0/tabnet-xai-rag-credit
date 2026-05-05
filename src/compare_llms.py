@@ -115,7 +115,7 @@ def main() -> None:
                               rotation=30, ha="right", fontsize=9)
     axes[0].set_ylim(0, 1.05)
     axes[0].set_ylabel("rate")
-    axes[0].set_title("룰 기반 충실성 / 환각률\n(Faithfulness + Hallucination)")
+    axes[0].set_title("Rule-based Faithfulness / Hallucination\n(per-driver match rates + halluc rates)")
     axes[0].legend(loc="best")
 
     # (2) G-Eval (Gemini-judge 기준)
@@ -134,16 +134,16 @@ def main() -> None:
                                  rotation=20, ha="right", fontsize=9)
         axes[1].set_ylim(0, 5.5)
         axes[1].set_ylabel("score (1-5)")
-        axes[1].set_title("G-Eval (Gemini self-judge)\n(Factual + Complete + Sensitive + Style)")
+        axes[1].set_title("G-Eval (Gemini self-judge)\n(Factual + Complete + Sensitive + Style, 1-5)")
         axes[1].legend(loc="best")
         for i, v in enumerate(geval_show["gemini_mean"]):
             if pd.notna(v):
                 axes[1].text(i - width/2, v + 0.1, f"{v:.2f}",
                               ha="center", fontsize=8)
     else:
-        axes[1].text(0.5, 0.5, "G-Eval 결과 없음", ha="center", va="center",
+        axes[1].text(0.5, 0.5, "G-Eval not available", ha="center", va="center",
                       transform=axes[1].transAxes)
-        axes[1].set_title("G-Eval (생성 실패)")
+        axes[1].set_title("G-Eval (no data)")
 
     # (3) Efficiency
     eff_show = cmp_df[cmp_df["category"] == "efficiency"]
@@ -160,7 +160,7 @@ def main() -> None:
     axes[2].set_xticks(x3)
     axes[2].set_xticklabels(metric_pretty)
     axes[2].set_ylabel("value")
-    axes[2].set_title("효율성 (호출당)\nelapsed seconds / total tokens")
+    axes[2].set_title("Efficiency (per call)\nelapsed seconds / total tokens")
     axes[2].legend(loc="best")
     for bars in [bx, cx]:
         for b in bars:
@@ -168,7 +168,7 @@ def main() -> None:
             axes[2].text(b.get_x() + b.get_width()/2, h, f"{h:.0f}",
                           ha="center", va="bottom", fontsize=8)
 
-    plt.suptitle("Gemini 2.5 Flash vs Claude Sonnet 4.5 — XAI-RAG 설명 품질 비교 (10 샘플)",
+    plt.suptitle("Gemini 2.5 Flash vs Claude Sonnet 4.5 — XAI-RAG explanation quality (10 samples)",
                   fontsize=12, y=1.02)
     plt.tight_layout()
     out = savefig(fig, "21_llm_comparison")

@@ -294,7 +294,7 @@ def main():
     ax.set_xticks(x)
     ax.set_xticklabels([p.title() for p in providers])
     ax.set_ylabel("Hallucination Rate (strict)")
-    ax.set_title("XAI-RAG vs baseline (no SHAP) — 환각률 비교 (10 샘플)")
+    ax.set_title("XAI-RAG vs baseline (no SHAP) — Hallucination Rate (11 samples)")
     ax.legend()
     for i, (a_, b_) in enumerate(zip(
             cmp_df["xai_rag_halluc_strict_mean"],
