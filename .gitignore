@@ -37,8 +37,10 @@ results/baseline_models/
 paper/*
 *.docx
 *.docx.bak
-# 예외: 미팅 보고서는 commit 허용 (학번 미포함, 결과 정리)
+# 예외: 미팅 보고서/슬라이드는 commit 허용 (학번 미포함, 결과 정리)
 !paper/midterm_report.docx
+!paper/midterm_report_friendly.docx
+!paper/midterm_slides.pptx
 
 # ─── Logs / 임시 ─────────────────────────────────────────
 *.log
