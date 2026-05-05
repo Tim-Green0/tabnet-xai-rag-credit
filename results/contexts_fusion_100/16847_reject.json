@@ -1,0 +1,127 @@
+{
+  "sample_idx": 16847,
+  "decision": "REJECT",
+  "default_probability": 0.8915,
+  "threshold": 0.476,
+  "agreed_drivers": [
+    {
+      "feature": "외부 신용평가 점수 2",
+      "feature_raw": "EXT_SOURCE_2",
+      "value": "0.0752211",
+      "value_raw": 0.075221121034576,
+      "rank": 1,
+      "group": "agreed",
+      "shap": 0.7036,
+      "attention": 0.682254,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "외부 신용평가 점수 3",
+      "feature_raw": "EXT_SOURCE_3",
+      "value": "0.240541",
+      "value_raw": 0.2405414172860865,
+      "rank": 2,
+      "group": "agreed",
+      "shap": 0.4819,
+      "attention": 0.501532,
+      "sign_for_default": "+"
+    }
+  ],
+  "shap_only_drivers": [
+    {
+      "feature": "구매 대상 상품 가격",
+      "feature_raw": "AMT_GOODS_PRICE",
+      "value": "450,000",
+      "value_raw": 450000.0,
+      "rank": 1,
+      "group": "shap_only",
+      "shap": 0.2825,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "연 환산 상환액",
+      "feature_raw": "AMT_ANNUITY",
+      "value": "33,376",
+      "value_raw": 33376.5,
+      "rank": 2,
+      "group": "shap_only",
+      "shap": 0.116,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "거주지(도시 가중) 등급",
+      "feature_raw": "REGION_RATING_CLIENT_W_CITY",
+      "value": "3",
+      "value_raw": 3.0,
+      "rank": 3,
+      "group": "shap_only",
+      "shap": 0.1153,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "근무 전화 등록 여부",
+      "feature_raw": "FLAG_WORK_PHONE",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "rank": 4,
+      "group": "shap_only",
+      "shap": -0.018,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "DEF_30_CNT_SOCIAL_CIRCLE",
+      "feature_raw": "DEF_30_CNT_SOCIAL_CIRCLE",
+      "value": "0",
+      "value_raw": 0.0,
+      "rank": 5,
+      "group": "shap_only",
+      "shap": -0.0147,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "OBS_60_CNT_SOCIAL_CIRCLE",
+      "feature_raw": "OBS_60_CNT_SOCIAL_CIRCLE",
+      "value": "1",
+      "value_raw": 1.0,
+      "rank": 6,
+      "group": "shap_only",
+      "shap": -0.0114,
+      "sign_for_default": "-"
+    }
+  ],
+  "attention_only_drivers": [
+    {
+      "feature": "FONDKAPREMONT_MODE_org spec account",
+      "feature_raw": "FONDKAPREMONT_MODE_org spec account",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "rank": 1,
+      "group": "attention_only",
+      "attention": 1.390201
+    },
+    {
+      "feature": "차량 보유: 있음",
+      "feature_raw": "FLAG_OWN_CAR_Y",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "rank": 2,
+      "group": "attention_only",
+      "attention": 0.303827
+    }
+  ],
+  "fairness_flags": [],
+  "model_predict": "XGBoost",
+  "model_explain": [
+    "SHAP_xgb_local",
+    "TabNet_attention_local"
+  ],
+  "explanation_policy": "fact_only_with_agreement_labels",
+  "masked_sensitive_features": [
+    "CODE_GENDER_F",
+    "CODE_GENDER_M"
+  ],
+  "n_agreed": 2,
+  "n_shap_only": 6,
+  "n_attention_only": 2,
+  "_meta_true_label": 1
+}

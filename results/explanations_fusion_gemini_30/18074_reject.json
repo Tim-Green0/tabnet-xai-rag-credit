@@ -1,0 +1,144 @@
+{
+  "sample_idx": 18074,
+  "decision": "REJECT",
+  "true_label": 0,
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "elapsed_sec": 13.05,
+  "explanation": "[결정 요약]\n신청 결과: 대출 신청이 거절되었습니다(예측 부도 확률 90.87%).\n\n[주요 거절 사유 — 두 해석 모델이 동의한 강한 신호]\n1.  외부 신용평가 점수 3이 0.105473으로 매우 낮게 평가되었습니다(두 모델 동의).\n2.  외부 신용평가 점수 2 또한 0.255991로 낮은 수준입니다(두 모델 동의).\n\n[보완적으로 고려된 요인]\n- SHAP 관점에서 구매 대상 상품 가격 310,500원과 근무 조직 유형(타깃 인코딩 값) 0.1150은 부도 확률을 높이는 요인으로 작용했습니다.\n- 한편, 대출 신청 금액 408,866원은 부도 확률을 낮추는 긍정적인 요인이었습니다.\n- TabNet 어텐션은 'FONDKAPREMONT_MODE_org spec account'가 '아니오'라는 점도 결정에 영향을 준 것으로 보았습니다.\n\n[개선 권고]\n- 외부 신용평가 점수 향상을 위한 적극적인 신용 관리를 권장합니다.\n- 현재 신청하신 구매 대상 상품 가격 및 대출 금액 수준에 대한 재검토도 고려해 볼 수 있습니다.\n- 일정 기간 후 신용 상태 개선 후 재신청을 검토하실 수 있습니다.\n\n[면책 고지]\n본 안내는 두 해석 모델(SHAP, TabNet 어텐션)의 결과를 자연어로 정리한 것이며, 최종 의사결정은 담당자의 검토를 거칩니다.",
+  "usage_metadata": {
+    "prompt_token_count": 2528,
+    "candidates_token_count": 376,
+    "total_token_count": 5177
+  },
+  "context_sent": {
+    "sample_idx": 18074,
+    "decision": "REJECT",
+    "default_probability": 0.9087,
+    "threshold": 0.476,
+    "agreed_drivers": [
+      {
+        "feature": "외부 신용평가 점수 3",
+        "feature_raw": "EXT_SOURCE_3",
+        "value": "0.105473",
+        "value_raw": 0.1054731864873376,
+        "rank": 1,
+        "group": "agreed",
+        "shap": 0.9498,
+        "attention": 0.592368,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "0.255991",
+        "value_raw": 0.2559908160055387,
+        "rank": 2,
+        "group": "agreed",
+        "shap": 0.3465,
+        "attention": 0.862037,
+        "sign_for_default": "+"
+      }
+    ],
+    "shap_only_drivers": [
+      {
+        "feature": "구매 대상 상품 가격",
+        "feature_raw": "AMT_GOODS_PRICE",
+        "value": "310,500",
+        "value_raw": 310500.0,
+        "rank": 1,
+        "group": "shap_only",
+        "shap": 0.2608,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "근무 조직 유형 (타깃 인코딩 값)",
+        "feature_raw": "ORGANIZATION_TYPE_TE",
+        "value": "0.1150 (타깃 인코딩 값)",
+        "value_raw": 0.11496350364963503,
+        "rank": 2,
+        "group": "shap_only",
+        "shap": 0.1154,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "거주지(도시 가중) 등급",
+        "feature_raw": "REGION_RATING_CLIENT_W_CITY",
+        "value": "3",
+        "value_raw": 3.0,
+        "rank": 3,
+        "group": "shap_only",
+        "shap": 0.099,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "대출 신청 금액",
+        "feature_raw": "AMT_CREDIT",
+        "value": "408,866",
+        "value_raw": 408865.5,
+        "rank": 4,
+        "group": "shap_only",
+        "shap": -0.0327,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "거주지 인구 밀도(상대값)",
+        "feature_raw": "REGION_POPULATION_RELATIVE",
+        "value": "0.002134",
+        "value_raw": 0.002134,
+        "rank": 5,
+        "group": "shap_only",
+        "shap": -0.0318,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "근무 전화 등록 여부",
+        "feature_raw": "FLAG_WORK_PHONE",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "rank": 6,
+        "group": "shap_only",
+        "shap": -0.0239,
+        "sign_for_default": "-"
+      }
+    ],
+    "attention_only_drivers": [
+      {
+        "feature": "FONDKAPREMONT_MODE_org spec account",
+        "feature_raw": "FONDKAPREMONT_MODE_org spec account",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "rank": 1,
+        "group": "attention_only",
+        "attention": 1.764843
+      },
+      {
+        "feature": "차량 보유: 있음",
+        "feature_raw": "FLAG_OWN_CAR_Y",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "rank": 2,
+        "group": "attention_only",
+        "attention": 0.368929
+      }
+    ],
+    "fairness_flags": [],
+    "model_predict": "XGBoost",
+    "model_explain": [
+      "SHAP_xgb_local",
+      "TabNet_attention_local"
+    ],
+    "explanation_policy": "fact_only_with_agreement_labels",
+    "masked_sensitive_features": [
+      "CODE_GENDER_F",
+      "CODE_GENDER_M"
+    ],
+    "n_agreed": 2,
+    "n_shap_only": 6,
+    "n_attention_only": 2
+  },
+  "context_type": "fusion",
+  "n_agreed": 2,
+  "n_shap_only": 6,
+  "n_attention_only": 2
+}

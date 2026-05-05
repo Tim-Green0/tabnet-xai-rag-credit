@@ -1,0 +1,144 @@
+{
+  "sample_idx": 18074,
+  "decision": "REJECT",
+  "true_label": 0,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "elapsed_sec": 15.39,
+  "explanation": "# 신용 평가 결과 안내\n\n## [결정 요약]\n신청 결과: 대출 신청이 거절되었습니다(예측 부도 확률 90.87%).\n\n---\n\n## [주요 거절 사유 — 두 해석 모델이 동의한 강한 신호]\n\n1. **외부 신용평가 점수 3이 0.105로 매우 낮습니다** (두 모델 동의, 가장 강력한 거절 요인)\n   - 이 점수는 외부 신용평가기관의 평가 결과로, 현재 신용 상태가 취약한 것으로 판단됩니다.\n\n2. **외부 신용평가 점수 2도 0.256으로 낮은 수준입니다** (두 모델 동의)\n   - 복수의 외부 신용평가 점수가 모두 낮아 신용 리스크가 높게 평가되었습니다.\n\n---\n\n## [보완적으로 고려된 요인]\n\n**SHAP 모델이 추가로 고려한 요인:**\n- 구매 대상 상품 가격(310,500원)과 거주지 도시 등급(3등급)이 부도 가능성을 높이는 방향으로 작용했습니다.\n- 근무 조직 유형의 타깃 인코딩 값(0.115)도 리스크 증가 요인으로 평가되었습니다.\n- 반면, 대출 신청 금액(408,866원)과 근무 전화 미등록은 소폭 긍정적으로 작용했습니다.\n\n**TabNet 어텐션 모델이 추가로 주목한 요인:**\n- 차량 보유 여부와 특정 주거 시설 관리 방식도 결정 과정에서 영향을 준 것으로 확인되었습니다.\n\n---\n\n## [개선 권고]\n\n1. **외부 신용평가 점수 개선이 가장 중요합니다**\n   - 기존 금융 거래 연체 해소, 신용카드 사용률 조정, 정기적인 금융 거래 이력 관리를 통해 신용 점수를 향상시켜 주세요.\n\n2. **일정 기간 후 재신청을 검토해 주세요**\n   - 신용 관리 활동을 6개월 이상 지속한 후 외부 신용평가 점수가 개선되면 재신청이 가능합니다.\n\n3. **금융 상담 서비스 이용을 권장합니다**\n   - 신용회복위원회나 금융복지상담센터를 통해 맞춤형 신용 관리 방안을 상담받으실 수 있습니다.\n\n---\n\n## [면책 고지]\n\n본 안내는 두 가지 해석 모델(SHAP 기여도 분석, TabNet 어텐션 분석)의 결과를 종합하여 자연어로 정리한 것입니다. 최종 신용 평가 결과는 내부 심사 기준과 담당자의 검토를 거쳐 확정되며, 본 설명은 참고 자료로만 활용됩니다.",
+  "usage_metadata": {
+    "input_tokens": 3032,
+    "output_tokens": 987,
+    "total_token_count": 4019
+  },
+  "context_sent": {
+    "sample_idx": 18074,
+    "decision": "REJECT",
+    "default_probability": 0.9087,
+    "threshold": 0.476,
+    "agreed_drivers": [
+      {
+        "feature": "외부 신용평가 점수 3",
+        "feature_raw": "EXT_SOURCE_3",
+        "value": "0.105473",
+        "value_raw": 0.1054731864873376,
+        "rank": 1,
+        "group": "agreed",
+        "shap": 0.9498,
+        "attention": 0.592368,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "0.255991",
+        "value_raw": 0.2559908160055387,
+        "rank": 2,
+        "group": "agreed",
+        "shap": 0.3465,
+        "attention": 0.862037,
+        "sign_for_default": "+"
+      }
+    ],
+    "shap_only_drivers": [
+      {
+        "feature": "구매 대상 상품 가격",
+        "feature_raw": "AMT_GOODS_PRICE",
+        "value": "310,500",
+        "value_raw": 310500.0,
+        "rank": 1,
+        "group": "shap_only",
+        "shap": 0.2608,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "근무 조직 유형 (타깃 인코딩 값)",
+        "feature_raw": "ORGANIZATION_TYPE_TE",
+        "value": "0.1150 (타깃 인코딩 값)",
+        "value_raw": 0.11496350364963503,
+        "rank": 2,
+        "group": "shap_only",
+        "shap": 0.1154,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "거주지(도시 가중) 등급",
+        "feature_raw": "REGION_RATING_CLIENT_W_CITY",
+        "value": "3",
+        "value_raw": 3.0,
+        "rank": 3,
+        "group": "shap_only",
+        "shap": 0.099,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "대출 신청 금액",
+        "feature_raw": "AMT_CREDIT",
+        "value": "408,866",
+        "value_raw": 408865.5,
+        "rank": 4,
+        "group": "shap_only",
+        "shap": -0.0327,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "거주지 인구 밀도(상대값)",
+        "feature_raw": "REGION_POPULATION_RELATIVE",
+        "value": "0.002134",
+        "value_raw": 0.002134,
+        "rank": 5,
+        "group": "shap_only",
+        "shap": -0.0318,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "근무 전화 등록 여부",
+        "feature_raw": "FLAG_WORK_PHONE",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "rank": 6,
+        "group": "shap_only",
+        "shap": -0.0239,
+        "sign_for_default": "-"
+      }
+    ],
+    "attention_only_drivers": [
+      {
+        "feature": "FONDKAPREMONT_MODE_org spec account",
+        "feature_raw": "FONDKAPREMONT_MODE_org spec account",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "rank": 1,
+        "group": "attention_only",
+        "attention": 1.764843
+      },
+      {
+        "feature": "차량 보유: 있음",
+        "feature_raw": "FLAG_OWN_CAR_Y",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "rank": 2,
+        "group": "attention_only",
+        "attention": 0.368929
+      }
+    ],
+    "fairness_flags": [],
+    "model_predict": "XGBoost",
+    "model_explain": [
+      "SHAP_xgb_local",
+      "TabNet_attention_local"
+    ],
+    "explanation_policy": "fact_only_with_agreement_labels",
+    "masked_sensitive_features": [
+      "CODE_GENDER_F",
+      "CODE_GENDER_M"
+    ],
+    "n_agreed": 2,
+    "n_shap_only": 6,
+    "n_attention_only": 2
+  },
+  "context_type": "fusion",
+  "n_agreed": 2,
+  "n_shap_only": 6,
+  "n_attention_only": 2
+}

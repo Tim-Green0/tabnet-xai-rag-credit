@@ -1,0 +1,154 @@
+{
+  "sample_idx": 50140,
+  "decision": "APPROVE",
+  "true_label": 0,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "elapsed_sec": 8.85,
+  "explanation": "[결정 요약]\n신청 결과: 대출 신청이 승인되었습니다(예측 부도 확률 3.3%).\n\n[주요 승인 사유 — 두 해석 모델이 동의한 강한 신호]\n1. 외부 신용평가 점수 2가 0.746으로 우수하게 평가되었습니다(두 모델 동의, 부도 가능성을 크게 낮춤).\n2. 외부 신용평가 점수 3도 0.742로 높은 수준입니다(두 모델 동의, 부도 가능성을 크게 낮춤).\n\n[보완적으로 고려된 요인]\n- SHAP 관점에서 신청 대출 유형(현금대출이 아님)이 부도 가능성을 낮추는 긍정 요인이었습니다.\n- SHAP 관점에서 14년의 재직 기간이 부도 가능성을 낮추는 긍정 요인이었습니다.\n- SHAP 관점에서 외부 신용평가 점수 1(0.618)도 부도 가능성을 낮추는 긍정 요인이었습니다.\n- TabNet 어텐션은 신청 대출 유형(리볼빙)과 학력(고등교육 이상)도 결정에 영향을 준 것으로 봤습니다.\n\n[개선 권고]\n- 현재 우수한 신용 상태를 유지하시면 향후 추가 금융 거래에도 유리합니다.\n- 구매 대상 상품 가격(450,000원)이 일부 부담 요인으로 작용했으니, 상환 계획을 철저히 수립하시길 권장합니다.\n\n[면책 고지]\n본 안내는 두 해석 모델(SHAP, TabNet 어텐션)의 결과를 자연어로 정리한 것이며, 최종 의사결정은 담당자의 검토를 거칩니다.",
+  "usage_metadata": {
+    "input_tokens": 3140,
+    "output_tokens": 624,
+    "total_token_count": 3764
+  },
+  "context_sent": {
+    "sample_idx": 50140,
+    "decision": "APPROVE",
+    "default_probability": 0.033,
+    "threshold": 0.476,
+    "agreed_drivers": [
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "0.746122",
+        "value_raw": 0.7461220608168586,
+        "rank": 1,
+        "group": "agreed",
+        "shap": -0.7647,
+        "attention": 0.702036,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "외부 신용평가 점수 3",
+        "feature_raw": "EXT_SOURCE_3",
+        "value": "0.742182",
+        "value_raw": 0.7421816117614419,
+        "rank": 2,
+        "group": "agreed",
+        "shap": -0.6851,
+        "attention": 0.529723,
+        "sign_for_default": "-"
+      }
+    ],
+    "shap_only_drivers": [
+      {
+        "feature": "신청 대출 유형: 현금대출",
+        "feature_raw": "NAME_CONTRACT_TYPE_Cash loans",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "rank": 1,
+        "group": "shap_only",
+        "shap": -0.4126,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "재직 일수(음수: 신청일 기준)",
+        "feature_raw": "DAYS_EMPLOYED",
+        "value": "14년 재직",
+        "value_raw": -5221.0,
+        "rank": 2,
+        "group": "shap_only",
+        "shap": -0.2674,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "외부 신용평가 점수 1",
+        "feature_raw": "EXT_SOURCE_1",
+        "value": "0.618406",
+        "value_raw": 0.6184064861528148,
+        "rank": 3,
+        "group": "shap_only",
+        "shap": -0.2332,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "구매 대상 상품 가격",
+        "feature_raw": "AMT_GOODS_PRICE",
+        "value": "450,000",
+        "value_raw": 450000.0,
+        "rank": 4,
+        "group": "shap_only",
+        "shap": 0.15,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "신분증 발급 후 경과 일수",
+        "feature_raw": "DAYS_ID_PUBLISH",
+        "value": "-1558",
+        "value_raw": -1558.0,
+        "rank": 5,
+        "group": "shap_only",
+        "shap": 0.0954,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "NONLIVINGAPARTMENTS_MEDI",
+        "feature_raw": "NONLIVINGAPARTMENTS_MEDI",
+        "value": "0.0116",
+        "value_raw": 0.0116,
+        "rank": 6,
+        "group": "shap_only",
+        "shap": 0.0433,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "최근 휴대폰 변경 후 경과 일수",
+        "feature_raw": "DAYS_LAST_PHONE_CHANGE",
+        "value": "-617",
+        "value_raw": -617.0,
+        "rank": 7,
+        "group": "shap_only",
+        "shap": 0.043,
+        "sign_for_default": "+"
+      }
+    ],
+    "attention_only_drivers": [
+      {
+        "feature": "신청 대출 유형: 리볼빙(한도 대출)",
+        "feature_raw": "NAME_CONTRACT_TYPE_Revolving loans",
+        "value": "예",
+        "value_raw": 1.0,
+        "rank": 1,
+        "group": "attention_only",
+        "attention": 6.718672
+      },
+      {
+        "feature": "학력: 고등교육 이상",
+        "feature_raw": "NAME_EDUCATION_TYPE_Higher education",
+        "value": "예",
+        "value_raw": 1.0,
+        "rank": 2,
+        "group": "attention_only",
+        "attention": 0.384343
+      }
+    ],
+    "fairness_flags": [],
+    "model_predict": "XGBoost",
+    "model_explain": [
+      "SHAP_xgb_local",
+      "TabNet_attention_local"
+    ],
+    "explanation_policy": "fact_only_with_agreement_labels",
+    "masked_sensitive_features": [
+      "CODE_GENDER_M",
+      "DAYS_BIRTH"
+    ],
+    "n_agreed": 2,
+    "n_shap_only": 7,
+    "n_attention_only": 2
+  },
+  "context_type": "fusion",
+  "n_agreed": 2,
+  "n_shap_only": 7,
+  "n_attention_only": 2
+}

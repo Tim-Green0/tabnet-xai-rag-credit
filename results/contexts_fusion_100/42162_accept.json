@@ -1,0 +1,146 @@
+{
+  "sample_idx": 42162,
+  "decision": "APPROVE",
+  "default_probability": 0.0218,
+  "threshold": 0.476,
+  "agreed_drivers": [
+    {
+      "feature": "외부 신용평가 점수 3",
+      "feature_raw": "EXT_SOURCE_3",
+      "value": "0.744932",
+      "value_raw": 0.7449321846094795,
+      "rank": 1,
+      "group": "agreed",
+      "shap": -0.7201,
+      "attention": 0.470274,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "외부 신용평가 점수 2",
+      "feature_raw": "EXT_SOURCE_2",
+      "value": "0.678115",
+      "value_raw": 0.6781152149638431,
+      "rank": 2,
+      "group": "agreed",
+      "shap": -0.5114,
+      "attention": 0.62325,
+      "sign_for_default": "-"
+    }
+  ],
+  "shap_only_drivers": [
+    {
+      "feature": "외부 신용평가 점수 1",
+      "feature_raw": "EXT_SOURCE_1",
+      "value": "0.852764",
+      "value_raw": 0.8527643333460425,
+      "rank": 1,
+      "group": "shap_only",
+      "shap": -0.5981,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "재직 일수(음수: 신청일 기준)",
+      "feature_raw": "DAYS_EMPLOYED",
+      "value": "16년 재직",
+      "value_raw": -5939.0,
+      "rank": 2,
+      "group": "shap_only",
+      "shap": -0.3319,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "신청 대출 유형: 현금대출",
+      "feature_raw": "NAME_CONTRACT_TYPE_Cash loans",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "rank": 3,
+      "group": "shap_only",
+      "shap": -0.2518,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "구매 대상 상품 가격",
+      "feature_raw": "AMT_GOODS_PRICE",
+      "value": "337,500",
+      "value_raw": 337500.0,
+      "rank": 4,
+      "group": "shap_only",
+      "shap": 0.1318,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "FLAG_OWN_CAR_N",
+      "feature_raw": "FLAG_OWN_CAR_N",
+      "value": "예",
+      "value_raw": 1.0,
+      "rank": 5,
+      "group": "shap_only",
+      "shap": 0.0305,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "거주지 인구 밀도(상대값)",
+      "feature_raw": "REGION_POPULATION_RELATIVE",
+      "value": "0.02461",
+      "value_raw": 0.02461,
+      "rank": 6,
+      "group": "shap_only",
+      "shap": 0.0259,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "거주지 등록 후 경과 일수",
+      "feature_raw": "DAYS_REGISTRATION",
+      "value": "9년 전 등록",
+      "value_raw": -3598.0,
+      "rank": 7,
+      "group": "shap_only",
+      "shap": 0.0196,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "TOTALAREA_MODE",
+      "feature_raw": "TOTALAREA_MODE",
+      "value": "0.084",
+      "value_raw": 0.084,
+      "rank": 8,
+      "group": "shap_only",
+      "shap": 0.0193,
+      "sign_for_default": "+"
+    }
+  ],
+  "attention_only_drivers": [
+    {
+      "feature": "신청 대출 유형: 리볼빙(한도 대출)",
+      "feature_raw": "NAME_CONTRACT_TYPE_Revolving loans",
+      "value": "예",
+      "value_raw": 1.0,
+      "rank": 1,
+      "group": "attention_only",
+      "attention": 6.758369
+    },
+    {
+      "feature": "학력: 고등교육 이상",
+      "feature_raw": "NAME_EDUCATION_TYPE_Higher education",
+      "value": "예",
+      "value_raw": 1.0,
+      "rank": 2,
+      "group": "attention_only",
+      "attention": 0.34121
+    }
+  ],
+  "fairness_flags": [],
+  "model_predict": "XGBoost",
+  "model_explain": [
+    "SHAP_xgb_local",
+    "TabNet_attention_local"
+  ],
+  "explanation_policy": "fact_only_with_agreement_labels",
+  "masked_sensitive_features": [
+    "CODE_GENDER_M"
+  ],
+  "n_agreed": 2,
+  "n_shap_only": 8,
+  "n_attention_only": 2,
+  "_meta_true_label": 0
+}

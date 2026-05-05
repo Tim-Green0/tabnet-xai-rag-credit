@@ -1,0 +1,3902 @@
+[
+  {
+    "idx": 54529,
+    "tag": "reject",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.9044190645217896,
+    "n_features_active": 11,
+    "top_k_attention": [
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 1.275979,
+        "value": -1.9289715279337503,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.905219,
+        "value": -2.168603741898213,
+        "rank": 2
+      },
+      {
+        "feature": "FONDKAPREMONT_MODE_org spec account",
+        "attention_score": 0.815798,
+        "value": 0.0,
+        "rank": 3
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.606768,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "DAYS_EMPLOYED",
+        "attention_score": 0.535666,
+        "value": -0.1957353745215965,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 54421,
+    "tag": "reject",
+    "true_label": 1,
+    "predicted_proba_xgb": 0.9333469867706299,
+    "n_features_active": 12,
+    "top_k_attention": [
+      {
+        "feature": "FONDKAPREMONT_MODE_org spec account",
+        "attention_score": 1.233065,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.933302,
+        "value": -1.904332869674386,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.685993,
+        "value": -1.7951175548661396,
+        "rank": 3
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.461636,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "FLAG_OWN_CAR_Y",
+        "attention_score": 0.413669,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 36556,
+    "tag": "reject",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.9251750111579895,
+    "n_features_active": 8,
+    "top_k_attention": [
+      {
+        "feature": "FONDKAPREMONT_MODE_org spec account",
+        "attention_score": 1.582733,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.767396,
+        "value": -1.3401087823164008,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.570993,
+        "value": -2.014320422870941,
+        "rank": 3
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.490789,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.40369,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 39518,
+    "tag": "reject",
+    "true_label": 1,
+    "predicted_proba_xgb": 0.8950796723365784,
+    "n_features_active": 13,
+    "top_k_attention": [
+      {
+        "feature": "FONDKAPREMONT_MODE_org spec account",
+        "attention_score": 0.849565,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.763286,
+        "value": -1.6428839821118126,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.542694,
+        "value": -1.5523558725631381,
+        "rank": 3
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.365275,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "FLAG_OWN_CAR_Y",
+        "attention_score": 0.317397,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 45114,
+    "tag": "reject",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.8994806408882141,
+    "n_features_active": 13,
+    "top_k_attention": [
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 1.153609,
+        "value": -1.9841945948993782,
+        "rank": 1
+      },
+      {
+        "feature": "FONDKAPREMONT_MODE_org spec account",
+        "attention_score": 0.793334,
+        "value": 0.0,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.759696,
+        "value": -1.7573516472866206,
+        "rank": 3
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.529187,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "ORGANIZATION_TYPE_TE",
+        "attention_score": 0.46057,
+        "value": 1.2083037079233205,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 60085,
+    "tag": "reject",
+    "true_label": 1,
+    "predicted_proba_xgb": 0.9013859033584595,
+    "n_features_active": 11,
+    "top_k_attention": [
+      {
+        "feature": "FONDKAPREMONT_MODE_org spec account",
+        "attention_score": 1.43003,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.85706,
+        "value": -1.7696801636132355,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.572941,
+        "value": -1.5834605664935113,
+        "rank": 3
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.396212,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "ORGANIZATION_TYPE_TE",
+        "attention_score": 0.388568,
+        "value": 1.0677140047563858,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 35000,
+    "tag": "reject",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.9105468988418579,
+    "n_features_active": 7,
+    "top_k_attention": [
+      {
+        "feature": "FONDKAPREMONT_MODE_reg oper spec account",
+        "attention_score": 0.708862,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.678832,
+        "value": 0.0417876951369697,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.503229,
+        "value": -2.1266870658968964,
+        "rank": 3
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.372587,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.34582,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 46935,
+    "tag": "reject",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.8933404684066772,
+    "n_features_active": 11,
+    "top_k_attention": [
+      {
+        "feature": "FONDKAPREMONT_MODE_org spec account",
+        "attention_score": 1.556567,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.475961,
+        "value": -1.847941217756347,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.338756,
+        "value": 0.0,
+        "rank": 3
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.229362,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "FLAG_OWN_CAR_Y",
+        "attention_score": 0.203079,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 12908,
+    "tag": "reject",
+    "true_label": 1,
+    "predicted_proba_xgb": 0.8926757574081421,
+    "n_features_active": 11,
+    "top_k_attention": [
+      {
+        "feature": "FONDKAPREMONT_MODE_org spec account",
+        "attention_score": 1.265139,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.701182,
+        "value": -1.1881407555254384,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.498595,
+        "value": -1.6137437206229281,
+        "rank": 3
+      },
+      {
+        "feature": "DAYS_EMPLOYED",
+        "attention_score": 0.335517,
+        "value": -0.1793329688354292,
+        "rank": 4
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.33455,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 31079,
+    "tag": "reject",
+    "true_label": 1,
+    "predicted_proba_xgb": 0.9206804037094116,
+    "n_features_active": 11,
+    "top_k_attention": [
+      {
+        "feature": "FONDKAPREMONT_MODE_org spec account",
+        "attention_score": 1.002464,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.722439,
+        "value": -1.9841945948993782,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.531516,
+        "value": -0.8932196110160622,
+        "rank": 3
+      },
+      {
+        "feature": "DAYS_EMPLOYED",
+        "attention_score": 0.504999,
+        "value": 0.29305631492618917,
+        "rank": 4
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.356871,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 716,
+    "tag": "reject",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.9109636545181274,
+    "n_features_active": 12,
+    "top_k_attention": [
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 1.12529,
+        "value": -1.3478312628014528,
+        "rank": 1
+      },
+      {
+        "feature": "FONDKAPREMONT_MODE_org spec account",
+        "attention_score": 1.105012,
+        "value": 0.0,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.803719,
+        "value": -2.168603741898213,
+        "rank": 3
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.53797,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "FLAG_OWN_CAR_Y",
+        "attention_score": 0.463288,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 8657,
+    "tag": "reject",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.8919638395309448,
+    "n_features_active": 19,
+    "top_k_attention": [
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.725865,
+        "value": -1.8417812247440004,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.517485,
+        "value": -1.4312341087849747,
+        "rank": 2
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.361227,
+        "value": 0.0,
+        "rank": 3
+      },
+      {
+        "feature": "FLAG_OWN_CAR_Y",
+        "attention_score": 0.350312,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.257743,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 47034,
+    "tag": "reject",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.8943696022033691,
+    "n_features_active": 12,
+    "top_k_attention": [
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 1.10114,
+        "value": -1.9841945948993782,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.796597,
+        "value": -1.7992079444922893,
+        "rank": 2
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.533582,
+        "value": 1.0,
+        "rank": 3
+      },
+      {
+        "feature": "NAME_INCOME_TYPE_Working",
+        "attention_score": 0.481328,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "FLAG_OWN_CAR_Y",
+        "attention_score": 0.466617,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 38378,
+    "tag": "reject",
+    "true_label": 1,
+    "predicted_proba_xgb": 0.9090769290924072,
+    "n_features_active": 17,
+    "top_k_attention": [
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 1.042273,
+        "value": -1.3325780419521254,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.742884,
+        "value": -2.0172138388774545,
+        "rank": 2
+      },
+      {
+        "feature": "FONDKAPREMONT_MODE_org spec account",
+        "attention_score": 0.523083,
+        "value": 0.0,
+        "rank": 3
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.497483,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "FLAG_OWN_CAR_Y",
+        "attention_score": 0.42741,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 16847,
+    "tag": "reject",
+    "true_label": 1,
+    "predicted_proba_xgb": 0.8915111422538757,
+    "n_features_active": 11,
+    "top_k_attention": [
+      {
+        "feature": "FONDKAPREMONT_MODE_org spec account",
+        "attention_score": 1.390201,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.682254,
+        "value": -1.8153069756488083,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.501532,
+        "value": -1.3544434396056388,
+        "rank": 3
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.337957,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "FLAG_OWN_CAR_Y",
+        "attention_score": 0.303827,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 14446,
+    "tag": "reject",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.8924795389175415,
+    "n_features_active": 10,
+    "top_k_attention": [
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.699834,
+        "value": -0.7999065422706934,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.513677,
+        "value": -1.922783602054167,
+        "rank": 2
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.372172,
+        "value": 0.0,
+        "rank": 3
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.359875,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "FLAG_OWN_CAR_Y",
+        "attention_score": 0.328362,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 46921,
+    "tag": "reject",
+    "true_label": 1,
+    "predicted_proba_xgb": 0.9168193936347961,
+    "n_features_active": 11,
+    "top_k_attention": [
+      {
+        "feature": "FONDKAPREMONT_MODE_org spec account",
+        "attention_score": 1.552191,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.593072,
+        "value": -1.8536963035284246,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.417967,
+        "value": -0.5912470015024278,
+        "rank": 3
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.283476,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "FLAG_OWN_CAR_Y",
+        "attention_score": 0.247821,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 35284,
+    "tag": "reject",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.8958753943443298,
+    "n_features_active": 11,
+    "top_k_attention": [
+      {
+        "feature": "FONDKAPREMONT_MODE_org spec account",
+        "attention_score": 1.753622,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.321807,
+        "value": -1.4900600766587813,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.229939,
+        "value": -0.1240281798615699,
+        "rank": 3
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.160163,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "FLAG_OWN_CAR_Y",
+        "attention_score": 0.15463,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 49098,
+    "tag": "reject",
+    "true_label": 1,
+    "predicted_proba_xgb": 0.9079292416572571,
+    "n_features_active": 14,
+    "top_k_attention": [
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 1.006161,
+        "value": -1.4100304238228347,
+        "rank": 1
+      },
+      {
+        "feature": "FONDKAPREMONT_MODE_org spec account",
+        "attention_score": 0.782519,
+        "value": 0.0,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.714155,
+        "value": -1.8876181663417448,
+        "rank": 3
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.478803,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "FLAG_OWN_CAR_Y",
+        "attention_score": 0.409637,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 7352,
+    "tag": "reject",
+    "true_label": 1,
+    "predicted_proba_xgb": 0.9106923937797546,
+    "n_features_active": 11,
+    "top_k_attention": [
+      {
+        "feature": "FONDKAPREMONT_MODE_org spec account",
+        "attention_score": 1.324091,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 1.170853,
+        "value": -1.6112391598076106,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.785612,
+        "value": -2.055990338181176,
+        "rank": 3
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.540036,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.43713,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 22867,
+    "tag": "reject",
+    "true_label": 1,
+    "predicted_proba_xgb": 0.9003299474716187,
+    "n_features_active": 11,
+    "top_k_attention": [
+      {
+        "feature": "FONDKAPREMONT_MODE_org spec account",
+        "attention_score": 1.652012,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.824279,
+        "value": -1.2008318717073834,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.585693,
+        "value": -1.8983702978906654,
+        "rank": 3
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.39966,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "FLAG_OWN_CAR_Y",
+        "attention_score": 0.361137,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 6279,
+    "tag": "reject",
+    "true_label": 1,
+    "predicted_proba_xgb": 0.9316908121109009,
+    "n_features_active": 11,
+    "top_k_attention": [
+      {
+        "feature": "FONDKAPREMONT_MODE_org spec account",
+        "attention_score": 1.407229,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 1.278594,
+        "value": -1.9841945948993782,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.912522,
+        "value": -2.1398144328313617,
+        "rank": 3
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.610893,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "FLAG_OWN_CAR_Y",
+        "attention_score": 0.525634,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 41186,
+    "tag": "reject",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.8961780071258545,
+    "n_features_active": 17,
+    "top_k_attention": [
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.853331,
+        "value": -1.4521307709833473,
+        "rank": 1
+      },
+      {
+        "feature": "FONDKAPREMONT_MODE_org spec account",
+        "attention_score": 0.631974,
+        "value": 0.0,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.615762,
+        "value": -1.9261950526210798,
+        "rank": 3
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.433944,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "FLAG_OWN_CAR_Y",
+        "attention_score": 0.432915,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 60240,
+    "tag": "reject",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.9049059152603149,
+    "n_features_active": 8,
+    "top_k_attention": [
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.947892,
+        "value": -1.9621625341318474,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.688729,
+        "value": -1.7701318770374797,
+        "rank": 2
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.492811,
+        "value": 1.0,
+        "rank": 3
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.48493,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "FLAG_OWN_CAR_Y",
+        "attention_score": 0.478738,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 30233,
+    "tag": "reject",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.9111306667327881,
+    "n_features_active": 14,
+    "top_k_attention": [
+      {
+        "feature": "FONDKAPREMONT_MODE_org spec account",
+        "attention_score": 1.359598,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.521966,
+        "value": -1.3234330549120579,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.364703,
+        "value": -1.2610888917709675,
+        "rank": 3
+      },
+      {
+        "feature": "FLAG_OWN_CAR_Y",
+        "attention_score": 0.277038,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.264762,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 19233,
+    "tag": "reject",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.9142743349075317,
+    "n_features_active": 11,
+    "top_k_attention": [
+      {
+        "feature": "FONDKAPREMONT_MODE_org spec account",
+        "attention_score": 1.852395,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.972606,
+        "value": -1.7288597802480012,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.704461,
+        "value": -2.0965269444799683,
+        "rank": 3
+      },
+      {
+        "feature": "FLAG_OWN_CAR_Y",
+        "attention_score": 0.497463,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.496857,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 49016,
+    "tag": "reject",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.9078501462936401,
+    "n_features_active": 7,
+    "top_k_attention": [
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.788618,
+        "value": -1.241503361489773,
+        "rank": 1
+      },
+      {
+        "feature": "FONDKAPREMONT_MODE_reg oper spec account",
+        "attention_score": 0.708862,
+        "value": 0.0,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.584616,
+        "value": -1.7267765918198847,
+        "rank": 3
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.432845,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.401749,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 20633,
+    "tag": "reject",
+    "true_label": 1,
+    "predicted_proba_xgb": 0.9109621047973633,
+    "n_features_active": 12,
+    "top_k_attention": [
+      {
+        "feature": "FONDKAPREMONT_MODE_org spec account",
+        "attention_score": 1.130538,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 1.036238,
+        "value": -1.868166479584142,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.763875,
+        "value": -1.8153604035259499,
+        "rank": 3
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.513363,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "DAYS_EMPLOYED",
+        "attention_score": 0.482759,
+        "value": 0.7916894477856752,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 35357,
+    "tag": "reject",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.9002189040184021,
+    "n_features_active": 14,
+    "top_k_attention": [
+      {
+        "feature": "FONDKAPREMONT_MODE_org spec account",
+        "attention_score": 1.104186,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 1.103444,
+        "value": -1.7819199065243057,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.809805,
+        "value": -1.9875118741671414,
+        "rank": 3
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.547834,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "FLAG_OWN_CAR_Y",
+        "attention_score": 0.497264,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 10629,
+    "tag": "reject",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.8985104560852051,
+    "n_features_active": 10,
+    "top_k_attention": [
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 1.018118,
+        "value": -1.7338664101696983,
+        "rank": 1
+      },
+      {
+        "feature": "DAYS_EMPLOYED",
+        "attention_score": 0.819678,
+        "value": 0.7987971569163478,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.757525,
+        "value": -2.168603741898213,
+        "rank": 3
+      },
+      {
+        "feature": "FONDKAPREMONT_MODE_org spec account",
+        "attention_score": 0.708054,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.513729,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 14928,
+    "tag": "reject",
+    "true_label": 1,
+    "predicted_proba_xgb": 0.9363319277763367,
+    "n_features_active": 12,
+    "top_k_attention": [
+      {
+        "feature": "FONDKAPREMONT_MODE_org spec account",
+        "attention_score": 1.870145,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 1.029452,
+        "value": -1.9841945948993782,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.729012,
+        "value": -1.9592847434998455,
+        "rank": 3
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.510955,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "FLAG_OWN_CAR_Y",
+        "attention_score": 0.496091,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 49741,
+    "tag": "reject",
+    "true_label": 1,
+    "predicted_proba_xgb": 0.9305158853530884,
+    "n_features_active": 11,
+    "top_k_attention": [
+      {
+        "feature": "FONDKAPREMONT_MODE_org spec account",
+        "attention_score": 1.815838,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.85814,
+        "value": -1.9841945948993782,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.621087,
+        "value": -1.3604871086512167,
+        "rank": 3
+      },
+      {
+        "feature": "FLAG_OWN_CAR_Y",
+        "attention_score": 0.439447,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.438286,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 54611,
+    "tag": "reject",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.916875422000885,
+    "n_features_active": 16,
+    "top_k_attention": [
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.780067,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.712746,
+        "value": -1.9841945948993782,
+        "rank": 2
+      },
+      {
+        "feature": "FONDKAPREMONT_MODE_org spec account",
+        "attention_score": 0.701046,
+        "value": 0.0,
+        "rank": 3
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.520486,
+        "value": -2.0314303556033293,
+        "rank": 4
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.395487,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 58103,
+    "tag": "reject",
+    "true_label": 1,
+    "predicted_proba_xgb": 0.9095103740692139,
+    "n_features_active": 11,
+    "top_k_attention": [
+      {
+        "feature": "FONDKAPREMONT_MODE_org spec account",
+        "attention_score": 1.17857,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 1.005342,
+        "value": -0.9134359098646002,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.678436,
+        "value": -2.1524618438204106,
+        "rank": 3
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.46489,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "DAYS_EMPLOYED",
+        "attention_score": 0.457531,
+        "value": 0.8403499179879715,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 42470,
+    "tag": "reject",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.8961341977119446,
+    "n_features_active": 8,
+    "top_k_attention": [
+      {
+        "feature": "FONDKAPREMONT_MODE_org spec account",
+        "attention_score": 1.201726,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.837783,
+        "value": -1.7351279053448274,
+        "rank": 2
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.667079,
+        "value": 0.0,
+        "rank": 3
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.623847,
+        "value": -1.8876181663417448,
+        "rank": 4
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.448302,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 30827,
+    "tag": "reject",
+    "true_label": 1,
+    "predicted_proba_xgb": 0.903374969959259,
+    "n_features_active": 12,
+    "top_k_attention": [
+      {
+        "feature": "FONDKAPREMONT_MODE_org spec account",
+        "attention_score": 1.834789,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.619786,
+        "value": 0.05361225512307025,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.441264,
+        "value": -1.8193465259464654,
+        "rank": 3
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.304438,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "FLAG_OWN_CAR_Y",
+        "attention_score": 0.284874,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 48252,
+    "tag": "reject",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.8980372548103333,
+    "n_features_active": 15,
+    "top_k_attention": [
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 1.007127,
+        "value": -1.936361444138891,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.755991,
+        "value": -2.168603741898213,
+        "rank": 2
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.536389,
+        "value": 0.0,
+        "rank": 3
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.519158,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "FLAG_OWN_CAR_Y",
+        "attention_score": 0.450669,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 57568,
+    "tag": "reject",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.8978754878044128,
+    "n_features_active": 12,
+    "top_k_attention": [
+      {
+        "feature": "FONDKAPREMONT_MODE_org spec account",
+        "attention_score": 1.284182,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.800701,
+        "value": -0.5177665037258469,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.594814,
+        "value": -1.984446526117818,
+        "rank": 3
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.401882,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "FLAG_OWN_CAR_Y",
+        "attention_score": 0.360471,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 38152,
+    "tag": "reject",
+    "true_label": 1,
+    "predicted_proba_xgb": 0.8944879174232483,
+    "n_features_active": 13,
+    "top_k_attention": [
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.694639,
+        "value": -1.9841945948993782,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.497925,
+        "value": -1.6383556055192932,
+        "rank": 2
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.420457,
+        "value": 0.0,
+        "rank": 3
+      },
+      {
+        "feature": "FLAG_OWN_CAR_Y",
+        "attention_score": 0.396485,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.374103,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 17137,
+    "tag": "reject",
+    "true_label": 1,
+    "predicted_proba_xgb": 0.9094147682189941,
+    "n_features_active": 7,
+    "top_k_attention": [
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.737007,
+        "value": -1.9841945948993782,
+        "rank": 1
+      },
+      {
+        "feature": "FONDKAPREMONT_MODE_reg oper spec account",
+        "attention_score": 0.708862,
+        "value": 0.0,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.546356,
+        "value": -1.2092623000299616,
+        "rank": 3
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.404518,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.375457,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 18074,
+    "tag": "reject",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.9087417721748352,
+    "n_features_active": 12,
+    "top_k_attention": [
+      {
+        "feature": "FONDKAPREMONT_MODE_org spec account",
+        "attention_score": 1.764843,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.862037,
+        "value": -1.14692555652914,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.592368,
+        "value": -1.975144688679953,
+        "rank": 3
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.412385,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "FLAG_OWN_CAR_Y",
+        "attention_score": 0.368929,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 33173,
+    "tag": "reject",
+    "true_label": 1,
+    "predicted_proba_xgb": 0.89058917760849,
+    "n_features_active": 14,
+    "top_k_attention": [
+      {
+        "feature": "FONDKAPREMONT_MODE_org spec account",
+        "attention_score": 0.847706,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.655933,
+        "value": -1.8470123987922997,
+        "rank": 2
+      },
+      {
+        "feature": "DAYS_EMPLOYED",
+        "attention_score": 0.504857,
+        "value": 0.8042646254784035,
+        "rank": 3
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.471057,
+        "value": -1.1960886293035315,
+        "rank": 4
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.315103,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 22798,
+    "tag": "reject",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.9230743646621704,
+    "n_features_active": 13,
+    "top_k_attention": [
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.862218,
+        "value": -1.9841945948993782,
+        "rank": 1
+      },
+      {
+        "feature": "FLAG_OWN_CAR_Y",
+        "attention_score": 0.65512,
+        "value": 0.0,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.589472,
+        "value": -2.168603741898213,
+        "rank": 3
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.480214,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.389832,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 40516,
+    "tag": "reject",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.9270710349082947,
+    "n_features_active": 12,
+    "top_k_attention": [
+      {
+        "feature": "FONDKAPREMONT_MODE_org spec account",
+        "attention_score": 1.788985,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.928919,
+        "value": -1.9841945948993782,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.673712,
+        "value": -1.786873657381648,
+        "rank": 3
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.473449,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "FLAG_OWN_CAR_Y",
+        "attention_score": 0.470126,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 58349,
+    "tag": "reject",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.9006996750831604,
+    "n_features_active": 7,
+    "top_k_attention": [
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.720333,
+        "value": -0.03551603099480144,
+        "rank": 1
+      },
+      {
+        "feature": "FONDKAPREMONT_MODE_reg oper spec account",
+        "attention_score": 0.708862,
+        "value": 0.0,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.533995,
+        "value": -2.103701151484174,
+        "rank": 3
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.395365,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.366963,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 1062,
+    "tag": "reject",
+    "true_label": 1,
+    "predicted_proba_xgb": 0.8906570672988892,
+    "n_features_active": 12,
+    "top_k_attention": [
+      {
+        "feature": "FONDKAPREMONT_MODE_reg oper spec account",
+        "attention_score": 0.417084,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.293188,
+        "value": -1.660547404615591,
+        "rank": 2
+      },
+      {
+        "feature": "FONDKAPREMONT_MODE_org spec account",
+        "attention_score": 0.250237,
+        "value": 0.0,
+        "rank": 3
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.215564,
+        "value": -0.03301151531264143,
+        "rank": 4
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.156615,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 47048,
+    "tag": "reject",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.9252604246139526,
+    "n_features_active": 7,
+    "top_k_attention": [
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.984469,
+        "value": -1.9841945948993782,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.729803,
+        "value": -2.1289089183191923,
+        "rank": 2
+      },
+      {
+        "feature": "FONDKAPREMONT_MODE_reg oper spec account",
+        "attention_score": 0.708862,
+        "value": 0.0,
+        "rank": 3
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.54034,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.501523,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 12512,
+    "tag": "reject",
+    "true_label": 1,
+    "predicted_proba_xgb": 0.929922342300415,
+    "n_features_active": 21,
+    "top_k_attention": [
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.887677,
+        "value": -0.45145785034755587,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.63733,
+        "value": -2.1199387671835184,
+        "rank": 2
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.430509,
+        "value": 1.0,
+        "rank": 3
+      },
+      {
+        "feature": "FLAG_OWN_CAR_Y",
+        "attention_score": 0.380847,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.334646,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 54563,
+    "tag": "reject",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.8968102335929871,
+    "n_features_active": 11,
+    "top_k_attention": [
+      {
+        "feature": "FONDKAPREMONT_MODE_org spec account",
+        "attention_score": 1.840172,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.396629,
+        "value": -1.788064783607215,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.28522,
+        "value": 0.0,
+        "rank": 3
+      },
+      {
+        "feature": "FLAG_OWN_CAR_Y",
+        "attention_score": 0.21216,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.204397,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 57645,
+    "tag": "reject",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.9076630473136902,
+    "n_features_active": 13,
+    "top_k_attention": [
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.896679,
+        "value": -1.9841945948993782,
+        "rank": 1
+      },
+      {
+        "feature": "FLAG_OWN_CAR_Y",
+        "attention_score": 0.733484,
+        "value": 0.0,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.593458,
+        "value": -2.168603741898213,
+        "rank": 3
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.504006,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.268694,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 5886,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.03504383936524391,
+    "n_features_active": 7,
+    "top_k_attention": [
+      {
+        "feature": "NAME_CONTRACT_TYPE_Revolving loans",
+        "attention_score": 6.758369,
+        "value": 1.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.19668,
+        "value": 0.21205877628005138,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.148405,
+        "value": -0.1654561817278268,
+        "rank": 3
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.107676,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.101066,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 57037,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.021647771820425987,
+    "n_features_active": 7,
+    "top_k_attention": [
+      {
+        "feature": "NAME_CONTRACT_TYPE_Revolving loans",
+        "attention_score": 6.758369,
+        "value": 1.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.605201,
+        "value": 0.7261079408658975,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.456655,
+        "value": 0.9444728874714255,
+        "rank": 3
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.331329,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.310988,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 60717,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.03235635533928871,
+    "n_features_active": 7,
+    "top_k_attention": [
+      {
+        "feature": "NAME_CONTRACT_TYPE_Revolving loans",
+        "attention_score": 3.192513,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.604915,
+        "value": 0.6381946915487374,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.448434,
+        "value": 1.2079682852088784,
+        "rank": 3
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.332017,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.308165,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 40525,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.03526460751891136,
+    "n_features_active": 10,
+    "top_k_attention": [
+      {
+        "feature": "NAME_CONTRACT_TYPE_Revolving loans",
+        "attention_score": 2.328168,
+        "value": 1.0,
+        "rank": 1
+      },
+      {
+        "feature": "YEARS_BUILD_MODE",
+        "attention_score": 1.193887,
+        "value": -0.05230000000000001,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.28307,
+        "value": 0.2417841304131955,
+        "rank": 3
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.209845,
+        "value": -0.2151645430991711,
+        "rank": 4
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.155367,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 22226,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.030545856803655624,
+    "n_features_active": 8,
+    "top_k_attention": [
+      {
+        "feature": "NAME_CONTRACT_TYPE_Revolving loans",
+        "attention_score": 3.184587,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.850878,
+        "value": 0.69092748019684,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.63077,
+        "value": 1.0731848831331083,
+        "rank": 3
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.467017,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.433467,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 6071,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.03310226649045944,
+    "n_features_active": 8,
+    "top_k_attention": [
+      {
+        "feature": "NAME_CONTRACT_TYPE_Revolving loans",
+        "attention_score": 6.758369,
+        "value": 1.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.449396,
+        "value": 0.3433080462223269,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.334227,
+        "value": 0.3949805695224097,
+        "rank": 3
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.230182,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.229888,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 37421,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.028812488541007042,
+    "n_features_active": 7,
+    "top_k_attention": [
+      {
+        "feature": "NAME_CONTRACT_TYPE_Revolving loans",
+        "attention_score": 3.192513,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.720549,
+        "value": 0.20424962298467692,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.534155,
+        "value": 1.1422310958717565,
+        "rank": 3
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.395484,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.367073,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 11697,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.026988569647073746,
+    "n_features_active": 7,
+    "top_k_attention": [
+      {
+        "feature": "NAME_CONTRACT_TYPE_Revolving loans",
+        "attention_score": 3.192513,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.610064,
+        "value": 0.6353209851218421,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.452251,
+        "value": 0.3949805695224097,
+        "rank": 3
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.334843,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.310788,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 54108,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.02573912963271141,
+    "n_features_active": 9,
+    "top_k_attention": [
+      {
+        "feature": "NAME_CONTRACT_TYPE_Revolving loans",
+        "attention_score": 3.180299,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.070998,
+        "value": 0.8013360868654147,
+        "rank": 2
+      },
+      {
+        "feature": "FLAG_DOCUMENT_17",
+        "attention_score": 0.055006,
+        "value": 0.0,
+        "rank": 3
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.052632,
+        "value": -1.0101019007258372,
+        "rank": 4
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.038968,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 7950,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.03256601467728615,
+    "n_features_active": 8,
+    "top_k_attention": [
+      {
+        "feature": "NAME_CONTRACT_TYPE_Revolving loans",
+        "attention_score": 4.839182,
+        "value": 1.0,
+        "rank": 1
+      },
+      {
+        "feature": "AMT_CREDIT",
+        "attention_score": 0.671662,
+        "value": 0.7150793650793651,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.39266,
+        "value": 0.3570250812334488,
+        "rank": 3
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.296268,
+        "value": 0.27655483029409555,
+        "rank": 4
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.215201,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 19774,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.030904030427336693,
+    "n_features_active": 9,
+    "top_k_attention": [
+      {
+        "feature": "NAME_CONTRACT_TYPE_Revolving loans",
+        "attention_score": 3.118657,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.621099,
+        "value": 0.8014471149526323,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.460431,
+        "value": 0.6729121420096051,
+        "rank": 3
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.340899,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.316409,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 49044,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.032708875834941864,
+    "n_features_active": 8,
+    "top_k_attention": [
+      {
+        "feature": "NAME_CONTRACT_TYPE_Revolving loans",
+        "attention_score": 3.133667,
+        "value": 1.0,
+        "rank": 1
+      },
+      {
+        "feature": "YEARS_BUILD_MODE",
+        "attention_score": 1.158819,
+        "value": 0.0,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.762266,
+        "value": 0.6876909348208722,
+        "rank": 3
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.565278,
+        "value": 1.0070037634286035,
+        "rank": 4
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.414919,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 9363,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.011915257200598717,
+    "n_features_active": 8,
+    "top_k_attention": [
+      {
+        "feature": "NAME_CONTRACT_TYPE_Revolving loans",
+        "attention_score": 6.75837,
+        "value": 1.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.58175,
+        "value": 0.5743466003898607,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.438961,
+        "value": 0.5480230553484724,
+        "rank": 3
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.31849,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.298938,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 15274,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.034857090562582016,
+    "n_features_active": 10,
+    "top_k_attention": [
+      {
+        "feature": "NAME_CONTRACT_TYPE_Revolving loans",
+        "attention_score": 3.176856,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.570699,
+        "value": -0.5910163803358748,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.423069,
+        "value": 0.9316999396017566,
+        "rank": 3
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.313237,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.290734,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 48299,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.034246571362018585,
+    "n_features_active": 9,
+    "top_k_attention": [
+      {
+        "feature": "NAME_CONTRACT_TYPE_Revolving loans",
+        "attention_score": 6.748421,
+        "value": 1.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.827697,
+        "value": 0.7548633248895639,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.615579,
+        "value": 0.8196247427670383,
+        "rank": 3
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.423949,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.423408,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 3112,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.026605181396007538,
+    "n_features_active": 8,
+    "top_k_attention": [
+      {
+        "feature": "NAME_CONTRACT_TYPE_Revolving loans",
+        "attention_score": 2.963697,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "FLAG_DOCUMENT_17",
+        "attention_score": 1.02629,
+        "value": 0.0,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.815389,
+        "value": 0.6176312299492814,
+        "rank": 3
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.604462,
+        "value": 1.1252793680251076,
+        "rank": 4
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.447538,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 46755,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.02843206748366356,
+    "n_features_active": 8,
+    "top_k_attention": [
+      {
+        "feature": "NAME_CONTRACT_TYPE_Revolving loans",
+        "attention_score": 4.938392,
+        "value": 1.0,
+        "rank": 1
+      },
+      {
+        "feature": "YEARS_BUILD_MODE",
+        "attention_score": 0.659675,
+        "value": -0.09800000000000009,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.546523,
+        "value": 0.6353366179883738,
+        "rank": 3
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.411943,
+        "value": 0.5330001994103776,
+        "rank": 4
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.299086,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 28974,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.02835528925061226,
+    "n_features_active": 10,
+    "top_k_attention": [
+      {
+        "feature": "NAME_CONTRACT_TYPE_Revolving loans",
+        "attention_score": 3.537049,
+        "value": 1.0,
+        "rank": 1
+      },
+      {
+        "feature": "YEARS_BUILD_MODE",
+        "attention_score": 0.696091,
+        "value": 0.0,
+        "rank": 2
+      },
+      {
+        "feature": "YEARS_BEGINEXPLUATATION_AVG",
+        "attention_score": 0.401359,
+        "value": 18.000000000002,
+        "rank": 3
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.285767,
+        "value": -0.14999639228560258,
+        "rank": 4
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.212044,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 5429,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.013319362886250019,
+    "n_features_active": 7,
+    "top_k_attention": [
+      {
+        "feature": "NAME_CONTRACT_TYPE_Revolving loans",
+        "attention_score": 6.758369,
+        "value": 1.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.548486,
+        "value": 0.546684463167889,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.413861,
+        "value": 0.28453358556671837,
+        "rank": 3
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.300279,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.281845,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 19882,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.0308368057012558,
+    "n_features_active": 7,
+    "top_k_attention": [
+      {
+        "feature": "NAME_CONTRACT_TYPE_Revolving loans",
+        "attention_score": 3.192513,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.729909,
+        "value": 0.6591712889644653,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.541094,
+        "value": 0.9760175415263205,
+        "rank": 3
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.400622,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.371841,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 50140,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.03299052640795708,
+    "n_features_active": 8,
+    "top_k_attention": [
+      {
+        "feature": "NAME_CONTRACT_TYPE_Revolving loans",
+        "attention_score": 6.718672,
+        "value": 1.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.702036,
+        "value": 0.6652953304646758,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.529723,
+        "value": 0.9508262263654297,
+        "rank": 3
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.384343,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.360748,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 26367,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.023304134607315063,
+    "n_features_active": 8,
+    "top_k_attention": [
+      {
+        "feature": "NAME_CONTRACT_TYPE_Revolving loans",
+        "attention_score": 6.758369,
+        "value": 1.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.738337,
+        "value": 0.2788925961285282,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.54912,
+        "value": 1.1645114774805618,
+        "rank": 3
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.378178,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.377696,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 29583,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.028677072376012802,
+    "n_features_active": 9,
+    "top_k_attention": [
+      {
+        "feature": "NAME_CONTRACT_TYPE_Revolving loans",
+        "attention_score": 6.159374,
+        "value": 1.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.731825,
+        "value": 0.7751449878391371,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.544277,
+        "value": 0.9884793376000887,
+        "rank": 3
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.374843,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.374365,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 4102,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.036325711756944656,
+    "n_features_active": 7,
+    "top_k_attention": [
+      {
+        "feature": "NAME_CONTRACT_TYPE_Revolving loans",
+        "attention_score": 3.192513,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.531592,
+        "value": 0.8014471149526323,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.394078,
+        "value": 0.3636764474273752,
+        "rank": 3
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.291772,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.270811,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 51823,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.029088594019412994,
+    "n_features_active": 11,
+    "top_k_attention": [
+      {
+        "feature": "NAME_CONTRACT_TYPE_Revolving loans",
+        "attention_score": 5.682844,
+        "value": 1.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.678992,
+        "value": 0.6878265722657669,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.504984,
+        "value": 0.4338026526476026,
+        "rank": 3
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.347782,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.347338,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 54935,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.02090279757976532,
+    "n_features_active": 10,
+    "top_k_attention": [
+      {
+        "feature": "NAME_CONTRACT_TYPE_Revolving loans",
+        "attention_score": 5.0519,
+        "value": 1.0,
+        "rank": 1
+      },
+      {
+        "feature": "FLAG_DOCUMENT_17",
+        "attention_score": 0.780558,
+        "value": 0.0,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.688874,
+        "value": 0.8014471149526323,
+        "rank": 3
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.510837,
+        "value": 1.0494371251122416,
+        "rank": 4
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.375484,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 58273,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.025062130764126778,
+    "n_features_active": 8,
+    "top_k_attention": [
+      {
+        "feature": "NAME_CONTRACT_TYPE_Revolving loans",
+        "attention_score": 1.181202,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "YEARS_BUILD_MODE",
+        "attention_score": 0.664267,
+        "value": 0.2156,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.551222,
+        "value": 0.6654484783428959,
+        "rank": 3
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.40863,
+        "value": 0.13124094232342004,
+        "rank": 4
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.302547,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 19492,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.024743910878896713,
+    "n_features_active": 9,
+    "top_k_attention": [
+      {
+        "feature": "NAME_CONTRACT_TYPE_Revolving loans",
+        "attention_score": 3.010346,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.587941,
+        "value": 0.7738646614873153,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.436072,
+        "value": 0.5852854339812152,
+        "rank": 3
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.323056,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.299897,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 5702,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.02955281361937523,
+    "n_features_active": 13,
+    "top_k_attention": [
+      {
+        "feature": "NAME_CONTRACT_TYPE_Revolving loans",
+        "attention_score": 5.057504,
+        "value": 1.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.732105,
+        "value": 0.7758619191418682,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.544473,
+        "value": 0.9252804343470771,
+        "rank": 3
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.375029,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.374578,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 48062,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.015916112810373306,
+    "n_features_active": 8,
+    "top_k_attention": [
+      {
+        "feature": "NAME_CONTRACT_TYPE_Revolving loans",
+        "attention_score": 6.727312,
+        "value": 1.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.698689,
+        "value": 0.8014471149526323,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.527197,
+        "value": 0.2685650809724247,
+        "rank": 3
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.38251,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.359028,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 25298,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.033525049686431885,
+    "n_features_active": 10,
+    "top_k_attention": [
+      {
+        "feature": "NAME_CONTRACT_TYPE_Revolving loans",
+        "attention_score": 4.145374,
+        "value": 1.0,
+        "rank": 1
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Lower secondary",
+        "attention_score": 0.481819,
+        "value": 0.0,
+        "rank": 2
+      },
+      {
+        "feature": "YEARS_BUILD_MODE",
+        "attention_score": 0.335555,
+        "value": 0.0,
+        "rank": 3
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.304961,
+        "value": 0.6814522078988271,
+        "rank": 4
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.226636,
+        "value": -0.518858254574159,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 56892,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.0339973121881485,
+    "n_features_active": 12,
+    "top_k_attention": [
+      {
+        "feature": "NAME_CONTRACT_TYPE_Revolving loans",
+        "attention_score": 2.85166,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.310151,
+        "value": 0.6346955370319776,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.22992,
+        "value": 0.0,
+        "rank": 3
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.170231,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.158001,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 45844,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.01435236819088459,
+    "n_features_active": 8,
+    "top_k_attention": [
+      {
+        "feature": "NAME_CONTRACT_TYPE_Revolving loans",
+        "attention_score": 5.662216,
+        "value": 1.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.834033,
+        "value": 0.7981020720596351,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.629321,
+        "value": 1.2395962501473574,
+        "rank": 3
+      },
+      {
+        "feature": "AMT_CREDIT",
+        "attention_score": 0.458939,
+        "value": -0.03680033416875522,
+        "rank": 4
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.456607,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 25885,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.03340166062116623,
+    "n_features_active": 8,
+    "top_k_attention": [
+      {
+        "feature": "NAME_CONTRACT_TYPE_Revolving loans",
+        "attention_score": 2.286003,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.677013,
+        "value": 0.6847488183409558,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.501881,
+        "value": 0.5480230553484724,
+        "rank": 3
+      },
+      {
+        "feature": "YEARS_BUILD_MODE",
+        "attention_score": 0.403938,
+        "value": 0.03269999999999995,
+        "rank": 4
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.371589,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 19592,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.017700115218758583,
+    "n_features_active": 7,
+    "top_k_attention": [
+      {
+        "feature": "NAME_CONTRACT_TYPE_Revolving loans",
+        "attention_score": 6.758369,
+        "value": 1.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.700242,
+        "value": 0.6002491020431955,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.528369,
+        "value": 1.0253253678409788,
+        "rank": 3
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.383361,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.359826,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 32055,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.030282482504844666,
+    "n_features_active": 7,
+    "top_k_attention": [
+      {
+        "feature": "NAME_CONTRACT_TYPE_Revolving loans",
+        "attention_score": 3.192513,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.570301,
+        "value": 0.7934064550700503,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.422774,
+        "value": 0.14752813128701406,
+        "rank": 3
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.313018,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.290531,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 28952,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.008515533059835434,
+    "n_features_active": 8,
+    "top_k_attention": [
+      {
+        "feature": "NAME_CONTRACT_TYPE_Revolving loans",
+        "attention_score": 6.584664,
+        "value": 1.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.799961,
+        "value": 0.7986945297722098,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.603612,
+        "value": 0.6729121420096051,
+        "rank": 3
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.437954,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.411068,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 49800,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.032062262296676636,
+    "n_features_active": 11,
+    "top_k_attention": [
+      {
+        "feature": "NAME_CONTRACT_TYPE_Revolving loans",
+        "attention_score": 1.842781,
+        "value": 1.0,
+        "rank": 1
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Lower secondary",
+        "attention_score": 0.718556,
+        "value": 0.0,
+        "rank": 2
+      },
+      {
+        "feature": "YEARS_BUILD_MODE",
+        "attention_score": 0.584606,
+        "value": -0.11760000000000004,
+        "rank": 3
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.429954,
+        "value": 0.628065507752073,
+        "rank": 4
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.318732,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 42162,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.021796898916363716,
+    "n_features_active": 7,
+    "top_k_attention": [
+      {
+        "feature": "NAME_CONTRACT_TYPE_Revolving loans",
+        "attention_score": 6.758369,
+        "value": 1.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.62325,
+        "value": 0.41384548347349476,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.470274,
+        "value": 0.9634663860265914,
+        "rank": 3
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.34121,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.320263,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 30543,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.03203359246253967,
+    "n_features_active": 8,
+    "top_k_attention": [
+      {
+        "feature": "NAME_CONTRACT_TYPE_Revolving loans",
+        "attention_score": 2.91705,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "FLAG_DOCUMENT_17",
+        "attention_score": 1.185126,
+        "value": 0.0,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.241256,
+        "value": -0.4886740409883496,
+        "rank": 3
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.178847,
+        "value": 1.079064766915923,
+        "rank": 4
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.132417,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 7687,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.014807059429585934,
+    "n_features_active": 7,
+    "top_k_attention": [
+      {
+        "feature": "NAME_CONTRACT_TYPE_Revolving loans",
+        "attention_score": 6.758369,
+        "value": 1.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.500332,
+        "value": 0.6541945528902924,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.377526,
+        "value": 0.0740100065719548,
+        "rank": 3
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.273916,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.2571,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 32153,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.025713646784424782,
+    "n_features_active": 8,
+    "top_k_attention": [
+      {
+        "feature": "NAME_CONTRACT_TYPE_Revolving loans",
+        "attention_score": 6.758369,
+        "value": 1.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.752952,
+        "value": 0.37610840139178603,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.559989,
+        "value": 1.1422310958717565,
+        "rank": 3
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.385664,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.385172,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 46622,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.03517445549368858,
+    "n_features_active": 10,
+    "top_k_attention": [
+      {
+        "feature": "NAME_CONTRACT_TYPE_Revolving loans",
+        "attention_score": 6.041313,
+        "value": 1.0,
+        "rank": 1
+      },
+      {
+        "feature": "AMT_CREDIT",
+        "attention_score": 0.180686,
+        "value": -0.6215956558061821,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.152028,
+        "value": 0.4091992277526335,
+        "rank": 3
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.114713,
+        "value": -0.07434961568354072,
+        "rank": 4
+      },
+      {
+        "feature": "YEARS_BEGINEXPLUATATION_AVG",
+        "attention_score": 0.094133,
+        "value": 33.80000000000378,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 9503,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.02869473025202751,
+    "n_features_active": 8,
+    "top_k_attention": [
+      {
+        "feature": "NAME_CONTRACT_TYPE_Revolving loans",
+        "attention_score": 6.711303,
+        "value": 1.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.552444,
+        "value": 0.5784193039835712,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.416848,
+        "value": 0.4415243454831335,
+        "rank": 3
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.302446,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.283879,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 44993,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.0246743094176054,
+    "n_features_active": 10,
+    "top_k_attention": [
+      {
+        "feature": "NAME_CONTRACT_TYPE_Revolving loans",
+        "attention_score": 4.807056,
+        "value": 1.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.935025,
+        "value": 0.7394467936212189,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.705109,
+        "value": 1.3532442925972126,
+        "rank": 3
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.511844,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.480371,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 27717,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.024807952344417572,
+    "n_features_active": 8,
+    "top_k_attention": [
+      {
+        "feature": "NAME_CONTRACT_TYPE_Revolving loans",
+        "attention_score": 2.591317,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.455671,
+        "value": 0.2738686023761663,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.337796,
+        "value": 0.4646010881689345,
+        "rank": 3
+      },
+      {
+        "feature": "YEARS_BUILD_MODE",
+        "attention_score": 0.281222,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.250102,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 42282,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.020256876945495605,
+    "n_features_active": 7,
+    "top_k_attention": [
+      {
+        "feature": "NAME_CONTRACT_TYPE_Revolving loans",
+        "attention_score": 3.192513,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.60435,
+        "value": 0.5129054524674683,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.448015,
+        "value": 0.7086339046280653,
+        "rank": 3
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.331706,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.307877,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 56100,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.0345635749399662,
+    "n_features_active": 9,
+    "top_k_attention": [
+      {
+        "feature": "NAME_CONTRACT_TYPE_Revolving loans",
+        "attention_score": 2.723473,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.797701,
+        "value": 0.6398009343938486,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.591349,
+        "value": 1.0313873380608067,
+        "rank": 3
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.43783,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.406377,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 14480,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.028889335691928864,
+    "n_features_active": 8,
+    "top_k_attention": [
+      {
+        "feature": "NAME_CONTRACT_TYPE_Revolving loans",
+        "attention_score": 3.145122,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.317726,
+        "value": 0.1971286482791906,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.235536,
+        "value": 0.9634663860265914,
+        "rank": 3
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.174389,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "CODE_GENDER_M",
+        "attention_score": 0.161861,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 42195,
+    "tag": "accept",
+    "true_label": 1,
+    "predicted_proba_xgb": 0.02305660955607891,
+    "n_features_active": 8,
+    "top_k_attention": [
+      {
+        "feature": "NAME_CONTRACT_TYPE_Revolving loans",
+        "attention_score": 5.35089,
+        "value": 1.0,
+        "rank": 1
+      },
+      {
+        "feature": "AMT_CREDIT",
+        "attention_score": 0.663175,
+        "value": -0.7051378446115288,
+        "rank": 2
+      },
+      {
+        "feature": "EXT_SOURCE_2",
+        "attention_score": 0.344918,
+        "value": 0.5341761314769992,
+        "rank": 3
+      },
+      {
+        "feature": "EXT_SOURCE_3",
+        "attention_score": 0.259468,
+        "value": -0.30613419413074666,
+        "rank": 4
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Higher education",
+        "attention_score": 0.188586,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  }
+]

@@ -476,16 +476,72 @@ def main():
     add_bullet(doc, "외부 신용기관 vs 자체 이력 — 자체 이력의 SHAP 임팩트가 더 큼 (의외 발견)")
     add_bullet(doc, "1161 feature 학습 시간 138s/fold — 메모리·시간 측면에서 운영 가능")
 
-    # ── 11. Future Work ──
-    add_heading(doc, "11. 향후 계획 (Future Work)", level=1)
+    # ── 11. Step 3-C-1: TabNet 어텐션 × SHAP 융합 컨텍스트 (NEW) ──
+    add_heading(doc, "11. Step 3-C-1 — TabNet 어텐션 × SHAP 융합 컨텍스트 (TabNet 통합)",
+                  level=1)
+    add_para(doc, "기존 4단계 파이프라인의 컨텍스트 빌더 단계에 TabNet의 instance-level "
+                  "어텐션 마스크(M_explain)를 통합. SHAP top-k와 Attention top-k를 "
+                  "agreed/shap_only/attention_only 3그룹으로 분류해 LLM에 의미 라벨로 "
+                  "전달. TabNet이 단순 비교 모델에서 본 메커니즘의 핵심 구성 요소로 통합됨.")
+
+    add_heading(doc, "11.1 Agreement-aware 융합 메커니즘", level=2)
+    add_bullet(doc, "agreed_drivers: SHAP top-10과 Attention top-5의 교집합 (두 모델 동의 강한 신호)")
+    add_bullet(doc, "shap_only_drivers: SHAP만 본 변수 (부호 + 기여도 보존)")
+    add_bullet(doc, "attention_only_drivers: TabNet attention만 본 변수 (sparse, 부호 없음)")
+    add_bullet(doc, "LLM 프롬프트에 그룹 라벨 의미 명시 → agreed를 주요 사유로, 보완 그룹은 별도 표현")
+
+    add_heading(doc, "11.2 Agreement 통계 (n=100)", level=2)
+    add_table_from_data(doc,
+        headers=["그룹", "평균 변수 수", "의미"],
+        rows=[
+            ["agreed_drivers", "2.12", "두 모델 동의 강한 신호"],
+            ["shap_only_drivers", "6.98", "SHAP만 (부호 보존)"],
+            ["attention_only_drivers", "2.06", "TabNet만 (부호 없음, sparse)"],
+        ])
+    add_para(doc, "")
+    add_bullet(doc, "n_agreed 분포: 0개=1, 1개=8, 2개=69, 3개=22, 4개+=0 (100 인스턴스)")
+    add_bullet(doc, "두 해석 모델이 거의 항상 부분적으로만 겹침 — Day 4의 어텐션-SHAP global ρ=0.117 분석과 일치하는 instance-level 패턴")
+
+    add_heading(doc, "11.3 평가 결과 (n=30 each, judge=Claude)", level=2)
+    add_table_from_data(doc,
+        headers=["Metric", "LLM", "SHAP-only", "Fusion", "Δ"],
+        rows=[
+            ["Halluc strict (↓)", "Anthropic", "0.000", "0.000", "0"],
+            ["Halluc strict (↓)", "Gemini", "0.000", "0.000", "0"],
+            ["G-Eval Completeness (↑)", "Anthropic", "4.30", "4.97", "+0.67"],
+            ["G-Eval Completeness (↑)", "Gemini", "3.90", "4.70", "+0.80"],
+            ["G-Eval Factual (↑)", "Anthropic", "4.87", "4.90", "+0.03"],
+            ["G-Eval Factual (↑)", "Gemini", "4.90", "4.77", "-0.13"],
+            ["G-Eval Sensitive (↑)", "Both", "5.00", "5.00", "0"],
+            ["val_match_rate (↑)", "Anthropic", "0.85", "0.90", "+0.06"],
+            ["val_match_rate (↑)", "Gemini", "0.79", "0.86", "+0.07"],
+        ])
+    add_para(doc, "")
+    add_bullet(doc, "Halluc 0/30 — 양 LLM × 양 mode 모두 환각 차단 유지 ✅")
+    add_bullet(doc, "Completeness +0.67~+0.80 — 두 해석 신호의 상보성이 더 완결한 설명 생성 ★")
+    add_bullet(doc, "Factual ≈ 유지, Sensitive 5.0 만점 유지 — 사실성·민감도 손상 없음")
+    add_figure(doc, FIG_DIR / "30_fusion_vs_shaponly.png",
+                "그림 11-1. SHAP-only vs Fusion 비교 (양 LLM × 4 메트릭)")
+
+    add_heading(doc, "11.4 Step 3-C-1 핵심 메시지", level=2)
+    add_bullet(doc, "TabNet이 비교 모델 → 메커니즘 핵심으로 격상 (논문 제목과 본문 일치)")
+    add_bullet(doc, "두 해석 신호의 부분 일관 + 부분 상보를 LLM에 명시 노출하는 agreement-aware 컨텍스트 제안")
+    add_bullet(doc, "환각 차단 메커니즘 견고 + 완결성 큰 향상의 동시 달성")
+    add_bullet(doc, "룰의 sign_match 한계 — LLM이 fusion에서 다양한 표현 사용 → future work에서 NLI 기반 평가로 보강")
+
+    # ── 12. Future Work ──
+    add_heading(doc, "12. 향후 계획 (Future Work)", level=1)
+    add_bullet(doc, "Gemini judge로 양방향 cross-validation (현재 Claude judge 단일)")
+    add_bullet(doc, "Fusion 표본 30 → 100 확장 + counterfactual 결합")
+    add_bullet(doc, "3-way ablation: SHAP-only vs Attention-only vs Fusion")
     add_bullet(doc, "잔여 보조 테이블 4개(POS_CASH_balance, credit_card_balance, installments_payments, bureau_balance 추가 활용) → AUROC 0.78+ 추가 향상")
     add_bullet(doc, "Bureau ablation — bureau 단독 vs prev 단독 vs 둘 다 비교로 EXT_SOURCE 응축 가설 검증")
     add_bullet(doc, "TabNet, LightGBM에 aux 효과 일반화 (Step 3-B는 XGBoost만 검증)")
     add_bullet(doc, "본격 fairness-aware 학습 — Reweighing, Adversarial Debiasing")
     add_bullet(doc, "FT-Transformer 비교 모델 추가")
+    add_bullet(doc, "NLI 기반 Faithfulness — 룰의 키워드 sensitivity 한계 해소")
     add_bullet(doc, "인간 평가 (Plausibility) — 5점 리커트 척도, Cohen's κ 신뢰도 측정")
     add_bullet(doc, "한국어 도메인 특화 금융 LLM 미세조정 (QLoRA)")
-    add_bullet(doc, "LLM 컨텍스트 재생성 (XAI-RAG with aux SHAP) — Halluc 변화 측정")
 
     # 저장
     out = PAPER_DIR / "midterm_report.docx"

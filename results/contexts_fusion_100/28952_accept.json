@@ -1,0 +1,146 @@
+{
+  "sample_idx": 28952,
+  "decision": "APPROVE",
+  "default_probability": 0.0085,
+  "threshold": 0.476,
+  "agreed_drivers": [
+    {
+      "feature": "외부 신용평가 점수 2",
+      "feature_raw": "EXT_SOURCE_2",
+      "value": "0.782201",
+      "value_raw": 0.7822010598410312,
+      "rank": 1,
+      "group": "agreed",
+      "shap": -0.8183,
+      "attention": 0.799961,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "외부 신용평가 점수 3",
+      "feature_raw": "EXT_SOURCE_3",
+      "value": "0.681706",
+      "value_raw": 0.6817058776720116,
+      "rank": 2,
+      "group": "agreed",
+      "shap": -0.5875,
+      "attention": 0.603612,
+      "sign_for_default": "-"
+    }
+  ],
+  "shap_only_drivers": [
+    {
+      "feature": "외부 신용평가 점수 1",
+      "feature_raw": "EXT_SOURCE_1",
+      "value": "0.756963",
+      "value_raw": 0.7569629976475155,
+      "rank": 1,
+      "group": "shap_only",
+      "shap": -0.4497,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "신분증 발급 후 경과 일수",
+      "feature_raw": "DAYS_ID_PUBLISH",
+      "value": "-5436",
+      "value_raw": -5436.0,
+      "rank": 2,
+      "group": "shap_only",
+      "shap": -0.3131,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "신청 대출 유형: 현금대출",
+      "feature_raw": "NAME_CONTRACT_TYPE_Cash loans",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "rank": 3,
+      "group": "shap_only",
+      "shap": -0.3044,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "구매 대상 상품 가격",
+      "feature_raw": "AMT_GOODS_PRICE",
+      "value": "337,500",
+      "value_raw": 337500.0,
+      "rank": 4,
+      "group": "shap_only",
+      "shap": 0.1127,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "NAME_FAMILY_STATUS_Married",
+      "feature_raw": "NAME_FAMILY_STATUS_Married",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "rank": 5,
+      "group": "shap_only",
+      "shap": 0.1055,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "LIVINGAPARTMENTS_AVG",
+      "feature_raw": "LIVINGAPARTMENTS_AVG",
+      "value": "0.453",
+      "value_raw": 0.453,
+      "rank": 6,
+      "group": "shap_only",
+      "shap": 0.0805,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "COMMONAREA_MEDI",
+      "feature_raw": "COMMONAREA_MEDI",
+      "value": "0.2114",
+      "value_raw": 0.2114,
+      "rank": 7,
+      "group": "shap_only",
+      "shap": 0.0503,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "NONLIVINGAPARTMENTS_MEDI",
+      "feature_raw": "NONLIVINGAPARTMENTS_MEDI",
+      "value": "0.0932",
+      "value_raw": 0.0932,
+      "rank": 8,
+      "group": "shap_only",
+      "shap": 0.0474,
+      "sign_for_default": "+"
+    }
+  ],
+  "attention_only_drivers": [
+    {
+      "feature": "신청 대출 유형: 리볼빙(한도 대출)",
+      "feature_raw": "NAME_CONTRACT_TYPE_Revolving loans",
+      "value": "예",
+      "value_raw": 1.0,
+      "rank": 1,
+      "group": "attention_only",
+      "attention": 6.584664
+    },
+    {
+      "feature": "학력: 고등교육 이상",
+      "feature_raw": "NAME_EDUCATION_TYPE_Higher education",
+      "value": "예",
+      "value_raw": 1.0,
+      "rank": 2,
+      "group": "attention_only",
+      "attention": 0.437954
+    }
+  ],
+  "fairness_flags": [],
+  "model_predict": "XGBoost",
+  "model_explain": [
+    "SHAP_xgb_local",
+    "TabNet_attention_local"
+  ],
+  "explanation_policy": "fact_only_with_agreement_labels",
+  "masked_sensitive_features": [
+    "CODE_GENDER_M"
+  ],
+  "n_agreed": 2,
+  "n_shap_only": 8,
+  "n_attention_only": 2,
+  "_meta_true_label": 0
+}

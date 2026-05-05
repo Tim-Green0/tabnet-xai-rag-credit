@@ -1,0 +1,137 @@
+{
+  "sample_idx": 40516,
+  "decision": "REJECT",
+  "default_probability": 0.9271,
+  "threshold": 0.476,
+  "agreed_drivers": [
+    {
+      "feature": "외부 신용평가 점수 2",
+      "feature_raw": "EXT_SOURCE_2",
+      "value": "0.029544",
+      "value_raw": 0.029543963437184073,
+      "rank": 1,
+      "group": "agreed",
+      "shap": 0.9056,
+      "attention": 0.928919,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "외부 신용평가 점수 3",
+      "feature_raw": "EXT_SOURCE_3",
+      "value": "0.146442",
+      "value_raw": 0.1464420666789632,
+      "rank": 2,
+      "group": "agreed",
+      "shap": 0.7394,
+      "attention": 0.673712,
+      "sign_for_default": "+"
+    }
+  ],
+  "shap_only_drivers": [
+    {
+      "feature": "구매 대상 상품 가격",
+      "feature_raw": "AMT_GOODS_PRICE",
+      "value": "378,000",
+      "value_raw": 378000.0,
+      "rank": 1,
+      "group": "shap_only",
+      "shap": 0.2788,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "연 환산 상환액",
+      "feature_raw": "AMT_ANNUITY",
+      "value": "36,302",
+      "value_raw": 36301.5,
+      "rank": 2,
+      "group": "shap_only",
+      "shap": 0.1444,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "외부 신용평가 점수 1",
+      "feature_raw": "EXT_SOURCE_1",
+      "value": "0.24678",
+      "value_raw": 0.2467796189633162,
+      "rank": 3,
+      "group": "shap_only",
+      "shap": 0.1359,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "외부 신용평가 1 결측 여부",
+      "feature_raw": "EXT_SOURCE_1_MISSING_FLAG",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "rank": 4,
+      "group": "shap_only",
+      "shap": -0.0569,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "FLAG_OWN_CAR_N",
+      "feature_raw": "FLAG_OWN_CAR_N",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "rank": 5,
+      "group": "shap_only",
+      "shap": -0.0424,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "AMT_REQ_CREDIT_BUREAU_YEAR",
+      "feature_raw": "AMT_REQ_CREDIT_BUREAU_YEAR",
+      "value": "0",
+      "value_raw": 0.0,
+      "rank": 6,
+      "group": "shap_only",
+      "shap": -0.0371,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "최근 휴대폰 변경 후 경과 일수",
+      "feature_raw": "DAYS_LAST_PHONE_CHANGE",
+      "value": "0",
+      "value_raw": 0.0,
+      "rank": 7,
+      "group": "shap_only",
+      "shap": -0.0353,
+      "sign_for_default": "-"
+    }
+  ],
+  "attention_only_drivers": [
+    {
+      "feature": "FONDKAPREMONT_MODE_org spec account",
+      "feature_raw": "FONDKAPREMONT_MODE_org spec account",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "rank": 1,
+      "group": "attention_only",
+      "attention": 1.788985
+    },
+    {
+      "feature": "차량 보유: 있음",
+      "feature_raw": "FLAG_OWN_CAR_Y",
+      "value": "예",
+      "value_raw": 1.0,
+      "rank": 2,
+      "group": "attention_only",
+      "attention": 0.470126
+    }
+  ],
+  "fairness_flags": [],
+  "model_predict": "XGBoost",
+  "model_explain": [
+    "SHAP_xgb_local",
+    "TabNet_attention_local"
+  ],
+  "explanation_policy": "fact_only_with_agreement_labels",
+  "masked_sensitive_features": [
+    "CODE_GENDER_F",
+    "CODE_GENDER_M"
+  ],
+  "n_agreed": 2,
+  "n_shap_only": 7,
+  "n_attention_only": 2,
+  "_meta_true_label": 0
+}

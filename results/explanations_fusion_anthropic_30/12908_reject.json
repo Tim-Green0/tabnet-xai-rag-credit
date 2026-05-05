@@ -1,0 +1,136 @@
+{
+  "sample_idx": 12908,
+  "decision": "REJECT",
+  "true_label": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "elapsed_sec": 15.96,
+  "explanation": "# 신용 평가 결과 안내\n\n## [결정 요약]\n신청 결과: 대출 신청이 거절되었습니다(예측 부도 확률 89.3%).\n\n## [주요 거절 사유 — 두 해석 모델이 동의한 강한 신호]\n\n1. **외부 신용평가 점수 3이 0.184로 매우 낮게 평가**되었습니다. 이는 부도 가능성을 높이는 가장 강력한 요인으로 두 해석 모델(SHAP, TabNet 어텐션) 모두 동의했습니다.\n\n2. **외부 신용평가 점수 2도 0.245로 낮은 수준**입니다. 이 역시 부도 위험을 상승시키는 주요 요인으로 두 모델이 일치하여 판단했습니다.\n\n3. **5년의 재직 기간은 긍정 요인**으로 작용했습니다. 두 모델 모두 이를 부도 가능성을 낮추는 안정적 신호로 보았으나, 위의 신용평가 점수 문제를 상쇄하기에는 부족했습니다.\n\n## [보완적으로 고려된 요인]\n\n**SHAP 모델 관점:**\n- 구매 대상 상품 가격(450,000원), 대출 신청 금액(640,080원), 연 환산 상환액(29,970원)이 부도 위험을 높이는 방향으로 작용했습니다.\n- 최근 휴대폰을 3년 9개월 전(-1377일)에 변경한 점과 기혼 상태는 부도 가능성을 소폭 낮추는 긍정 요인이었습니다.\n\n**TabNet 어텐션 모델 관점:**\n- FONDKAPREMONT_MODE_org spec account 항목도 결정에 영향을 준 것으로 확인되었습니다.\n\n## [개선 권고]\n\n1. **외부 신용평가 점수 개선**을 최우선으로 권장합니다. 기존 대출·카드 연체 해소, 신용카드 사용률 조정, 정기적 신용 관리를 통해 점수 향상을 도모하실 수 있습니다.\n\n2. **대출 신청 금액 조정**을 고려해보실 수 있습니다. 현재 신청 금액과 상환액 규모가 부담 요인으로 작용했으므로, 소액으로 시작하여 상환 이력을 쌓는 것도 방법입니다.\n\n3. 신용 개선 후 **6개월~1년 뒤 재신청**을 검토하시면 더 나은 결과를 기대하실 수 있습니다.\n\n## [면책 고지]\n본 안내는 두 가지 해석 모델(SHAP, TabNet 어텐션)의 분석 결과를 종합하여 자연어로 정리한 것이며, 실제 최종 의사결정은 금융기관 담당자의 종합 검토를 거칩니다. 본 설명은 참고용이며 법률적·재무적 자문을 대체하지 않습니다.",
+  "usage_metadata": {
+    "input_tokens": 2925,
+    "output_tokens": 999,
+    "total_token_count": 3924
+  },
+  "context_sent": {
+    "sample_idx": 12908,
+    "decision": "REJECT",
+    "default_probability": 0.8927,
+    "threshold": 0.476,
+    "agreed_drivers": [
+      {
+        "feature": "외부 신용평가 점수 3",
+        "feature_raw": "EXT_SOURCE_3",
+        "value": "0.184116",
+        "value_raw": 0.1841161559307151,
+        "rank": 1,
+        "group": "agreed",
+        "shap": 0.7295,
+        "attention": 0.498595,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "0.244844",
+        "value_raw": 0.2448437991412138,
+        "rank": 2,
+        "group": "agreed",
+        "shap": 0.373,
+        "attention": 0.701182,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "재직 일수(음수: 신청일 기준)",
+        "feature_raw": "DAYS_EMPLOYED",
+        "value": "5년 재직",
+        "value_raw": -1976.0,
+        "rank": 3,
+        "group": "agreed",
+        "shap": -0.0346,
+        "attention": 0.335517,
+        "sign_for_default": "-"
+      }
+    ],
+    "shap_only_drivers": [
+      {
+        "feature": "구매 대상 상품 가격",
+        "feature_raw": "AMT_GOODS_PRICE",
+        "value": "450,000",
+        "value_raw": 450000.0,
+        "rank": 1,
+        "group": "shap_only",
+        "shap": 0.2494,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "대출 신청 금액",
+        "feature_raw": "AMT_CREDIT",
+        "value": "640,080",
+        "value_raw": 640080.0,
+        "rank": 2,
+        "group": "shap_only",
+        "shap": 0.2014,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "연 환산 상환액",
+        "feature_raw": "AMT_ANNUITY",
+        "value": "29,970",
+        "value_raw": 29970.0,
+        "rank": 3,
+        "group": "shap_only",
+        "shap": 0.1587,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "최근 휴대폰 변경 후 경과 일수",
+        "feature_raw": "DAYS_LAST_PHONE_CHANGE",
+        "value": "-1377",
+        "value_raw": -1377.0,
+        "rank": 4,
+        "group": "shap_only",
+        "shap": -0.0285,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "NAME_FAMILY_STATUS_Married",
+        "feature_raw": "NAME_FAMILY_STATUS_Married",
+        "value": "예",
+        "value_raw": 1.0,
+        "rank": 5,
+        "group": "shap_only",
+        "shap": -0.0205,
+        "sign_for_default": "-"
+      }
+    ],
+    "attention_only_drivers": [
+      {
+        "feature": "FONDKAPREMONT_MODE_org spec account",
+        "feature_raw": "FONDKAPREMONT_MODE_org spec account",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "rank": 1,
+        "group": "attention_only",
+        "attention": 1.265139
+      }
+    ],
+    "fairness_flags": [],
+    "model_predict": "XGBoost",
+    "model_explain": [
+      "SHAP_xgb_local",
+      "TabNet_attention_local"
+    ],
+    "explanation_policy": "fact_only_with_agreement_labels",
+    "masked_sensitive_features": [
+      "CODE_GENDER_F",
+      "CODE_GENDER_M"
+    ],
+    "n_agreed": 3,
+    "n_shap_only": 5,
+    "n_attention_only": 1
+  },
+  "context_type": "fusion",
+  "n_agreed": 3,
+  "n_shap_only": 5,
+  "n_attention_only": 1
+}

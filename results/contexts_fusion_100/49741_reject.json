@@ -1,0 +1,146 @@
+{
+  "sample_idx": 49741,
+  "decision": "REJECT",
+  "default_probability": 0.9305,
+  "threshold": 0.476,
+  "agreed_drivers": [
+    {
+      "feature": "외부 신용평가 점수 2",
+      "feature_raw": "EXT_SOURCE_2",
+      "value": "0.029544",
+      "value_raw": 0.029543963437184073,
+      "rank": 1,
+      "group": "agreed",
+      "shap": 0.9345,
+      "attention": 0.85814,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "외부 신용평가 점수 3",
+      "feature_raw": "EXT_SOURCE_3",
+      "value": "0.239226",
+      "value_raw": 0.2392262794694045,
+      "rank": 2,
+      "group": "agreed",
+      "shap": 0.5059,
+      "attention": 0.621087,
+      "sign_for_default": "+"
+    }
+  ],
+  "shap_only_drivers": [
+    {
+      "feature": "구매 대상 상품 가격",
+      "feature_raw": "AMT_GOODS_PRICE",
+      "value": "427,500",
+      "value_raw": 427500.0,
+      "rank": 1,
+      "group": "shap_only",
+      "shap": 0.234,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "연 환산 상환액",
+      "feature_raw": "AMT_ANNUITY",
+      "value": "34,731",
+      "value_raw": 34731.0,
+      "rank": 2,
+      "group": "shap_only",
+      "shap": 0.137,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "재직 일수(음수: 신청일 기준)",
+      "feature_raw": "DAYS_EMPLOYED",
+      "value": "1년 재직",
+      "value_raw": -615.0,
+      "rank": 3,
+      "group": "shap_only",
+      "shap": 0.1074,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "NAME_FAMILY_STATUS_Married",
+      "feature_raw": "NAME_FAMILY_STATUS_Married",
+      "value": "예",
+      "value_raw": 1.0,
+      "rank": 4,
+      "group": "shap_only",
+      "shap": -0.0344,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "DEF_30_CNT_SOCIAL_CIRCLE",
+      "feature_raw": "DEF_30_CNT_SOCIAL_CIRCLE",
+      "value": "0",
+      "value_raw": 0.0,
+      "rank": 5,
+      "group": "shap_only",
+      "shap": -0.019,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "근무 전화 등록 여부",
+      "feature_raw": "FLAG_WORK_PHONE",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "rank": 6,
+      "group": "shap_only",
+      "shap": -0.0143,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "외부 신용평가 3 결측 여부",
+      "feature_raw": "EXT_SOURCE_3_MISSING_FLAG",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "rank": 7,
+      "group": "shap_only",
+      "shap": -0.0097,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "총 소득",
+      "feature_raw": "AMT_INCOME_TOTAL",
+      "value": "157,500",
+      "value_raw": 157500.0,
+      "rank": 8,
+      "group": "shap_only",
+      "shap": -0.0096,
+      "sign_for_default": "-"
+    }
+  ],
+  "attention_only_drivers": [
+    {
+      "feature": "FONDKAPREMONT_MODE_org spec account",
+      "feature_raw": "FONDKAPREMONT_MODE_org spec account",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "rank": 1,
+      "group": "attention_only",
+      "attention": 1.815838
+    },
+    {
+      "feature": "차량 보유: 있음",
+      "feature_raw": "FLAG_OWN_CAR_Y",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "rank": 2,
+      "group": "attention_only",
+      "attention": 0.439447
+    }
+  ],
+  "fairness_flags": [],
+  "model_predict": "XGBoost",
+  "model_explain": [
+    "SHAP_xgb_local",
+    "TabNet_attention_local"
+  ],
+  "explanation_policy": "fact_only_with_agreement_labels",
+  "masked_sensitive_features": [
+    "CODE_GENDER_M"
+  ],
+  "n_agreed": 2,
+  "n_shap_only": 8,
+  "n_attention_only": 2,
+  "_meta_true_label": 1
+}

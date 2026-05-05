@@ -1,0 +1,154 @@
+{
+  "sample_idx": 8657,
+  "decision": "REJECT",
+  "true_label": 0,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "elapsed_sec": 10.19,
+  "explanation": "[결정 요약]\n신청 결과: 대출 신청이 거절되었습니다(예측 부도 확률 89.2%).\n\n[주요 거절 사유 — 두 해석 모델이 동의한 강한 신호]\n1. 외부 신용평가 점수 2가 0.068로 매우 낮게 평가되었습니다(두 모델 모두 가장 강력한 거절 요인으로 판단).\n2. 외부 신용평가 점수 3도 0.224로 낮은 수준입니다(두 모델 동의).\n\n[보완적으로 고려된 요인]\n- SHAP 관점에서 외부 신용평가 점수 1(0.083)도 부도 가능성을 높이는 추가 요인이었습니다.\n- SHAP 관점에서 구매 대상 상품 가격(121,500원)이 부도 가능성을 높이는 방향으로 작용했습니다.\n- SHAP 관점에서 대출 신청 금액(153,576원), 연 환산 상환액(7,466원), 최근 휴대폰 변경 후 경과 기간은 부도 가능성을 낮추는 긍정 요인이었습니다.\n- TabNet 어텐션은 차량 보유 여부와 학력 정보도 결정에 영향을 준 것으로 봤습니다.\n\n[개선 권고]\n1. 외부 신용평가 점수 향상을 최우선으로 권장합니다. 신용카드 사용률 조정, 연체 해소, 신용 거래 이력 개선 등을 통해 신용도를 높이시기 바랍니다.\n2. 신용 관리 후 일정 기간(6개월~1년)이 경과한 뒤 재신청을 검토하실 수 있습니다.\n3. 필요 시 금융기관의 신용 상담 서비스를 이용하시기 바랍니다.\n\n[면책 고지]\n본 안내는 두 가지 해석 모델(SHAP, TabNet 어텐션)의 결과를 종합하여 자연어로 정리한 참고 자료이며, 최종 의사결정은 담당자의 검토를 거칩니다.",
+  "usage_metadata": {
+    "input_tokens": 3126,
+    "output_tokens": 715,
+    "total_token_count": 3841
+  },
+  "context_sent": {
+    "sample_idx": 8657,
+    "decision": "REJECT",
+    "default_probability": 0.892,
+    "threshold": 0.476,
+    "agreed_drivers": [
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "0.0680609",
+        "value_raw": 0.0680609250796578,
+        "rank": 1,
+        "group": "agreed",
+        "shap": 0.7969,
+        "attention": 0.725865,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "외부 신용평가 점수 3",
+        "feature_raw": "EXT_SOURCE_3",
+        "value": "0.223831",
+        "value_raw": 0.2238313174701554,
+        "rank": 2,
+        "group": "agreed",
+        "shap": 0.65,
+        "attention": 0.517485,
+        "sign_for_default": "+"
+      }
+    ],
+    "shap_only_drivers": [
+      {
+        "feature": "외부 신용평가 점수 1",
+        "feature_raw": "EXT_SOURCE_1",
+        "value": "0.0826038",
+        "value_raw": 0.08260377007595121,
+        "rank": 1,
+        "group": "shap_only",
+        "shap": 0.7584,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "구매 대상 상품 가격",
+        "feature_raw": "AMT_GOODS_PRICE",
+        "value": "121,500",
+        "value_raw": 121500.0,
+        "rank": 2,
+        "group": "shap_only",
+        "shap": 0.2671,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "대출 신청 금액",
+        "feature_raw": "AMT_CREDIT",
+        "value": "153,576",
+        "value_raw": 153576.0,
+        "rank": 3,
+        "group": "shap_only",
+        "shap": -0.2487,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "연 환산 상환액",
+        "feature_raw": "AMT_ANNUITY",
+        "value": "7,466",
+        "value_raw": 7465.5,
+        "rank": 4,
+        "group": "shap_only",
+        "shap": -0.1773,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "최근 휴대폰 변경 후 경과 일수",
+        "feature_raw": "DAYS_LAST_PHONE_CHANGE",
+        "value": "-2253",
+        "value_raw": -2253.0,
+        "rank": 5,
+        "group": "shap_only",
+        "shap": -0.1288,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "거주지 등록 후 경과 일수",
+        "feature_raw": "DAYS_REGISTRATION",
+        "value": "4년 전 등록",
+        "value_raw": -1743.0,
+        "rank": 6,
+        "group": "shap_only",
+        "shap": -0.0424,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "외부 신용평가 1 결측 여부",
+        "feature_raw": "EXT_SOURCE_1_MISSING_FLAG",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "rank": 7,
+        "group": "shap_only",
+        "shap": -0.0392,
+        "sign_for_default": "-"
+      }
+    ],
+    "attention_only_drivers": [
+      {
+        "feature": "차량 보유: 있음",
+        "feature_raw": "FLAG_OWN_CAR_Y",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "rank": 1,
+        "group": "attention_only",
+        "attention": 0.350312
+      },
+      {
+        "feature": "학력: 고등교육 이상",
+        "feature_raw": "NAME_EDUCATION_TYPE_Higher education",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "rank": 2,
+        "group": "attention_only",
+        "attention": 0.257743
+      }
+    ],
+    "fairness_flags": [],
+    "model_predict": "XGBoost",
+    "model_explain": [
+      "SHAP_xgb_local",
+      "TabNet_attention_local"
+    ],
+    "explanation_policy": "fact_only_with_agreement_labels",
+    "masked_sensitive_features": [
+      "CODE_GENDER_M",
+      "DAYS_BIRTH"
+    ],
+    "n_agreed": 2,
+    "n_shap_only": 7,
+    "n_attention_only": 2
+  },
+  "context_type": "fusion",
+  "n_agreed": 2,
+  "n_shap_only": 7,
+  "n_attention_only": 2
+}

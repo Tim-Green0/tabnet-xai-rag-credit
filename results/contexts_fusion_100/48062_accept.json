@@ -1,0 +1,138 @@
+{
+  "sample_idx": 48062,
+  "decision": "APPROVE",
+  "default_probability": 0.0159,
+  "threshold": 0.476,
+  "agreed_drivers": [
+    {
+      "feature": "외부 신용평가 점수 2",
+      "feature_raw": "EXT_SOURCE_2",
+      "value": "0.782946",
+      "value_raw": 0.7829455209663897,
+      "rank": 1,
+      "group": "agreed",
+      "shap": -0.9959,
+      "attention": 0.698689,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "외부 신용평가 점수 3",
+      "feature_raw": "EXT_SOURCE_3",
+      "value": "0.593718",
+      "value_raw": 0.5937175866150576,
+      "rank": 2,
+      "group": "agreed",
+      "shap": -0.3008,
+      "attention": 0.527197,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "학력: 고등교육 이상",
+      "feature_raw": "NAME_EDUCATION_TYPE_Higher education",
+      "value": "예",
+      "value_raw": 1.0,
+      "rank": 3,
+      "group": "agreed",
+      "shap": -0.1802,
+      "attention": 0.38251,
+      "sign_for_default": "-"
+    }
+  ],
+  "shap_only_drivers": [
+    {
+      "feature": "외부 신용평가 점수 1",
+      "feature_raw": "EXT_SOURCE_1",
+      "value": "0.711038",
+      "value_raw": 0.7110379518591411,
+      "rank": 1,
+      "group": "shap_only",
+      "shap": -0.4585,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "신청 대출 유형: 현금대출",
+      "feature_raw": "NAME_CONTRACT_TYPE_Cash loans",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "rank": 2,
+      "group": "shap_only",
+      "shap": -0.3053,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "BASEMENTAREA_MODE",
+      "feature_raw": "BASEMENTAREA_MODE",
+      "value": "0.1858",
+      "value_raw": 0.1858,
+      "rank": 3,
+      "group": "shap_only",
+      "shap": 0.1177,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "LIVINGAPARTMENTS_AVG",
+      "feature_raw": "LIVINGAPARTMENTS_AVG",
+      "value": "0.3614",
+      "value_raw": 0.3614,
+      "rank": 4,
+      "group": "shap_only",
+      "shap": 0.0816,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "NONLIVINGAPARTMENTS_MODE",
+      "feature_raw": "NONLIVINGAPARTMENTS_MODE",
+      "value": "0.0934",
+      "value_raw": 0.0934,
+      "rank": 5,
+      "group": "shap_only",
+      "shap": 0.0633,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "거주지 인구 밀도(상대값)",
+      "feature_raw": "REGION_POPULATION_RELATIVE",
+      "value": "0.072508",
+      "value_raw": 0.072508,
+      "rank": 6,
+      "group": "shap_only",
+      "shap": 0.0327,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "NONLIVINGAPARTMENTS_MEDI",
+      "feature_raw": "NONLIVINGAPARTMENTS_MEDI",
+      "value": "0.1048",
+      "value_raw": 0.1048,
+      "rank": 7,
+      "group": "shap_only",
+      "shap": 0.0324,
+      "sign_for_default": "+"
+    }
+  ],
+  "attention_only_drivers": [
+    {
+      "feature": "신청 대출 유형: 리볼빙(한도 대출)",
+      "feature_raw": "NAME_CONTRACT_TYPE_Revolving loans",
+      "value": "예",
+      "value_raw": 1.0,
+      "rank": 1,
+      "group": "attention_only",
+      "attention": 6.727312
+    }
+  ],
+  "fairness_flags": [],
+  "model_predict": "XGBoost",
+  "model_explain": [
+    "SHAP_xgb_local",
+    "TabNet_attention_local"
+  ],
+  "explanation_policy": "fact_only_with_agreement_labels",
+  "masked_sensitive_features": [
+    "CODE_GENDER_M"
+  ],
+  "n_agreed": 3,
+  "n_shap_only": 7,
+  "n_attention_only": 1,
+  "_meta_true_label": 0
+}

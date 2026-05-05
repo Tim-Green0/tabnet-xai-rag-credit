@@ -1,0 +1,145 @@
+{
+  "sample_idx": 54935,
+  "decision": "APPROVE",
+  "true_label": 0,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "elapsed_sec": 12.95,
+  "explanation": "# 대출 신청 결과 안내\n\n## [결정 요약]\n신청 결과: 대출 신청이 승인되었습니다(예측 부도 확률 2.09%).\n\n## [주요 승인 사유 — 두 해석 모델이 동의한 강한 신호]\n1. **외부 신용평가 점수 2가 0.78로 우수**합니다. 두 해석 모델 모두 이 점수가 부도 가능성을 크게 낮추는 가장 중요한 긍정 요인으로 판단했습니다(두 모델 동의).\n\n2. **외부 신용평가 점수 3도 0.76으로 양호**합니다. 이 역시 상환 능력을 뒷받침하는 강력한 신호로 평가되었습니다(두 모델 동의).\n\n3. **고등교육 이상 학력이 아닌 점**은 미세하게 부도 확률을 높이는 요인으로 작용했으나, 위 신용평가 점수들의 긍정적 영향력이 이를 충분히 상쇄했습니다(두 모델 동의).\n\n## [보완적으로 고려된 요인]\n- SHAP 관점에서 신청 대출 유형이 현금대출이 아닌 점은 부도 가능성을 낮추는 긍정 요인이었습니다.\n- SHAP 관점에서 외부 신용평가 점수 1(0.60)도 상환 능력을 지지하는 보완 요인으로 작용했습니다.\n- SHAP 관점에서 보유 차량 연식(1년)은 부도 가능성을 낮추는 긍정 요인이었습니다.\n- TabNet 어텐션은 신청 대출 유형(리볼빙)도 결정에 영향을 준 변수로 식별했습니다.\n\n## [개선 권고]\n- 현재 우수한 신용평가 점수를 유지하기 위해 정기적인 신용 관리를 지속해 주시기 바랍니다.\n- 대출 실행 후에도 연체 없이 성실한 상환을 이어가시면 향후 신용 거래에 더욱 유리합니다.\n\n## [면책 고지]\n본 안내는 두 해석 모델(SHAP, TabNet 어텐션)의 분석 결과를 자연어로 정리한 것이며, 실제 최종 의사결정은 담당자의 종합 검토를 거쳐 확정됩니다.",
+  "usage_metadata": {
+    "input_tokens": 3021,
+    "output_tokens": 804,
+    "total_token_count": 3825
+  },
+  "context_sent": {
+    "sample_idx": 54935,
+    "decision": "APPROVE",
+    "default_probability": 0.0209,
+    "threshold": 0.476,
+    "agreed_drivers": [
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "0.782946",
+        "value_raw": 0.7829455209663897,
+        "rank": 1,
+        "group": "agreed",
+        "shap": -1.2331,
+        "attention": 0.688874,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "외부 신용평가 점수 3",
+        "feature_raw": "EXT_SOURCE_3",
+        "value": "0.76364",
+        "value_raw": 0.7636399214572418,
+        "rank": 2,
+        "group": "agreed",
+        "shap": -0.7233,
+        "attention": 0.510837,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "학력: 고등교육 이상",
+        "feature_raw": "NAME_EDUCATION_TYPE_Higher education",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "rank": 3,
+        "group": "agreed",
+        "shap": 0.0443,
+        "attention": 0.375484,
+        "sign_for_default": "+"
+      }
+    ],
+    "shap_only_drivers": [
+      {
+        "feature": "신청 대출 유형: 현금대출",
+        "feature_raw": "NAME_CONTRACT_TYPE_Cash loans",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "rank": 1,
+        "group": "shap_only",
+        "shap": -0.302,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "외부 신용평가 점수 1",
+        "feature_raw": "EXT_SOURCE_1",
+        "value": "0.596494",
+        "value_raw": 0.5964937536980133,
+        "rank": 2,
+        "group": "shap_only",
+        "shap": -0.2108,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "보유 차량 연식",
+        "feature_raw": "OWN_CAR_AGE",
+        "value": "1",
+        "value_raw": 1.0,
+        "rank": 3,
+        "group": "shap_only",
+        "shap": -0.1504,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "구매 대상 상품 가격",
+        "feature_raw": "AMT_GOODS_PRICE",
+        "value": "405,000",
+        "value_raw": 405000.0,
+        "rank": 4,
+        "group": "shap_only",
+        "shap": 0.1066,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "REG_REGION_NOT_WORK_REGION",
+        "feature_raw": "REG_REGION_NOT_WORK_REGION",
+        "value": "1",
+        "value_raw": 1.0,
+        "rank": 5,
+        "group": "shap_only",
+        "shap": 0.0322,
+        "sign_for_default": "+"
+      }
+    ],
+    "attention_only_drivers": [
+      {
+        "feature": "신청 대출 유형: 리볼빙(한도 대출)",
+        "feature_raw": "NAME_CONTRACT_TYPE_Revolving loans",
+        "value": "예",
+        "value_raw": 1.0,
+        "rank": 1,
+        "group": "attention_only",
+        "attention": 5.0519
+      },
+      {
+        "feature": "FLAG_DOCUMENT_17",
+        "feature_raw": "FLAG_DOCUMENT_17",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "rank": 2,
+        "group": "attention_only",
+        "attention": 0.780558
+      }
+    ],
+    "fairness_flags": [],
+    "model_predict": "XGBoost",
+    "model_explain": [
+      "SHAP_xgb_local",
+      "TabNet_attention_local"
+    ],
+    "explanation_policy": "fact_only_with_agreement_labels",
+    "masked_sensitive_features": [
+      "CODE_GENDER_F",
+      "CODE_GENDER_M"
+    ],
+    "n_agreed": 3,
+    "n_shap_only": 5,
+    "n_attention_only": 2
+  },
+  "context_type": "fusion",
+  "n_agreed": 3,
+  "n_shap_only": 5,
+  "n_attention_only": 2
+}

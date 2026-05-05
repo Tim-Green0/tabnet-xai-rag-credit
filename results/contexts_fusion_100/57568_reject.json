@@ -1,0 +1,145 @@
+{
+  "sample_idx": 57568,
+  "decision": "REJECT",
+  "default_probability": 0.8979,
+  "threshold": 0.476,
+  "agreed_drivers": [
+    {
+      "feature": "외부 신용평가 점수 3",
+      "feature_raw": "EXT_SOURCE_3",
+      "value": "0.103449",
+      "value_raw": 0.1034490521267516,
+      "rank": 1,
+      "group": "agreed",
+      "shap": 0.9899,
+      "attention": 0.594814,
+      "sign_for_default": "+"
+    }
+  ],
+  "shap_only_drivers": [
+    {
+      "feature": "구매 대상 상품 가격",
+      "feature_raw": "AMT_GOODS_PRICE",
+      "value": "450,000",
+      "value_raw": 450000.0,
+      "rank": 1,
+      "group": "shap_only",
+      "shap": 0.2604,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "신분증 발급 후 경과 일수",
+      "feature_raw": "DAYS_ID_PUBLISH",
+      "value": "-4995",
+      "value_raw": -4995.0,
+      "rank": 2,
+      "group": "shap_only",
+      "shap": -0.1637,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "대출 신청 금액",
+      "feature_raw": "AMT_CREDIT",
+      "value": "545,040",
+      "value_raw": 545040.0,
+      "rank": 3,
+      "group": "shap_only",
+      "shap": 0.1376,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "재직 일수(음수: 신청일 기준)",
+      "feature_raw": "DAYS_EMPLOYED",
+      "value": "1년 재직",
+      "value_raw": -726.0,
+      "rank": 4,
+      "group": "shap_only",
+      "shap": 0.1072,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "학력: 중등(전문중등)",
+      "feature_raw": "NAME_EDUCATION_TYPE_Secondary / secondary special",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "rank": 5,
+      "group": "shap_only",
+      "shap": -0.0489,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "FLAG_PHONE",
+      "feature_raw": "FLAG_PHONE",
+      "value": "예",
+      "value_raw": 1.0,
+      "rank": 6,
+      "group": "shap_only",
+      "shap": -0.0303,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "NAME_FAMILY_STATUS_Married",
+      "feature_raw": "NAME_FAMILY_STATUS_Married",
+      "value": "예",
+      "value_raw": 1.0,
+      "rank": 7,
+      "group": "shap_only",
+      "shap": -0.0302,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "WEEKDAY_APPR_PROCESS_START_MONDAY",
+      "feature_raw": "WEEKDAY_APPR_PROCESS_START_MONDAY",
+      "value": "예",
+      "value_raw": 1.0,
+      "rank": 8,
+      "group": "shap_only",
+      "shap": -0.0187,
+      "sign_for_default": "-"
+    }
+  ],
+  "attention_only_drivers": [
+    {
+      "feature": "FONDKAPREMONT_MODE_org spec account",
+      "feature_raw": "FONDKAPREMONT_MODE_org spec account",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "rank": 1,
+      "group": "attention_only",
+      "attention": 1.284182
+    },
+    {
+      "feature": "외부 신용평가 점수 2",
+      "feature_raw": "EXT_SOURCE_2",
+      "value": "-0.517767",
+      "value_raw": -0.5177665037258469,
+      "rank": 2,
+      "group": "attention_only",
+      "attention": 0.800701
+    },
+    {
+      "feature": "차량 보유: 있음",
+      "feature_raw": "FLAG_OWN_CAR_Y",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "rank": 3,
+      "group": "attention_only",
+      "attention": 0.360471
+    }
+  ],
+  "fairness_flags": [],
+  "model_predict": "XGBoost",
+  "model_explain": [
+    "SHAP_xgb_local",
+    "TabNet_attention_local"
+  ],
+  "explanation_policy": "fact_only_with_agreement_labels",
+  "masked_sensitive_features": [
+    "CODE_GENDER_M",
+    "DAYS_BIRTH"
+  ],
+  "n_agreed": 1,
+  "n_shap_only": 8,
+  "n_attention_only": 3,
+  "_meta_true_label": 0
+}

@@ -1,0 +1,154 @@
+{
+  "sample_idx": 49016,
+  "decision": "REJECT",
+  "true_label": 0,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "elapsed_sec": 13.5,
+  "explanation": "# 신용 평가 결과 안내\n\n## [결정 요약]\n신청 결과: 대출 신청이 거절되었습니다(예측 부도 확률 90.79%).\n\n## [주요 거절 사유 — 두 해석 모델이 동의한 강한 신호]\n1. **외부 신용평가 점수 3**이 0.15952로 매우 낮게 평가되었습니다. 두 해석 모델(SHAP, TabNet 어텐션) 모두 이 점수가 부도 확률을 크게 높이는 가장 강력한 요인으로 동의했습니다.\n\n2. **외부 신용평가 점수 2**도 0.230411로 낮은 수준입니다. 역시 두 모델 모두 이 점수가 부도 확률 증가에 기여하는 핵심 요인으로 판단했습니다.\n\n## [보완적으로 고려된 요인]\n**SHAP 모델 관점:**\n- 외부 신용평가 점수 1(0.0826038)도 낮아 부도 확률을 높이는 요인이었습니다.\n- 구매 대상 상품 가격(382,500원)이 부도 확률 증가에 일부 기여했습니다.\n- 근무 조직 유형(타깃 인코딩 값 0.1032)이 부도 확률을 높이는 쪽으로 영향을 주었습니다.\n- 반면, 거주지 등록 후 23년이 경과한 점과 사실혼 관계는 부도 가능성을 낮추는 긍정 요인이었습니다.\n\n**TabNet 어텐션 모델 관점:**\n- 학력 정보(고등교육 이상 해당 없음)가 결정 과정에서 고려되었습니다.\n\n## [개선 권고]\n1. **외부 신용평가 점수 개선**이 가장 중요합니다. 신용카드 사용률 조정, 연체 내역 해소, 정기적 금융거래 이력 축적 등을 통해 신용 점수 향상을 권장드립니다.\n2. 일정 기간(6개월~1년) 신용 관리 후 재신청을 검토하실 수 있습니다.\n3. 필요시 금융기관의 신용 개선 상담 프로그램을 이용하시기 바랍니다.\n\n## [면책 고지]\n본 안내는 두 가지 해석 모델(SHAP, TabNet 어텐션)의 결과를 융합하여 자연어로 정리한 참고 자료입니다. 최종 의사결정은 담당자의 종합적 검토를 거쳐 이루어지며, 본 설명은 법률적·재무적 자문이 아닙니다.",
+  "usage_metadata": {
+    "input_tokens": 3161,
+    "output_tokens": 885,
+    "total_token_count": 4046
+  },
+  "context_sent": {
+    "sample_idx": 49016,
+    "decision": "REJECT",
+    "default_probability": 0.9079,
+    "threshold": 0.476,
+    "agreed_drivers": [
+      {
+        "feature": "외부 신용평가 점수 3",
+        "feature_raw": "EXT_SOURCE_3",
+        "value": "0.15952",
+        "value_raw": 0.1595195404777181,
+        "rank": 1,
+        "group": "agreed",
+        "shap": 0.7655,
+        "attention": 0.584616,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "0.230411",
+        "value_raw": 0.2304114081035728,
+        "rank": 2,
+        "group": "agreed",
+        "shap": 0.4215,
+        "attention": 0.788618,
+        "sign_for_default": "+"
+      }
+    ],
+    "shap_only_drivers": [
+      {
+        "feature": "외부 신용평가 점수 1",
+        "feature_raw": "EXT_SOURCE_1",
+        "value": "0.0826038",
+        "value_raw": 0.08260377007595121,
+        "rank": 1,
+        "group": "shap_only",
+        "shap": 0.5926,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "구매 대상 상품 가격",
+        "feature_raw": "AMT_GOODS_PRICE",
+        "value": "382,500",
+        "value_raw": 382500.0,
+        "rank": 2,
+        "group": "shap_only",
+        "shap": 0.2609,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "근무 조직 유형 (타깃 인코딩 값)",
+        "feature_raw": "ORGANIZATION_TYPE_TE",
+        "value": "0.1032 (타깃 인코딩 값)",
+        "value_raw": 0.10323886639676114,
+        "rank": 3,
+        "group": "shap_only",
+        "shap": 0.1085,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "AMT_REQ_CREDIT_BUREAU_QRT",
+        "feature_raw": "AMT_REQ_CREDIT_BUREAU_QRT",
+        "value": "2",
+        "value_raw": 2.0,
+        "rank": 4,
+        "group": "shap_only",
+        "shap": -0.0466,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "외부 신용평가 1 결측 여부",
+        "feature_raw": "EXT_SOURCE_1_MISSING_FLAG",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "rank": 5,
+        "group": "shap_only",
+        "shap": -0.0404,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "거주지 등록 후 경과 일수",
+        "feature_raw": "DAYS_REGISTRATION",
+        "value": "23년 전 등록",
+        "value_raw": -8729.0,
+        "rank": 6,
+        "group": "shap_only",
+        "shap": -0.0399,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "NAME_FAMILY_STATUS_Civil marriage",
+        "feature_raw": "NAME_FAMILY_STATUS_Civil marriage",
+        "value": "예",
+        "value_raw": 1.0,
+        "rank": 7,
+        "group": "shap_only",
+        "shap": -0.0314,
+        "sign_for_default": "-"
+      }
+    ],
+    "attention_only_drivers": [
+      {
+        "feature": "FONDKAPREMONT_MODE_reg oper spec account",
+        "feature_raw": "FONDKAPREMONT_MODE_reg oper spec account",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "rank": 1,
+        "group": "attention_only",
+        "attention": 0.708862
+      },
+      {
+        "feature": "학력: 고등교육 이상",
+        "feature_raw": "NAME_EDUCATION_TYPE_Higher education",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "rank": 2,
+        "group": "attention_only",
+        "attention": 0.432845
+      }
+    ],
+    "fairness_flags": [],
+    "model_predict": "XGBoost",
+    "model_explain": [
+      "SHAP_xgb_local",
+      "TabNet_attention_local"
+    ],
+    "explanation_policy": "fact_only_with_agreement_labels",
+    "masked_sensitive_features": [
+      "CODE_GENDER_M",
+      "DAYS_BIRTH"
+    ],
+    "n_agreed": 2,
+    "n_shap_only": 7,
+    "n_attention_only": 2
+  },
+  "context_type": "fusion",
+  "n_agreed": 2,
+  "n_shap_only": 7,
+  "n_attention_only": 2
+}

@@ -1,0 +1,127 @@
+{
+  "sample_idx": 14928,
+  "decision": "REJECT",
+  "default_probability": 0.9363,
+  "threshold": 0.476,
+  "agreed_drivers": [
+    {
+      "feature": "외부 신용평가 점수 3",
+      "feature_raw": "EXT_SOURCE_3",
+      "value": "0.108924",
+      "value_raw": 0.108924403541012,
+      "rank": 1,
+      "group": "agreed",
+      "shap": 0.8718,
+      "attention": 0.729012,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "외부 신용평가 점수 2",
+      "feature_raw": "EXT_SOURCE_2",
+      "value": "0.029544",
+      "value_raw": 0.029543963437184073,
+      "rank": 2,
+      "group": "agreed",
+      "shap": 0.8579,
+      "attention": 1.029452,
+      "sign_for_default": "+"
+    }
+  ],
+  "shap_only_drivers": [
+    {
+      "feature": "구매 대상 상품 가격",
+      "feature_raw": "AMT_GOODS_PRICE",
+      "value": "360,000",
+      "value_raw": 360000.0,
+      "rank": 1,
+      "group": "shap_only",
+      "shap": 0.2839,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "외부 신용평가 점수 1",
+      "feature_raw": "EXT_SOURCE_1",
+      "value": "0.246443",
+      "value_raw": 0.2464429414353403,
+      "rank": 2,
+      "group": "shap_only",
+      "shap": 0.1543,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "거주지(도시 가중) 등급",
+      "feature_raw": "REGION_RATING_CLIENT_W_CITY",
+      "value": "3",
+      "value_raw": 3.0,
+      "rank": 3,
+      "group": "shap_only",
+      "shap": 0.0961,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "외부 신용평가 1 결측 여부",
+      "feature_raw": "EXT_SOURCE_1_MISSING_FLAG",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "rank": 4,
+      "group": "shap_only",
+      "shap": -0.0604,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "AMT_REQ_CREDIT_BUREAU_YEAR",
+      "feature_raw": "AMT_REQ_CREDIT_BUREAU_YEAR",
+      "value": "0",
+      "value_raw": 0.0,
+      "rank": 5,
+      "group": "shap_only",
+      "shap": -0.0467,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "NAME_FAMILY_STATUS_Married",
+      "feature_raw": "NAME_FAMILY_STATUS_Married",
+      "value": "예",
+      "value_raw": 1.0,
+      "rank": 6,
+      "group": "shap_only",
+      "shap": -0.0236,
+      "sign_for_default": "-"
+    }
+  ],
+  "attention_only_drivers": [
+    {
+      "feature": "FONDKAPREMONT_MODE_org spec account",
+      "feature_raw": "FONDKAPREMONT_MODE_org spec account",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "rank": 1,
+      "group": "attention_only",
+      "attention": 1.870145
+    },
+    {
+      "feature": "차량 보유: 있음",
+      "feature_raw": "FLAG_OWN_CAR_Y",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "rank": 2,
+      "group": "attention_only",
+      "attention": 0.496091
+    }
+  ],
+  "fairness_flags": [],
+  "model_predict": "XGBoost",
+  "model_explain": [
+    "SHAP_xgb_local",
+    "TabNet_attention_local"
+  ],
+  "explanation_policy": "fact_only_with_agreement_labels",
+  "masked_sensitive_features": [
+    "CODE_GENDER_F",
+    "CODE_GENDER_M"
+  ],
+  "n_agreed": 2,
+  "n_shap_only": 6,
+  "n_attention_only": 2,
+  "_meta_true_label": 1
+}

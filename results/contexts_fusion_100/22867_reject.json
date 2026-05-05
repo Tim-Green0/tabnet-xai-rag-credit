@@ -1,0 +1,118 @@
+{
+  "sample_idx": 22867,
+  "decision": "REJECT",
+  "default_probability": 0.9003,
+  "threshold": 0.476,
+  "agreed_drivers": [
+    {
+      "feature": "외부 신용평가 점수 3",
+      "feature_raw": "EXT_SOURCE_3",
+      "value": "0.12218",
+      "value_raw": 0.1221797440301585,
+      "rank": 1,
+      "group": "agreed",
+      "shap": 0.9158,
+      "attention": 0.585693,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "외부 신용평가 점수 2",
+      "feature_raw": "EXT_SOURCE_2",
+      "value": "0.241411",
+      "value_raw": 0.2414113739788373,
+      "rank": 2,
+      "group": "agreed",
+      "shap": 0.3581,
+      "attention": 0.824279,
+      "sign_for_default": "+"
+    }
+  ],
+  "shap_only_drivers": [
+    {
+      "feature": "대출 신청 금액",
+      "feature_raw": "AMT_CREDIT",
+      "value": "942,300",
+      "value_raw": 942300.0,
+      "rank": 1,
+      "group": "shap_only",
+      "shap": 0.2473,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "연 환산 상환액",
+      "feature_raw": "AMT_ANNUITY",
+      "value": "36,644",
+      "value_raw": 36643.5,
+      "rank": 2,
+      "group": "shap_only",
+      "shap": 0.1263,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "구매 대상 상품 가격",
+      "feature_raw": "AMT_GOODS_PRICE",
+      "value": "675,000",
+      "value_raw": 675000.0,
+      "rank": 3,
+      "group": "shap_only",
+      "shap": -0.0727,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "거주지 인구 밀도(상대값)",
+      "feature_raw": "REGION_POPULATION_RELATIVE",
+      "value": "0.007305",
+      "value_raw": 0.007305,
+      "rank": 4,
+      "group": "shap_only",
+      "shap": -0.0271,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "등록 도시와 실거주 도시 불일치",
+      "feature_raw": "REG_CITY_NOT_LIVE_CITY",
+      "value": "0",
+      "value_raw": 0.0,
+      "rank": 5,
+      "group": "shap_only",
+      "shap": -0.0171,
+      "sign_for_default": "-"
+    }
+  ],
+  "attention_only_drivers": [
+    {
+      "feature": "FONDKAPREMONT_MODE_org spec account",
+      "feature_raw": "FONDKAPREMONT_MODE_org spec account",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "rank": 1,
+      "group": "attention_only",
+      "attention": 1.652012
+    },
+    {
+      "feature": "차량 보유: 있음",
+      "feature_raw": "FLAG_OWN_CAR_Y",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "rank": 2,
+      "group": "attention_only",
+      "attention": 0.361137
+    }
+  ],
+  "fairness_flags": [],
+  "model_predict": "XGBoost",
+  "model_explain": [
+    "SHAP_xgb_local",
+    "TabNet_attention_local"
+  ],
+  "explanation_policy": "fact_only_with_agreement_labels",
+  "masked_sensitive_features": [
+    "CODE_GENDER_F",
+    "CODE_GENDER_M",
+    "DAYS_BIRTH"
+  ],
+  "n_agreed": 2,
+  "n_shap_only": 5,
+  "n_attention_only": 2,
+  "_meta_true_label": 1
+}

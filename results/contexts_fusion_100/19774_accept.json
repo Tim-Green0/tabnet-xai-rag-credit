@@ -1,0 +1,129 @@
+{
+  "sample_idx": 19774,
+  "decision": "APPROVE",
+  "default_probability": 0.0309,
+  "threshold": 0.476,
+  "agreed_drivers": [
+    {
+      "feature": "외부 신용평가 점수 2",
+      "feature_raw": "EXT_SOURCE_2",
+      "value": "0.782946",
+      "value_raw": 0.7829455209663897,
+      "rank": 1,
+      "group": "agreed",
+      "shap": -0.9777,
+      "attention": 0.621099,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "외부 신용평가 점수 3",
+      "feature_raw": "EXT_SOURCE_3",
+      "value": "0.681706",
+      "value_raw": 0.6817058776720116,
+      "rank": 2,
+      "group": "agreed",
+      "shap": -0.7806,
+      "attention": 0.460431,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "학력: 고등교육 이상",
+      "feature_raw": "NAME_EDUCATION_TYPE_Higher education",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "rank": 3,
+      "group": "agreed",
+      "shap": 0.0319,
+      "attention": 0.340899,
+      "sign_for_default": "+"
+    }
+  ],
+  "shap_only_drivers": [
+    {
+      "feature": "재직 일수(음수: 신청일 기준)",
+      "feature_raw": "DAYS_EMPLOYED",
+      "value": "31년 재직",
+      "value_raw": -11339.0,
+      "rank": 1,
+      "group": "shap_only",
+      "shap": -0.4733,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "대출 신청 금액",
+      "feature_raw": "AMT_CREDIT",
+      "value": "239,850",
+      "value_raw": 239850.0,
+      "rank": 2,
+      "group": "shap_only",
+      "shap": -0.3304,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "AMT_REQ_CREDIT_BUREAU_YEAR",
+      "feature_raw": "AMT_REQ_CREDIT_BUREAU_YEAR",
+      "value": "3",
+      "value_raw": 3.0,
+      "rank": 3,
+      "group": "shap_only",
+      "shap": 0.0551,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "FLAG_OWN_CAR_N",
+      "feature_raw": "FLAG_OWN_CAR_N",
+      "value": "예",
+      "value_raw": 1.0,
+      "rank": 4,
+      "group": "shap_only",
+      "shap": 0.0537,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "구매 대상 상품 가격",
+      "feature_raw": "AMT_GOODS_PRICE",
+      "value": "225,000",
+      "value_raw": 225000.0,
+      "rank": 5,
+      "group": "shap_only",
+      "shap": 0.0445,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "근무 조직 유형 (타깃 인코딩 값)",
+      "feature_raw": "ORGANIZATION_TYPE_TE",
+      "value": "0.0920 (타깃 인코딩 값)",
+      "value_raw": 0.09198407075321884,
+      "rank": 6,
+      "group": "shap_only",
+      "shap": 0.0386,
+      "sign_for_default": "+"
+    }
+  ],
+  "attention_only_drivers": [
+    {
+      "feature": "신청 대출 유형: 리볼빙(한도 대출)",
+      "feature_raw": "NAME_CONTRACT_TYPE_Revolving loans",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "rank": 1,
+      "group": "attention_only",
+      "attention": 3.118657
+    }
+  ],
+  "fairness_flags": [],
+  "model_predict": "XGBoost",
+  "model_explain": [
+    "SHAP_xgb_local",
+    "TabNet_attention_local"
+  ],
+  "explanation_policy": "fact_only_with_agreement_labels",
+  "masked_sensitive_features": [
+    "CODE_GENDER_M",
+    "DAYS_BIRTH"
+  ],
+  "n_agreed": 3,
+  "n_shap_only": 6,
+  "n_attention_only": 1,
+  "_meta_true_label": 0
+}

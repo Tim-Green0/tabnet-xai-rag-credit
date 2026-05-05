@@ -1,0 +1,135 @@
+{
+  "sample_idx": 7687,
+  "decision": "APPROVE",
+  "true_label": 0,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "elapsed_sec": 9.35,
+  "explanation": "[결정 요약]\n신청 결과: 대출 신청이 승인되었습니다(예측 부도 확률 1.48%).\n\n[주요 승인 사유 — 두 해석 모델이 동의한 강한 신호]\n1. 외부 신용평가 점수 2가 0.74312로 양호하게 평가되었습니다(두 모델 동의, 부도 가능성을 크게 낮춤).\n2. 고등교육 이상의 학력을 보유하고 계십니다(두 모델 동의, 부도 가능성을 낮추는 긍정 요인).\n\n[보완적으로 고려된 요인]\n- SHAP 관점에서 외부 신용평가 점수 1(0.868825)도 부도 가능성을 낮추는 강력한 긍정 요인이었습니다.\n- SHAP 관점에서 신청 대출 유형이 현금대출이 아닌 점과 구매 대상 상품 가격(1,350,000원)도 긍정적으로 작용했습니다.\n- TabNet 어텐션은 신청 대출 유형(리볼빙)과 외부 신용평가 점수 3(0.07401)도 결정에 영향을 준 것으로 봤습니다.\n- SHAP 관점에서 LIVINGAREA_MODE(0.0442)와 LANDAREA_AVG(0)는 부도 가능성을 소폭 높이는 요인이었습니다.\n\n[개선 권고]\n- 현재 우수한 신용평가 상태를 유지하시기 바랍니다.\n- 대출 이용 시 상환 계획을 철저히 준수하여 신용도를 지속적으로 관리하시길 권장합니다.\n\n[면책 고지]\n본 안내는 두 해석 모델(SHAP, TabNet 어텐션)의 결과를 자연어로 정리한 것이며, 최종 의사결정은 담당자의 검토를 거칩니다.",
+  "usage_metadata": {
+    "input_tokens": 2908,
+    "output_tokens": 635,
+    "total_token_count": 3543
+  },
+  "context_sent": {
+    "sample_idx": 7687,
+    "decision": "APPROVE",
+    "default_probability": 0.0148,
+    "threshold": 0.476,
+    "agreed_drivers": [
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "0.74312",
+        "value_raw": 0.7431197568648654,
+        "rank": 1,
+        "group": "agreed",
+        "shap": -0.9485,
+        "attention": 0.500332,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "학력: 고등교육 이상",
+        "feature_raw": "NAME_EDUCATION_TYPE_Higher education",
+        "value": "예",
+        "value_raw": 1.0,
+        "rank": 2,
+        "group": "agreed",
+        "shap": -0.174,
+        "attention": 0.273916,
+        "sign_for_default": "-"
+      }
+    ],
+    "shap_only_drivers": [
+      {
+        "feature": "외부 신용평가 점수 1",
+        "feature_raw": "EXT_SOURCE_1",
+        "value": "0.868825",
+        "value_raw": 0.8688246130816584,
+        "rank": 1,
+        "group": "shap_only",
+        "shap": -0.6538,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "신청 대출 유형: 현금대출",
+        "feature_raw": "NAME_CONTRACT_TYPE_Cash loans",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "rank": 2,
+        "group": "shap_only",
+        "shap": -0.4545,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "구매 대상 상품 가격",
+        "feature_raw": "AMT_GOODS_PRICE",
+        "value": "1,350,000",
+        "value_raw": 1350000.0,
+        "rank": 3,
+        "group": "shap_only",
+        "shap": -0.4216,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "LIVINGAREA_MODE",
+        "feature_raw": "LIVINGAREA_MODE",
+        "value": "0.0442",
+        "value_raw": 0.0442,
+        "rank": 4,
+        "group": "shap_only",
+        "shap": 0.0275,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "LANDAREA_AVG",
+        "feature_raw": "LANDAREA_AVG",
+        "value": "0",
+        "value_raw": 0.0,
+        "rank": 5,
+        "group": "shap_only",
+        "shap": 0.0232,
+        "sign_for_default": "+"
+      }
+    ],
+    "attention_only_drivers": [
+      {
+        "feature": "신청 대출 유형: 리볼빙(한도 대출)",
+        "feature_raw": "NAME_CONTRACT_TYPE_Revolving loans",
+        "value": "예",
+        "value_raw": 1.0,
+        "rank": 1,
+        "group": "attention_only",
+        "attention": 6.758369
+      },
+      {
+        "feature": "외부 신용평가 점수 3",
+        "feature_raw": "EXT_SOURCE_3",
+        "value": "0.07401",
+        "value_raw": 0.0740100065719548,
+        "rank": 2,
+        "group": "attention_only",
+        "attention": 0.377526
+      }
+    ],
+    "fairness_flags": [],
+    "model_predict": "XGBoost",
+    "model_explain": [
+      "SHAP_xgb_local",
+      "TabNet_attention_local"
+    ],
+    "explanation_policy": "fact_only_with_agreement_labels",
+    "masked_sensitive_features": [
+      "CODE_GENDER_F",
+      "CODE_GENDER_M",
+      "DAYS_BIRTH"
+    ],
+    "n_agreed": 2,
+    "n_shap_only": 5,
+    "n_attention_only": 2
+  },
+  "context_type": "fusion",
+  "n_agreed": 2,
+  "n_shap_only": 5,
+  "n_attention_only": 2
+}

@@ -1,0 +1,138 @@
+{
+  "sample_idx": 20633,
+  "decision": "REJECT",
+  "default_probability": 0.911,
+  "threshold": 0.476,
+  "agreed_drivers": [
+    {
+      "feature": "외부 신용평가 점수 2",
+      "feature_raw": "EXT_SOURCE_2",
+      "value": "0.0609248",
+      "value_raw": 0.0609247984119451,
+      "rank": 1,
+      "group": "agreed",
+      "shap": 0.9885,
+      "attention": 1.036238,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "외부 신용평가 점수 3",
+      "feature_raw": "EXT_SOURCE_3",
+      "value": "0.140243",
+      "value_raw": 0.1402431837080297,
+      "rank": 2,
+      "group": "agreed",
+      "shap": 0.7289,
+      "attention": 0.763875,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "재직 일수(음수: 신청일 기준)",
+      "feature_raw": "DAYS_EMPLOYED",
+      "value": "0년 재직",
+      "value_raw": -200.0,
+      "rank": 3,
+      "group": "agreed",
+      "shap": 0.128,
+      "attention": 0.482759,
+      "sign_for_default": "+"
+    }
+  ],
+  "shap_only_drivers": [
+    {
+      "feature": "구매 대상 상품 가격",
+      "feature_raw": "AMT_GOODS_PRICE",
+      "value": "225,000",
+      "value_raw": 225000.0,
+      "rank": 1,
+      "group": "shap_only",
+      "shap": 0.2294,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "대출 신청 금액",
+      "feature_raw": "AMT_CREDIT",
+      "value": "269,550",
+      "value_raw": 269550.0,
+      "rank": 2,
+      "group": "shap_only",
+      "shap": -0.1633,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "거주지(도시 가중) 등급",
+      "feature_raw": "REGION_RATING_CLIENT_W_CITY",
+      "value": "3",
+      "value_raw": 3.0,
+      "rank": 3,
+      "group": "shap_only",
+      "shap": 0.0967,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "FLAG_OWN_CAR_N",
+      "feature_raw": "FLAG_OWN_CAR_N",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "rank": 4,
+      "group": "shap_only",
+      "shap": -0.0663,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "NAME_FAMILY_STATUS_Married",
+      "feature_raw": "NAME_FAMILY_STATUS_Married",
+      "value": "예",
+      "value_raw": 1.0,
+      "rank": 5,
+      "group": "shap_only",
+      "shap": -0.0315,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "최근 휴대폰 변경 후 경과 일수",
+      "feature_raw": "DAYS_LAST_PHONE_CHANGE",
+      "value": "-21",
+      "value_raw": -21.0,
+      "rank": 6,
+      "group": "shap_only",
+      "shap": -0.0195,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "총 소득",
+      "feature_raw": "AMT_INCOME_TOTAL",
+      "value": "157,500",
+      "value_raw": 157500.0,
+      "rank": 7,
+      "group": "shap_only",
+      "shap": -0.0184,
+      "sign_for_default": "-"
+    }
+  ],
+  "attention_only_drivers": [
+    {
+      "feature": "FONDKAPREMONT_MODE_org spec account",
+      "feature_raw": "FONDKAPREMONT_MODE_org spec account",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "rank": 1,
+      "group": "attention_only",
+      "attention": 1.130538
+    }
+  ],
+  "fairness_flags": [],
+  "model_predict": "XGBoost",
+  "model_explain": [
+    "SHAP_xgb_local",
+    "TabNet_attention_local"
+  ],
+  "explanation_policy": "fact_only_with_agreement_labels",
+  "masked_sensitive_features": [
+    "CODE_GENDER_M"
+  ],
+  "n_agreed": 3,
+  "n_shap_only": 7,
+  "n_attention_only": 1,
+  "_meta_true_label": 1
+}

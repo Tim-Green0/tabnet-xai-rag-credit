@@ -898,31 +898,83 @@ def make_slides():
                   size=12, color=COLOR_HIGHLIGHT)
 
     # ════════════════════════════════════════════════════════
-    # 슬라이드 15 — 종합 + 핵심 메시지 (기존 #12, 번호 갱신)
+    # 슬라이드 15 (NEW) — Step 3-C-1: TabNet 어텐션 × SHAP 융합 컨텍스트
     # ════════════════════════════════════════════════════════
     s = add_blank_slide(prs)
-    add_header_bar(s, SW, "14. 종합 — 본 연구의 가치 3가지",
-                       "Step 1 + Step 2-A + Step 3-B 마무리")
+    add_header_bar(s, SW, "14. ★ Step 3-C-1 — TabNet 어텐션 × SHAP 융합 컨텍스트",
+                       "TabNet이 본 메커니즘에 통합 — 환각 0% 유지 + Completeness 큰 향상")
+
+    # 좌측: 비교 figure
+    fig_path = FIG_DIR / "30_fusion_vs_shaponly.png"
+    if fig_path.exists():
+        pic = s.shapes.add_picture(str(fig_path),
+                                       Cm(0.6), Cm(3.0),
+                                       width=Cm(19))
+        if pic.height > Cm(11):
+            pic.height = Cm(11)
+            pic.width = Cm(19)
+
+    # 우측 상단: 메커니즘
+    add_textbox(s, Cm(20.5), Cm(3.0), Cm(13), Cm(1.0),
+                  "융합 메커니즘 (3 그룹)",
+                  size=14, bold=True, color=COLOR_PRIMARY)
+    add_bullets(s, Cm(20.7), Cm(4.0), Cm(13), Cm(4), [
+        "agreed_drivers: 두 모델 동의 강한 신호",
+        "shap_only: SHAP만 본 보완 신호 (부호 보존)",
+        "attention_only: TabNet만 본 sparse 신호 (부호 없음)",
+        "그룹 라벨을 LLM에 명시 → 가중치 인지",
+    ], size=11)
+
+    # 우측 중간: agreement 통계
+    add_textbox(s, Cm(20.5), Cm(8.0), Cm(13), Cm(1.0),
+                  "Agreement 통계 (n=100)",
+                  size=14, bold=True, color=COLOR_PRIMARY)
+    add_bullets(s, Cm(20.7), Cm(8.9), Cm(13), Cm(2.5), [
+        "평균: agreed 2.12 / shap_only 6.98 / att_only 2.06",
+        "3+ 동의 22%, 4+ 동의 0% — 부분 일관 + 상보",
+    ], size=11)
+
+    # 우측 하단: 평가 결과
+    add_textbox(s, Cm(20.5), Cm(11.5), Cm(13), Cm(1.0),
+                  "평가 결과 (n=30 each, judge=Claude)",
+                  size=14, bold=True, color=COLOR_ACCENT)
+    add_bullets(s, Cm(20.7), Cm(12.4), Cm(13), Cm(4.5), [
+        "Halluc 0/30 — 양 LLM × 양 mode 모두 ✅",
+        "Completeness +0.67 (Anthropic) / +0.80 (Gemini)",
+        "Factual 4.77~4.97, Sensitive 5.0/5.0 유지",
+        "TabNet이 비교 모델 → 메커니즘 핵심으로 격상",
+    ], size=11)
+
+    # ════════════════════════════════════════════════════════
+    # 슬라이드 16 — 종합 + 핵심 메시지 (기존 #14, 번호 갱신)
+    # ════════════════════════════════════════════════════════
+    s = add_blank_slide(prs)
+    add_header_bar(s, SW, "15. 종합 — 본 연구의 가치 4가지",
+                       "Step 1 + Step 2-A + Step 3-B + Step 3-C-1 마무리")
 
     # 3개 컬럼 카드
     cards = [
         ("예측 성능",
-          "XGBoost AUROC 0.7587 ± 0.0008\n5-fold 안정적 우위\n\n"
-          "TabNet 0.7518 — 비슷한 성능 +\n어텐션 해석성 추가",
+          "XGBoost 0.7587 → 0.7755\n(Step 3-B aux 추가, +2.22%)\n\n"
+          "TabNet 0.7518 — 어텐션\n해석성으로 융합 컨텍스트에 통합",
           RGBColor(0x4C, 0x72, 0xB0)),
-        ("해석 일관성",
-          "Spearman ρ 0.117 (전체)\n−0.195 (Top-50)\n\n"
-          "어텐션 ↔ SHAP의\n부분 일관 + 부분 상보 정량 검증",
+        ("해석 융합",
+          "ρ=0.117 부분 일관\n+ instance-level\n동의 22% (3+) / 0% (4+)\n\n"
+          "agreement-aware 컨텍스트로\nLLM에 의미 라벨 전달",
           RGBColor(0x55, 0xA8, 0x68)),
         ("환각 차단",
-          "Hallucination Rate 0.000\n(두 LLM 모두)\n\n"
-          "Baseline 45.5% vs XAI-RAG 0%\n→ SHAP 컨텍스트의 직접 효과 입증",
+          "Halluc 0/100 (Step 1/2-A)\n→ 0/30 (Step 3-C-1 fusion)\n\n"
+          "Baseline 45.5% vs\nXAI-RAG 0% (Step 1)",
           RGBColor(0xC4, 0x4E, 0x52)),
+        ("완결성 향상",
+          "G-Eval Completeness\n+0.67 (Anthropic)\n+0.80 (Gemini)\n\n"
+          "두 해석 신호 상보성이\n더 완결한 설명 생성",
+          RGBColor(0xDD, 0x85, 0x52)),
     ]
-    card_w = Cm(9.5)
+    card_w = Cm(7.0)
     card_h = Cm(8.5)
-    gap_x = Cm(1.0)
-    total_w = 3 * card_w + 2 * gap_x
+    gap_x = Cm(0.7)
+    total_w = 4 * card_w + 3 * gap_x
     start_x = (SW - total_w) // 2
     card_y = Cm(3.5)
     for i, (title, body, color) in enumerate(cards):
@@ -960,16 +1012,17 @@ def make_slides():
     # 슬라이드 15 — 한계 + 향후 계획
     # ════════════════════════════════════════════════════════
     s = add_blank_slide(prs)
-    add_header_bar(s, SW, "15. 한계와 향후 계획",
-                       "Step 3-B 일부 진행 / 잔여는 본 논문 확장")
+    add_header_bar(s, SW, "16. 한계와 향후 계획",
+                       "Step 3-B/3-C-1 일부 진행 / 잔여는 본 논문 확장")
 
     add_textbox(s, Cm(1.0), Cm(3.0), Cm(15), Cm(1),
                   "현재 한계 / 진행 중", size=16, bold=True, color=COLOR_ACCENT)
     add_bullets(s, Cm(1.5), Cm(4.0), Cm(15), Cm(13), [
-        "평가 표본 100명 (Step 2-A 확장 완료) — 500명+ 추가 검토",
+        "Fusion 평가 표본 30명 — 100명+ 확장 검토",
+        "Gemini judge cross-validation 미완 (503 과부하)",
         "보조 테이블 2/6개 활용 (Step 3-B) — 4개 잔여",
         "Bureau의 SHAP 미진입 — EXT_SOURCE 응축 가설 검증 필요",
-        "G-Eval self-bias — Cross-LLM(Step 2-A)으로 부분 우회",
+        "TabNet-only 컨텍스트 ablation 미수행 (3-way)",
         "TabNet/LightGBM에 aux 효과 일반화 미실시",
         "Fairness-aware 학습 미수행",
     ], size=13)
@@ -977,13 +1030,13 @@ def make_slides():
     add_textbox(s, Cm(17), Cm(3.0), Cm(15), Cm(1),
                   "향후 계획", size=16, bold=True, color=COLOR_HIGHLIGHT)
     add_bullets(s, Cm(17.5), Cm(4.0), Cm(15), Cm(13), [
-        "잔여 보조 테이블 4개로 AUROC 0.78+ 추가 향상",
-        "Bureau ablation — EXT_SOURCE와 정보 중복도 정량화",
-        "Fairness-aware 학습 (Reweighing, Adversarial Debiasing)",
-        "TabNet/LightGBM 재학습으로 aux 효과 일반화",
-        "FT-Transformer 비교 모델 추가",
+        "Gemini judge로 양방향 cross-validation",
+        "Fusion 표본 100명 확장 + counterfactual 결합",
+        "3-way ablation: SHAP-only / Attn-only / Fusion",
+        "잔여 보조 테이블 4개로 AUROC 0.78+",
+        "Fairness-aware 학습 (Reweighing, Adversarial)",
+        "FT-Transformer 비교 + NLI 기반 Faithfulness",
         "인간 평가 (Plausibility) — 5점 척도, Cohen's κ",
-        "한국어 도메인 특화 LLM QLoRA 미세조정",
     ], size=13)
 
     # ════════════════════════════════════════════════════════

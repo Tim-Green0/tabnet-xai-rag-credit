@@ -1,0 +1,119 @@
+{
+  "sample_idx": 60085,
+  "decision": "REJECT",
+  "default_probability": 0.9014,
+  "threshold": 0.476,
+  "agreed_drivers": [
+    {
+      "feature": "외부 신용평가 점수 3",
+      "feature_raw": "EXT_SOURCE_3",
+      "value": "0.190706",
+      "value_raw": 0.190705947811054,
+      "rank": 1,
+      "group": "agreed",
+      "shap": 0.5917,
+      "attention": 0.572941,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "외부 신용평가 점수 2",
+      "feature_raw": "EXT_SOURCE_2",
+      "value": "0.0875613",
+      "value_raw": 0.0875612978531228,
+      "rank": 2,
+      "group": "agreed",
+      "shap": 0.5737,
+      "attention": 0.85706,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "근무 조직 유형 (타깃 인코딩 값)",
+      "feature_raw": "ORGANIZATION_TYPE_TE",
+      "value": "0.1219 (타깃 인코딩 값)",
+      "value_raw": 0.12194519871636633,
+      "rank": 3,
+      "group": "agreed",
+      "shap": 0.1852,
+      "attention": 0.388568,
+      "sign_for_default": "+"
+    }
+  ],
+  "shap_only_drivers": [
+    {
+      "feature": "구매 대상 상품 가격",
+      "feature_raw": "AMT_GOODS_PRICE",
+      "value": "405,000",
+      "value_raw": 405000.0,
+      "rank": 1,
+      "group": "shap_only",
+      "shap": 0.2429,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "대출 신청 금액",
+      "feature_raw": "AMT_CREDIT",
+      "value": "576,072",
+      "value_raw": 576072.0,
+      "rank": 2,
+      "group": "shap_only",
+      "shap": 0.1782,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "거주지 등록 후 경과 일수",
+      "feature_raw": "DAYS_REGISTRATION",
+      "value": "23년 전 등록",
+      "value_raw": -8473.0,
+      "rank": 3,
+      "group": "shap_only",
+      "shap": -0.0559,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "AMT_REQ_CREDIT_BUREAU_YEAR",
+      "feature_raw": "AMT_REQ_CREDIT_BUREAU_YEAR",
+      "value": "0",
+      "value_raw": 0.0,
+      "rank": 4,
+      "group": "shap_only",
+      "shap": -0.0432,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "COMMONAREA_MODE",
+      "feature_raw": "COMMONAREA_MODE",
+      "value": "0.0026",
+      "value_raw": 0.0026,
+      "rank": 5,
+      "group": "shap_only",
+      "shap": -0.03,
+      "sign_for_default": "-"
+    }
+  ],
+  "attention_only_drivers": [
+    {
+      "feature": "FONDKAPREMONT_MODE_org spec account",
+      "feature_raw": "FONDKAPREMONT_MODE_org spec account",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "rank": 1,
+      "group": "attention_only",
+      "attention": 1.43003
+    }
+  ],
+  "fairness_flags": [],
+  "model_predict": "XGBoost",
+  "model_explain": [
+    "SHAP_xgb_local",
+    "TabNet_attention_local"
+  ],
+  "explanation_policy": "fact_only_with_agreement_labels",
+  "masked_sensitive_features": [
+    "CODE_GENDER_F",
+    "CODE_GENDER_M"
+  ],
+  "n_agreed": 3,
+  "n_shap_only": 5,
+  "n_attention_only": 1,
+  "_meta_true_label": 1
+}

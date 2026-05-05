@@ -1,0 +1,137 @@
+{
+  "sample_idx": 7950,
+  "decision": "APPROVE",
+  "default_probability": 0.0326,
+  "threshold": 0.476,
+  "agreed_drivers": [
+    {
+      "feature": "외부 신용평가 점수 2",
+      "feature_raw": "EXT_SOURCE_2",
+      "value": "0.662748",
+      "value_raw": 0.6627476321926328,
+      "rank": 1,
+      "group": "agreed",
+      "shap": -0.4013,
+      "attention": 0.39266,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "외부 신용평가 점수 3",
+      "feature_raw": "EXT_SOURCE_3",
+      "value": "0.595456",
+      "value_raw": 0.5954562029091491,
+      "rank": 2,
+      "group": "agreed",
+      "shap": -0.3242,
+      "attention": 0.296268,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "대출 신청 금액",
+      "feature_raw": "AMT_CREDIT",
+      "value": "900,000",
+      "value_raw": 900000.0,
+      "rank": 3,
+      "group": "agreed",
+      "shap": 0.0975,
+      "attention": 0.671662,
+      "sign_for_default": "+"
+    }
+  ],
+  "shap_only_drivers": [
+    {
+      "feature": "외부 신용평가 점수 1",
+      "feature_raw": "EXT_SOURCE_1",
+      "value": "0.693372",
+      "value_raw": 0.6933724659709275,
+      "rank": 1,
+      "group": "shap_only",
+      "shap": -0.4288,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "재직 일수(음수: 신청일 기준)",
+      "feature_raw": "DAYS_EMPLOYED",
+      "value": "18년 재직",
+      "value_raw": -6716.0,
+      "rank": 2,
+      "group": "shap_only",
+      "shap": -0.3997,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "신청 대출 유형: 현금대출",
+      "feature_raw": "NAME_CONTRACT_TYPE_Cash loans",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "rank": 3,
+      "group": "shap_only",
+      "shap": -0.3443,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "신분증 발급 후 경과 일수",
+      "feature_raw": "DAYS_ID_PUBLISH",
+      "value": "-1270",
+      "value_raw": -1270.0,
+      "rank": 4,
+      "group": "shap_only",
+      "shap": 0.0832,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "연 환산 상환액",
+      "feature_raw": "AMT_ANNUITY",
+      "value": "45,000",
+      "value_raw": 45000.0,
+      "rank": 5,
+      "group": "shap_only",
+      "shap": 0.0794,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "근무 전화 등록 여부",
+      "feature_raw": "FLAG_WORK_PHONE",
+      "value": "예",
+      "value_raw": 1.0,
+      "rank": 6,
+      "group": "shap_only",
+      "shap": 0.0776,
+      "sign_for_default": "+"
+    }
+  ],
+  "attention_only_drivers": [
+    {
+      "feature": "신청 대출 유형: 리볼빙(한도 대출)",
+      "feature_raw": "NAME_CONTRACT_TYPE_Revolving loans",
+      "value": "예",
+      "value_raw": 1.0,
+      "rank": 1,
+      "group": "attention_only",
+      "attention": 4.839182
+    },
+    {
+      "feature": "학력: 고등교육 이상",
+      "feature_raw": "NAME_EDUCATION_TYPE_Higher education",
+      "value": "예",
+      "value_raw": 1.0,
+      "rank": 2,
+      "group": "attention_only",
+      "attention": 0.215201
+    }
+  ],
+  "fairness_flags": [],
+  "model_predict": "XGBoost",
+  "model_explain": [
+    "SHAP_xgb_local",
+    "TabNet_attention_local"
+  ],
+  "explanation_policy": "fact_only_with_agreement_labels",
+  "masked_sensitive_features": [
+    "CODE_GENDER_F"
+  ],
+  "n_agreed": 3,
+  "n_shap_only": 6,
+  "n_attention_only": 2,
+  "_meta_true_label": 0
+}

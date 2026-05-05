@@ -1,0 +1,138 @@
+{
+  "sample_idx": 47048,
+  "decision": "REJECT",
+  "default_probability": 0.9253,
+  "threshold": 0.476,
+  "agreed_drivers": [
+    {
+      "feature": "외부 신용평가 점수 3",
+      "feature_raw": "EXT_SOURCE_3",
+      "value": "0.0720132",
+      "value_raw": 0.0720131886405828,
+      "rank": 1,
+      "group": "agreed",
+      "shap": 1.0518,
+      "attention": 0.729803,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "외부 신용평가 점수 2",
+      "feature_raw": "EXT_SOURCE_2",
+      "value": "0.029544",
+      "value_raw": 0.029543963437184073,
+      "rank": 2,
+      "group": "agreed",
+      "shap": 0.921,
+      "attention": 0.984469,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "학력: 고등교육 이상",
+      "feature_raw": "NAME_EDUCATION_TYPE_Higher education",
+      "value": "예",
+      "value_raw": 1.0,
+      "rank": 3,
+      "group": "agreed",
+      "shap": -0.083,
+      "attention": 0.54034,
+      "sign_for_default": "-"
+    }
+  ],
+  "shap_only_drivers": [
+    {
+      "feature": "근무 조직 유형 (타깃 인코딩 값)",
+      "feature_raw": "ORGANIZATION_TYPE_TE",
+      "value": "0.1219 (타깃 인코딩 값)",
+      "value_raw": 0.12194519871636633,
+      "rank": 1,
+      "group": "shap_only",
+      "shap": 0.2337,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "외부 신용평가 점수 1",
+      "feature_raw": "EXT_SOURCE_1",
+      "value": "0.19597",
+      "value_raw": 0.1959697780835714,
+      "rank": 2,
+      "group": "shap_only",
+      "shap": 0.1958,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "구매 대상 상품 가격",
+      "feature_raw": "AMT_GOODS_PRICE",
+      "value": "450,000",
+      "value_raw": 450000.0,
+      "rank": 3,
+      "group": "shap_only",
+      "shap": 0.1955,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "FLAG_DOCUMENT_3",
+      "feature_raw": "FLAG_DOCUMENT_3",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "rank": 4,
+      "group": "shap_only",
+      "shap": -0.0949,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "외부 신용평가 1 결측 여부",
+      "feature_raw": "EXT_SOURCE_1_MISSING_FLAG",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "rank": 5,
+      "group": "shap_only",
+      "shap": -0.0611,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "AMT_REQ_CREDIT_BUREAU_YEAR",
+      "feature_raw": "AMT_REQ_CREDIT_BUREAU_YEAR",
+      "value": "0",
+      "value_raw": 0.0,
+      "rank": 6,
+      "group": "shap_only",
+      "shap": -0.0448,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "학력: 중등(전문중등)",
+      "feature_raw": "NAME_EDUCATION_TYPE_Secondary / secondary special",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "rank": 7,
+      "group": "shap_only",
+      "shap": -0.0371,
+      "sign_for_default": "-"
+    }
+  ],
+  "attention_only_drivers": [
+    {
+      "feature": "FONDKAPREMONT_MODE_reg oper spec account",
+      "feature_raw": "FONDKAPREMONT_MODE_reg oper spec account",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "rank": 1,
+      "group": "attention_only",
+      "attention": 0.708862
+    }
+  ],
+  "fairness_flags": [],
+  "model_predict": "XGBoost",
+  "model_explain": [
+    "SHAP_xgb_local",
+    "TabNet_attention_local"
+  ],
+  "explanation_policy": "fact_only_with_agreement_labels",
+  "masked_sensitive_features": [
+    "CODE_GENDER_M"
+  ],
+  "n_agreed": 3,
+  "n_shap_only": 7,
+  "n_attention_only": 1,
+  "_meta_true_label": 0
+}

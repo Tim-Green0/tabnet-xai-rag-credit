@@ -1,0 +1,137 @@
+{
+  "sample_idx": 47034,
+  "decision": "REJECT",
+  "default_probability": 0.8944,
+  "threshold": 0.476,
+  "agreed_drivers": [
+    {
+      "feature": "외부 신용평가 점수 2",
+      "feature_raw": "EXT_SOURCE_2",
+      "value": "0.029544",
+      "value_raw": 0.029543963437184073,
+      "rank": 1,
+      "group": "agreed",
+      "shap": 0.9609,
+      "attention": 1.10114,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "외부 신용평가 점수 3",
+      "feature_raw": "EXT_SOURCE_3",
+      "value": "0.143758",
+      "value_raw": 0.1437580534911652,
+      "rank": 2,
+      "group": "agreed",
+      "shap": 0.8383,
+      "attention": 0.796597,
+      "sign_for_default": "+"
+    }
+  ],
+  "shap_only_drivers": [
+    {
+      "feature": "구매 대상 상품 가격",
+      "feature_raw": "AMT_GOODS_PRICE",
+      "value": "418,500",
+      "value_raw": 418500.0,
+      "rank": 1,
+      "group": "shap_only",
+      "shap": 0.338,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "재직 일수(음수: 신청일 기준)",
+      "feature_raw": "DAYS_EMPLOYED",
+      "value": "0년 재직",
+      "value_raw": -239.0,
+      "rank": 2,
+      "group": "shap_only",
+      "shap": 0.1784,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "연 환산 상환액",
+      "feature_raw": "AMT_ANNUITY",
+      "value": "33,682",
+      "value_raw": 33682.5,
+      "rank": 3,
+      "group": "shap_only",
+      "shap": 0.1078,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "보유 차량 연식",
+      "feature_raw": "OWN_CAR_AGE",
+      "value": "1",
+      "value_raw": 1.0,
+      "rank": 4,
+      "group": "shap_only",
+      "shap": -0.0995,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "COMMONAREA_MODE",
+      "feature_raw": "COMMONAREA_MODE",
+      "value": "0.1717",
+      "value_raw": 0.1717,
+      "rank": 5,
+      "group": "shap_only",
+      "shap": -0.0785,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "총 소득",
+      "feature_raw": "AMT_INCOME_TOTAL",
+      "value": "247,500",
+      "value_raw": 247500.0,
+      "rank": 6,
+      "group": "shap_only",
+      "shap": -0.0593,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "BASEMENTAREA_MEDI",
+      "feature_raw": "BASEMENTAREA_MEDI",
+      "value": "0.3041",
+      "value_raw": 0.3041,
+      "rank": 7,
+      "group": "shap_only",
+      "shap": -0.0578,
+      "sign_for_default": "-"
+    }
+  ],
+  "attention_only_drivers": [
+    {
+      "feature": "NAME_INCOME_TYPE_Working",
+      "feature_raw": "NAME_INCOME_TYPE_Working",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "rank": 1,
+      "group": "attention_only",
+      "attention": 0.481328
+    },
+    {
+      "feature": "차량 보유: 있음",
+      "feature_raw": "FLAG_OWN_CAR_Y",
+      "value": "예",
+      "value_raw": 1.0,
+      "rank": 2,
+      "group": "attention_only",
+      "attention": 0.466617
+    }
+  ],
+  "fairness_flags": [],
+  "model_predict": "XGBoost",
+  "model_explain": [
+    "SHAP_xgb_local",
+    "TabNet_attention_local"
+  ],
+  "explanation_policy": "fact_only_with_agreement_labels",
+  "masked_sensitive_features": [
+    "CODE_GENDER_M",
+    "DAYS_BIRTH"
+  ],
+  "n_agreed": 2,
+  "n_shap_only": 7,
+  "n_attention_only": 2,
+  "_meta_true_label": 0
+}

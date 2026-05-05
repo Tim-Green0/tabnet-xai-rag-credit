@@ -1,0 +1,163 @@
+{
+  "sample_idx": 716,
+  "decision": "REJECT",
+  "true_label": 0,
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "elapsed_sec": 16.24,
+  "explanation": "[결정 요약]\n신청 결과: 대출 신청이 거절되었습니다(예측 부도 확률 91.1%).\n\n[주요 거절 사유 — 두 해석 모델이 동의한 강한 신호]\n1.  외부 신용평가 점수 3이 0.0633754로 매우 낮게 평가되었습니다(두 모델 동의).\n2.  외부 신용평가 점수 2 또한 0.201654로 낮은 편으로 확인되었습니다(두 모델 동의).\n\n[보완적으로 고려된 요인]\n-   SHAP 분석에 따르면, 구매 대상 상품 가격 225,000원은 부도 확률을 높이는 요인으로 고려되었습니다.\n-   SHAP 분석에 따르면, 1년의 재직 기간은 부도 확률을 높이는 요인으로 작용했습니다.\n-   반면, SHAP 분석에서 연 환산 상환액 13,833원은 부도 확률을 낮추는 긍정적인 요인이었습니다.\n-   TabNet 어텐션 모델은 FONDKAPREMONT_MODE_org spec account 여부(아니오)와 차량 보유 여부(아니오)도 대출 결정에 영향을 준 요인으로 보았습니다.\n\n[개선 권고]\n-   외부 신용평가 점수 향상을 위한 신용 관리(예: 연체 해소, 신용카드 사용률 관리)를 권장합니다.\n-   일정 기간 후 재신청을 고려하실 수 있습니다.\n\n[면책 고지]\n본 안내는 두 해석 모델(SHAP, TabNet 어텐션)의 결과를 자연어로 정리한 것이며, 최종 의사결정은 담당자의 검토를 거칩니다.",
+  "usage_metadata": {
+    "prompt_token_count": 2708,
+    "candidates_token_count": 393,
+    "total_token_count": 6095
+  },
+  "context_sent": {
+    "sample_idx": 716,
+    "decision": "REJECT",
+    "default_probability": 0.911,
+    "threshold": 0.476,
+    "agreed_drivers": [
+      {
+        "feature": "외부 신용평가 점수 3",
+        "feature_raw": "EXT_SOURCE_3",
+        "value": "0.0633754",
+        "value_raw": 0.0633753623099886,
+        "rank": 1,
+        "group": "agreed",
+        "shap": 1.152,
+        "attention": 0.803719,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "0.201654",
+        "value_raw": 0.2016540822157123,
+        "rank": 2,
+        "group": "agreed",
+        "shap": 0.4648,
+        "attention": 1.12529,
+        "sign_for_default": "+"
+      }
+    ],
+    "shap_only_drivers": [
+      {
+        "feature": "구매 대상 상품 가격",
+        "feature_raw": "AMT_GOODS_PRICE",
+        "value": "225,000",
+        "value_raw": 225000.0,
+        "rank": 1,
+        "group": "shap_only",
+        "shap": 0.2444,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "연 환산 상환액",
+        "feature_raw": "AMT_ANNUITY",
+        "value": "13,833",
+        "value_raw": 13833.0,
+        "rank": 2,
+        "group": "shap_only",
+        "shap": -0.1063,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "근무 조직 유형 (타깃 인코딩 값)",
+        "feature_raw": "ORGANIZATION_TYPE_TE",
+        "value": "0.1029 (타깃 인코딩 값)",
+        "value_raw": 0.10291033036182486,
+        "rank": 3,
+        "group": "shap_only",
+        "shap": 0.1026,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "재직 일수(음수: 신청일 기준)",
+        "feature_raw": "DAYS_EMPLOYED",
+        "value": "1년 재직",
+        "value_raw": -511.0,
+        "rank": 4,
+        "group": "shap_only",
+        "shap": 0.0808,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "대출 신청 금액",
+        "feature_raw": "AMT_CREDIT",
+        "value": "284,400",
+        "value_raw": 284400.0,
+        "rank": 5,
+        "group": "shap_only",
+        "shap": -0.0805,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "AMT_REQ_CREDIT_BUREAU_YEAR",
+        "feature_raw": "AMT_REQ_CREDIT_BUREAU_YEAR",
+        "value": "0",
+        "value_raw": 0.0,
+        "rank": 6,
+        "group": "shap_only",
+        "shap": -0.0434,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "NAME_FAMILY_STATUS_Married",
+        "feature_raw": "NAME_FAMILY_STATUS_Married",
+        "value": "예",
+        "value_raw": 1.0,
+        "rank": 7,
+        "group": "shap_only",
+        "shap": -0.0378,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "가족 구성원 수",
+        "feature_raw": "CNT_FAM_MEMBERS",
+        "value": "4",
+        "value_raw": 4.0,
+        "rank": 8,
+        "group": "shap_only",
+        "shap": -0.0219,
+        "sign_for_default": "-"
+      }
+    ],
+    "attention_only_drivers": [
+      {
+        "feature": "FONDKAPREMONT_MODE_org spec account",
+        "feature_raw": "FONDKAPREMONT_MODE_org spec account",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "rank": 1,
+        "group": "attention_only",
+        "attention": 1.105012
+      },
+      {
+        "feature": "차량 보유: 있음",
+        "feature_raw": "FLAG_OWN_CAR_Y",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "rank": 2,
+        "group": "attention_only",
+        "attention": 0.463288
+      }
+    ],
+    "fairness_flags": [],
+    "model_predict": "XGBoost",
+    "model_explain": [
+      "SHAP_xgb_local",
+      "TabNet_attention_local"
+    ],
+    "explanation_policy": "fact_only_with_agreement_labels",
+    "masked_sensitive_features": [
+      "CODE_GENDER_M"
+    ],
+    "n_agreed": 2,
+    "n_shap_only": 8,
+    "n_attention_only": 2
+  },
+  "context_type": "fusion",
+  "n_agreed": 2,
+  "n_shap_only": 8,
+  "n_attention_only": 2
+}

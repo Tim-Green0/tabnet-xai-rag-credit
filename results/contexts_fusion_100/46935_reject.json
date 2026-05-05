@@ -1,0 +1,154 @@
+{
+  "sample_idx": 46935,
+  "decision": "REJECT",
+  "default_probability": 0.8933,
+  "threshold": 0.476,
+  "agreed_drivers": [
+    {
+      "feature": "외부 신용평가 점수 2",
+      "feature_raw": "EXT_SOURCE_2",
+      "value": "0.0663949",
+      "value_raw": 0.0663949002231742,
+      "rank": 1,
+      "group": "agreed",
+      "shap": 1.0115,
+      "attention": 0.475961,
+      "sign_for_default": "+"
+    }
+  ],
+  "shap_only_drivers": [
+    {
+      "feature": "구매 대상 상품 가격",
+      "feature_raw": "AMT_GOODS_PRICE",
+      "value": "342,000",
+      "value_raw": 342000.0,
+      "rank": 1,
+      "group": "shap_only",
+      "shap": 0.2762,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "거주지(도시 가중) 등급",
+      "feature_raw": "REGION_RATING_CLIENT_W_CITY",
+      "value": "3",
+      "value_raw": 3.0,
+      "rank": 2,
+      "group": "shap_only",
+      "shap": 0.1364,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "재직 일수(음수: 신청일 기준)",
+      "feature_raw": "DAYS_EMPLOYED",
+      "value": "3년 재직",
+      "value_raw": -1206.0,
+      "rank": 3,
+      "group": "shap_only",
+      "shap": 0.124,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "근무 조직 유형 (타깃 인코딩 값)",
+      "feature_raw": "ORGANIZATION_TYPE_TE",
+      "value": "0.1029 (타깃 인코딩 값)",
+      "value_raw": 0.10291033036182486,
+      "rank": 4,
+      "group": "shap_only",
+      "shap": 0.1071,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "대출 신청 금액",
+      "feature_raw": "AMT_CREDIT",
+      "value": "342,000",
+      "value_raw": 342000.0,
+      "rank": 5,
+      "group": "shap_only",
+      "shap": -0.1037,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "HOUR_APPR_PROCESS_START",
+      "feature_raw": "HOUR_APPR_PROCESS_START",
+      "value": "17",
+      "value_raw": 17.0,
+      "rank": 6,
+      "group": "shap_only",
+      "shap": -0.0798,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "NAME_FAMILY_STATUS_Married",
+      "feature_raw": "NAME_FAMILY_STATUS_Married",
+      "value": "예",
+      "value_raw": 1.0,
+      "rank": 7,
+      "group": "shap_only",
+      "shap": -0.0415,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "NAME_INCOME_TYPE_Commercial associate",
+      "feature_raw": "NAME_INCOME_TYPE_Commercial associate",
+      "value": "예",
+      "value_raw": 1.0,
+      "rank": 8,
+      "group": "shap_only",
+      "shap": -0.0218,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "FLAG_PHONE",
+      "feature_raw": "FLAG_PHONE",
+      "value": "예",
+      "value_raw": 1.0,
+      "rank": 9,
+      "group": "shap_only",
+      "shap": -0.0196,
+      "sign_for_default": "-"
+    }
+  ],
+  "attention_only_drivers": [
+    {
+      "feature": "FONDKAPREMONT_MODE_org spec account",
+      "feature_raw": "FONDKAPREMONT_MODE_org spec account",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "rank": 1,
+      "group": "attention_only",
+      "attention": 1.556567
+    },
+    {
+      "feature": "외부 신용평가 점수 3",
+      "feature_raw": "EXT_SOURCE_3",
+      "value": "0",
+      "value_raw": 0.0,
+      "rank": 2,
+      "group": "attention_only",
+      "attention": 0.338756
+    },
+    {
+      "feature": "차량 보유: 있음",
+      "feature_raw": "FLAG_OWN_CAR_Y",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "rank": 3,
+      "group": "attention_only",
+      "attention": 0.203079
+    }
+  ],
+  "fairness_flags": [],
+  "model_predict": "XGBoost",
+  "model_explain": [
+    "SHAP_xgb_local",
+    "TabNet_attention_local"
+  ],
+  "explanation_policy": "fact_only_with_agreement_labels",
+  "masked_sensitive_features": [
+    "CODE_GENDER_M"
+  ],
+  "n_agreed": 1,
+  "n_shap_only": 9,
+  "n_attention_only": 3,
+  "_meta_true_label": 0
+}

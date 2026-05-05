@@ -1,0 +1,146 @@
+{
+  "sample_idx": 33173,
+  "decision": "REJECT",
+  "true_label": 1,
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "elapsed_sec": 10.03,
+  "explanation": "[결정 요약]\n신청 결과: 대출 신청이 거절되었습니다(예측 부도 확률 89.06%).\n\n[주요 거절 사유 — 두 해석 모델이 동의한 강한 신호]\n1.  외부 신용평가 점수 2가 0.0666461로 매우 낮게 평가되어 부도 확률을 높였습니다(두 모델 동의).\n2.  외부 신용평가 점수 3도 0.275로 낮은 수준으로 파악되었습니다(두 모델 동의).\n3.  현재 재직 일수가 0년으로 매우 짧게 평가되어 부도 확률에 부정적인 영향을 주었습니다(두 모델 동의).\n\n[보완적으로 고려된 요인]\n-   SHAP 모델은 구매 대상 상품 가격이 378,000인 점이 부도 확률을 높이는 요인으로 보았습니다.\n-   SHAP 모델은 등록 도시와 실거주 도시가 불일치하는 점(1)도 부도 확률을 높이는 요인으로 분석했습니다.\n-   반면, SHAP 모델은 최근 3개월간 신용기관에 신용조회 요청 건수가 2건인 점(AMT_REQ_CREDIT_BUREAU_QRT)이 부도 확률을 낮추는 긍정적인 요인이었습니다.\n-   TabNet 어텐션 모델은 'FONDKAPREMONT_MODE_org spec account'가 '아니오'라는 점도 결정에 영향을 미친 변수로 보았습니다.\n\n[개선 권고]\n-   외부 신용평가 점수 향상을 위한 신용 관리(연체 해소, 사용률 조정 등)를 권장합니다.\n-   안정적인 재직 이력을 확보하는 것이 향후 심사에 긍정적으로 작용할 수 있습니다.\n-   일정 기간 후 재신청을 검토하실 수 있습니다.\n\n[면책 고지]\n본 안내는 두 해석 모델(SHAP, TabNet 어텐션)의 결과를 자연어로 정리한 것이며, 최종 의사결정은 담당자의 검토를 거칩니다.",
+  "usage_metadata": {
+    "prompt_token_count": 2535,
+    "candidates_token_count": 476,
+    "total_token_count": 4568
+  },
+  "context_sent": {
+    "sample_idx": 33173,
+    "decision": "REJECT",
+    "default_probability": 0.8906,
+    "threshold": 0.476,
+    "agreed_drivers": [
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "0.0666461",
+        "value_raw": 0.0666461075667823,
+        "rank": 1,
+        "group": "agreed",
+        "shap": 0.8981,
+        "attention": 0.655933,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "외부 신용평가 점수 3",
+        "feature_raw": "EXT_SOURCE_3",
+        "value": "0.275",
+        "value_raw": 0.2750003523983893,
+        "rank": 2,
+        "group": "agreed",
+        "shap": 0.4303,
+        "attention": 0.471057,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "재직 일수(음수: 신청일 기준)",
+        "feature_raw": "DAYS_EMPLOYED",
+        "value": "0년 재직",
+        "value_raw": -177.0,
+        "rank": 3,
+        "group": "agreed",
+        "shap": 0.1736,
+        "attention": 0.504857,
+        "sign_for_default": "+"
+      }
+    ],
+    "shap_only_drivers": [
+      {
+        "feature": "구매 대상 상품 가격",
+        "feature_raw": "AMT_GOODS_PRICE",
+        "value": "378,000",
+        "value_raw": 378000.0,
+        "rank": 1,
+        "group": "shap_only",
+        "shap": 0.2299,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "등록 도시와 실거주 도시 불일치",
+        "feature_raw": "REG_CITY_NOT_LIVE_CITY",
+        "value": "1",
+        "value_raw": 1.0,
+        "rank": 2,
+        "group": "shap_only",
+        "shap": 0.215,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "AMT_REQ_CREDIT_BUREAU_QRT",
+        "feature_raw": "AMT_REQ_CREDIT_BUREAU_QRT",
+        "value": "2",
+        "value_raw": 2.0,
+        "rank": 3,
+        "group": "shap_only",
+        "shap": -0.0761,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "FLAG_OWN_CAR_N",
+        "feature_raw": "FLAG_OWN_CAR_N",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "rank": 4,
+        "group": "shap_only",
+        "shap": -0.0683,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "최근 휴대폰 변경 후 경과 일수",
+        "feature_raw": "DAYS_LAST_PHONE_CHANGE",
+        "value": "-1642",
+        "value_raw": -1642.0,
+        "rank": 5,
+        "group": "shap_only",
+        "shap": -0.0523,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "신분증 발급 후 경과 일수",
+        "feature_raw": "DAYS_ID_PUBLISH",
+        "value": "-4404",
+        "value_raw": -4404.0,
+        "rank": 6,
+        "group": "shap_only",
+        "shap": -0.0399,
+        "sign_for_default": "-"
+      }
+    ],
+    "attention_only_drivers": [
+      {
+        "feature": "FONDKAPREMONT_MODE_org spec account",
+        "feature_raw": "FONDKAPREMONT_MODE_org spec account",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "rank": 1,
+        "group": "attention_only",
+        "attention": 0.847706
+      }
+    ],
+    "fairness_flags": [],
+    "model_predict": "XGBoost",
+    "model_explain": [
+      "SHAP_xgb_local",
+      "TabNet_attention_local"
+    ],
+    "explanation_policy": "fact_only_with_agreement_labels",
+    "masked_sensitive_features": [
+      "CODE_GENDER_F",
+      "CODE_GENDER_M"
+    ],
+    "n_agreed": 3,
+    "n_shap_only": 6,
+    "n_attention_only": 1
+  },
+  "context_type": "fusion",
+  "n_agreed": 3,
+  "n_shap_only": 6,
+  "n_attention_only": 1
+}

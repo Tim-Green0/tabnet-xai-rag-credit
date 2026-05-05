@@ -1,0 +1,153 @@
+{
+  "sample_idx": 40525,
+  "decision": "APPROVE",
+  "default_probability": 0.0353,
+  "threshold": 0.476,
+  "agreed_drivers": [
+    {
+      "feature": "외부 신용평가 점수 2",
+      "feature_raw": "EXT_SOURCE_2",
+      "value": "0.63158",
+      "value_raw": 0.631579692851382,
+      "rank": 1,
+      "group": "agreed",
+      "shap": -0.3347,
+      "attention": 0.28307,
+      "sign_for_default": "-"
+    }
+  ],
+  "shap_only_drivers": [
+    {
+      "feature": "외부 신용평가 점수 1",
+      "feature_raw": "EXT_SOURCE_1",
+      "value": "0.746985",
+      "value_raw": 0.7469847683542197,
+      "rank": 1,
+      "group": "shap_only",
+      "shap": -0.897,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "대출 신청 금액",
+      "feature_raw": "AMT_CREDIT",
+      "value": "135,000",
+      "value_raw": 135000.0,
+      "rank": 2,
+      "group": "shap_only",
+      "shap": -0.4047,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "직업 분류 (타깃 인코딩 값)",
+      "feature_raw": "OCCUPATION_TYPE_TE",
+      "value": "0.0449 (타깃 인코딩 값)",
+      "value_raw": 0.044859813084112146,
+      "rank": 3,
+      "group": "shap_only",
+      "shap": -0.3146,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "연 환산 상환액",
+      "feature_raw": "AMT_ANNUITY",
+      "value": "6,750",
+      "value_raw": 6750.0,
+      "rank": 4,
+      "group": "shap_only",
+      "shap": -0.2619,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "구매 대상 상품 가격",
+      "feature_raw": "AMT_GOODS_PRICE",
+      "value": "135,000",
+      "value_raw": 135000.0,
+      "rank": 5,
+      "group": "shap_only",
+      "shap": 0.0985,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "NAME_FAMILY_STATUS_Married",
+      "feature_raw": "NAME_FAMILY_STATUS_Married",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "rank": 6,
+      "group": "shap_only",
+      "shap": 0.0654,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "FLAG_OWN_CAR_N",
+      "feature_raw": "FLAG_OWN_CAR_N",
+      "value": "예",
+      "value_raw": 1.0,
+      "rank": 7,
+      "group": "shap_only",
+      "shap": 0.0257,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "근무 조직 유형 (타깃 인코딩 값)",
+      "feature_raw": "ORGANIZATION_TYPE_TE",
+      "value": "0.0920 (타깃 인코딩 값)",
+      "value_raw": 0.09198407075321884,
+      "rank": 8,
+      "group": "shap_only",
+      "shap": 0.0217,
+      "sign_for_default": "+"
+    }
+  ],
+  "attention_only_drivers": [
+    {
+      "feature": "신청 대출 유형: 리볼빙(한도 대출)",
+      "feature_raw": "NAME_CONTRACT_TYPE_Revolving loans",
+      "value": "예",
+      "value_raw": 1.0,
+      "rank": 1,
+      "group": "attention_only",
+      "attention": 2.328168
+    },
+    {
+      "feature": "YEARS_BUILD_MODE",
+      "feature_raw": "YEARS_BUILD_MODE",
+      "value": "-0.0523",
+      "value_raw": -0.05230000000000001,
+      "rank": 2,
+      "group": "attention_only",
+      "attention": 1.193887
+    },
+    {
+      "feature": "외부 신용평가 점수 3",
+      "feature_raw": "EXT_SOURCE_3",
+      "value": "-0.215165",
+      "value_raw": -0.2151645430991711,
+      "rank": 3,
+      "group": "attention_only",
+      "attention": 0.209845
+    },
+    {
+      "feature": "학력: 고등교육 이상",
+      "feature_raw": "NAME_EDUCATION_TYPE_Higher education",
+      "value": "예",
+      "value_raw": 1.0,
+      "rank": 4,
+      "group": "attention_only",
+      "attention": 0.155367
+    }
+  ],
+  "fairness_flags": [],
+  "model_predict": "XGBoost",
+  "model_explain": [
+    "SHAP_xgb_local",
+    "TabNet_attention_local"
+  ],
+  "explanation_policy": "fact_only_with_agreement_labels",
+  "masked_sensitive_features": [
+    "DAYS_BIRTH"
+  ],
+  "n_agreed": 1,
+  "n_shap_only": 8,
+  "n_attention_only": 4,
+  "_meta_true_label": 0
+}

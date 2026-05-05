@@ -1,0 +1,155 @@
+{
+  "sample_idx": 20633,
+  "decision": "REJECT",
+  "true_label": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "elapsed_sec": 13.57,
+  "explanation": "# 대출 신용 평가 결과 안내\n\n## [결정 요약]\n신청 결과: 대출 신청이 거절되었습니다(예측 부도 확률 91.1%).\n\n## [주요 거절 사유 — 두 해석 모델이 동의한 강한 신호]\n1. **외부 신용평가 점수 2가 0.061로 매우 낮게 평가되었습니다** (두 모델 모두 가장 강한 거절 신호로 동의).\n2. **외부 신용평가 점수 3도 0.140으로 낮은 수준입니다** (두 모델 동의).\n3. **재직 일수가 0년으로 확인되었습니다** (두 모델 모두 부도 가능성을 높이는 요인으로 판단).\n\n## [보완적으로 고려된 요인]\n**[SHAP 모델 관점]**\n- 구매 대상 상품 가격 225,000원은 부도 가능성을 높이는 요인이었습니다.\n- 거주지(도시 가중) 등급 3등급도 부정적 요인으로 작용했습니다.\n- 반면, 대출 신청 금액 269,550원과 총 소득 157,500원은 부도 가능성을 낮추는 긍정적 요인이었습니다.\n\n**[TabNet 어텐션 모델 관점]**\n- FONDKAPREMONT_MODE 변수(주택 수선 계정 관련)도 결정에 영향을 준 것으로 확인되었습니다.\n\n## [개선 권고]\n1. **외부 신용평가 점수 개선을 최우선으로 권장합니다** - 기존 대출/카드 연체 해소, 신용카드 사용률 관리, 신용정보 오류 정정 등을 통해 신용 점수를 높이시기 바랍니다.\n2. **안정적인 재직 이력 확보** - 현재 직장에서 일정 기간(최소 6개월 이상) 재직 후 재신청을 고려하시면 승인 가능성이 높아질 수 있습니다.\n3. 일정 기간(6개월~1년) 후 신용 상태 개선을 확인하신 뒤 재신청하실 것을 권장드립니다.\n\n## [면책 고지]\n본 안내는 두 개의 해석 모델(XGBoost 기반 SHAP, TabNet 어텐션)의 분석 결과를 자연어로 정리한 것이며, 컨텍스트에 명시된 변수와 값만을 바탕으로 작성되었습니다. 최종 의사결정은 금융기관 담당자의 종합적인 검토를 거치게 됩니다.",
+  "usage_metadata": {
+    "input_tokens": 3124,
+    "output_tokens": 874,
+    "total_token_count": 3998
+  },
+  "context_sent": {
+    "sample_idx": 20633,
+    "decision": "REJECT",
+    "default_probability": 0.911,
+    "threshold": 0.476,
+    "agreed_drivers": [
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "0.0609248",
+        "value_raw": 0.0609247984119451,
+        "rank": 1,
+        "group": "agreed",
+        "shap": 0.9885,
+        "attention": 1.036238,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "외부 신용평가 점수 3",
+        "feature_raw": "EXT_SOURCE_3",
+        "value": "0.140243",
+        "value_raw": 0.1402431837080297,
+        "rank": 2,
+        "group": "agreed",
+        "shap": 0.7289,
+        "attention": 0.763875,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "재직 일수(음수: 신청일 기준)",
+        "feature_raw": "DAYS_EMPLOYED",
+        "value": "0년 재직",
+        "value_raw": -200.0,
+        "rank": 3,
+        "group": "agreed",
+        "shap": 0.128,
+        "attention": 0.482759,
+        "sign_for_default": "+"
+      }
+    ],
+    "shap_only_drivers": [
+      {
+        "feature": "구매 대상 상품 가격",
+        "feature_raw": "AMT_GOODS_PRICE",
+        "value": "225,000",
+        "value_raw": 225000.0,
+        "rank": 1,
+        "group": "shap_only",
+        "shap": 0.2294,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "대출 신청 금액",
+        "feature_raw": "AMT_CREDIT",
+        "value": "269,550",
+        "value_raw": 269550.0,
+        "rank": 2,
+        "group": "shap_only",
+        "shap": -0.1633,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "거주지(도시 가중) 등급",
+        "feature_raw": "REGION_RATING_CLIENT_W_CITY",
+        "value": "3",
+        "value_raw": 3.0,
+        "rank": 3,
+        "group": "shap_only",
+        "shap": 0.0967,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "FLAG_OWN_CAR_N",
+        "feature_raw": "FLAG_OWN_CAR_N",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "rank": 4,
+        "group": "shap_only",
+        "shap": -0.0663,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "NAME_FAMILY_STATUS_Married",
+        "feature_raw": "NAME_FAMILY_STATUS_Married",
+        "value": "예",
+        "value_raw": 1.0,
+        "rank": 5,
+        "group": "shap_only",
+        "shap": -0.0315,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "최근 휴대폰 변경 후 경과 일수",
+        "feature_raw": "DAYS_LAST_PHONE_CHANGE",
+        "value": "-21",
+        "value_raw": -21.0,
+        "rank": 6,
+        "group": "shap_only",
+        "shap": -0.0195,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "총 소득",
+        "feature_raw": "AMT_INCOME_TOTAL",
+        "value": "157,500",
+        "value_raw": 157500.0,
+        "rank": 7,
+        "group": "shap_only",
+        "shap": -0.0184,
+        "sign_for_default": "-"
+      }
+    ],
+    "attention_only_drivers": [
+      {
+        "feature": "FONDKAPREMONT_MODE_org spec account",
+        "feature_raw": "FONDKAPREMONT_MODE_org spec account",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "rank": 1,
+        "group": "attention_only",
+        "attention": 1.130538
+      }
+    ],
+    "fairness_flags": [],
+    "model_predict": "XGBoost",
+    "model_explain": [
+      "SHAP_xgb_local",
+      "TabNet_attention_local"
+    ],
+    "explanation_policy": "fact_only_with_agreement_labels",
+    "masked_sensitive_features": [
+      "CODE_GENDER_M"
+    ],
+    "n_agreed": 3,
+    "n_shap_only": 7,
+    "n_attention_only": 1
+  },
+  "context_type": "fusion",
+  "n_agreed": 3,
+  "n_shap_only": 7,
+  "n_attention_only": 1
+}

@@ -1,0 +1,163 @@
+{
+  "sample_idx": 58349,
+  "decision": "REJECT",
+  "true_label": 0,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "elapsed_sec": 13.0,
+  "explanation": "[결정 요약]\n신청 결과: 대출 신청이 거절되었습니다(예측 부도 확률 90.07%).\n\n[주요 거절 사유 — 두 해석 모델이 동의한 강한 신호]\n1. 외부 신용평가 점수 3이 0.0775로 매우 낮게 평가되었습니다(두 모델 모두 가장 중요한 거절 요인으로 동의).\n2. 외부 신용평가 점수 2는 0.5566으로, 이는 부도 가능성을 낮추는 긍정 요인으로 작용했으나 점수 3의 부정적 영향을 상쇄하기에는 부족했습니다(두 모델 동의).\n\n[보완적으로 고려된 요인]\n- SHAP 관점에서 외부 신용평가 점수 1(0.1448)이 낮아 부도 가능성을 높였습니다.\n- SHAP 관점에서 구매 대상 상품 가격(360,000원) 및 대출 신청 금액(512,064원)이 부도 위험을 증가시키는 요인으로 분석되었습니다.\n- SHAP 관점에서 24년 전 거주지 등록 및 토요일 신청 처리는 긍정 요인으로 작용했습니다.\n- TabNet 어텐션은 학력 정보도 결정에 영향을 준 변수로 감지했습니다.\n\n[개선 권고]\n- 외부 신용평가 점수 향상을 위한 체계적인 신용 관리(연체 해소, 신용카드 사용률 조정, 금융거래 이력 개선)를 최우선으로 권장합니다.\n- 일정 기간(6개월~1년) 신용 관리 후 재신청을 검토하실 수 있습니다.\n- 필요시 소액 대출이나 다른 금융 상품을 통해 신용 이력을 쌓는 것도 고려해보시기 바랍니다.\n\n[면책 고지]\n본 안내는 두 해석 모델(SHAP, TabNet 어텐션)의 결과를 종합하여 자연어로 정리한 것이며, 최종 의사결정은 담당자의 검토를 거칩니다. 본 설명은 참고 목적이며 법률적·재무적 자문을 대체하지 않습니다.",
+  "usage_metadata": {
+    "input_tokens": 3238,
+    "output_tokens": 770,
+    "total_token_count": 4008
+  },
+  "context_sent": {
+    "sample_idx": 58349,
+    "decision": "REJECT",
+    "default_probability": 0.9007,
+    "threshold": 0.476,
+    "agreed_drivers": [
+      {
+        "feature": "외부 신용평가 점수 3",
+        "feature_raw": "EXT_SOURCE_3",
+        "value": "0.0774985",
+        "value_raw": 0.0774985464900651,
+        "rank": 1,
+        "group": "agreed",
+        "shap": 1.2952,
+        "attention": 0.533995,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "0.556581",
+        "value_raw": 0.5565813997223694,
+        "rank": 2,
+        "group": "agreed",
+        "shap": -0.0859,
+        "attention": 0.720333,
+        "sign_for_default": "-"
+      }
+    ],
+    "shap_only_drivers": [
+      {
+        "feature": "외부 신용평가 점수 1",
+        "feature_raw": "EXT_SOURCE_1",
+        "value": "0.144762",
+        "value_raw": 0.1447620247094385,
+        "rank": 1,
+        "group": "shap_only",
+        "shap": 0.416,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "구매 대상 상품 가격",
+        "feature_raw": "AMT_GOODS_PRICE",
+        "value": "360,000",
+        "value_raw": 360000.0,
+        "rank": 2,
+        "group": "shap_only",
+        "shap": 0.2428,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "대출 신청 금액",
+        "feature_raw": "AMT_CREDIT",
+        "value": "512,064",
+        "value_raw": 512064.0,
+        "rank": 3,
+        "group": "shap_only",
+        "shap": 0.0633,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "WEEKDAY_APPR_PROCESS_START_SATURDAY",
+        "feature_raw": "WEEKDAY_APPR_PROCESS_START_SATURDAY",
+        "value": "예",
+        "value_raw": 1.0,
+        "rank": 4,
+        "group": "shap_only",
+        "shap": -0.0563,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "최근 휴대폰 변경 후 경과 일수",
+        "feature_raw": "DAYS_LAST_PHONE_CHANGE",
+        "value": "-1076",
+        "value_raw": -1076.0,
+        "rank": 5,
+        "group": "shap_only",
+        "shap": 0.0502,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "외부 신용평가 1 결측 여부",
+        "feature_raw": "EXT_SOURCE_1_MISSING_FLAG",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "rank": 6,
+        "group": "shap_only",
+        "shap": -0.0462,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "NAME_FAMILY_STATUS_Married",
+        "feature_raw": "NAME_FAMILY_STATUS_Married",
+        "value": "예",
+        "value_raw": 1.0,
+        "rank": 7,
+        "group": "shap_only",
+        "shap": -0.0282,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "거주지 등록 후 경과 일수",
+        "feature_raw": "DAYS_REGISTRATION",
+        "value": "24년 전 등록",
+        "value_raw": -9075.0,
+        "rank": 8,
+        "group": "shap_only",
+        "shap": -0.0216,
+        "sign_for_default": "-"
+      }
+    ],
+    "attention_only_drivers": [
+      {
+        "feature": "FONDKAPREMONT_MODE_reg oper spec account",
+        "feature_raw": "FONDKAPREMONT_MODE_reg oper spec account",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "rank": 1,
+        "group": "attention_only",
+        "attention": 0.708862
+      },
+      {
+        "feature": "학력: 고등교육 이상",
+        "feature_raw": "NAME_EDUCATION_TYPE_Higher education",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "rank": 2,
+        "group": "attention_only",
+        "attention": 0.395365
+      }
+    ],
+    "fairness_flags": [],
+    "model_predict": "XGBoost",
+    "model_explain": [
+      "SHAP_xgb_local",
+      "TabNet_attention_local"
+    ],
+    "explanation_policy": "fact_only_with_agreement_labels",
+    "masked_sensitive_features": [
+      "CODE_GENDER_M"
+    ],
+    "n_agreed": 2,
+    "n_shap_only": 8,
+    "n_attention_only": 2
+  },
+  "context_type": "fusion",
+  "n_agreed": 2,
+  "n_shap_only": 8,
+  "n_attention_only": 2
+}

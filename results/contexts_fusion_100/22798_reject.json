@@ -1,0 +1,137 @@
+{
+  "sample_idx": 22798,
+  "decision": "REJECT",
+  "default_probability": 0.9231,
+  "threshold": 0.476,
+  "agreed_drivers": [
+    {
+      "feature": "외부 신용평가 점수 3",
+      "feature_raw": "EXT_SOURCE_3",
+      "value": "0.0633754",
+      "value_raw": 0.0633753623099886,
+      "rank": 1,
+      "group": "agreed",
+      "shap": 1.2117,
+      "attention": 0.589472,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "외부 신용평가 점수 2",
+      "feature_raw": "EXT_SOURCE_2",
+      "value": "0.029544",
+      "value_raw": 0.029543963437184073,
+      "rank": 2,
+      "group": "agreed",
+      "shap": 0.999,
+      "attention": 0.862218,
+      "sign_for_default": "+"
+    }
+  ],
+  "shap_only_drivers": [
+    {
+      "feature": "총 소득",
+      "feature_raw": "AMT_INCOME_TOTAL",
+      "value": "45,000",
+      "value_raw": 45000.0,
+      "rank": 1,
+      "group": "shap_only",
+      "shap": 0.1953,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "대출 신청 금액",
+      "feature_raw": "AMT_CREDIT",
+      "value": "180,000",
+      "value_raw": 180000.0,
+      "rank": 2,
+      "group": "shap_only",
+      "shap": -0.1408,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "구매 대상 상품 가격",
+      "feature_raw": "AMT_GOODS_PRICE",
+      "value": "180,000",
+      "value_raw": 180000.0,
+      "rank": 3,
+      "group": "shap_only",
+      "shap": 0.1382,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "재직 일수(음수: 신청일 기준)",
+      "feature_raw": "DAYS_EMPLOYED",
+      "value": "1년 재직",
+      "value_raw": -433.0,
+      "rank": 4,
+      "group": "shap_only",
+      "shap": 0.1218,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "신청 대출 유형: 현금대출",
+      "feature_raw": "NAME_CONTRACT_TYPE_Cash loans",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "rank": 5,
+      "group": "shap_only",
+      "shap": -0.1072,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "연 환산 상환액",
+      "feature_raw": "AMT_ANNUITY",
+      "value": "9,000",
+      "value_raw": 9000.0,
+      "rank": 6,
+      "group": "shap_only",
+      "shap": -0.1065,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "FLAG_DOCUMENT_3",
+      "feature_raw": "FLAG_DOCUMENT_3",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "rank": 7,
+      "group": "shap_only",
+      "shap": -0.066,
+      "sign_for_default": "-"
+    }
+  ],
+  "attention_only_drivers": [
+    {
+      "feature": "차량 보유: 있음",
+      "feature_raw": "FLAG_OWN_CAR_Y",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "rank": 1,
+      "group": "attention_only",
+      "attention": 0.65512
+    },
+    {
+      "feature": "학력: 고등교육 이상",
+      "feature_raw": "NAME_EDUCATION_TYPE_Higher education",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "rank": 2,
+      "group": "attention_only",
+      "attention": 0.389832
+    }
+  ],
+  "fairness_flags": [],
+  "model_predict": "XGBoost",
+  "model_explain": [
+    "SHAP_xgb_local",
+    "TabNet_attention_local"
+  ],
+  "explanation_policy": "fact_only_with_agreement_labels",
+  "masked_sensitive_features": [
+    "CODE_GENDER_M",
+    "DAYS_BIRTH"
+  ],
+  "n_agreed": 2,
+  "n_shap_only": 7,
+  "n_attention_only": 2,
+  "_meta_true_label": 0
+}

@@ -1,0 +1,129 @@
+{
+  "sample_idx": 5702,
+  "decision": "APPROVE",
+  "default_probability": 0.0296,
+  "threshold": 0.476,
+  "agreed_drivers": [
+    {
+      "feature": "외부 신용평가 점수 2",
+      "feature_raw": "EXT_SOURCE_2",
+      "value": "0.776026",
+      "value_raw": 0.7760257773736132,
+      "rank": 1,
+      "group": "agreed",
+      "shap": -0.9737,
+      "attention": 0.732105,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "외부 신용평가 점수 3",
+      "feature_raw": "EXT_SOURCE_3",
+      "value": "0.736623",
+      "value_raw": 0.7366226976503176,
+      "rank": 2,
+      "group": "agreed",
+      "shap": -0.7678,
+      "attention": 0.544473,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "학력: 고등교육 이상",
+      "feature_raw": "NAME_EDUCATION_TYPE_Higher education",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "rank": 3,
+      "group": "agreed",
+      "shap": 0.0456,
+      "attention": 0.374578,
+      "sign_for_default": "+"
+    }
+  ],
+  "shap_only_drivers": [
+    {
+      "feature": "외부 신용평가 점수 1",
+      "feature_raw": "EXT_SOURCE_1",
+      "value": "0.79317",
+      "value_raw": 0.7931697043988432,
+      "rank": 1,
+      "group": "shap_only",
+      "shap": -0.4668,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "신청 대출 유형: 현금대출",
+      "feature_raw": "NAME_CONTRACT_TYPE_Cash loans",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "rank": 2,
+      "group": "shap_only",
+      "shap": -0.218,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "연 환산 상환액",
+      "feature_raw": "AMT_ANNUITY",
+      "value": "12,375",
+      "value_raw": 12375.0,
+      "rank": 3,
+      "group": "shap_only",
+      "shap": -0.179,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "보유 차량 연식",
+      "feature_raw": "OWN_CAR_AGE",
+      "value": "20",
+      "value_raw": 20.0,
+      "rank": 4,
+      "group": "shap_only",
+      "shap": 0.0844,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "구매 대상 상품 가격",
+      "feature_raw": "AMT_GOODS_PRICE",
+      "value": "247,500",
+      "value_raw": 247500.0,
+      "rank": 5,
+      "group": "shap_only",
+      "shap": 0.0775,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "AMT_REQ_CREDIT_BUREAU_YEAR",
+      "feature_raw": "AMT_REQ_CREDIT_BUREAU_YEAR",
+      "value": "2",
+      "value_raw": 2.0,
+      "rank": 6,
+      "group": "shap_only",
+      "shap": 0.035,
+      "sign_for_default": "+"
+    }
+  ],
+  "attention_only_drivers": [
+    {
+      "feature": "신청 대출 유형: 리볼빙(한도 대출)",
+      "feature_raw": "NAME_CONTRACT_TYPE_Revolving loans",
+      "value": "예",
+      "value_raw": 1.0,
+      "rank": 1,
+      "group": "attention_only",
+      "attention": 5.057504
+    }
+  ],
+  "fairness_flags": [],
+  "model_predict": "XGBoost",
+  "model_explain": [
+    "SHAP_xgb_local",
+    "TabNet_attention_local"
+  ],
+  "explanation_policy": "fact_only_with_agreement_labels",
+  "masked_sensitive_features": [
+    "CODE_GENDER_M",
+    "DAYS_BIRTH"
+  ],
+  "n_agreed": 3,
+  "n_shap_only": 6,
+  "n_attention_only": 1,
+  "_meta_true_label": 0
+}

@@ -1,0 +1,146 @@
+{
+  "sample_idx": 57037,
+  "decision": "APPROVE",
+  "true_label": 0,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "elapsed_sec": 10.38,
+  "explanation": "[결정 요약]\n신청 결과: 대출 신청이 승인되었습니다(예측 부도 확률 2.16%).\n\n[주요 승인 사유 — 두 해석 모델이 동의한 강한 신호]\n1. 외부 신용평가 점수 2가 0.76으로 높게 평가되어 부도 가능성을 낮추는 강력한 긍정 요인입니다(두 모델 동의).\n2. 외부 신용평가 점수 3도 0.74로 우수한 수준으로, 승인 결정의 주요 근거입니다(두 모델 동의).\n3. 고등교육 이상 학력이 없는 점은 미미하게 부도 확률을 높이는 요인으로 작용했으나, 위 긍정 요인들이 이를 충분히 상쇄했습니다(두 모델 동의).\n\n[보완적으로 고려된 요인]\n- SHAP 관점에서 근무 조직 유형(타깃 인코딩 값 0.047)이 부도 가능성을 낮추는 긍정 요인이었습니다.\n- SHAP 관점에서 15년의 장기 재직 기간이 상환 능력의 긍정 요인으로 평가되었습니다.\n- SHAP 관점에서 신분증 발급 후 경과 일수(-4954일)도 부도 가능성을 낮추는 요인이었습니다.\n- TabNet 어텐션은 신청 대출 유형(리볼빙)도 결정에 영향을 준 것으로 봤습니다.\n\n[개선 권고]\n- 현재 우수한 신용 상태를 유지하시기 바랍니다.\n- 대출 실행 후 정상적인 상환 이력을 쌓으시면 향후 추가 대출 시 더욱 유리한 조건을 받으실 수 있습니다.\n\n[면책 고지]\n본 안내는 두 해석 모델(SHAP, TabNet 어텐션)의 결과를 융합하여 자연어로 정리한 것이며, 최종 의사결정은 담당자의 검토를 거칩니다.",
+  "usage_metadata": {
+    "input_tokens": 3065,
+    "output_tokens": 699,
+    "total_token_count": 3764
+  },
+  "context_sent": {
+    "sample_idx": 57037,
+    "decision": "APPROVE",
+    "default_probability": 0.0216,
+    "threshold": 0.476,
+    "agreed_drivers": [
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "0.762569",
+        "value_raw": 0.7625693717655919,
+        "rank": 1,
+        "group": "agreed",
+        "shap": -0.8804,
+        "attention": 0.605201,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "외부 신용평가 점수 3",
+        "feature_raw": "EXT_SOURCE_3",
+        "value": "0.740799",
+        "value_raw": 0.7407990879702335,
+        "rank": 2,
+        "group": "agreed",
+        "shap": -0.7455,
+        "attention": 0.456655,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "학력: 고등교육 이상",
+        "feature_raw": "NAME_EDUCATION_TYPE_Higher education",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "rank": 3,
+        "group": "agreed",
+        "shap": 0.0643,
+        "attention": 0.331329,
+        "sign_for_default": "+"
+      }
+    ],
+    "shap_only_drivers": [
+      {
+        "feature": "근무 조직 유형 (타깃 인코딩 값)",
+        "feature_raw": "ORGANIZATION_TYPE_TE",
+        "value": "0.0473 (타깃 인코딩 값)",
+        "value_raw": 0.0472972972972973,
+        "rank": 1,
+        "group": "shap_only",
+        "shap": -0.4032,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "재직 일수(음수: 신청일 기준)",
+        "feature_raw": "DAYS_EMPLOYED",
+        "value": "15년 재직",
+        "value_raw": -5822.0,
+        "rank": 2,
+        "group": "shap_only",
+        "shap": -0.3272,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "신분증 발급 후 경과 일수",
+        "feature_raw": "DAYS_ID_PUBLISH",
+        "value": "-4954",
+        "value_raw": -4954.0,
+        "rank": 3,
+        "group": "shap_only",
+        "shap": -0.3248,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "구매 대상 상품 가격",
+        "feature_raw": "AMT_GOODS_PRICE",
+        "value": "247,500",
+        "value_raw": 247500.0,
+        "rank": 4,
+        "group": "shap_only",
+        "shap": 0.094,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "거주지 인구 밀도(상대값)",
+        "feature_raw": "REGION_POPULATION_RELATIVE",
+        "value": "0.04622",
+        "value_raw": 0.04622,
+        "rank": 5,
+        "group": "shap_only",
+        "shap": 0.0526,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "COMMONAREA_MEDI",
+        "feature_raw": "COMMONAREA_MEDI",
+        "value": "0.001",
+        "value_raw": 0.001,
+        "rank": 6,
+        "group": "shap_only",
+        "shap": 0.0482,
+        "sign_for_default": "+"
+      }
+    ],
+    "attention_only_drivers": [
+      {
+        "feature": "신청 대출 유형: 리볼빙(한도 대출)",
+        "feature_raw": "NAME_CONTRACT_TYPE_Revolving loans",
+        "value": "예",
+        "value_raw": 1.0,
+        "rank": 1,
+        "group": "attention_only",
+        "attention": 6.758369
+      }
+    ],
+    "fairness_flags": [],
+    "model_predict": "XGBoost",
+    "model_explain": [
+      "SHAP_xgb_local",
+      "TabNet_attention_local"
+    ],
+    "explanation_policy": "fact_only_with_agreement_labels",
+    "masked_sensitive_features": [
+      "CODE_GENDER_M",
+      "DAYS_BIRTH"
+    ],
+    "n_agreed": 3,
+    "n_shap_only": 6,
+    "n_attention_only": 1
+  },
+  "context_type": "fusion",
+  "n_agreed": 3,
+  "n_shap_only": 6,
+  "n_attention_only": 1
+}

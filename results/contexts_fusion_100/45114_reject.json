@@ -1,0 +1,129 @@
+{
+  "sample_idx": 45114,
+  "decision": "REJECT",
+  "default_probability": 0.8995,
+  "threshold": 0.476,
+  "agreed_drivers": [
+    {
+      "feature": "외부 신용평가 점수 2",
+      "feature_raw": "EXT_SOURCE_2",
+      "value": "0.029544",
+      "value_raw": 0.029543963437184073,
+      "rank": 1,
+      "group": "agreed",
+      "shap": 0.9404,
+      "attention": 1.153609,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "외부 신용평가 점수 3",
+      "feature_raw": "EXT_SOURCE_3",
+      "value": "0.152866",
+      "value_raw": 0.1528662291550415,
+      "rank": 2,
+      "group": "agreed",
+      "shap": 0.7201,
+      "attention": 0.759696,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "근무 조직 유형 (타깃 인코딩 값)",
+      "feature_raw": "ORGANIZATION_TYPE_TE",
+      "value": "0.1266 (타깃 인코딩 값)",
+      "value_raw": 0.1266025641025641,
+      "rank": 3,
+      "group": "agreed",
+      "shap": 0.2135,
+      "attention": 0.46057,
+      "sign_for_default": "+"
+    }
+  ],
+  "shap_only_drivers": [
+    {
+      "feature": "대출 신청 금액",
+      "feature_raw": "AMT_CREDIT",
+      "value": "225,000",
+      "value_raw": 225000.0,
+      "rank": 1,
+      "group": "shap_only",
+      "shap": -0.178,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "구매 대상 상품 가격",
+      "feature_raw": "AMT_GOODS_PRICE",
+      "value": "225,000",
+      "value_raw": 225000.0,
+      "rank": 2,
+      "group": "shap_only",
+      "shap": 0.168,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "재직 일수(음수: 신청일 기준)",
+      "feature_raw": "DAYS_EMPLOYED",
+      "value": "1년 재직",
+      "value_raw": -489.0,
+      "rank": 3,
+      "group": "shap_only",
+      "shap": 0.1019,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "FLAG_OWN_CAR_N",
+      "feature_raw": "FLAG_OWN_CAR_N",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "rank": 4,
+      "group": "shap_only",
+      "shap": -0.0575,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "NAME_FAMILY_STATUS_Married",
+      "feature_raw": "NAME_FAMILY_STATUS_Married",
+      "value": "예",
+      "value_raw": 1.0,
+      "rank": 5,
+      "group": "shap_only",
+      "shap": -0.0256,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "근무 전화 등록 여부",
+      "feature_raw": "FLAG_WORK_PHONE",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "rank": 6,
+      "group": "shap_only",
+      "shap": -0.0215,
+      "sign_for_default": "-"
+    }
+  ],
+  "attention_only_drivers": [
+    {
+      "feature": "FONDKAPREMONT_MODE_org spec account",
+      "feature_raw": "FONDKAPREMONT_MODE_org spec account",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "rank": 1,
+      "group": "attention_only",
+      "attention": 0.793334
+    }
+  ],
+  "fairness_flags": [],
+  "model_predict": "XGBoost",
+  "model_explain": [
+    "SHAP_xgb_local",
+    "TabNet_attention_local"
+  ],
+  "explanation_policy": "fact_only_with_agreement_labels",
+  "masked_sensitive_features": [
+    "CODE_GENDER_M",
+    "DAYS_BIRTH"
+  ],
+  "n_agreed": 3,
+  "n_shap_only": 6,
+  "n_attention_only": 1,
+  "_meta_true_label": 0
+}

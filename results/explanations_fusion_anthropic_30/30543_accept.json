@@ -1,0 +1,154 @@
+{
+  "sample_idx": 30543,
+  "decision": "APPROVE",
+  "true_label": 0,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "elapsed_sec": 11.21,
+  "explanation": "[결정 요약]\n신청 결과: 대출 신청이 승인되었습니다(예측 부도 확률 3.2%).\n\n[주요 승인 사유 — 두 해석 모델이 동의한 강한 신호]\n1. 외부 신용평가 점수 3이 0.77로 우수하게 평가되어 부도 가능성을 크게 낮추는 요인으로 작용했습니다(두 모델 동의).\n2. 외부 신용평가 점수 2는 0.43으로 다소 부도 가능성을 높이는 요인이었으나, 점수 3의 긍정적 영향이 이를 상쇄했습니다(두 모델 동의).\n3. 고등교육 이상 학력이 아닌 점이 소폭 부도 가능성을 높이는 요인으로 작용했습니다(두 모델 동의).\n\n[보완적으로 고려된 요인]\n- SHAP 관점에서 대출 신청 금액 90,000원은 부도 가능성을 낮추는 긍정 요인이었습니다.\n- SHAP 관점에서 12년의 재직 기간은 안정성을 나타내어 부도 가능성을 낮추는 긍정 요인이었습니다.\n- SHAP 관점에서 연 환산 상환액 10,152원은 부도 가능성을 낮추는 긍정 요인이었습니다.\n- TabNet 어텐션은 신청 대출 유형(리볼빙이 아님)도 결정에 영향을 준 것으로 봤습니다.\n\n[개선 권고]\n- 외부 신용평가 점수 2의 개선을 위해 신용 관리를 지속하시면 향후 더욱 유리한 조건을 받으실 수 있습니다.\n- 장기 재직과 안정적인 상환 능력이 긍정적으로 평가되었으니, 대출 실행 후에도 성실한 상환을 권장합니다.\n\n[면책 고지]\n본 안내는 두 해석 모델(SHAP, TabNet 어텐션)의 결과를 자연어로 정리한 것이며, 최종 의사결정은 담당자의 검토를 거칩니다.",
+  "usage_metadata": {
+    "input_tokens": 3107,
+    "output_tokens": 725,
+    "total_token_count": 3832
+  },
+  "context_sent": {
+    "sample_idx": 30543,
+    "decision": "APPROVE",
+    "default_probability": 0.032,
+    "threshold": 0.476,
+    "agreed_drivers": [
+      {
+        "feature": "외부 신용평가 점수 3",
+        "feature_raw": "EXT_SOURCE_3",
+        "value": "0.770087",
+        "value_raw": 0.7700870700124128,
+        "rank": 1,
+        "group": "agreed",
+        "shap": -0.8927,
+        "attention": 0.178847,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "0.434021",
+        "value_raw": 0.4340207885251339,
+        "rank": 2,
+        "group": "agreed",
+        "shap": 0.0656,
+        "attention": 0.241256,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "학력: 고등교육 이상",
+        "feature_raw": "NAME_EDUCATION_TYPE_Higher education",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "rank": 3,
+        "group": "agreed",
+        "shap": 0.0448,
+        "attention": 0.132417,
+        "sign_for_default": "+"
+      }
+    ],
+    "shap_only_drivers": [
+      {
+        "feature": "대출 신청 금액",
+        "feature_raw": "AMT_CREDIT",
+        "value": "90,000",
+        "value_raw": 90000.0,
+        "rank": 1,
+        "group": "shap_only",
+        "shap": -0.717,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "재직 일수(음수: 신청일 기준)",
+        "feature_raw": "DAYS_EMPLOYED",
+        "value": "12년 재직",
+        "value_raw": -4531.0,
+        "rank": 2,
+        "group": "shap_only",
+        "shap": -0.3413,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "연 환산 상환액",
+        "feature_raw": "AMT_ANNUITY",
+        "value": "10,152",
+        "value_raw": 10152.0,
+        "rank": 3,
+        "group": "shap_only",
+        "shap": -0.2673,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "최근 휴대폰 변경 후 경과 일수",
+        "feature_raw": "DAYS_LAST_PHONE_CHANGE",
+        "value": "-1973",
+        "value_raw": -1973.0,
+        "rank": 4,
+        "group": "shap_only",
+        "shap": -0.2554,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "구매 대상 상품 가격",
+        "feature_raw": "AMT_GOODS_PRICE",
+        "value": "90,000",
+        "value_raw": 90000.0,
+        "rank": 5,
+        "group": "shap_only",
+        "shap": 0.1086,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "FLAG_DOCUMENT_3",
+        "feature_raw": "FLAG_DOCUMENT_3",
+        "value": "예",
+        "value_raw": 1.0,
+        "rank": 6,
+        "group": "shap_only",
+        "shap": 0.0362,
+        "sign_for_default": "+"
+      }
+    ],
+    "attention_only_drivers": [
+      {
+        "feature": "신청 대출 유형: 리볼빙(한도 대출)",
+        "feature_raw": "NAME_CONTRACT_TYPE_Revolving loans",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "rank": 1,
+        "group": "attention_only",
+        "attention": 2.91705
+      },
+      {
+        "feature": "FLAG_DOCUMENT_17",
+        "feature_raw": "FLAG_DOCUMENT_17",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "rank": 2,
+        "group": "attention_only",
+        "attention": 1.185126
+      }
+    ],
+    "fairness_flags": [],
+    "model_predict": "XGBoost",
+    "model_explain": [
+      "SHAP_xgb_local",
+      "TabNet_attention_local"
+    ],
+    "explanation_policy": "fact_only_with_agreement_labels",
+    "masked_sensitive_features": [
+      "CODE_GENDER_F"
+    ],
+    "n_agreed": 3,
+    "n_shap_only": 6,
+    "n_attention_only": 2
+  },
+  "context_type": "fusion",
+  "n_agreed": 3,
+  "n_shap_only": 6,
+  "n_attention_only": 2
+}

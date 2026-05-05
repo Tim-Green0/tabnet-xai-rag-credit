@@ -1,0 +1,163 @@
+{
+  "sample_idx": 60240,
+  "decision": "REJECT",
+  "true_label": 0,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "elapsed_sec": 16.55,
+  "explanation": "[결정 요약]\n신청 결과: 대출 신청이 거절되었습니다(예측 부도 확률 90.49%).\n\n[주요 거절 사유 — 두 해석 모델이 동의한 강한 신호]\n1. 외부 신용평가 점수 2가 0.0355로 매우 낮게 평가되었습니다(두 모델 모두 가장 강력한 거절 요인으로 판단).\n2. 외부 신용평가 점수 3도 0.1501로 낮은 수준입니다(두 모델 동의).\n\n[보완적으로 고려된 요인]\n- SHAP 관점에서 외부 신용평가 점수 1(0.1655)도 부도 가능성을 높이는 요인으로 작용했습니다.\n- SHAP 관점에서 거주지(도시 가중) 등급 3등급과 3년의 재직 기간은 부도 가능성을 높이는 방향으로 작용했습니다.\n- TabNet 어텐션은 학력(고등교육 이상 해당 안 됨)과 차량 보유 여부(보유 안 함)도 결정에 영향을 준 것으로 봤습니다.\n- SHAP 관점에서 구매 대상 상품 가격(540,000원)은 부도 가능성을 낮추는 긍정 요인이었습니다.\n\n[개선 권고]\n1. 외부 신용평가 점수(특히 점수 2, 3) 향상을 위한 신용 관리가 시급합니다. 연체 해소, 신용카드 사용률 조정, 장기 신용 거래 이력 축적 등을 권장합니다.\n2. 신용 개선 후 일정 기간(6개월~1년) 경과 시 재신청을 검토하실 수 있습니다.\n3. 필요 시 신용상담 전문기관의 도움을 받으시기 바랍니다.\n\n[면책 고지]\n본 안내는 두 해석 모델(SHAP, TabNet 어텐션)의 결과를 융합하여 자연어로 정리한 것이며, 최종 의사결정은 담당자의 종합적인 검토를 거쳐 확정됩니다.",
+  "usage_metadata": {
+    "input_tokens": 3239,
+    "output_tokens": 723,
+    "total_token_count": 3962
+  },
+  "context_sent": {
+    "sample_idx": 60240,
+    "decision": "REJECT",
+    "default_probability": 0.9049,
+    "threshold": 0.476,
+    "agreed_drivers": [
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "0.0355027",
+        "value_raw": 0.0355027300794015,
+        "rank": 1,
+        "group": "agreed",
+        "shap": 0.9084,
+        "attention": 0.947892,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "외부 신용평가 점수 3",
+        "feature_raw": "EXT_SOURCE_3",
+        "value": "0.150085",
+        "value_raw": 0.1500851762342935,
+        "rank": 2,
+        "group": "agreed",
+        "shap": 0.7054,
+        "attention": 0.688729,
+        "sign_for_default": "+"
+      }
+    ],
+    "shap_only_drivers": [
+      {
+        "feature": "외부 신용평가 점수 1",
+        "feature_raw": "EXT_SOURCE_1",
+        "value": "0.165532",
+        "value_raw": 0.1655322322797427,
+        "rank": 1,
+        "group": "shap_only",
+        "shap": 0.2057,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "최근 휴대폰 변경 후 경과 일수",
+        "feature_raw": "DAYS_LAST_PHONE_CHANGE",
+        "value": "0",
+        "value_raw": 0.0,
+        "rank": 2,
+        "group": "shap_only",
+        "shap": -0.0936,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "거주지(도시 가중) 등급",
+        "feature_raw": "REGION_RATING_CLIENT_W_CITY",
+        "value": "3",
+        "value_raw": 3.0,
+        "rank": 3,
+        "group": "shap_only",
+        "shap": 0.083,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "재직 일수(음수: 신청일 기준)",
+        "feature_raw": "DAYS_EMPLOYED",
+        "value": "3년 재직",
+        "value_raw": -1144.0,
+        "rank": 4,
+        "group": "shap_only",
+        "shap": 0.0709,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "외부 신용평가 1 결측 여부",
+        "feature_raw": "EXT_SOURCE_1_MISSING_FLAG",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "rank": 5,
+        "group": "shap_only",
+        "shap": -0.0684,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "구매 대상 상품 가격",
+        "feature_raw": "AMT_GOODS_PRICE",
+        "value": "540,000",
+        "value_raw": 540000.0,
+        "rank": 6,
+        "group": "shap_only",
+        "shap": -0.0666,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "신분증 발급 후 경과 일수",
+        "feature_raw": "DAYS_ID_PUBLISH",
+        "value": "-2313",
+        "value_raw": -2313.0,
+        "rank": 7,
+        "group": "shap_only",
+        "shap": -0.0222,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "DEF_30_CNT_SOCIAL_CIRCLE",
+        "feature_raw": "DEF_30_CNT_SOCIAL_CIRCLE",
+        "value": "0",
+        "value_raw": 0.0,
+        "rank": 8,
+        "group": "shap_only",
+        "shap": -0.0144,
+        "sign_for_default": "-"
+      }
+    ],
+    "attention_only_drivers": [
+      {
+        "feature": "학력: 고등교육 이상",
+        "feature_raw": "NAME_EDUCATION_TYPE_Higher education",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "rank": 1,
+        "group": "attention_only",
+        "attention": 0.48493
+      },
+      {
+        "feature": "차량 보유: 있음",
+        "feature_raw": "FLAG_OWN_CAR_Y",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "rank": 2,
+        "group": "attention_only",
+        "attention": 0.478738
+      }
+    ],
+    "fairness_flags": [],
+    "model_predict": "XGBoost",
+    "model_explain": [
+      "SHAP_xgb_local",
+      "TabNet_attention_local"
+    ],
+    "explanation_policy": "fact_only_with_agreement_labels",
+    "masked_sensitive_features": [
+      "CODE_GENDER_M"
+    ],
+    "n_agreed": 2,
+    "n_shap_only": 8,
+    "n_attention_only": 2
+  },
+  "context_type": "fusion",
+  "n_agreed": 2,
+  "n_shap_only": 8,
+  "n_attention_only": 2
+}

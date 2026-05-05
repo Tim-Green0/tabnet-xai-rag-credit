@@ -1,0 +1,163 @@
+{
+  "sample_idx": 7352,
+  "decision": "REJECT",
+  "true_label": 1,
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "elapsed_sec": 13.09,
+  "explanation": "[결정 요약]\n신청 결과: 고객님의 대출 신청이 거절되었습니다(예측 부도 확률 91.07%).\n\n[주요 거절 사유 — 두 해석 모델이 동의한 강한 신호]\n1.  외부 신용평가 점수 3이 0.0878807로 매우 낮게 평가되었습니다(두 모델 동의).\n2.  외부 신용평가 점수 2 또한 0.130413으로 낮게 평가되었습니다(두 모델 동의).\n\n[보완적으로 고려된 요인]\n-   SHAP 모델은 구매 대상 상품 가격(261,000)이 부도 확률을 높이는 요인으로 보았습니다.\n-   SHAP 모델은 근무 조직 유형(타깃 인코딩 값 0.1219) 또한 부도 확률을 높이는 요인으로 고려했습니다.\n-   TabNet 어텐션은 'FONDKAPREMONT_MODE_org spec account'가 '아니오'라는 점도 결정에 영향을 준 변수로 봤습니다.\n-   TabNet 어텐션은 학력이 '고등교육 이상'이 아니라는 점 또한 결정에 영향을 준 변수로 보았습니다.\n\n[개선 권고]\n-   외부 신용평가 점수 향상을 위한 꾸준한 신용 관리(예: 연체 방지, 사용률 관리)를 권장합니다.\n-   일정 기간 후 신용 상태 개선을 통해 재신청을 검토해 보실 수 있습니다.\n\n[면책 고지]\n본 안내는 두 해석 모델(SHAP, TabNet 어텐션)의 결과를 종합하여 설명드린 것이며, 최종 의사결정은 담당자의 검토를 거쳐 이루어집니다.",
+  "usage_metadata": {
+    "prompt_token_count": 2710,
+    "candidates_token_count": 396,
+    "total_token_count": 5507
+  },
+  "context_sent": {
+    "sample_idx": 7352,
+    "decision": "REJECT",
+    "default_probability": 0.9107,
+    "threshold": 0.476,
+    "agreed_drivers": [
+      {
+        "feature": "외부 신용평가 점수 3",
+        "feature_raw": "EXT_SOURCE_3",
+        "value": "0.0878807",
+        "value_raw": 0.087880699180133,
+        "rank": 1,
+        "group": "agreed",
+        "shap": 0.9765,
+        "attention": 0.785612,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "0.130413",
+        "value_raw": 0.1304130754602259,
+        "rank": 2,
+        "group": "agreed",
+        "shap": 0.5339,
+        "attention": 1.170853,
+        "sign_for_default": "+"
+      }
+    ],
+    "shap_only_drivers": [
+      {
+        "feature": "구매 대상 상품 가격",
+        "feature_raw": "AMT_GOODS_PRICE",
+        "value": "261,000",
+        "value_raw": 261000.0,
+        "rank": 1,
+        "group": "shap_only",
+        "shap": 0.1977,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "근무 조직 유형 (타깃 인코딩 값)",
+        "feature_raw": "ORGANIZATION_TYPE_TE",
+        "value": "0.1219 (타깃 인코딩 값)",
+        "value_raw": 0.12194519871636633,
+        "rank": 2,
+        "group": "shap_only",
+        "shap": 0.1606,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "재직 일수(음수: 신청일 기준)",
+        "feature_raw": "DAYS_EMPLOYED",
+        "value": "0년 재직",
+        "value_raw": -290.0,
+        "rank": 3,
+        "group": "shap_only",
+        "shap": 0.1101,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "대출 신청 금액",
+        "feature_raw": "AMT_CREDIT",
+        "value": "343,683",
+        "value_raw": 343683.0,
+        "rank": 4,
+        "group": "shap_only",
+        "shap": -0.0852,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "AMT_REQ_CREDIT_BUREAU_MON",
+        "feature_raw": "AMT_REQ_CREDIT_BUREAU_MON",
+        "value": "3",
+        "value_raw": 3.0,
+        "rank": 5,
+        "group": "shap_only",
+        "shap": -0.0723,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "TOTALAREA_MODE",
+        "feature_raw": "TOTALAREA_MODE",
+        "value": "0.0059",
+        "value_raw": 0.0059,
+        "rank": 6,
+        "group": "shap_only",
+        "shap": -0.0506,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "최근 휴대폰 변경 후 경과 일수",
+        "feature_raw": "DAYS_LAST_PHONE_CHANGE",
+        "value": "0",
+        "value_raw": 0.0,
+        "rank": 7,
+        "group": "shap_only",
+        "shap": -0.041,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "BASEMENTAREA_MEDI",
+        "feature_raw": "BASEMENTAREA_MEDI",
+        "value": "0",
+        "value_raw": 0.0,
+        "rank": 8,
+        "group": "shap_only",
+        "shap": -0.0408,
+        "sign_for_default": "-"
+      }
+    ],
+    "attention_only_drivers": [
+      {
+        "feature": "FONDKAPREMONT_MODE_org spec account",
+        "feature_raw": "FONDKAPREMONT_MODE_org spec account",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "rank": 1,
+        "group": "attention_only",
+        "attention": 1.324091
+      },
+      {
+        "feature": "학력: 고등교육 이상",
+        "feature_raw": "NAME_EDUCATION_TYPE_Higher education",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "rank": 2,
+        "group": "attention_only",
+        "attention": 0.43713
+      }
+    ],
+    "fairness_flags": [],
+    "model_predict": "XGBoost",
+    "model_explain": [
+      "SHAP_xgb_local",
+      "TabNet_attention_local"
+    ],
+    "explanation_policy": "fact_only_with_agreement_labels",
+    "masked_sensitive_features": [
+      "CODE_GENDER_M"
+    ],
+    "n_agreed": 2,
+    "n_shap_only": 8,
+    "n_attention_only": 2
+  },
+  "context_type": "fusion",
+  "n_agreed": 2,
+  "n_shap_only": 8,
+  "n_attention_only": 2
+}
