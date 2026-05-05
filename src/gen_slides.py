@@ -946,11 +946,56 @@ def make_slides():
     ], size=11)
 
     # ════════════════════════════════════════════════════════
-    # 슬라이드 16 — 종합 + 핵심 메시지 (기존 #14, 번호 갱신)
+    # 슬라이드 16 (NEW) — Step 3-C-2: NLI 기반 평가 객관성 보강
     # ════════════════════════════════════════════════════════
     s = add_blank_slide(prs)
-    add_header_bar(s, SW, "15. 종합 — 본 연구의 가치 4가지",
-                       "Step 1 + Step 2-A + Step 3-B + Step 3-C-1 마무리")
+    add_header_bar(s, SW, "15. ★ Step 3-C-2 — NLI로 평가 객관성 보강",
+                       "룰 한계를 의미적 측정으로 입증 — Fusion이 NLI에서도 더 충실")
+
+    # 좌측: NLI 비교 figure
+    fig_path = FIG_DIR / "31_nli_vs_rules.png"
+    if fig_path.exists():
+        pic = s.shapes.add_picture(str(fig_path),
+                                       Cm(0.6), Cm(3.0),
+                                       width=Cm(19))
+        if pic.height > Cm(11):
+            pic.height = Cm(11)
+            pic.width = Cm(19)
+
+    # 우측 상단: 동기
+    add_textbox(s, Cm(20.5), Cm(3.0), Cm(13), Cm(1.0),
+                  "동기 — 룰 sign_match 하락 (Step 3-C-1)",
+                  size=14, bold=True, color=COLOR_PRIMARY)
+    add_bullets(s, Cm(20.7), Cm(4.0), Cm(13), Cm(3), [
+        "Anthropic 0.87→0.65, Gemini 0.94→0.77",
+        "원인 추정: 룰 키워드 셋의 한계 (다양한 표현 못 잡음)",
+        "→ NLI로 의미적 함의를 직접 측정",
+    ], size=11)
+
+    # 우측 중간: 결과
+    add_textbox(s, Cm(20.5), Cm(7.5), Cm(13), Cm(1.0),
+                  "NLI 결과 (KLUE 다국어 NLI, n=30 each)",
+                  size=14, bold=True, color=COLOR_ACCENT)
+    add_bullets(s, Cm(20.7), Cm(8.4), Cm(13), Cm(4.5), [
+        "Anthropic: entailment +0.21 ★, contradiction -0.18 ★",
+        "Gemini: entailment +0.12, contradiction -0.14",
+        "양 LLM 일관 — fusion이 의미적으로 더 충실",
+        "min_entailment(최악 문장) 양쪽 다 개선 또는 유지",
+    ], size=11)
+
+    # 우측 하단: 메시지
+    add_textbox(s, Cm(20.5), Cm(13.5), Cm(13), Cm(3.5),
+                  "결론 — 3-tier 평가 체계 완성\n"
+                  "★ 룰의 sign_match 하락은 키워드 한계, 진짜 환각 아님 입증\n"
+                  "★ Rules + G-Eval + NLI 다층 검증 → 평가 신뢰성 강화",
+                  size=11, color=COLOR_HIGHLIGHT)
+
+    # ════════════════════════════════════════════════════════
+    # 슬라이드 17 — 종합 + 핵심 메시지 (기존 #15, 번호 갱신)
+    # ════════════════════════════════════════════════════════
+    s = add_blank_slide(prs)
+    add_header_bar(s, SW, "16. 종합 — 본 연구의 가치 4가지",
+                       "Step 1 + 2-A + 3-B + 3-C-1 + 3-C-2 마무리")
 
     # 3개 컬럼 카드
     cards = [
@@ -963,12 +1008,14 @@ def make_slides():
           "agreement-aware 컨텍스트로\nLLM에 의미 라벨 전달",
           RGBColor(0x55, 0xA8, 0x68)),
         ("환각 차단",
-          "Halluc 0/100 (Step 1/2-A)\n→ 0/30 (Step 3-C-1 fusion)\n\n"
-          "Baseline 45.5% vs\nXAI-RAG 0% (Step 1)",
+          "Halluc 0/100 (Step 1/2-A)\n→ 0/30 (3-C-1 fusion)\n\n"
+          "Baseline 45.5% vs\nXAI-RAG 0% (Step 1)\n"
+          "NLI contradiction\n−0.14~−0.18 (3-C-2)",
           RGBColor(0xC4, 0x4E, 0x52)),
-        ("완결성 향상",
-          "G-Eval Completeness\n+0.67 (Anthropic)\n+0.80 (Gemini)\n\n"
-          "두 해석 신호 상보성이\n더 완결한 설명 생성",
+        ("완결성·충실성",
+          "G-Eval Completeness\n+0.67~+0.80 (3-C-1)\n\n"
+          "NLI Entailment\n+0.12~+0.21 (3-C-2)\n\n"
+          "→ 다층 평가에서\n일관된 향상",
           RGBColor(0xDD, 0x85, 0x52)),
     ]
     card_w = Cm(7.0)
@@ -1012,31 +1059,31 @@ def make_slides():
     # 슬라이드 15 — 한계 + 향후 계획
     # ════════════════════════════════════════════════════════
     s = add_blank_slide(prs)
-    add_header_bar(s, SW, "16. 한계와 향후 계획",
-                       "Step 3-B/3-C-1 일부 진행 / 잔여는 본 논문 확장")
+    add_header_bar(s, SW, "17. 한계와 향후 계획",
+                       "Step 3-B/3-C 일부 진행 / 잔여는 본 논문 확장")
 
     add_textbox(s, Cm(1.0), Cm(3.0), Cm(15), Cm(1),
                   "현재 한계 / 진행 중", size=16, bold=True, color=COLOR_ACCENT)
     add_bullets(s, Cm(1.5), Cm(4.0), Cm(15), Cm(13), [
         "Fusion 평가 표본 30명 — 100명+ 확장 검토",
         "Gemini judge cross-validation 미완 (503 과부하)",
+        "인간평가 (Plausibility) 미수행 — IRB 절차 필요",
         "보조 테이블 2/6개 활용 (Step 3-B) — 4개 잔여",
         "Bureau의 SHAP 미진입 — EXT_SOURCE 응축 가설 검증 필요",
         "TabNet-only 컨텍스트 ablation 미수행 (3-way)",
-        "TabNet/LightGBM에 aux 효과 일반화 미실시",
         "Fairness-aware 학습 미수행",
     ], size=13)
 
     add_textbox(s, Cm(17), Cm(3.0), Cm(15), Cm(1),
                   "향후 계획", size=16, bold=True, color=COLOR_HIGHLIGHT)
     add_bullets(s, Cm(17.5), Cm(4.0), Cm(15), Cm(13), [
-        "Gemini judge로 양방향 cross-validation",
+        "인간 평가 (Plausibility) — IRB + 5점 척도, Cohen's κ",
+        "Gemini judge로 양방향 G-Eval cross-validation",
         "Fusion 표본 100명 확장 + counterfactual 결합",
         "3-way ablation: SHAP-only / Attn-only / Fusion",
         "잔여 보조 테이블 4개로 AUROC 0.78+",
         "Fairness-aware 학습 (Reweighing, Adversarial)",
-        "FT-Transformer 비교 + NLI 기반 Faithfulness",
-        "인간 평가 (Plausibility) — 5점 척도, Cohen's κ",
+        "FT-Transformer 비교 모델 추가",
     ], size=13)
 
     # ════════════════════════════════════════════════════════
