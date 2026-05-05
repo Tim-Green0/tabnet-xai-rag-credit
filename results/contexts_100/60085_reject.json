@@ -1,0 +1,100 @@
+{
+  "sample_idx": 60085,
+  "decision": "REJECT",
+  "default_probability": 0.9014,
+  "threshold": 0.4758,
+  "top_drivers_for_default": [
+    {
+      "feature": "외부 신용평가 점수 3",
+      "feature_raw": "EXT_SOURCE_3",
+      "value": "0.190706",
+      "value_raw": 0.190705947811054,
+      "shap": 0.5917,
+      "rank": 1
+    },
+    {
+      "feature": "외부 신용평가 점수 2",
+      "feature_raw": "EXT_SOURCE_2",
+      "value": "0.0875613",
+      "value_raw": 0.0875612978531228,
+      "shap": 0.5737,
+      "rank": 2
+    },
+    {
+      "feature": "구매 대상 상품 가격",
+      "feature_raw": "AMT_GOODS_PRICE",
+      "value": "405,000",
+      "value_raw": 405000.0,
+      "shap": 0.2429,
+      "rank": 3
+    },
+    {
+      "feature": "근무 조직 유형 (타깃 인코딩 값)",
+      "feature_raw": "ORGANIZATION_TYPE_TE",
+      "value": "0.1219 (타깃 인코딩 값)",
+      "value_raw": 0.12194519871636633,
+      "shap": 0.1852,
+      "rank": 4
+    },
+    {
+      "feature": "대출 신청 금액",
+      "feature_raw": "AMT_CREDIT",
+      "value": "576,072",
+      "value_raw": 576072.0,
+      "shap": 0.1782,
+      "rank": 5
+    }
+  ],
+  "top_drivers_against_default": [
+    {
+      "feature": "거주지 등록 후 경과 일수",
+      "feature_raw": "DAYS_REGISTRATION",
+      "value": "23년 전 등록",
+      "value_raw": -8473.0,
+      "shap": -0.0559,
+      "rank": 1
+    },
+    {
+      "feature": "AMT_REQ_CREDIT_BUREAU_YEAR",
+      "feature_raw": "AMT_REQ_CREDIT_BUREAU_YEAR",
+      "value": "0",
+      "value_raw": 0.0,
+      "shap": -0.0432,
+      "rank": 2
+    },
+    {
+      "feature": "COMMONAREA_MODE",
+      "feature_raw": "COMMONAREA_MODE",
+      "value": "0.0026",
+      "value_raw": 0.0026,
+      "shap": -0.03,
+      "rank": 3
+    },
+    {
+      "feature": "DEF_30_CNT_SOCIAL_CIRCLE",
+      "feature_raw": "DEF_30_CNT_SOCIAL_CIRCLE",
+      "value": "0",
+      "value_raw": 0.0,
+      "shap": -0.0147,
+      "rank": 4
+    },
+    {
+      "feature": "근무 전화 등록 여부",
+      "feature_raw": "FLAG_WORK_PHONE",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "shap": -0.0139,
+      "rank": 5
+    }
+  ],
+  "fairness_flags": [],
+  "model": "XGBoost",
+  "explanation_policy": "fact_only",
+  "masked_sensitive_features": [
+    "DAYS_BIRTH",
+    "CODE_GENDER_F",
+    "CODE_GENDER_M",
+    "CODE_GENDER_XNA"
+  ],
+  "_meta_true_label": 1
+}

@@ -1,0 +1,113 @@
+{
+  "sample_idx": 3112,
+  "decision": "APPROVE",
+  "true_label": 0,
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "elapsed_sec": 23.73,
+  "explanation": "[결정 요약]\n신청 결과: 대출 신청이 승인되었습니다(예측 부도 확률 2.66%).\n\n[주요 거절 사유]\n해당 없음.\n\n[긍정적으로 평가된 요인]\n*   외부 신용평가 점수 3이 0.780144로 매우 높게 평가되었습니다.\n*   외부 신용평가 점수 2도 0.733231로 높은 수준입니다.\n*   신청하신 대출 금액 90,000원에 대한 평가도 긍정적으로 반영되었습니다.\n\n[개선 권고]\n*   현재 높은 수준인 외부 신용평가 점수를 잘 유지하시는 것이 좋습니다.\n*   안정적인 재직 상태(현재 21년 재직)를 유지하시는 것이 긍정적인 신용 평가에 도움이 됩니다.\n\n[면책 고지]\n본 안내는 모델의 자동화된 평가 결과를 자연어로 정리한 것이며, 최종 의사결정은 담당자의 검토를 거칩니다. 미래 신청 결과를 보장하지 않습니다.",
+  "usage_metadata": {
+    "prompt_token_count": 1736,
+    "candidates_token_count": 245,
+    "total_token_count": 6941
+  },
+  "context_sent": {
+    "sample_idx": 3112,
+    "decision": "APPROVE",
+    "default_probability": 0.0266,
+    "threshold": 0.4758,
+    "top_drivers_for_default": [
+      {
+        "feature": "구매 대상 상품 가격",
+        "feature_raw": "AMT_GOODS_PRICE",
+        "value": "90,000",
+        "value_raw": 90000.0,
+        "shap": 0.2369,
+        "rank": 1
+      },
+      {
+        "feature": "신분증 발급 후 경과 일수",
+        "feature_raw": "DAYS_ID_PUBLISH",
+        "value": "-1138",
+        "value_raw": -1138.0,
+        "shap": 0.0677,
+        "rank": 2
+      },
+      {
+        "feature": "근무 전화 등록 여부",
+        "feature_raw": "FLAG_WORK_PHONE",
+        "value": "예",
+        "value_raw": 1.0,
+        "shap": 0.0583,
+        "rank": 3
+      },
+      {
+        "feature": "최근 휴대폰 변경 후 경과 일수",
+        "feature_raw": "DAYS_LAST_PHONE_CHANGE",
+        "value": "-355",
+        "value_raw": -355.0,
+        "shap": 0.0329,
+        "rank": 4
+      },
+      {
+        "feature": "HOUR_APPR_PROCESS_START",
+        "feature_raw": "HOUR_APPR_PROCESS_START",
+        "value": "9",
+        "value_raw": 9.0,
+        "shap": 0.0232,
+        "rank": 5
+      }
+    ],
+    "top_drivers_against_default": [
+      {
+        "feature": "외부 신용평가 점수 3",
+        "feature_raw": "EXT_SOURCE_3",
+        "value": "0.780144",
+        "value_raw": 0.7801436381572275,
+        "shap": -0.8923,
+        "rank": 1
+      },
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "0.733231",
+        "value_raw": 0.7332308812227555,
+        "shap": -0.6762,
+        "rank": 2
+      },
+      {
+        "feature": "대출 신청 금액",
+        "feature_raw": "AMT_CREDIT",
+        "value": "90,000",
+        "value_raw": 90000.0,
+        "shap": -0.6261,
+        "rank": 3
+      },
+      {
+        "feature": "재직 일수(음수: 신청일 기준)",
+        "feature_raw": "DAYS_EMPLOYED",
+        "value": "21년 재직",
+        "value_raw": -7805.0,
+        "shap": -0.4185,
+        "rank": 4
+      },
+      {
+        "feature": "보유 차량 연식",
+        "feature_raw": "OWN_CAR_AGE",
+        "value": "7",
+        "value_raw": 7.0,
+        "shap": -0.2107,
+        "rank": 5
+      }
+    ],
+    "fairness_flags": [],
+    "model": "XGBoost",
+    "explanation_policy": "fact_only",
+    "masked_sensitive_features": [
+      "DAYS_BIRTH",
+      "CODE_GENDER_F",
+      "CODE_GENDER_M",
+      "CODE_GENDER_XNA"
+    ]
+  }
+}

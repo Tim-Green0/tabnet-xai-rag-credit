@@ -1,0 +1,113 @@
+{
+  "sample_idx": 14480,
+  "decision": "APPROVE",
+  "true_label": 0,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "elapsed_sec": 8.22,
+  "explanation": "[결정 요약]\n신청 결과: 대출 신청이 승인되었습니다(예측 부도 확률 2.89%).\n\n[주요 거절 사유]\n(해당 없음 - 승인 건)\n\n[긍정적으로 평가된 요인]\n1. 외부 신용평가 점수 3이 0.74로 우수하게 평가되어 승인에 가장 큰 긍정 요인이 되었습니다.\n2. 구매 대상 상품 가격 1,800,000원이 적정 수준으로 긍정적으로 반영되었습니다.\n3. 외부 신용평가 점수 2도 0.62로 양호하게 평가되었습니다.\n\n[개선 권고]\n- 현재 우수한 신용 상태를 유지하시기 바랍니다.\n- 대출 신청 금액(1,850,544원)은 소폭 부담 요인으로 작용하였으니, 향후 신청 시 상환 능력을 고려한 적정 금액 설정을 권장합니다.\n- 정기적인 신용 관리를 통해 외부 신용평가 점수를 지속적으로 관리하시기 바랍니다.\n\n[면책 고지]\n본 안내는 모델의 자동화된 평가 결과를 자연어로 정리한 것이며, 최종 의사결정은 담당자의 검토를 거칩니다. 승인 결과가 특정 대출 조건을 보장하지는 않습니다.",
+  "usage_metadata": {
+    "input_tokens": 2078,
+    "output_tokens": 487,
+    "total_token_count": 2565
+  },
+  "context_sent": {
+    "sample_idx": 14480,
+    "decision": "APPROVE",
+    "default_probability": 0.0289,
+    "threshold": 0.4758,
+    "top_drivers_for_default": [
+      {
+        "feature": "대출 신청 금액",
+        "feature_raw": "AMT_CREDIT",
+        "value": "1,850,544",
+        "value_raw": 1850544.0,
+        "shap": 0.2024,
+        "rank": 1
+      },
+      {
+        "feature": "거주지 등록 후 경과 일수",
+        "feature_raw": "DAYS_REGISTRATION",
+        "value": "0년 전 등록",
+        "value_raw": -52.0,
+        "shap": 0.0823,
+        "rank": 2
+      },
+      {
+        "feature": "신분증 발급 후 경과 일수",
+        "feature_raw": "DAYS_ID_PUBLISH",
+        "value": "-628",
+        "value_raw": -628.0,
+        "shap": 0.0597,
+        "rank": 3
+      },
+      {
+        "feature": "학력: 고등교육 이상",
+        "feature_raw": "NAME_EDUCATION_TYPE_Higher education",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "shap": 0.0416,
+        "rank": 4
+      },
+      {
+        "feature": "NAME_TYPE_SUITE_Children",
+        "feature_raw": "NAME_TYPE_SUITE_Children",
+        "value": "예",
+        "value_raw": 1.0,
+        "shap": 0.0337,
+        "rank": 5
+      }
+    ],
+    "top_drivers_against_default": [
+      {
+        "feature": "외부 신용평가 점수 3",
+        "feature_raw": "EXT_SOURCE_3",
+        "value": "0.744932",
+        "value_raw": 0.7449321846094795,
+        "shap": -0.8135,
+        "rank": 1
+      },
+      {
+        "feature": "구매 대상 상품 가격",
+        "feature_raw": "AMT_GOODS_PRICE",
+        "value": "1,800,000",
+        "value_raw": 1800000.0,
+        "shap": -0.6129,
+        "rank": 2
+      },
+      {
+        "feature": "AMT_REQ_CREDIT_BUREAU_QRT",
+        "feature_raw": "AMT_REQ_CREDIT_BUREAU_QRT",
+        "value": "1",
+        "value_raw": 1.0,
+        "shap": -0.3117,
+        "rank": 3
+      },
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "0.619502",
+        "value_raw": 0.6195022208373073,
+        "shap": -0.2471,
+        "rank": 4
+      },
+      {
+        "feature": "NAME_HOUSING_TYPE_Office apartment",
+        "feature_raw": "NAME_HOUSING_TYPE_Office apartment",
+        "value": "예",
+        "value_raw": 1.0,
+        "shap": -0.2324,
+        "rank": 5
+      }
+    ],
+    "fairness_flags": [],
+    "model": "XGBoost",
+    "explanation_policy": "fact_only",
+    "masked_sensitive_features": [
+      "DAYS_BIRTH",
+      "CODE_GENDER_F",
+      "CODE_GENDER_M",
+      "CODE_GENDER_XNA"
+    ]
+  }
+}

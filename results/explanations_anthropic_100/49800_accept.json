@@ -1,0 +1,113 @@
+{
+  "sample_idx": 49800,
+  "decision": "APPROVE",
+  "true_label": 0,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "elapsed_sec": 8.12,
+  "explanation": "[결정 요약]\n신청 결과: 대출 신청이 승인되었습니다(예측 부도 확률 3.2%).\n\n[긍정적으로 평가된 요인]\n1. 외부 신용평가 점수 2가 0.736으로 우수하여 신용도를 크게 높였습니다.\n2. 고등교육 이상의 학력이 긍정적으로 평가되었습니다.\n3. 근무 조직 유형의 안정성(타깃 인코딩 값 0.0548)이 양호하게 반영되었습니다.\n\n[개선 권고]\n- 연 환산 상환액(40,500)과 대출 신청 금액(810,000)의 균형을 고려하여, 향후 상환 계획을 안정적으로 관리하시기 바랍니다.\n- 재직 기간이 짧은 점(0년 재직)을 고려하여, 지속적인 소득 안정성 유지를 권장합니다.\n- 승인되었지만 정기적인 신용 관리와 적시 상환으로 신용도를 더욱 개선하실 수 있습니다.\n\n[면책 고지]\n본 안내는 모델의 자동화된 평가 결과를 자연어로 정리한 것이며, 최종 의사결정은 담당자의 검토를 거칩니다. 본 설명은 미래 신청 결과나 상환 성공을 보장하지 않습니다.",
+  "usage_metadata": {
+    "input_tokens": 2084,
+    "output_tokens": 471,
+    "total_token_count": 2555
+  },
+  "context_sent": {
+    "sample_idx": 49800,
+    "decision": "APPROVE",
+    "default_probability": 0.0321,
+    "threshold": 0.4758,
+    "top_drivers_for_default": [
+      {
+        "feature": "연 환산 상환액",
+        "feature_raw": "AMT_ANNUITY",
+        "value": "40,500",
+        "value_raw": 40500.0,
+        "shap": 0.155,
+        "rank": 1
+      },
+      {
+        "feature": "대출 신청 금액",
+        "feature_raw": "AMT_CREDIT",
+        "value": "810,000",
+        "value_raw": 810000.0,
+        "shap": 0.078,
+        "rank": 2
+      },
+      {
+        "feature": "재직 일수(음수: 신청일 기준)",
+        "feature_raw": "DAYS_EMPLOYED",
+        "value": "0년 재직",
+        "value_raw": -208.0,
+        "shap": 0.0725,
+        "rank": 3
+      },
+      {
+        "feature": "BASEMENTAREA_MODE",
+        "feature_raw": "BASEMENTAREA_MODE",
+        "value": "0.3584",
+        "value_raw": 0.3584,
+        "shap": 0.0675,
+        "rank": 4
+      },
+      {
+        "feature": "LIVINGAPARTMENTS_AVG",
+        "feature_raw": "LIVINGAPARTMENTS_AVG",
+        "value": "0.3337",
+        "value_raw": 0.3337,
+        "shap": 0.0626,
+        "rank": 5
+      }
+    ],
+    "top_drivers_against_default": [
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "0.736053",
+        "value_raw": 0.7360529243880746,
+        "shap": -0.8596,
+        "rank": 1
+      },
+      {
+        "feature": "신청 대출 유형: 현금대출",
+        "feature_raw": "NAME_CONTRACT_TYPE_Cash loans",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "shap": -0.3626,
+        "rank": 2
+      },
+      {
+        "feature": "학력: 고등교육 이상",
+        "feature_raw": "NAME_EDUCATION_TYPE_Higher education",
+        "value": "예",
+        "value_raw": 1.0,
+        "shap": -0.2955,
+        "rank": 3
+      },
+      {
+        "feature": "근무 조직 유형 (타깃 인코딩 값)",
+        "feature_raw": "ORGANIZATION_TYPE_TE",
+        "value": "0.0548 (타깃 인코딩 값)",
+        "value_raw": 0.05483207676490747,
+        "shap": -0.2177,
+        "rank": 4
+      },
+      {
+        "feature": "구매 대상 상품 가격",
+        "feature_raw": "AMT_GOODS_PRICE",
+        "value": "810,000",
+        "value_raw": 810000.0,
+        "shap": -0.1967,
+        "rank": 5
+      }
+    ],
+    "fairness_flags": [],
+    "model": "XGBoost",
+    "explanation_policy": "fact_only",
+    "masked_sensitive_features": [
+      "DAYS_BIRTH",
+      "CODE_GENDER_F",
+      "CODE_GENDER_M",
+      "CODE_GENDER_XNA"
+    ]
+  }
+}

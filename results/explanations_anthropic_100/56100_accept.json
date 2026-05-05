@@ -1,0 +1,113 @@
+{
+  "sample_idx": 56100,
+  "decision": "APPROVE",
+  "true_label": 0,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "elapsed_sec": 8.16,
+  "explanation": "[결정 요약]\n신청 결과: 대출 신청이 승인되었습니다(예측 부도 확률 3.46%).\n\n[주요 거절 사유]\n(승인 건으로 해당 없음)\n\n[긍정적으로 평가된 요인]\n1. 외부 신용평가 점수 2가 0.739로 우수하게 평가되어 부도 가능성을 크게 낮췄습니다.\n2. 외부 신용평가 점수 3도 0.760으로 양호하여 신용도를 긍정적으로 반영했습니다.\n3. 보유 차량 연식 3년은 안정적인 자산 보유로 긍정 평가되었습니다.\n\n[개선 권고]\n- 현재 신청 금액(1,535,553원)이 총 소득(472,500원) 대비 높은 편으로, 향후 대출 시 소득 대비 적정 수준의 금액을 신청하시면 더욱 유리합니다.\n- 우수한 외부 신용평가 점수를 유지하기 위해 상환 관리를 철저히 해주시기 바랍니다.\n\n[면책 고지]\n본 안내는 모델의 자동화된 평가 결과를 설명한 것이며, 최종 승인 조건은 담당자의 검토를 거쳐 확정됩니다. 실제 대출 조건은 별도 안내될 예정입니다.",
+  "usage_metadata": {
+    "input_tokens": 2070,
+    "output_tokens": 465,
+    "total_token_count": 2535
+  },
+  "context_sent": {
+    "sample_idx": 56100,
+    "decision": "APPROVE",
+    "default_probability": 0.0346,
+    "threshold": 0.4758,
+    "top_drivers_for_default": [
+      {
+        "feature": "대출 신청 금액",
+        "feature_raw": "AMT_CREDIT",
+        "value": "1,535,553",
+        "value_raw": 1535553.0,
+        "shap": 0.1824,
+        "rank": 1
+      },
+      {
+        "feature": "신분증 발급 후 경과 일수",
+        "feature_raw": "DAYS_ID_PUBLISH",
+        "value": "-133",
+        "value_raw": -133.0,
+        "shap": 0.084,
+        "rank": 2
+      },
+      {
+        "feature": "총 소득",
+        "feature_raw": "AMT_INCOME_TOTAL",
+        "value": "472,500",
+        "value_raw": 472500.0,
+        "shap": 0.0348,
+        "rank": 3
+      },
+      {
+        "feature": "APARTMENTS_MODE",
+        "feature_raw": "APARTMENTS_MODE",
+        "value": "0.1513",
+        "value_raw": 0.1513,
+        "shap": 0.0347,
+        "rank": 4
+      },
+      {
+        "feature": "TOTALAREA_MODE",
+        "feature_raw": "TOTALAREA_MODE",
+        "value": "0.1182",
+        "value_raw": 0.1182,
+        "shap": 0.0311,
+        "rank": 5
+      }
+    ],
+    "top_drivers_against_default": [
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "0.739227",
+        "value_raw": 0.7392268748207212,
+        "shap": -0.8566,
+        "rank": 1
+      },
+      {
+        "feature": "외부 신용평가 점수 3",
+        "feature_raw": "EXT_SOURCE_3",
+        "value": "0.759712",
+        "value_raw": 0.7597121819739279,
+        "shap": -0.7955,
+        "rank": 2
+      },
+      {
+        "feature": "구매 대상 상품 가격",
+        "feature_raw": "AMT_GOODS_PRICE",
+        "value": "1,372,500",
+        "value_raw": 1372500.0,
+        "shap": -0.5697,
+        "rank": 3
+      },
+      {
+        "feature": "보유 차량 연식",
+        "feature_raw": "OWN_CAR_AGE",
+        "value": "3",
+        "value_raw": 3.0,
+        "shap": -0.2056,
+        "rank": 4
+      },
+      {
+        "feature": "직업 분류 (타깃 인코딩 값)",
+        "feature_raw": "OCCUPATION_TYPE_TE",
+        "value": "0.0449 (타깃 인코딩 값)",
+        "value_raw": 0.044859813084112146,
+        "shap": -0.2018,
+        "rank": 5
+      }
+    ],
+    "fairness_flags": [],
+    "model": "XGBoost",
+    "explanation_policy": "fact_only",
+    "masked_sensitive_features": [
+      "DAYS_BIRTH",
+      "CODE_GENDER_F",
+      "CODE_GENDER_M",
+      "CODE_GENDER_XNA"
+    ]
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "sample_idx": 49098,
+  "decision": "REJECT",
+  "true_label": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "elapsed_sec": 13.09,
+  "explanation": "[결정 요약]\n신청 결과: 대출 신청이 거절되었습니다(예측 부도 확률 90.79%, 승인 기준 47.58%).\n\n[주요 거절 사유]\n1. 외부 신용평가 점수 3이 0.124519로 매우 낮게 평가되어 부도 가능성을 크게 높이는 요인으로 작용했습니다.\n2. 외부 신용평가 점수 2도 0.184832로 낮은 수준이며, 이 또한 부정적으로 반영되었습니다.\n3. 구매 대상 상품 가격 382,500원과 대출 신청 금액 511,250원이 현재 신용 상황 대비 높게 평가되었습니다.\n\n[긍정적으로 평가된 요인]\n- 최근 분기 신용조회 1건은 신용 관리에 긍정적으로 반영되었습니다.\n- 기혼 상태는 안정성 측면에서 긍정 요인으로 작용했습니다.\n- 총 소득 202,500원과 6년의 안정적인 재직 기간은 상환 능력에 긍정적으로 평가되었습니다.\n\n[개선 권고]\n- 외부 신용평가 점수 개선을 위해 기존 대출 및 신용카드 연체 해소, 신용카드 사용률 조정 등 체계적인 신용 관리를 권장합니다.\n- 현재 신용 상황 대비 신청 금액이 높은 편이므로, 신용 개선 후 적정 금액으로 재신청을 검토하시기 바랍니다.\n- 6개월 이상 신용 관리 후 재신청 시 승인 가능성이 높아질 수 있습니다.\n\n[면책 고지]\n본 안내는 모델의 자동화된 평가 결과를 요약한 것이며, 최종 결정은 담당자의 종합 검토를 거칩니다. 향후 신청 결과를 보장하지 않습니다.",
+  "usage_metadata": {
+    "input_tokens": 2094,
+    "output_tokens": 662,
+    "total_token_count": 2756
+  },
+  "context_sent": {
+    "sample_idx": 49098,
+    "decision": "REJECT",
+    "default_probability": 0.9079,
+    "threshold": 0.4758,
+    "top_drivers_for_default": [
+      {
+        "feature": "외부 신용평가 점수 3",
+        "feature_raw": "EXT_SOURCE_3",
+        "value": "0.124519",
+        "value_raw": 0.1245194708919845,
+        "shap": 0.8894,
+        "rank": 1
+      },
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "0.184832",
+        "value_raw": 0.1848317663289328,
+        "shap": 0.5218,
+        "rank": 2
+      },
+      {
+        "feature": "구매 대상 상품 가격",
+        "feature_raw": "AMT_GOODS_PRICE",
+        "value": "382,500",
+        "value_raw": 382500.0,
+        "shap": 0.257,
+        "rank": 3
+      },
+      {
+        "feature": "근무 조직 유형 (타깃 인코딩 값)",
+        "feature_raw": "ORGANIZATION_TYPE_TE",
+        "value": "0.1029 (타깃 인코딩 값)",
+        "value_raw": 0.10291033036182486,
+        "shap": 0.0934,
+        "rank": 4
+      },
+      {
+        "feature": "대출 신청 금액",
+        "feature_raw": "AMT_CREDIT",
+        "value": "511,250",
+        "value_raw": 511249.5,
+        "shap": 0.08,
+        "rank": 5
+      }
+    ],
+    "top_drivers_against_default": [
+      {
+        "feature": "AMT_REQ_CREDIT_BUREAU_QRT",
+        "feature_raw": "AMT_REQ_CREDIT_BUREAU_QRT",
+        "value": "1",
+        "value_raw": 1.0,
+        "shap": -0.0617,
+        "rank": 1
+      },
+      {
+        "feature": "NAME_FAMILY_STATUS_Married",
+        "feature_raw": "NAME_FAMILY_STATUS_Married",
+        "value": "예",
+        "value_raw": 1.0,
+        "shap": -0.0251,
+        "rank": 2
+      },
+      {
+        "feature": "총 소득",
+        "feature_raw": "AMT_INCOME_TOTAL",
+        "value": "202,500",
+        "value_raw": 202500.0,
+        "shap": -0.0198,
+        "rank": 3
+      },
+      {
+        "feature": "재직 일수(음수: 신청일 기준)",
+        "feature_raw": "DAYS_EMPLOYED",
+        "value": "6년 재직",
+        "value_raw": -2335.0,
+        "shap": -0.0168,
+        "rank": 4
+      },
+      {
+        "feature": "근무 전화 등록 여부",
+        "feature_raw": "FLAG_WORK_PHONE",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "shap": -0.0148,
+        "rank": 5
+      }
+    ],
+    "fairness_flags": [],
+    "model": "XGBoost",
+    "explanation_policy": "fact_only",
+    "masked_sensitive_features": [
+      "DAYS_BIRTH",
+      "CODE_GENDER_F",
+      "CODE_GENDER_M",
+      "CODE_GENDER_XNA"
+    ]
+  }
+}

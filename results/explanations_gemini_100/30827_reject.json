@@ -1,0 +1,113 @@
+{
+  "sample_idx": 30827,
+  "decision": "REJECT",
+  "true_label": 1,
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "elapsed_sec": 15.05,
+  "explanation": "[결정 요약]\n신청 결과: 대출 신청이 거절되었습니다(예측 부도 확률 90.34%).\n\n[주요 거절 사유]\n1. 외부 신용평가 점수 3이 0.139376으로 매우 낮게 평가되어 부도 가능성을 높였습니다.\n2. 외부 신용평가 점수 1도 0.148767로 낮은 편이어서 부도 가능성을 높였습니다.\n3. 구매 대상 상품 가격이 450,000으로 높게 평가되어 부도 가능성을 높이는 요인이 되었습니다.\n\n[긍정적으로 평가된 요인]\n- 외부 신용평가 점수 2가 0.580687로 긍정적으로 반영되었습니다.\n- 신분증 발급 후 경과 일수가 -4634일로, 신분증 발급 후 오랜 기간이 경과한 점이 긍정적으로 평가되었습니다.\n- LANDAREA_MEDI 값이 0.1733인 점도 긍정적으로 반영되었습니다.\n\n[개선 권고]\n- 외부 신용평가 점수 향상을 위한 신용 관리(연체 해소, 사용률 조정)를 권장합니다.\n- 구매 대상 상품 가격 조정을 고려하거나, 대출 금액을 낮춰 신청하는 방안을 검토해 볼 수 있습니다.\n- 일정 기간 후 재신청을 검토하실 수 있습니다.\n\n[면책 고지]\n본 안내는 모델의 자동화된 평가 결과를 자연어로 정리한 것이며, 최종 의사결정은 담당자의 검토를 거칩니다. 미래 신청 결과를 보장하지 않습니다.",
+  "usage_metadata": {
+    "prompt_token_count": 1788,
+    "candidates_token_count": 374,
+    "total_token_count": 4644
+  },
+  "context_sent": {
+    "sample_idx": 30827,
+    "decision": "REJECT",
+    "default_probability": 0.9034,
+    "threshold": 0.4758,
+    "top_drivers_for_default": [
+      {
+        "feature": "외부 신용평가 점수 3",
+        "feature_raw": "EXT_SOURCE_3",
+        "value": "0.139376",
+        "value_raw": 0.1393757800997895,
+        "shap": 0.8394,
+        "rank": 1
+      },
+      {
+        "feature": "외부 신용평가 점수 1",
+        "feature_raw": "EXT_SOURCE_1",
+        "value": "0.148767",
+        "value_raw": 0.1487666628185311,
+        "shap": 0.5507,
+        "rank": 2
+      },
+      {
+        "feature": "구매 대상 상품 가격",
+        "feature_raw": "AMT_GOODS_PRICE",
+        "value": "450,000",
+        "value_raw": 450000.0,
+        "shap": 0.2587,
+        "rank": 3
+      },
+      {
+        "feature": "직업 분류 (타깃 인코딩 값)",
+        "feature_raw": "OCCUPATION_TYPE_TE",
+        "value": "0.1863 (타깃 인코딩 값)",
+        "value_raw": 0.18634538152610441,
+        "shap": 0.1833,
+        "rank": 4
+      },
+      {
+        "feature": "연 환산 상환액",
+        "feature_raw": "AMT_ANNUITY",
+        "value": "30,838",
+        "value_raw": 30838.5,
+        "shap": 0.1545,
+        "rank": 5
+      }
+    ],
+    "top_drivers_against_default": [
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "0.580687",
+        "value_raw": 0.580686936821281,
+        "shap": -0.2089,
+        "rank": 1
+      },
+      {
+        "feature": "신분증 발급 후 경과 일수",
+        "feature_raw": "DAYS_ID_PUBLISH",
+        "value": "-4634",
+        "value_raw": -4634.0,
+        "shap": -0.08,
+        "rank": 2
+      },
+      {
+        "feature": "LANDAREA_MEDI",
+        "feature_raw": "LANDAREA_MEDI",
+        "value": "0.1733",
+        "value_raw": 0.1733,
+        "shap": -0.0644,
+        "rank": 3
+      },
+      {
+        "feature": "LANDAREA_AVG",
+        "feature_raw": "LANDAREA_AVG",
+        "value": "0.1703",
+        "value_raw": 0.1703,
+        "shap": -0.0431,
+        "rank": 4
+      },
+      {
+        "feature": "COMMONAREA_MODE",
+        "feature_raw": "COMMONAREA_MODE",
+        "value": "0.0074",
+        "value_raw": 0.0074,
+        "shap": -0.0353,
+        "rank": 5
+      }
+    ],
+    "fairness_flags": [],
+    "model": "XGBoost",
+    "explanation_policy": "fact_only",
+    "masked_sensitive_features": [
+      "DAYS_BIRTH",
+      "CODE_GENDER_F",
+      "CODE_GENDER_M",
+      "CODE_GENDER_XNA"
+    ]
+  }
+}

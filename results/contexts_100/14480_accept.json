@@ -1,0 +1,100 @@
+{
+  "sample_idx": 14480,
+  "decision": "APPROVE",
+  "default_probability": 0.0289,
+  "threshold": 0.4758,
+  "top_drivers_for_default": [
+    {
+      "feature": "대출 신청 금액",
+      "feature_raw": "AMT_CREDIT",
+      "value": "1,850,544",
+      "value_raw": 1850544.0,
+      "shap": 0.2024,
+      "rank": 1
+    },
+    {
+      "feature": "거주지 등록 후 경과 일수",
+      "feature_raw": "DAYS_REGISTRATION",
+      "value": "0년 전 등록",
+      "value_raw": -52.0,
+      "shap": 0.0823,
+      "rank": 2
+    },
+    {
+      "feature": "신분증 발급 후 경과 일수",
+      "feature_raw": "DAYS_ID_PUBLISH",
+      "value": "-628",
+      "value_raw": -628.0,
+      "shap": 0.0597,
+      "rank": 3
+    },
+    {
+      "feature": "학력: 고등교육 이상",
+      "feature_raw": "NAME_EDUCATION_TYPE_Higher education",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "shap": 0.0416,
+      "rank": 4
+    },
+    {
+      "feature": "NAME_TYPE_SUITE_Children",
+      "feature_raw": "NAME_TYPE_SUITE_Children",
+      "value": "예",
+      "value_raw": 1.0,
+      "shap": 0.0337,
+      "rank": 5
+    }
+  ],
+  "top_drivers_against_default": [
+    {
+      "feature": "외부 신용평가 점수 3",
+      "feature_raw": "EXT_SOURCE_3",
+      "value": "0.744932",
+      "value_raw": 0.7449321846094795,
+      "shap": -0.8135,
+      "rank": 1
+    },
+    {
+      "feature": "구매 대상 상품 가격",
+      "feature_raw": "AMT_GOODS_PRICE",
+      "value": "1,800,000",
+      "value_raw": 1800000.0,
+      "shap": -0.6129,
+      "rank": 2
+    },
+    {
+      "feature": "AMT_REQ_CREDIT_BUREAU_QRT",
+      "feature_raw": "AMT_REQ_CREDIT_BUREAU_QRT",
+      "value": "1",
+      "value_raw": 1.0,
+      "shap": -0.3117,
+      "rank": 3
+    },
+    {
+      "feature": "외부 신용평가 점수 2",
+      "feature_raw": "EXT_SOURCE_2",
+      "value": "0.619502",
+      "value_raw": 0.6195022208373073,
+      "shap": -0.2471,
+      "rank": 4
+    },
+    {
+      "feature": "NAME_HOUSING_TYPE_Office apartment",
+      "feature_raw": "NAME_HOUSING_TYPE_Office apartment",
+      "value": "예",
+      "value_raw": 1.0,
+      "shap": -0.2324,
+      "rank": 5
+    }
+  ],
+  "fairness_flags": [],
+  "model": "XGBoost",
+  "explanation_policy": "fact_only",
+  "masked_sensitive_features": [
+    "DAYS_BIRTH",
+    "CODE_GENDER_F",
+    "CODE_GENDER_M",
+    "CODE_GENDER_XNA"
+  ],
+  "_meta_true_label": 0
+}

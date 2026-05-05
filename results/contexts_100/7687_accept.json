@@ -1,0 +1,100 @@
+{
+  "sample_idx": 7687,
+  "decision": "APPROVE",
+  "default_probability": 0.0148,
+  "threshold": 0.4758,
+  "top_drivers_for_default": [
+    {
+      "feature": "LIVINGAREA_MODE",
+      "feature_raw": "LIVINGAREA_MODE",
+      "value": "0.0442",
+      "value_raw": 0.0442,
+      "shap": 0.0275,
+      "rank": 1
+    },
+    {
+      "feature": "LANDAREA_AVG",
+      "feature_raw": "LANDAREA_AVG",
+      "value": "0",
+      "value_raw": 0.0,
+      "shap": 0.0232,
+      "rank": 2
+    },
+    {
+      "feature": "대출 신청 금액",
+      "feature_raw": "AMT_CREDIT",
+      "value": "1,350,000",
+      "value_raw": 1350000.0,
+      "shap": 0.0201,
+      "rank": 3
+    },
+    {
+      "feature": "AMT_REQ_CREDIT_BUREAU_QRT",
+      "feature_raw": "AMT_REQ_CREDIT_BUREAU_QRT",
+      "value": "0",
+      "value_raw": 0.0,
+      "shap": 0.0146,
+      "rank": 4
+    },
+    {
+      "feature": "FLAG_EMAIL",
+      "feature_raw": "FLAG_EMAIL",
+      "value": "예",
+      "value_raw": 1.0,
+      "shap": 0.0129,
+      "rank": 5
+    }
+  ],
+  "top_drivers_against_default": [
+    {
+      "feature": "외부 신용평가 점수 2",
+      "feature_raw": "EXT_SOURCE_2",
+      "value": "0.74312",
+      "value_raw": 0.7431197568648654,
+      "shap": -0.9485,
+      "rank": 1
+    },
+    {
+      "feature": "외부 신용평가 점수 1",
+      "feature_raw": "EXT_SOURCE_1",
+      "value": "0.868825",
+      "value_raw": 0.8688246130816584,
+      "shap": -0.6538,
+      "rank": 2
+    },
+    {
+      "feature": "신청 대출 유형: 현금대출",
+      "feature_raw": "NAME_CONTRACT_TYPE_Cash loans",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "shap": -0.4545,
+      "rank": 3
+    },
+    {
+      "feature": "구매 대상 상품 가격",
+      "feature_raw": "AMT_GOODS_PRICE",
+      "value": "1,350,000",
+      "value_raw": 1350000.0,
+      "shap": -0.4216,
+      "rank": 4
+    },
+    {
+      "feature": "학력: 고등교육 이상",
+      "feature_raw": "NAME_EDUCATION_TYPE_Higher education",
+      "value": "예",
+      "value_raw": 1.0,
+      "shap": -0.174,
+      "rank": 5
+    }
+  ],
+  "fairness_flags": [],
+  "model": "XGBoost",
+  "explanation_policy": "fact_only",
+  "masked_sensitive_features": [
+    "DAYS_BIRTH",
+    "CODE_GENDER_F",
+    "CODE_GENDER_M",
+    "CODE_GENDER_XNA"
+  ],
+  "_meta_true_label": 0
+}

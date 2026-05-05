@@ -1,0 +1,113 @@
+{
+  "sample_idx": 48062,
+  "decision": "APPROVE",
+  "true_label": 0,
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "elapsed_sec": 12.37,
+  "explanation": "[결정 요약]\n신청 결과: 대출 신청이 승인되었습니다(예측 부도 확률 1.59%).\n\n[주요 거절 사유]\n(해당 없음)\n\n[긍정적으로 평가된 요인]\n- 외부 신용평가 점수 2가 0.782946으로 높게 평가되었습니다.\n- 외부 신용평가 점수 1도 0.711038로 높게 평가되었습니다.\n- 신청 대출 유형이 현금대출이 아닌 점이 긍정적으로 작용했습니다.\n\n[개선 권고]\n- 현재의 긍정적인 신용 상태를 꾸준히 유지하시기를 권장합니다.\n- 건전한 금융 습관을 통해 신용 기록을 지속적으로 관리하시면 좋습니다.\n\n[면책 고지]\n본 안내는 모델의 자동화된 평가 결과를 자연어로 정리한 것이며, 최종 의사결정은 담당자의 검토를 거칩니다. 미래 신청 결과를 보장하지 않습니다.",
+  "usage_metadata": {
+    "prompt_token_count": 1787,
+    "candidates_token_count": 229,
+    "total_token_count": 4480
+  },
+  "context_sent": {
+    "sample_idx": 48062,
+    "decision": "APPROVE",
+    "default_probability": 0.0159,
+    "threshold": 0.4758,
+    "top_drivers_for_default": [
+      {
+        "feature": "BASEMENTAREA_MODE",
+        "feature_raw": "BASEMENTAREA_MODE",
+        "value": "0.1858",
+        "value_raw": 0.1858,
+        "shap": 0.1177,
+        "rank": 1
+      },
+      {
+        "feature": "LIVINGAPARTMENTS_AVG",
+        "feature_raw": "LIVINGAPARTMENTS_AVG",
+        "value": "0.3614",
+        "value_raw": 0.3614,
+        "shap": 0.0816,
+        "rank": 2
+      },
+      {
+        "feature": "NONLIVINGAPARTMENTS_MODE",
+        "feature_raw": "NONLIVINGAPARTMENTS_MODE",
+        "value": "0.0934",
+        "value_raw": 0.0934,
+        "shap": 0.0633,
+        "rank": 3
+      },
+      {
+        "feature": "거주지 인구 밀도(상대값)",
+        "feature_raw": "REGION_POPULATION_RELATIVE",
+        "value": "0.072508",
+        "value_raw": 0.072508,
+        "shap": 0.0327,
+        "rank": 4
+      },
+      {
+        "feature": "NONLIVINGAPARTMENTS_MEDI",
+        "feature_raw": "NONLIVINGAPARTMENTS_MEDI",
+        "value": "0.1048",
+        "value_raw": 0.1048,
+        "shap": 0.0324,
+        "rank": 5
+      }
+    ],
+    "top_drivers_against_default": [
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "0.782946",
+        "value_raw": 0.7829455209663897,
+        "shap": -0.9959,
+        "rank": 1
+      },
+      {
+        "feature": "외부 신용평가 점수 1",
+        "feature_raw": "EXT_SOURCE_1",
+        "value": "0.711038",
+        "value_raw": 0.7110379518591411,
+        "shap": -0.4585,
+        "rank": 2
+      },
+      {
+        "feature": "신청 대출 유형: 현금대출",
+        "feature_raw": "NAME_CONTRACT_TYPE_Cash loans",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "shap": -0.3053,
+        "rank": 3
+      },
+      {
+        "feature": "외부 신용평가 점수 3",
+        "feature_raw": "EXT_SOURCE_3",
+        "value": "0.593718",
+        "value_raw": 0.5937175866150576,
+        "shap": -0.3008,
+        "rank": 4
+      },
+      {
+        "feature": "학력: 고등교육 이상",
+        "feature_raw": "NAME_EDUCATION_TYPE_Higher education",
+        "value": "예",
+        "value_raw": 1.0,
+        "shap": -0.1802,
+        "rank": 5
+      }
+    ],
+    "fairness_flags": [],
+    "model": "XGBoost",
+    "explanation_policy": "fact_only",
+    "masked_sensitive_features": [
+      "DAYS_BIRTH",
+      "CODE_GENDER_F",
+      "CODE_GENDER_M",
+      "CODE_GENDER_XNA"
+    ]
+  }
+}

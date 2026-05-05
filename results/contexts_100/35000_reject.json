@@ -1,0 +1,100 @@
+{
+  "sample_idx": 35000,
+  "decision": "REJECT",
+  "default_probability": 0.9105,
+  "threshold": 0.4758,
+  "top_drivers_for_default": [
+    {
+      "feature": "외부 신용평가 점수 3",
+      "feature_raw": "EXT_SOURCE_3",
+      "value": "0.0724967",
+      "value_raw": 0.0724966767537821,
+      "shap": 1.1552,
+      "rank": 1
+    },
+    {
+      "feature": "외부 신용평가 점수 1",
+      "feature_raw": "EXT_SOURCE_1",
+      "value": "0.0826038",
+      "value_raw": 0.08260377007595121,
+      "shap": 0.7199,
+      "rank": 2
+    },
+    {
+      "feature": "구매 대상 상품 가격",
+      "feature_raw": "AMT_GOODS_PRICE",
+      "value": "373,500",
+      "value_raw": 373500.0,
+      "shap": 0.2551,
+      "rank": 3
+    },
+    {
+      "feature": "연 환산 상환액",
+      "feature_raw": "AMT_ANNUITY",
+      "value": "27,594",
+      "value_raw": 27594.0,
+      "shap": 0.083,
+      "rank": 4
+    },
+    {
+      "feature": "NAME_EDUCATION_TYPE_Lower secondary",
+      "feature_raw": "NAME_EDUCATION_TYPE_Lower secondary",
+      "value": "예",
+      "value_raw": 1.0,
+      "shap": 0.0701,
+      "rank": 5
+    }
+  ],
+  "top_drivers_against_default": [
+    {
+      "feature": "외부 신용평가 점수 2",
+      "feature_raw": "EXT_SOURCE_2",
+      "value": "0.577489",
+      "value_raw": 0.5774888794834984,
+      "shap": -0.1574,
+      "rank": 1
+    },
+    {
+      "feature": "신분증 발급 후 경과 일수",
+      "feature_raw": "DAYS_ID_PUBLISH",
+      "value": "-4679",
+      "value_raw": -4679.0,
+      "shap": -0.0473,
+      "rank": 2
+    },
+    {
+      "feature": "FLAG_OWN_CAR_N",
+      "feature_raw": "FLAG_OWN_CAR_N",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "shap": -0.047,
+      "rank": 3
+    },
+    {
+      "feature": "외부 신용평가 1 결측 여부",
+      "feature_raw": "EXT_SOURCE_1_MISSING_FLAG",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "shap": -0.0377,
+      "rank": 4
+    },
+    {
+      "feature": "최근 휴대폰 변경 후 경과 일수",
+      "feature_raw": "DAYS_LAST_PHONE_CHANGE",
+      "value": "-1769",
+      "value_raw": -1769.0,
+      "shap": -0.0363,
+      "rank": 5
+    }
+  ],
+  "fairness_flags": [],
+  "model": "XGBoost",
+  "explanation_policy": "fact_only",
+  "masked_sensitive_features": [
+    "DAYS_BIRTH",
+    "CODE_GENDER_F",
+    "CODE_GENDER_M",
+    "CODE_GENDER_XNA"
+  ],
+  "_meta_true_label": 0
+}

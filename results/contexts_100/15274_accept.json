@@ -1,0 +1,100 @@
+{
+  "sample_idx": 15274,
+  "decision": "APPROVE",
+  "default_probability": 0.0349,
+  "threshold": 0.4758,
+  "top_drivers_for_default": [
+    {
+      "feature": "보유 차량 연식",
+      "feature_raw": "OWN_CAR_AGE",
+      "value": "64",
+      "value_raw": 64.0,
+      "shap": 0.1185,
+      "rank": 1
+    },
+    {
+      "feature": "구매 대상 상품 가격",
+      "feature_raw": "AMT_GOODS_PRICE",
+      "value": "238,500",
+      "value_raw": 238500.0,
+      "shap": 0.1087,
+      "rank": 2
+    },
+    {
+      "feature": "외부 신용평가 1 결측 여부",
+      "feature_raw": "EXT_SOURCE_1_MISSING_FLAG",
+      "value": "예",
+      "value_raw": 1.0,
+      "shap": 0.0286,
+      "rank": 3
+    },
+    {
+      "feature": "외부 신용평가 점수 2",
+      "feature_raw": "EXT_SOURCE_2",
+      "value": "0.406341",
+      "value_raw": 0.4063413932917447,
+      "shap": 0.0272,
+      "rank": 4
+    },
+    {
+      "feature": "최근 휴대폰 변경 후 경과 일수",
+      "feature_raw": "DAYS_LAST_PHONE_CHANGE",
+      "value": "-911",
+      "value_raw": -911.0,
+      "shap": 0.0203,
+      "rank": 5
+    }
+  ],
+  "top_drivers_against_default": [
+    {
+      "feature": "외부 신용평가 점수 3",
+      "feature_raw": "EXT_SOURCE_3",
+      "value": "0.73802",
+      "value_raw": 0.7380196196295241,
+      "shap": -0.9269,
+      "rank": 1
+    },
+    {
+      "feature": "신분증 발급 후 경과 일수",
+      "feature_raw": "DAYS_ID_PUBLISH",
+      "value": "-5447",
+      "value_raw": -5447.0,
+      "shap": -0.3045,
+      "rank": 2
+    },
+    {
+      "feature": "FLAG_DOCUMENT_16",
+      "feature_raw": "FLAG_DOCUMENT_16",
+      "value": "예",
+      "value_raw": 1.0,
+      "shap": -0.298,
+      "rank": 3
+    },
+    {
+      "feature": "직업 분류 (타깃 인코딩 값)",
+      "feature_raw": "OCCUPATION_TYPE_TE",
+      "value": "0.0449 (타깃 인코딩 값)",
+      "value_raw": 0.044859813084112146,
+      "shap": -0.2947,
+      "rank": 4
+    },
+    {
+      "feature": "학력: 고등교육 이상",
+      "feature_raw": "NAME_EDUCATION_TYPE_Higher education",
+      "value": "예",
+      "value_raw": 1.0,
+      "shap": -0.262,
+      "rank": 5
+    }
+  ],
+  "fairness_flags": [],
+  "model": "XGBoost",
+  "explanation_policy": "fact_only",
+  "masked_sensitive_features": [
+    "DAYS_BIRTH",
+    "CODE_GENDER_F",
+    "CODE_GENDER_M",
+    "CODE_GENDER_XNA"
+  ],
+  "_meta_true_label": 0
+}

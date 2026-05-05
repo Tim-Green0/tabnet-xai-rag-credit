@@ -1,0 +1,100 @@
+{
+  "sample_idx": 32153,
+  "decision": "APPROVE",
+  "default_probability": 0.0257,
+  "threshold": 0.4758,
+  "top_drivers_for_default": [
+    {
+      "feature": "대출 신청 금액",
+      "feature_raw": "AMT_CREDIT",
+      "value": "1,850,544",
+      "value_raw": 1850544.0,
+      "shap": 0.1068,
+      "rank": 1
+    },
+    {
+      "feature": "근무 조직 유형 (타깃 인코딩 값)",
+      "feature_raw": "ORGANIZATION_TYPE_TE",
+      "value": "0.0955 (타깃 인코딩 값)",
+      "value_raw": 0.09550561594648208,
+      "shap": 0.0479,
+      "rank": 2
+    },
+    {
+      "feature": "AMT_REQ_CREDIT_BUREAU_QRT",
+      "feature_raw": "AMT_REQ_CREDIT_BUREAU_QRT",
+      "value": "0",
+      "value_raw": 0.0,
+      "shap": 0.0213,
+      "rank": 3
+    },
+    {
+      "feature": "NAME_INCOME_TYPE_Commercial associate",
+      "feature_raw": "NAME_INCOME_TYPE_Commercial associate",
+      "value": "예",
+      "value_raw": 1.0,
+      "shap": 0.0135,
+      "rank": 4
+    },
+    {
+      "feature": "LANDAREA_AVG",
+      "feature_raw": "LANDAREA_AVG",
+      "value": "0",
+      "value_raw": 0.0,
+      "shap": 0.0095,
+      "rank": 5
+    }
+  ],
+  "top_drivers_against_default": [
+    {
+      "feature": "외부 신용평가 점수 3",
+      "feature_raw": "EXT_SOURCE_3",
+      "value": "0.783832",
+      "value_raw": 0.7838324335199619,
+      "shap": -0.6371,
+      "rank": 1
+    },
+    {
+      "feature": "신청 대출 유형: 현금대출",
+      "feature_raw": "NAME_CONTRACT_TYPE_Cash loans",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "shap": -0.4399,
+      "rank": 2
+    },
+    {
+      "feature": "외부 신용평가 점수 2",
+      "feature_raw": "EXT_SOURCE_2",
+      "value": "0.667909",
+      "value_raw": 0.6679088857304697,
+      "shap": -0.4282,
+      "rank": 3
+    },
+    {
+      "feature": "외부 신용평가 점수 1",
+      "feature_raw": "EXT_SOURCE_1",
+      "value": "0.703072",
+      "value_raw": 0.7030720237481177,
+      "shap": -0.4003,
+      "rank": 4
+    },
+    {
+      "feature": "구매 대상 상품 가격",
+      "feature_raw": "AMT_GOODS_PRICE",
+      "value": "1,800,000",
+      "value_raw": 1800000.0,
+      "shap": -0.374,
+      "rank": 5
+    }
+  ],
+  "fairness_flags": [],
+  "model": "XGBoost",
+  "explanation_policy": "fact_only",
+  "masked_sensitive_features": [
+    "DAYS_BIRTH",
+    "CODE_GENDER_F",
+    "CODE_GENDER_M",
+    "CODE_GENDER_XNA"
+  ],
+  "_meta_true_label": 0
+}

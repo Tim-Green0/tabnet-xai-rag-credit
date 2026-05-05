@@ -1,0 +1,113 @@
+{
+  "sample_idx": 58103,
+  "decision": "REJECT",
+  "true_label": 1,
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "elapsed_sec": 13.8,
+  "explanation": "[결정 요약]\n신청 결과: 대출 신청이 거절되었습니다(예측 부도 확률 90.95%).\n\n[주요 거절 사유]\n1. 외부 신용평가 점수 3이 0.0668879로 매우 낮게 평가되었습니다.\n2. 외부 신용평가 점수 2가 0.31914로 낮은 편입니다.\n3. 구매 대상 상품 가격이 360,000인 점이 부도 가능성을 높였습니다.\n\n[긍정적으로 평가된 요인]\n- 차량을 소유하고 있지 않은 점이 긍정적으로 반영되었습니다.\n- 신청 처리 시작 시간이 19시인 점도 긍정적입니다.\n- 기혼 상태이신 점이 긍정적인 요인으로 작용했습니다.\n\n[개선 권고]\n- 외부 신용평가 점수 향상을 위한 신용 관리(연체 해소, 사용률 조정)를 권장합니다.\n- 안정적인 직업 유지 및 재직 기간 연장을 통해 신용도를 높이는 것을 고려해볼 수 있습니다.\n- 일정 기간 후 재신청을 검토하실 수 있습니다.\n\n[면책 고지]\n본 안내는 모델의 자동화된 평가 결과를 자연어로 정리한 것이며, 최종 의사결정은 담당자의 검토를 거칩니다. 미래 신청 결과를 보장하지 않습니다.",
+  "usage_metadata": {
+    "prompt_token_count": 1762,
+    "candidates_token_count": 315,
+    "total_token_count": 4862
+  },
+  "context_sent": {
+    "sample_idx": 58103,
+    "decision": "REJECT",
+    "default_probability": 0.9095,
+    "threshold": 0.4758,
+    "top_drivers_for_default": [
+      {
+        "feature": "외부 신용평가 점수 3",
+        "feature_raw": "EXT_SOURCE_3",
+        "value": "0.0668879",
+        "value_raw": 0.0668879339672135,
+        "shap": 1.1036,
+        "rank": 1
+      },
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "0.31914",
+        "value_raw": 0.3191401660608097,
+        "shap": 0.2998,
+        "rank": 2
+      },
+      {
+        "feature": "구매 대상 상품 가격",
+        "feature_raw": "AMT_GOODS_PRICE",
+        "value": "360,000",
+        "value_raw": 360000.0,
+        "shap": 0.2812,
+        "rank": 3
+      },
+      {
+        "feature": "근무 조직 유형 (타깃 인코딩 값)",
+        "feature_raw": "ORGANIZATION_TYPE_TE",
+        "value": "0.1219 (타깃 인코딩 값)",
+        "value_raw": 0.12194519871636633,
+        "shap": 0.2423,
+        "rank": 4
+      },
+      {
+        "feature": "재직 일수(음수: 신청일 기준)",
+        "feature_raw": "DAYS_EMPLOYED",
+        "value": "0년 재직",
+        "value_raw": -111.0,
+        "shap": 0.0941,
+        "rank": 5
+      }
+    ],
+    "top_drivers_against_default": [
+      {
+        "feature": "FLAG_OWN_CAR_N",
+        "feature_raw": "FLAG_OWN_CAR_N",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "shap": -0.0605,
+        "rank": 1
+      },
+      {
+        "feature": "HOUR_APPR_PROCESS_START",
+        "feature_raw": "HOUR_APPR_PROCESS_START",
+        "value": "19",
+        "value_raw": 19.0,
+        "shap": -0.0574,
+        "rank": 2
+      },
+      {
+        "feature": "NAME_FAMILY_STATUS_Married",
+        "feature_raw": "NAME_FAMILY_STATUS_Married",
+        "value": "예",
+        "value_raw": 1.0,
+        "shap": -0.0432,
+        "rank": 3
+      },
+      {
+        "feature": "AMT_REQ_CREDIT_BUREAU_YEAR",
+        "feature_raw": "AMT_REQ_CREDIT_BUREAU_YEAR",
+        "value": "0",
+        "value_raw": 0.0,
+        "shap": -0.0381,
+        "rank": 4
+      },
+      {
+        "feature": "FLAG_PHONE",
+        "feature_raw": "FLAG_PHONE",
+        "value": "예",
+        "value_raw": 1.0,
+        "shap": -0.022,
+        "rank": 5
+      }
+    ],
+    "fairness_flags": [],
+    "model": "XGBoost",
+    "explanation_policy": "fact_only",
+    "masked_sensitive_features": [
+      "DAYS_BIRTH",
+      "CODE_GENDER_F",
+      "CODE_GENDER_M",
+      "CODE_GENDER_XNA"
+    ]
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "sample_idx": 48299,
+  "decision": "APPROVE",
+  "true_label": 0,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "elapsed_sec": 7.13,
+  "explanation": "[결정 요약]\n신청 결과: 대출 신청이 승인되었습니다(예측 부도 확률 3.42%).\n\n[주요 거절 사유]\n(승인 건으로 본 섹션은 생략됩니다)\n\n[긍정적으로 평가된 요인]\n1. 외부 신용평가 점수 2가 0.770347로 매우 우수하게 평가되었습니다.\n2. 외부 신용평가 점수 3도 0.713631로 높은 수준입니다.\n3. 외부 신용평가 점수 1이 0.750431로 양호하게 반영되었습니다.\n\n[개선 권고]\n- 현재 우수한 신용 상태를 유지하시기 바랍니다.\n- 향후 더 나은 대출 조건을 위해 외부 신용평가 점수를 지속적으로 관리하시길 권장합니다.\n- 보유 차량(6년 차)도 긍정적 요인으로 작용하였으니, 안정적인 자산 관리를 이어가시기 바랍니다.\n\n[면책 고지]\n본 안내는 모델의 자동화된 평가 결과를 자연어로 정리한 것이며, 최종 의사결정은 담당자의 검토를 거칩니다. 미래 신청 결과를 보장하지 않습니다.",
+  "usage_metadata": {
+    "input_tokens": 2062,
+    "output_tokens": 442,
+    "total_token_count": 2504
+  },
+  "context_sent": {
+    "sample_idx": 48299,
+    "decision": "APPROVE",
+    "default_probability": 0.0342,
+    "threshold": 0.4758,
+    "top_drivers_for_default": [
+      {
+        "feature": "NAME_FAMILY_STATUS_Married",
+        "feature_raw": "NAME_FAMILY_STATUS_Married",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "shap": 0.1203,
+        "rank": 1
+      },
+      {
+        "feature": "신분증 발급 후 경과 일수",
+        "feature_raw": "DAYS_ID_PUBLISH",
+        "value": "-960",
+        "value_raw": -960.0,
+        "shap": 0.0777,
+        "rank": 2
+      },
+      {
+        "feature": "WALLSMATERIAL_MODE_Panel",
+        "feature_raw": "WALLSMATERIAL_MODE_Panel",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "shap": 0.0433,
+        "rank": 3
+      },
+      {
+        "feature": "APARTMENTS_MODE",
+        "feature_raw": "APARTMENTS_MODE",
+        "value": "0.4328",
+        "value_raw": 0.4328,
+        "shap": 0.0403,
+        "rank": 4
+      },
+      {
+        "feature": "WALLSMATERIAL_MODE_Stone, brick",
+        "feature_raw": "WALLSMATERIAL_MODE_Stone, brick",
+        "value": "예",
+        "value_raw": 1.0,
+        "shap": 0.0287,
+        "rank": 5
+      }
+    ],
+    "top_drivers_against_default": [
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "0.770347",
+        "value_raw": 0.7703465209352645,
+        "shap": -0.7799,
+        "rank": 1
+      },
+      {
+        "feature": "외부 신용평가 점수 3",
+        "feature_raw": "EXT_SOURCE_3",
+        "value": "0.713631",
+        "value_raw": 0.7136313997323308,
+        "shap": -0.5098,
+        "rank": 2
+      },
+      {
+        "feature": "외부 신용평가 점수 1",
+        "feature_raw": "EXT_SOURCE_1",
+        "value": "0.750431",
+        "value_raw": 0.7504306803839959,
+        "shap": -0.4229,
+        "rank": 3
+      },
+      {
+        "feature": "신청 대출 유형: 현금대출",
+        "feature_raw": "NAME_CONTRACT_TYPE_Cash loans",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "shap": -0.3589,
+        "rank": 4
+      },
+      {
+        "feature": "보유 차량 연식",
+        "feature_raw": "OWN_CAR_AGE",
+        "value": "6",
+        "value_raw": 6.0,
+        "shap": -0.1872,
+        "rank": 5
+      }
+    ],
+    "fairness_flags": [],
+    "model": "XGBoost",
+    "explanation_policy": "fact_only",
+    "masked_sensitive_features": [
+      "DAYS_BIRTH",
+      "CODE_GENDER_F",
+      "CODE_GENDER_M",
+      "CODE_GENDER_XNA"
+    ]
+  }
+}

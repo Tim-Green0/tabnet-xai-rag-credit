@@ -1,0 +1,113 @@
+{
+  "sample_idx": 6279,
+  "decision": "REJECT",
+  "true_label": 1,
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "elapsed_sec": 11.86,
+  "explanation": "[결정 요약]\n신청 결과: 대출 신청이 거절되었습니다(예측 부도 확률 93.17%).\n\n[주요 거절 사유]\n1.  외부 신용평가 점수 3이 0.0696401로 매우 낮게 평가되어 부도 가능성을 높였습니다.\n2.  외부 신용평가 점수 2도 0.029544로 낮은 수준으로 확인되어 부도 가능성을 높였습니다.\n3.  재직 일수가 0년 재직으로 매우 짧은 기간이거나 없는 것으로 평가되어 부도 가능성을 높이는 요인으로 작용했습니다.\n\n[긍정적으로 평가된 요인]\n- 대출 신청 금액이 225,000원으로 부도 가능성을 낮추는 데 긍정적으로 작용했습니다.\n- 8년 된 보유 차량 연식은 부도 가능성을 낮추는 요인으로 반영되었습니다.\n- 차량을 보유하고 있다는 점(FLAG_OWN_CAR_N: 아니오)도 긍정적인 요인으로 평가되었습니다.\n\n[개선 권고]\n- 외부 신용평가 점수를 향상시키기 위한 신용 관리(예: 연체 해소, 신용 카드 사용률 조정)를 권장합니다.\n- 안정적인 재직 기간을 확보하는 것이 신용 평가에 긍정적으로 작용할 수 있습니다.\n- 일정 기간 후 재신청을 검토하실 수 있습니다.\n\n[면책 고지]\n본 안내는 모델의 자동화된 평가 결과를 자연어로 정리한 것이며, 최종 의사결정은 담당자의 검토를 거칩니다. 미래 신청 결과를 보장하지 않습니다.",
+  "usage_metadata": {
+    "prompt_token_count": 1757,
+    "candidates_token_count": 379,
+    "total_token_count": 4325
+  },
+  "context_sent": {
+    "sample_idx": 6279,
+    "decision": "REJECT",
+    "default_probability": 0.9317,
+    "threshold": 0.4758,
+    "top_drivers_for_default": [
+      {
+        "feature": "외부 신용평가 점수 3",
+        "feature_raw": "EXT_SOURCE_3",
+        "value": "0.0696401",
+        "value_raw": 0.0696400847467118,
+        "shap": 1.0877,
+        "rank": 1
+      },
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "0.029544",
+        "value_raw": 0.029543963437184073,
+        "shap": 0.9566,
+        "rank": 2
+      },
+      {
+        "feature": "구매 대상 상품 가격",
+        "feature_raw": "AMT_GOODS_PRICE",
+        "value": "225,000",
+        "value_raw": 225000.0,
+        "shap": 0.2015,
+        "rank": 3
+      },
+      {
+        "feature": "근무 조직 유형 (타깃 인코딩 값)",
+        "feature_raw": "ORGANIZATION_TYPE_TE",
+        "value": "0.1029 (타깃 인코딩 값)",
+        "value_raw": 0.10291033036182486,
+        "shap": 0.127,
+        "rank": 4
+      },
+      {
+        "feature": "재직 일수(음수: 신청일 기준)",
+        "feature_raw": "DAYS_EMPLOYED",
+        "value": "0년 재직",
+        "value_raw": -152.0,
+        "shap": 0.1191,
+        "rank": 5
+      }
+    ],
+    "top_drivers_against_default": [
+      {
+        "feature": "대출 신청 금액",
+        "feature_raw": "AMT_CREDIT",
+        "value": "225,000",
+        "value_raw": 225000.0,
+        "shap": -0.1576,
+        "rank": 1
+      },
+      {
+        "feature": "보유 차량 연식",
+        "feature_raw": "OWN_CAR_AGE",
+        "value": "8",
+        "value_raw": 8.0,
+        "shap": -0.1331,
+        "rank": 2
+      },
+      {
+        "feature": "FLAG_OWN_CAR_N",
+        "feature_raw": "FLAG_OWN_CAR_N",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "shap": -0.0479,
+        "rank": 3
+      },
+      {
+        "feature": "FLAG_PHONE",
+        "feature_raw": "FLAG_PHONE",
+        "value": "예",
+        "value_raw": 1.0,
+        "shap": -0.0208,
+        "rank": 4
+      },
+      {
+        "feature": "거주지 등록 후 경과 일수",
+        "feature_raw": "DAYS_REGISTRATION",
+        "value": "21년 전 등록",
+        "value_raw": -7804.0,
+        "shap": -0.0183,
+        "rank": 5
+      }
+    ],
+    "fairness_flags": [],
+    "model": "XGBoost",
+    "explanation_policy": "fact_only",
+    "masked_sensitive_features": [
+      "DAYS_BIRTH",
+      "CODE_GENDER_F",
+      "CODE_GENDER_M",
+      "CODE_GENDER_XNA"
+    ]
+  }
+}

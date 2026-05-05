@@ -1,0 +1,113 @@
+{
+  "sample_idx": 42162,
+  "decision": "APPROVE",
+  "true_label": 0,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "elapsed_sec": 8.94,
+  "explanation": "[결정 요약]\n신청 결과: 대출 신청이 승인되었습니다(예측 부도 확률 2.18%, 기준 47.58%).\n\n[주요 거절 사유]\n(승인 건으로 해당 사항 없음)\n\n[긍정적으로 평가된 요인]\n1. 외부 신용평가 점수 3이 0.744932로 우수하게 평가되어 부도 가능성을 크게 낮추었습니다.\n2. 외부 신용평가 점수 1이 0.852764로 매우 높아 신용도가 긍정적으로 반영되었습니다.\n3. 16년의 장기 재직 기간이 상환 능력의 안정성을 높이는 요인으로 작용하였습니다.\n\n[개선 권고]\n- 현재 매우 양호한 신용 상태를 유지하시기 바랍니다.\n- 구매 대상 상품 가격(337,500)이 부도 가능성을 소폭 높이는 요인으로 작용하였으므, 대출 규모 관리에 유의하시기 바랍니다.\n- 향후 대출 이용 시에도 장기 재직 및 우수한 신용평가 점수 유지를 권장합니다.\n\n[면책 고지]\n본 안내는 XGBoost 모델의 자동화된 평가 결과를 자연어로 정리한 것이며, 최종 의사결정은 담당자의 검토를 거칩니다. 본 설명은 승인을 보장하거나 미래 신청 결과를 예측하지 않습니다.",
+  "usage_metadata": {
+    "input_tokens": 2086,
+    "output_tokens": 518,
+    "total_token_count": 2604
+  },
+  "context_sent": {
+    "sample_idx": 42162,
+    "decision": "APPROVE",
+    "default_probability": 0.0218,
+    "threshold": 0.4758,
+    "top_drivers_for_default": [
+      {
+        "feature": "구매 대상 상품 가격",
+        "feature_raw": "AMT_GOODS_PRICE",
+        "value": "337,500",
+        "value_raw": 337500.0,
+        "shap": 0.1318,
+        "rank": 1
+      },
+      {
+        "feature": "FLAG_OWN_CAR_N",
+        "feature_raw": "FLAG_OWN_CAR_N",
+        "value": "예",
+        "value_raw": 1.0,
+        "shap": 0.0305,
+        "rank": 2
+      },
+      {
+        "feature": "거주지 인구 밀도(상대값)",
+        "feature_raw": "REGION_POPULATION_RELATIVE",
+        "value": "0.02461",
+        "value_raw": 0.02461,
+        "shap": 0.0259,
+        "rank": 3
+      },
+      {
+        "feature": "거주지 등록 후 경과 일수",
+        "feature_raw": "DAYS_REGISTRATION",
+        "value": "9년 전 등록",
+        "value_raw": -3598.0,
+        "shap": 0.0196,
+        "rank": 4
+      },
+      {
+        "feature": "TOTALAREA_MODE",
+        "feature_raw": "TOTALAREA_MODE",
+        "value": "0.084",
+        "value_raw": 0.084,
+        "shap": 0.0193,
+        "rank": 5
+      }
+    ],
+    "top_drivers_against_default": [
+      {
+        "feature": "외부 신용평가 점수 3",
+        "feature_raw": "EXT_SOURCE_3",
+        "value": "0.744932",
+        "value_raw": 0.7449321846094795,
+        "shap": -0.7201,
+        "rank": 1
+      },
+      {
+        "feature": "외부 신용평가 점수 1",
+        "feature_raw": "EXT_SOURCE_1",
+        "value": "0.852764",
+        "value_raw": 0.8527643333460425,
+        "shap": -0.5981,
+        "rank": 2
+      },
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "0.678115",
+        "value_raw": 0.6781152149638431,
+        "shap": -0.5114,
+        "rank": 3
+      },
+      {
+        "feature": "재직 일수(음수: 신청일 기준)",
+        "feature_raw": "DAYS_EMPLOYED",
+        "value": "16년 재직",
+        "value_raw": -5939.0,
+        "shap": -0.3319,
+        "rank": 4
+      },
+      {
+        "feature": "신청 대출 유형: 현금대출",
+        "feature_raw": "NAME_CONTRACT_TYPE_Cash loans",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "shap": -0.2518,
+        "rank": 5
+      }
+    ],
+    "fairness_flags": [],
+    "model": "XGBoost",
+    "explanation_policy": "fact_only",
+    "masked_sensitive_features": [
+      "DAYS_BIRTH",
+      "CODE_GENDER_F",
+      "CODE_GENDER_M",
+      "CODE_GENDER_XNA"
+    ]
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "sample_idx": 38152,
+  "decision": "REJECT",
+  "true_label": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "elapsed_sec": 8.69,
+  "explanation": "[결정 요약]\n신청 결과: 대출 신청이 거절되었습니다(예측 부도 확률 89.45%, 기준 47.58%).\n\n[주요 거절 사유]\n1. 외부 신용평가 점수 2가 0.029544로 매우 낮게 평가되어 부도 가능성을 크게 높였습니다.\n2. 외부 신용평가 점수 3도 0.17876으로 낮은 수준입니다.\n3. 총 소득 45,000 대비 구매 대상 상품 가격 180,000의 비율이 부담 요인으로 작용했습니다.\n\n[긍정적으로 평가된 요인]\n- 대출 신청 금액 180,000은 적정 수준으로 긍정 평가되었습니다.\n- 연 환산 상환액 9,000은 합리적인 수준으로 반영되었습니다.\n- 직업 분류(타깃 인코딩 값 0.0640)가 긍정적으로 작용했습니다.\n\n[개선 권고]\n- 외부 신용평가 점수 개선을 위해 신용 관리(연체 해소, 신용카드 사용률 조정 등)를 권장합니다.\n- 소득 대비 대출 규모를 낮추거나, 소득 증빙 자료를 보완한 후 재신청을 검토하실 수 있습니다.\n- 일정 기간 신용 이력 관리 후 재신청 시 승인 가능성이 개선될 수 있습니다.\n\n[면책 고지]\n본 안내는 모델의 자동화된 평가 결과를 자연어로 정리한 것이며, 최종 의사결정은 담당자의 검토를 거칩니다. 미래 신청 결과를 보장하지 않습니다.",
+  "usage_metadata": {
+    "input_tokens": 2081,
+    "output_tokens": 590,
+    "total_token_count": 2671
+  },
+  "context_sent": {
+    "sample_idx": 38152,
+    "decision": "REJECT",
+    "default_probability": 0.8945,
+    "threshold": 0.4758,
+    "top_drivers_for_default": [
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "0.029544",
+        "value_raw": 0.029543963437184073,
+        "shap": 1.0858,
+        "rank": 1
+      },
+      {
+        "feature": "외부 신용평가 점수 3",
+        "feature_raw": "EXT_SOURCE_3",
+        "value": "0.17876",
+        "value_raw": 0.178760465484575,
+        "shap": 0.7817,
+        "rank": 2
+      },
+      {
+        "feature": "구매 대상 상품 가격",
+        "feature_raw": "AMT_GOODS_PRICE",
+        "value": "180,000",
+        "value_raw": 180000.0,
+        "shap": 0.1855,
+        "rank": 3
+      },
+      {
+        "feature": "총 소득",
+        "feature_raw": "AMT_INCOME_TOTAL",
+        "value": "45,000",
+        "value_raw": 45000.0,
+        "shap": 0.1418,
+        "rank": 4
+      },
+      {
+        "feature": "거주지(도시 가중) 등급",
+        "feature_raw": "REGION_RATING_CLIENT_W_CITY",
+        "value": "3",
+        "value_raw": 3.0,
+        "shap": 0.1105,
+        "rank": 5
+      }
+    ],
+    "top_drivers_against_default": [
+      {
+        "feature": "대출 신청 금액",
+        "feature_raw": "AMT_CREDIT",
+        "value": "180,000",
+        "value_raw": 180000.0,
+        "shap": -0.1661,
+        "rank": 1
+      },
+      {
+        "feature": "신청 대출 유형: 현금대출",
+        "feature_raw": "NAME_CONTRACT_TYPE_Cash loans",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "shap": -0.1213,
+        "rank": 2
+      },
+      {
+        "feature": "연 환산 상환액",
+        "feature_raw": "AMT_ANNUITY",
+        "value": "9,000",
+        "value_raw": 9000.0,
+        "shap": -0.1114,
+        "rank": 3
+      },
+      {
+        "feature": "직업 분류 (타깃 인코딩 값)",
+        "feature_raw": "OCCUPATION_TYPE_TE",
+        "value": "0.0640 (타깃 인코딩 값)",
+        "value_raw": 0.0640062976868112,
+        "shap": -0.0958,
+        "rank": 4
+      },
+      {
+        "feature": "FLAG_DOCUMENT_3",
+        "feature_raw": "FLAG_DOCUMENT_3",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "shap": -0.0709,
+        "rank": 5
+      }
+    ],
+    "fairness_flags": [],
+    "model": "XGBoost",
+    "explanation_policy": "fact_only",
+    "masked_sensitive_features": [
+      "DAYS_BIRTH",
+      "CODE_GENDER_F",
+      "CODE_GENDER_M",
+      "CODE_GENDER_XNA"
+    ]
+  }
+}

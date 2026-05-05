@@ -1,0 +1,33 @@
+{
+  "feat_match_rate": {
+    "mean": 0.41099999999999987,
+    "std": 0.13476129288711228,
+    "n": 100
+  },
+  "val_match_rate": {
+    "mean": 0.855,
+    "std": 0.11043989178267832,
+    "n": 100
+  },
+  "sign_match_rate": {
+    "mean": 0.8508809523809522,
+    "std": 0.1910766914084178,
+    "n": 100
+  },
+  "full_match_rate": {
+    "mean": 0.35,
+    "std": 0.142488702369803,
+    "n": 100
+  },
+  "halluc_rate_strict": {
+    "mean": 0.0,
+    "std": 0.0,
+    "n": 100
+  },
+  "halluc_rate_broad": {
+    "mean": 0.0,
+    "std": 0.0,
+    "n": 100
+  },
+  "_provider": "anthropic_100"
+}

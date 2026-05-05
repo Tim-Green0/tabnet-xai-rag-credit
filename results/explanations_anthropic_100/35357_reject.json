@@ -1,0 +1,113 @@
+{
+  "sample_idx": 35357,
+  "decision": "REJECT",
+  "true_label": 0,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "elapsed_sec": 13.45,
+  "explanation": "[결정 요약]\n신청 결과: 대출 신청이 거절되었습니다(예측 부도 확률 90.02%, 승인 기준 47.58%).\n\n[주요 거절 사유]\n1. 외부 신용평가 점수 3이 0.102782로 매우 낮게 평가되었습니다.\n2. 외부 신용평가 점수 2가 0.084251로 낮은 수준입니다.\n3. 구매 대상 상품 가격이 373,500원으로 부도 위험을 높이는 요인으로 작용했습니다.\n\n[긍정적으로 평가된 요인]\n- 최근 휴대폰 변경 후 경과 일수(-1538일, 약 4년 이상 사용)는 안정성 지표로 긍정 평가되었습니다.\n- 대출 신청 금액 452,385원은 적정 수준으로 평가되었습니다.\n- 근무 전화 미등록 상태가 일부 긍정 요인으로 반영되었습니다.\n\n[개선 권고]\n- 외부 신용평가 점수 향상을 위해 신용 관리(연체 해소, 신용카드 사용률 조정, 정기적 금융거래 이력 구축)를 권장합니다.\n- 외부 신용평가 1 정보가 누락되어 있으니, 해당 평가 기록을 확보하시면 재평가 시 도움이 될 수 있습니다.\n- 신용 개선 후 일정 기간(6개월 이상) 경과 후 재신청을 검토하실 수 있습니다.\n\n[면책 고지]\n본 안내는 모델의 자동화된 평가 결과를 설명한 것이며, 최종 의사결정은 담당자의 종합 검토를 거칩니다. 미래 신청 결과를 보장하지 않습니다.",
+  "usage_metadata": {
+    "input_tokens": 2098,
+    "output_tokens": 611,
+    "total_token_count": 2709
+  },
+  "context_sent": {
+    "sample_idx": 35357,
+    "decision": "REJECT",
+    "default_probability": 0.9002,
+    "threshold": 0.4758,
+    "top_drivers_for_default": [
+      {
+        "feature": "외부 신용평가 점수 3",
+        "feature_raw": "EXT_SOURCE_3",
+        "value": "0.102782",
+        "value_raw": 0.1027820144199289,
+        "shap": 0.8157,
+        "rank": 1
+      },
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "0.084251",
+        "value_raw": 0.0842509506033873,
+        "shap": 0.6453,
+        "rank": 2
+      },
+      {
+        "feature": "구매 대상 상품 가격",
+        "feature_raw": "AMT_GOODS_PRICE",
+        "value": "373,500",
+        "value_raw": 373500.0,
+        "shap": 0.2255,
+        "rank": 3
+      },
+      {
+        "feature": "외부 신용평가 1 결측 여부",
+        "feature_raw": "EXT_SOURCE_1_MISSING_FLAG",
+        "value": "예",
+        "value_raw": 1.0,
+        "shap": 0.0726,
+        "rank": 4
+      },
+      {
+        "feature": "등록 도시와 실거주 도시 불일치",
+        "feature_raw": "REG_CITY_NOT_LIVE_CITY",
+        "value": "1",
+        "value_raw": 1.0,
+        "shap": 0.0645,
+        "rank": 5
+      }
+    ],
+    "top_drivers_against_default": [
+      {
+        "feature": "HOUR_APPR_PROCESS_START",
+        "feature_raw": "HOUR_APPR_PROCESS_START",
+        "value": "17",
+        "value_raw": 17.0,
+        "shap": -0.1043,
+        "rank": 1
+      },
+      {
+        "feature": "REG_REGION_NOT_LIVE_REGION",
+        "feature_raw": "REG_REGION_NOT_LIVE_REGION",
+        "value": "1",
+        "value_raw": 1.0,
+        "shap": -0.0319,
+        "rank": 2
+      },
+      {
+        "feature": "근무 전화 등록 여부",
+        "feature_raw": "FLAG_WORK_PHONE",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "shap": -0.0259,
+        "rank": 3
+      },
+      {
+        "feature": "최근 휴대폰 변경 후 경과 일수",
+        "feature_raw": "DAYS_LAST_PHONE_CHANGE",
+        "value": "-1538",
+        "value_raw": -1538.0,
+        "shap": -0.0244,
+        "rank": 4
+      },
+      {
+        "feature": "대출 신청 금액",
+        "feature_raw": "AMT_CREDIT",
+        "value": "452,385",
+        "value_raw": 452385.0,
+        "shap": -0.0165,
+        "rank": 5
+      }
+    ],
+    "fairness_flags": [],
+    "model": "XGBoost",
+    "explanation_policy": "fact_only",
+    "masked_sensitive_features": [
+      "DAYS_BIRTH",
+      "CODE_GENDER_F",
+      "CODE_GENDER_M",
+      "CODE_GENDER_XNA"
+    ]
+  }
+}

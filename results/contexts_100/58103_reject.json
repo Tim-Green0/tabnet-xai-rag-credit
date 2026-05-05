@@ -1,0 +1,100 @@
+{
+  "sample_idx": 58103,
+  "decision": "REJECT",
+  "default_probability": 0.9095,
+  "threshold": 0.4758,
+  "top_drivers_for_default": [
+    {
+      "feature": "외부 신용평가 점수 3",
+      "feature_raw": "EXT_SOURCE_3",
+      "value": "0.0668879",
+      "value_raw": 0.0668879339672135,
+      "shap": 1.1036,
+      "rank": 1
+    },
+    {
+      "feature": "외부 신용평가 점수 2",
+      "feature_raw": "EXT_SOURCE_2",
+      "value": "0.31914",
+      "value_raw": 0.3191401660608097,
+      "shap": 0.2998,
+      "rank": 2
+    },
+    {
+      "feature": "구매 대상 상품 가격",
+      "feature_raw": "AMT_GOODS_PRICE",
+      "value": "360,000",
+      "value_raw": 360000.0,
+      "shap": 0.2812,
+      "rank": 3
+    },
+    {
+      "feature": "근무 조직 유형 (타깃 인코딩 값)",
+      "feature_raw": "ORGANIZATION_TYPE_TE",
+      "value": "0.1219 (타깃 인코딩 값)",
+      "value_raw": 0.12194519871636633,
+      "shap": 0.2423,
+      "rank": 4
+    },
+    {
+      "feature": "재직 일수(음수: 신청일 기준)",
+      "feature_raw": "DAYS_EMPLOYED",
+      "value": "0년 재직",
+      "value_raw": -111.0,
+      "shap": 0.0941,
+      "rank": 5
+    }
+  ],
+  "top_drivers_against_default": [
+    {
+      "feature": "FLAG_OWN_CAR_N",
+      "feature_raw": "FLAG_OWN_CAR_N",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "shap": -0.0605,
+      "rank": 1
+    },
+    {
+      "feature": "HOUR_APPR_PROCESS_START",
+      "feature_raw": "HOUR_APPR_PROCESS_START",
+      "value": "19",
+      "value_raw": 19.0,
+      "shap": -0.0574,
+      "rank": 2
+    },
+    {
+      "feature": "NAME_FAMILY_STATUS_Married",
+      "feature_raw": "NAME_FAMILY_STATUS_Married",
+      "value": "예",
+      "value_raw": 1.0,
+      "shap": -0.0432,
+      "rank": 3
+    },
+    {
+      "feature": "AMT_REQ_CREDIT_BUREAU_YEAR",
+      "feature_raw": "AMT_REQ_CREDIT_BUREAU_YEAR",
+      "value": "0",
+      "value_raw": 0.0,
+      "shap": -0.0381,
+      "rank": 4
+    },
+    {
+      "feature": "FLAG_PHONE",
+      "feature_raw": "FLAG_PHONE",
+      "value": "예",
+      "value_raw": 1.0,
+      "shap": -0.022,
+      "rank": 5
+    }
+  ],
+  "fairness_flags": [],
+  "model": "XGBoost",
+  "explanation_policy": "fact_only",
+  "masked_sensitive_features": [
+    "DAYS_BIRTH",
+    "CODE_GENDER_F",
+    "CODE_GENDER_M",
+    "CODE_GENDER_XNA"
+  ],
+  "_meta_true_label": 1
+}

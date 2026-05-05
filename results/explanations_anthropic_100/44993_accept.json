@@ -1,0 +1,113 @@
+{
+  "sample_idx": 44993,
+  "decision": "APPROVE",
+  "true_label": 0,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "elapsed_sec": 11.57,
+  "explanation": "[결정 요약]\n신청 결과: 대출 신청이 승인되었습니다(예측 부도 확률 2.47%).\n\n[주요 거절 사유]\n(승인 건으로 본 섹션은 생략됩니다)\n\n[긍정적으로 평가된 요인]\n1. 외부 신용평가 점수 2(0.766177)와 점수 3(0.82975)이 높게 평가되어 신용도를 크게 개선했습니다.\n2. 고등교육 이상의 학력이 긍정적으로 반영되었습니다.\n3. 대출 신청 금액(495,000원)이 적정 수준으로 평가되었습니다.\n\n[개선 권고]\n- 등록 도시와 실거주 도시가 불일치(값: 1)한 점이 일부 부정적으로 작용했으니, 필요시 주소 정보를 최신화하시면 향후 평가에 도움이 될 수 있습니다.\n- 외부 신용평가 점수 1의 데이터가 결측 처리되었으므로, 가능하다면 추가 신용정보 제공을 검토해보시기 바랍니다.\n- 현재의 우수한 신용평가 점수를 유지하기 위해 정상적인 상환 관리를 지속하시길 권장합니다.\n\n[면책 고지]\n본 안내는 모델의 자동화된 평가 결과를 설명한 것이며, 실제 최종 승인은 담당 부서의 종합 검토를 거쳐 확정됩니다. 본 설명이 미래 신청 결과를 보장하지는 않습니다.",
+  "usage_metadata": {
+    "input_tokens": 2084,
+    "output_tokens": 538,
+    "total_token_count": 2622
+  },
+  "context_sent": {
+    "sample_idx": 44993,
+    "decision": "APPROVE",
+    "default_probability": 0.0247,
+    "threshold": 0.4758,
+    "top_drivers_for_default": [
+      {
+        "feature": "재직 일수(음수: 신청일 기준)",
+        "feature_raw": "DAYS_EMPLOYED",
+        "value": "2년 재직",
+        "value_raw": -765.0,
+        "shap": 0.1061,
+        "rank": 1
+      },
+      {
+        "feature": "등록 도시와 실거주 도시 불일치",
+        "feature_raw": "REG_CITY_NOT_LIVE_CITY",
+        "value": "1",
+        "value_raw": 1.0,
+        "shap": 0.0692,
+        "rank": 2
+      },
+      {
+        "feature": "외부 신용평가 1 결측 여부",
+        "feature_raw": "EXT_SOURCE_1_MISSING_FLAG",
+        "value": "예",
+        "value_raw": 1.0,
+        "shap": 0.0428,
+        "rank": 3
+      },
+      {
+        "feature": "외부 신용평가 점수 1",
+        "feature_raw": "EXT_SOURCE_1",
+        "value": "0.504429",
+        "value_raw": 0.5044290890714999,
+        "shap": 0.0297,
+        "rank": 4
+      },
+      {
+        "feature": "TOTALAREA_MODE",
+        "feature_raw": "TOTALAREA_MODE",
+        "value": "0.1048",
+        "value_raw": 0.1048,
+        "shap": 0.0176,
+        "rank": 5
+      }
+    ],
+    "top_drivers_against_default": [
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "0.766177",
+        "value_raw": 0.7661769830409292,
+        "shap": -0.9622,
+        "rank": 1
+      },
+      {
+        "feature": "외부 신용평가 점수 3",
+        "feature_raw": "EXT_SOURCE_3",
+        "value": "0.82975",
+        "value_raw": 0.8297501422395771,
+        "shap": -0.8055,
+        "rank": 2
+      },
+      {
+        "feature": "신청 대출 유형: 현금대출",
+        "feature_raw": "NAME_CONTRACT_TYPE_Cash loans",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "shap": -0.3176,
+        "rank": 3
+      },
+      {
+        "feature": "학력: 고등교육 이상",
+        "feature_raw": "NAME_EDUCATION_TYPE_Higher education",
+        "value": "예",
+        "value_raw": 1.0,
+        "shap": -0.21,
+        "rank": 4
+      },
+      {
+        "feature": "대출 신청 금액",
+        "feature_raw": "AMT_CREDIT",
+        "value": "495,000",
+        "value_raw": 495000.0,
+        "shap": -0.1976,
+        "rank": 5
+      }
+    ],
+    "fairness_flags": [],
+    "model": "XGBoost",
+    "explanation_policy": "fact_only",
+    "masked_sensitive_features": [
+      "DAYS_BIRTH",
+      "CODE_GENDER_F",
+      "CODE_GENDER_M",
+      "CODE_GENDER_XNA"
+    ]
+  }
+}

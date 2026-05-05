@@ -1,0 +1,100 @@
+{
+  "sample_idx": 48299,
+  "decision": "APPROVE",
+  "default_probability": 0.0342,
+  "threshold": 0.4758,
+  "top_drivers_for_default": [
+    {
+      "feature": "NAME_FAMILY_STATUS_Married",
+      "feature_raw": "NAME_FAMILY_STATUS_Married",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "shap": 0.1203,
+      "rank": 1
+    },
+    {
+      "feature": "신분증 발급 후 경과 일수",
+      "feature_raw": "DAYS_ID_PUBLISH",
+      "value": "-960",
+      "value_raw": -960.0,
+      "shap": 0.0777,
+      "rank": 2
+    },
+    {
+      "feature": "WALLSMATERIAL_MODE_Panel",
+      "feature_raw": "WALLSMATERIAL_MODE_Panel",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "shap": 0.0433,
+      "rank": 3
+    },
+    {
+      "feature": "APARTMENTS_MODE",
+      "feature_raw": "APARTMENTS_MODE",
+      "value": "0.4328",
+      "value_raw": 0.4328,
+      "shap": 0.0403,
+      "rank": 4
+    },
+    {
+      "feature": "WALLSMATERIAL_MODE_Stone, brick",
+      "feature_raw": "WALLSMATERIAL_MODE_Stone, brick",
+      "value": "예",
+      "value_raw": 1.0,
+      "shap": 0.0287,
+      "rank": 5
+    }
+  ],
+  "top_drivers_against_default": [
+    {
+      "feature": "외부 신용평가 점수 2",
+      "feature_raw": "EXT_SOURCE_2",
+      "value": "0.770347",
+      "value_raw": 0.7703465209352645,
+      "shap": -0.7799,
+      "rank": 1
+    },
+    {
+      "feature": "외부 신용평가 점수 3",
+      "feature_raw": "EXT_SOURCE_3",
+      "value": "0.713631",
+      "value_raw": 0.7136313997323308,
+      "shap": -0.5098,
+      "rank": 2
+    },
+    {
+      "feature": "외부 신용평가 점수 1",
+      "feature_raw": "EXT_SOURCE_1",
+      "value": "0.750431",
+      "value_raw": 0.7504306803839959,
+      "shap": -0.4229,
+      "rank": 3
+    },
+    {
+      "feature": "신청 대출 유형: 현금대출",
+      "feature_raw": "NAME_CONTRACT_TYPE_Cash loans",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "shap": -0.3589,
+      "rank": 4
+    },
+    {
+      "feature": "보유 차량 연식",
+      "feature_raw": "OWN_CAR_AGE",
+      "value": "6",
+      "value_raw": 6.0,
+      "shap": -0.1872,
+      "rank": 5
+    }
+  ],
+  "fairness_flags": [],
+  "model": "XGBoost",
+  "explanation_policy": "fact_only",
+  "masked_sensitive_features": [
+    "DAYS_BIRTH",
+    "CODE_GENDER_F",
+    "CODE_GENDER_M",
+    "CODE_GENDER_XNA"
+  ],
+  "_meta_true_label": 0
+}

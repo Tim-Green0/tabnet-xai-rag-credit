@@ -1,0 +1,113 @@
+{
+  "sample_idx": 49044,
+  "decision": "APPROVE",
+  "true_label": 0,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "elapsed_sec": 9.16,
+  "explanation": "[결정 요약]\n신청 결과: 대출 신청이 승인되었습니다(예측 부도 확률 3.3%, 기준 47.6%).\n\n[주요 거절 사유]\n(승인 건으로 본 섹션은 해당 없음)\n\n[긍정적으로 평가된 요인]\n1. 외부 신용평가 점수 2가 0.752로 우수하여 신용도가 높게 평가되었습니다.\n2. 외부 신용평가 점수 3도 0.754로 우수한 수준입니다.\n3. 24년의 장기 재직 기간이 안정성 측면에서 매우 긍정적으로 반영되었습니다.\n\n[개선 권고]\n- 연 환산 상환액 33,750원은 부도 가능성을 소폭 높이는 요인으로 분석되었으니, 상환 계획을 철저히 관리하시기 바랍니다.\n- 대출 신청 금액 675,000원 역시 리스크 요인으로 작용하므로, 필요 금액을 신중히 검토하여 적정 수준을 유지하시길 권장합니다.\n- 현재의 우수한 신용평가 점수를 유지하기 위해 지속적인 신용 관리를 권장합니다.\n\n[면책 고지]\n본 안내는 모델의 자동화된 평가 결과를 자연어로 정리한 것이며, 최종 의사결정은 담당자의 검토를 거칩니다. 본 설명은 특정 미래 결과를 보장하지 않습니다.",
+  "usage_metadata": {
+    "input_tokens": 2102,
+    "output_tokens": 516,
+    "total_token_count": 2618
+  },
+  "context_sent": {
+    "sample_idx": 49044,
+    "decision": "APPROVE",
+    "default_probability": 0.0327,
+    "threshold": 0.4758,
+    "top_drivers_for_default": [
+      {
+        "feature": "NAME_FAMILY_STATUS_Separated",
+        "feature_raw": "NAME_FAMILY_STATUS_Separated",
+        "value": "예",
+        "value_raw": 1.0,
+        "shap": 0.0906,
+        "rank": 1
+      },
+      {
+        "feature": "연 환산 상환액",
+        "feature_raw": "AMT_ANNUITY",
+        "value": "33,750",
+        "value_raw": 33750.0,
+        "shap": 0.0825,
+        "rank": 2
+      },
+      {
+        "feature": "NAME_FAMILY_STATUS_Married",
+        "feature_raw": "NAME_FAMILY_STATUS_Married",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "shap": 0.067,
+        "rank": 3
+      },
+      {
+        "feature": "대출 신청 금액",
+        "feature_raw": "AMT_CREDIT",
+        "value": "675,000",
+        "value_raw": 675000.0,
+        "shap": 0.0324,
+        "rank": 4
+      },
+      {
+        "feature": "WEEKDAY_APPR_PROCESS_START_SATURDAY",
+        "feature_raw": "WEEKDAY_APPR_PROCESS_START_SATURDAY",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "shap": 0.023,
+        "rank": 5
+      }
+    ],
+    "top_drivers_against_default": [
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "0.752179",
+        "value_raw": 0.7521791510535863,
+        "shap": -0.7936,
+        "rank": 1
+      },
+      {
+        "feature": "외부 신용평가 점수 3",
+        "feature_raw": "EXT_SOURCE_3",
+        "value": "0.754406",
+        "value_raw": 0.7544061731797895,
+        "shap": -0.708,
+        "rank": 2
+      },
+      {
+        "feature": "신청 대출 유형: 현금대출",
+        "feature_raw": "NAME_CONTRACT_TYPE_Cash loans",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "shap": -0.4333,
+        "rank": 3
+      },
+      {
+        "feature": "근무 조직 유형 (타깃 인코딩 값)",
+        "feature_raw": "ORGANIZATION_TYPE_TE",
+        "value": "0.0483 (타깃 인코딩 값)",
+        "value_raw": 0.04826418289585097,
+        "shap": -0.3741,
+        "rank": 4
+      },
+      {
+        "feature": "재직 일수(음수: 신청일 기준)",
+        "feature_raw": "DAYS_EMPLOYED",
+        "value": "24년 재직",
+        "value_raw": -8905.0,
+        "shap": -0.3733,
+        "rank": 5
+      }
+    ],
+    "fairness_flags": [],
+    "model": "XGBoost",
+    "explanation_policy": "fact_only",
+    "masked_sensitive_features": [
+      "DAYS_BIRTH",
+      "CODE_GENDER_F",
+      "CODE_GENDER_M",
+      "CODE_GENDER_XNA"
+    ]
+  }
+}

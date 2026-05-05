@@ -1,0 +1,113 @@
+{
+  "sample_idx": 32055,
+  "decision": "APPROVE",
+  "true_label": 0,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "elapsed_sec": 6.49,
+  "explanation": "[결정 요약]\n신청 결과: 대출 신청이 승인되었습니다(예측 부도 확률 3.03%).\n\n[긍정적으로 평가된 요인]\n1. 외부 신용평가 점수 2가 0.78로 우수하게 평가되어 승인에 가장 크게 기여했습니다.\n2. 외부 신용평가 점수 1도 0.80으로 매우 높은 수준입니다.\n3. 구매 대상 상품 가격 1,800,000원이 적정 수준으로 평가되었습니다.\n\n[개선 권고]\n- 현재의 우수한 신용 상태를 유지하시기 바랍니다.\n- 향후 더 유리한 조건의 금융 상품 이용을 위해 안정적인 재직 기간 유지와 신용평가 점수 관리를 계속해주세요.\n\n[면책 고지]\n본 안내는 모델의 자동화된 평가 결과를 자연어로 정리한 것이며, 최종 의사결정은 담당자의 검토를 거칩니다. 본 설명은 특정 미래 결과를 보장하지 않습니다.",
+  "usage_metadata": {
+    "input_tokens": 2074,
+    "output_tokens": 385,
+    "total_token_count": 2459
+  },
+  "context_sent": {
+    "sample_idx": 32055,
+    "decision": "APPROVE",
+    "default_probability": 0.0303,
+    "threshold": 0.4758,
+    "top_drivers_for_default": [
+      {
+        "feature": "재직 일수(음수: 신청일 기준)",
+        "feature_raw": "DAYS_EMPLOYED",
+        "value": "3년 재직",
+        "value_raw": -1106.0,
+        "shap": 0.073,
+        "rank": 1
+      },
+      {
+        "feature": "ENTRANCES_AVG",
+        "feature_raw": "ENTRANCES_AVG",
+        "value": "0.0345",
+        "value_raw": 0.0345,
+        "shap": 0.0493,
+        "rank": 2
+      },
+      {
+        "feature": "LANDAREA_AVG",
+        "feature_raw": "LANDAREA_AVG",
+        "value": "0.0012",
+        "value_raw": 0.0012,
+        "shap": 0.0426,
+        "rank": 3
+      },
+      {
+        "feature": "최근 휴대폰 변경 후 경과 일수",
+        "feature_raw": "DAYS_LAST_PHONE_CHANGE",
+        "value": "-1512",
+        "value_raw": -1512.0,
+        "shap": 0.0414,
+        "rank": 4
+      },
+      {
+        "feature": "BASEMENTAREA_MEDI",
+        "feature_raw": "BASEMENTAREA_MEDI",
+        "value": "0.0478",
+        "value_raw": 0.0478,
+        "shap": 0.0381,
+        "rank": 5
+      }
+    ],
+    "top_drivers_against_default": [
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "0.780771",
+        "value_raw": 0.7807708530406205,
+        "shap": -0.9398,
+        "rank": 1
+      },
+      {
+        "feature": "외부 신용평가 점수 1",
+        "feature_raw": "EXT_SOURCE_1",
+        "value": "0.796962",
+        "value_raw": 0.7969618643337492,
+        "shap": -0.555,
+        "rank": 2
+      },
+      {
+        "feature": "구매 대상 상품 가격",
+        "feature_raw": "AMT_GOODS_PRICE",
+        "value": "1,800,000",
+        "value_raw": 1800000.0,
+        "shap": -0.4481,
+        "rank": 3
+      },
+      {
+        "feature": "외부 신용평가 점수 3",
+        "feature_raw": "EXT_SOURCE_3",
+        "value": "0.567379",
+        "value_raw": 0.5673792367572691,
+        "shap": -0.4098,
+        "rank": 4
+      },
+      {
+        "feature": "FLAG_DOCUMENT_16",
+        "feature_raw": "FLAG_DOCUMENT_16",
+        "value": "예",
+        "value_raw": 1.0,
+        "shap": -0.219,
+        "rank": 5
+      }
+    ],
+    "fairness_flags": [],
+    "model": "XGBoost",
+    "explanation_policy": "fact_only",
+    "masked_sensitive_features": [
+      "DAYS_BIRTH",
+      "CODE_GENDER_F",
+      "CODE_GENDER_M",
+      "CODE_GENDER_XNA"
+    ]
+  }
+}

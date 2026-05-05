@@ -1,0 +1,482 @@
+{
+  "10629_reject": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 4,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"모든 수치와 변수명이 정확하며, 주요 driver들을 충분히 다루고, 민감정보 누락 없이 친절한 톤으로 작성됨. 거주지 등급과 기혼 여부 언급이 약간 부족하나 전체적으로 완결성 높음.\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 4,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "모든 수치와 변수명이 정확하며, 주요 driver들을 충분히 다루고, 민감정보 누락 없이 친절한 톤으로 작성됨. 거주지 등급과 기혼 여부 언급이 약간 부족하나 전체적으로 완결성 높음."
+    },
+    "usage": {
+      "input_tokens": 2000,
+      "output_tokens": 156,
+      "total_token_count": 2156
+    },
+    "elapsed_sec": 4.45
+  },
+  "1062_reject": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 3,\n  \"completeness\": 4,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"외부 신용평가 점수 1, 2를 모두 0.12로 반올림 표기하여 정확도 저하(실제 0.117, 0.121), 나머지는 정확하며 주요 driver 충분히 다루고 민감정보 없이 친절한 톤 유지\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 3,
+      "completeness": 4,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "외부 신용평가 점수 1, 2를 모두 0.12로 반올림 표기하여 정확도 저하(실제 0.117, 0.121), 나머지는 정확하며 주요 driver 충분히 다루고 민감정보 없이 친절한 톤 유지"
+    },
+    "usage": {
+      "input_tokens": 1960,
+      "output_tokens": 151,
+      "total_token_count": 2111
+    },
+    "elapsed_sec": 4.45
+  },
+  "11697_accept": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 3,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"수치와 SHAP 부호가 정확하고 민감정보 노출 없으며 톤이 적절하나, 부도 가능성을 높이는 상위 요인(대출 신청 금액 등)에 대한 설명이 누락되어 완결성이 다소 부족함\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 3,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "수치와 SHAP 부호가 정확하고 민감정보 노출 없으며 톤이 적절하나, 부도 가능성을 높이는 상위 요인(대출 신청 금액 등)에 대한 설명이 누락되어 완결성이 다소 부족함"
+    },
+    "usage": {
+      "input_tokens": 1918,
+      "output_tokens": 150,
+      "total_token_count": 2068
+    },
+    "elapsed_sec": 3.6
+  },
+  "12512_reject": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 5,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"모든 수치와 변수명이 컨텍스트와 정확히 일치하며, 상위 5개 driver를 모두 다루고, 민감정보 누락 없이, 고객 친화적 톤으로 작성됨\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 5,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "모든 수치와 변수명이 컨텍스트와 정확히 일치하며, 상위 5개 driver를 모두 다루고, 민감정보 누락 없이, 고객 친화적 톤으로 작성됨"
+    },
+    "usage": {
+      "input_tokens": 2077,
+      "output_tokens": 132,
+      "total_token_count": 2209
+    },
+    "elapsed_sec": 3.58
+  },
+  "12908_reject": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 5,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"모든 수치와 변수명이 컨텍스트와 정확히 일치하고, 상위 5개 요인을 모두 다루며, 민감정보 없이 친절하고 중립적인 톤으로 작성됨\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 5,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "모든 수치와 변수명이 컨텍스트와 정확히 일치하고, 상위 5개 요인을 모두 다루며, 민감정보 없이 친절하고 중립적인 톤으로 작성됨"
+    },
+    "usage": {
+      "input_tokens": 1991,
+      "output_tokens": 132,
+      "total_token_count": 2123
+    },
+    "elapsed_sec": 3.32
+  },
+  "14446_reject": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 4,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"모든 수치와 변수명이 정확하고 민감정보 누락 없으며 친절한 톤이나, 외부 신용평가 점수 2와 신분증 발급 경과일수 등 일부 상위 driver 설명이 생략되어 완전성이 소폭 감소\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 4,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "모든 수치와 변수명이 정확하고 민감정보 누락 없으며 친절한 톤이나, 외부 신용평가 점수 2와 신분증 발급 경과일수 등 일부 상위 driver 설명이 생략되어 완전성이 소폭 감소"
+    },
+    "usage": {
+      "input_tokens": 1970,
+      "output_tokens": 152,
+      "total_token_count": 2122
+    },
+    "elapsed_sec": 4.53
+  },
+  "14480_accept": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 3,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"모든 수치와 SHAP 부호가 정확하고 민감정보 누락 없으며 톤이 적절하나, 부도 위험 요인(대출 신청 금액 등 상위 5개)을 전혀 언급하지 않아 완결성이 부족함\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 3,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "모든 수치와 SHAP 부호가 정확하고 민감정보 누락 없으며 톤이 적절하나, 부도 위험 요인(대출 신청 금액 등 상위 5개)을 전혀 언급하지 않아 완결성이 부족함"
+    },
+    "usage": {
+      "input_tokens": 1892,
+      "output_tokens": 147,
+      "total_token_count": 2039
+    },
+    "elapsed_sec": 4.79
+  },
+  "14928_reject": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 5,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"모든 변수명, 수치, SHAP 부호가 컨텍스트와 정확히 일치하며, 상위 5개 긍정/부정 요인을 완결하게 다루고, 민감 변수를 언급하지 않았으며, 고객 친화적이고 중립적인 톤을 유지함\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 5,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "모든 변수명, 수치, SHAP 부호가 컨텍스트와 정확히 일치하며, 상위 5개 긍정/부정 요인을 완결하게 다루고, 민감 변수를 언급하지 않았으며, 고객 친화적이고 중립적인 톤을 유지함"
+    },
+    "usage": {
+      "input_tokens": 2122,
+      "output_tokens": 160,
+      "total_token_count": 2282
+    },
+    "elapsed_sec": 4.01
+  },
+  "15274_accept": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 5,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"모든 변수명, 수치, SHAP 부호가 컨텍스트와 정확히 일치하며, 주요 drivers를 충분히 다루고, 민감정보 누출 없이 친절하고 중립적인 톤으로 작성됨\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 5,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "모든 변수명, 수치, SHAP 부호가 컨텍스트와 정확히 일치하며, 주요 drivers를 충분히 다루고, 민감정보 누출 없이 친절하고 중립적인 톤으로 작성됨"
+    },
+    "usage": {
+      "input_tokens": 2030,
+      "output_tokens": 139,
+      "total_token_count": 2169
+    },
+    "elapsed_sec": 3.6
+  },
+  "16847_reject": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 4,\n  \"sensitive_leak\": 5,\n  \"style\": 4,\n  \"rationale\": \"모든 수치와 변수명이 정확하며 민감정보 누락 없음. 상위 5개 요인을 충실히 반영했으나 SHAP 값 자체는 명시하지 않음. 톤은 대체로 중립적이나 '긍정적으로 평가'라는 표현이 거절 맥락에서 다소 혼란 유발 가능.\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 4,
+      "sensitive_leak": 5,
+      "style": 4,
+      "rationale": "모든 수치와 변수명이 정확하며 민감정보 누락 없음. 상위 5개 요인을 충실히 반영했으나 SHAP 값 자체는 명시하지 않음. 톤은 대체로 중립적이나 '긍정적으로 평가'라는 표현이 거절 맥락에서 다소 혼란 유발 가능."
+    },
+    "usage": {
+      "input_tokens": 2012,
+      "output_tokens": 178,
+      "total_token_count": 2190
+    },
+    "elapsed_sec": 5.21
+  },
+  "17137_reject": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 5,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"모든 수치와 변수명이 컨텍스트와 정확히 일치하며, 주요 driver를 충분히 다루고, 민감정보 누락 없이, 친절하고 중립적인 톤으로 작성됨\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 5,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "모든 수치와 변수명이 컨텍스트와 정확히 일치하며, 주요 driver를 충분히 다루고, 민감정보 누락 없이, 친절하고 중립적인 톤으로 작성됨"
+    },
+    "usage": {
+      "input_tokens": 2030,
+      "output_tokens": 133,
+      "total_token_count": 2163
+    },
+    "elapsed_sec": 3.24
+  },
+  "18074_reject": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 4,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"모든 수치와 변수명이 정확하며, 주요 driver를 충분히 다루고, 민감 정보 누락 없이 친절한 톤으로 작성됨. 다만 rank 4-5 요인에 대한 설명이 다소 간략함.\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 4,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "모든 수치와 변수명이 정확하며, 주요 driver를 충분히 다루고, 민감 정보 누락 없이 친절한 톤으로 작성됨. 다만 rank 4-5 요인에 대한 설명이 다소 간략함."
+    },
+    "usage": {
+      "input_tokens": 2044,
+      "output_tokens": 143,
+      "total_token_count": 2187
+    },
+    "elapsed_sec": 3.93
+  },
+  "19233_reject": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 4,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"모든 수치와 변수명이 정확하고, 주요 driver를 잘 다루었으며, 민감정보 없이 친절한 톤으로 작성됨. 거주지 등급과 등록/실거주 불일치 요인 언급이 다소 간략함.\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 4,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "모든 수치와 변수명이 정확하고, 주요 driver를 잘 다루었으며, 민감정보 없이 친절한 톤으로 작성됨. 거주지 등급과 등록/실거주 불일치 요인 언급이 다소 간략함."
+    },
+    "usage": {
+      "input_tokens": 1961,
+      "output_tokens": 146,
+      "total_token_count": 2107
+    },
+    "elapsed_sec": 4.36
+  },
+  "19492_accept": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 3,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"모든 수치와 변수명이 정확하며 민감정보 누락 없음. 다만 상위 5개 드라이버 중 3개만 언급하여 완결성은 보통 수준. 톤은 친절하고 적절함.\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 3,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "모든 수치와 변수명이 정확하며 민감정보 누락 없음. 다만 상위 5개 드라이버 중 3개만 언급하여 완결성은 보통 수준. 톤은 친절하고 적절함."
+    },
+    "usage": {
+      "input_tokens": 1826,
+      "output_tokens": 135,
+      "total_token_count": 1961
+    },
+    "elapsed_sec": 3.92
+  },
+  "19592_accept": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 4,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"모든 수치와 변수명이 정확하고, 민감정보 누락 없으며, 톤이 적절함. 다만 top_drivers_for_default의 상위 요인들(대출금액, 상환액 등)에 대한 구체적 설명이 다소 부족하여 완결성 4점\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 4,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "모든 수치와 변수명이 정확하고, 민감정보 누락 없으며, 톤이 적절함. 다만 top_drivers_for_default의 상위 요인들(대출금액, 상환액 등)에 대한 구체적 설명이 다소 부족하여 완결성 4점"
+    },
+    "usage": {
+      "input_tokens": 1943,
+      "output_tokens": 155,
+      "total_token_count": 2098
+    },
+    "elapsed_sec": 4.36
+  },
+  "19774_accept": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 4,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"모든 수치와 변수명이 정확하며, 주요 drivers를 잘 다루고, 민감정보 없이 친절한 톤으로 작성됨. 단, default 요인(자동차 미소유, 학력, 조직유형 등) 일부는 간략히 처리됨.\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 4,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "모든 수치와 변수명이 정확하며, 주요 drivers를 잘 다루고, 민감정보 없이 친절한 톤으로 작성됨. 단, default 요인(자동차 미소유, 학력, 조직유형 등) 일부는 간략히 처리됨."
+    },
+    "usage": {
+      "input_tokens": 1899,
+      "output_tokens": 152,
+      "total_token_count": 2051
+    },
+    "elapsed_sec": 3.99
+  },
+  "19882_accept": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 3,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"수치와 변수명은 정확하나, 부도 위험 증가 요인(대출금액, 연환산상환액 등 상위 5개)을 구체적으로 설명하지 않고 개선 권고에서만 간접 언급하여 완결성이 다소 부족함\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 3,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "수치와 변수명은 정확하나, 부도 위험 증가 요인(대출금액, 연환산상환액 등 상위 5개)을 구체적으로 설명하지 않고 개선 권고에서만 간접 언급하여 완결성이 다소 부족함"
+    },
+    "usage": {
+      "input_tokens": 1819,
+      "output_tokens": 149,
+      "total_token_count": 1968
+    },
+    "elapsed_sec": 4.76
+  },
+  "20633_reject": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 3,\n  \"completeness\": 4,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"자차 보유 관련 해석 오류(FLAG_OWN_CAR_N=아니오인데 긍정 요인으로 잘못 표현), 나머지는 정확하고 완결적이며 민감정보 누락 없고 톤 적절\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 3,
+      "completeness": 4,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "자차 보유 관련 해석 오류(FLAG_OWN_CAR_N=아니오인데 긍정 요인으로 잘못 표현), 나머지는 정확하고 완결적이며 민감정보 누락 없고 톤 적절"
+    },
+    "usage": {
+      "input_tokens": 1971,
+      "output_tokens": 138,
+      "total_token_count": 2109
+    },
+    "elapsed_sec": 4.14
+  },
+  "22226_accept": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 4,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"모든 수치와 SHAP 부호가 정확하며, 주요 driver 5개 중 상위 3개를 다뤘고, 민감정보 노출 없이 친절한 톤을 유지함. 부도 증가 요인 언급이 다소 간략하나 승인 케이스로 적절한 구성.\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 4,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "모든 수치와 SHAP 부호가 정확하며, 주요 driver 5개 중 상위 3개를 다뤘고, 민감정보 노출 없이 친절한 톤을 유지함. 부도 증가 요인 언급이 다소 간략하나 승인 케이스로 적절한 구성."
+    },
+    "usage": {
+      "input_tokens": 1896,
+      "output_tokens": 161,
+      "total_token_count": 2057
+    },
+    "elapsed_sec": 4.66
+  },
+  "22798_reject": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 4,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"모든 수치와 변수명이 정확하며, 주요 driver를 충실히 다루고, 민감정보 누락 없이 고객 친화적 톤으로 작성되었으나, 재직기간(rank 5) 언급이 권고에만 간접적으로 포함되어 완결성이 소폭 미흡함\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 4,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "모든 수치와 변수명이 정확하며, 주요 driver를 충실히 다루고, 민감정보 누락 없이 고객 친화적 톤으로 작성되었으나, 재직기간(rank 5) 언급이 권고에만 간접적으로 포함되어 완결성이 소폭 미흡함"
+    },
+    "usage": {
+      "input_tokens": 2037,
+      "output_tokens": 164,
+      "total_token_count": 2201
+    },
+    "elapsed_sec": 4.36
+  },
+  "22867_reject": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 5,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"모든 변수명·수치·SHAP 부호가 컨텍스트와 완벽히 일치하고, 상위 5개 드라이버를 충실히 반영했으며, 민감 변수 누출 없이 친절하고 중립적인 톤으로 작성됨\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 5,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "모든 변수명·수치·SHAP 부호가 컨텍스트와 완벽히 일치하고, 상위 5개 드라이버를 충실히 반영했으며, 민감 변수 누출 없이 친절하고 중립적인 톤으로 작성됨"
+    },
+    "usage": {
+      "input_tokens": 2061,
+      "output_tokens": 148,
+      "total_token_count": 2209
+    },
+    "elapsed_sec": 3.64
+  },
+  "25298_accept": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 4,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"모든 수치와 변수명이 정확하며, 주요 driver 대부분을 다루고, 민감정보 누출 없이 친절한 톤으로 작성되었으나 rank 4-5 요인 일부 미포함\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 4,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "모든 수치와 변수명이 정확하며, 주요 driver 대부분을 다루고, 민감정보 누출 없이 친절한 톤으로 작성되었으나 rank 4-5 요인 일부 미포함"
+    },
+    "usage": {
+      "input_tokens": 1940,
+      "output_tokens": 132,
+      "total_token_count": 2072
+    },
+    "elapsed_sec": 3.33
+  },
+  "25885_accept": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 4,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"모든 수치와 변수명이 정확하고, 주요 긍정/부정 요인을 다루었으나 상위 5개 중 일부(BASEMENTAREA_MODE 등)는 생략됨. 민감정보 누락 없고 톤도 적절함\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 4,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "모든 수치와 변수명이 정확하고, 주요 긍정/부정 요인을 다루었으나 상위 5개 중 일부(BASEMENTAREA_MODE 등)는 생략됨. 민감정보 누락 없고 톤도 적절함"
+    },
+    "usage": {
+      "input_tokens": 1920,
+      "output_tokens": 141,
+      "total_token_count": 2061
+    },
+    "elapsed_sec": 4.01
+  },
+  "26367_accept": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 3,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"수치와 변수명은 정확하나, 부도 위험 요인(AMT_GOODS_PRICE, DAYS_ID_PUBLISH 등 상위 5개)을 전혀 다루지 않아 완결성이 낮음. 민감정보 누락 없고 톤은 적절함.\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 3,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "수치와 변수명은 정확하나, 부도 위험 요인(AMT_GOODS_PRICE, DAYS_ID_PUBLISH 등 상위 5개)을 전혀 다루지 않아 완결성이 낮음. 민감정보 누락 없고 톤은 적절함."
+    },
+    "usage": {
+      "input_tokens": 1810,
+      "output_tokens": 147,
+      "total_token_count": 1957
+    },
+    "elapsed_sec": 4.21
+  },
+  "27717_accept": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 4,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"모든 수치와 변수명이 정확하고, 주요 driver 대부분을 다루었으며(재직일수 제외), 민감정보 누락 없고, 고객 친화적 톤으로 작성됨\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 4,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "모든 수치와 변수명이 정확하고, 주요 driver 대부분을 다루었으며(재직일수 제외), 민감정보 누락 없고, 고객 친화적 톤으로 작성됨"
+    },
+    "usage": {
+      "input_tokens": 1862,
+      "output_tokens": 128,
+      "total_token_count": 1990
+    },
+    "elapsed_sec": 3.85
+  },
+  "28952_accept": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 4,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"모든 수치와 변수명이 정확하고 민감정보 누락 없으며 친절한 톤이나, 부도 위험 요인(결혼 상태, LIVINGAPARTMENTS_AVG 등)에 대한 구체적 설명이 다소 부족함\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 4,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "모든 수치와 변수명이 정확하고 민감정보 누락 없으며 친절한 톤이나, 부도 위험 요인(결혼 상태, LIVINGAPARTMENTS_AVG 등)에 대한 구체적 설명이 다소 부족함"
+    },
+    "usage": {
+      "input_tokens": 1966,
+      "output_tokens": 142,
+      "total_token_count": 2108
+    },
+    "elapsed_sec": 3.73
+  },
+  "28974_accept": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 4,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"모든 수치와 SHAP 부호가 정확하며, 주요 driver 대부분을 다루고 민감 정보 누출 없이 친절한 톤으로 작성되었으나, 근무전화 등록과 기혼 여부 요인에 대한 설명이 생략되어 완전성에서 소폭 감점\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 4,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "모든 수치와 SHAP 부호가 정확하며, 주요 driver 대부분을 다루고 민감 정보 누출 없이 친절한 톤으로 작성되었으나, 근무전화 등록과 기혼 여부 요인에 대한 설명이 생략되어 완전성에서 소폭 감점"
+    },
+    "usage": {
+      "input_tokens": 1952,
+      "output_tokens": 165,
+      "total_token_count": 2117
+    },
+    "elapsed_sec": 4.52
+  },
+  "29583_accept": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 3,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"수치와 변수명은 정확하나, 부도 위험 증가 요인(미혼, 신분증 발급일, 대출금액 등 상위 5개)을 전혀 다루지 않아 완결성이 부족함\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 3,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "수치와 변수명은 정확하나, 부도 위험 증가 요인(미혼, 신분증 발급일, 대출금액 등 상위 5개)을 전혀 다루지 않아 완결성이 부족함"
+    },
+    "usage": {
+      "input_tokens": 1835,
+      "output_tokens": 132,
+      "total_token_count": 1967
+    },
+    "elapsed_sec": 4.13
+  },
+  "30233_reject": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 4,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"모든 수치와 변수명이 컨텍스트와 정확히 일치하며, 주요 driver 대부분을 다루고 민감정보 누락 없이 친절한 톤으로 작성되었으나 rank 4-5 요인의 설명이 다소 간략함\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 4,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "모든 수치와 변수명이 컨텍스트와 정확히 일치하며, 주요 driver 대부분을 다루고 민감정보 누락 없이 친절한 톤으로 작성되었으나 rank 4-5 요인의 설명이 다소 간략함"
+    },
+    "usage": {
+      "input_tokens": 2063,
+      "output_tokens": 148,
+      "total_token_count": 2211
+    },
+    "elapsed_sec": 4.33
+  },
+  "30543_accept": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 4,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"모든 수치와 변수명이 정확하며, 주요 driver 대부분을 다루고, 민감정보 없이 친절한 톤으로 작성되었으나 FLAG_DOCUMENT_3와 조직유형 TE 값은 미언급\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 4,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "모든 수치와 변수명이 정확하며, 주요 driver 대부분을 다루고, 민감정보 없이 친절한 톤으로 작성되었으나 FLAG_DOCUMENT_3와 조직유형 TE 값은 미언급"
+    },
+    "usage": {
+      "input_tokens": 1896,
+      "output_tokens": 136,
+      "total_token_count": 2032
+    },
+    "elapsed_sec": 3.94
+  }
+}

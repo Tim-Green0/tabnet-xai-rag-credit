@@ -1,0 +1,100 @@
+{
+  "sample_idx": 12908,
+  "decision": "REJECT",
+  "default_probability": 0.8927,
+  "threshold": 0.4758,
+  "top_drivers_for_default": [
+    {
+      "feature": "외부 신용평가 점수 3",
+      "feature_raw": "EXT_SOURCE_3",
+      "value": "0.184116",
+      "value_raw": 0.1841161559307151,
+      "shap": 0.7295,
+      "rank": 1
+    },
+    {
+      "feature": "외부 신용평가 점수 2",
+      "feature_raw": "EXT_SOURCE_2",
+      "value": "0.244844",
+      "value_raw": 0.2448437991412138,
+      "shap": 0.373,
+      "rank": 2
+    },
+    {
+      "feature": "구매 대상 상품 가격",
+      "feature_raw": "AMT_GOODS_PRICE",
+      "value": "450,000",
+      "value_raw": 450000.0,
+      "shap": 0.2494,
+      "rank": 3
+    },
+    {
+      "feature": "대출 신청 금액",
+      "feature_raw": "AMT_CREDIT",
+      "value": "640,080",
+      "value_raw": 640080.0,
+      "shap": 0.2014,
+      "rank": 4
+    },
+    {
+      "feature": "연 환산 상환액",
+      "feature_raw": "AMT_ANNUITY",
+      "value": "29,970",
+      "value_raw": 29970.0,
+      "shap": 0.1587,
+      "rank": 5
+    }
+  ],
+  "top_drivers_against_default": [
+    {
+      "feature": "재직 일수(음수: 신청일 기준)",
+      "feature_raw": "DAYS_EMPLOYED",
+      "value": "5년 재직",
+      "value_raw": -1976.0,
+      "shap": -0.0346,
+      "rank": 1
+    },
+    {
+      "feature": "최근 휴대폰 변경 후 경과 일수",
+      "feature_raw": "DAYS_LAST_PHONE_CHANGE",
+      "value": "-1377",
+      "value_raw": -1377.0,
+      "shap": -0.0285,
+      "rank": 2
+    },
+    {
+      "feature": "NAME_FAMILY_STATUS_Married",
+      "feature_raw": "NAME_FAMILY_STATUS_Married",
+      "value": "예",
+      "value_raw": 1.0,
+      "shap": -0.0205,
+      "rank": 3
+    },
+    {
+      "feature": "자녀 수",
+      "feature_raw": "CNT_CHILDREN",
+      "value": "3",
+      "value_raw": 3.0,
+      "shap": -0.0157,
+      "rank": 4
+    },
+    {
+      "feature": "근무 전화 등록 여부",
+      "feature_raw": "FLAG_WORK_PHONE",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "shap": -0.0143,
+      "rank": 5
+    }
+  ],
+  "fairness_flags": [],
+  "model": "XGBoost",
+  "explanation_policy": "fact_only",
+  "masked_sensitive_features": [
+    "DAYS_BIRTH",
+    "CODE_GENDER_F",
+    "CODE_GENDER_M",
+    "CODE_GENDER_XNA"
+  ],
+  "_meta_true_label": 1
+}

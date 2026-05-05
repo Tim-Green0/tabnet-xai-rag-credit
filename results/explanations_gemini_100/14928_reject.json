@@ -1,0 +1,113 @@
+{
+  "sample_idx": 14928,
+  "decision": "REJECT",
+  "true_label": 1,
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "elapsed_sec": 11.29,
+  "explanation": "친절한 고객님, 신청하신 신용 평가 결과에 대해 안내드리겠습니다.\n\n[결정 요약]\n신청 결과: 대출 신청이 거절되었습니다(예측 부도 확률 93.63%).\n\n[주요 거절 사유]\n1. 외부 신용평가 점수 3이 0.108924로 낮게 평가되어 부도 가능성을 높였습니다.\n2. 외부 신용평가 점수 2 또한 0.029544로 낮은 수준으로 분석되었습니다.\n3. 구매 대상 상품 가격 360,000은 부도 가능성에 영향을 미치는 요인으로 나타났습니다.\n\n[긍정적으로 평가된 요인]\n- 외부 신용평가 1 결측 여부가 '아니오'로, 관련 정보가 존재하여 긍정적으로 반영되었습니다.\n- AMT_REQ_CREDIT_BUREAU_YEAR 값이 '0'인 점은 긍정적인 요인으로 작용했습니다.\n- NAME_FAMILY_STATUS_Married 상태가 '예'인 점도 긍정적으로 평가되었습니다.\n\n[개선 권고]\n- 외부 신용평가 점수 향상을 위한 신용 관리(연체 해소, 사용률 조정 등)를 지속적으로 권장합니다.\n- 재신청 시 구매 대상 상품 가격 등 자금 계획을 다시 검토하시는 것을 고려해볼 수 있습니다.\n- 일정 기간 후 재신청을 검토하실 수 있습니다.\n\n[면책 고지]\n본 안내는 모델의 자동화된 평가 결과를 자연어로 정리한 것이며, 최종 의사결정은 담당자의 검토를 거칩니다. 미래 신청 결과를 보장하지 않습니다.",
+  "usage_metadata": {
+    "prompt_token_count": 1781,
+    "candidates_token_count": 379,
+    "total_token_count": 4205
+  },
+  "context_sent": {
+    "sample_idx": 14928,
+    "decision": "REJECT",
+    "default_probability": 0.9363,
+    "threshold": 0.4758,
+    "top_drivers_for_default": [
+      {
+        "feature": "외부 신용평가 점수 3",
+        "feature_raw": "EXT_SOURCE_3",
+        "value": "0.108924",
+        "value_raw": 0.108924403541012,
+        "shap": 0.8718,
+        "rank": 1
+      },
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "0.029544",
+        "value_raw": 0.029543963437184073,
+        "shap": 0.8579,
+        "rank": 2
+      },
+      {
+        "feature": "구매 대상 상품 가격",
+        "feature_raw": "AMT_GOODS_PRICE",
+        "value": "360,000",
+        "value_raw": 360000.0,
+        "shap": 0.2839,
+        "rank": 3
+      },
+      {
+        "feature": "외부 신용평가 점수 1",
+        "feature_raw": "EXT_SOURCE_1",
+        "value": "0.246443",
+        "value_raw": 0.2464429414353403,
+        "shap": 0.1543,
+        "rank": 4
+      },
+      {
+        "feature": "거주지(도시 가중) 등급",
+        "feature_raw": "REGION_RATING_CLIENT_W_CITY",
+        "value": "3",
+        "value_raw": 3.0,
+        "shap": 0.0961,
+        "rank": 5
+      }
+    ],
+    "top_drivers_against_default": [
+      {
+        "feature": "외부 신용평가 1 결측 여부",
+        "feature_raw": "EXT_SOURCE_1_MISSING_FLAG",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "shap": -0.0604,
+        "rank": 1
+      },
+      {
+        "feature": "AMT_REQ_CREDIT_BUREAU_YEAR",
+        "feature_raw": "AMT_REQ_CREDIT_BUREAU_YEAR",
+        "value": "0",
+        "value_raw": 0.0,
+        "shap": -0.0467,
+        "rank": 2
+      },
+      {
+        "feature": "NAME_FAMILY_STATUS_Married",
+        "feature_raw": "NAME_FAMILY_STATUS_Married",
+        "value": "예",
+        "value_raw": 1.0,
+        "shap": -0.0236,
+        "rank": 3
+      },
+      {
+        "feature": "DEF_30_CNT_SOCIAL_CIRCLE",
+        "feature_raw": "DEF_30_CNT_SOCIAL_CIRCLE",
+        "value": "0",
+        "value_raw": 0.0,
+        "shap": -0.0165,
+        "rank": 4
+      },
+      {
+        "feature": "외부 신용평가 3 결측 여부",
+        "feature_raw": "EXT_SOURCE_3_MISSING_FLAG",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "shap": -0.0115,
+        "rank": 5
+      }
+    ],
+    "fairness_flags": [],
+    "model": "XGBoost",
+    "explanation_policy": "fact_only",
+    "masked_sensitive_features": [
+      "DAYS_BIRTH",
+      "CODE_GENDER_F",
+      "CODE_GENDER_M",
+      "CODE_GENDER_XNA"
+    ]
+  }
+}

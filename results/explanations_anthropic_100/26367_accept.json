@@ -1,0 +1,113 @@
+{
+  "sample_idx": 26367,
+  "decision": "APPROVE",
+  "true_label": 0,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "elapsed_sec": 7.49,
+  "explanation": "[결정 요약]\n신청 결과: 대출 신청이 승인되었습니다(예측 부도 확률 2.33%).\n\n[주요 거절 사유]\n(승인 건으로 해당 사항 없음)\n\n[긍정적으로 평가된 요인]\n1. 외부 신용평가 점수 3이 0.79로 우수하게 평가되어 신용도를 크게 높였습니다.\n2. 외부 신용평가 점수 1(0.64)과 점수 2(0.64)도 양호한 수준으로 긍정 평가되었습니다.\n3. 대출 신청 금액 180,000원이 적정 수준으로 평가되었습니다.\n\n[개선 권고]\n- 현재 우수한 신용 상태를 유지하기 위해 대출 상환 계획을 철저히 이행하시기 바랍니다.\n- 향후 신용평가 점수 관리를 위해 연체 없는 상환 이력을 지속적으로 쌓으시길 권장합니다.\n\n[면책 고지]\n본 안내는 신용 평가 모델의 자동 분석 결과를 설명한 것이며, 실제 대출 조건 및 최종 승인은 담당 부서의 추가 검토를 거쳐 확정됩니다. 본 설명은 미래 대출 신청 결과를 보장하지 않습니다.",
+  "usage_metadata": {
+    "input_tokens": 2080,
+    "output_tokens": 458,
+    "total_token_count": 2538
+  },
+  "context_sent": {
+    "sample_idx": 26367,
+    "decision": "APPROVE",
+    "default_probability": 0.0233,
+    "threshold": 0.4758,
+    "top_drivers_for_default": [
+      {
+        "feature": "구매 대상 상품 가격",
+        "feature_raw": "AMT_GOODS_PRICE",
+        "value": "180,000",
+        "value_raw": 180000.0,
+        "shap": 0.1238,
+        "rank": 1
+      },
+      {
+        "feature": "신분증 발급 후 경과 일수",
+        "feature_raw": "DAYS_ID_PUBLISH",
+        "value": "-1368",
+        "value_raw": -1368.0,
+        "shap": 0.0668,
+        "rank": 2
+      },
+      {
+        "feature": "거주지 인구 밀도(상대값)",
+        "feature_raw": "REGION_POPULATION_RELATIVE",
+        "value": "0.025164",
+        "value_raw": 0.025164,
+        "shap": 0.034,
+        "rank": 3
+      },
+      {
+        "feature": "APARTMENTS_MEDI",
+        "feature_raw": "APARTMENTS_MEDI",
+        "value": "0.2873",
+        "value_raw": 0.2873,
+        "shap": 0.0336,
+        "rank": 4
+      },
+      {
+        "feature": "FLAG_OWN_REALTY_N",
+        "feature_raw": "FLAG_OWN_REALTY_N",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "shap": 0.0249,
+        "rank": 5
+      }
+    ],
+    "top_drivers_against_default": [
+      {
+        "feature": "외부 신용평가 점수 3",
+        "feature_raw": "EXT_SOURCE_3",
+        "value": "0.788681",
+        "value_raw": 0.7886807751817684,
+        "shap": -0.9143,
+        "rank": 1
+      },
+      {
+        "feature": "외부 신용평가 점수 1",
+        "feature_raw": "EXT_SOURCE_1",
+        "value": "0.639772",
+        "value_raw": 0.6397723514100934,
+        "shap": -0.3333,
+        "rank": 2
+      },
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "0.641616",
+        "value_raw": 0.6416160072017068,
+        "shap": -0.2969,
+        "rank": 3
+      },
+      {
+        "feature": "대출 신청 금액",
+        "feature_raw": "AMT_CREDIT",
+        "value": "180,000",
+        "value_raw": 180000.0,
+        "shap": -0.2152,
+        "rank": 4
+      },
+      {
+        "feature": "신청 대출 유형: 현금대출",
+        "feature_raw": "NAME_CONTRACT_TYPE_Cash loans",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "shap": -0.2093,
+        "rank": 5
+      }
+    ],
+    "fairness_flags": [],
+    "model": "XGBoost",
+    "explanation_policy": "fact_only",
+    "masked_sensitive_features": [
+      "DAYS_BIRTH",
+      "CODE_GENDER_F",
+      "CODE_GENDER_M",
+      "CODE_GENDER_XNA"
+    ]
+  }
+}

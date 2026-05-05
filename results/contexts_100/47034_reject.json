@@ -1,0 +1,100 @@
+{
+  "sample_idx": 47034,
+  "decision": "REJECT",
+  "default_probability": 0.8944,
+  "threshold": 0.4758,
+  "top_drivers_for_default": [
+    {
+      "feature": "외부 신용평가 점수 2",
+      "feature_raw": "EXT_SOURCE_2",
+      "value": "0.029544",
+      "value_raw": 0.029543963437184073,
+      "shap": 0.9609,
+      "rank": 1
+    },
+    {
+      "feature": "외부 신용평가 점수 3",
+      "feature_raw": "EXT_SOURCE_3",
+      "value": "0.143758",
+      "value_raw": 0.1437580534911652,
+      "shap": 0.8383,
+      "rank": 2
+    },
+    {
+      "feature": "구매 대상 상품 가격",
+      "feature_raw": "AMT_GOODS_PRICE",
+      "value": "418,500",
+      "value_raw": 418500.0,
+      "shap": 0.338,
+      "rank": 3
+    },
+    {
+      "feature": "재직 일수(음수: 신청일 기준)",
+      "feature_raw": "DAYS_EMPLOYED",
+      "value": "0년 재직",
+      "value_raw": -239.0,
+      "shap": 0.1784,
+      "rank": 4
+    },
+    {
+      "feature": "연 환산 상환액",
+      "feature_raw": "AMT_ANNUITY",
+      "value": "33,682",
+      "value_raw": 33682.5,
+      "shap": 0.1078,
+      "rank": 5
+    }
+  ],
+  "top_drivers_against_default": [
+    {
+      "feature": "보유 차량 연식",
+      "feature_raw": "OWN_CAR_AGE",
+      "value": "1",
+      "value_raw": 1.0,
+      "shap": -0.0995,
+      "rank": 1
+    },
+    {
+      "feature": "COMMONAREA_MODE",
+      "feature_raw": "COMMONAREA_MODE",
+      "value": "0.1717",
+      "value_raw": 0.1717,
+      "shap": -0.0785,
+      "rank": 2
+    },
+    {
+      "feature": "총 소득",
+      "feature_raw": "AMT_INCOME_TOTAL",
+      "value": "247,500",
+      "value_raw": 247500.0,
+      "shap": -0.0593,
+      "rank": 3
+    },
+    {
+      "feature": "BASEMENTAREA_MEDI",
+      "feature_raw": "BASEMENTAREA_MEDI",
+      "value": "0.3041",
+      "value_raw": 0.3041,
+      "shap": -0.0578,
+      "rank": 4
+    },
+    {
+      "feature": "COMMONAREA_AVG",
+      "feature_raw": "COMMONAREA_AVG",
+      "value": "0.1702",
+      "value_raw": 0.1702,
+      "shap": -0.0426,
+      "rank": 5
+    }
+  ],
+  "fairness_flags": [],
+  "model": "XGBoost",
+  "explanation_policy": "fact_only",
+  "masked_sensitive_features": [
+    "DAYS_BIRTH",
+    "CODE_GENDER_F",
+    "CODE_GENDER_M",
+    "CODE_GENDER_XNA"
+  ],
+  "_meta_true_label": 0
+}

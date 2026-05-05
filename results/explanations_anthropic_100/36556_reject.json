@@ -1,0 +1,113 @@
+{
+  "sample_idx": 36556,
+  "decision": "REJECT",
+  "true_label": 0,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "elapsed_sec": 12.69,
+  "explanation": "[결정 요약]\n신청 결과: 대출 신청이 거절되었습니다(예측 부도 확률 92.52%, 기준 47.58%).\n\n[주요 거절 사유]\n1. 외부 신용평가 점수 3이 0.0969로 매우 낮게 평가되어 부도 가능성을 크게 높이는 요인으로 작용했습니다.\n2. 외부 신용평가 점수 2가 0.2037로 낮은 수준입니다.\n3. 대출 신청 금액 640,080원과 연 환산 상환액 31,262원이 부정적 요인으로 반영되었습니다.\n\n[긍정적으로 평가된 요인]\n- 근무 조직 유형(타깃 인코딩 값 0.0749)이 긍정적으로 평가되었습니다.\n- 총 소득 225,000원이 부도 가능성을 낮추는 요인으로 작용했습니다.\n- DEF_30_CNT_SOCIAL_CIRCLE 값이 0으로 양호하게 평가되었습니다.\n\n[개선 권고]\n- 외부 신용평가 점수 향상을 위한 신용 관리(연체 해소, 신용카드 사용률 조정, 금융 거래 이력 개선)를 권장합니다.\n- 신청 금액 및 상환 조건 조정 후 재신청을 검토하실 수 있습니다.\n- 일정 기간 신용 관리 후 재신청 시 승인 가능성이 개선될 수 있습니다.\n\n[면책 고지]\n본 안내는 모델의 자동화된 평가 결과를 자연어로 정리한 것이며, 최종 의사결정은 담당자의 검토를 거칩니다. 미래 신청 결과를 보장하지 않습니다.",
+  "usage_metadata": {
+    "input_tokens": 2095,
+    "output_tokens": 595,
+    "total_token_count": 2690
+  },
+  "context_sent": {
+    "sample_idx": 36556,
+    "decision": "REJECT",
+    "default_probability": 0.9252,
+    "threshold": 0.4758,
+    "top_drivers_for_default": [
+      {
+        "feature": "외부 신용평가 점수 3",
+        "feature_raw": "EXT_SOURCE_3",
+        "value": "0.0969483",
+        "value_raw": 0.0969483170508572,
+        "shap": 0.9981,
+        "rank": 1
+      },
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "0.203743",
+        "value_raw": 0.2037426956956333,
+        "shap": 0.3984,
+        "rank": 2
+      },
+      {
+        "feature": "구매 대상 상품 가격",
+        "feature_raw": "AMT_GOODS_PRICE",
+        "value": "450,000",
+        "value_raw": 450000.0,
+        "shap": 0.2554,
+        "rank": 3
+      },
+      {
+        "feature": "대출 신청 금액",
+        "feature_raw": "AMT_CREDIT",
+        "value": "640,080",
+        "value_raw": 640080.0,
+        "shap": 0.1865,
+        "rank": 4
+      },
+      {
+        "feature": "연 환산 상환액",
+        "feature_raw": "AMT_ANNUITY",
+        "value": "31,262",
+        "value_raw": 31261.5,
+        "shap": 0.1599,
+        "rank": 5
+      }
+    ],
+    "top_drivers_against_default": [
+      {
+        "feature": "근무 조직 유형 (타깃 인코딩 값)",
+        "feature_raw": "ORGANIZATION_TYPE_TE",
+        "value": "0.0749 (타깃 인코딩 값)",
+        "value_raw": 0.07493540051679587,
+        "shap": -0.0495,
+        "rank": 1
+      },
+      {
+        "feature": "총 소득",
+        "feature_raw": "AMT_INCOME_TOTAL",
+        "value": "225,000",
+        "value_raw": 225000.0,
+        "shap": -0.0252,
+        "rank": 2
+      },
+      {
+        "feature": "근무 전화 등록 여부",
+        "feature_raw": "FLAG_WORK_PHONE",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "shap": -0.0139,
+        "rank": 3
+      },
+      {
+        "feature": "거주지 인구 밀도(상대값)",
+        "feature_raw": "REGION_POPULATION_RELATIVE",
+        "value": "0.009334",
+        "value_raw": 0.009334,
+        "shap": -0.0125,
+        "rank": 4
+      },
+      {
+        "feature": "DEF_30_CNT_SOCIAL_CIRCLE",
+        "feature_raw": "DEF_30_CNT_SOCIAL_CIRCLE",
+        "value": "0",
+        "value_raw": 0.0,
+        "shap": -0.0117,
+        "rank": 5
+      }
+    ],
+    "fairness_flags": [],
+    "model": "XGBoost",
+    "explanation_policy": "fact_only",
+    "masked_sensitive_features": [
+      "DAYS_BIRTH",
+      "CODE_GENDER_F",
+      "CODE_GENDER_M",
+      "CODE_GENDER_XNA"
+    ]
+  }
+}

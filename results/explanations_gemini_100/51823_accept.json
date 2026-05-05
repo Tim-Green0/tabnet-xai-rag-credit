@@ -1,0 +1,113 @@
+{
+  "sample_idx": 51823,
+  "decision": "APPROVE",
+  "true_label": 0,
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "elapsed_sec": 15.52,
+  "explanation": "[결정 요약]\n신청 결과: 대출 신청이 승인되었습니다(예측 부도 확률 2.91%).\n\n[긍정적으로 평가된 요인]\n- 외부 신용평가 점수 2(0.752216)와 외부 신용평가 점수 3(0.629674)이 매우 높아 귀하의 신용도를 긍정적으로 평가하는 데 크게 기여했습니다.\n- 연 환산 상환액이 9,000으로 적정하여 부도 가능성을 낮추는 요인으로 작용했습니다.\n\n[개선 권고]\n- 현재의 우수한 외부 신용평가 점수를 유지하기 위해 지속적인 신용 관리를 권장합니다.\n- 불필요한 부채를 줄이고 건전한 재정 상태를 유지하는 것이 좋습니다.\n\n[면책 고지]\n본 안내는 모델의 자동화된 평가 결과를 자연어로 정리한 것이며, 최종 의사결정은 담당자의 검토를 거칩니다. 미래 신청 결과를 보장하지 않습니다.",
+  "usage_metadata": {
+    "prompt_token_count": 1750,
+    "candidates_token_count": 239,
+    "total_token_count": 4888
+  },
+  "context_sent": {
+    "sample_idx": 51823,
+    "decision": "APPROVE",
+    "default_probability": 0.0291,
+    "threshold": 0.4758,
+    "top_drivers_for_default": [
+      {
+        "feature": "구매 대상 상품 가격",
+        "feature_raw": "AMT_GOODS_PRICE",
+        "value": "180,000",
+        "value_raw": 180000.0,
+        "shap": 0.1589,
+        "rank": 1
+      },
+      {
+        "feature": "근무 전화 등록 여부",
+        "feature_raw": "FLAG_WORK_PHONE",
+        "value": "예",
+        "value_raw": 1.0,
+        "shap": 0.1319,
+        "rank": 2
+      },
+      {
+        "feature": "BASEMENTAREA_MODE",
+        "feature_raw": "BASEMENTAREA_MODE",
+        "value": "0.2524",
+        "value_raw": 0.2524,
+        "shap": 0.0799,
+        "rank": 3
+      },
+      {
+        "feature": "거주지 등록 후 경과 일수",
+        "feature_raw": "DAYS_REGISTRATION",
+        "value": "7년 전 등록",
+        "value_raw": -2606.0,
+        "shap": 0.029,
+        "rank": 4
+      },
+      {
+        "feature": "외부 신용평가 점수 1",
+        "feature_raw": "EXT_SOURCE_1",
+        "value": "0.43873",
+        "value_raw": 0.4387296285597537,
+        "shap": 0.0221,
+        "rank": 5
+      }
+    ],
+    "top_drivers_against_default": [
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "0.752216",
+        "value_raw": 0.7522158354060218,
+        "shap": -0.8156,
+        "rank": 1
+      },
+      {
+        "feature": "외부 신용평가 점수 3",
+        "feature_raw": "EXT_SOURCE_3",
+        "value": "0.629674",
+        "value_raw": 0.6296742509538716,
+        "shap": -0.5648,
+        "rank": 2
+      },
+      {
+        "feature": "연 환산 상환액",
+        "feature_raw": "AMT_ANNUITY",
+        "value": "9,000",
+        "value_raw": 9000.0,
+        "shap": -0.2286,
+        "rank": 3
+      },
+      {
+        "feature": "신청 대출 유형: 현금대출",
+        "feature_raw": "NAME_CONTRACT_TYPE_Cash loans",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "shap": -0.2247,
+        "rank": 4
+      },
+      {
+        "feature": "보유 차량 연식",
+        "feature_raw": "OWN_CAR_AGE",
+        "value": "7",
+        "value_raw": 7.0,
+        "shap": -0.2049,
+        "rank": 5
+      }
+    ],
+    "fairness_flags": [],
+    "model": "XGBoost",
+    "explanation_policy": "fact_only",
+    "masked_sensitive_features": [
+      "DAYS_BIRTH",
+      "CODE_GENDER_F",
+      "CODE_GENDER_M",
+      "CODE_GENDER_XNA"
+    ]
+  }
+}

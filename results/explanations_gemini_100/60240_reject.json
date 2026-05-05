@@ -1,0 +1,113 @@
+{
+  "sample_idx": 60240,
+  "decision": "REJECT",
+  "true_label": 0,
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "elapsed_sec": 10.09,
+  "explanation": "[결정 요약]\n신청 결과: 대출 신청이 거절되었습니다(예측 부도 확률 90.49%).\n\n[주요 거절 사유]\n1. 외부 신용평가 점수 2가 0.0355027로 매우 낮게 평가되어 부도 가능성을 높였습니다.\n2. 외부 신용평가 점수 3도 0.150085로 낮게 평가되었습니다.\n3. 외부 신용평가 점수 1이 0.165532로 낮은 점수를 보였습니다.\n\n[긍정적으로 평가된 요인]\n- 최근 휴대폰 변경 후 경과 일수가 0인 점이 긍정적으로 반영되었습니다.\n- 외부 신용평가 1 결측 여부가 '아니오'인 점이 긍정적으로 평가되었습니다.\n- 구매 대상 상품 가격이 540,000인 점이 긍정적으로 작용했습니다.\n\n[개선 권고]\n- 외부 신용평가 점수 향상을 위한 신용 관리를 권장합니다.\n- 일정 기간 후 재신청을 검토하실 수 있습니다.\n\n[면책 고지]\n본 안내는 모델의 자동화된 평가 결과를 자연어로 정리한 것이며, 최종 의사결정은 담당자의 검토를 거칩니다. 미래 신청 결과를 보장하지 않습니다.",
+  "usage_metadata": {
+    "prompt_token_count": 1779,
+    "candidates_token_count": 310,
+    "total_token_count": 3552
+  },
+  "context_sent": {
+    "sample_idx": 60240,
+    "decision": "REJECT",
+    "default_probability": 0.9049,
+    "threshold": 0.4758,
+    "top_drivers_for_default": [
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "0.0355027",
+        "value_raw": 0.0355027300794015,
+        "shap": 0.9084,
+        "rank": 1
+      },
+      {
+        "feature": "외부 신용평가 점수 3",
+        "feature_raw": "EXT_SOURCE_3",
+        "value": "0.150085",
+        "value_raw": 0.1500851762342935,
+        "shap": 0.7054,
+        "rank": 2
+      },
+      {
+        "feature": "외부 신용평가 점수 1",
+        "feature_raw": "EXT_SOURCE_1",
+        "value": "0.165532",
+        "value_raw": 0.1655322322797427,
+        "shap": 0.2057,
+        "rank": 3
+      },
+      {
+        "feature": "거주지(도시 가중) 등급",
+        "feature_raw": "REGION_RATING_CLIENT_W_CITY",
+        "value": "3",
+        "value_raw": 3.0,
+        "shap": 0.083,
+        "rank": 4
+      },
+      {
+        "feature": "재직 일수(음수: 신청일 기준)",
+        "feature_raw": "DAYS_EMPLOYED",
+        "value": "3년 재직",
+        "value_raw": -1144.0,
+        "shap": 0.0709,
+        "rank": 5
+      }
+    ],
+    "top_drivers_against_default": [
+      {
+        "feature": "최근 휴대폰 변경 후 경과 일수",
+        "feature_raw": "DAYS_LAST_PHONE_CHANGE",
+        "value": "0",
+        "value_raw": 0.0,
+        "shap": -0.0936,
+        "rank": 1
+      },
+      {
+        "feature": "외부 신용평가 1 결측 여부",
+        "feature_raw": "EXT_SOURCE_1_MISSING_FLAG",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "shap": -0.0684,
+        "rank": 2
+      },
+      {
+        "feature": "구매 대상 상품 가격",
+        "feature_raw": "AMT_GOODS_PRICE",
+        "value": "540,000",
+        "value_raw": 540000.0,
+        "shap": -0.0666,
+        "rank": 3
+      },
+      {
+        "feature": "신분증 발급 후 경과 일수",
+        "feature_raw": "DAYS_ID_PUBLISH",
+        "value": "-2313",
+        "value_raw": -2313.0,
+        "shap": -0.0222,
+        "rank": 4
+      },
+      {
+        "feature": "DEF_30_CNT_SOCIAL_CIRCLE",
+        "feature_raw": "DEF_30_CNT_SOCIAL_CIRCLE",
+        "value": "0",
+        "value_raw": 0.0,
+        "shap": -0.0144,
+        "rank": 5
+      }
+    ],
+    "fairness_flags": [],
+    "model": "XGBoost",
+    "explanation_policy": "fact_only",
+    "masked_sensitive_features": [
+      "DAYS_BIRTH",
+      "CODE_GENDER_F",
+      "CODE_GENDER_M",
+      "CODE_GENDER_XNA"
+    ]
+  }
+}

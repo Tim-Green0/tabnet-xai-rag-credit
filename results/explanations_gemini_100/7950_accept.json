@@ -1,0 +1,113 @@
+{
+  "sample_idx": 7950,
+  "decision": "APPROVE",
+  "true_label": 0,
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "elapsed_sec": 15.33,
+  "explanation": "[결정 요약]\n신청 결과: 대출 신청이 승인되었습니다(예측 부도 확률 3.26%).\n\n[긍정적으로 평가된 요인]\n- 외부 신용평가 점수 1이 0.693372로 매우 높게 평가되었습니다.\n- 외부 신용평가 점수 2가 0.662748로 높게 평가되었습니다.\n- 18년의 안정적인 재직 기간이 긍정적으로 반영되었습니다.\n\n[개선 권고]\n- 현재의 우수한 신용 등급 유지를 위해 지속적인 신용 관리를 권장합니다.\n- 계획적인 금융 생활을 통해 재정 건전성을 꾸준히 관리해 주시기를 바랍니다.\n\n[면책 고지]\n본 안내는 모델의 자동화된 평가 결과를 자연어로 정리한 것이며, 최종 의사결정은 담당자의 검토를 거칩니다. 미래 신청 결과를 보장하지 않습니다.",
+  "usage_metadata": {
+    "prompt_token_count": 1766,
+    "candidates_token_count": 216,
+    "total_token_count": 5120
+  },
+  "context_sent": {
+    "sample_idx": 7950,
+    "decision": "APPROVE",
+    "default_probability": 0.0326,
+    "threshold": 0.4758,
+    "top_drivers_for_default": [
+      {
+        "feature": "대출 신청 금액",
+        "feature_raw": "AMT_CREDIT",
+        "value": "900,000",
+        "value_raw": 900000.0,
+        "shap": 0.0975,
+        "rank": 1
+      },
+      {
+        "feature": "신분증 발급 후 경과 일수",
+        "feature_raw": "DAYS_ID_PUBLISH",
+        "value": "-1270",
+        "value_raw": -1270.0,
+        "shap": 0.0832,
+        "rank": 2
+      },
+      {
+        "feature": "연 환산 상환액",
+        "feature_raw": "AMT_ANNUITY",
+        "value": "45,000",
+        "value_raw": 45000.0,
+        "shap": 0.0794,
+        "rank": 3
+      },
+      {
+        "feature": "근무 전화 등록 여부",
+        "feature_raw": "FLAG_WORK_PHONE",
+        "value": "예",
+        "value_raw": 1.0,
+        "shap": 0.0776,
+        "rank": 4
+      },
+      {
+        "feature": "WALLSMATERIAL_MODE_Panel",
+        "feature_raw": "WALLSMATERIAL_MODE_Panel",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "shap": 0.0365,
+        "rank": 5
+      }
+    ],
+    "top_drivers_against_default": [
+      {
+        "feature": "외부 신용평가 점수 1",
+        "feature_raw": "EXT_SOURCE_1",
+        "value": "0.693372",
+        "value_raw": 0.6933724659709275,
+        "shap": -0.4288,
+        "rank": 1
+      },
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "0.662748",
+        "value_raw": 0.6627476321926328,
+        "shap": -0.4013,
+        "rank": 2
+      },
+      {
+        "feature": "재직 일수(음수: 신청일 기준)",
+        "feature_raw": "DAYS_EMPLOYED",
+        "value": "18년 재직",
+        "value_raw": -6716.0,
+        "shap": -0.3997,
+        "rank": 3
+      },
+      {
+        "feature": "신청 대출 유형: 현금대출",
+        "feature_raw": "NAME_CONTRACT_TYPE_Cash loans",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "shap": -0.3443,
+        "rank": 4
+      },
+      {
+        "feature": "외부 신용평가 점수 3",
+        "feature_raw": "EXT_SOURCE_3",
+        "value": "0.595456",
+        "value_raw": 0.5954562029091491,
+        "shap": -0.3242,
+        "rank": 5
+      }
+    ],
+    "fairness_flags": [],
+    "model": "XGBoost",
+    "explanation_policy": "fact_only",
+    "masked_sensitive_features": [
+      "DAYS_BIRTH",
+      "CODE_GENDER_F",
+      "CODE_GENDER_M",
+      "CODE_GENDER_XNA"
+    ]
+  }
+}

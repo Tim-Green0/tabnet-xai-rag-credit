@@ -1,0 +1,100 @@
+{
+  "sample_idx": 45844,
+  "decision": "APPROVE",
+  "default_probability": 0.0144,
+  "threshold": 0.4758,
+  "top_drivers_for_default": [
+    {
+      "feature": "BASEMENTAREA_MODE",
+      "feature_raw": "BASEMENTAREA_MODE",
+      "value": "0.1678",
+      "value_raw": 0.1678,
+      "shap": 0.1323,
+      "rank": 1
+    },
+    {
+      "feature": "LIVINGAPARTMENTS_AVG",
+      "feature_raw": "LIVINGAPARTMENTS_AVG",
+      "value": "0.3421",
+      "value_raw": 0.3421,
+      "shap": 0.0656,
+      "rank": 2
+    },
+    {
+      "feature": "NAME_FAMILY_STATUS_Married",
+      "feature_raw": "NAME_FAMILY_STATUS_Married",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "shap": 0.0533,
+      "rank": 3
+    },
+    {
+      "feature": "최근 휴대폰 변경 후 경과 일수",
+      "feature_raw": "DAYS_LAST_PHONE_CHANGE",
+      "value": "-537",
+      "value_raw": -537.0,
+      "shap": 0.0366,
+      "rank": 4
+    },
+    {
+      "feature": "근무 조직 유형 (타깃 인코딩 값)",
+      "feature_raw": "ORGANIZATION_TYPE_TE",
+      "value": "0.0920 (타깃 인코딩 값)",
+      "value_raw": 0.09198407075321884,
+      "shap": 0.0289,
+      "rank": 5
+    }
+  ],
+  "top_drivers_against_default": [
+    {
+      "feature": "외부 신용평가 점수 2",
+      "feature_raw": "EXT_SOURCE_2",
+      "value": "0.782041",
+      "value_raw": 0.7820408243872593,
+      "shap": -0.8903,
+      "rank": 1
+    },
+    {
+      "feature": "외부 신용평가 점수 3",
+      "feature_raw": "EXT_SOURCE_3",
+      "value": "0.80502",
+      "value_raw": 0.8050196619153701,
+      "shap": -0.5161,
+      "rank": 2
+    },
+    {
+      "feature": "외부 신용평가 점수 1",
+      "feature_raw": "EXT_SOURCE_1",
+      "value": "0.762174",
+      "value_raw": 0.7621738275117058,
+      "shap": -0.501,
+      "rank": 3
+    },
+    {
+      "feature": "신청 대출 유형: 현금대출",
+      "feature_raw": "NAME_CONTRACT_TYPE_Cash loans",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "shap": -0.3678,
+      "rank": 4
+    },
+    {
+      "feature": "대출 신청 금액",
+      "feature_raw": "AMT_CREDIT",
+      "value": "495,000",
+      "value_raw": 495000.0,
+      "shap": -0.215,
+      "rank": 5
+    }
+  ],
+  "fairness_flags": [],
+  "model": "XGBoost",
+  "explanation_policy": "fact_only",
+  "masked_sensitive_features": [
+    "DAYS_BIRTH",
+    "CODE_GENDER_F",
+    "CODE_GENDER_M",
+    "CODE_GENDER_XNA"
+  ],
+  "_meta_true_label": 0
+}

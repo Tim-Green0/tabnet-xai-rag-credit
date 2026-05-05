@@ -1,0 +1,113 @@
+{
+  "sample_idx": 56892,
+  "decision": "APPROVE",
+  "true_label": 0,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "elapsed_sec": 10.14,
+  "explanation": "[결정 요약]\n신청 결과: 대출 신청이 승인되었습니다(예측 부도 확률 3.4%).\n\n[긍정적으로 평가된 요인]\n1. 외부 신용평가 점수 2가 0.74로 우수하여 신용도가 매우 긍정적으로 평가되었습니다.\n2. 14년의 장기 재직 기간은 소득 안정성 측면에서 높이 평가되었습니다.\n3. 거주지(도시 가중) 등급이 1등급으로 우수하게 반영되었습니다.\n\n[개선 권고]\n- 외부 신용평가 1 정보가 누락되어 있습니다. 향후 추가 신용 정보 제공 시 더욱 유리한 조건을 받으실 수 있습니다.\n- 현재 승인되었으나, 신청 금액(1,850,544원)은 부도 가능성을 소폭 높이는 요인으로 작용했습니다. 상환 계획을 철저히 준비하시기 바랍니다.\n- 분기별 신용조회 이력이 없는 점이 일부 영향을 미쳤으니, 적절한 금융 활동 이력 관리를 권장합니다.\n\n[면책 고지]\n본 안내는 AI 모델의 평가 결과를 요약한 것으로, 실제 최종 승인 조건은 담당 부서의 추가 검토를 거쳐 확정됩니다. 개별 상황에 따라 결과가 달라질 수 있습니다.",
+  "usage_metadata": {
+    "input_tokens": 2109,
+    "output_tokens": 511,
+    "total_token_count": 2620
+  },
+  "context_sent": {
+    "sample_idx": 56892,
+    "decision": "APPROVE",
+    "default_probability": 0.034,
+    "threshold": 0.4758,
+    "top_drivers_for_default": [
+      {
+        "feature": "대출 신청 금액",
+        "feature_raw": "AMT_CREDIT",
+        "value": "1,850,544",
+        "value_raw": 1850544.0,
+        "shap": 0.1093,
+        "rank": 1
+      },
+      {
+        "feature": "NAME_EDUCATION_TYPE_Lower secondary",
+        "feature_raw": "NAME_EDUCATION_TYPE_Lower secondary",
+        "value": "예",
+        "value_raw": 1.0,
+        "shap": 0.046,
+        "rank": 2
+      },
+      {
+        "feature": "학력: 고등교육 이상",
+        "feature_raw": "NAME_EDUCATION_TYPE_Higher education",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "shap": 0.038,
+        "rank": 3
+      },
+      {
+        "feature": "외부 신용평가 1 결측 여부",
+        "feature_raw": "EXT_SOURCE_1_MISSING_FLAG",
+        "value": "예",
+        "value_raw": 1.0,
+        "shap": 0.0352,
+        "rank": 4
+      },
+      {
+        "feature": "AMT_REQ_CREDIT_BUREAU_QRT",
+        "feature_raw": "AMT_REQ_CREDIT_BUREAU_QRT",
+        "value": "0",
+        "value_raw": 0.0,
+        "shap": 0.0318,
+        "rank": 5
+      }
+    ],
+    "top_drivers_against_default": [
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "0.737846",
+        "value_raw": 0.7378460747305174,
+        "shap": -0.887,
+        "rank": 1
+      },
+      {
+        "feature": "구매 대상 상품 가격",
+        "feature_raw": "AMT_GOODS_PRICE",
+        "value": "1,800,000",
+        "value_raw": 1800000.0,
+        "shap": -0.5694,
+        "rank": 2
+      },
+      {
+        "feature": "재직 일수(음수: 신청일 기준)",
+        "feature_raw": "DAYS_EMPLOYED",
+        "value": "14년 재직",
+        "value_raw": -5464.0,
+        "shap": -0.3484,
+        "rank": 3
+      },
+      {
+        "feature": "근무 조직 유형 (타깃 인코딩 값)",
+        "feature_raw": "ORGANIZATION_TYPE_TE",
+        "value": "0.0473 (타깃 인코딩 값)",
+        "value_raw": 0.0472972972972973,
+        "shap": -0.319,
+        "rank": 4
+      },
+      {
+        "feature": "거주지(도시 가중) 등급",
+        "feature_raw": "REGION_RATING_CLIENT_W_CITY",
+        "value": "1",
+        "value_raw": 1.0,
+        "shap": -0.2418,
+        "rank": 5
+      }
+    ],
+    "fairness_flags": [],
+    "model": "XGBoost",
+    "explanation_policy": "fact_only",
+    "masked_sensitive_features": [
+      "DAYS_BIRTH",
+      "CODE_GENDER_F",
+      "CODE_GENDER_M",
+      "CODE_GENDER_XNA"
+    ]
+  }
+}

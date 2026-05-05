@@ -1,0 +1,482 @@
+{
+  "10629_reject": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 3,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"수치와 방향성이 컨텍스트와 완벽히 일치하며, 민감 정보 노출 없이 고객 친화적인 설명 스타일을 가졌습니다. 다만, `top_drivers_for_default` 중 '거주지 등급'과 `top_drivers_against_default` 중 '차량 소유 여부'가 설명에서 누락되어 완전성이 다소 떨어집니다.\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 3,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "수치와 방향성이 컨텍스트와 완벽히 일치하며, 민감 정보 노출 없이 고객 친화적인 설명 스타일을 가졌습니다. 다만, `top_drivers_for_default` 중 '거주지 등급'과 `top_drivers_against_default` 중 '차량 소유 여부'가 설명에서 누락되어 완전성이 다소 떨어집니다."
+    },
+    "usage": {
+      "prompt_token_count": 1743,
+      "candidates_token_count": 137,
+      "total_token_count": 4486
+    },
+    "elapsed_sec": 12.68
+  },
+  "1062_reject": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 4,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"설명은 모든 결정 요약 및 언급된 수치/변수명이 컨텍스트와 정확히 일치하며, 민감 정보를 완벽하게 마스킹했고 고객 친화적인 톤을 유지합니다. 긍정 평가 요인 중 일부가 누락되었으나, 핵심 내용은 충분히 전달됩니다.\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 4,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "설명은 모든 결정 요약 및 언급된 수치/변수명이 컨텍스트와 정확히 일치하며, 민감 정보를 완벽하게 마스킹했고 고객 친화적인 톤을 유지합니다. 긍정 평가 요인 중 일부가 누락되었으나, 핵심 내용은 충분히 전달됩니다."
+    },
+    "usage": {
+      "prompt_token_count": 1822,
+      "candidates_token_count": 119,
+      "total_token_count": 3694
+    },
+    "elapsed_sec": 9.45
+  },
+  "11697_accept": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 3,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"설명에 제시된 모든 수치와 변수명이 참조 컨텍스트와 완벽하게 일치하며 민감 정보 유출이 없고 문체 또한 적절합니다. 다만, 참조 컨텍스트의 상위 10개 주요 요인 중 5개(부도 확률을 높이는 4개, 낮추는 1개)를 설명에서 누락하여 완전성 점수가 낮습니다.\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 3,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "설명에 제시된 모든 수치와 변수명이 참조 컨텍스트와 완벽하게 일치하며 민감 정보 유출이 없고 문체 또한 적절합니다. 다만, 참조 컨텍스트의 상위 10개 주요 요인 중 5개(부도 확률을 높이는 4개, 낮추는 1개)를 설명에서 누락하여 완전성 점수가 낮습니다."
+    },
+    "usage": {
+      "prompt_token_count": 1676,
+      "candidates_token_count": 140,
+      "total_token_count": 5099
+    },
+    "elapsed_sec": 17.02
+  },
+  "12512_reject": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 4,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"결정 요약과 주요 사유, 긍정 요인의 수치 및 내용이 컨텍스트와 정확히 일치하며 민감 정보를 완벽하게 마스킹했고, 고객에게 친절하고 명확한 톤으로 설명되었습니다. 다만, top drivers 중 몇몇 하위 랭크 요인이 설명에 포함되지 않았습니다.\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 4,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "결정 요약과 주요 사유, 긍정 요인의 수치 및 내용이 컨텍스트와 정확히 일치하며 민감 정보를 완벽하게 마스킹했고, 고객에게 친절하고 명확한 톤으로 설명되었습니다. 다만, top drivers 중 몇몇 하위 랭크 요인이 설명에 포함되지 않았습니다."
+    },
+    "usage": {
+      "prompt_token_count": 1786,
+      "candidates_token_count": 126,
+      "total_token_count": 3297
+    },
+    "elapsed_sec": 7.78
+  },
+  "12908_reject": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 5,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"설명은 모든 핵심 정보(결정, 확률, 기준, 주요 긍정/부정 요인)를 컨텍스트에 완벽하게 일치하는 수치와 변수명으로 제공하며, 민감 정보를 언급하지 않고 고객에게 매우 적절하고 친절한 톤으로 작성되었습니다. 주요 거절 및 긍정 요인들을 충분히 포함하고 있습니다.\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 5,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "설명은 모든 핵심 정보(결정, 확률, 기준, 주요 긍정/부정 요인)를 컨텍스트에 완벽하게 일치하는 수치와 변수명으로 제공하며, 민감 정보를 언급하지 않고 고객에게 매우 적절하고 친절한 톤으로 작성되었습니다. 주요 거절 및 긍정 요인들을 충분히 포함하고 있습니다."
+    },
+    "usage": {
+      "prompt_token_count": 1738,
+      "candidates_token_count": 134,
+      "total_token_count": 4400
+    },
+    "elapsed_sec": 13.18
+  },
+  "14446_reject": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 4,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"모든 수치와 변수명이 컨텍스트와 일치하며, 민감 정보 노출 없이 고객에게 친절하고 명확한 톤으로 주요 거절 사유와 개선 방안을 잘 설명했지만, 일부 덜 중요한 상위 드라이버는 누락되었습니다.\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 4,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "모든 수치와 변수명이 컨텍스트와 일치하며, 민감 정보 노출 없이 고객에게 친절하고 명확한 톤으로 주요 거절 사유와 개선 방안을 잘 설명했지만, 일부 덜 중요한 상위 드라이버는 누락되었습니다."
+    },
+    "usage": {
+      "prompt_token_count": 1737,
+      "candidates_token_count": 113,
+      "total_token_count": 3609
+    },
+    "elapsed_sec": 9.45
+  },
+  "14480_accept": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 4,\n  \"completeness\": 2,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"생성된 설명은 언급된 사실은 정확하고 스타일도 적절하며 민감 정보 유출도 없지만, '주요 거절 사유'가 '해당 없음'으로 처리되어 컨텍스트의 주요 부도 위험 요인 대부분을 누락하여 완성도가 크게 떨어집니다.\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 4,
+      "completeness": 2,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "생성된 설명은 언급된 사실은 정확하고 스타일도 적절하며 민감 정보 유출도 없지만, '주요 거절 사유'가 '해당 없음'으로 처리되어 컨텍스트의 주요 부도 위험 요인 대부분을 누락하여 완성도가 크게 떨어집니다."
+    },
+    "usage": {
+      "prompt_token_count": 1668,
+      "candidates_token_count": 116,
+      "total_token_count": 4005
+    },
+    "elapsed_sec": 11.14
+  },
+  "14928_reject": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 3,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"결정 요약, 사실적 정보, 스타일은 매우 정확하고 적절하나, 거절 사유 중 세 번째로 중요한 '구매 대상 상품 가격'이 누락되어 완전성이 떨어집니다.\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 3,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "결정 요약, 사실적 정보, 스타일은 매우 정확하고 적절하나, 거절 사유 중 세 번째로 중요한 '구매 대상 상품 가격'이 누락되어 완전성이 떨어집니다."
+    },
+    "usage": {
+      "prompt_token_count": 1758,
+      "candidates_token_count": 95,
+      "total_token_count": 4535
+    },
+    "elapsed_sec": 14.31
+  },
+  "15274_accept": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 4,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"결정, 확률, 주요 긍정 요인 및 일부 개선 권고 사항을 정확하고 적절한 어조로 설명했으나, 긍정 요인 중 하나(직업 분류)가 누락되었습니다.\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 4,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "결정, 확률, 주요 긍정 요인 및 일부 개선 권고 사항을 정확하고 적절한 어조로 설명했으나, 긍정 요인 중 하나(직업 분류)가 누락되었습니다."
+    },
+    "usage": {
+      "prompt_token_count": 1670,
+      "candidates_token_count": 99,
+      "total_token_count": 3317
+    },
+    "elapsed_sec": 9.36
+  },
+  "16847_reject": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 4,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"모든 사실 정보가 정확하게 제시되었으며, 민감 정보 노출 없이 고객 친화적인 구조와 톤으로 설명되었습니다. 주요 거절/긍정 요인 각각 1개씩이 누락되어 완전성 측면에서 1점 감점되었습니다.\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 4,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "모든 사실 정보가 정확하게 제시되었으며, 민감 정보 노출 없이 고객 친화적인 구조와 톤으로 설명되었습니다. 주요 거절/긍정 요인 각각 1개씩이 누락되어 완전성 측면에서 1점 감점되었습니다."
+    },
+    "usage": {
+      "prompt_token_count": 1758,
+      "candidates_token_count": 110,
+      "total_token_count": 4363
+    },
+    "elapsed_sec": 12.39
+  },
+  "17137_reject": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 4,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"설명은 사실적으로 정확하고, 고객에게 친절하고 적절한 톤이며 민감 정보 유출이 없습니다. 다만, '긍정적으로 평가된 요인'에서 컨텍스트의 상위 2개 요인을 누락하여 완전성 점수를 4점으로 조정했습니다.\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 4,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "설명은 사실적으로 정확하고, 고객에게 친절하고 적절한 톤이며 민감 정보 유출이 없습니다. 다만, '긍정적으로 평가된 요인'에서 컨텍스트의 상위 2개 요인을 누락하여 완전성 점수를 4점으로 조정했습니다."
+    },
+    "usage": {
+      "prompt_token_count": 1778,
+      "candidates_token_count": 115,
+      "total_token_count": 4469
+    },
+    "elapsed_sec": 12.38
+  },
+  "18074_reject": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 5,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"설명의 모든 변수명, 수치, SHAP 부호가 참조 컨텍스트와 완벽하게 일치하며, 주요 거절/긍정 요인들을 충분히 다루고 있고, 민감 정보 노출 없이 고객에게 적절한 톤으로 작성되었습니다.\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 5,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "설명의 모든 변수명, 수치, SHAP 부호가 참조 컨텍스트와 완벽하게 일치하며, 주요 거절/긍정 요인들을 충분히 다루고 있고, 민감 정보 노출 없이 고객에게 적절한 톤으로 작성되었습니다."
+    },
+    "usage": {
+      "prompt_token_count": 1731,
+      "candidates_token_count": 112,
+      "total_token_count": 3153
+    },
+    "elapsed_sec": 6.92
+  },
+  "19233_reject": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 4,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"설명은 모든 수치와 판단 방향이 컨텍스트와 일치하며 민감 정보를 포함하지 않고 고객에게 적절한 어조입니다. 다만, 컨텍스트의 상위 5개 요인 중 각 3개만 언급하여 완전성에서 약간 부족합니다.\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 4,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "설명은 모든 수치와 판단 방향이 컨텍스트와 일치하며 민감 정보를 포함하지 않고 고객에게 적절한 어조입니다. 다만, 컨텍스트의 상위 5개 요인 중 각 3개만 언급하여 완전성에서 약간 부족합니다."
+    },
+    "usage": {
+      "prompt_token_count": 1719,
+      "candidates_token_count": 112,
+      "total_token_count": 3881
+    },
+    "elapsed_sec": 10.31
+  },
+  "19492_accept": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 2,\n  \"completeness\": 2,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"일부 긍정적 요인(대출 신청 금액, 연 환산 상환액)을 개선 권고 사항으로 잘못 해석하여 사실 정확성이 떨어지고, 주요 긍정적 요인 2개가 누락되어 불완전함. 스타일과 민감 정보 마스킹은 적절함.\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 2,
+      "completeness": 2,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "일부 긍정적 요인(대출 신청 금액, 연 환산 상환액)을 개선 권고 사항으로 잘못 해석하여 사실 정확성이 떨어지고, 주요 긍정적 요인 2개가 누락되어 불완전함. 스타일과 민감 정보 마스킹은 적절함."
+    },
+    "usage": {
+      "prompt_token_count": 1670,
+      "candidates_token_count": 119,
+      "total_token_count": 4276
+    },
+    "elapsed_sec": 12.84
+  },
+  "19592_accept": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 4,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"설명은 결정, 수치, 요인의 영향 방향을 정확하게 전달하고 민감 정보를 포함하지 않으며, 고객 친화적인 스타일과 유용한 면책 고지를 갖추었으나, 일부 중요도가 낮은 상위 요인을 생략했습니다.\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 4,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "설명은 결정, 수치, 요인의 영향 방향을 정확하게 전달하고 민감 정보를 포함하지 않으며, 고객 친화적인 스타일과 유용한 면책 고지를 갖추었으나, 일부 중요도가 낮은 상위 요인을 생략했습니다."
+    },
+    "usage": {
+      "prompt_token_count": 1688,
+      "candidates_token_count": 106,
+      "total_token_count": 3265
+    },
+    "elapsed_sec": 7.95
+  },
+  "19774_accept": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 4,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"설명은 모든 수치와 변수명이 컨텍스트와 일치하며, 주요 승인 요인을 명확하게 전달하고 민감 정보를 포함하지 않았습니다. 고객에게 적절한 친절하고 중립적인 어조를 사용했으나, 부도 위험을 높이는 다른 요인들이 개선 권고에 더 포함될 수 있었습니다.\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 4,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "설명은 모든 수치와 변수명이 컨텍스트와 일치하며, 주요 승인 요인을 명확하게 전달하고 민감 정보를 포함하지 않았습니다. 고객에게 적절한 친절하고 중립적인 어조를 사용했으나, 부도 위험을 높이는 다른 요인들이 개선 권고에 더 포함될 수 있었습니다."
+    },
+    "usage": {
+      "prompt_token_count": 1656,
+      "candidates_token_count": 126,
+      "total_token_count": 3231
+    },
+    "elapsed_sec": 7.7
+  },
+  "19882_accept": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 2,\n  \"completeness\": 2,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"설명은 승인 결정과 긍정적 요인들을 정확히 전달하나, 컨텍스트에 명시된 주요 부도 위험 요인들(top_drivers_for_default) 중 대부분을 누락했으며, 특히 가장 큰 부도 요인(대출 신청 금액)을 언급하지 않고 '주요 거절 사유'를 '해당 없음'으로 처리하여 사실적 정확성과 완전성이 낮습니다.\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 2,
+      "completeness": 2,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "설명은 승인 결정과 긍정적 요인들을 정확히 전달하나, 컨텍스트에 명시된 주요 부도 위험 요인들(top_drivers_for_default) 중 대부분을 누락했으며, 특히 가장 큰 부도 요인(대출 신청 금액)을 언급하지 않고 '주요 거절 사유'를 '해당 없음'으로 처리하여 사실적 정확성과 완전성이 낮습니다."
+    },
+    "usage": {
+      "prompt_token_count": 1665,
+      "candidates_token_count": 144,
+      "total_token_count": 4632
+    },
+    "elapsed_sec": 15.32
+  },
+  "20633_reject": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 4,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"결정, 확률, 임계값, 주요 거절 사유 및 긍정 요인들이 컨텍스트와 정확히 일치하며, 민감 정보 노출 없이 친절하고 적절한 어조를 유지합니다. 다만, 컨텍스트의 모든 top 5 요인을 다루지는 않았습니다.\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 4,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "결정, 확률, 임계값, 주요 거절 사유 및 긍정 요인들이 컨텍스트와 정확히 일치하며, 민감 정보 노출 없이 친절하고 적절한 어조를 유지합니다. 다만, 컨텍스트의 모든 top 5 요인을 다루지는 않았습니다."
+    },
+    "usage": {
+      "prompt_token_count": 1703,
+      "candidates_token_count": 119,
+      "total_token_count": 3339
+    },
+    "elapsed_sec": 8.07
+  },
+  "22226_accept": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 4,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"설명은 결정과 주요 수치를 정확하게 제시하며, 적절한 어조로 민감한 정보를 노출하지 않습니다. 상위 긍정 요인 5개 중 3개를 다루고, 가장 큰 부정 요인을 개선 권고로 잘 활용했습니다.\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 4,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "설명은 결정과 주요 수치를 정확하게 제시하며, 적절한 어조로 민감한 정보를 노출하지 않습니다. 상위 긍정 요인 5개 중 3개를 다루고, 가장 큰 부정 요인을 개선 권고로 잘 활용했습니다."
+    },
+    "usage": {
+      "prompt_token_count": 1647,
+      "candidates_token_count": 111,
+      "total_token_count": 3188
+    },
+    "elapsed_sec": 9.3
+  },
+  "22798_reject": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 4,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"결정 요약, 주요 거절 사유, 긍정 요인 및 개선 권고가 컨텍스트와 사실적으로 일치하며 고객에게 적절한 톤으로 전달됩니다. 다만, 모든 top driver를 다루지는 않아 완전성 점수는 4점입니다.\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 4,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "결정 요약, 주요 거절 사유, 긍정 요인 및 개선 권고가 컨텍스트와 사실적으로 일치하며 고객에게 적절한 톤으로 전달됩니다. 다만, 모든 top driver를 다루지는 않아 완전성 점수는 4점입니다."
+    },
+    "usage": {
+      "prompt_token_count": 1716,
+      "candidates_token_count": 112,
+      "total_token_count": 4132
+    },
+    "elapsed_sec": 11.45
+  },
+  "22867_reject": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 3,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"결정, 수치, 영향 방향은 모두 정확하며, 민감 정보 노출 없고 어조도 적절합니다. 다만, 참조 컨텍스트의 모든 상위 요인을 다루지는 않았습니다.\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 3,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "결정, 수치, 영향 방향은 모두 정확하며, 민감 정보 노출 없고 어조도 적절합니다. 다만, 참조 컨텍스트의 모든 상위 요인을 다루지는 않았습니다."
+    },
+    "usage": {
+      "prompt_token_count": 1786,
+      "candidates_token_count": 96,
+      "total_token_count": 3299
+    },
+    "elapsed_sec": 7.89
+  },
+  "25298_accept": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 3,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"설명의 모든 수치와 변수명이 참조 컨텍스트와 정확히 일치하며 민감 정보 유출 없이 친절한 톤을 유지합니다. 다만, 긍정적/부정적 요인 모두 상위 랭크된 몇 가지 주요 driver들을 설명에서 누락하여 completeness 점수가 낮습니다.\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 3,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "설명의 모든 수치와 변수명이 참조 컨텍스트와 정확히 일치하며 민감 정보 유출 없이 친절한 톤을 유지합니다. 다만, 긍정적/부정적 요인 모두 상위 랭크된 몇 가지 주요 driver들을 설명에서 누락하여 completeness 점수가 낮습니다."
+    },
+    "usage": {
+      "prompt_token_count": 1626,
+      "candidates_token_count": 121,
+      "total_token_count": 3257
+    },
+    "elapsed_sec": 8.55
+  },
+  "25885_accept": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 3,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"결정 요약, 언급된 변수명 및 수치는 컨텍스트와 정확히 일치하며, 고객에게 적합한 친절하고 중립적인 톤입니다. 민감 정보 유출은 전혀 없었으나, 컨텍스트에 명시된 주요 긍정/부정 요인 중 일부가 설명에서 누락되었습니다.\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 3,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "결정 요약, 언급된 변수명 및 수치는 컨텍스트와 정확히 일치하며, 고객에게 적합한 친절하고 중립적인 톤입니다. 민감 정보 유출은 전혀 없었으나, 컨텍스트에 명시된 주요 긍정/부정 요인 중 일부가 설명에서 누락되었습니다."
+    },
+    "usage": {
+      "prompt_token_count": 1689,
+      "candidates_token_count": 126,
+      "total_token_count": 3408
+    },
+    "elapsed_sec": 8.71
+  },
+  "26367_accept": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 3,\n  \"completeness\": 2,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"결정 요약과 긍정 요인은 정확하지만, 부도 확률을 높이는 요인들(top_drivers_for_default)을 완전히 누락하고 '주요 거절 사유'가 없다고 설명하여 정보가 불완전합니다.\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 3,
+      "completeness": 2,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "결정 요약과 긍정 요인은 정확하지만, 부도 확률을 높이는 요인들(top_drivers_for_default)을 완전히 누락하고 '주요 거절 사유'가 없다고 설명하여 정보가 불완전합니다."
+    },
+    "usage": {
+      "prompt_token_count": 1669,
+      "candidates_token_count": 108,
+      "total_token_count": 4702
+    },
+    "elapsed_sec": 14.65
+  },
+  "27717_accept": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 4,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"설명은 결정과 주요 긍정 요인들을 정확하게 전달하며, 고객 친화적이고 중립적인 톤을 유지했으나, 하나의 덜 중요한 긍정 요인(외부 신용평가 점수 2)을 누락했습니다.\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 4,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "설명은 결정과 주요 긍정 요인들을 정확하게 전달하며, 고객 친화적이고 중립적인 톤을 유지했으나, 하나의 덜 중요한 긍정 요인(외부 신용평가 점수 2)을 누락했습니다."
+    },
+    "usage": {
+      "prompt_token_count": 1667,
+      "candidates_token_count": 109,
+      "total_token_count": 3691
+    },
+    "elapsed_sec": 10.2
+  },
+  "28952_accept": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 4,\n  \"completeness\": 2,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"결정 요약과 긍정 요인의 수치는 정확하나, 컨텍스트의 '부도 가능성 증가 요인' 대부분을 생략하고 긍정 요인 중 2개도 누락하여 설명의 완전성이 떨어집니다.\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 4,
+      "completeness": 2,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "결정 요약과 긍정 요인의 수치는 정확하나, 컨텍스트의 '부도 가능성 증가 요인' 대부분을 생략하고 긍정 요인 중 2개도 누락하여 설명의 완전성이 떨어집니다."
+    },
+    "usage": {
+      "prompt_token_count": 1658,
+      "candidates_token_count": 106,
+      "total_token_count": 4526
+    },
+    "elapsed_sec": 14.56
+  },
+  "28974_accept": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 2,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"설명된 내용은 정확하고 스타일과 민감성 마스킹은 좋지만, 컨텍스트의 핵심 드라이버를 다수 누락하여 설명이 불완전합니다.\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 2,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "설명된 내용은 정확하고 스타일과 민감성 마스킹은 좋지만, 컨텍스트의 핵심 드라이버를 다수 누락하여 설명이 불완전합니다."
+    },
+    "usage": {
+      "prompt_token_count": 1646,
+      "candidates_token_count": 91,
+      "total_token_count": 4141
+    },
+    "elapsed_sec": 12.38
+  },
+  "29583_accept": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 2,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"결정 요약 및 긍정 요인은 정확하고 스타일이 적절하나, 여러 주요 긍정/부정 요인들이 설명에서 누락되었습니다.\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 2,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "결정 요약 및 긍정 요인은 정확하고 스타일이 적절하나, 여러 주요 긍정/부정 요인들이 설명에서 누락되었습니다."
+    },
+    "usage": {
+      "prompt_token_count": 1635,
+      "candidates_token_count": 87,
+      "total_token_count": 3395
+    },
+    "elapsed_sec": 8.68
+  },
+  "30233_reject": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 5,\n  \"completeness\": 4,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"생성된 설명은 모든 수치와 변수명을 정확하게 전달하며, 민감 정보를 완벽히 마스킹했고, 친절하고 중립적인 어조로 작성되었습니다. 주요 거절 사유와 긍정적 요인을 대부분 다루어 충분히 완전하지만, 모든 top 5 요인을 언급하지는 않았습니다.\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 5,
+      "completeness": 4,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "생성된 설명은 모든 수치와 변수명을 정확하게 전달하며, 민감 정보를 완벽히 마스킹했고, 친절하고 중립적인 어조로 작성되었습니다. 주요 거절 사유와 긍정적 요인을 대부분 다루어 충분히 완전하지만, 모든 top 5 요인을 언급하지는 않았습니다."
+    },
+    "usage": {
+      "prompt_token_count": 1825,
+      "candidates_token_count": 125,
+      "total_token_count": 3417
+    },
+    "elapsed_sec": 8.77
+  },
+  "30543_accept": {
+    "raw": "```json\n{\n  \"factual_accuracy\": 3,\n  \"completeness\": 2,\n  \"sensitive_leak\": 5,\n  \"style\": 5,\n  \"rationale\": \"결정 요약과 긍정적 요인 대부분은 정확하나, '연 환산 상환액'이 실제로는 긍정적 요인임에도 불구하고 '개선 권고'에 포함되어 방향성이 잘못 해석되었으며, 다수의 중요한 부도 기여 요인(top drivers for default)이 누락되어 설명이 불완전합니다.\"\n}\n```",
+    "parsed": {
+      "factual_accuracy": 3,
+      "completeness": 2,
+      "sensitive_leak": 5,
+      "style": 5,
+      "rationale": "결정 요약과 긍정적 요인 대부분은 정확하나, '연 환산 상환액'이 실제로는 긍정적 요인임에도 불구하고 '개선 권고'에 포함되어 방향성이 잘못 해석되었으며, 다수의 중요한 부도 기여 요인(top drivers for default)이 누락되어 설명이 불완전합니다."
+    },
+    "usage": {
+      "prompt_token_count": 1649,
+      "candidates_token_count": 130,
+      "total_token_count": 4447
+    },
+    "elapsed_sec": 14.29
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "sample_idx": 12908,
+  "decision": "REJECT",
+  "true_label": 1,
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "elapsed_sec": 13.02,
+  "explanation": "[결정 요약]\n신청 결과: 대출 신청이 거절되었습니다(예측 부도 확률 89.27%).\n\n[주요 거절 사유]\n1. 외부 신용평가 점수 3이 0.184116으로 낮게 평가되어 부도 가능성을 높였습니다.\n2. 외부 신용평가 점수 2도 0.244844로 낮은 편으로 평가되었습니다.\n3. 구매 대상 상품 가격 450,000원이 부도 가능성을 높이는 요인으로 작용했습니다.\n\n[긍정적으로 평가된 요인]\n- 5년의 재직 기간은 긍정적으로 반영되어 부도 가능성을 낮추는 데 기여했습니다.\n- 최근 휴대폰 변경 후 경과 일수가 -1377일인 점이 긍정적인 요인으로 작용했습니다.\n- NAME_FAMILY_STATUS_Married가 '예'로 평가된 점은 부도 가능성을 낮추는 데 긍정적으로 반영되었습니다.\n\n[개선 권고]\n- 외부 신용평가 점수 향상을 위한 신용 관리(연체 해소, 사용률 조정)를 권장합니다.\n- 일정 기간 후 재신청을 검토하실 수 있습니다.\n\n[면책 고지]\n본 안내는 모델의 자동화된 평가 결과를 자연어로 정리한 것이며, 최종 의사결정은 담당자의 검토를 거칩니다. 미래 신청 결과를 보장하지 않습니다.",
+  "usage_metadata": {
+    "prompt_token_count": 1736,
+    "candidates_token_count": 334,
+    "total_token_count": 4586
+  },
+  "context_sent": {
+    "sample_idx": 12908,
+    "decision": "REJECT",
+    "default_probability": 0.8927,
+    "threshold": 0.4758,
+    "top_drivers_for_default": [
+      {
+        "feature": "외부 신용평가 점수 3",
+        "feature_raw": "EXT_SOURCE_3",
+        "value": "0.184116",
+        "value_raw": 0.1841161559307151,
+        "shap": 0.7295,
+        "rank": 1
+      },
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "0.244844",
+        "value_raw": 0.2448437991412138,
+        "shap": 0.373,
+        "rank": 2
+      },
+      {
+        "feature": "구매 대상 상품 가격",
+        "feature_raw": "AMT_GOODS_PRICE",
+        "value": "450,000",
+        "value_raw": 450000.0,
+        "shap": 0.2494,
+        "rank": 3
+      },
+      {
+        "feature": "대출 신청 금액",
+        "feature_raw": "AMT_CREDIT",
+        "value": "640,080",
+        "value_raw": 640080.0,
+        "shap": 0.2014,
+        "rank": 4
+      },
+      {
+        "feature": "연 환산 상환액",
+        "feature_raw": "AMT_ANNUITY",
+        "value": "29,970",
+        "value_raw": 29970.0,
+        "shap": 0.1587,
+        "rank": 5
+      }
+    ],
+    "top_drivers_against_default": [
+      {
+        "feature": "재직 일수(음수: 신청일 기준)",
+        "feature_raw": "DAYS_EMPLOYED",
+        "value": "5년 재직",
+        "value_raw": -1976.0,
+        "shap": -0.0346,
+        "rank": 1
+      },
+      {
+        "feature": "최근 휴대폰 변경 후 경과 일수",
+        "feature_raw": "DAYS_LAST_PHONE_CHANGE",
+        "value": "-1377",
+        "value_raw": -1377.0,
+        "shap": -0.0285,
+        "rank": 2
+      },
+      {
+        "feature": "NAME_FAMILY_STATUS_Married",
+        "feature_raw": "NAME_FAMILY_STATUS_Married",
+        "value": "예",
+        "value_raw": 1.0,
+        "shap": -0.0205,
+        "rank": 3
+      },
+      {
+        "feature": "자녀 수",
+        "feature_raw": "CNT_CHILDREN",
+        "value": "3",
+        "value_raw": 3.0,
+        "shap": -0.0157,
+        "rank": 4
+      },
+      {
+        "feature": "근무 전화 등록 여부",
+        "feature_raw": "FLAG_WORK_PHONE",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "shap": -0.0143,
+        "rank": 5
+      }
+    ],
+    "fairness_flags": [],
+    "model": "XGBoost",
+    "explanation_policy": "fact_only",
+    "masked_sensitive_features": [
+      "DAYS_BIRTH",
+      "CODE_GENDER_F",
+      "CODE_GENDER_M",
+      "CODE_GENDER_XNA"
+    ]
+  }
+}

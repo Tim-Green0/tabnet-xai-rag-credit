@@ -1,0 +1,5 @@
+,,factual_accuracy,factual_accuracy,factual_accuracy,completeness,completeness,completeness,sensitive_leak,sensitive_leak,sensitive_leak,style,style,style
+,,mean,std,count,mean,std,count,mean,std,count,mean,std,count
+judge,target,,,,,,,,,,,,
+anthropic,gemini,4.867,0.507,30,4.0,0.643,30,5.0,0.0,30,4.967,0.183,30
+gemini,anthropic,4.6,0.894,30,3.333,0.959,30,5.0,0.0,30,5.0,0.0,30

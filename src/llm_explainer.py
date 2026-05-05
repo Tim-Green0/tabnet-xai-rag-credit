@@ -188,14 +188,16 @@ def generate_one(client_tuple, context: Dict, model: str) -> Dict:
 # ─────────────────────────────────────────────────────────────
 def run_all(provider: str = "gemini", model: str | None = None,
              sleep_sec: float = 4.0, dry_run: bool = False,
-             output_dir: Path | None = None) -> List[Path]:
+             output_dir: Path | None = None,
+             contexts_dir: Path | None = None) -> List[Path]:
     if model is None:
         model = PROVIDER_DEFAULTS[provider]["model"]
     if output_dir is None:
         output_dir = RESULTS_DIR / PROVIDER_DEFAULTS[provider]["output_subdir"]
     output_dir.mkdir(parents=True, exist_ok=True)
+    cdir = contexts_dir if contexts_dir is not None else CONTEXTS_DIR
 
-    files = sorted([p for p in CONTEXTS_DIR.glob("*.json")
+    files = sorted([p for p in cdir.glob("*.json")
                      if p.name != "_index.json"])
     if dry_run:
         files = files[:1]
@@ -246,12 +248,16 @@ if __name__ == "__main__":
                     help="provider별 기본 모델 사용. 명시 시 override.")
     ap.add_argument("--output-dir", default=None,
                     help="기본은 results/explanations(_anthropic).")
+    ap.add_argument("--contexts-dir", default=None,
+                    help="기본은 results/contexts. 100명 시 contexts_100.")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--sleep", type=float, default=4.0,
                     help="호출 간 대기 시간(초). free tier RPM 회피.")
     args = ap.parse_args()
     output_dir = Path(args.output_dir) if args.output_dir else None
+    contexts_dir = Path(args.contexts_dir) if args.contexts_dir else None
     paths = run_all(provider=args.provider, model=args.model,
                      sleep_sec=args.sleep, dry_run=args.dry_run,
-                     output_dir=output_dir)
+                     output_dir=output_dir,
+                     contexts_dir=contexts_dir)
     print(f"\n[OK] {len(paths)}개 설명 생성 완료 → {paths[0].parent if paths else '?'}")

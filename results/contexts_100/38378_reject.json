@@ -1,0 +1,100 @@
+{
+  "sample_idx": 38378,
+  "decision": "REJECT",
+  "default_probability": 0.9091,
+  "threshold": 0.4758,
+  "top_drivers_for_default": [
+    {
+      "feature": "외부 신용평가 점수 3",
+      "feature_raw": "EXT_SOURCE_3",
+      "value": "0.0963187",
+      "value_raw": 0.0963186927645401,
+      "shap": 0.9405,
+      "rank": 1
+    },
+    {
+      "feature": "외부 신용평가 점수 2",
+      "feature_raw": "EXT_SOURCE_2",
+      "value": "0.205779",
+      "value_raw": 0.20577945135582,
+      "shap": 0.3794,
+      "rank": 2
+    },
+    {
+      "feature": "구매 대상 상품 가격",
+      "feature_raw": "AMT_GOODS_PRICE",
+      "value": "450,000",
+      "value_raw": 450000.0,
+      "shap": 0.262,
+      "rank": 3
+    },
+    {
+      "feature": "재직 일수(음수: 신청일 기준)",
+      "feature_raw": "DAYS_EMPLOYED",
+      "value": "0년 재직",
+      "value_raw": -248.0,
+      "shap": 0.1173,
+      "rank": 4
+    },
+    {
+      "feature": "근무 조직 유형 (타깃 인코딩 값)",
+      "feature_raw": "ORGANIZATION_TYPE_TE",
+      "value": "0.1029 (타깃 인코딩 값)",
+      "value_raw": 0.10291033036182486,
+      "shap": 0.1073,
+      "rank": 5
+    }
+  ],
+  "top_drivers_against_default": [
+    {
+      "feature": "신분증 발급 후 경과 일수",
+      "feature_raw": "DAYS_ID_PUBLISH",
+      "value": "-4606",
+      "value_raw": -4606.0,
+      "shap": -0.1231,
+      "rank": 1
+    },
+    {
+      "feature": "거주지 등록 후 경과 일수",
+      "feature_raw": "DAYS_REGISTRATION",
+      "value": "29년 전 등록",
+      "value_raw": -10820.0,
+      "shap": -0.074,
+      "rank": 2
+    },
+    {
+      "feature": "AMT_REQ_CREDIT_BUREAU_QRT",
+      "feature_raw": "AMT_REQ_CREDIT_BUREAU_QRT",
+      "value": "1",
+      "value_raw": 1.0,
+      "shap": -0.0729,
+      "rank": 3
+    },
+    {
+      "feature": "등록 도시와 실거주 도시 불일치",
+      "feature_raw": "REG_CITY_NOT_LIVE_CITY",
+      "value": "0",
+      "value_raw": 0.0,
+      "shap": -0.0148,
+      "rank": 4
+    },
+    {
+      "feature": "근무 전화 등록 여부",
+      "feature_raw": "FLAG_WORK_PHONE",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "shap": -0.0137,
+      "rank": 5
+    }
+  ],
+  "fairness_flags": [],
+  "model": "XGBoost",
+  "explanation_policy": "fact_only",
+  "masked_sensitive_features": [
+    "DAYS_BIRTH",
+    "CODE_GENDER_F",
+    "CODE_GENDER_M",
+    "CODE_GENDER_XNA"
+  ],
+  "_meta_true_label": 1
+}

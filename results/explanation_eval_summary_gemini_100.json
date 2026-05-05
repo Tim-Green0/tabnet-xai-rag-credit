@@ -1,0 +1,33 @@
+{
+  "feat_match_rate": {
+    "mean": 0.39,
+    "std": 0.1445997610962442,
+    "n": 100
+  },
+  "val_match_rate": {
+    "mean": 0.805,
+    "std": 0.10671873729054748,
+    "n": 100
+  },
+  "sign_match_rate": {
+    "mean": 0.9338333333333333,
+    "std": 0.14285164932518998,
+    "n": 100
+  },
+  "full_match_rate": {
+    "mean": 0.36200000000000004,
+    "std": 0.1461837780661622,
+    "n": 100
+  },
+  "halluc_rate_strict": {
+    "mean": 0.0,
+    "std": 0.0,
+    "n": 100
+  },
+  "halluc_rate_broad": {
+    "mean": 0.0,
+    "std": 0.0,
+    "n": 100
+  },
+  "_provider": "gemini_100"
+}

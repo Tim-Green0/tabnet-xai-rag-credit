@@ -1,0 +1,113 @@
+{
+  "sample_idx": 49098,
+  "decision": "REJECT",
+  "true_label": 1,
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "elapsed_sec": 9.72,
+  "explanation": "[결정 요약]\n신청 결과: 대출 신청이 거절되었습니다(예측 부도 확률 90.79%).\n\n[주요 거절 사유]\n1.  외부 신용평가 점수 3이 0.124519로 매우 낮게 평가되어 부도 가능성을 높였습니다.\n2.  외부 신용평가 점수 2 또한 0.184832로 낮게 평가되어 부도 가능성을 높였습니다.\n3.  구매 대상 상품 가격 382,500원도 부도 가능성을 높이는 요인으로 작용했습니다.\n\n[긍정적으로 평가된 요인]\n-   AMT_REQ_CREDIT_BUREAU_QRT가 1인 점은 긍정적으로 반영되었습니다.\n-   결혼 여부가 '예'인 점도 긍정적인 요인입니다.\n-   총 소득 202,500원은 긍정적인 요인으로 고려되었습니다.\n\n[개선 권고]\n-   외부 신용평가 점수 향상을 위한 신용 관리(연체 해소, 사용률 조정)를 권장합니다.\n-   일정 기간 후 재신청을 검토하실 수 있습니다.\n\n[면책 고지]\n본 안내는 모델의 자동화된 평가 결과를 자연어로 정리한 것이며, 최종 의사결정은 담당자의 검토를 거칩니다. 미래 신청 결과를 보장하지 않습니다.",
+  "usage_metadata": {
+    "prompt_token_count": 1775,
+    "candidates_token_count": 330,
+    "total_token_count": 3973
+  },
+  "context_sent": {
+    "sample_idx": 49098,
+    "decision": "REJECT",
+    "default_probability": 0.9079,
+    "threshold": 0.4758,
+    "top_drivers_for_default": [
+      {
+        "feature": "외부 신용평가 점수 3",
+        "feature_raw": "EXT_SOURCE_3",
+        "value": "0.124519",
+        "value_raw": 0.1245194708919845,
+        "shap": 0.8894,
+        "rank": 1
+      },
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "0.184832",
+        "value_raw": 0.1848317663289328,
+        "shap": 0.5218,
+        "rank": 2
+      },
+      {
+        "feature": "구매 대상 상품 가격",
+        "feature_raw": "AMT_GOODS_PRICE",
+        "value": "382,500",
+        "value_raw": 382500.0,
+        "shap": 0.257,
+        "rank": 3
+      },
+      {
+        "feature": "근무 조직 유형 (타깃 인코딩 값)",
+        "feature_raw": "ORGANIZATION_TYPE_TE",
+        "value": "0.1029 (타깃 인코딩 값)",
+        "value_raw": 0.10291033036182486,
+        "shap": 0.0934,
+        "rank": 4
+      },
+      {
+        "feature": "대출 신청 금액",
+        "feature_raw": "AMT_CREDIT",
+        "value": "511,250",
+        "value_raw": 511249.5,
+        "shap": 0.08,
+        "rank": 5
+      }
+    ],
+    "top_drivers_against_default": [
+      {
+        "feature": "AMT_REQ_CREDIT_BUREAU_QRT",
+        "feature_raw": "AMT_REQ_CREDIT_BUREAU_QRT",
+        "value": "1",
+        "value_raw": 1.0,
+        "shap": -0.0617,
+        "rank": 1
+      },
+      {
+        "feature": "NAME_FAMILY_STATUS_Married",
+        "feature_raw": "NAME_FAMILY_STATUS_Married",
+        "value": "예",
+        "value_raw": 1.0,
+        "shap": -0.0251,
+        "rank": 2
+      },
+      {
+        "feature": "총 소득",
+        "feature_raw": "AMT_INCOME_TOTAL",
+        "value": "202,500",
+        "value_raw": 202500.0,
+        "shap": -0.0198,
+        "rank": 3
+      },
+      {
+        "feature": "재직 일수(음수: 신청일 기준)",
+        "feature_raw": "DAYS_EMPLOYED",
+        "value": "6년 재직",
+        "value_raw": -2335.0,
+        "shap": -0.0168,
+        "rank": 4
+      },
+      {
+        "feature": "근무 전화 등록 여부",
+        "feature_raw": "FLAG_WORK_PHONE",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "shap": -0.0148,
+        "rank": 5
+      }
+    ],
+    "fairness_flags": [],
+    "model": "XGBoost",
+    "explanation_policy": "fact_only",
+    "masked_sensitive_features": [
+      "DAYS_BIRTH",
+      "CODE_GENDER_F",
+      "CODE_GENDER_M",
+      "CODE_GENDER_XNA"
+    ]
+  }
+}

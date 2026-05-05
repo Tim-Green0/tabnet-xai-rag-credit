@@ -1,0 +1,100 @@
+{
+  "sample_idx": 49800,
+  "decision": "APPROVE",
+  "default_probability": 0.0321,
+  "threshold": 0.4758,
+  "top_drivers_for_default": [
+    {
+      "feature": "연 환산 상환액",
+      "feature_raw": "AMT_ANNUITY",
+      "value": "40,500",
+      "value_raw": 40500.0,
+      "shap": 0.155,
+      "rank": 1
+    },
+    {
+      "feature": "대출 신청 금액",
+      "feature_raw": "AMT_CREDIT",
+      "value": "810,000",
+      "value_raw": 810000.0,
+      "shap": 0.078,
+      "rank": 2
+    },
+    {
+      "feature": "재직 일수(음수: 신청일 기준)",
+      "feature_raw": "DAYS_EMPLOYED",
+      "value": "0년 재직",
+      "value_raw": -208.0,
+      "shap": 0.0725,
+      "rank": 3
+    },
+    {
+      "feature": "BASEMENTAREA_MODE",
+      "feature_raw": "BASEMENTAREA_MODE",
+      "value": "0.3584",
+      "value_raw": 0.3584,
+      "shap": 0.0675,
+      "rank": 4
+    },
+    {
+      "feature": "LIVINGAPARTMENTS_AVG",
+      "feature_raw": "LIVINGAPARTMENTS_AVG",
+      "value": "0.3337",
+      "value_raw": 0.3337,
+      "shap": 0.0626,
+      "rank": 5
+    }
+  ],
+  "top_drivers_against_default": [
+    {
+      "feature": "외부 신용평가 점수 2",
+      "feature_raw": "EXT_SOURCE_2",
+      "value": "0.736053",
+      "value_raw": 0.7360529243880746,
+      "shap": -0.8596,
+      "rank": 1
+    },
+    {
+      "feature": "신청 대출 유형: 현금대출",
+      "feature_raw": "NAME_CONTRACT_TYPE_Cash loans",
+      "value": "아니오",
+      "value_raw": 0.0,
+      "shap": -0.3626,
+      "rank": 2
+    },
+    {
+      "feature": "학력: 고등교육 이상",
+      "feature_raw": "NAME_EDUCATION_TYPE_Higher education",
+      "value": "예",
+      "value_raw": 1.0,
+      "shap": -0.2955,
+      "rank": 3
+    },
+    {
+      "feature": "근무 조직 유형 (타깃 인코딩 값)",
+      "feature_raw": "ORGANIZATION_TYPE_TE",
+      "value": "0.0548 (타깃 인코딩 값)",
+      "value_raw": 0.05483207676490747,
+      "shap": -0.2177,
+      "rank": 4
+    },
+    {
+      "feature": "구매 대상 상품 가격",
+      "feature_raw": "AMT_GOODS_PRICE",
+      "value": "810,000",
+      "value_raw": 810000.0,
+      "shap": -0.1967,
+      "rank": 5
+    }
+  ],
+  "fairness_flags": [],
+  "model": "XGBoost",
+  "explanation_policy": "fact_only",
+  "masked_sensitive_features": [
+    "DAYS_BIRTH",
+    "CODE_GENDER_F",
+    "CODE_GENDER_M",
+    "CODE_GENDER_XNA"
+  ],
+  "_meta_true_label": 0
+}
