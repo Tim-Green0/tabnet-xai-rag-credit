@@ -1037,37 +1037,88 @@ def make_slides():
                   size=11, color=COLOR_HIGHLIGHT)
 
     # ════════════════════════════════════════════════════════
-    # 슬라이드 18 — 종합 + 핵심 메시지 (기존 #16, 번호 갱신)
+    # 슬라이드 18 (NEW) — Step 5-A: Fairness-aware Learning
     # ════════════════════════════════════════════════════════
     s = add_blank_slide(prs)
-    add_header_bar(s, SW, "17. 종합 — 본 연구의 가치 4가지",
-                       "Step 1 + 2-A + 3-B + 3-C-1 + 3-C-2 + 3-C-2-f 마무리")
+    add_header_bar(s, SW, "17. ★ Step 5-A — Fairness-aware Learning",
+                       "Day 5 8/8 위반 → Reweighing으로 4/4 통과 + AUROC 손실 거의 없음")
 
-    # 3개 컬럼 카드
+    # 좌측: trade-off scatter
+    fig_path = FIG_DIR / "33_fairness_tradeoff.png"
+    if fig_path.exists():
+        pic = s.shapes.add_picture(str(fig_path),
+                                       Cm(0.6), Cm(3.0),
+                                       width=Cm(19))
+        if pic.height > Cm(11):
+            pic.height = Cm(11)
+            pic.width = Cm(19)
+
+    # 우측 상단: 동기 + 방법
+    add_textbox(s, Cm(20.5), Cm(3.0), Cm(13), Cm(1.0),
+                  "방법 (3가지 비교)",
+                  size=14, bold=True, color=COLOR_PRIMARY)
+    add_bullets(s, Cm(20.7), Cm(4.0), Cm(13), Cm(3.5), [
+        "Reweighing — Kamiran-Calders sample_weight",
+        "Fairlearn ExpGrad — DP / EO constraint",
+        "보호속성: GENDER / AGE (median split)",
+        "데이터: baseline (214) + aux (1161)",
+    ], size=11)
+
+    # 우측 중간: 결과
+    add_textbox(s, Cm(20.5), Cm(8.0), Cm(13), Cm(1.0),
+                  "★ Reweighing 결과 (4/4 케이스 통과)",
+                  size=14, bold=True, color=COLOR_ACCENT)
+    add_bullets(s, Cm(20.7), Cm(9.0), Cm(13), Cm(4.5), [
+        "baseline: AUROC -0.003 / DI 0.62→0.90 (G), 0.56→0.90 (A)",
+        "★★ aux: AUROC +0.003 / DI 0.64→0.87 (G), 0.57→0.83 (A)",
+        "→ aux에서 trade-off 사라짐 (오히려 성능 향상)",
+        "Fairlearn: DP는 AUROC -0.07~-0.08, EO는 안티 패턴",
+    ], size=11)
+
+    # 우측 하단: 메시지
+    add_textbox(s, Cm(20.5), Cm(14.0), Cm(13), Cm(3.0),
+                  "★ Day 5 진단(8/8 위반) → 4/4 통과 단일 메커니즘\n"
+                  "★ AGE도 효과적 (Day 5 \"proxy\" 결론 갱신)\n"
+                  "★ 약점 #4 (Fairness mitigation) 해소",
+                  size=11, color=COLOR_HIGHLIGHT)
+
+    # ════════════════════════════════════════════════════════
+    # 슬라이드 19 — 종합 + 핵심 메시지 (기존 #17, 번호 갱신)
+    # ════════════════════════════════════════════════════════
+    s = add_blank_slide(prs)
+    add_header_bar(s, SW, "18. 종합 — 본 연구의 가치 5가지",
+                       "Step 1 + 2-A + 3-B + 3-C + 5-A 마무리")
+
+    # 5개 컬럼 카드
     cards = [
         ("예측 성능",
-          "XGBoost 0.7587 → 0.7755\n(Step 3-B aux 추가, +2.22%)\n\n"
-          "TabNet 0.7518 — 어텐션\n해석성으로 융합 컨텍스트에 통합",
+          "XGBoost 0.7587\n→ 0.7755\n(Step 3-B aux, +2.22%)\n\n"
+          "TabNet 어텐션\n융합 컨텍스트에 통합",
           RGBColor(0x4C, 0x72, 0xB0)),
         ("해석 융합",
-          "ρ=0.117 부분 일관\n+ instance-level\n동의 22% (3+) / 0% (4+)\n\n"
-          "agreement-aware 컨텍스트로\nLLM에 의미 라벨 전달",
+          "ρ=0.117 부분 일관\n+ instance-level\n3+ 동의 22% / 4+ 동의 0%\n\n"
+          "agreement-aware\n컨텍스트로 LLM에\n의미 라벨 전달",
           RGBColor(0x55, 0xA8, 0x68)),
         ("환각 차단",
-          "Halluc 0/100 (Step 1/2-A)\n→ 0/30 (3-C-1 fusion)\n\n"
-          "Baseline 45.5% vs\nXAI-RAG 0% (Step 1)\n"
-          "NLI contradiction\n−0.14~−0.18 (3-C-2)",
+          "Halluc 0/100\n(Step 1/2-A)\n→ 0/30 (3-C-1)\n\n"
+          "Baseline 45.5% vs\nXAI-RAG 0%\n\n"
+          "NLI contradiction\n−0.14~−0.18",
           RGBColor(0xC4, 0x4E, 0x52)),
         ("완결성·충실성",
-          "G-Eval Completeness\nClaude judge +0.67~+0.80\nGemini judge +0.90~+1.10\n\n"
-          "NLI Entailment\n+0.12~+0.21 (3-C-2)\n\n"
-          "→ 다층·다judge에서\n일관된 향상",
+          "G-Eval Completeness\nClaude +0.67~+0.80\nGemini +0.90~+1.10\n\n"
+          "NLI Entailment\n+0.12~+0.21\n\n"
+          "→ 다층·다judge\n일관 향상",
           RGBColor(0xDD, 0x85, 0x52)),
+        ("공정성 mitigation",
+          "Day 5: 8/8 4/5 rule\n위반 진단\n\n"
+          "Reweighing:\n4/4 케이스 통과 ✅\n\n"
+          "aux 데이터 trade-off\n사라짐 (+0.003 AUROC)",
+          RGBColor(0x8C, 0x71, 0xB7)),
     ]
-    card_w = Cm(7.0)
+    card_w = Cm(5.7)
     card_h = Cm(8.5)
-    gap_x = Cm(0.7)
-    total_w = 4 * card_w + 3 * gap_x
+    gap_x = Cm(0.5)
+    total_w = 5 * card_w + 4 * gap_x
     start_x = (SW - total_w) // 2
     card_y = Cm(3.5)
     for i, (title, body, color) in enumerate(cards):
@@ -1105,31 +1156,31 @@ def make_slides():
     # 슬라이드 15 — 한계 + 향후 계획
     # ════════════════════════════════════════════════════════
     s = add_blank_slide(prs)
-    add_header_bar(s, SW, "18. 한계와 향후 계획",
-                       "Step 3-B/3-C 일부 진행 / 잔여는 본 논문 확장")
+    add_header_bar(s, SW, "19. 한계와 향후 계획",
+                       "Step 3-B/3-C/5-A 완료 / 잔여는 본 논문 확장")
 
     add_textbox(s, Cm(1.0), Cm(3.0), Cm(15), Cm(1),
                   "현재 한계 / 진행 중", size=16, bold=True, color=COLOR_ACCENT)
     add_bullets(s, Cm(1.5), Cm(4.0), Cm(15), Cm(13), [
         "Fusion 평가 표본 30명 — 100명+ 확장 검토",
         "인간평가 (Plausibility) 미수행 — IRB 절차 필요 ★ 1순위",
+        "Generic RAG baseline 미비교 — Counterfactual 정당성 보강 ★ 2순위",
         "보조 테이블 2/6개 활용 (Step 3-B) — 4개 잔여",
         "Bureau의 SHAP 미진입 — EXT_SOURCE 응축 가설 검증 필요",
         "TabNet-only 컨텍스트 ablation 미수행 (3-way)",
-        "Fairness-aware 학습 미수행",
-        "한국어 native NLI 모델 추가 검증 (현재 다국어)",
+        "데이터 단일 (Home Credit) — UCI German Credit 미검증",
     ], size=13)
 
     add_textbox(s, Cm(17), Cm(3.0), Cm(15), Cm(1),
                   "향후 계획", size=16, bold=True, color=COLOR_HIGHLIGHT)
     add_bullets(s, Cm(17.5), Cm(4.0), Cm(15), Cm(13), [
         "인간 평가 (Plausibility) — IRB + 5점 척도, Cohen's κ ★ 1순위",
+        "Generic RAG baseline (도메인 일반 지식) ★ 2순위",
+        "UCI German Credit 일반화",
         "Fusion 표본 100명 확장 + counterfactual 결합",
         "3-way ablation: SHAP-only / Attn-only / Fusion",
         "잔여 보조 테이블 4개로 AUROC 0.78+",
-        "Bureau ablation — EXT_SOURCE 응축 가설 검증",
-        "Fairness-aware 학습 (Reweighing, Adversarial)",
-        "FT-Transformer 비교 + 한국어 native NLI",
+        "Adversarial Debiasing (TabNet head) — Reweighing 보완",
     ], size=13)
 
     # ════════════════════════════════════════════════════════

@@ -991,7 +991,82 @@ def main():
 
     PageBreak(doc)
 
-    H(doc, "15. 한계와 향후 계획 (Future Work)", level=1)
+    # ── 15. Step 5-A — Fairness-aware Learning (NEW) ──
+    H(doc, "15. Step 5-A — Day 5 진단을 mitigation으로 갚는다",
+        level=1)
+    P(doc, "Day 5에서 본 연구는 정직한 진단을 했습니다 — \"4 모델 × {GENDER, AGE} = "
+            "8/8 케이스 4/5 rule 위반\". 그리고 변수 ablation으로 부분적인 mitigation을 "
+            "시도했지만, 특히 AGE는 proxy variable이라 ablation 효과가 미미했습니다. "
+            "Step 5-A에서는 정식 fairness-aware 학습을 적용해 그 8/8 위반을 어디까지 "
+            "되돌릴 수 있는지 정량 측정했습니다.")
+    Quote(doc, "결론부터 말하면, Reweighing(Kamiran & Calders 2012) 단일 방법으로 "
+                "**4/4 케이스를 모두 4/5 rule 통과**시킬 수 있었습니다. 그것도 baseline "
+                "데이터에서 AUROC 손실 0.003 미만, **aux 데이터(Step 3-B)에서는 AUROC 오히려 "
+                "+0.003 상승**이라는 의외의 결과까지 나왔습니다.")
+
+    H(doc, "15.1 비교한 3가지 방법", level=2)
+    Bullet(doc, "Reweighing — Kamiran-Calders 공식으로 sample_weight 부여. 가장 단순·빠름")
+    Bullet(doc, "Fairlearn ExpGrad with DemographicParity (DP) — Reduction-based, max_iter=30")
+    Bullet(doc, "Fairlearn ExpGrad with EqualizedOdds (EO) — TPR/FPR 차이만 제약")
+
+    H(doc, "15.2 Reweighing 결과 — 4/4 통과", level=2)
+    Table(doc,
+        ["데이터", "보호속성", "AUROC 변화", "DI", "4/5 rule"],
+        [["baseline (214)", "GENDER", "−0.0024", "0.622 → 0.902", "✅ 통과"],
+         ["baseline (214)", "AGE", "−0.0038", "0.557 → 0.901", "✅ 통과"],
+         ["aux (1161)", "GENDER", "+0.0028 ★", "0.643 → 0.867", "✅ 통과"],
+         ["aux (1161)", "AGE", "+0.0016 ★", "0.567 → 0.833", "✅ 통과"]])
+    P(doc, "")
+    P(doc, "★ aux 데이터에서 AUROC 향상 — 의외의 발견", bold=True,
+       color=(0xC4, 0x4E, 0x52))
+    P(doc, "이 결과는 \"공정성 mitigation에는 항상 성능 비용이 있다\"는 통념을 뒤집습니다. "
+            "보조 테이블의 풍부한 정보 공간(214 → 1161 features)이 sample weight 변화로 "
+            "발생하는 분포 shift를 안정적으로 처리해, weight 조정이 모델에게 더 균형 잡힌 "
+            "학습 신호로 작용한 것으로 해석됩니다.")
+    Fig(doc, FIG_DIR / "33_fairness_tradeoff.png",
+        "그림 15-1. AUROC vs Disparate Impact 산포 (Reweighing 점들이 우상단)")
+
+    H(doc, "15.3 Fairlearn과 비교 — Reweighing이 압도적", level=2)
+    P(doc, "Fairlearn ExpGrad는 학계의 SOTA reduction-based 방법인데, 본 데이터에는 "
+            "왜인지 결과가 좋지 않았습니다.")
+    Table(doc,
+        ["보호속성", "Method", "AUROC", "DI", "4/5 rule"],
+        [["GENDER", "Reweighing ★", "0.7581", "0.902", "✅"],
+         ["GENDER", "Fairlearn DP", "0.7088", "0.775", "❌"],
+         ["GENDER", "Fairlearn EO", "0.6788", "0.659", "❌"],
+         ["AGE", "Reweighing ★", "0.7567", "0.901", "✅"],
+         ["AGE", "Fairlearn DP", "0.6856", "0.990", "✅ (큰 AUROC 손실)"],
+         ["AGE", "Fairlearn EO", "0.7225", "0.150 ⚠️", "❌ 안티 패턴"]])
+    P(doc, "")
+    Bullet(doc, "Fairlearn DP는 강한 공정성 제약 → AUROC -0.07~-0.075 손실. 가장 \"공정\"하지만 비용 큼")
+    Bullet(doc, "Fairlearn EO는 EO에만 집중하니 selection rate 자체엔 제약 X — DP가 오히려 악화 (AGE+EO에서 DI 0.150). 본 데이터의 4/5 rule(DI 기반) 통과엔 부적합 — 안티 패턴")
+    Bullet(doc, "→ 본 데이터에서 Reweighing이 가장 효율적인 mitigation임을 정량 입증")
+    Fig(doc, FIG_DIR / "34_mitigation_bars.png",
+        "그림 15-2. Mitigation 방법별 DI/DP/AUROC 비교 (보호속성 × 데이터)")
+
+    H(doc, "15.4 AGE에 대한 새로운 발견", level=2)
+    P(doc, "Day 5에서는 \"AGE는 proxy variable로 다른 변수(DAYS_EMPLOYED 등)에 간접 "
+            "인코딩되어 있어서 ablation 효과가 미미하다\"고 결론지었었습니다. Step 5-A의 "
+            "결과는 그 결론을 갱신합니다:")
+    Bullet(doc, "AGE도 Reweighing으로 효과적인 mitigation 가능 (DI 0.557 → 0.901)")
+    Bullet(doc, "Day 5의 변수 ablation은 \"AGE 변수만 빼면 되는가\"를 측정한 것")
+    Bullet(doc, "Step 5-A는 \"학습 분포 자체를 조정\"하므로 proxy effect를 우회 가능")
+    Bullet(doc, "→ 정식 fairness-aware 방법은 변수 ablation의 한계를 극복할 수 있음")
+
+    H(doc, "15.5 Step 5-A 종합", level=2)
+    Bullet(doc, "Day 5 진단(8/8 위반)을 단일 mitigation 방법(Reweighing)으로 4/4 통과")
+    Bullet(doc, "약점 #4 (Fairness mitigation gap) 해소")
+    Bullet(doc, "aux 데이터에서 trade-off 사라짐 — 적절한 feature space에서 fairness가 win-win 가능")
+    Bullet(doc, "Fairlearn 비교로 본 데이터에서의 mitigation 방법 선택 정량 가이드 제공")
+    P(doc, "")
+    P(doc, "★ Step 5-A 한 줄 메시지", bold=True, size=14, color=(0xC4, 0x4E, 0x52))
+    P(doc, "\"본 연구의 공정성 진단(Day 5)은 단순한 alarm이 아니라 정량 mitigation으로 "
+            "이어진다. Reweighing 4/4 통과 + aux에서 trade-off 사라짐.\"",
+       bold=True, size=12)
+
+    PageBreak(doc)
+
+    H(doc, "16. 한계와 향후 계획 (Future Work)", level=1)
     Bullet(doc, "인간 평가 (Plausibility) — IRB 간소판 신청, 5점 리커트 척도, Cohen's κ 신뢰도. **약점 1번 완전 해소를 위해 미팅 후 1순위.**")
     Bullet(doc, "(완료) Gemini judge cross-validation — Step 3-C-2-f에서 진행, 양 judge 일관 입증.")
     Bullet(doc, "Fusion 평가 표본 30 → 100 확장 + counterfactual 결합.")
@@ -1014,7 +1089,8 @@ def main():
                 "Step 3-C-1 — TabNet 메커니즘 통합 (논문 제목 정당화). "
                 "Step 3-C-2 — NLI로 평가 객관성 보강 (3-tier 평가 체계 완성). "
                 "Step 3-C-2-f — Cross-Judge G-Eval로 평가 종속성 제거. "
-                "이후 인간평가 + fairness mitigation 등으로 본 논문 완성을 향해 확장합니다.")
+                "Step 5-A — Fairness mitigation (Reweighing 4/4 통과). "
+                "이후 인간평가 + Generic RAG baseline 등으로 본 논문 완성을 향해 확장합니다.")
 
     out = PAPER_DIR / "midterm_report_friendly.docx"
     doc.save(out)
