@@ -4,11 +4,11 @@
 
 본 연구가 제안하는 시스템은 정형 데이터로부터 부도 확률 예측과 자연어 설명 리포트를 동시에 생성하는 4단계 파이프라인 구조를 갖는다(그림 4-1). 4단계는 다음과 같다.
 
-1. **예측 단계**: XGBoost가 메인 예측 모델로 부도 확률 $p \in [0, 1]$ 을 산출한다. TabNet은 보조 모델로서 별도의 부도 확률 예측을 수행하면서, 동시에 인스턴스 수준의 어텐션 마스크 $M_{\text{att}}$ 를 추출한다.
+1. **예측 단계**: XGBoost가 메인 예측 모델로 부도 확률 p (0~1 범위)을 산출한다. TabNet은 보조 모델로서 별도의 부도 확률 예측을 수행하면서, 동시에 인스턴스 수준의 어텐션 마스크 M_att 를 추출한다.
 
-2. **해석 단계**: XGBoost의 예측에 대해 TreeSHAP [16]을 적용하여 인스턴스별 변수 SHAP 값 $\phi \in \mathbb{R}^n$ 을 산출하고, TabNet의 어텐션 마스크 $M_{\text{att}} \in [0, 1]^n$ 와 비교 가능한 형태로 정렬한다.
+2. **해석 단계**: XGBoost의 예측에 대해 TreeSHAP [16]을 적용하여 인스턴스별 변수 SHAP 값 phi (n차원 실수 벡터)을 산출하고, TabNet의 어텐션 마스크 M_att (값 범위 [0, 1]의 n차원 벡터)와 비교 가능한 형태로 정렬한다.
 
-3. **융합 컨텍스트 구성 단계**: SHAP 상위 $k_{\text{shap}}$ 변수와 어텐션 상위 $k_{\text{att}}$ 변수를 *동의 그룹(agreed)*, *SHAP 단독(shap_only)*, *어텐션 단독(attention_only)* 의 세 그룹으로 분류한 JSON 컨텍스트를 생성한다. 이 단계에서 보호 속성에 해당하는 변수는 명시적으로 마스킹된다.
+3. **융합 컨텍스트 구성 단계**: SHAP 상위 k_shap 변수와 어텐션 상위 k_att 변수를 *동의 그룹(agreed)*, *SHAP 단독(shap_only)*, *어텐션 단독(attention_only)* 의 세 그룹으로 분류한 JSON 컨텍스트를 생성한다. 이 단계에서 보호 속성에 해당하는 변수는 명시적으로 마스킹된다.
 
 4. **자연어 생성 단계**: 융합 컨텍스트를 LLM(Anthropic Claude 또는 Google Gemini)에 입력하여 한국어 자연어 설명 리포트를 생성한다. 생성 시점에는 hard constraint를 통해 컨텍스트 외부 정보의 인용을 금지하고, 5-section 구조의 출력 형식을 강제한다.
 
@@ -18,45 +18,45 @@
 
 ### 4.2.1 XGBoost (메인 예측 모델)
 
-XGBoost는 그래디언트 부스팅 트리의 정규화·병렬 학습 구현으로, 본 연구의 메인 예측 모델로 활용된다. 본 연구는 다음 hyperparameter로 학습한다: 트리 개수 500, 최대 깊이 6, 학습률 0.05, 부분 표본률(subsample) 0.9, 컬럼 부분 표본률(colsample_bytree) 0.9, 클래스 불균형 보정을 위한 `scale_pos_weight = (음성 표본 수) / (양성 표본 수)`. 평가 지표는 AUC를 사용하며 30 라운드의 조기 종료(early stopping)를 적용하여 검증 셋에서의 과적합을 방지한다. `tree_method='hist'`로 설정하여 대규모 데이터에서의 학습 속도를 향상시킨다.
+XGBoost는 그래디언트 부스팅 트리의 정규화·병렬 학습 구현으로, 본 연구의 메인 예측 모델로 활용된다. 본 연구는 다음 hyperparameter로 학습한다: 트리 개수 500, 최대 깊이 6, 학습률 0.05, 부분 표본률(subsample) 0.9, 컬럼 부분 표본률(colsample_bytree) 0.9, 클래스 불균형 보정을 위한 scale_pos_weight = (음성 표본 수) / (양성 표본 수). 평가 지표는 AUC를 사용하며 30 라운드의 조기 종료(early stopping)를 적용하여 검증 셋에서의 과적합을 방지한다. tree_method='hist' 옵션을 적용하여 대규모 데이터에서의 학습 속도를 향상시킨다.
 
 UCI German Credit과 같은 소표본 데이터셋의 경우 트리 개수를 300, 최대 깊이를 4로 줄여 과적합을 방지한다. 본 연구의 모든 무작위성은 SEED=42로 고정하여 재현 가능성을 확보한다.
 
 ### 4.2.2 TabNet (보조 + 어텐션 추출용)
 
-TabNet은 보조 예측 모델 역할과 함께 인스턴스 수준 어텐션 마스크를 제공하는 핵심 역할을 수행한다. 본 연구는 Optuna 라이브러리를 활용한 hyperparameter 탐색을 통해 다음과 같은 최적 구성을 도출하였다(Home Credit 기준): $n_d = 16$, $n_a = 16$, $n_{\text{steps}} = 3$, $\gamma = 1.156$, $\lambda_{\text{sparse}} = 1.31 \times 10^{-5}$, 학습률 0.0367, mask type entmax. 옵티마이저는 AdamW(weight decay $10^{-5}$), 학습률 스케줄러는 StepLR($\gamma = 0.7$, step size 10)을 사용한다.
+TabNet은 보조 예측 모델 역할과 함께 인스턴스 수준 어텐션 마스크를 제공하는 핵심 역할을 수행한다. 본 연구는 Optuna 라이브러리를 활용한 hyperparameter 탐색을 통해 다음과 같은 최적 구성을 도출하였다(Home Credit 기준): n_d = 16, n_a = 16, n_steps = 3, gamma = 1.156, lambda_sparse = 1.31 × 10⁻⁵, 학습률 0.0367, mask type entmax. 옵티마이저는 AdamW(weight decay 10⁻⁵), 학습률 스케줄러는 StepLR(gamma = 0.7, step size 10)을 사용한다.
 
-학습 시 `batch_size=1024`, `virtual_batch_size=128`(Home Credit), `max_epochs=60`, `patience=12`로 설정하며, GPU(NVIDIA GTX 1660 Ti, CUDA 12.1)에서 학습한다. UCI German Credit의 경우 데이터 규모에 맞춰 $n_d = n_a = 8$, $n_{\text{steps}} = 3$, `batch_size=128`, `virtual_batch_size=32`로 축소한다.
+학습 시 batch_size=1024, virtual_batch_size=128(Home Credit), max_epochs=60, patience=12로 설정하며, GPU(NVIDIA GTX 1660 Ti, CUDA 12.1)에서 학습한다. UCI German Credit의 경우 데이터 규모에 맞춰 n_d = n_a = 8, n_steps = 3, batch_size=128, virtual_batch_size=32로 축소한다.
 
 ### 4.2.3 5-fold Stratified CV 평가
 
 단일 train/test 분할에 의한 학습 결과의 변동성을 줄이기 위해 본 연구는 5-fold stratified cross-validation을 수행한다. 학습/검증 셋(전체 80%)을 5개 fold로 분할하고, 각 fold에서 4개를 학습에 1개를 검증에 사용한다. 매 fold마다 모델을 새로 학습한 후, 별도로 분리해 둔 테스트 셋(20%)에 대해 평가하여 mean ± std를 보고한다.
 
-검증 셋에서는 Youden's J 통계량(`J = TPR - FPR`을 최대화하는 임계값)으로 분류 임계값을 결정하고, 동일 임계값을 테스트 셋에 적용한다. 이러한 절차는 임계값 결정에 테스트 셋 정보가 누출되는 것을 방지한다.
+검증 셋에서는 Youden's J 통계량(J = TPR − FPR을 최대화하는 임계값)으로 분류 임계값을 결정하고, 동일 임계값을 테스트 셋에 적용한다. 이러한 절차는 임계값 결정에 테스트 셋 정보가 누출되는 것을 방지한다.
 
-평가 지표는 AUROC, AUPRC, KS 통계량(`KS = max|TPR - FPR|`), F1 점수, 정밀도(Precision), 재현율(Recall)의 6개를 보고한다. 본 연구는 신용평가의 클래스 불균형 특성상 AUROC뿐만 아니라 AUPRC와 KS를 함께 강조한다.
+평가 지표는 AUROC, AUPRC, KS 통계량(KS = max|TPR − FPR|), F1 점수, 정밀도(Precision), 재현율(Recall)의 6개를 보고한다. 본 연구는 신용평가의 클래스 불균형 특성상 AUROC뿐만 아니라 AUPRC와 KS를 함께 강조한다.
 
 ## 4.3 모델 해석
 
 ### 4.3.1 SHAP local (XGBoost)
 
-학습된 XGBoost 모델에 대해 인스턴스 수준의 SHAP 값을 산출한다. 본 연구는 SHAP 0.49 라이브러리와 XGBoost 3.x의 `base_score` 파싱 호환성 문제를 회피하기 위해, XGBoost의 native `pred_contribs=True` API를 직접 활용하는 사용자 정의 explainer(`_XgbNativeExplainer`)를 구현하였다. 이 우회 구현은 SHAP의 표준 인터페이스(`expected_value`, `shap_values`)를 동일하게 제공하면서, 두 라이브러리 버전 간의 간섭을 회피한다.
+학습된 XGBoost 모델에 대해 인스턴스 수준의 SHAP 값을 산출한다. 본 연구는 SHAP 0.49 라이브러리와 XGBoost 3.x의 base_score 파싱 호환성 문제를 회피하기 위해, XGBoost의 native pred_contribs=True API를 직접 활용하는 사용자 정의 explainer(_XgbNativeExplainer)를 구현하였다. 이 우회 구현은 SHAP의 표준 인터페이스(expected_value, shap_values)를 동일하게 제공하면서, 두 라이브러리 버전 간의 간섭을 회피한다.
 
-테스트 셋의 무작위 추출 100명에 대한 SHAP 값을 산출하고, 각 인스턴스별로 절대값 기준 상위 5개 변수($k_{\text{shap}} = 5$)와 그 부호(`sign_for_default ∈ {+, -}`)를 추출한다. `+` 부호는 해당 변수의 현재 값이 부도 가능성을 *높이는* 방향으로 작용함을, `-` 부호는 *낮추는* 방향으로 작용함을 의미한다.
+테스트 셋의 무작위 추출 100명에 대한 SHAP 값을 산출하고, 각 인스턴스별로 절대값 기준 상위 5개 변수(k_shap = 5)와 그 부호(sign_for_default ∈ {+, −})를 추출한다. + 부호는 해당 변수의 현재 값이 부도 가능성을 *높이는* 방향으로 작용함을, − 부호는 *낮추는* 방향으로 작용함을 의미한다.
 
-전역 해석 차원에서는 테스트 셋 5,000명에 대한 평균 절대 SHAP 값(mean(|SHAP|))을 산출하여 변수 중요도 랭킹을 도출한다. Home Credit 데이터셋에서 이 랭킹의 상위는 외부 신용평가 점수 3개(`EXT_SOURCE_2`, `EXT_SOURCE_3`, `EXT_SOURCE_1`)가 차지하며, German Credit에서는 체크 계좌 상태(`checking_status_no_checking`), 대출 기간(`duration`), 신용 이력(`credit_history_critical/other_existing_credit`) 등이 상위에 분포한다.
+전역 해석 차원에서는 테스트 셋 5,000명에 대한 평균 절대 SHAP 값(mean(|SHAP|))을 산출하여 변수 중요도 랭킹을 도출한다. Home Credit 데이터셋에서 이 랭킹의 상위는 외부 신용평가 점수 3개(EXT_SOURCE_2, EXT_SOURCE_3, EXT_SOURCE_1)가 차지하며, German Credit에서는 체크 계좌 상태(checking_status_no_checking), 대출 기간(duration), 신용 이력(credit_history_critical/other_existing_credit) 등이 상위에 분포한다.
 
 ### 4.3.2 TabNet 어텐션 (instance-level)
 
-학습된 TabNet 모델의 `clf.explain(X)` API를 호출하여 인스턴스별 어텐션 마스크 $M_{\text{explain}} \in [0, 1]^{n \times d}$ 를 추출한다. 이는 TabNet의 모든 step에서 산출된 어텐션 마스크의 합산이며, 본 연구에서는 각 인스턴스에 대해 어텐션 값이 큰 상위 5개 변수($k_{\text{att}} = 5$)를 추출한다.
+학습된 TabNet 모델의 clf.explain(X) API를 호출하여 인스턴스별 어텐션 마스크 M_explain (n × d 차원, 값 범위 [0, 1])를 추출한다. 이는 TabNet의 모든 step에서 산출된 어텐션 마스크의 합산이며, 본 연구에서는 각 인스턴스에 대해 어텐션 값이 큰 상위 5개 변수(k_att = 5)를 추출한다.
 
 SHAP과 달리 어텐션 마스크는 모두 비음수(non-negative) 값으로 구성되며, sparsemax 활성화 함수의 특성상 sparse한 분포를 보인다. 즉 모든 변수에 0이 아닌 값을 부여하는 SHAP과 달리, TabNet 어텐션은 일부 변수에만 0이 아닌 값을 부여한다. 이러한 차이는 두 해석 모델이 *다른 관점* 을 제공함을 시사한다.
 
 ### 4.3.3 SHAP × 어텐션 일관성 분석
 
-두 해석 모델의 일관성을 정량 평가하기 위해 변수별 평균 |SHAP|과 평균 어텐션의 Spearman 순위 상관계수($\rho$)와 Top-K 중복률(overlap)을 산출한다. Spearman 상관계수는 두 변수의 순위 일관성을 측정하며, Top-K 중복률은 SHAP 상위 K개와 어텐션 상위 K개 변수 집합의 교집합 비율을 측정한다.
+두 해석 모델의 일관성을 정량 평가하기 위해 변수별 평균 |SHAP|과 평균 어텐션의 Spearman 순위 상관계수(ρ)와 Top-K 중복률(overlap)을 산출한다. Spearman 상관계수는 두 변수의 순위 일관성을 측정하며, Top-K 중복률은 SHAP 상위 K개와 어텐션 상위 K개 변수 집합의 교집합 비율을 측정한다.
 
-Home Credit 데이터셋의 분석 결과 전체 변수에 대한 Spearman $\rho = 0.117$, Top-50 중복률은 약 0.32 수준으로 *약한 양의 상관과 중간 정도의 중복* 이 관찰된다. 같은 분석을 UCI German Credit에 적용한 결과 $\rho = 0.114$, Top-10 중복률 0.40, Top-20 중복률 0.35로 거의 동일한 패턴이 확인된다. 이는 *부분적 일관 + 부분적 상보* 의 패턴이 신용평가 도메인의 일반 패턴임을 시사하며, 본 연구가 두 해석 모델을 융합하는 정당성을 정량적으로 뒷받침한다.
+Home Credit 데이터셋의 분석 결과 전체 변수에 대한 Spearman ρ = 0.117, Top-50 중복률은 약 0.32 수준으로 *약한 양의 상관과 중간 정도의 중복* 이 관찰된다. 같은 분석을 UCI German Credit에 적용한 결과 ρ = 0.114, Top-10 중복률 0.40, Top-20 중복률 0.35로 거의 동일한 패턴이 확인된다. 이는 *부분적 일관 + 부분적 상보* 의 패턴이 신용평가 도메인의 일반 패턴임을 시사하며, 본 연구가 두 해석 모델을 융합하는 정당성을 정량적으로 뒷받침한다.
 
 ## 4.4 Agreement-aware Fusion Context (★ 본 연구의 핵심 기여)
 
@@ -64,24 +64,24 @@ Home Credit 데이터셋의 분석 결과 전체 변수에 대한 Spearman $\rho
 
 ### 4.4.1 3-그룹 분류
 
-각 인스턴스 $x$ 에 대해 SHAP 상위 $k$ 개 변수 집합을 $S_{\text{shap}}(x)$, 어텐션 상위 $k$ 개 변수 집합을 $S_{\text{att}}(x)$ 라 하면, 이 두 집합은 다음 세 그룹으로 분해된다.
+각 인스턴스 x 에 대해 SHAP 상위 k 개 변수 집합을 S_shap(x), 어텐션 상위 k 개 변수 집합을 S_att(x) 라 하면, 이 두 집합은 다음 세 그룹으로 분해된다.
 
-- **agreed**: $S_{\text{shap}}(x) \cap S_{\text{att}}(x)$
-- **shap_only**: $S_{\text{shap}}(x) \setminus S_{\text{att}}(x)$
-- **attention_only**: $S_{\text{att}}(x) \setminus S_{\text{shap}}(x)$
+- **agreed**: S_shap(x) ∩ S_att(x) (두 집합의 교집합)
+- **shap_only**: S_shap(x) − S_att(x) (SHAP에만 속하는 변수)
+- **attention_only**: S_att(x) − S_shap(x) (어텐션에만 속하는 변수)
 
 *agreed* 그룹은 두 해석 모델이 모두 주목한 변수들로, 본 연구는 이를 *가장 신뢰할 수 있는 강한 신호* 로 정의한다. *shap_only* 그룹은 SHAP의 부호 정보를 갖지만 어텐션이 주목하지 않은 변수들로 *보완 신호*, *attention_only* 그룹은 부호 정보 없이 어텐션이 주목한 변수들로 *추가 참고 정보* 로 분류된다.
 
-Home Credit 데이터셋의 100개 인스턴스에 대한 분석 결과 평균 *agreed* 그룹 크기는 2.12개로 ($k=5$ 기준 약 42%의 동의율), $n_{\text{agreed}}$ 분포는 0~3개 범위에서 변동하였으며 4개 이상의 동의는 발생하지 않았다. 이는 두 해석 모델이 부분적으로만 동의함을 정량적으로 보여준다.
+Home Credit 데이터셋의 100개 인스턴스에 대한 분석 결과 평균 *agreed* 그룹 크기는 2.12개로 (k=5 기준 약 42%의 동의율), n_agreed 분포는 0~3개 범위에서 변동하였으며 4개 이상의 동의는 발생하지 않았다. 이는 두 해석 모델이 부분적으로만 동의함을 정량적으로 보여준다.
 
 ### 4.4.2 보호 속성 마스킹
 
 LLM 기반 자연어 설명에서 차주에게 노출되는 텍스트에 보호 속성이 직접 언급되지 않도록, 본 연구는 컨텍스트 구성 단계에서 다음 변수들을 명시적으로 마스킹한다.
 
-- Home Credit: `CODE_GENDER`, `DAYS_BIRTH`(연령으로 변환되는 변수)
-- UCI German Credit: `age`, `personal_status_*`(성별 결합 변수), `GENDER_*`(분해된 성별 변수), `foreign_worker_*`
+- Home Credit: CODE_GENDER, DAYS_BIRTH(연령으로 변환되는 변수)
+- UCI German Credit: age, personal_status_*(성별 결합 변수), GENDER_*(분해된 성별 변수), foreign_worker_*
 
-이 변수들이 SHAP 또는 어텐션 상위에 포함되어 있는 경우, 컨텍스트의 모든 그룹에서 제거하여 LLM이 이 변수들을 인용할 가능성을 원천 차단한다. 마스킹된 변수 목록은 컨텍스트 메타데이터에 `masked_sensitive_features` 필드로 포함되어, 후속 평가에서 마스킹의 정상 작동을 검증할 수 있다.
+이 변수들이 SHAP 또는 어텐션 상위에 포함되어 있는 경우, 컨텍스트의 모든 그룹에서 제거하여 LLM이 이 변수들을 인용할 가능성을 원천 차단한다. 마스킹된 변수 목록은 컨텍스트 메타데이터에 masked_sensitive_features 필드로 포함되어, 후속 평가에서 마스킹의 정상 작동을 검증할 수 있다.
 
 ### 4.4.3 JSON 컨텍스트 구조
 
@@ -146,8 +146,8 @@ LLM 기반 자연어 설명에서 차주에게 노출되는 텍스트에 보호 
 
 본 연구는 단일 LLM에 대한 결과 의존성을 줄이기 위해 두 모델을 동시 활용한다.
 
-- **Anthropic Claude Sonnet 4.5** (`claude-sonnet-4-5`): 응답 안정성이 높고 hard constraint 준수율이 뛰어난 것으로 알려진 모델. 본 연구의 G-Eval judge로도 활용된다.
-- **Google Gemini 2.5 Flash** (`gemini-2.5-flash`): 응답 길이가 비교적 길고 풍부한 표현을 생성하는 모델. 본 연구에서는 Anthropic의 cross-LLM 비교 대상이 된다.
+- **Anthropic Claude Sonnet 4.5** (claude-sonnet-4-5): 응답 안정성이 높고 hard constraint 준수율이 뛰어난 것으로 알려진 모델. 본 연구의 G-Eval judge로도 활용된다.
+- **Google Gemini 2.5 Flash** (gemini-2.5-flash): 응답 길이가 비교적 길고 풍부한 표현을 생성하는 모델. 본 연구에서는 Anthropic의 cross-LLM 비교 대상이 된다.
 
 두 모델 모두 paid tier API를 활용하여 안정적인 응답 품질과 시간을 확보한다. 본 연구는 자유 추론 모드(no_shap)와 RAG 모드(generic_rag, shaponly, fusion) 모두에서 동일한 두 LLM을 사용함으로써, 모델 의존성을 통제하면서 모드 간 차이를 분리한다.
 
@@ -169,9 +169,9 @@ LLM 기반 자연어 설명에서 차주에게 노출되는 텍스트에 보호 
 
 본 연구는 사전 처리 공정성 보정 기법으로 Reweighing [9]을 적용한다. 이 기법은 학습 데이터의 각 인스턴스에 다음 가중치를 재할당한다.
 
-$$w(x) = \frac{P(s = s_x) \cdot P(y = y_x)}{P(s = s_x, y = y_x)}$$
+> **수식 4-1**: w(x) = [P(s = s_x) × P(y = y_x)] / P(s = s_x, y = y_x)
 
-여기서 $s$ 는 보호 속성, $y$ 는 결과 변수, $s_x$ 와 $y_x$ 는 인스턴스 $x$ 의 보호 속성과 결과 라벨이다. 이 가중치는 *통계적 독립성* 의 관점에서 보호 속성과 결과 변수가 독립이었을 경우의 기대값과 실제 관측치의 비율을 계산한 것이다. 학습 알고리즘은 이 가중치를 손실 함수의 sample weight으로 직접 활용한다.
+여기서 s 는 보호 속성, y 는 결과 변수, s_x 와 y_x 는 인스턴스 x 의 보호 속성과 결과 라벨이다. 이 가중치는 *통계적 독립성* 의 관점에서 보호 속성과 결과 변수가 독립이었을 경우의 기대값과 실제 관측치의 비율을 계산한 것이다. 학습 알고리즘은 이 가중치를 손실 함수의 sample weight으로 직접 활용한다.
 
 본 연구는 이를 두 보호 속성(GENDER, AGE)에 대해 두 데이터셋(baseline, aux)에 적용하여 총 4가지 조합 모두에서의 효과를 정량 평가한다. 평가 결과는 6장에서 상세히 보고한다.
 

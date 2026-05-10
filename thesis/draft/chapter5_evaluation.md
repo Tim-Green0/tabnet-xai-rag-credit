@@ -8,7 +8,7 @@
 
 - **AUROC** (Area Under the ROC Curve): 임계값 무관한 모델 분류 능력. 0.5는 무작위, 1.0은 완벽 분류를 의미한다.
 - **AUPRC** (Area Under the Precision-Recall Curve): 클래스 불균형 환경에서 양성 클래스의 검출 능력. AUROC 대비 부도와 같은 소수 클래스의 분류 품질을 더 민감하게 반영한다.
-- **KS** (Kolmogorov-Smirnov 통계량): $\text{KS} = \max_t |\text{TPR}(t) - \text{FPR}(t)|$ 로 정의되며, 신용평가 도메인의 전통 표준 지표이다.
+- **KS** (Kolmogorov-Smirnov 통계량): KS = max_t |TPR(t) − FPR(t)| 로 정의되며, 신용평가 도메인의 전통 표준 지표이다.
 - **F1, Precision, Recall**: 분류 임계값 적용 후의 표준 분류 지표.
 
 본 연구는 검증 셋에서 Youden's J 통계량(`J = TPR - FPR`)을 최대화하는 임계값을 결정한 후, 동일 임계값을 테스트 셋에 적용하여 모든 지표를 산출한다. 5-fold CV를 통해 매 fold의 mean ± std를 보고하며, fold별 지표 변동성을 함께 제공한다.
@@ -119,7 +119,7 @@ LLM-as-a-Judge 패러다임의 self-bias 문제를 완화하기 위해 본 연�
 
 Demographic Parity는 보호 속성 그룹 간 *양성 예측률* 의 차이로 정의된다.
 
-$$\text{DP\_diff} = \big| P(\hat{y}=1 | s=0) - P(\hat{y}=1 | s=1) \big|$$
+> **수식 5-1**: DP_diff = | P(ŷ=1 | s=0) − P(ŷ=1 | s=1) |
 
 본 지표는 그룹 간 모델 출력의 분포 차이를 직접 측정하지만, 양성 클래스의 정확도 차이를 반영하지 않는다는 한계가 있다.
 
@@ -127,7 +127,7 @@ $$\text{DP\_diff} = \big| P(\hat{y}=1 | s=0) - P(\hat{y}=1 | s=1) \big|$$
 
 Equal Opportunity는 양성 클래스에 한정한 *진양성률(TPR)* 의 그룹 간 차이로 정의된다.
 
-$$\text{EO\_diff} = \big| \text{TPR}(s=0) - \text{TPR}(s=1) \big|$$
+> **수식 5-2**: EO_diff = | TPR(s=0) − TPR(s=1) |
 
 이는 *부도 차주에게 정확히 부도를 예측하는* 능력의 그룹 간 차이를 반영하며, DP 대비 모델 정확도까지 고려한 공정성 지표이다.
 
@@ -135,7 +135,7 @@ $$\text{EO\_diff} = \big| \text{TPR}(s=0) - \text{TPR}(s=1) \big|$$
 
 Disparate Impact ratio는 EEOC의 4/5 규칙 [20]에 직접 대응하는 지표이다.
 
-$$\text{DI ratio} = \frac{\min(P(\hat{y}=1|s=0), P(\hat{y}=1|s=1))}{\max(P(\hat{y}=1|s=0), P(\hat{y}=1|s=1))}$$
+> **수식 5-3**: DI_ratio = min[ P(ŷ=1|s=0), P(ŷ=1|s=1) ] / max[ P(ŷ=1|s=0), P(ŷ=1|s=1) ]
 
 DI ratio가 0.8 이상이면 4/5 규칙을 *통과* 한 것으로 판단하며, 그 미만이면 *불리한 영향(adverse impact)* 으로 분류된다. 본 연구의 공정성 보정(Reweighing 등)은 모델 성능 손실을 최소화하면서 DI ratio를 0.8 이상으로 만드는 것을 목표로 한다.
 

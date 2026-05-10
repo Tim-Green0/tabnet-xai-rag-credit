@@ -103,12 +103,19 @@ def add_para(doc, text, size=11, bold=False, alignment=WD_ALIGN_PARAGRAPH.LEFT,
 
 
 def add_heading(doc, text, level=1):
-    """level=1: 큰제목 16pt, level=2: 중간제목 13pt, level=3: 11pt 진하게."""
+    """level=1: 큰제목 16pt, level=2: 중간제목 13pt, level=3: 11pt 진하게.
+
+    Word의 Heading 1/2/3 스타일을 적용하여 [참조 → 목차]로 자동 갱신 가능하게 한다.
+    Heading 스타일을 적용한 후 한국어 폰트와 사이즈를 추가로 설정한다.
+    """
     sizes = {1: 16, 2: 13, 3: 11}
     size = sizes.get(level, 11)
-    p = doc.add_paragraph()
+    style_name = f"Heading {level}"
+    p = doc.add_paragraph(style=style_name)
     run = p.add_run(text)
     set_run(run, size_pt=size, bold=True)
+    # Heading 스타일의 검은색 강제 (기본은 파란색일 수 있음)
+    run.font.color.rgb = RGBColor(0, 0, 0)
     if level == 1:
         set_paragraph_format(p, alignment=WD_ALIGN_PARAGRAPH.CENTER,
                              space_before=24, space_after=18)
@@ -119,6 +126,32 @@ def add_heading(doc, text, level=1):
         set_paragraph_format(p, alignment=WD_ALIGN_PARAGRAPH.LEFT,
                              space_before=12, space_after=6)
     return p
+
+
+def add_image(doc, image_path: str, caption: str, width_cm: float = 14.0):
+    """Markdown ![caption](path) → docx 이미지 + 캡션."""
+    from pathlib import Path as _P
+    p_img = _P(image_path)
+    if not p_img.is_absolute():
+        # build 스크립트 기준 상대 경로 → 프로젝트 루트 기준
+        p_img = (Path(__file__).resolve().parent / image_path).resolve()
+    if not p_img.exists():
+        # 그림 없는 경우 placeholder 텍스트
+        add_para(doc, f"[그림 누락: {image_path}]", size=10,
+                 alignment=WD_ALIGN_PARAGRAPH.CENTER, space_after=0)
+        add_para(doc, caption, size=10, bold=True,
+                 alignment=WD_ALIGN_PARAGRAPH.CENTER, space_after=12)
+        return
+    # 이미지 삽입 (단락 + 중앙 정렬)
+    p = doc.add_paragraph()
+    p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    run = p.add_run()
+    run.add_picture(str(p_img), width=Cm(width_cm))
+    set_paragraph_format(p, alignment=WD_ALIGN_PARAGRAPH.CENTER,
+                         space_before=12, space_after=0, line_spacing=1.0)
+    # 캡션 (10pt, 진하게, 중앙)
+    add_para(doc, caption, size=10, bold=True,
+             alignment=WD_ALIGN_PARAGRAPH.CENTER, space_after=12)
 
 
 def add_page_break(doc):
@@ -319,8 +352,27 @@ def parse_chapter_markdown(doc, md_text: str):
             add_markdown_table(doc, block)
             i = j
             continue
-        # 인용 (>) skip the whole quote block
+        # 이미지 ![caption](path)
+        img_match = re.match(r"!\[([^\]]+)\]\(([^)]+)\)", line)
+        if img_match:
+            caption, img_path = img_match.group(1), img_match.group(2)
+            add_image(doc, img_path, caption)
+            i += 1
+            continue
+        # 인용 (>) — 수식 블록 ("> **수식 N-N**: ...") 은 박스로 처리
         if line.startswith("> "):
+            quote_text = line[2:].strip()
+            # **bold** 마크 제거
+            quote_text = re.sub(r"\*\*(.+?)\*\*", r"\1", quote_text)
+            p = doc.add_paragraph()
+            p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+            run = p.add_run(quote_text)
+            set_run(run, size_pt=11, bold=False)
+            run.italic = True
+            set_paragraph_format(p, line_spacing=1.5,
+                                 alignment=WD_ALIGN_PARAGRAPH.CENTER,
+                                 space_before=6, space_after=6,
+                                 first_indent=0)
             i += 1
             continue
         # 일반 단락 (markdown 강조 제거)

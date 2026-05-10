@@ -20,11 +20,11 @@
 
 ### 2.3.1 SHAP
 
-SHAP(SHapley Additive exPlanations) [6]은 게임 이론의 Shapley 값을 머신러닝 모델 해석에 적용한 기법으로, 각 변수가 모델의 예측 값에 기여한 양을 가산적(additive) 형태로 분해한다. 단일 인스턴스의 예측 $f(x)$ 는 다음과 같이 표현된다.
+SHAP(SHapley Additive exPlanations) [6]은 게임 이론의 Shapley 값을 머신러닝 모델 해석에 적용한 기법으로, 각 변수가 모델의 예측 값에 기여한 양을 가산적(additive) 형태로 분해한다. 단일 인스턴스의 예측 f(x) 는 다음과 같이 표현된다.
 
-$$f(x) = \phi_0 + \sum_{i=1}^{n} \phi_i$$
+> **수식 2-1**: f(x) = phi_0 + sum_{i=1 to n} phi_i
 
-여기서 $\phi_0$ 은 기준 예측값(base value)이며 $\phi_i$ 는 각 변수의 SHAP 기여도이다. SHAP의 핵심 강점은 가산성(local accuracy) 외에도 일관성(consistency)과 결측 값 처리(missingness) 등 여러 바람직한 성질을 동시에 만족한다는 점에 있다. 특히 트리 기반 모델에는 효율적인 다항 시간 알고리즘인 TreeSHAP이 제안되어 [16] 대규모 데이터에서도 합리적인 시간에 SHAP 값을 산출할 수 있다.
+여기서 phi_0 은 기준 예측값(base value)이며 phi_i 는 각 변수의 SHAP 기여도이다. SHAP의 핵심 강점은 가산성(local accuracy) 외에도 일관성(consistency)과 결측 값 처리(missingness) 등 여러 바람직한 성질을 동시에 만족한다는 점에 있다. 특히 트리 기반 모델에는 효율적인 다항 시간 알고리즘인 TreeSHAP이 제안되어 [16] 대규모 데이터에서도 합리적인 시간에 SHAP 값을 산출할 수 있다.
 
 신용평가 분야에서 SHAP은 변수별 기여도의 절댓값 평균(mean(|SHAP|))을 통한 *전역 해석(global interpretation)* 과 단일 인스턴스에 대한 *지역 해석(local interpretation)* 양 측면에서 활발히 활용되고 있다. 본 연구에서는 SHAP local 값을 LLM 컨텍스트의 핵심 정보원으로 활용하며, 특히 부호(sign) 정보를 통해 *부도 가능성을 높이는/낮추는 요인* 의 구분을 자연어로 표현한다.
 
@@ -62,7 +62,7 @@ LLM 평가에서 자주 활용되는 *G-Eval* [19]은 평가용 프롬프트를 
 
 신용평가는 성별·연령·인종 등 보호 속성(protected attribute)에 대하여 차별적 영향이 없도록 평가되어야 한다. 미국 EEOC(Equal Employment Opportunity Commission)는 1978년 *4/5 규칙(80% rule)* [20]을 제시하였는데, 이는 보호 속성 그룹 간 합격률 비율(또는 본 연구에서는 부도 예측 비율)이 0.8 미만일 경우 *불리한 영향(adverse impact)* 으로 판단하는 규제 기준이다. 정량 지표로는 *Disparate Impact ratio*(DI ratio)가 활용되며 다음과 같이 정의된다.
 
-$$\text{DI} = \frac{P(\hat{y}=1 | \text{protected})}{P(\hat{y}=1 | \text{non-protected})}$$
+> **수식 2-2**: DI = P(ŷ=1 | protected) / P(ŷ=1 | non-protected)
 
 DI 값이 [0.8, 1.25] 범위 내에 있으면 4/5 규칙을 통과한 것으로 간주된다.
 
@@ -74,9 +74,9 @@ DI 값이 [0.8, 1.25] 범위 내에 있으면 4/5 규칙을 통과한 것으로 
 
 Kamiran-Calders Reweighing [9]은 대표적인 사전 처리 기법으로, 학습 데이터의 각 인스턴스에 가중치를 재할당하여 보호 속성과 결과 변수 간의 통계적 독립성을 회복시킨다. 이 가중치는 다음 식으로 산출된다.
 
-$$w(x) = \frac{P(s) \cdot P(y)}{P(s, y)}$$
+> **수식 2-3**: w(x) = [P(s) × P(y)] / P(s, y)
 
-여기서 $s$ 는 보호 속성, $y$ 는 결과 변수이다. Reweighing은 학습 알고리즘의 변경 없이 단순히 가중치만을 재계산하므로 적용이 간단하면서도 강력한 효과를 보인다.
+여기서 s 는 보호 속성, y 는 결과 변수이다. Reweighing은 학습 알고리즘의 변경 없이 단순히 가중치만을 재계산하므로 적용이 간단하면서도 강력한 효과를 보인다.
 
 도중 처리 기법으로는 Microsoft의 Fairlearn [22] 라이브러리가 제공하는 *Exponentiated Gradient* 가 있다. 이는 라그랑주 형태의 공정성 제약을 학습 알고리즘에 직접 통합하여 보호 속성 간 결과 분포의 편차를 명시적으로 최소화하는 방식이다. 본 연구에서는 사전 처리(Reweighing)와 도중 처리(Fairlearn DP·EO) 모두를 비교 적용하여, 신용평가 도메인에서 어느 기법이 가장 효과적인지 정량 평가한다.
 

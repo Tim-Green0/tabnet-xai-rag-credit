@@ -50,11 +50,13 @@ UCI German Credit 데이터셋에서의 5-fold CV 결과는 표 6-2와 같다.
 
 Home Credit 데이터셋의 테스트 셋 5,000명에 대한 평균 |SHAP|과 평균 어텐션의 Spearman 순위 상관계수는 **ρ = 0.117** (p < 0.05)로 *약한 양의 상관* 이 관찰되었다. Top-50 변수 집합의 중복률은 약 0.32 수준이며, Top-K 분석에서 K가 증가할수록 중복률이 감소하는 경향이 확인되었다(Top-10 약 0.30, Top-20 약 0.30, Top-50 0.32). 흥미롭게도 Top-50 부분에서는 ρ가 -0.195로 *음의 상관* 으로 전환되어, 두 해석 모델이 상위 변수에서는 *상보적* 관계를 보이는 패턴이 관찰되었다.
 
+![그림 6-1. Home Credit XGBoost SHAP global importance와 TabNet 평균 어텐션의 산점도 (Spearman ρ=0.117)](../../figures/16_attention_vs_shap_scatter.png)
+
 이는 SHAP과 어텐션이 *전체 변수에서는 약한 양의 상관* 을 보이되 *상위 핵심 변수에서는 서로 다른 변수를 강조* 하는 특성이 있음을 의미한다. 즉 본 연구가 두 해석 모델을 *agreed / shap_only / attention_only* 의 3그룹으로 분해하여 활용하는 동기가 정량적으로 입증된다.
 
 ### 6.2.2 인스턴스 수준 동의 통계
 
-Home Credit 100명에 대한 인스턴스별 동의 그룹 크기 분석 결과 평균 $n_{\text{agreed}} = 2.12$ ($k=5$ 기준 약 42%), 분포는 0~3개 범위에서 변동하였으며 4개 이상의 동의는 발생하지 않았다. 즉 SHAP top-5와 어텐션 top-5의 교집합은 평균적으로 약 2개이며, 나머지 약 6개의 변수는 두 해석 모델 중 하나에서만 강조된다. 이는 LLM 컨텍스트에 *agreement 라벨* 을 명시하는 것이 의사결정의 신뢰도 차이를 직접적으로 LLM에 전달할 수 있음을 시사한다.
+Home Credit 100명에 대한 인스턴스별 동의 그룹 크기 분석 결과 평균 n_agreed = 2.12 (k=5 기준 약 42%), 분포는 0~3개 범위에서 변동하였으며 4개 이상의 동의는 발생하지 않았다. 즉 SHAP top-5와 어텐션 top-5의 교집합은 평균적으로 약 2개이며, 나머지 약 6개의 변수는 두 해석 모델 중 하나에서만 강조된다. 이는 LLM 컨텍스트에 *agreement 라벨* 을 명시하는 것이 의사결정의 신뢰도 차이를 직접적으로 LLM에 전달할 수 있음을 시사한다.
 
 ## 6.3 4-mode 자연어 설명 비교
 
@@ -92,6 +94,8 @@ Home Credit 데이터셋의 4-mode × 2 LLM 60건 모두에서 **환각률 0%** 
 셋째, **generic_rag의 한계**이다. generic_rag는 일반 도메인 지식 chunks를 추가했음에도 entailment가 0.364, 0.370 수준으로 no_shap(0.301, 0.398) 대비 큰 향상을 보이지 않는다. 이는 일반 도메인 지식이 인스턴스별 fact-grounding을 직접 제공하지는 않음을 시사한다.
 
 넷째, **LLM 모델 의존성의 작음**이다. Claude와 Gemini의 fusion entailment가 0.625, 0.624로 거의 동일하여, 본 결과가 단일 LLM에 의존한 것이 아닌 *모드 차원의 효과* 임을 강하게 뒷받침한다.
+
+![그림 6-2. Home Credit 4-mode 자연어 설명 비교 (NLI Entailment / G-Eval Completeness / Value Match Rate)](../../figures/35_generic_rag_3way.png)
 
 ### 6.3.4 Value Match Rate
 
@@ -137,6 +141,8 @@ G-Eval 결과의 핵심 발견은 두 가지이다.
 
 ## 6.4 Persona 평가 결과
 
+![그림 6-3. Cross-judge G-Eval 결과 — Anthropic judge와 Gemini judge의 4차원 평가 점수 비교](../../figures/32_cross_judge_geval.png)
+
 ### 6.4.1 페르소나별 trade-off
 
 표 6-6은 본 연구의 Pilot Persona 평가 결과(15 instances × 4 modes × 2 LLM × 3 personas, 약 276건 유효 평가)에서 *Customer clarity* 차원의 평균 점수를 보여준다.
@@ -160,6 +166,8 @@ G-Eval 결과의 핵심 발견은 두 가지이다.
 
 이러한 trade-off는 본 연구의 핵심 메시지를 *"fusion이 모든 차원에서 1위"* 가 아니라 *"응용 시나리오에 따른 mode 선택 trade-off"* 로 정교화하는 근거가 된다.
 
+![그림 6-4. 3-Persona 평가 결과 — Credit Expert / Customer / Regulator 관점별 4-mode 비교 (5점 만점)](../../figures/36_human_proxy_personas.png)
+
 ## 6.5 공정성 mitigation 결과
 
 ### 6.5.1 Reweighing 4/4 통과
@@ -181,6 +189,8 @@ G-Eval 결과의 핵심 발견은 두 가지이다.
 
 Reweighing은 4가지 조합 모두에서 **4/5 규칙을 통과** 하면서 AUROC 손실은 baseline 대비 0.004 이내로 유지된다. 특히 aux 데이터셋에서는 GENDER에 대해 AUROC가 오히려 +0.003 향상되어, 공정성 보정이 모델 성능 손실 없이 가능함을 입증한다.
 
+![그림 6-5. Reweighing 공정성 보정 결과 — 4가지 보호 속성 × 데이터셋 조합에서 AUROC와 Disparate Impact ratio의 변화](../../figures/34_mitigation_bars.png)
+
 ### 6.5.2 Fairlearn ExpGrad 비교
 
 비교 baseline으로 적용한 Fairlearn ExpGrad의 결과는 다음과 같다. ExpGrad+DP는 baseline 대비 AUROC -0.05 수준의 큰 손실을 보였으나, 4/5 규칙 통과 여부는 case-by-case였다. ExpGrad+EO는 EO 제약을 직접 보장하지만 DP 기반의 4/5 규칙은 본질적으로 보장하지 않으므로, AGE 보호 속성에서는 DI ratio가 0.150 수준으로 *오히려 악화* 되는 경우가 관찰되었다.
@@ -195,7 +205,7 @@ Reweighing은 4가지 조합 모두에서 **4/5 규칙을 통과** 하면서 AUR
 
 ### 6.6.1 SHAP × 어텐션 일관성의 데이터셋 간 일관
 
-UCI German Credit 데이터셋에서 동일한 분석을 수행한 결과 Spearman $\rho = 0.114$, Top-10 중복률 0.40, Top-20 중복률 0.35로 산출되었다. 이는 Home Credit의 $\rho = 0.117$과 거의 동일한 수치로, *SHAP × 어텐션의 약한 양의 상관* 패턴이 두 데이터셋에서 일관됨을 보여준다.
+UCI German Credit 데이터셋에서 동일한 분석을 수행한 결과 Spearman ρ = 0.114, Top-10 중복률 0.40, Top-20 중복률 0.35로 산출되었다. 이는 Home Credit의 ρ = 0.117과 거의 동일한 수치로, *SHAP × 어텐션의 약한 양의 상관* 패턴이 두 데이터셋에서 일관됨을 보여준다.
 
 이러한 ρ 값의 일관성은 본 연구의 fusion 메커니즘이 *데이터셋 특수 패턴* 이 아닌 *신용평가 도메인의 일반 패턴* 에 기반함을 강력히 뒷받침한다.
 
@@ -250,6 +260,8 @@ G-Eval Completeness에서는 Home Credit과 UCI German Credit이 정반대의 1�
 | Reweighing 4/5 통과 | 4/4 | (Home Credit만 적용) | 보장 |
 
 **ρ ≈ 0.11** 의 일관성과 **NLI 단조 증가 패턴** 의 일관성은 본 연구의 fusion 메커니즘이 *데이터셋 일반화 가능* 함을 강력히 뒷받침한다. 동시에 G-Eval Completeness의 데이터셋별 차이는 *응용 시나리오 + 데이터 복잡도* 두 차원에 따른 mode 선택 trade-off의 정량 입증으로 해석된다.
+
+![그림 6-6. Home Credit vs UCI German Credit 일반화 검증 — 4-mode × 양 데이터셋 핵심 지표 비교](../../figures/41_generalization.png)
 
 ## 6.7 분석 결과 종합
 
