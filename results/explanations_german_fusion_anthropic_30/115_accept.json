@@ -1,0 +1,115 @@
+{
+  "sample_idx": 115,
+  "decision": "APPROVE",
+  "true_label": 0,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "mode": "fusion",
+  "elapsed_sec": 13.68,
+  "explanation": "# 신용 평가 결과 안내\n\n**고객님 안녕하세요.**  \n신청하신 신용 평가 결과를 다음과 같이 안내드립니다.\n\n---\n\n## [결정 요약]\n\n**승인** 되었습니다. 부도 가능성은 1.37%로 평가되어 승인 기준(45.62%)을 충족하였습니다.  \nXGBoost 위험 분석과 TabNet 주목도 분석 모두 1개 항목에서 일치된 신호를 확인했습니다.\n\n---\n\n## [긍정적으로 평가된 요인]\n\n1. **체크 계좌 없음 (해당)** — 두 모델 모두 주목한 강한 신호로, 신용 리스크를 낮추는 요인으로 작용했습니다.\n\n2. **중고차 (해당)** — 대출 목적이 중고차 구매로 확인되어 상환 가능성을 긍정적으로 평가했습니다.\n\n3. **재직 4~7년 (해당)** — 현재 직장에서의 안정적인 근속 기간이 신용도 향상에 기여했습니다.\n\n---\n\n## [개선 권고]\n\n- **대출 금액(2,346 DM)**은 비교적 낮은 수준으로 긍정 평가되었습니다. 향후 더 큰 금액이 필요하실 경우, 현재 대출의 성실한 상환 이력을 쌓으시면 유리합니다.\n\n- 신용 이력이 \"critical (위험)\"으로 기록되어 있으나 이번 평가에서는 긍정 요인으로 작용했습니다. 지속적인 상환 이력 관리로 신용 등급 개선을 권장드립니다.\n\n---\n\n## [면책 고지]\n\n본 평가는 제출하신 정보와 통계 모델 분석을 바탕으로 한 결과이며, 미래 상환 능력을 보장하지 않습니다. 신용 거래 시 본인의 상환 능력을 신중히 고려하시기 바랍니다.",
+  "usage_metadata": {
+    "input_tokens": 1542,
+    "output_tokens": 670,
+    "total_token_count": 2212
+  },
+  "context_sent": {
+    "sample_idx": 115,
+    "decision": "APPROVE",
+    "default_probability": 0.0137,
+    "threshold": 0.4562,
+    "agreed_drivers": [
+      {
+        "feature": "체크 계좌 없음",
+        "feature_raw": "checking_status_no_checking",
+        "value": "해당",
+        "rank": 1,
+        "group": "agreed",
+        "shap": -1.2423,
+        "sign_for_default": "-",
+        "attention": 0.203349
+      }
+    ],
+    "shap_only_drivers": [
+      {
+        "feature": "중고차",
+        "feature_raw": "purpose_used_car",
+        "value": "해당",
+        "rank": 1,
+        "group": "shap_only",
+        "shap": -0.9033,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "재직 4~7년",
+        "feature_raw": "employment_4_=X_7",
+        "value": "해당",
+        "rank": 2,
+        "group": "shap_only",
+        "shap": -0.6532,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "신용 이력 critical (위험)",
+        "feature_raw": "credit_history_critical/other_existing_credit",
+        "value": "해당",
+        "rank": 3,
+        "group": "shap_only",
+        "shap": -0.6069,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "대출 금액(DM)",
+        "feature_raw": "credit_amount",
+        "value": "2,346 DM",
+        "rank": 4,
+        "group": "shap_only",
+        "shap": -0.4802,
+        "sign_for_default": "-"
+      }
+    ],
+    "attention_only_drivers": [
+      {
+        "feature": "교육",
+        "feature_raw": "purpose_education",
+        "value": "비해당",
+        "rank": 1,
+        "group": "attention_only",
+        "attention": 0.267764
+      },
+      {
+        "feature": "잔액 < 0 DM",
+        "feature_raw": "checking_status__0",
+        "value": "비해당",
+        "rank": 2,
+        "group": "attention_only",
+        "attention": 0.2534
+      },
+      {
+        "feature": "기타 지불 계획 없음",
+        "feature_raw": "other_payment_plans_none",
+        "value": "비해당",
+        "rank": 3,
+        "group": "attention_only",
+        "attention": 0.201554
+      },
+      {
+        "feature": "부동산",
+        "feature_raw": "property_magnitude_real_estate",
+        "value": "비해당",
+        "rank": 4,
+        "group": "attention_only",
+        "attention": 0.159393
+      }
+    ],
+    "model_predict": "XGBoost",
+    "model_explain": [
+      "SHAP_xgb_local",
+      "TabNet_attention_local"
+    ],
+    "explanation_policy": "fact_only_with_agreement_labels",
+    "n_agreed": 1,
+    "n_shap_only": 4,
+    "n_attention_only": 4
+  },
+  "context_type": "german_fusion"
+}

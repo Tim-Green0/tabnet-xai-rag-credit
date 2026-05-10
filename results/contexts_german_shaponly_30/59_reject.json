@@ -1,0 +1,48 @@
+{
+  "sample_idx": 59,
+  "default_probability": 0.8176,
+  "threshold": 0.4562,
+  "decision": "REJECT",
+  "top_drivers_for_default": [
+    {
+      "feature": "체크 계좌 없음",
+      "feature_raw": "checking_status_no_checking",
+      "value": "비해당",
+      "shap": 0.4891,
+      "rank": 1
+    },
+    {
+      "feature": "분할 상환 비율(%)",
+      "feature_raw": "installment_commitment",
+      "value": "4.0%",
+      "shap": 0.308,
+      "rank": 2
+    },
+    {
+      "feature": "교육",
+      "feature_raw": "purpose_education",
+      "value": "해당",
+      "shap": 0.2756,
+      "rank": 3
+    },
+    {
+      "feature": "대출 기간(개월)",
+      "feature_raw": "duration",
+      "value": "60개월",
+      "shap": 0.2443,
+      "rank": 4
+    },
+    {
+      "feature": "저축 < 100 DM",
+      "feature_raw": "savings_status__100",
+      "value": "해당",
+      "shap": 0.2391,
+      "rank": 5
+    }
+  ],
+  "top_drivers_against_default": [],
+  "fairness_flags": [],
+  "model": "XGBoost + SHAP",
+  "explanation_policy": "fact_only_shap_top5",
+  "_meta_true_label": 1
+}

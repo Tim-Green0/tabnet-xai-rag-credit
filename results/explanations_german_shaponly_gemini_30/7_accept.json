@@ -1,0 +1,63 @@
+{
+  "sample_idx": 7,
+  "decision": "APPROVE",
+  "true_label": 0,
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "mode": "shaponly",
+  "elapsed_sec": 13.6,
+  "explanation": "[결정 요약]\n고객님의 신용 평가 결과, 대출 승인이 결정되었습니다.\n\n[긍정적으로 평가된 요인]\n고객님의 대출 기간이 4개월로 짧은 점이 부도 가능성을 낮추는 데 긍정적인 요인으로 평가되었습니다.\n체크 계좌를 보유하고 있지 않은 점 또한 긍정적으로 작용했습니다.\n현재 재직 기간이 4~7년이라는 점도 부도 가능성을 낮추는 데 긍정적인 영향을 주었습니다.\n\n[개선 권고]\n현재 대출 기간 4개월과 같이 비교적 짧은 기간으로 대출을 계획하시는 것이 신용도 관리에 계속해서 긍정적으로 작용할 수 있습니다.\n재직 기간 4~7년 등 안정적인 재직 상태를 유지하시는 것이 신용 관리에 지속적으로 도움이 될 수 있습니다.\n\n[면책 고지]\n본 설명은 고객님의 현재 신용 평가 결과를 기반으로 하며, 미래 결과를 단정하지 않습니다. 신용 평가는 다양한 요인에 따라 변동될 수 있습니다.",
+  "usage_metadata": {
+    "prompt_token_count": 742,
+    "candidates_token_count": 236,
+    "total_token_count": 3705
+  },
+  "context_sent": {
+    "sample_idx": 7,
+    "default_probability": 0.0151,
+    "threshold": 0.4562,
+    "decision": "APPROVE",
+    "top_drivers_for_default": [],
+    "top_drivers_against_default": [
+      {
+        "feature": "대출 기간(개월)",
+        "feature_raw": "duration",
+        "value": "4개월",
+        "shap": -0.9395,
+        "rank": 1
+      },
+      {
+        "feature": "체크 계좌 없음",
+        "feature_raw": "checking_status_no_checking",
+        "value": "해당",
+        "shap": -0.8403,
+        "rank": 2
+      },
+      {
+        "feature": "재직 4~7년",
+        "feature_raw": "employment_4_=X_7",
+        "value": "해당",
+        "shap": -0.6698,
+        "rank": 3
+      },
+      {
+        "feature": "신용 이력 critical (위험)",
+        "feature_raw": "credit_history_critical/other_existing_credit",
+        "value": "해당",
+        "shap": -0.5077,
+        "rank": 4
+      },
+      {
+        "feature": "대출 금액(DM)",
+        "feature_raw": "credit_amount",
+        "value": "1,544 DM",
+        "shap": -0.3572,
+        "rank": 5
+      }
+    ],
+    "fairness_flags": [],
+    "model": "XGBoost + SHAP",
+    "explanation_policy": "fact_only_shap_top5"
+  },
+  "context_type": "german_shaponly"
+}

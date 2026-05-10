@@ -1,0 +1,92 @@
+{
+  "sample_idx": 148,
+  "decision": "REJECT",
+  "default_probability": 0.9084,
+  "threshold": 0.4562,
+  "agreed_drivers": [
+    {
+      "feature": "체크 계좌 없음",
+      "feature_raw": "checking_status_no_checking",
+      "value": "비해당",
+      "rank": 1,
+      "group": "agreed",
+      "shap": 0.4291,
+      "sign_for_default": "+",
+      "attention": 0.210825
+    }
+  ],
+  "shap_only_drivers": [
+    {
+      "feature": "대출 기간(개월)",
+      "feature_raw": "duration",
+      "value": "48개월",
+      "rank": 1,
+      "group": "shap_only",
+      "shap": 0.3983,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "잔액 < 0 DM",
+      "feature_raw": "checking_status__0",
+      "value": "해당",
+      "rank": 2,
+      "group": "shap_only",
+      "shap": 0.3208,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "임대",
+      "feature_raw": "housing_rent",
+      "value": "해당",
+      "rank": 3,
+      "group": "shap_only",
+      "shap": 0.284,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "분할 상환 비율(%)",
+      "feature_raw": "installment_commitment",
+      "value": "3.0%",
+      "rank": 4,
+      "group": "shap_only",
+      "shap": 0.2605,
+      "sign_for_default": "+"
+    }
+  ],
+  "attention_only_drivers": [
+    {
+      "feature": "저축 정보 없음",
+      "feature_raw": "savings_status_no_known_savings",
+      "value": "비해당",
+      "rank": 1,
+      "group": "attention_only",
+      "attention": 0.376233
+    },
+    {
+      "feature": "부동산",
+      "feature_raw": "property_magnitude_real_estate",
+      "value": "비해당",
+      "rank": 2,
+      "group": "attention_only",
+      "attention": 0.18474
+    },
+    {
+      "feature": "대출 금액(DM)",
+      "feature_raw": "credit_amount",
+      "value": "0 DM",
+      "rank": 3,
+      "group": "attention_only",
+      "attention": 0.178286
+    }
+  ],
+  "model_predict": "XGBoost",
+  "model_explain": [
+    "SHAP_xgb_local",
+    "TabNet_attention_local"
+  ],
+  "explanation_policy": "fact_only_with_agreement_labels",
+  "n_agreed": 1,
+  "n_shap_only": 4,
+  "n_attention_only": 3,
+  "_meta_true_label": 1
+}

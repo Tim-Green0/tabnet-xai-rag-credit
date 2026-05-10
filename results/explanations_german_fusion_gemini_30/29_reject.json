@@ -1,0 +1,115 @@
+{
+  "sample_idx": 29,
+  "decision": "REJECT",
+  "true_label": 1,
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "mode": "fusion",
+  "elapsed_sec": 21.25,
+  "explanation": "고객님, 안녕하세요. 고객님의 신용 평가 결과에 대해 친절하게 설명해 드리겠습니다.\n\n---\n[결정 요약]\n신청하신 대출은 현재 평가 결과상 거절되었습니다. 고객님의 부도 확률은 0.8177로, 당사 기준치인 0.4562를 상회했습니다. 이번 평가에서는 두 가지 평가 모델(XGBoost, TabNet)이 공통으로 주목한 한 가지 요인이 있었습니다.\n\n[주요 거절 사유]\n1.  '체크 계좌 없음' 항목이 '비해당'으로 나타난 점이 부도 가능성을 높이는 요인으로 분석되었습니다.\n2.  28개월이라는 대출 기간이 부도 가능성을 높이는 요인으로 작용했습니다.\n3.  체크 계좌 잔액이 0 DM 미만이신 점도 부도 가능성을 높이는 요인으로 평가되었습니다.\n\n[긍정적으로 평가된 요인]\n1.  신청하신 대출 금액 4,006 DM은 부도 가능성을 낮추는 긍정적인 요인으로 평가되었습니다.\n\n[개선 권고]\n1.  체크 계좌 잔액을 일정 수준 이상으로 유지하시는 것이 도움이 될 수 있습니다.\n2.  저축 금액을 100 DM 이상으로 늘리는 것을 고려해볼 수 있습니다.\n3.  다음 신청 시 대출 기간을 조정하는 것을 고려해볼 수 있습니다.\n\n[면책 고지]\n본 신용 평가 결과는 현재 제공해주신 정보를 바탕으로 한 시스템 분석이며, 향후 대출 승인을 보장하지 않습니다. 추가적인 정보나 상황 변화에 따라 평가 결과가 달라질 수 있습니다.",
+  "usage_metadata": {
+    "prompt_token_count": 1321,
+    "candidates_token_count": 377,
+    "total_token_count": 6107
+  },
+  "context_sent": {
+    "sample_idx": 29,
+    "decision": "REJECT",
+    "default_probability": 0.8177,
+    "threshold": 0.4562,
+    "agreed_drivers": [
+      {
+        "feature": "체크 계좌 없음",
+        "feature_raw": "checking_status_no_checking",
+        "value": "비해당",
+        "rank": 1,
+        "group": "agreed",
+        "shap": 0.5478,
+        "sign_for_default": "+",
+        "attention": 0.132489
+      }
+    ],
+    "shap_only_drivers": [
+      {
+        "feature": "대출 기간(개월)",
+        "feature_raw": "duration",
+        "value": "28개월",
+        "rank": 1,
+        "group": "shap_only",
+        "shap": 0.539,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "대출 금액(DM)",
+        "feature_raw": "credit_amount",
+        "value": "4,006 DM",
+        "rank": 2,
+        "group": "shap_only",
+        "shap": -0.4454,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "잔액 < 0 DM",
+        "feature_raw": "checking_status__0",
+        "value": "해당",
+        "rank": 3,
+        "group": "shap_only",
+        "shap": 0.3402,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "저축 < 100 DM",
+        "feature_raw": "savings_status__100",
+        "value": "해당",
+        "rank": 4,
+        "group": "shap_only",
+        "shap": 0.2694,
+        "sign_for_default": "+"
+      }
+    ],
+    "attention_only_drivers": [
+      {
+        "feature": "저축 정보 없음",
+        "feature_raw": "savings_status_no_known_savings",
+        "value": "비해당",
+        "rank": 1,
+        "group": "attention_only",
+        "attention": 0.140772
+      },
+      {
+        "feature": "공동 신청자",
+        "feature_raw": "other_parties_co_applicant",
+        "value": "비해당",
+        "rank": 2,
+        "group": "attention_only",
+        "attention": 0.057054
+      },
+      {
+        "feature": "부동산",
+        "feature_raw": "property_magnitude_real_estate",
+        "value": "비해당",
+        "rank": 3,
+        "group": "attention_only",
+        "attention": 0.0527
+      },
+      {
+        "feature": "교육",
+        "feature_raw": "purpose_education",
+        "value": "비해당",
+        "rank": 4,
+        "group": "attention_only",
+        "attention": 0.047409
+      }
+    ],
+    "model_predict": "XGBoost",
+    "model_explain": [
+      "SHAP_xgb_local",
+      "TabNet_attention_local"
+    ],
+    "explanation_policy": "fact_only_with_agreement_labels",
+    "n_agreed": 1,
+    "n_shap_only": 4,
+    "n_attention_only": 4
+  },
+  "context_type": "german_fusion"
+}

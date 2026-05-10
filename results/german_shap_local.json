@@ -1,0 +1,1202 @@
+[
+  {
+    "idx": 194,
+    "tag": "reject",
+    "true_label": 1,
+    "predicted_proba": 0.945403,
+    "predicted_label": 1,
+    "expected_value": 0.06017376855015755,
+    "top_k_shap": [
+      {
+        "feature": "duration",
+        "shap_value": 0.441162,
+        "value": 24.0,
+        "rank": 1
+      },
+      {
+        "feature": "credit_amount",
+        "shap_value": -0.39423,
+        "value": 4110.0,
+        "rank": 2
+      },
+      {
+        "feature": "other_payment_plans_none",
+        "shap_value": 0.344223,
+        "value": 0.0,
+        "rank": 3
+      },
+      {
+        "feature": "checking_status__0",
+        "shap_value": 0.277445,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "housing_rent",
+        "shap_value": 0.262565,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 19,
+    "tag": "reject",
+    "true_label": 0,
+    "predicted_proba": 0.914036,
+    "predicted_label": 1,
+    "expected_value": 0.06017376855015755,
+    "top_k_shap": [
+      {
+        "feature": "credit_amount",
+        "shap_value": 0.483083,
+        "value": 339.0,
+        "rank": 1
+      },
+      {
+        "feature": "checking_status_no_checking",
+        "shap_value": 0.351428,
+        "value": 0.0,
+        "rank": 2
+      },
+      {
+        "feature": "other_payment_plans_none",
+        "shap_value": 0.312146,
+        "value": 0.0,
+        "rank": 3
+      },
+      {
+        "feature": "checking_status__0",
+        "shap_value": 0.266359,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "credit_history_all_paid",
+        "shap_value": 0.21419,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 148,
+    "tag": "reject",
+    "true_label": 1,
+    "predicted_proba": 0.908397,
+    "predicted_label": 1,
+    "expected_value": 0.06017376855015755,
+    "top_k_shap": [
+      {
+        "feature": "checking_status_no_checking",
+        "shap_value": 0.429061,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "duration",
+        "shap_value": 0.398311,
+        "value": 48.0,
+        "rank": 2
+      },
+      {
+        "feature": "checking_status__0",
+        "shap_value": 0.320793,
+        "value": 1.0,
+        "rank": 3
+      },
+      {
+        "feature": "housing_rent",
+        "shap_value": 0.284033,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "installment_commitment",
+        "shap_value": 0.260497,
+        "value": 3.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 43,
+    "tag": "reject",
+    "true_label": 1,
+    "predicted_proba": 0.903958,
+    "predicted_label": 1,
+    "expected_value": 0.06017376855015755,
+    "top_k_shap": [
+      {
+        "feature": "duration",
+        "shap_value": 0.590013,
+        "value": 36.0,
+        "rank": 1
+      },
+      {
+        "feature": "checking_status_no_checking",
+        "shap_value": 0.548615,
+        "value": 0.0,
+        "rank": 2
+      },
+      {
+        "feature": "checking_status__0",
+        "shap_value": 0.343458,
+        "value": 1.0,
+        "rank": 3
+      },
+      {
+        "feature": "housing_rent",
+        "shap_value": 0.249925,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "installment_commitment",
+        "shap_value": 0.240431,
+        "value": 4.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 178,
+    "tag": "reject",
+    "true_label": 0,
+    "predicted_proba": 0.884869,
+    "predicted_label": 1,
+    "expected_value": 0.06017376855015755,
+    "top_k_shap": [
+      {
+        "feature": "duration",
+        "shap_value": 0.493782,
+        "value": 24.0,
+        "rank": 1
+      },
+      {
+        "feature": "checking_status_no_checking",
+        "shap_value": 0.441223,
+        "value": 0.0,
+        "rank": 2
+      },
+      {
+        "feature": "checking_status__0",
+        "shap_value": 0.345139,
+        "value": 1.0,
+        "rank": 3
+      },
+      {
+        "feature": "savings_status__100",
+        "shap_value": 0.262825,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "installment_commitment",
+        "shap_value": 0.249804,
+        "value": 4.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 113,
+    "tag": "reject",
+    "true_label": 1,
+    "predicted_proba": 0.882993,
+    "predicted_label": 1,
+    "expected_value": 0.06017376855015755,
+    "top_k_shap": [
+      {
+        "feature": "checking_status_no_checking",
+        "shap_value": 0.448519,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "purpose_education",
+        "shap_value": 0.441344,
+        "value": 1.0,
+        "rank": 2
+      },
+      {
+        "feature": "employment_unemployed",
+        "shap_value": 0.36332,
+        "value": 1.0,
+        "rank": 3
+      },
+      {
+        "feature": "checking_status__0",
+        "shap_value": 0.296033,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "property_magnitude_real_estate",
+        "shap_value": -0.173709,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 105,
+    "tag": "reject",
+    "true_label": 1,
+    "predicted_proba": 0.86792,
+    "predicted_label": 1,
+    "expected_value": 0.06017376855015755,
+    "top_k_shap": [
+      {
+        "feature": "checking_status_no_checking",
+        "shap_value": 0.501719,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "credit_amount",
+        "shap_value": 0.289815,
+        "value": 15945.0,
+        "rank": 2
+      },
+      {
+        "feature": "savings_status__100",
+        "shap_value": 0.266669,
+        "value": 1.0,
+        "rank": 3
+      },
+      {
+        "feature": "housing_rent",
+        "shap_value": 0.225396,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "installment_commitment",
+        "shap_value": 0.21566,
+        "value": 3.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 47,
+    "tag": "reject",
+    "true_label": 1,
+    "predicted_proba": 0.861886,
+    "predicted_label": 1,
+    "expected_value": 0.06017376855015755,
+    "top_k_shap": [
+      {
+        "feature": "duration",
+        "shap_value": 0.571868,
+        "value": 45.0,
+        "rank": 1
+      },
+      {
+        "feature": "checking_status_no_checking",
+        "shap_value": 0.492199,
+        "value": 0.0,
+        "rank": 2
+      },
+      {
+        "feature": "checking_status__0",
+        "shap_value": 0.383448,
+        "value": 1.0,
+        "rank": 3
+      },
+      {
+        "feature": "installment_commitment",
+        "shap_value": 0.269867,
+        "value": 4.0,
+        "rank": 4
+      },
+      {
+        "feature": "savings_status__100",
+        "shap_value": 0.214165,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 51,
+    "tag": "reject",
+    "true_label": 1,
+    "predicted_proba": 0.858985,
+    "predicted_label": 1,
+    "expected_value": 0.06017376855015755,
+    "top_k_shap": [
+      {
+        "feature": "duration",
+        "shap_value": 0.499051,
+        "value": 24.0,
+        "rank": 1
+      },
+      {
+        "feature": "checking_status_no_checking",
+        "shap_value": 0.447412,
+        "value": 0.0,
+        "rank": 2
+      },
+      {
+        "feature": "credit_amount",
+        "shap_value": -0.328382,
+        "value": 3234.0,
+        "rank": 3
+      },
+      {
+        "feature": "checking_status__0",
+        "shap_value": 0.306553,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "housing_rent",
+        "shap_value": 0.288052,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 129,
+    "tag": "reject",
+    "true_label": 0,
+    "predicted_proba": 0.846473,
+    "predicted_label": 1,
+    "expected_value": 0.06017376855015755,
+    "top_k_shap": [
+      {
+        "feature": "checking_status_no_checking",
+        "shap_value": 0.433246,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "duration",
+        "shap_value": 0.366895,
+        "value": 36.0,
+        "rank": 2
+      },
+      {
+        "feature": "credit_amount",
+        "shap_value": -0.317238,
+        "value": 3959.0,
+        "rank": 3
+      },
+      {
+        "feature": "checking_status__0",
+        "shap_value": 0.315446,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "installment_commitment",
+        "shap_value": 0.274869,
+        "value": 4.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 76,
+    "tag": "reject",
+    "true_label": 0,
+    "predicted_proba": 0.845984,
+    "predicted_label": 1,
+    "expected_value": 0.06017376855015755,
+    "top_k_shap": [
+      {
+        "feature": "duration",
+        "shap_value": 0.446609,
+        "value": 24.0,
+        "rank": 1
+      },
+      {
+        "feature": "credit_amount",
+        "shap_value": -0.370132,
+        "value": 3149.0,
+        "rank": 2
+      },
+      {
+        "feature": "checking_status__0",
+        "shap_value": 0.31158,
+        "value": 1.0,
+        "rank": 3
+      },
+      {
+        "feature": "other_payment_plans_none",
+        "shap_value": 0.283176,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "checking_status_no_checking",
+        "shap_value": 0.251553,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 52,
+    "tag": "reject",
+    "true_label": 1,
+    "predicted_proba": 0.832808,
+    "predicted_label": 1,
+    "expected_value": 0.06017376855015755,
+    "top_k_shap": [
+      {
+        "feature": "checking_status_no_checking",
+        "shap_value": 0.561788,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "employment_4_=X_7",
+        "shap_value": -0.524948,
+        "value": 1.0,
+        "rank": 2
+      },
+      {
+        "feature": "checking_status__0",
+        "shap_value": 0.423505,
+        "value": 1.0,
+        "rank": 3
+      },
+      {
+        "feature": "savings_status__100",
+        "shap_value": -0.408388,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "duration",
+        "shap_value": 0.300139,
+        "value": 24.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 13,
+    "tag": "reject",
+    "true_label": 0,
+    "predicted_proba": 0.827873,
+    "predicted_label": 1,
+    "expected_value": 0.06017376855015755,
+    "top_k_shap": [
+      {
+        "feature": "checking_status_no_checking",
+        "shap_value": 0.487078,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "credit_amount",
+        "shap_value": -0.285901,
+        "value": 2606.0,
+        "rank": 2
+      },
+      {
+        "feature": "housing_rent",
+        "shap_value": 0.264311,
+        "value": 1.0,
+        "rank": 3
+      },
+      {
+        "feature": "installment_commitment",
+        "shap_value": 0.211604,
+        "value": 4.0,
+        "rank": 4
+      },
+      {
+        "feature": "credit_history_critical/other_existing_credit",
+        "shap_value": 0.201961,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 29,
+    "tag": "reject",
+    "true_label": 1,
+    "predicted_proba": 0.817655,
+    "predicted_label": 1,
+    "expected_value": 0.06017376855015755,
+    "top_k_shap": [
+      {
+        "feature": "checking_status_no_checking",
+        "shap_value": 0.547755,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "duration",
+        "shap_value": 0.539033,
+        "value": 28.0,
+        "rank": 2
+      },
+      {
+        "feature": "credit_amount",
+        "shap_value": -0.445421,
+        "value": 4006.0,
+        "rank": 3
+      },
+      {
+        "feature": "checking_status__0",
+        "shap_value": 0.34022,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "savings_status__100",
+        "shap_value": 0.269432,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 59,
+    "tag": "reject",
+    "true_label": 1,
+    "predicted_proba": 0.817603,
+    "predicted_label": 1,
+    "expected_value": 0.06017376855015755,
+    "top_k_shap": [
+      {
+        "feature": "checking_status_no_checking",
+        "shap_value": 0.489067,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "installment_commitment",
+        "shap_value": 0.30803,
+        "value": 4.0,
+        "rank": 2
+      },
+      {
+        "feature": "purpose_education",
+        "shap_value": 0.275643,
+        "value": 1.0,
+        "rank": 3
+      },
+      {
+        "feature": "duration",
+        "shap_value": 0.244283,
+        "value": 60.0,
+        "rank": 4
+      },
+      {
+        "feature": "savings_status__100",
+        "shap_value": 0.239062,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 115,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba": 0.013727,
+    "predicted_label": 0,
+    "expected_value": 0.06017376855015755,
+    "top_k_shap": [
+      {
+        "feature": "checking_status_no_checking",
+        "shap_value": -1.242327,
+        "value": 1.0,
+        "rank": 1
+      },
+      {
+        "feature": "purpose_used_car",
+        "shap_value": -0.903259,
+        "value": 1.0,
+        "rank": 2
+      },
+      {
+        "feature": "employment_4_=X_7",
+        "shap_value": -0.653212,
+        "value": 1.0,
+        "rank": 3
+      },
+      {
+        "feature": "credit_history_critical/other_existing_credit",
+        "shap_value": -0.606903,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "credit_amount",
+        "shap_value": -0.480211,
+        "value": 2346.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 164,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba": 0.014511,
+    "predicted_label": 0,
+    "expected_value": 0.06017376855015755,
+    "top_k_shap": [
+      {
+        "feature": "checking_status_no_checking",
+        "shap_value": -0.773095,
+        "value": 1.0,
+        "rank": 1
+      },
+      {
+        "feature": "purpose_used_car",
+        "shap_value": -0.76458,
+        "value": 1.0,
+        "rank": 2
+      },
+      {
+        "feature": "foreign_worker_no",
+        "shap_value": -0.71246,
+        "value": 1.0,
+        "rank": 3
+      },
+      {
+        "feature": "employment_4_=X_7",
+        "shap_value": -0.668586,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "credit_amount",
+        "shap_value": -0.502562,
+        "value": 1413.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 7,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba": 0.015058,
+    "predicted_label": 0,
+    "expected_value": 0.06017376855015755,
+    "top_k_shap": [
+      {
+        "feature": "duration",
+        "shap_value": -0.939527,
+        "value": 4.0,
+        "rank": 1
+      },
+      {
+        "feature": "checking_status_no_checking",
+        "shap_value": -0.840291,
+        "value": 1.0,
+        "rank": 2
+      },
+      {
+        "feature": "employment_4_=X_7",
+        "shap_value": -0.669804,
+        "value": 1.0,
+        "rank": 3
+      },
+      {
+        "feature": "credit_history_critical/other_existing_credit",
+        "shap_value": -0.507679,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "credit_amount",
+        "shap_value": -0.357242,
+        "value": 1544.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 79,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba": 0.018976,
+    "predicted_label": 0,
+    "expected_value": 0.06017376855015755,
+    "top_k_shap": [
+      {
+        "feature": "foreign_worker_no",
+        "shap_value": -0.699317,
+        "value": 1.0,
+        "rank": 1
+      },
+      {
+        "feature": "checking_status_no_checking",
+        "shap_value": -0.692133,
+        "value": 1.0,
+        "rank": 2
+      },
+      {
+        "feature": "employment_4_=X_7",
+        "shap_value": -0.606832,
+        "value": 1.0,
+        "rank": 3
+      },
+      {
+        "feature": "savings_status__=1000",
+        "shap_value": -0.564264,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "credit_history_critical/other_existing_credit",
+        "shap_value": -0.456316,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 78,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba": 0.019334,
+    "predicted_label": 0,
+    "expected_value": 0.06017376855015755,
+    "top_k_shap": [
+      {
+        "feature": "duration",
+        "shap_value": -0.947731,
+        "value": 4.0,
+        "rank": 1
+      },
+      {
+        "feature": "checking_status_no_checking",
+        "shap_value": -0.834747,
+        "value": 1.0,
+        "rank": 2
+      },
+      {
+        "feature": "employment_4_=X_7",
+        "shap_value": -0.597984,
+        "value": 1.0,
+        "rank": 3
+      },
+      {
+        "feature": "credit_history_critical/other_existing_credit",
+        "shap_value": -0.547247,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "credit_amount",
+        "shap_value": -0.385223,
+        "value": 1455.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 50,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba": 0.022626,
+    "predicted_label": 0,
+    "expected_value": 0.06017376855015755,
+    "top_k_shap": [
+      {
+        "feature": "credit_history_critical/other_existing_credit",
+        "shap_value": -0.84043,
+        "value": 1.0,
+        "rank": 1
+      },
+      {
+        "feature": "checking_status_no_checking",
+        "shap_value": -0.800226,
+        "value": 1.0,
+        "rank": 2
+      },
+      {
+        "feature": "savings_status__=1000",
+        "shap_value": -0.681164,
+        "value": 1.0,
+        "rank": 3
+      },
+      {
+        "feature": "credit_amount",
+        "shap_value": -0.327337,
+        "value": 1582.0,
+        "rank": 4
+      },
+      {
+        "feature": "savings_status__100",
+        "shap_value": -0.29506,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 156,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba": 0.023695,
+    "predicted_label": 0,
+    "expected_value": 0.06017376855015755,
+    "top_k_shap": [
+      {
+        "feature": "purpose_used_car",
+        "shap_value": -0.836614,
+        "value": 1.0,
+        "rank": 1
+      },
+      {
+        "feature": "savings_status__=1000",
+        "shap_value": -0.704155,
+        "value": 1.0,
+        "rank": 2
+      },
+      {
+        "feature": "credit_history_critical/other_existing_credit",
+        "shap_value": -0.674213,
+        "value": 1.0,
+        "rank": 3
+      },
+      {
+        "feature": "checking_status_no_checking",
+        "shap_value": -0.562595,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "savings_status__100",
+        "shap_value": -0.321388,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 144,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba": 0.031904,
+    "predicted_label": 0,
+    "expected_value": 0.06017376855015755,
+    "top_k_shap": [
+      {
+        "feature": "duration",
+        "shap_value": -0.911323,
+        "value": 6.0,
+        "rank": 1
+      },
+      {
+        "feature": "checking_status_no_checking",
+        "shap_value": -0.633929,
+        "value": 1.0,
+        "rank": 2
+      },
+      {
+        "feature": "credit_history_critical/other_existing_credit",
+        "shap_value": -0.606671,
+        "value": 1.0,
+        "rank": 3
+      },
+      {
+        "feature": "other_payment_plans_none",
+        "shap_value": -0.225381,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "savings_status__100",
+        "shap_value": -0.187337,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 55,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba": 0.032969,
+    "predicted_label": 0,
+    "expected_value": 0.06017376855015755,
+    "top_k_shap": [
+      {
+        "feature": "checking_status_no_checking",
+        "shap_value": -0.753943,
+        "value": 1.0,
+        "rank": 1
+      },
+      {
+        "feature": "credit_history_critical/other_existing_credit",
+        "shap_value": -0.70945,
+        "value": 1.0,
+        "rank": 2
+      },
+      {
+        "feature": "purpose_used_car",
+        "shap_value": -0.564554,
+        "value": 1.0,
+        "rank": 3
+      },
+      {
+        "feature": "savings_status__100",
+        "shap_value": -0.265788,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "other_payment_plans_none",
+        "shap_value": -0.250073,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 117,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba": 0.034486,
+    "predicted_label": 0,
+    "expected_value": 0.06017376855015755,
+    "top_k_shap": [
+      {
+        "feature": "checking_status_no_checking",
+        "shap_value": -0.815485,
+        "value": 1.0,
+        "rank": 1
+      },
+      {
+        "feature": "credit_history_critical/other_existing_credit",
+        "shap_value": -0.768521,
+        "value": 1.0,
+        "rank": 2
+      },
+      {
+        "feature": "savings_status__=1000",
+        "shap_value": -0.584778,
+        "value": 1.0,
+        "rank": 3
+      },
+      {
+        "feature": "savings_status__100",
+        "shap_value": -0.354116,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "other_payment_plans_none",
+        "shap_value": -0.255463,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 136,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba": 0.03871,
+    "predicted_label": 0,
+    "expected_value": 0.06017376855015755,
+    "top_k_shap": [
+      {
+        "feature": "duration",
+        "shap_value": -0.971174,
+        "value": 6.0,
+        "rank": 1
+      },
+      {
+        "feature": "checking_status_no_checking",
+        "shap_value": -0.86479,
+        "value": 1.0,
+        "rank": 2
+      },
+      {
+        "feature": "credit_history_critical/other_existing_credit",
+        "shap_value": -0.630676,
+        "value": 1.0,
+        "rank": 3
+      },
+      {
+        "feature": "credit_amount",
+        "shap_value": 0.265212,
+        "value": 700.0,
+        "rank": 4
+      },
+      {
+        "feature": "other_payment_plans_none",
+        "shap_value": -0.235785,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 45,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba": 0.041077,
+    "predicted_label": 0,
+    "expected_value": 0.06017376855015755,
+    "top_k_shap": [
+      {
+        "feature": "checking_status_no_checking",
+        "shap_value": -0.929449,
+        "value": 1.0,
+        "rank": 1
+      },
+      {
+        "feature": "credit_history_critical/other_existing_credit",
+        "shap_value": -0.603343,
+        "value": 1.0,
+        "rank": 2
+      },
+      {
+        "feature": "credit_amount",
+        "shap_value": -0.382989,
+        "value": 2872.0,
+        "rank": 3
+      },
+      {
+        "feature": "savings_status__100",
+        "shap_value": -0.341767,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "duration",
+        "shap_value": 0.215467,
+        "value": 24.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 65,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba": 0.047879,
+    "predicted_label": 0,
+    "expected_value": 0.06017376855015755,
+    "top_k_shap": [
+      {
+        "feature": "duration",
+        "shap_value": -1.479964,
+        "value": 7.0,
+        "rank": 1
+      },
+      {
+        "feature": "other_parties_guarantor",
+        "shap_value": -0.572526,
+        "value": 1.0,
+        "rank": 2
+      },
+      {
+        "feature": "checking_status_no_checking",
+        "shap_value": 0.283125,
+        "value": 0.0,
+        "rank": 3
+      },
+      {
+        "feature": "property_magnitude_real_estate",
+        "shap_value": -0.259753,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "credit_amount",
+        "shap_value": -0.236137,
+        "value": 2576.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 74,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba": 0.054024,
+    "predicted_label": 0,
+    "expected_value": 0.06017376855015755,
+    "top_k_shap": [
+      {
+        "feature": "duration",
+        "shap_value": -0.85461,
+        "value": 7.0,
+        "rank": 1
+      },
+      {
+        "feature": "checking_status_no_checking",
+        "shap_value": -0.843974,
+        "value": 1.0,
+        "rank": 2
+      },
+      {
+        "feature": "credit_history_critical/other_existing_credit",
+        "shap_value": -0.689256,
+        "value": 1.0,
+        "rank": 3
+      },
+      {
+        "feature": "age",
+        "shap_value": -0.329243,
+        "value": 46.0,
+        "rank": 4
+      },
+      {
+        "feature": "savings_status__100",
+        "shap_value": -0.228985,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 91,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba": 0.055593,
+    "predicted_label": 0,
+    "expected_value": 0.06017376855015755,
+    "top_k_shap": [
+      {
+        "feature": "duration",
+        "shap_value": -1.584463,
+        "value": 7.0,
+        "rank": 1
+      },
+      {
+        "feature": "other_parties_guarantor",
+        "shap_value": -0.589462,
+        "value": 1.0,
+        "rank": 2
+      },
+      {
+        "feature": "checking_status_no_checking",
+        "shap_value": 0.308871,
+        "value": 0.0,
+        "rank": 3
+      },
+      {
+        "feature": "property_magnitude_real_estate",
+        "shap_value": -0.263891,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "credit_amount",
+        "shap_value": -0.222705,
+        "value": 2415.0,
+        "rank": 5
+      }
+    ]
+  }
+]

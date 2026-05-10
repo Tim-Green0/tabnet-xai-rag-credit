@@ -1,0 +1,56 @@
+{
+  "sample_idx": 74,
+  "decision": "APPROVE",
+  "true_label": 0,
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "mode": "shaponly",
+  "elapsed_sec": 19.11,
+  "explanation": "고객님의 신용 평가 결과를 친절하게 설명해 드리겠습니다.\n\n[결정 요약]\n고객님의 신용 평가 결과, 부도 가능성이 0.054로 당사의 기준치 0.4562보다 낮게 평가되어 대출이 승인되었습니다.\n\n[주요 거절 사유]\n해당 없음\n\n[긍정적으로 평가된 요인]\n*   대출 기간이 7개월로 짧았던 점\n*   체크 계좌가 없었던 점\n*   신용 이력이 critical (위험)으로 확인되었음에도 부도 가능성을 낮추는 요인으로 평가되었습니다.\n\n[개선 권고]\n현재 고객님의 신용 평가에서는 특별히 개선이 필요한 사항이 확인되지 않았습니다.\n\n[면책 고지]\n본 설명은 제공된 데이터를 기반으로 한 신용 평가 모델의 분석 결과이며, 법률 자문이나 확정적인 미래 예측이 아님을 알려드립니다.",
+  "usage_metadata": {
+    "prompt_token_count": 679,
+    "candidates_token_count": 213,
+    "total_token_count": 5008
+  },
+  "context_sent": {
+    "sample_idx": 74,
+    "default_probability": 0.054,
+    "threshold": 0.4562,
+    "decision": "APPROVE",
+    "top_drivers_for_default": [],
+    "top_drivers_against_default": [
+      {
+        "feature": "대출 기간(개월)",
+        "feature_raw": "duration",
+        "value": "7개월",
+        "shap": -0.8546,
+        "rank": 1
+      },
+      {
+        "feature": "체크 계좌 없음",
+        "feature_raw": "checking_status_no_checking",
+        "value": "해당",
+        "shap": -0.844,
+        "rank": 2
+      },
+      {
+        "feature": "신용 이력 critical (위험)",
+        "feature_raw": "credit_history_critical/other_existing_credit",
+        "value": "해당",
+        "shap": -0.6893,
+        "rank": 3
+      },
+      {
+        "feature": "저축 < 100 DM",
+        "feature_raw": "savings_status__100",
+        "value": "비해당",
+        "shap": -0.229,
+        "rank": 5
+      }
+    ],
+    "fairness_flags": [],
+    "model": "XGBoost + SHAP",
+    "explanation_policy": "fact_only_shap_top5"
+  },
+  "context_type": "german_shaponly"
+}

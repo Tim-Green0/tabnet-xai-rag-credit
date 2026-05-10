@@ -1,0 +1,64 @@
+{
+  "sample_idx": 91,
+  "decision": "APPROVE",
+  "true_label": 0,
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "mode": "shaponly",
+  "elapsed_sec": 23.87,
+  "explanation": "[결정 요약]\n고객님의 신용 평가 결과, 부도 가능성 0.0556으로 기준점 0.4562보다 낮아 대출 승인으로 결정되었습니다.\n\n[주요 거절 사유]\n해당 없음\n\n[긍정적으로 평가된 요인]\n*   대출 기간이 7개월인 점이 부도 가능성을 낮추는 데 긍정적으로 작용했습니다.\n*   보증인이 계신 점이 부도 가능성을 낮추는 데 긍정적으로 작용했습니다.\n*   부동산을 보유하고 계신 점이 부도 가능성을 낮추는 데 긍정적으로 작용했습니다.\n\n[개선 권고]\n체크 계좌 없음 관련 지표가 부도 가능성을 높이는 요인으로 분석되었습니다. 이는 대출 승인에 직접적인 영향은 없었으나, 재정 관리에 고려해볼 수 있는 부분입니다.\n\n[면책 고지]\n본 평가는 현재 제공된 정보와 모델에 기반한 것이며, 미래 결과를 단정하거나 법적/재정적 조언으로 간주될 수 없습니다.",
+  "usage_metadata": {
+    "prompt_token_count": 734,
+    "candidates_token_count": 251,
+    "total_token_count": 6074
+  },
+  "context_sent": {
+    "sample_idx": 91,
+    "default_probability": 0.0556,
+    "threshold": 0.4562,
+    "decision": "APPROVE",
+    "top_drivers_for_default": [
+      {
+        "feature": "체크 계좌 없음",
+        "feature_raw": "checking_status_no_checking",
+        "value": "비해당",
+        "shap": 0.3089,
+        "rank": 3
+      }
+    ],
+    "top_drivers_against_default": [
+      {
+        "feature": "대출 기간(개월)",
+        "feature_raw": "duration",
+        "value": "7개월",
+        "shap": -1.5845,
+        "rank": 1
+      },
+      {
+        "feature": "보증인 있음",
+        "feature_raw": "other_parties_guarantor",
+        "value": "해당",
+        "shap": -0.5895,
+        "rank": 2
+      },
+      {
+        "feature": "부동산",
+        "feature_raw": "property_magnitude_real_estate",
+        "value": "해당",
+        "shap": -0.2639,
+        "rank": 4
+      },
+      {
+        "feature": "대출 금액(DM)",
+        "feature_raw": "credit_amount",
+        "value": "2,415 DM",
+        "shap": -0.2227,
+        "rank": 5
+      }
+    ],
+    "fairness_flags": [],
+    "model": "XGBoost + SHAP",
+    "explanation_policy": "fact_only_shap_top5"
+  },
+  "context_type": "german_shaponly"
+}

@@ -1,0 +1,115 @@
+{
+  "sample_idx": 47,
+  "decision": "REJECT",
+  "true_label": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "mode": "fusion",
+  "elapsed_sec": 15.91,
+  "explanation": "# 신용 평가 결과 안내\n\n## [결정 요약]\n고객님의 신청을 승인하기 어렵다는 결정을 알려드리게 되어 죄송합니다. 부도 예측 확률 86.19%가 내부 기준 45.62%를 상회하였습니다. XGBoost 모델과 TabNet 모델이 공통으로 주목한 요인 1개를 포함하여 종합 검토하였습니다.\n\n## [주요 거절 사유]\n1. **대출 기간(개월)**: 45개월로 장기 상환 구조가 리스크를 높이는 요인으로 작용하였습니다.\n\n2. **잔액 < 0 DM**: 체크 계좌 잔액이 마이너스 상태로 확인되어, 현재 유동성 부족이 우려 요인으로 평가되었습니다.\n\n3. **체크 계좌 없음**: 비해당이지만, 계좌 관리 내역 확인의 어려움이 두 모델 모두에서 리스크 신호로 감지되었습니다.\n\n## [긍정적으로 평가된 요인]\n이번 평가에서는 부도 가능성을 낮추는 명확한 긍정 요인이 확인되지 않았습니다. 다만 TabNet 모델은 '전화 보유(해당)' 및 '저축 정보 없음(비해당)' 항목을 참고 정보로 주목하였습니다.\n\n## [개선 권고]\n1. **체크 계좌 잔액 개선**: 잔액이 0 이상으로 회복될 수 있도록 단기 지출 관리와 수입 확보를 권장드립니다.\n\n2. **저축 여력 확보**: 현재 저축액이 100 DM 미만으로 확인되었습니다. 비상 자금 마련이 향후 신용 평가에 긍정적으로 작용할 수 있습니다.\n\n3. **대출 조건 재조정**: 가능하다면 대출 기간을 단축하거나 금액을 축소하여 재신청을 검토해 주시기 바랍니다.\n\n## [면책 고지]\n본 평가는 통계 모델 기반 참고 정보이며, 미래 상환 능력을 보장하거나 단정하지 않습니다. 추가 상담 및 이의 제기는 고객센터를 통해 가능합니다.",
+  "usage_metadata": {
+    "input_tokens": 1547,
+    "output_tokens": 781,
+    "total_token_count": 2328
+  },
+  "context_sent": {
+    "sample_idx": 47,
+    "decision": "REJECT",
+    "default_probability": 0.8619,
+    "threshold": 0.4562,
+    "agreed_drivers": [
+      {
+        "feature": "체크 계좌 없음",
+        "feature_raw": "checking_status_no_checking",
+        "value": "비해당",
+        "rank": 1,
+        "group": "agreed",
+        "shap": 0.4922,
+        "sign_for_default": "+",
+        "attention": 0.065916
+      }
+    ],
+    "shap_only_drivers": [
+      {
+        "feature": "대출 기간(개월)",
+        "feature_raw": "duration",
+        "value": "45개월",
+        "rank": 1,
+        "group": "shap_only",
+        "shap": 0.5719,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "잔액 < 0 DM",
+        "feature_raw": "checking_status__0",
+        "value": "해당",
+        "rank": 2,
+        "group": "shap_only",
+        "shap": 0.3834,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "분할 상환 비율(%)",
+        "feature_raw": "installment_commitment",
+        "value": "4.0%",
+        "rank": 3,
+        "group": "shap_only",
+        "shap": 0.2699,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "저축 < 100 DM",
+        "feature_raw": "savings_status__100",
+        "value": "해당",
+        "rank": 4,
+        "group": "shap_only",
+        "shap": 0.2142,
+        "sign_for_default": "+"
+      }
+    ],
+    "attention_only_drivers": [
+      {
+        "feature": "저축 정보 없음",
+        "feature_raw": "savings_status_no_known_savings",
+        "value": "비해당",
+        "rank": 1,
+        "group": "attention_only",
+        "attention": 0.070641
+      },
+      {
+        "feature": "전화 보유",
+        "feature_raw": "own_telephone_yes",
+        "value": "해당",
+        "rank": 2,
+        "group": "attention_only",
+        "attention": 0.043963
+      },
+      {
+        "feature": "교육",
+        "feature_raw": "purpose_education",
+        "value": "비해당",
+        "rank": 3,
+        "group": "attention_only",
+        "attention": 0.039674
+      },
+      {
+        "feature": "기존 대출 없거나 모두 상환",
+        "feature_raw": "credit_history_no_credits/all_paid",
+        "value": "비해당",
+        "rank": 4,
+        "group": "attention_only",
+        "attention": 0.03921
+      }
+    ],
+    "model_predict": "XGBoost",
+    "model_explain": [
+      "SHAP_xgb_local",
+      "TabNet_attention_local"
+    ],
+    "explanation_policy": "fact_only_with_agreement_labels",
+    "n_agreed": 1,
+    "n_shap_only": 4,
+    "n_attention_only": 4
+  },
+  "context_type": "german_fusion"
+}

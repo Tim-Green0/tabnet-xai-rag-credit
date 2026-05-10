@@ -1,0 +1,106 @@
+{
+  "sample_idx": 55,
+  "decision": "APPROVE",
+  "default_probability": 0.033,
+  "threshold": 0.4562,
+  "agreed_drivers": [],
+  "shap_only_drivers": [
+    {
+      "feature": "체크 계좌 없음",
+      "feature_raw": "checking_status_no_checking",
+      "value": "해당",
+      "rank": 1,
+      "group": "shap_only",
+      "shap": -0.7539,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "신용 이력 critical (위험)",
+      "feature_raw": "credit_history_critical/other_existing_credit",
+      "value": "해당",
+      "rank": 2,
+      "group": "shap_only",
+      "shap": -0.7095,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "중고차",
+      "feature_raw": "purpose_used_car",
+      "value": "해당",
+      "rank": 3,
+      "group": "shap_only",
+      "shap": -0.5646,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "저축 < 100 DM",
+      "feature_raw": "savings_status__100",
+      "value": "비해당",
+      "rank": 4,
+      "group": "shap_only",
+      "shap": -0.2658,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "기타 지불 계획 없음",
+      "feature_raw": "other_payment_plans_none",
+      "value": "해당",
+      "rank": 5,
+      "group": "shap_only",
+      "shap": -0.2501,
+      "sign_for_default": "-"
+    }
+  ],
+  "attention_only_drivers": [
+    {
+      "feature": "교육",
+      "feature_raw": "purpose_education",
+      "value": "비해당",
+      "rank": 1,
+      "group": "attention_only",
+      "attention": 0.265347
+    },
+    {
+      "feature": "잔액 < 0 DM",
+      "feature_raw": "checking_status__0",
+      "value": "비해당",
+      "rank": 2,
+      "group": "attention_only",
+      "attention": 0.256123
+    },
+    {
+      "feature": "보유 자산 없음",
+      "feature_raw": "property_magnitude_no_known_property",
+      "value": "비해당",
+      "rank": 3,
+      "group": "attention_only",
+      "attention": 0.125235
+    },
+    {
+      "feature": "재직 ≥ 7년",
+      "feature_raw": "employment__=7",
+      "value": "해당",
+      "rank": 4,
+      "group": "attention_only",
+      "attention": 0.103909
+    },
+    {
+      "feature": "저축 정보 없음",
+      "feature_raw": "savings_status_no_known_savings",
+      "value": "해당",
+      "rank": 5,
+      "group": "attention_only",
+      "attention": 0.103501
+    }
+  ],
+  "model_predict": "XGBoost",
+  "model_explain": [
+    "SHAP_xgb_local",
+    "TabNet_attention_local"
+  ],
+  "explanation_policy": "fact_only_with_agreement_labels",
+  "n_agreed": 0,
+  "n_shap_only": 5,
+  "n_attention_only": 5,
+  "_meta_true_label": 0
+}

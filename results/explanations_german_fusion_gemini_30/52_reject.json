@@ -1,0 +1,100 @@
+{
+  "sample_idx": 52,
+  "decision": "REJECT",
+  "true_label": 1,
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "mode": "fusion",
+  "elapsed_sec": 12.07,
+  "explanation": "고객님의 신용 평가 결과에 대해 설명해 드리겠습니다.\n\n[결정 요약]\n고객님의 신용 평가 결과, 대출이 거절되었습니다. 모델은 고객님의 부도 가능성을 0.8328로 예측했으며, 이는 승인 기준 0.4562를 상회합니다. 이번 평가는 2가지 주요 요인에서 XGBoost와 TabNet 모델 모두 유사한 판단을 내렸습니다.\n\n[주요 거절 사유]\n1.  \"체크 계좌 없음\"으로 인해 부도 가능성이 높아지는 요인으로 평가되었습니다. (고객님의 정보는 \"비해당\"으로 확인되었습니다.)\n2.  \"잔액 < 0 DM\"에 해당하여 부도 가능성이 높아지는 요인으로 평가되었습니다. (고객님의 정보는 \"해당\"으로 확인되었습니다.)\n3.  \"대출 기간(개월) 24개월\"이 부도 가능성을 높이는 요인으로 확인되었습니다.\n\n[긍정적으로 평가된 요인]\n1.  \"재직 4~7년\"에 해당하여 부도 가능성을 낮추는 요인으로 평가되었습니다.\n2.  \"저축 < 100 DM\"에 해당하지 않아 부도 가능성을 낮추는 요인으로 평가되었습니다.\n\n[개선 권고]\n1.  체크 계좌 개설 또는 유지: \"체크 계좌 없음\"이 부도 가능성을 높이는 요인으로 주목되었습니다. 체크 계좌를 개설하거나 유지하는 것을 고려해 볼 수 있습니다.\n2.  잔액 관리: \"잔액 < 0 DM\"이 부도 가능성을 높이는 요인으로 주목되었습니다. 은행 계좌의 잔액을 긍정적으로 유지하는 것이 중요합니다.\n3.  대출 기간 조정 고려: 대출 기간이 신용 평가에 영향을 미치는 요인으로 확인되었습니다. 가능한 범위 내에서 대출 기간 조정이 신용도에 긍정적인 영향을 미칠 수 있습니다.\n\n[면책 고지]\n본 설명은 현재 고객님의 정보를 바탕으로 한 신용 평가 결과이며, 법률 또는 의료 자문으로 간주될 수 없습니다. 미래의 신용도 및 대출 승인 여부는 달라질 수 있습니다.",
+  "usage_metadata": {
+    "prompt_token_count": 1188,
+    "candidates_token_count": 492,
+    "total_token_count": 3939
+  },
+  "context_sent": {
+    "sample_idx": 52,
+    "decision": "REJECT",
+    "default_probability": 0.8328,
+    "threshold": 0.4562,
+    "agreed_drivers": [
+      {
+        "feature": "체크 계좌 없음",
+        "feature_raw": "checking_status_no_checking",
+        "value": "비해당",
+        "rank": 1,
+        "group": "agreed",
+        "shap": 0.5618,
+        "sign_for_default": "+",
+        "attention": 0.079464
+      },
+      {
+        "feature": "잔액 < 0 DM",
+        "feature_raw": "checking_status__0",
+        "value": "해당",
+        "rank": 2,
+        "group": "agreed",
+        "shap": 0.4235,
+        "sign_for_default": "+",
+        "attention": 0.044308
+      }
+    ],
+    "shap_only_drivers": [
+      {
+        "feature": "재직 4~7년",
+        "feature_raw": "employment_4_=X_7",
+        "value": "해당",
+        "rank": 1,
+        "group": "shap_only",
+        "shap": -0.5249,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "저축 < 100 DM",
+        "feature_raw": "savings_status__100",
+        "value": "비해당",
+        "rank": 2,
+        "group": "shap_only",
+        "shap": -0.4084,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "대출 기간(개월)",
+        "feature_raw": "duration",
+        "value": "24개월",
+        "rank": 3,
+        "group": "shap_only",
+        "shap": 0.3001,
+        "sign_for_default": "+"
+      }
+    ],
+    "attention_only_drivers": [
+      {
+        "feature": "전화 보유",
+        "feature_raw": "own_telephone_yes",
+        "value": "비해당",
+        "rank": 1,
+        "group": "attention_only",
+        "attention": 0.062368
+      },
+      {
+        "feature": "교육",
+        "feature_raw": "purpose_education",
+        "value": "비해당",
+        "rank": 2,
+        "group": "attention_only",
+        "attention": 0.035184
+      }
+    ],
+    "model_predict": "XGBoost",
+    "model_explain": [
+      "SHAP_xgb_local",
+      "TabNet_attention_local"
+    ],
+    "explanation_policy": "fact_only_with_agreement_labels",
+    "n_agreed": 2,
+    "n_shap_only": 3,
+    "n_attention_only": 2
+  },
+  "context_type": "german_fusion"
+}

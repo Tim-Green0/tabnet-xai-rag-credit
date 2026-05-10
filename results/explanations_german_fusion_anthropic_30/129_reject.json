@@ -1,0 +1,115 @@
+{
+  "sample_idx": 129,
+  "decision": "REJECT",
+  "true_label": 0,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "mode": "fusion",
+  "elapsed_sec": 17.25,
+  "explanation": "# 신용 평가 결과 안내\n\n## [결정 요약]\n고객님의 신용 신청 건을 종합 검토한 결과, 안타깝게도 **승인이 어려운** 것으로 판단되었습니다 (부도 가능성 84.7%, 기준 45.6%). XGBoost 예측 모델과 SHAP 및 TabNet 설명 모델이 1개 항목에서 일치된 신호를 보였습니다.\n\n## [주요 거절 사유]\n평가 과정에서 다음 요인들이 부정적으로 작용하였습니다.\n\n1. **체크 계좌 부재** (비해당)  \n   체크 계좌가 없는 상태가 신용 리스크 상승 요인으로 평가되었습니다. 두 설명 모델이 모두 이 요인을 중요하게 주목하였습니다.\n\n2. **대출 기간 36개월**  \n   상환 기간이 길수록 장기 리스크가 증가하는 것으로 분석되었습니다.\n\n3. **체크 계좌 잔액 < 0 DM** (해당)  \n   계좌 잔액이 마이너스 상태인 점이 상환 능력 평가에 불리하게 반영되었습니다.\n\n## [긍정적으로 평가된 요인]\n다음 요소는 긍정적으로 고려되었습니다.\n\n1. **대출 금액 3,959 DM**  \n   신청하신 대출 금액 수준은 리스크 완화 요인으로 평가되었습니다.\n\n## [개선 권고]\n향후 신용 상태 개선을 위해 아래 사항을 고려해 주시기 바랍니다.\n\n- **체크 계좌 개설 및 양(+)의 잔액 유지**: 정상적인 입출금 내역을 통해 금융 거래 이력을 구축하시면 신용도 개선에 도움이 됩니다.\n- **분할 상환 비율 조정**: 현재 4.0% 수준의 분할 상환 비율이 부담 요인으로 작용하였으니, 소득 대비 상환 부담을 낮추는 계획을 검토해 보시기 바랍니다.\n- **대출 기간 단축 검토**: 가능하다면 짧은 상환 기간으로 재설계하시면 승인 가능성이 높아질 수 있습니다.\n\n## [면책 고지]\n본 평가 결과는 통계 모델 기반 참고 자료이며, 미래 상환 능력을 보장하거나 단정하지 않습니다. 신용 거래 관련 최종 결정은 금융 전문가와 상담하신 후 신중히 내려주시기 바랍니다.",
+  "usage_metadata": {
+    "input_tokens": 1539,
+    "output_tokens": 892,
+    "total_token_count": 2431
+  },
+  "context_sent": {
+    "sample_idx": 129,
+    "decision": "REJECT",
+    "default_probability": 0.8465,
+    "threshold": 0.4562,
+    "agreed_drivers": [
+      {
+        "feature": "체크 계좌 없음",
+        "feature_raw": "checking_status_no_checking",
+        "value": "비해당",
+        "rank": 1,
+        "group": "agreed",
+        "shap": 0.4332,
+        "sign_for_default": "+",
+        "attention": 0.0796
+      }
+    ],
+    "shap_only_drivers": [
+      {
+        "feature": "대출 기간(개월)",
+        "feature_raw": "duration",
+        "value": "36개월",
+        "rank": 1,
+        "group": "shap_only",
+        "shap": 0.3669,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "대출 금액(DM)",
+        "feature_raw": "credit_amount",
+        "value": "3,959 DM",
+        "rank": 2,
+        "group": "shap_only",
+        "shap": -0.3172,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "잔액 < 0 DM",
+        "feature_raw": "checking_status__0",
+        "value": "해당",
+        "rank": 3,
+        "group": "shap_only",
+        "shap": 0.3154,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "분할 상환 비율(%)",
+        "feature_raw": "installment_commitment",
+        "value": "4.0%",
+        "rank": 4,
+        "group": "shap_only",
+        "shap": 0.2749,
+        "sign_for_default": "+"
+      }
+    ],
+    "attention_only_drivers": [
+      {
+        "feature": "저축 정보 없음",
+        "feature_raw": "savings_status_no_known_savings",
+        "value": "비해당",
+        "rank": 1,
+        "group": "attention_only",
+        "attention": 0.20229
+      },
+      {
+        "feature": "부동산",
+        "feature_raw": "property_magnitude_real_estate",
+        "value": "비해당",
+        "rank": 2,
+        "group": "attention_only",
+        "attention": 0.096199
+      },
+      {
+        "feature": "보증인 없음",
+        "feature_raw": "other_parties_none",
+        "value": "비해당",
+        "rank": 3,
+        "group": "attention_only",
+        "attention": 0.059453
+      },
+      {
+        "feature": "생명보험",
+        "feature_raw": "property_magnitude_life_insurance",
+        "value": "해당",
+        "rank": 4,
+        "group": "attention_only",
+        "attention": 0.054834
+      }
+    ],
+    "model_predict": "XGBoost",
+    "model_explain": [
+      "SHAP_xgb_local",
+      "TabNet_attention_local"
+    ],
+    "explanation_policy": "fact_only_with_agreement_labels",
+    "n_agreed": 1,
+    "n_shap_only": 4,
+    "n_attention_only": 4
+  },
+  "context_type": "german_fusion"
+}

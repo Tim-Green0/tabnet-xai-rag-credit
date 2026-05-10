@@ -1,0 +1,91 @@
+{
+  "sample_idx": 164,
+  "decision": "APPROVE",
+  "default_probability": 0.0145,
+  "threshold": 0.4562,
+  "agreed_drivers": [
+    {
+      "feature": "체크 계좌 없음",
+      "feature_raw": "checking_status_no_checking",
+      "value": "해당",
+      "rank": 1,
+      "group": "agreed",
+      "shap": -0.7731,
+      "sign_for_default": "-",
+      "attention": 0.306247
+    }
+  ],
+  "shap_only_drivers": [
+    {
+      "feature": "중고차",
+      "feature_raw": "purpose_used_car",
+      "value": "해당",
+      "rank": 1,
+      "group": "shap_only",
+      "shap": -0.7646,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "재직 4~7년",
+      "feature_raw": "employment_4_=X_7",
+      "value": "해당",
+      "rank": 2,
+      "group": "shap_only",
+      "shap": -0.6686,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "대출 금액(DM)",
+      "feature_raw": "credit_amount",
+      "value": "1,413 DM",
+      "rank": 3,
+      "group": "shap_only",
+      "shap": -0.5026,
+      "sign_for_default": "-"
+    }
+  ],
+  "attention_only_drivers": [
+    {
+      "feature": "교육",
+      "feature_raw": "purpose_education",
+      "value": "비해당",
+      "rank": 1,
+      "group": "attention_only",
+      "attention": 0.341199
+    },
+    {
+      "feature": "기타 지불 계획 없음",
+      "feature_raw": "other_payment_plans_none",
+      "value": "비해당",
+      "rank": 2,
+      "group": "attention_only",
+      "attention": 0.323748
+    },
+    {
+      "feature": "잔액 < 0 DM",
+      "feature_raw": "checking_status__0",
+      "value": "비해당",
+      "rank": 3,
+      "group": "attention_only",
+      "attention": 0.26265
+    },
+    {
+      "feature": "부동산",
+      "feature_raw": "property_magnitude_real_estate",
+      "value": "비해당",
+      "rank": 4,
+      "group": "attention_only",
+      "attention": 0.168496
+    }
+  ],
+  "model_predict": "XGBoost",
+  "model_explain": [
+    "SHAP_xgb_local",
+    "TabNet_attention_local"
+  ],
+  "explanation_policy": "fact_only_with_agreement_labels",
+  "n_agreed": 1,
+  "n_shap_only": 3,
+  "n_attention_only": 4,
+  "_meta_true_label": 0
+}

@@ -10,36 +10,37 @@
 ```bash
 cd D:\paper
 git log --oneline -10              # 최근 작업 확인
-git tag -l                         # 마일스톤 태그 (step1 → step5c)
+git tag -l                         # 마일스톤 태그 (step1 → step5d)
 ls results/day*_summary.md         # Day별 보고서 (Day 1~15)
 ls results/step*_summary.md        # Step 보고서
 cat thesis/CLAUDE.md                # ← 본 파일
 ```
 
-**현재 위치**: Step 5-C 완료 (tag `step5c`, 2026-05-10).
+**현재 위치**: Step 5-D 완료 (tag `step5d`, 2026-05-10).
 - Step 1 (`step1`) — 미팅 프로토타입
 - Step 2-A (`step2a`) — 평가 신뢰성
 - Step 3-B (`step3b`) — 보조 테이블
 - Step 3-C-1 (`step3c1` = `step3`) — TabNet 어텐션 × SHAP 융합
 - Step 3-C-2 (`step3c2`) — NLI 평가
 - Step 3-C-2-f (`step4`) — Cross-Judge G-Eval
-- **Step 5-A (`step5a`) — Fairness-aware Learning** (Reweighing 4/4 통과)
-- **Step 5-B (`step5b`) — Generic RAG Baseline** (4-way 비교, 약점 #3 해소)
-- **Step 5-C (`step5c`) — Pilot Human-Proxy Evaluation** ★ 현재 마일스톤 (3 personas, trade-off 발견)
+- Step 5-A (`step5a`) — Fairness-aware Learning (Reweighing 4/4 통과)
+- Step 5-B (`step5b`) — Generic RAG Baseline (4-way 비교, 약점 #3 해소)
+- Step 5-C (`step5c`) — Pilot Human-Proxy Evaluation (3 personas, trade-off 발견)
+- **Step 5-D (`step5d`) — UCI German Credit 일반화** ★ 현재 마일스톤 (약점 #5 해소, NLI fusion 0.711 1위, G-Eval completeness 데이터셋별 차이 발견)
 
 **미팅 데드라인**: 2026-05-10 → 연기됨 (사용자 통보, 정확 일정 미확정).
-**미팅 자료**: `paper/midterm_slides.pptx` (23 슬라이드), `paper/midterm_report.docx` (15 섹션), `paper/midterm_report_friendly.docx` (18 섹션) 모두 step5c 결과 통합 완료.
+**미팅 자료**: `paper/midterm_slides.pptx` (23 슬라이드), `paper/midterm_report.docx` (15 섹션), `paper/midterm_report_friendly.docx` (18 섹션) — step5c 통합 완료, step5d 추가는 future work.
 
-**5가지 약점 진척**:
+**5가지 약점 진척** (★ 모두 해소 / 부분 해소):
 | 약점 | 상태 | 해소 step |
 |---|---|---|
 | #1 TabNet 역할 | ✅ 해소 | Step 3-C-1 (어텐션 × SHAP 융합) |
 | #2 LLM 평가 객관성 | ◐ 부분 해소 | Step 3-C-2 (NLI) + 5-C (pilot persona) |
 | #3 Counterfactual 정당성 | ✅ 해소 | Step 5-B (Generic RAG 비교) |
 | #4 Fairness mitigation | ✅ 해소 | Step 5-A (Reweighing 4/4 통과) |
-| #5 데이터 다양성 | ❌ 미해소 | UCI German Credit 등 — 다음 단계 후보 |
+| #5 데이터 다양성 | ✅ 해소 | **Step 5-D (UCI German Credit 일반화)** |
 
-**다음 후보**: §4 참조. 1순위는 **UCI German Credit (약점 #5)** 또는 **Customer-friendly 표현 정제 (Step 5-C 발견 대응)**.
+**다음 후보**: §4 참조. 1순위는 **Customer-friendly 표현 정제** (Step 5-C+5-D 양쪽에서 fusion의 LLM judge factual / customer clarity 약점 일관 재현 → 학술 가치 큼).
 
 ---
 
@@ -184,42 +185,92 @@ cat thesis/CLAUDE.md                # ← 본 파일
 - `results/case_study.md`에 정성 비교 노트
 - 정량(persona)과 정성(case study) 결과 일관
 
+### Step 5-D (tag `step5d`) — UCI German Credit 일반화 (`step5d_summary`)
+> 약점 #5 해소
+
+- **데이터**: sklearn `fetch_openml('credit-g')`, 1000 × 20 features (+target), 60/20/20 split
+- **포팅**: 메인 메커니즘 (XGBoost + SHAP + TabNet attention + LLM 4-mode RAG) 그대로 이식
+- 보호 속성: age, personal_status(sex), foreign_worker
+- 4 mode × 2 LLM × 30 instances = 240 explanations (Anth+Gem) + 240 G-Eval (Anth judge)
+
+#### ★ 일반화 입증 결과
+| 지표 | Home Credit | German Credit | 결과 |
+|---|---|---|---|
+| AUROC (XGBoost test, 5-fold) | 0.759 | 0.771 | 일관 |
+| SHAP × Attention ρ (full) | 0.117 | 0.114 | **거의 동일** ★ |
+| NLI Entailment fusion | 0.625 | **0.711** | German에서 더 강함 ★ |
+| Halluc rate | 0% | 0% | hard constraints 견고 |
+| Sensitive Leak | 5.0 | 5.0 | 마스킹 일관 |
+
+#### ★ 새 발견 — G-Eval Completeness 데이터셋별 차이
+- Home: **fusion 4.82** ★ 1위 (vs generic_rag 4.48)
+- German: **generic_rag 4.58** ★ 1위 (vs fusion 3.77) ⚠ 역전!
+- → 복잡한 도메인(Home, 214 features)은 fusion 우월, **단순한 도메인(German, 63 features)은 generic_rag 우월**
+
+#### ★ G-Eval Factual Accuracy — fusion 일관 약점
+- no_shap, generic_rag: 5.0 (만점)
+- shaponly, fusion: 3~4 (Gemini fusion 2.97 매우 낮음)
+- → fusion이 agreement 라벨 / SHAP 부호를 over-explain하는 경향 (Step 5-C customer clarity 약점과 일관)
+
+#### NLI Entailment 4-mode 단조증가 (양 데이터셋 동일 패턴)
+| Mode | Home | German |
+|---|---|---|
+| no_shap | 0.350 | 0.393 |
+| generic_rag | 0.367 | 0.410 |
+| shaponly | 0.461 | 0.628 |
+| **fusion** | **0.625** | **0.711** ★ |
+
+#### LLM 비용 (실측, $3.7)
+| 호출 | 수 | 비용 |
+|---|---|---|
+| Anthropic explanation | 120 | $1.82 |
+| Gemini explanation | 120 | $0.02 |
+| Anthropic G-Eval (judge) | 240 | ~$1.87 |
+
+#### 메시지 정교화 (Step 5-C+5-D 통합)
+> **fusion 메커니즘은 NLI 사실성에서 일관 1위**지만, **데이터 복잡도에 따라 G-Eval 충실성 우월성이 달라지고**, customer clarity·LLM judge factual에서 over-explain 약점.
+> → **응용 시나리오 + 데이터 복잡도** 두 차원에 따른 mode 선택 trade-off.
+
 ---
 
-## 4. 다음 단계 후보 (Step 5-D ~)
+## 4. 다음 단계 후보 (Step 5-E ~)
 
-### 🥇 1순위 — UCI German Credit (약점 #5 해소)
-- 1000 샘플, 작아서 빠름
-- 본 메커니즘 (XGBoost + SHAP + TabNet + LLM RAG)을 다른 데이터셋에 적용
-- 일반화 입증 — fusion 효과가 Home Credit 특수 패턴인지 일반 패턴인지 검증
-- **3~4일**
-
-### 🥈 2순위 — Customer-friendly 표현 정제 (Step 5-C 발견 대응)
-- SHAP 부호("+/-")를 자연어로 풀어쓰기 ("부도 가능성을 높이는 / 낮추는")
-- Agreement 라벨 직관 표현으로 변환 ("두 모델이 모두 본")
-- 동일 30 인스턴스 재호출 후 persona 평가 재실행
+### 🥇 1순위 — Customer-friendly 표현 정제 (★ Step 5-C+5-D 양쪽 재현)
+- **근거**: Step 5-C에서 fusion customer clarity 2.67 약점, Step 5-D에서 fusion G-Eval factual 2.97 (Gemini), generic_rag 5.0과 큰 격차 — **양 데이터셋에서 fusion over-explain 일관 재현**
+- 작업: SHAP 부호("+/-") 자연어화 ("부도 가능성을 높이는/낮추는"), agreement 라벨 직관 표현 ("두 모델이 모두 본"), 동일 인스턴스 재호출 + persona 평가
 - **2~3일**
 
-### 🥉 3순위 — 정식 IRB 인간평가 (장기)
-- 약점 #2 완전 해소
-- IRB 간소판 신청 + 5점 척도 + 다수 평가자 + Cohen's κ
-- 본 논문 심사 직전 단계로 적합
-- **1.5~2개월**
+### 🥈 2순위 — 3-way ablation (Attention-only 단독 검증)
+- **근거**: 현재 `shaponly vs fusion` 비교만 있고 Attention-only 단독 mode 미검증. Fusion 우월성이 attention의 추가적 기여인지 단순 union 효과인지 isolate 안 됨
+- 작업: TabNet attention top-k만 → LLM 4-mode 비교 (no_shap / attention_only / shaponly / fusion)
+- **3~4일**
 
-### 🎖 4순위 — 보강 작업
-- **3-way ablation** (SHAP-only / Attention-only / Fusion) — 3~4일
+### 🥉 3순위 — Step 5-D 보강 (표본 확장 + persona)
+- 표본 30 → 100 (양 데이터셋), Step 5-C persona pilot을 German에도 적용 (trade-off 일반화 입증)
+- 하이브리드 mode (fusion + customer-friendly) 실험
+- **3~5일**
+
+### 🎖 4순위 — 보강 작업 (Home Credit 차원)
 - **Bureau ablation** (EXT_SOURCE 응축 가설) — 1~2일
 - **잔여 보조 테이블 4개** (POS_CASH, credit_card, installments + bureau_balance) — 1주
-- **Fusion 표본 30 → 100 확장** — 반나절
 - **TabNet/LightGBM에 aux 효과 일반화** — 3~4일
+
+### 🏅 5순위 — 추가 데이터셋 (확장 일반화)
+- **Australian Credit** (UCI, 690 × 14) — 3~4일
+- **Lending Club** (Kaggle, ~1.3M × 150) — 5~7일
+
+### ⚠️ 6순위 — 정식 IRB 인간평가 (장기, 본 논문 심사 직전)
+- 약점 #2 완전 해소. IRB 간소판 + 5점 척도 + 다수 평가자 + Cohen's κ
+- **1.5~2개월**
 
 ### 권장 진행 순서
 ```
-1순위 UCI German Credit (3~4일)
-→ 2순위 Customer-friendly 표현 정제 (2~3일)
-→ 4순위 보강 작업 (선택적, 우선순위 따라)
-→ 3순위 정식 IRB 인간평가 (장기, 본 논문 심사 직전)
+1순위 Customer-friendly 표현 정제 (2~3일)
+→ 2순위 3-way ablation (3~4일)
+→ 3순위 Step 5-D 보강 — 표본 100 + persona (3~5일)
+→ 5순위 추가 데이터셋 — Australian (3~4일)
 → 본 논문 초안 작성
+→ 6순위 IRB 인간평가 (심사 전)
 ```
 
 ---
@@ -260,6 +311,11 @@ D:\paper\
 │   ├─ baseline_generic_rag.py / eval_generic_rag.py
 │   # Step 5-C
 │   ├─ human_proxy_eval.py / case_study.py
+│   # Step 5-D (UCI German Credit)
+│   ├─ german_data.py / german_train.py / german_explainer.py / german_eval.py / german_compare.py
+├─ data/
+│   ├─ home_credit/ ...
+│   ├─ german_credit/raw.parquet, processed/{train,val,test}_*.parquet
 ├─ results/
 │   ├─ environment.md / day{1..15}_summary.md / step2a_summary.md
 │   ├─ baseline_models/         # *.pkl/zip (gitignored)
@@ -278,13 +334,21 @@ D:\paper\
 │   ├─ generic_rag_eval.csv / generic_rag_summary.csv  # Step 5-B
 │   ├─ human_proxy_eval.csv / human_proxy_summary.csv  # Step 5-C
 │   ├─ case_study.md                            # Step 5-C
+│   ├─ german_eda.json / german_cv_{metrics,summary}.csv      # Step 5-D
+│   ├─ german_shap_{global,local}.* / german_tabnet_attention.json
+│   ├─ german_attention_vs_shap.json
+│   ├─ contexts_german_{no_shap,generic_rag,shaponly,fusion}_30/
+│   ├─ explanations_german_{mode}_{anthropic,gemini}_30/
+│   ├─ german_eval.csv / german_eval_summary.csv
+│   ├─ step5d_comparison.csv / step5d_summary.md
 │   └─ ... (cv_aux_*, shap_global_*aux*, etc.)
-├─ figures/                     # ✅ 36개 png
+├─ figures/                     # ✅ 41개 png
 │   # 1-23: Step 1, 24-26: Step 2-A, 27-29: Step 3-B
 │   # 30: Step 3-C-1 fusion, 31: Step 3-C-2 NLI, 32: Step 3-C-2-f cross-judge
 │   # 33-34: Step 5-A fairness mitigation
 │   # 35: Step 5-B generic RAG 4-way
 │   # 36: Step 5-C human-proxy personas
+│   # 37-41: Step 5-D German Credit (EDA / CV / SHAP / 4-way / generalization)
 └─ thesis/CLAUDE.md (이 파일) / kaggle_data_setup.md / llm_options.md
 ```
 
@@ -335,6 +399,19 @@ python -m src.eval_generic_rag --judge anthropic   # 4-way 비교
 python -m src.human_proxy_eval --n-samples 15 --judge anthropic --sleep 3
 python -m src.case_study              # 6 instances 정성 분석
 
+# Step 5-D (UCI German Credit 일반화)
+python -m src.german_data --step all   # load + EDA + preprocess
+python -m src.german_train --step cv   # 5-fold CV (Logistic+XGB+LGBM+TabNet)
+python -m src.german_train --step xgb  # 단발 학습 → SHAP용
+python -m src.german_train --step tabnet
+python -m src.german_train --step shap        # SHAP global + local 30
+python -m src.german_train --step attention   # TabNet attention 30
+python -m src.german_train --step consistency # ρ + Top-K overlap
+python -m src.german_explainer --mode {no_shap,generic_rag,shaponly,fusion} --provider {anthropic,gemini} --n-samples 30
+python -m src.german_eval --skip-geval        # NLI + value_match만 (빠름)
+python -m src.german_eval --geval-judge anthropic --geval-sleep 3   # G-Eval 추가 (~60분)
+python -m src.german_compare                  # Home vs German + step5d_summary.md
+
 # 미팅 자료 재생성
 python -m src.gen_report               # 15 섹션
 python -m src.gen_friendly_report      # 18 섹션
@@ -342,8 +419,8 @@ python -m src.gen_slides               # 23 슬라이드
 
 # Git
 git log --oneline -10
-git tag -l                              # step1 ~ step5c
-git diff step5b..step5c --stat          # 단계 간 변경
+git tag -l                              # step1 ~ step5d
+git diff step5c..step5d --stat          # 단계 간 변경
 git -C D:/paper merge --ff-only claude/<worktree-branch>
 ```
 
@@ -399,6 +476,10 @@ git -C D:/paper merge --ff-only claude/<worktree-branch>
 | **Step 5-C** | IRB 어렵다는 사용자 결정 → LLM persona pilot으로 proxy 평가 |
 | **Step 5-C** | 3 personas (Credit Expert / Customer / Regulator), 15 instances, Claude judge |
 | **Step 5-C** | 미팅 일정 연기 — 추가 작업 가능 (UCI German Credit 등) |
+| **Step 5-D** | UCI German Credit (sklearn fetch_openml `credit-g` v1), 30 instances × 4 mode × 2 LLM |
+| **Step 5-D** | TabNet hyperparams 재조정 (n_d=8, batch_size=128 등 — 1000 샘플 작은 데이터) |
+| **Step 5-D** | German custom humanize 매핑 (GERMAN_GLOSSARY/VALUE_LABELS) — 한국어 컬럼/값 라벨 |
+| **Step 5-D** | G-Eval Anthropic judge로 Anthropic+Gemini 양 출력 평가 (cross-judge는 future work) |
 
 ---
 

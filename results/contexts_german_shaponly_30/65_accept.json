@@ -1,0 +1,49 @@
+{
+  "sample_idx": 65,
+  "default_probability": 0.0479,
+  "threshold": 0.4562,
+  "decision": "APPROVE",
+  "top_drivers_for_default": [
+    {
+      "feature": "체크 계좌 없음",
+      "feature_raw": "checking_status_no_checking",
+      "value": "비해당",
+      "shap": 0.2831,
+      "rank": 3
+    }
+  ],
+  "top_drivers_against_default": [
+    {
+      "feature": "대출 기간(개월)",
+      "feature_raw": "duration",
+      "value": "7개월",
+      "shap": -1.48,
+      "rank": 1
+    },
+    {
+      "feature": "보증인 있음",
+      "feature_raw": "other_parties_guarantor",
+      "value": "해당",
+      "shap": -0.5725,
+      "rank": 2
+    },
+    {
+      "feature": "부동산",
+      "feature_raw": "property_magnitude_real_estate",
+      "value": "해당",
+      "shap": -0.2598,
+      "rank": 4
+    },
+    {
+      "feature": "대출 금액(DM)",
+      "feature_raw": "credit_amount",
+      "value": "2,576 DM",
+      "shap": -0.2361,
+      "rank": 5
+    }
+  ],
+  "fairness_flags": [],
+  "model": "XGBoost + SHAP",
+  "explanation_policy": "fact_only_shap_top5",
+  "_meta_true_label": 0
+}

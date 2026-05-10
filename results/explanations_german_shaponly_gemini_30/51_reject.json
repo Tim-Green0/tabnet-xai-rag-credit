@@ -1,0 +1,64 @@
+{
+  "sample_idx": 51,
+  "decision": "REJECT",
+  "true_label": 1,
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "mode": "shaponly",
+  "elapsed_sec": 8.74,
+  "explanation": "[결정 요약]\n고객님의 신용 평가 결과, 대출 신청이 승인되지 않았습니다.\n\n[주요 거절 사유]\n고객님의 대출 신청은 다음 요인들로 인해 부도 가능성이 높게 평가되었습니다.\n1. 대출 기간이 24개월인 점\n2. 체크 계좌가 없으신 점\n3. 계좌 잔액이 0 DM 미만인 점\n\n[긍정적으로 평가된 요인]\n반면에, 다음 요인은 부도 가능성을 낮추는 데 긍정적으로 작용했습니다.\n1. 대출 금액이 3,234 DM인 점\n\n[개선 권고]\n향후 신용 평가 시 긍정적인 결과를 위해 다음 사항들을 고려해 보실 수 있습니다.\n1. 대출 기간을 더 짧게 설정하는 것을 고려해 보세요.\n2. 계좌에 긍정적인 잔액을 유지하는 것이 도움이 될 수 있습니다.\n3. 체크 계좌를 개설하고 이용하는 것을 고려해 볼 수 있습니다.\n\n[면책 고지]\n본 신용 평가 결과는 현재 제공된 정보를 바탕으로 한 것이며, 미래를 보장하거나 재정 자문이 아닙니다. 개인의 상황 변화에 따라 결과는 달라질 수 있습니다.",
+  "usage_metadata": {
+    "prompt_token_count": 730,
+    "candidates_token_count": 282,
+    "total_token_count": 2530
+  },
+  "context_sent": {
+    "sample_idx": 51,
+    "default_probability": 0.859,
+    "threshold": 0.4562,
+    "decision": "REJECT",
+    "top_drivers_for_default": [
+      {
+        "feature": "대출 기간(개월)",
+        "feature_raw": "duration",
+        "value": "24개월",
+        "shap": 0.4991,
+        "rank": 1
+      },
+      {
+        "feature": "체크 계좌 없음",
+        "feature_raw": "checking_status_no_checking",
+        "value": "비해당",
+        "shap": 0.4474,
+        "rank": 2
+      },
+      {
+        "feature": "잔액 < 0 DM",
+        "feature_raw": "checking_status__0",
+        "value": "해당",
+        "shap": 0.3066,
+        "rank": 4
+      },
+      {
+        "feature": "임대",
+        "feature_raw": "housing_rent",
+        "value": "해당",
+        "shap": 0.2881,
+        "rank": 5
+      }
+    ],
+    "top_drivers_against_default": [
+      {
+        "feature": "대출 금액(DM)",
+        "feature_raw": "credit_amount",
+        "value": "3,234 DM",
+        "shap": -0.3284,
+        "rank": 3
+      }
+    ],
+    "fairness_flags": [],
+    "model": "XGBoost + SHAP",
+    "explanation_policy": "fact_only_shap_top5"
+  },
+  "context_type": "german_shaponly"
+}

@@ -1,0 +1,1172 @@
+[
+  {
+    "idx": 194,
+    "tag": "reject",
+    "true_label": 1,
+    "predicted_proba_xgb": 0.945403,
+    "n_features_active": 52,
+    "top_k_attention": [
+      {
+        "feature": "savings_status_no_known_savings",
+        "attention_score": 0.201377,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "other_payment_plans_stores",
+        "attention_score": 0.155792,
+        "value": 0.0,
+        "rank": 2
+      },
+      {
+        "feature": "checking_status_no_checking",
+        "attention_score": 0.133884,
+        "value": 0.0,
+        "rank": 3
+      },
+      {
+        "feature": "credit_amount",
+        "attention_score": 0.100799,
+        "value": 0.7072452385627331,
+        "rank": 4
+      },
+      {
+        "feature": "other_parties_co_applicant",
+        "attention_score": 0.079744,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 19,
+    "tag": "reject",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.914036,
+    "n_features_active": 54,
+    "top_k_attention": [
+      {
+        "feature": "savings_status_no_known_savings",
+        "attention_score": 0.174433,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "credit_history_no_credits/all_paid",
+        "attention_score": 0.080422,
+        "value": 0.0,
+        "rank": 2
+      },
+      {
+        "feature": "existing_credits",
+        "attention_score": 0.071767,
+        "value": 0.0,
+        "rank": 3
+      },
+      {
+        "feature": "housing_rent",
+        "attention_score": 0.067027,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "other_parties_co_applicant",
+        "attention_score": 0.066779,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 148,
+    "tag": "reject",
+    "true_label": 1,
+    "predicted_proba_xgb": 0.908397,
+    "n_features_active": 42,
+    "top_k_attention": [
+      {
+        "feature": "savings_status_no_known_savings",
+        "attention_score": 0.376233,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "checking_status_no_checking",
+        "attention_score": 0.210825,
+        "value": 0.0,
+        "rank": 2
+      },
+      {
+        "feature": "property_magnitude_real_estate",
+        "attention_score": 0.18474,
+        "value": 0.0,
+        "rank": 3
+      },
+      {
+        "feature": "credit_amount",
+        "attention_score": 0.178286,
+        "value": 0.7849990182603573,
+        "rank": 4
+      },
+      {
+        "feature": "age",
+        "attention_score": 0.138519,
+        "value": -0.6428571428571429,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 43,
+    "tag": "reject",
+    "true_label": 1,
+    "predicted_proba_xgb": 0.903958,
+    "n_features_active": 59,
+    "top_k_attention": [
+      {
+        "feature": "checking_status_no_checking",
+        "attention_score": 0.152391,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "savings_status_no_known_savings",
+        "attention_score": 0.123532,
+        "value": 0.0,
+        "rank": 2
+      },
+      {
+        "feature": "property_magnitude_real_estate",
+        "attention_score": 0.065094,
+        "value": 0.0,
+        "rank": 3
+      },
+      {
+        "feature": "purpose_education",
+        "attention_score": 0.059675,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "other_parties_co_applicant",
+        "attention_score": 0.042786,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 178,
+    "tag": "reject",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.884869,
+    "n_features_active": 59,
+    "top_k_attention": [
+      {
+        "feature": "savings_status_no_known_savings",
+        "attention_score": 0.116592,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "checking_status_no_checking",
+        "attention_score": 0.095738,
+        "value": 0.0,
+        "rank": 2
+      },
+      {
+        "feature": "property_magnitude_real_estate",
+        "attention_score": 0.064238,
+        "value": 0.0,
+        "rank": 3
+      },
+      {
+        "feature": "purpose_education",
+        "attention_score": 0.040891,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "other_parties_co_applicant",
+        "attention_score": 0.040765,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 113,
+    "tag": "reject",
+    "true_label": 1,
+    "predicted_proba_xgb": 0.882993,
+    "n_features_active": 60,
+    "top_k_attention": [
+      {
+        "feature": "checking_status_no_checking",
+        "attention_score": 0.068616,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "savings_status_no_known_savings",
+        "attention_score": 0.057988,
+        "value": 0.0,
+        "rank": 2
+      },
+      {
+        "feature": "property_magnitude_real_estate",
+        "attention_score": 0.03888,
+        "value": 1.0,
+        "rank": 3
+      },
+      {
+        "feature": "purpose_education",
+        "attention_score": 0.037501,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "own_telephone_yes",
+        "attention_score": 0.025654,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 105,
+    "tag": "reject",
+    "true_label": 1,
+    "predicted_proba_xgb": 0.86792,
+    "n_features_active": 43,
+    "top_k_attention": [
+      {
+        "feature": "savings_status_no_known_savings",
+        "attention_score": 0.401919,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "purpose_education",
+        "attention_score": 0.23245,
+        "value": 0.0,
+        "rank": 2
+      },
+      {
+        "feature": "other_parties_co_applicant",
+        "attention_score": 0.196477,
+        "value": 0.0,
+        "rank": 3
+      },
+      {
+        "feature": "checking_status_no_checking",
+        "attention_score": 0.183772,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "purpose_domestic_appliance",
+        "attention_score": 0.123836,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 47,
+    "tag": "reject",
+    "true_label": 1,
+    "predicted_proba_xgb": 0.861886,
+    "n_features_active": 55,
+    "top_k_attention": [
+      {
+        "feature": "savings_status_no_known_savings",
+        "attention_score": 0.070641,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "checking_status_no_checking",
+        "attention_score": 0.065916,
+        "value": 0.0,
+        "rank": 2
+      },
+      {
+        "feature": "own_telephone_yes",
+        "attention_score": 0.043963,
+        "value": 1.0,
+        "rank": 3
+      },
+      {
+        "feature": "purpose_education",
+        "attention_score": 0.039674,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "credit_history_no_credits/all_paid",
+        "attention_score": 0.03921,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 51,
+    "tag": "reject",
+    "true_label": 1,
+    "predicted_proba_xgb": 0.858985,
+    "n_features_active": 44,
+    "top_k_attention": [
+      {
+        "feature": "savings_status_no_known_savings",
+        "attention_score": 0.307363,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "property_magnitude_real_estate",
+        "attention_score": 0.217659,
+        "value": 1.0,
+        "rank": 2
+      },
+      {
+        "feature": "checking_status_no_checking",
+        "attention_score": 0.176372,
+        "value": 0.0,
+        "rank": 3
+      },
+      {
+        "feature": "GENDER_M",
+        "attention_score": 0.119736,
+        "value": -1.0,
+        "rank": 4
+      },
+      {
+        "feature": "employment__1",
+        "attention_score": 0.112297,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 129,
+    "tag": "reject",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.846473,
+    "n_features_active": 53,
+    "top_k_attention": [
+      {
+        "feature": "savings_status_no_known_savings",
+        "attention_score": 0.20229,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "property_magnitude_real_estate",
+        "attention_score": 0.096199,
+        "value": 0.0,
+        "rank": 2
+      },
+      {
+        "feature": "checking_status_no_checking",
+        "attention_score": 0.0796,
+        "value": 0.0,
+        "rank": 3
+      },
+      {
+        "feature": "other_parties_none",
+        "attention_score": 0.059453,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "property_magnitude_life_insurance",
+        "attention_score": 0.054834,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 76,
+    "tag": "reject",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.845984,
+    "n_features_active": 57,
+    "top_k_attention": [
+      {
+        "feature": "savings_status_no_known_savings",
+        "attention_score": 0.162016,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "checking_status_no_checking",
+        "attention_score": 0.11079,
+        "value": 0.0,
+        "rank": 2
+      },
+      {
+        "feature": "property_magnitude_real_estate",
+        "attention_score": 0.077677,
+        "value": 0.0,
+        "rank": 3
+      },
+      {
+        "feature": "other_parties_co_applicant",
+        "attention_score": 0.062911,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "purpose_education",
+        "attention_score": 0.053182,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 52,
+    "tag": "reject",
+    "true_label": 1,
+    "predicted_proba_xgb": 0.832808,
+    "n_features_active": 48,
+    "top_k_attention": [
+      {
+        "feature": "checking_status_no_checking",
+        "attention_score": 0.079464,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "own_telephone_yes",
+        "attention_score": 0.062368,
+        "value": 0.0,
+        "rank": 2
+      },
+      {
+        "feature": "checking_status__0",
+        "attention_score": 0.044308,
+        "value": 1.0,
+        "rank": 3
+      },
+      {
+        "feature": "purpose_education",
+        "attention_score": 0.035184,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "personal_status_male_single",
+        "attention_score": 0.034777,
+        "value": -1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 13,
+    "tag": "reject",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.827873,
+    "n_features_active": 47,
+    "top_k_attention": [
+      {
+        "feature": "savings_status_no_known_savings",
+        "attention_score": 0.297608,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "checking_status_no_checking",
+        "attention_score": 0.126412,
+        "value": 0.0,
+        "rank": 2
+      },
+      {
+        "feature": "property_magnitude_real_estate",
+        "attention_score": 0.113925,
+        "value": 0.0,
+        "rank": 3
+      },
+      {
+        "feature": "other_parties_none",
+        "attention_score": 0.075249,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "other_parties_co_applicant",
+        "attention_score": 0.070207,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 29,
+    "tag": "reject",
+    "true_label": 1,
+    "predicted_proba_xgb": 0.817655,
+    "n_features_active": 61,
+    "top_k_attention": [
+      {
+        "feature": "savings_status_no_known_savings",
+        "attention_score": 0.140772,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "checking_status_no_checking",
+        "attention_score": 0.132489,
+        "value": 0.0,
+        "rank": 2
+      },
+      {
+        "feature": "other_parties_co_applicant",
+        "attention_score": 0.057054,
+        "value": 0.0,
+        "rank": 3
+      },
+      {
+        "feature": "property_magnitude_real_estate",
+        "attention_score": 0.0527,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "purpose_education",
+        "attention_score": 0.047409,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 59,
+    "tag": "reject",
+    "true_label": 1,
+    "predicted_proba_xgb": 0.817603,
+    "n_features_active": 50,
+    "top_k_attention": [
+      {
+        "feature": "credit_history_no_credits/all_paid",
+        "attention_score": 0.087764,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "own_telephone_none",
+        "attention_score": 0.058065,
+        "value": 0.0,
+        "rank": 2
+      },
+      {
+        "feature": "purpose_education",
+        "attention_score": 0.049102,
+        "value": 1.0,
+        "rank": 3
+      },
+      {
+        "feature": "checking_status__0",
+        "attention_score": 0.04816,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "savings_status_100_=X_500",
+        "attention_score": 0.047848,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 115,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.013727,
+    "n_features_active": 61,
+    "top_k_attention": [
+      {
+        "feature": "purpose_education",
+        "attention_score": 0.267764,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "checking_status__0",
+        "attention_score": 0.2534,
+        "value": 0.0,
+        "rank": 2
+      },
+      {
+        "feature": "checking_status_no_checking",
+        "attention_score": 0.203349,
+        "value": 1.0,
+        "rank": 3
+      },
+      {
+        "feature": "other_payment_plans_none",
+        "attention_score": 0.201554,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "property_magnitude_real_estate",
+        "attention_score": 0.159393,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 164,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.014511,
+    "n_features_active": 52,
+    "top_k_attention": [
+      {
+        "feature": "purpose_education",
+        "attention_score": 0.341199,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "other_payment_plans_none",
+        "attention_score": 0.323748,
+        "value": 0.0,
+        "rank": 2
+      },
+      {
+        "feature": "checking_status_no_checking",
+        "attention_score": 0.306247,
+        "value": 1.0,
+        "rank": 3
+      },
+      {
+        "feature": "checking_status__0",
+        "attention_score": 0.26265,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "property_magnitude_real_estate",
+        "attention_score": 0.168496,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 7,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.015058,
+    "n_features_active": 38,
+    "top_k_attention": [
+      {
+        "feature": "existing_credits",
+        "attention_score": 0.880556,
+        "value": 2.0,
+        "rank": 1
+      },
+      {
+        "feature": "checking_status_no_checking",
+        "attention_score": 0.836952,
+        "value": 1.0,
+        "rank": 2
+      },
+      {
+        "feature": "other_payment_plans_none",
+        "attention_score": 0.603617,
+        "value": 0.0,
+        "rank": 3
+      },
+      {
+        "feature": "personal_status_male_div/sep",
+        "attention_score": 0.495582,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "credit_history_critical/other_existing_credit",
+        "attention_score": 0.437329,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 79,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.018976,
+    "n_features_active": 52,
+    "top_k_attention": [
+      {
+        "feature": "other_payment_plans_none",
+        "attention_score": 0.351209,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "checking_status_no_checking",
+        "attention_score": 0.300159,
+        "value": 1.0,
+        "rank": 2
+      },
+      {
+        "feature": "purpose_education",
+        "attention_score": 0.275244,
+        "value": 0.0,
+        "rank": 3
+      },
+      {
+        "feature": "property_magnitude_real_estate",
+        "attention_score": 0.252945,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "checking_status__0",
+        "attention_score": 0.190264,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 78,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.019334,
+    "n_features_active": 42,
+    "top_k_attention": [
+      {
+        "feature": "checking_status_no_checking",
+        "attention_score": 0.975064,
+        "value": 1.0,
+        "rank": 1
+      },
+      {
+        "feature": "other_payment_plans_none",
+        "attention_score": 0.524929,
+        "value": 0.0,
+        "rank": 2
+      },
+      {
+        "feature": "existing_credits",
+        "attention_score": 0.41228,
+        "value": 2.0,
+        "rank": 3
+      },
+      {
+        "feature": "purpose_education",
+        "attention_score": 0.353878,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "savings_status_no_known_savings",
+        "attention_score": 0.289387,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 50,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.022626,
+    "n_features_active": 61,
+    "top_k_attention": [
+      {
+        "feature": "checking_status_no_checking",
+        "attention_score": 0.31429,
+        "value": 1.0,
+        "rank": 1
+      },
+      {
+        "feature": "checking_status__0",
+        "attention_score": 0.289497,
+        "value": 0.0,
+        "rank": 2
+      },
+      {
+        "feature": "purpose_education",
+        "attention_score": 0.287389,
+        "value": 0.0,
+        "rank": 3
+      },
+      {
+        "feature": "other_payment_plans_none",
+        "attention_score": 0.268211,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "property_magnitude_real_estate",
+        "attention_score": 0.219486,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 156,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.023695,
+    "n_features_active": 51,
+    "top_k_attention": [
+      {
+        "feature": "purpose_education",
+        "attention_score": 0.301479,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "checking_status_no_checking",
+        "attention_score": 0.288964,
+        "value": 1.0,
+        "rank": 2
+      },
+      {
+        "feature": "other_payment_plans_none",
+        "attention_score": 0.267493,
+        "value": 0.0,
+        "rank": 3
+      },
+      {
+        "feature": "checking_status__0",
+        "attention_score": 0.254351,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "property_magnitude_real_estate",
+        "attention_score": 0.247693,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 144,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.031904,
+    "n_features_active": 40,
+    "top_k_attention": [
+      {
+        "feature": "existing_credits",
+        "attention_score": 0.626527,
+        "value": 1.0,
+        "rank": 1
+      },
+      {
+        "feature": "job_unskilled_resident",
+        "attention_score": 0.309997,
+        "value": 1.0,
+        "rank": 2
+      },
+      {
+        "feature": "credit_history_delayed_previously",
+        "attention_score": 0.305239,
+        "value": 0.0,
+        "rank": 3
+      },
+      {
+        "feature": "checking_status__0",
+        "attention_score": 0.216132,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "credit_history_critical/other_existing_credit",
+        "attention_score": 0.193502,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 55,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.032969,
+    "n_features_active": 52,
+    "top_k_attention": [
+      {
+        "feature": "purpose_education",
+        "attention_score": 0.265347,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "checking_status__0",
+        "attention_score": 0.256123,
+        "value": 0.0,
+        "rank": 2
+      },
+      {
+        "feature": "property_magnitude_no_known_property",
+        "attention_score": 0.125235,
+        "value": 0.0,
+        "rank": 3
+      },
+      {
+        "feature": "employment__=7",
+        "attention_score": 0.103909,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "savings_status_no_known_savings",
+        "attention_score": 0.103501,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 117,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.034486,
+    "n_features_active": 53,
+    "top_k_attention": [
+      {
+        "feature": "employment__=7",
+        "attention_score": 0.243429,
+        "value": 1.0,
+        "rank": 1
+      },
+      {
+        "feature": "property_magnitude_real_estate",
+        "attention_score": 0.224282,
+        "value": 1.0,
+        "rank": 2
+      },
+      {
+        "feature": "savings_status_no_known_savings",
+        "attention_score": 0.14012,
+        "value": 0.0,
+        "rank": 3
+      },
+      {
+        "feature": "checking_status_no_checking",
+        "attention_score": 0.134104,
+        "value": 1.0,
+        "rank": 4
+      },
+      {
+        "feature": "purpose_education",
+        "attention_score": 0.128635,
+        "value": 0.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 136,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.03871,
+    "n_features_active": 55,
+    "top_k_attention": [
+      {
+        "feature": "checking_status__0",
+        "attention_score": 0.189099,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "purpose_education",
+        "attention_score": 0.116896,
+        "value": 0.0,
+        "rank": 2
+      },
+      {
+        "feature": "property_magnitude_no_known_property",
+        "attention_score": 0.090682,
+        "value": 1.0,
+        "rank": 3
+      },
+      {
+        "feature": "other_payment_plans_stores",
+        "attention_score": 0.058529,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "savings_status_no_known_savings",
+        "attention_score": 0.057222,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 45,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.041077,
+    "n_features_active": 54,
+    "top_k_attention": [
+      {
+        "feature": "employment__=7",
+        "attention_score": 0.175915,
+        "value": 1.0,
+        "rank": 1
+      },
+      {
+        "feature": "property_magnitude_real_estate",
+        "attention_score": 0.132178,
+        "value": 1.0,
+        "rank": 2
+      },
+      {
+        "feature": "savings_status_no_known_savings",
+        "attention_score": 0.104186,
+        "value": 0.0,
+        "rank": 3
+      },
+      {
+        "feature": "purpose_education",
+        "attention_score": 0.073522,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "checking_status_no_checking",
+        "attention_score": 0.061197,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 65,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.047879,
+    "n_features_active": 63,
+    "top_k_attention": [
+      {
+        "feature": "checking_status_no_checking",
+        "attention_score": 0.148341,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "purpose_education",
+        "attention_score": 0.127787,
+        "value": 0.0,
+        "rank": 2
+      },
+      {
+        "feature": "employment__=7",
+        "attention_score": 0.119334,
+        "value": 0.0,
+        "rank": 3
+      },
+      {
+        "feature": "savings_status_no_known_savings",
+        "attention_score": 0.118302,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "property_magnitude_real_estate",
+        "attention_score": 0.11041,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 74,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.054024,
+    "n_features_active": 41,
+    "top_k_attention": [
+      {
+        "feature": "checking_status__0",
+        "attention_score": 0.287742,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "credit_history_delayed_previously",
+        "attention_score": 0.257011,
+        "value": 0.0,
+        "rank": 2
+      },
+      {
+        "feature": "job_unskilled_resident",
+        "attention_score": 0.24212,
+        "value": 1.0,
+        "rank": 3
+      },
+      {
+        "feature": "GENDER_F",
+        "attention_score": 0.144775,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "savings_status_no_known_savings",
+        "attention_score": 0.133475,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  },
+  {
+    "idx": 91,
+    "tag": "accept",
+    "true_label": 0,
+    "predicted_proba_xgb": 0.055593,
+    "n_features_active": 61,
+    "top_k_attention": [
+      {
+        "feature": "checking_status_no_checking",
+        "attention_score": 0.147071,
+        "value": 0.0,
+        "rank": 1
+      },
+      {
+        "feature": "employment__=7",
+        "attention_score": 0.122659,
+        "value": 0.0,
+        "rank": 2
+      },
+      {
+        "feature": "savings_status_no_known_savings",
+        "attention_score": 0.115961,
+        "value": 0.0,
+        "rank": 3
+      },
+      {
+        "feature": "purpose_education",
+        "attention_score": 0.115895,
+        "value": 0.0,
+        "rank": 4
+      },
+      {
+        "feature": "property_magnitude_real_estate",
+        "attention_score": 0.111727,
+        "value": 1.0,
+        "rank": 5
+      }
+    ]
+  }
+]

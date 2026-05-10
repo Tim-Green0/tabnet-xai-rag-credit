@@ -1,0 +1,42 @@
+{
+  "sample_idx": 74,
+  "decision": "APPROVE",
+  "true_label": 0,
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "mode": "no_shap",
+  "elapsed_sec": 9.25,
+  "explanation": "고객님, 안녕하세요. 고객님의 대출 신청 결과에 대해 친절히 설명해 드리겠습니다.\n\n---\n\n[결정 요약]\n고객님의 대출 신청이 승인되었습니다.\n\n[주요 거절 사유]\n(해당 없음)\n\n[긍정적으로 평가된 요인]\n*   요청하신 대출 금액이 730 DM으로 비교적 소액입니다.\n*   7년 이상의 안정적인 재직 기간을 유지하고 계십니다.\n*   월 소득 대비 분할 상환 비율이 4%로 낮은 편입니다.\n\n[개선 권고]\n*   현재 신용 이력이 'critical'로 분류되어 있으니, 기존 채무를 성실히 상환하여 신용 점수를 개선하시는 것이 좋습니다.\n*   향후 비상 상황에 대비하여 꾸준히 저축하는 습관을 들이시는 것을 권장합니다.\n*   주거래 은행에 체크 계좌를 개설하여 활동적인 금융 거래 이력을 만드시면 신용도 평가에 긍정적입니다.\n\n[면책 고지]\n본 신용 평가 결과는 고객님의 현재 데이터를 기반으로 한 것이며, 미래의 금융 상황을 보장하지 않습니다.\n향후 신용 평가 기준은 변경될 수 있으며, 고객님의 금융 상황 변동에 따라 대출 조건 또한 달라질 수 있습니다.",
+  "usage_metadata": {
+    "prompt_token_count": 353,
+    "candidates_token_count": 298,
+    "total_token_count": 2364
+  },
+  "context_sent": {
+    "sample_idx": 74,
+    "default_probability": 0.054,
+    "threshold": 0.4562,
+    "decision": "APPROVE",
+    "customer_data": {
+      "체크 계좌 상태": "no checking",
+      "대출 기간(개월)": "7개월",
+      "신용 이력": "critical/other existing credit",
+      "대출 목적": "radio/tv",
+      "대출 금액(DM)": "730 DM",
+      "저축 상태": "no known savings",
+      "재직 기간": ">=7",
+      "분할 상환 비율(%)": "4%",
+      "보증인/공동신청자": "none",
+      "현 거주지 거주 기간(년)": "2년",
+      "보유 자산": "life insurance",
+      "기타 지불 계획": "none",
+      "주거 형태": "rent",
+      "기존 대출 건수": "2건",
+      "직업 분류": "unskilled resident",
+      "부양 가족 수": "1명",
+      "전화 보유": "yes"
+    },
+    "policy": "no_shap_raw_only"
+  },
+  "context_type": "german_no_shap"
+}

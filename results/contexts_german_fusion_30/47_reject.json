@@ -1,0 +1,100 @@
+{
+  "sample_idx": 47,
+  "decision": "REJECT",
+  "default_probability": 0.8619,
+  "threshold": 0.4562,
+  "agreed_drivers": [
+    {
+      "feature": "체크 계좌 없음",
+      "feature_raw": "checking_status_no_checking",
+      "value": "비해당",
+      "rank": 1,
+      "group": "agreed",
+      "shap": 0.4922,
+      "sign_for_default": "+",
+      "attention": 0.065916
+    }
+  ],
+  "shap_only_drivers": [
+    {
+      "feature": "대출 기간(개월)",
+      "feature_raw": "duration",
+      "value": "45개월",
+      "rank": 1,
+      "group": "shap_only",
+      "shap": 0.5719,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "잔액 < 0 DM",
+      "feature_raw": "checking_status__0",
+      "value": "해당",
+      "rank": 2,
+      "group": "shap_only",
+      "shap": 0.3834,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "분할 상환 비율(%)",
+      "feature_raw": "installment_commitment",
+      "value": "4.0%",
+      "rank": 3,
+      "group": "shap_only",
+      "shap": 0.2699,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "저축 < 100 DM",
+      "feature_raw": "savings_status__100",
+      "value": "해당",
+      "rank": 4,
+      "group": "shap_only",
+      "shap": 0.2142,
+      "sign_for_default": "+"
+    }
+  ],
+  "attention_only_drivers": [
+    {
+      "feature": "저축 정보 없음",
+      "feature_raw": "savings_status_no_known_savings",
+      "value": "비해당",
+      "rank": 1,
+      "group": "attention_only",
+      "attention": 0.070641
+    },
+    {
+      "feature": "전화 보유",
+      "feature_raw": "own_telephone_yes",
+      "value": "해당",
+      "rank": 2,
+      "group": "attention_only",
+      "attention": 0.043963
+    },
+    {
+      "feature": "교육",
+      "feature_raw": "purpose_education",
+      "value": "비해당",
+      "rank": 3,
+      "group": "attention_only",
+      "attention": 0.039674
+    },
+    {
+      "feature": "기존 대출 없거나 모두 상환",
+      "feature_raw": "credit_history_no_credits/all_paid",
+      "value": "비해당",
+      "rank": 4,
+      "group": "attention_only",
+      "attention": 0.03921
+    }
+  ],
+  "model_predict": "XGBoost",
+  "model_explain": [
+    "SHAP_xgb_local",
+    "TabNet_attention_local"
+  ],
+  "explanation_policy": "fact_only_with_agreement_labels",
+  "n_agreed": 1,
+  "n_shap_only": 4,
+  "n_attention_only": 4,
+  "_meta_true_label": 1
+}

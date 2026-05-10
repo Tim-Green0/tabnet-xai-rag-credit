@@ -1,0 +1,27 @@
+{
+  "sample_idx": 45,
+  "default_probability": 0.0411,
+  "threshold": 0.4562,
+  "decision": "APPROVE",
+  "customer_data": {
+    "체크 계좌 상태": "no checking",
+    "대출 기간(개월)": "24개월",
+    "신용 이력": "critical/other existing credit",
+    "대출 목적": "radio/tv",
+    "대출 금액(DM)": "2,872 DM",
+    "저축 상태": "100<=X<500",
+    "재직 기간": ">=7",
+    "분할 상환 비율(%)": "3%",
+    "보증인/공동신청자": "none",
+    "현 거주지 거주 기간(년)": "4년",
+    "보유 자산": "real estate",
+    "기타 지불 계획": "none",
+    "주거 형태": "own",
+    "기존 대출 건수": "1건",
+    "직업 분류": "skilled",
+    "부양 가족 수": "2명",
+    "전화 보유": "yes"
+  },
+  "policy": "no_shap_raw_only",
+  "_meta_true_label": 0
+}

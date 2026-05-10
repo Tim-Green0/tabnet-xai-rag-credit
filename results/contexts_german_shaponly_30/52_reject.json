@@ -1,0 +1,49 @@
+{
+  "sample_idx": 52,
+  "default_probability": 0.8328,
+  "threshold": 0.4562,
+  "decision": "REJECT",
+  "top_drivers_for_default": [
+    {
+      "feature": "체크 계좌 없음",
+      "feature_raw": "checking_status_no_checking",
+      "value": "비해당",
+      "shap": 0.5618,
+      "rank": 1
+    },
+    {
+      "feature": "잔액 < 0 DM",
+      "feature_raw": "checking_status__0",
+      "value": "해당",
+      "shap": 0.4235,
+      "rank": 3
+    },
+    {
+      "feature": "대출 기간(개월)",
+      "feature_raw": "duration",
+      "value": "24개월",
+      "shap": 0.3001,
+      "rank": 5
+    }
+  ],
+  "top_drivers_against_default": [
+    {
+      "feature": "재직 4~7년",
+      "feature_raw": "employment_4_=X_7",
+      "value": "해당",
+      "shap": -0.5249,
+      "rank": 2
+    },
+    {
+      "feature": "저축 < 100 DM",
+      "feature_raw": "savings_status__100",
+      "value": "비해당",
+      "shap": -0.4084,
+      "rank": 4
+    }
+  ],
+  "fairness_flags": [],
+  "model": "XGBoost + SHAP",
+  "explanation_policy": "fact_only_shap_top5",
+  "_meta_true_label": 1
+}

@@ -1,0 +1,115 @@
+{
+  "sample_idx": 59,
+  "decision": "REJECT",
+  "true_label": 1,
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "mode": "fusion",
+  "elapsed_sec": 19.68,
+  "explanation": "고객님의 신용 평가 결과에 대해 친절하게 설명해 드리겠습니다.\n\n[결정 요약]\n고객님의 신용 평가 결과, 아쉽게도 대출 승인이 어렵다는 결론을 내리게 되었습니다. 평가 모델에 따르면, 고객님의 예상 부도 확률은 0.8176으로, 당사의 기준치인 0.4562를 초과하였습니다. 특히 두 가지 분석 모델에서 모두 주목한 주요 요인 한 가지가 확인되었습니다.\n\n[주요 거절 사유]\n고객님의 부도 가능성을 높이는 주요 요인들은 다음과 같습니다.\n*   **교육** 목적의 대출 신청 (가치: 해당): 이는 두 모델 모두에서 강하게 주목한 요인으로, 부도 가능성을 높이는 것으로 분석되었습니다.\n*   **체크 계좌 없음** 여부(가치: 비해당): 이 요인은 부도 가능성을 높이는 방향으로 작용하는 것으로 확인되었습니다.\n*   **분할 상환 비율(%)** (가치: 4.0%): 이 비율이 부도 가능성을 높이는 요인으로 나타났습니다.\n\n[긍정적으로 평가된 요인]\n이번 평가에서는 고객님의 부도 가능성을 낮추는 긍정적인 요인이 두드러지게 확인되지 않았습니다.\n\n[개선 권고]\n향후 신용 평가 시 긍정적인 결과를 위해 다음 사항들을 고려해 보실 수 있습니다.\n*   **저축액 증가**: 현재 '저축 < 100 DM'에 해당하시는 것으로 분석되었는데, 저축액을 늘려 재정 안정성을 개선하시는 것이 도움이 될 수 있습니다.\n*   **대출 기간 조정**: 현재 60개월로 평가된 대출 기간을 단축하는 방안을 고려해 보실 수 있습니다. 이는 상환 부담을 줄여 부도 가능성을 낮추는 데 기여할 수 있습니다.\n*   **분할 상환 비율 재고**: 현재 4.0%로 평가된 분할 상환 비율을 낮추는 방향으로 조정하는 것을 고려해 보세요.\n\n[면책 고지]\n본 평가 결과는 당사의 신용 평가 모델에 기반한 것으로, 모든 잠재적 요인을 포괄하지 않으며 법률 또는 재정 자문으로 간주될 수 없습니다. 본 보고서는 고객님의 재정 상태에 대한 최종적인 판단이나 예측이 아니며, 향후 대출 심사 시 참고 자료로 활용될 수 있습니다.",
+  "usage_metadata": {
+    "prompt_token_count": 1341,
+    "candidates_token_count": 540,
+    "total_token_count": 5318
+  },
+  "context_sent": {
+    "sample_idx": 59,
+    "decision": "REJECT",
+    "default_probability": 0.8176,
+    "threshold": 0.4562,
+    "agreed_drivers": [
+      {
+        "feature": "교육",
+        "feature_raw": "purpose_education",
+        "value": "해당",
+        "rank": 1,
+        "group": "agreed",
+        "shap": 0.2756,
+        "sign_for_default": "+",
+        "attention": 0.049102
+      }
+    ],
+    "shap_only_drivers": [
+      {
+        "feature": "체크 계좌 없음",
+        "feature_raw": "checking_status_no_checking",
+        "value": "비해당",
+        "rank": 1,
+        "group": "shap_only",
+        "shap": 0.4891,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "분할 상환 비율(%)",
+        "feature_raw": "installment_commitment",
+        "value": "4.0%",
+        "rank": 2,
+        "group": "shap_only",
+        "shap": 0.308,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "대출 기간(개월)",
+        "feature_raw": "duration",
+        "value": "60개월",
+        "rank": 3,
+        "group": "shap_only",
+        "shap": 0.2443,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "저축 < 100 DM",
+        "feature_raw": "savings_status__100",
+        "value": "해당",
+        "rank": 4,
+        "group": "shap_only",
+        "shap": 0.2391,
+        "sign_for_default": "+"
+      }
+    ],
+    "attention_only_drivers": [
+      {
+        "feature": "기존 대출 없거나 모두 상환",
+        "feature_raw": "credit_history_no_credits/all_paid",
+        "value": "비해당",
+        "rank": 1,
+        "group": "attention_only",
+        "attention": 0.087764
+      },
+      {
+        "feature": "전화 없음",
+        "feature_raw": "own_telephone_none",
+        "value": "비해당",
+        "rank": 2,
+        "group": "attention_only",
+        "attention": 0.058065
+      },
+      {
+        "feature": "잔액 < 0 DM",
+        "feature_raw": "checking_status__0",
+        "value": "비해당",
+        "rank": 3,
+        "group": "attention_only",
+        "attention": 0.04816
+      },
+      {
+        "feature": "100 ≤ 저축 < 500 DM",
+        "feature_raw": "savings_status_100_=X_500",
+        "value": "비해당",
+        "rank": 4,
+        "group": "attention_only",
+        "attention": 0.047848
+      }
+    ],
+    "model_predict": "XGBoost",
+    "model_explain": [
+      "SHAP_xgb_local",
+      "TabNet_attention_local"
+    ],
+    "explanation_policy": "fact_only_with_agreement_labels",
+    "n_agreed": 1,
+    "n_shap_only": 4,
+    "n_attention_only": 4
+  },
+  "context_type": "german_fusion"
+}

@@ -1,0 +1,49 @@
+{
+  "sample_idx": 51,
+  "default_probability": 0.859,
+  "threshold": 0.4562,
+  "decision": "REJECT",
+  "top_drivers_for_default": [
+    {
+      "feature": "대출 기간(개월)",
+      "feature_raw": "duration",
+      "value": "24개월",
+      "shap": 0.4991,
+      "rank": 1
+    },
+    {
+      "feature": "체크 계좌 없음",
+      "feature_raw": "checking_status_no_checking",
+      "value": "비해당",
+      "shap": 0.4474,
+      "rank": 2
+    },
+    {
+      "feature": "잔액 < 0 DM",
+      "feature_raw": "checking_status__0",
+      "value": "해당",
+      "shap": 0.3066,
+      "rank": 4
+    },
+    {
+      "feature": "임대",
+      "feature_raw": "housing_rent",
+      "value": "해당",
+      "shap": 0.2881,
+      "rank": 5
+    }
+  ],
+  "top_drivers_against_default": [
+    {
+      "feature": "대출 금액(DM)",
+      "feature_raw": "credit_amount",
+      "value": "3,234 DM",
+      "shap": -0.3284,
+      "rank": 3
+    }
+  ],
+  "fairness_flags": [],
+  "model": "XGBoost + SHAP",
+  "explanation_policy": "fact_only_shap_top5",
+  "_meta_true_label": 1
+}

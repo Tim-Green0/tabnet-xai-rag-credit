@@ -1,0 +1,115 @@
+{
+  "sample_idx": 105,
+  "decision": "REJECT",
+  "true_label": 1,
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "mode": "fusion",
+  "elapsed_sec": 13.21,
+  "explanation": "고객님, 안녕하세요. 고객님의 신용 평가 결과에 대해 친절하게 설명해 드리겠습니다.\n\n[결정 요약]\n신용 평가 결과, 고객님의 대출 신청은 거절되었습니다. 부도 확률은 0.8679로, 당사의 신용 평가 기준인 0.4562보다 높게 평가되었습니다. 이번 평가는 XGBoost와 TabNet 모델을 종합적으로 고려하여 도출되었으며, 1개의 주요 사유에 대해 두 모델의 의견이 일치했습니다.\n\n[주요 거절 사유]\n1.  고객님의 '체크 계좌 없음' 정보가 '비해당'으로 나타난 점이 부도 가능성을 높이는 주요 요인으로 평가되었습니다. 이 요인에 대해서는 두 모델의 의견이 일치했습니다.\n2.  요청하신 대출 금액 15,945 DM이 부도 가능성을 높이는 요인으로 고려되었습니다.\n3.  고객님의 저축 금액이 100 DM 미만에 '해당'하는 점이 부도 가능성을 높이는 요인으로 평가되었습니다.\n\n[긍정적으로 평가된 요인]\n현재 평가 결과에서는 부도 가능성을 낮추는 긍정적인 요인이 명확히 확인되지 않았습니다.\n\n[개선 권고]\n1.  요청하시는 대출 금액을 재조정하는 것을 고려해볼 수 있습니다.\n2.  저축 금액을 늘려 재정적 안정성을 높이는 것을 고려해볼 수 있습니다.\n\n[면책 고지]\n본 설명은 제공된 정보를 기반으로 한 신용 평가 모델의 분석 결과이며, 특정 금융 상품 계약에 대한 법적 자문 또는 단정적 미래 예측이 아닙니다. 개인의 신용도는 시간이 지남에 따라 변동될 수 있습니다.",
+  "usage_metadata": {
+    "prompt_token_count": 1322,
+    "candidates_token_count": 396,
+    "total_token_count": 4162
+  },
+  "context_sent": {
+    "sample_idx": 105,
+    "decision": "REJECT",
+    "default_probability": 0.8679,
+    "threshold": 0.4562,
+    "agreed_drivers": [
+      {
+        "feature": "체크 계좌 없음",
+        "feature_raw": "checking_status_no_checking",
+        "value": "비해당",
+        "rank": 1,
+        "group": "agreed",
+        "shap": 0.5017,
+        "sign_for_default": "+",
+        "attention": 0.183772
+      }
+    ],
+    "shap_only_drivers": [
+      {
+        "feature": "대출 금액(DM)",
+        "feature_raw": "credit_amount",
+        "value": "15,945 DM",
+        "rank": 1,
+        "group": "shap_only",
+        "shap": 0.2898,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "저축 < 100 DM",
+        "feature_raw": "savings_status__100",
+        "value": "해당",
+        "rank": 2,
+        "group": "shap_only",
+        "shap": 0.2667,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "임대",
+        "feature_raw": "housing_rent",
+        "value": "해당",
+        "rank": 3,
+        "group": "shap_only",
+        "shap": 0.2254,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "분할 상환 비율(%)",
+        "feature_raw": "installment_commitment",
+        "value": "3.0%",
+        "rank": 4,
+        "group": "shap_only",
+        "shap": 0.2157,
+        "sign_for_default": "+"
+      }
+    ],
+    "attention_only_drivers": [
+      {
+        "feature": "저축 정보 없음",
+        "feature_raw": "savings_status_no_known_savings",
+        "value": "비해당",
+        "rank": 1,
+        "group": "attention_only",
+        "attention": 0.401919
+      },
+      {
+        "feature": "교육",
+        "feature_raw": "purpose_education",
+        "value": "비해당",
+        "rank": 2,
+        "group": "attention_only",
+        "attention": 0.23245
+      },
+      {
+        "feature": "공동 신청자",
+        "feature_raw": "other_parties_co_applicant",
+        "value": "비해당",
+        "rank": 3,
+        "group": "attention_only",
+        "attention": 0.196477
+      },
+      {
+        "feature": "가전",
+        "feature_raw": "purpose_domestic_appliance",
+        "value": "비해당",
+        "rank": 4,
+        "group": "attention_only",
+        "attention": 0.123836
+      }
+    ],
+    "model_predict": "XGBoost",
+    "model_explain": [
+      "SHAP_xgb_local",
+      "TabNet_attention_local"
+    ],
+    "explanation_policy": "fact_only_with_agreement_labels",
+    "n_agreed": 1,
+    "n_shap_only": 4,
+    "n_attention_only": 4
+  },
+  "context_type": "german_fusion"
+}

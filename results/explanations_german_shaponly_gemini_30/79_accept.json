@@ -1,0 +1,56 @@
+{
+  "sample_idx": 79,
+  "decision": "APPROVE",
+  "true_label": 0,
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "mode": "shaponly",
+  "elapsed_sec": 11.67,
+  "explanation": "[결정 요약]\n고객님의 신용 평가 결과는 '승인'이며, 부도 가능성은 0.019로 낮게 평가되었습니다.\n\n[주요 거절 사유]\n(해당 없음)\n\n[긍정적으로 평가된 요인]\n*   체크 계좌가 없다는 점이 부도 가능성을 낮추는 데 긍정적으로 작용했습니다.\n*   4년 이상 7년 미만의 안정적인 재직 기간이 긍정적으로 평가되었습니다.\n*   1000 DM 이상의 저축 상태가 부도 가능성을 낮추는 데 기여했습니다.\n\n[개선 권고]\n*   현재의 건전한 저축 습관을 지속적으로 유지하는 것이 좋습니다.\n*   안정적인 직업 활동을 계속하시면 신용 관리에 긍정적인 영향을 줄 수 있습니다.\n\n[면책 고지]\n본 신용 평가는 제공된 정보와 모델 분석에 기반하며, 미래의 금융 상태를 보장하지 않습니다. 신용 결정은 여러 요소를 종합적으로 고려하여 이루어집니다.",
+  "usage_metadata": {
+    "prompt_token_count": 691,
+    "candidates_token_count": 240,
+    "total_token_count": 3171
+  },
+  "context_sent": {
+    "sample_idx": 79,
+    "default_probability": 0.019,
+    "threshold": 0.4562,
+    "decision": "APPROVE",
+    "top_drivers_for_default": [],
+    "top_drivers_against_default": [
+      {
+        "feature": "체크 계좌 없음",
+        "feature_raw": "checking_status_no_checking",
+        "value": "해당",
+        "shap": -0.6921,
+        "rank": 2
+      },
+      {
+        "feature": "재직 4~7년",
+        "feature_raw": "employment_4_=X_7",
+        "value": "해당",
+        "shap": -0.6068,
+        "rank": 3
+      },
+      {
+        "feature": "저축 ≥ 1000 DM",
+        "feature_raw": "savings_status__=1000",
+        "value": "해당",
+        "shap": -0.5643,
+        "rank": 4
+      },
+      {
+        "feature": "신용 이력 critical (위험)",
+        "feature_raw": "credit_history_critical/other_existing_credit",
+        "value": "해당",
+        "shap": -0.4563,
+        "rank": 5
+      }
+    ],
+    "fairness_flags": [],
+    "model": "XGBoost + SHAP",
+    "explanation_policy": "fact_only_shap_top5"
+  },
+  "context_type": "german_shaponly"
+}

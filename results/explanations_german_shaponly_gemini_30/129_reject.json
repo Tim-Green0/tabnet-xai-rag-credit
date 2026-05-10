@@ -1,0 +1,64 @@
+{
+  "sample_idx": 129,
+  "decision": "REJECT",
+  "true_label": 0,
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "mode": "shaponly",
+  "elapsed_sec": 33.54,
+  "explanation": "고객님, 신용 평가 결과에 대해 친절하게 설명해 드리겠습니다.\n\n**[결정 요약]**\n귀하의 신용 평가 결과, 대출 신청이 거절되었습니다. 부도 가능성은 0.8465로, 당사의 기준치 0.4562를 초과했습니다.\n\n**[주요 거절 사유]**\n*   체크 계좌 없음이라는 요인에서 귀하의 상태가 '비해당'으로 확인된 점이 부도 가능성을 높이는 주요 요인으로 작용했습니다.\n*   신청하신 대출 기간(36개월)이 길게 평가되어 부도 가능성을 높였습니다.\n*   계좌 잔액이 0 DM 미만인 경우가 있었던 점이 부도 가능성을 높이는 요인으로 평가되었습니다.\n\n**[긍정적으로 평가된 요인]**\n*   신청하신 대출 금액(3,959 DM)은 부도 가능성을 낮추는 긍정적인 요인으로 평가되었습니다.\n\n**[개선 권고]**\n*   향후 대출 신청 시, 현재보다 짧은 대출 기간을 고려해 볼 수 있습니다.\n*   체크 계좌의 잔액을 안정적으로 유지하고 전반적인 계좌 관리 상태를 개선하는 것이 신용도 향상에 도움이 될 수 있습니다.\n\n**[면책 고지]**\n본 신용 평가는 제공된 정보와 모델 분석에 기반하며, 미래의 특정 결과를 보장하지 않습니다. 추가 문의사항은 담당 금융 상담사에게 문의해 주십시오.",
+  "usage_metadata": {
+    "prompt_token_count": 738,
+    "candidates_token_count": 347,
+    "total_token_count": 8363
+  },
+  "context_sent": {
+    "sample_idx": 129,
+    "default_probability": 0.8465,
+    "threshold": 0.4562,
+    "decision": "REJECT",
+    "top_drivers_for_default": [
+      {
+        "feature": "체크 계좌 없음",
+        "feature_raw": "checking_status_no_checking",
+        "value": "비해당",
+        "shap": 0.4332,
+        "rank": 1
+      },
+      {
+        "feature": "대출 기간(개월)",
+        "feature_raw": "duration",
+        "value": "36개월",
+        "shap": 0.3669,
+        "rank": 2
+      },
+      {
+        "feature": "잔액 < 0 DM",
+        "feature_raw": "checking_status__0",
+        "value": "해당",
+        "shap": 0.3154,
+        "rank": 4
+      },
+      {
+        "feature": "분할 상환 비율(%)",
+        "feature_raw": "installment_commitment",
+        "value": "4.0%",
+        "shap": 0.2749,
+        "rank": 5
+      }
+    ],
+    "top_drivers_against_default": [
+      {
+        "feature": "대출 금액(DM)",
+        "feature_raw": "credit_amount",
+        "value": "3,959 DM",
+        "shap": -0.3172,
+        "rank": 3
+      }
+    ],
+    "fairness_flags": [],
+    "model": "XGBoost + SHAP",
+    "explanation_policy": "fact_only_shap_top5"
+  },
+  "context_type": "german_shaponly"
+}

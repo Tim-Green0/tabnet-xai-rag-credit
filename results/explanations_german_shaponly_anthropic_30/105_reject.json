@@ -1,0 +1,63 @@
+{
+  "sample_idx": 105,
+  "decision": "REJECT",
+  "true_label": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "mode": "shaponly",
+  "elapsed_sec": 13.05,
+  "explanation": "# 신용 평가 결과 안내\n\n## [결정 요약]\n고객님의 신청 건은 부도 예측 확률 86.79%로 심사 기준(45.62%)을 상회하여 **승인이 어렵습니다**.\n\n## [주요 거절 사유]\n1. **체크 계좌 미보유**: 일상적인 금융 거래 내역을 확인할 수 있는 체크 계좌가 없어 상환 능력 검증이 제한적입니다.\n2. **대출 금액 15,945 DM**: 신청하신 대출 규모가 현재 재무 상황 대비 높게 평가되었습니다.\n3. **저축 100 DM 미만**: 비상 시 활용 가능한 저축액이 매우 부족하여 상환 안정성에 우려가 있습니다.\n\n## [긍정적으로 평가된 요인]\n현재 제출하신 정보에서는 부도 가능성을 낮추는 긍정 요인이 확인되지 않았습니다.\n\n## [개선 권고]\n1. **체크 계좌 개설**: 급여 이체 등 정기적인 금융 거래 내역을 3~6개월 이상 축적해 주시기 바랍니다.\n2. **저축 증대**: 월 소득의 일부를 저축하여 최소 100 DM 이상 유지하시면 재신청 시 긍정적으로 반영될 수 있습니다.\n3. **대출 금액 조정**: 필요 금액을 재검토하시어 더 작은 규모로 재신청을 고려해 주십시오.\n\n## [면책 고지]\n본 평가는 XGBoost 모델과 SHAP 분석 기반 참고 정보이며, 최종 결정은 종합적 심사 절차를 거칩니다. 구체적인 재무 계획은 전문 상담사와 상의하시기 바랍니다.",
+  "usage_metadata": {
+    "input_tokens": 904,
+    "output_tokens": 625,
+    "total_token_count": 1529
+  },
+  "context_sent": {
+    "sample_idx": 105,
+    "default_probability": 0.8679,
+    "threshold": 0.4562,
+    "decision": "REJECT",
+    "top_drivers_for_default": [
+      {
+        "feature": "체크 계좌 없음",
+        "feature_raw": "checking_status_no_checking",
+        "value": "비해당",
+        "shap": 0.5017,
+        "rank": 1
+      },
+      {
+        "feature": "대출 금액(DM)",
+        "feature_raw": "credit_amount",
+        "value": "15,945 DM",
+        "shap": 0.2898,
+        "rank": 2
+      },
+      {
+        "feature": "저축 < 100 DM",
+        "feature_raw": "savings_status__100",
+        "value": "해당",
+        "shap": 0.2667,
+        "rank": 3
+      },
+      {
+        "feature": "임대",
+        "feature_raw": "housing_rent",
+        "value": "해당",
+        "shap": 0.2254,
+        "rank": 4
+      },
+      {
+        "feature": "분할 상환 비율(%)",
+        "feature_raw": "installment_commitment",
+        "value": "3.0%",
+        "shap": 0.2157,
+        "rank": 5
+      }
+    ],
+    "top_drivers_against_default": [],
+    "fairness_flags": [],
+    "model": "XGBoost + SHAP",
+    "explanation_policy": "fact_only_shap_top5"
+  },
+  "context_type": "german_shaponly"
+}

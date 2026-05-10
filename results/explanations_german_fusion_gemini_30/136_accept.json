@@ -1,0 +1,121 @@
+{
+  "sample_idx": 136,
+  "decision": "APPROVE",
+  "true_label": 0,
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "mode": "fusion",
+  "elapsed_sec": 12.42,
+  "explanation": "고객님, 안녕하세요. 고객님의 신용 평가 결과에 대해 친절하게 설명해 드리겠습니다.\n\n**[결정 요약]**\n고객님의 신용 평가 결과, 대출이 승인되었습니다. 고객님의 부도 확률은 0.0387로, 당사의 내부 기준점인 0.4562보다 낮습니다. 이번 평가에서는 여러 분석 모델이 공통으로 강하게 주목한 요인은 없었습니다.\n\n**[주요 거절 사유]**\n해당 없음.\n\n**[긍정적으로 평가된 요인]**\n고객님의 대출 승인에는 다음과 같은 요인들이 긍정적으로 작용하여 부도 가능성을 낮추는 데 기여했습니다.\n*   대출 기간이 6개월인 점이 긍정적으로 평가되었습니다.\n*   체크 계좌가 없으신 점이 부도 가능성을 낮추는 요인으로 파악되었습니다.\n*   신용 이력에서 'critical (위험)'이라는 특성이 부도 가능성을 낮추는 요인으로 평가되었습니다.\n\n**[개선 권고]**\n다음 사항들을 참고하시면 향후 신용 평가에 도움이 될 수 있습니다.\n*   현재 대출 금액 700 DM은 부도 가능성을 높이는 요인으로 파악되었습니다.\n*   모델은 고객님의 '보유 자산 없음' 및 '저축 정보 없음' 특성에 주목하였습니다. 이러한 정보들은 향후 신용 평가 시 참고될 수 있습니다.\n\n**[면책 고지]**\n본 신용 평가 결과는 제공된 정보와 분석 모델에 기반한 것이며, 미래의 재정 상태를 단정적으로 예측하는 것은 아닙니다. 이는 정보 제공 목적으로만 활용되어야 합니다.",
+  "usage_metadata": {
+    "prompt_token_count": 1390,
+    "candidates_token_count": 382,
+    "total_token_count": 4236
+  },
+  "context_sent": {
+    "sample_idx": 136,
+    "decision": "APPROVE",
+    "default_probability": 0.0387,
+    "threshold": 0.4562,
+    "agreed_drivers": [],
+    "shap_only_drivers": [
+      {
+        "feature": "대출 기간(개월)",
+        "feature_raw": "duration",
+        "value": "6개월",
+        "rank": 1,
+        "group": "shap_only",
+        "shap": -0.9712,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "체크 계좌 없음",
+        "feature_raw": "checking_status_no_checking",
+        "value": "해당",
+        "rank": 2,
+        "group": "shap_only",
+        "shap": -0.8648,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "신용 이력 critical (위험)",
+        "feature_raw": "credit_history_critical/other_existing_credit",
+        "value": "해당",
+        "rank": 3,
+        "group": "shap_only",
+        "shap": -0.6307,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "대출 금액(DM)",
+        "feature_raw": "credit_amount",
+        "value": "700 DM",
+        "rank": 4,
+        "group": "shap_only",
+        "shap": 0.2652,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "기타 지불 계획 없음",
+        "feature_raw": "other_payment_plans_none",
+        "value": "해당",
+        "rank": 5,
+        "group": "shap_only",
+        "shap": -0.2358,
+        "sign_for_default": "-"
+      }
+    ],
+    "attention_only_drivers": [
+      {
+        "feature": "잔액 < 0 DM",
+        "feature_raw": "checking_status__0",
+        "value": "비해당",
+        "rank": 1,
+        "group": "attention_only",
+        "attention": 0.189099
+      },
+      {
+        "feature": "교육",
+        "feature_raw": "purpose_education",
+        "value": "비해당",
+        "rank": 2,
+        "group": "attention_only",
+        "attention": 0.116896
+      },
+      {
+        "feature": "보유 자산 없음",
+        "feature_raw": "property_magnitude_no_known_property",
+        "value": "해당",
+        "rank": 3,
+        "group": "attention_only",
+        "attention": 0.090682
+      },
+      {
+        "feature": "상점 분할 지불",
+        "feature_raw": "other_payment_plans_stores",
+        "value": "비해당",
+        "rank": 4,
+        "group": "attention_only",
+        "attention": 0.058529
+      },
+      {
+        "feature": "저축 정보 없음",
+        "feature_raw": "savings_status_no_known_savings",
+        "value": "해당",
+        "rank": 5,
+        "group": "attention_only",
+        "attention": 0.057222
+      }
+    ],
+    "model_predict": "XGBoost",
+    "model_explain": [
+      "SHAP_xgb_local",
+      "TabNet_attention_local"
+    ],
+    "explanation_policy": "fact_only_with_agreement_labels",
+    "n_agreed": 0,
+    "n_shap_only": 5,
+    "n_attention_only": 5
+  },
+  "context_type": "german_fusion"
+}

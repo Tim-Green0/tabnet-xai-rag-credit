@@ -1,0 +1,64 @@
+{
+  "sample_idx": 29,
+  "decision": "REJECT",
+  "true_label": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "mode": "shaponly",
+  "elapsed_sec": 13.82,
+  "explanation": "# 신용 평가 결과 안내\n\n## [결정 요약]\n고객님의 신청을 승인하기 어려운 것으로 평가되었습니다. (부도 가능성 81.77%, 기준 45.62%)\n\n## [주요 거절 사유]\n1. **체크 계좌 미보유**: 현재 체크 계좌를 보유하고 계시지 않아 거래 이력 확인이 제한적입니다.\n2. **대출 기간**: 신청하신 대출 기간(28개월)이 상환 부담 측면에서 부정적으로 평가되었습니다.\n3. **체크 계좌 잔액**: 체크 계좌 잔액이 0 DM 미만으로, 현재 유동성이 부족한 것으로 확인됩니다.\n4. **저축 잔액**: 저축 금액이 100 DM 미만으로, 비상 자금 여력이 제한적입니다.\n\n## [긍정적으로 평가된 요인]\n1. **대출 신청 금액**: 신청하신 대출 금액(4,006 DM)은 적정 수준으로 긍정적으로 평가되었습니다.\n\n## [개선 권고]\n1. **체크 계좌 개설 및 관리**: 체크 계좌를 개설하시고 꾸준한 입출금 이력을 만들어 금융 거래 신뢰도를 높이시기 바랍니다.\n2. **저축 증대**: 월 소득의 일부를 저축하여 100 DM 이상의 저축 잔액을 유지하시면 재평가 시 유리합니다.\n3. **계좌 잔액 개선**: 체크 계좌 잔액을 양수(+)로 유지하여 재무 안정성을 보여주시기 바랍니다.\n\n## [면책 고지]\n본 평가는 통계 모델(XGBoost + SHAP)에 기반한 참고 정보이며, 고객님의 미래 상환 능력을 보증하거나 단정하지 않습니다. 추가 상담 및 이의 신청은 고객센터를 통해 가능합니다.",
+  "usage_metadata": {
+    "input_tokens": 911,
+    "output_tokens": 694,
+    "total_token_count": 1605
+  },
+  "context_sent": {
+    "sample_idx": 29,
+    "default_probability": 0.8177,
+    "threshold": 0.4562,
+    "decision": "REJECT",
+    "top_drivers_for_default": [
+      {
+        "feature": "체크 계좌 없음",
+        "feature_raw": "checking_status_no_checking",
+        "value": "비해당",
+        "shap": 0.5478,
+        "rank": 1
+      },
+      {
+        "feature": "대출 기간(개월)",
+        "feature_raw": "duration",
+        "value": "28개월",
+        "shap": 0.539,
+        "rank": 2
+      },
+      {
+        "feature": "잔액 < 0 DM",
+        "feature_raw": "checking_status__0",
+        "value": "해당",
+        "shap": 0.3402,
+        "rank": 4
+      },
+      {
+        "feature": "저축 < 100 DM",
+        "feature_raw": "savings_status__100",
+        "value": "해당",
+        "shap": 0.2694,
+        "rank": 5
+      }
+    ],
+    "top_drivers_against_default": [
+      {
+        "feature": "대출 금액(DM)",
+        "feature_raw": "credit_amount",
+        "value": "4,006 DM",
+        "shap": -0.4454,
+        "rank": 3
+      }
+    ],
+    "fairness_flags": [],
+    "model": "XGBoost + SHAP",
+    "explanation_policy": "fact_only_shap_top5"
+  },
+  "context_type": "german_shaponly"
+}

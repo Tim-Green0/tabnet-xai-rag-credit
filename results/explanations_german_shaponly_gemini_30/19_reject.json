@@ -1,0 +1,63 @@
+{
+  "sample_idx": 19,
+  "decision": "REJECT",
+  "true_label": 0,
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "mode": "shaponly",
+  "elapsed_sec": 15.09,
+  "explanation": "[결정 요약]\n귀하의 신용 평가 결과, 현재 시점에서는 대출 승인이 어렵다는 결론이 도출되었습니다.\n\n[주요 거절 사유]\n귀하의 신용 평가에서 부도 가능성을 높이는 주요 요인들은 다음과 같습니다.\n*   대출 금액(DM)이 339 DM인 점\n*   '체크 계좌 없음' 항목에서 '비해당'으로 확인된 점\n*   '기타 지불 계획 없음' 항목에서 '비해당'으로 확인된 점\n\n[긍정적으로 평가된 요인]\n이번 평가에서는 부도 가능성을 낮추는 긍정적인 요인이 확인되지 않았습니다.\n\n[개선 권고]\n향후 신용 평가 시 긍정적인 결과를 위해 다음 사항들을 고려해 볼 수 있습니다.\n*   요청하시는 대출 금액을 조정하는 것을 고려해 볼 수 있습니다.\n*   계좌 잔액을 관리하여 마이너스 잔액이 발생하지 않도록 하는 것이 도움이 될 수 있습니다.\n\n[면책 고지]\n이 설명은 제공된 정보를 바탕으로 한 신용 평가 결과이며, 향후 신용도나 대출 승인을 보장하지 않습니다. 본 설명은 법률적 또는 금융 자문이 아닙니다.",
+  "usage_metadata": {
+    "prompt_token_count": 741,
+    "candidates_token_count": 281,
+    "total_token_count": 4100
+  },
+  "context_sent": {
+    "sample_idx": 19,
+    "default_probability": 0.914,
+    "threshold": 0.4562,
+    "decision": "REJECT",
+    "top_drivers_for_default": [
+      {
+        "feature": "대출 금액(DM)",
+        "feature_raw": "credit_amount",
+        "value": "339 DM",
+        "shap": 0.4831,
+        "rank": 1
+      },
+      {
+        "feature": "체크 계좌 없음",
+        "feature_raw": "checking_status_no_checking",
+        "value": "비해당",
+        "shap": 0.3514,
+        "rank": 2
+      },
+      {
+        "feature": "기타 지불 계획 없음",
+        "feature_raw": "other_payment_plans_none",
+        "value": "비해당",
+        "shap": 0.3121,
+        "rank": 3
+      },
+      {
+        "feature": "잔액 < 0 DM",
+        "feature_raw": "checking_status__0",
+        "value": "해당",
+        "shap": 0.2664,
+        "rank": 4
+      },
+      {
+        "feature": "모든 대출 상환 완료",
+        "feature_raw": "credit_history_all_paid",
+        "value": "해당",
+        "shap": 0.2142,
+        "rank": 5
+      }
+    ],
+    "top_drivers_against_default": [],
+    "fairness_flags": [],
+    "model": "XGBoost + SHAP",
+    "explanation_policy": "fact_only_shap_top5"
+  },
+  "context_type": "german_shaponly"
+}

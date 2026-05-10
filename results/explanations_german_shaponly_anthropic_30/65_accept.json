@@ -1,0 +1,64 @@
+{
+  "sample_idx": 65,
+  "decision": "APPROVE",
+  "true_label": 0,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "mode": "shaponly",
+  "elapsed_sec": 10.96,
+  "explanation": "# 신용 평가 결과 안내\n\n**[결정 요약]**  \n고객님의 신용 평가 결과, 대출이 **승인**되었습니다. (부도 가능성 4.79%, 기준 45.62%)\n\n**[주요 거절 사유]**  \n해당 없음 (승인 건)\n\n**[긍정적으로 평가된 요인]**  \n1. **대출 기간(개월)**: 7개월의 짧은 대출 기간은 상환 부담을 크게 낮추는 요인으로 평가되었습니다.\n2. **보증인 있음**: 보증인이 있다는 점이 신용도를 높이는 중요한 긍정 요인으로 작용하였습니다.\n3. **부동산**: 부동산 보유 여부가 재정 안정성을 나타내는 요소로 긍정 평가되었습니다.\n\n**[개선 권고]**  \n1. 현재 체크 계좌가 없는 상태입니다. 체크 계좌를 개설하고 정기적인 입출금 내역을 관리하시면 향후 신용 평가 시 더욱 유리하게 작용할 수 있습니다.\n2. 대출 금액(2,576 DM)과 짧은 상환 기간을 고려할 때 계획적인 상환 관리를 유지하시면 향후 신용도 개선에 도움이 됩니다.\n\n**[면책 고지]**  \n본 평가는 XGBoost + SHAP 모델 기반 참고 자료이며, 최종 의사결정은 종합적 심사를 통해 이루어집니다. 신용 상태는 변동 가능하므로 지속적인 관리가 필요합니다.",
+  "usage_metadata": {
+    "input_tokens": 904,
+    "output_tokens": 559,
+    "total_token_count": 1463
+  },
+  "context_sent": {
+    "sample_idx": 65,
+    "default_probability": 0.0479,
+    "threshold": 0.4562,
+    "decision": "APPROVE",
+    "top_drivers_for_default": [
+      {
+        "feature": "체크 계좌 없음",
+        "feature_raw": "checking_status_no_checking",
+        "value": "비해당",
+        "shap": 0.2831,
+        "rank": 3
+      }
+    ],
+    "top_drivers_against_default": [
+      {
+        "feature": "대출 기간(개월)",
+        "feature_raw": "duration",
+        "value": "7개월",
+        "shap": -1.48,
+        "rank": 1
+      },
+      {
+        "feature": "보증인 있음",
+        "feature_raw": "other_parties_guarantor",
+        "value": "해당",
+        "shap": -0.5725,
+        "rank": 2
+      },
+      {
+        "feature": "부동산",
+        "feature_raw": "property_magnitude_real_estate",
+        "value": "해당",
+        "shap": -0.2598,
+        "rank": 4
+      },
+      {
+        "feature": "대출 금액(DM)",
+        "feature_raw": "credit_amount",
+        "value": "2,576 DM",
+        "shap": -0.2361,
+        "rank": 5
+      }
+    ],
+    "fairness_flags": [],
+    "model": "XGBoost + SHAP",
+    "explanation_policy": "fact_only_shap_top5"
+  },
+  "context_type": "german_shaponly"
+}

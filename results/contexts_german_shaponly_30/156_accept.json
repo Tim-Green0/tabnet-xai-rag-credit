@@ -1,0 +1,48 @@
+{
+  "sample_idx": 156,
+  "default_probability": 0.0237,
+  "threshold": 0.4562,
+  "decision": "APPROVE",
+  "top_drivers_for_default": [],
+  "top_drivers_against_default": [
+    {
+      "feature": "중고차",
+      "feature_raw": "purpose_used_car",
+      "value": "해당",
+      "shap": -0.8366,
+      "rank": 1
+    },
+    {
+      "feature": "저축 ≥ 1000 DM",
+      "feature_raw": "savings_status__=1000",
+      "value": "해당",
+      "shap": -0.7042,
+      "rank": 2
+    },
+    {
+      "feature": "신용 이력 critical (위험)",
+      "feature_raw": "credit_history_critical/other_existing_credit",
+      "value": "해당",
+      "shap": -0.6742,
+      "rank": 3
+    },
+    {
+      "feature": "체크 계좌 없음",
+      "feature_raw": "checking_status_no_checking",
+      "value": "해당",
+      "shap": -0.5626,
+      "rank": 4
+    },
+    {
+      "feature": "저축 < 100 DM",
+      "feature_raw": "savings_status__100",
+      "value": "비해당",
+      "shap": -0.3214,
+      "rank": 5
+    }
+  ],
+  "fairness_flags": [],
+  "model": "XGBoost + SHAP",
+  "explanation_policy": "fact_only_shap_top5",
+  "_meta_true_label": 0
+}

@@ -1,0 +1,63 @@
+{
+  "sample_idx": 59,
+  "decision": "REJECT",
+  "true_label": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "mode": "shaponly",
+  "elapsed_sec": 13.16,
+  "explanation": "# 신용 평가 결과 안내\n\n## [결정 요약]\n종합 심사 결과, 현 시점에서는 대출 승인이 어려운 것으로 판정되었습니다(부도 가능성 81.76%, 기준 45.62%).\n\n## [주요 거절 사유]\n1. **체크 계좌 미보유**: 거래 내역을 확인할 수 있는 체크 계좌가 없어 상환 능력 검증이 제한적입니다.\n2. **분할 상환 비율 4.0%**: 현재 설정된 분할 상환 비율이 재무 안정성 측면에서 부담 요인으로 평가되었습니다.\n3. **교육 목적 대출**: 대출 목적이 교육인 경우, 통계적으로 상환 불확실성이 높게 나타나는 경향이 있습니다.\n\n## [긍정적으로 평가된 요인]\n현재 제출하신 정보 중 신용도를 긍정적으로 개선하는 특별한 요인은 확인되지 않았습니다.\n\n## [개선 권고]\n1. **체크 계좌 개설**: 정기적인 입출금 거래 내역이 누적되면 신용 평가에 긍정적으로 작용할 수 있습니다.\n2. **저축 증대**: 현재 저축액(100 DM 미만)을 늘려 재무 완충력을 강화해 주시기 바랍니다.\n3. **대출 기간 단축**: 60개월의 장기 대출보다 짧은 기간으로 재검토하시면 승인 가능성이 개선될 수 있습니다.\n\n## [면책 고지]\n본 평가는 통계 모델(XGBoost + SHAP)에 기반한 참고 자료이며, 향후 상환 능력을 보장하거나 단정하는 것이 아닙니다. 추가 상담 및 이의 신청을 원하시면 고객센터로 문의해 주시기 바랍니다.",
+  "usage_metadata": {
+    "input_tokens": 898,
+    "output_tokens": 653,
+    "total_token_count": 1551
+  },
+  "context_sent": {
+    "sample_idx": 59,
+    "default_probability": 0.8176,
+    "threshold": 0.4562,
+    "decision": "REJECT",
+    "top_drivers_for_default": [
+      {
+        "feature": "체크 계좌 없음",
+        "feature_raw": "checking_status_no_checking",
+        "value": "비해당",
+        "shap": 0.4891,
+        "rank": 1
+      },
+      {
+        "feature": "분할 상환 비율(%)",
+        "feature_raw": "installment_commitment",
+        "value": "4.0%",
+        "shap": 0.308,
+        "rank": 2
+      },
+      {
+        "feature": "교육",
+        "feature_raw": "purpose_education",
+        "value": "해당",
+        "shap": 0.2756,
+        "rank": 3
+      },
+      {
+        "feature": "대출 기간(개월)",
+        "feature_raw": "duration",
+        "value": "60개월",
+        "shap": 0.2443,
+        "rank": 4
+      },
+      {
+        "feature": "저축 < 100 DM",
+        "feature_raw": "savings_status__100",
+        "value": "해당",
+        "shap": 0.2391,
+        "rank": 5
+      }
+    ],
+    "top_drivers_against_default": [],
+    "fairness_flags": [],
+    "model": "XGBoost + SHAP",
+    "explanation_policy": "fact_only_shap_top5"
+  },
+  "context_type": "german_shaponly"
+}

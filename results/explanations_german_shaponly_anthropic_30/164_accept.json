@@ -1,0 +1,56 @@
+{
+  "sample_idx": 164,
+  "decision": "APPROVE",
+  "true_label": 0,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "mode": "shaponly",
+  "elapsed_sec": 10.12,
+  "explanation": "# 신용 평가 결과 안내\n\n## [결정 요약]\n고객님의 신용 평가 결과, **대출이 승인**되었습니다. (부도 가능성 1.45%, 기준 45.62%)\n\n## [주요 거절 사유]\n해당 사항 없음 (승인 건)\n\n## [긍정적으로 평가된 요인]\n1. **중고차 구매 목적** - 해당 대출 목적이 신용도 평가에 긍정적으로 작용하였습니다.\n2. **재직 기간 4~7년** - 안정적인 재직 기간이 상환 능력을 긍정적으로 평가받았습니다.\n3. **대출 금액 1,413 DM** - 적정 수준의 대출 금액이 긍정 요인으로 반영되었습니다.\n\n## [개선 권고]\n1. 현재는 체크 계좌가 없는 상태이나, 향후 입출금 거래 내역을 쌓으시면 신용 이력 관리에 도움이 될 수 있습니다.\n2. 승인된 대출의 성실한 상환을 통해 신용도를 더욱 개선하실 수 있습니다.\n\n## [면책 고지]\n본 평가는 XGBoost + SHAP 모델 기반 통계적 분석 결과이며, 실제 상환 능력을 보장하지 않습니다. 대출 실행 전 상품 약관을 반드시 확인하시고, 필요시 전문 상담을 받으시기 바랍니다.",
+  "usage_metadata": {
+    "input_tokens": 842,
+    "output_tokens": 504,
+    "total_token_count": 1346
+  },
+  "context_sent": {
+    "sample_idx": 164,
+    "default_probability": 0.0145,
+    "threshold": 0.4562,
+    "decision": "APPROVE",
+    "top_drivers_for_default": [],
+    "top_drivers_against_default": [
+      {
+        "feature": "체크 계좌 없음",
+        "feature_raw": "checking_status_no_checking",
+        "value": "해당",
+        "shap": -0.7731,
+        "rank": 1
+      },
+      {
+        "feature": "중고차",
+        "feature_raw": "purpose_used_car",
+        "value": "해당",
+        "shap": -0.7646,
+        "rank": 2
+      },
+      {
+        "feature": "재직 4~7년",
+        "feature_raw": "employment_4_=X_7",
+        "value": "해당",
+        "shap": -0.6686,
+        "rank": 4
+      },
+      {
+        "feature": "대출 금액(DM)",
+        "feature_raw": "credit_amount",
+        "value": "1,413 DM",
+        "shap": -0.5026,
+        "rank": 5
+      }
+    ],
+    "fairness_flags": [],
+    "model": "XGBoost + SHAP",
+    "explanation_policy": "fact_only_shap_top5"
+  },
+  "context_type": "german_shaponly"
+}

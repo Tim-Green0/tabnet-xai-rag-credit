@@ -1,0 +1,85 @@
+{
+  "sample_idx": 7,
+  "decision": "APPROVE",
+  "default_probability": 0.0151,
+  "threshold": 0.4562,
+  "agreed_drivers": [
+    {
+      "feature": "체크 계좌 없음",
+      "feature_raw": "checking_status_no_checking",
+      "value": "해당",
+      "rank": 1,
+      "group": "agreed",
+      "shap": -0.8403,
+      "sign_for_default": "-",
+      "attention": 0.836952
+    },
+    {
+      "feature": "신용 이력 critical (위험)",
+      "feature_raw": "credit_history_critical/other_existing_credit",
+      "value": "해당",
+      "rank": 2,
+      "group": "agreed",
+      "shap": -0.5077,
+      "sign_for_default": "-",
+      "attention": 0.437329
+    }
+  ],
+  "shap_only_drivers": [
+    {
+      "feature": "대출 기간(개월)",
+      "feature_raw": "duration",
+      "value": "4개월",
+      "rank": 1,
+      "group": "shap_only",
+      "shap": -0.9395,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "재직 4~7년",
+      "feature_raw": "employment_4_=X_7",
+      "value": "해당",
+      "rank": 2,
+      "group": "shap_only",
+      "shap": -0.6698,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "대출 금액(DM)",
+      "feature_raw": "credit_amount",
+      "value": "1,544 DM",
+      "rank": 3,
+      "group": "shap_only",
+      "shap": -0.3572,
+      "sign_for_default": "-"
+    }
+  ],
+  "attention_only_drivers": [
+    {
+      "feature": "기존 대출 건수",
+      "feature_raw": "existing_credits",
+      "value": "2건",
+      "rank": 1,
+      "group": "attention_only",
+      "attention": 0.880556
+    },
+    {
+      "feature": "기타 지불 계획 없음",
+      "feature_raw": "other_payment_plans_none",
+      "value": "비해당",
+      "rank": 2,
+      "group": "attention_only",
+      "attention": 0.603617
+    }
+  ],
+  "model_predict": "XGBoost",
+  "model_explain": [
+    "SHAP_xgb_local",
+    "TabNet_attention_local"
+  ],
+  "explanation_policy": "fact_only_with_agreement_labels",
+  "n_agreed": 2,
+  "n_shap_only": 3,
+  "n_attention_only": 2,
+  "_meta_true_label": 0
+}

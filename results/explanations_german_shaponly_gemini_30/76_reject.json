@@ -1,0 +1,64 @@
+{
+  "sample_idx": 76,
+  "decision": "REJECT",
+  "true_label": 0,
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "mode": "shaponly",
+  "elapsed_sec": 14.18,
+  "explanation": "[결정 요약]\n고객님의 신용 평가 결과, 부도 확률이 84.6%로 대출 승인 기준인 45.62%를 초과하여 대출이 거절되었습니다.\n\n[주요 거절 사유]\n*   대출 기간이 24개월로 평가된 점\n*   잔액이 0 DM 미만에 해당하는 점\n*   기타 지불 계획 없음이 비해당으로 평가된 점\n\n[긍정적으로 평가된 요인]\n*   대출 금액이 3,149 DM으로 평가된 점은 긍정적으로 작용했습니다.\n\n[개선 권고]\n*   대출 기간을 조정하는 방안을 고려해 볼 수 있습니다.\n*   계좌 잔액이 0 DM 미만이 되지 않도록 관리하는 것을 고려할 수 있습니다.\n*   기타 지불 계획을 줄이는 방안을 고려해 볼 수 있습니다.\n\n[면책 고지]\n본 평가는 현재 모델 및 제공된 정보를 기반으로 합니다. 이 평가는 미래 결과를 단정하거나 보장하지 않습니다.",
+  "usage_metadata": {
+    "prompt_token_count": 739,
+    "candidates_token_count": 243,
+    "total_token_count": 3819
+  },
+  "context_sent": {
+    "sample_idx": 76,
+    "default_probability": 0.846,
+    "threshold": 0.4562,
+    "decision": "REJECT",
+    "top_drivers_for_default": [
+      {
+        "feature": "대출 기간(개월)",
+        "feature_raw": "duration",
+        "value": "24개월",
+        "shap": 0.4466,
+        "rank": 1
+      },
+      {
+        "feature": "잔액 < 0 DM",
+        "feature_raw": "checking_status__0",
+        "value": "해당",
+        "shap": 0.3116,
+        "rank": 3
+      },
+      {
+        "feature": "기타 지불 계획 없음",
+        "feature_raw": "other_payment_plans_none",
+        "value": "비해당",
+        "shap": 0.2832,
+        "rank": 4
+      },
+      {
+        "feature": "체크 계좌 없음",
+        "feature_raw": "checking_status_no_checking",
+        "value": "비해당",
+        "shap": 0.2516,
+        "rank": 5
+      }
+    ],
+    "top_drivers_against_default": [
+      {
+        "feature": "대출 금액(DM)",
+        "feature_raw": "credit_amount",
+        "value": "3,149 DM",
+        "shap": -0.3701,
+        "rank": 2
+      }
+    ],
+    "fairness_flags": [],
+    "model": "XGBoost + SHAP",
+    "explanation_policy": "fact_only_shap_top5"
+  },
+  "context_type": "german_shaponly"
+}

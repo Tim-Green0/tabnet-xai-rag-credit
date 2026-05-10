@@ -1,0 +1,100 @@
+{
+  "sample_idx": 105,
+  "decision": "REJECT",
+  "default_probability": 0.8679,
+  "threshold": 0.4562,
+  "agreed_drivers": [
+    {
+      "feature": "체크 계좌 없음",
+      "feature_raw": "checking_status_no_checking",
+      "value": "비해당",
+      "rank": 1,
+      "group": "agreed",
+      "shap": 0.5017,
+      "sign_for_default": "+",
+      "attention": 0.183772
+    }
+  ],
+  "shap_only_drivers": [
+    {
+      "feature": "대출 금액(DM)",
+      "feature_raw": "credit_amount",
+      "value": "15,945 DM",
+      "rank": 1,
+      "group": "shap_only",
+      "shap": 0.2898,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "저축 < 100 DM",
+      "feature_raw": "savings_status__100",
+      "value": "해당",
+      "rank": 2,
+      "group": "shap_only",
+      "shap": 0.2667,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "임대",
+      "feature_raw": "housing_rent",
+      "value": "해당",
+      "rank": 3,
+      "group": "shap_only",
+      "shap": 0.2254,
+      "sign_for_default": "+"
+    },
+    {
+      "feature": "분할 상환 비율(%)",
+      "feature_raw": "installment_commitment",
+      "value": "3.0%",
+      "rank": 4,
+      "group": "shap_only",
+      "shap": 0.2157,
+      "sign_for_default": "+"
+    }
+  ],
+  "attention_only_drivers": [
+    {
+      "feature": "저축 정보 없음",
+      "feature_raw": "savings_status_no_known_savings",
+      "value": "비해당",
+      "rank": 1,
+      "group": "attention_only",
+      "attention": 0.401919
+    },
+    {
+      "feature": "교육",
+      "feature_raw": "purpose_education",
+      "value": "비해당",
+      "rank": 2,
+      "group": "attention_only",
+      "attention": 0.23245
+    },
+    {
+      "feature": "공동 신청자",
+      "feature_raw": "other_parties_co_applicant",
+      "value": "비해당",
+      "rank": 3,
+      "group": "attention_only",
+      "attention": 0.196477
+    },
+    {
+      "feature": "가전",
+      "feature_raw": "purpose_domestic_appliance",
+      "value": "비해당",
+      "rank": 4,
+      "group": "attention_only",
+      "attention": 0.123836
+    }
+  ],
+  "model_predict": "XGBoost",
+  "model_explain": [
+    "SHAP_xgb_local",
+    "TabNet_attention_local"
+  ],
+  "explanation_policy": "fact_only_with_agreement_labels",
+  "n_agreed": 1,
+  "n_shap_only": 4,
+  "n_attention_only": 4,
+  "_meta_true_label": 1
+}

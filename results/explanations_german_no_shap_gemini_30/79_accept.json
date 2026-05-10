@@ -1,0 +1,42 @@
+{
+  "sample_idx": 79,
+  "decision": "APPROVE",
+  "true_label": 0,
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "mode": "no_shap",
+  "elapsed_sec": 11.15,
+  "explanation": "고객님, 안녕하세요! 고객님의 신용 평가 결과를 친절하게 설명해 드릴 금융 상담사입니다.\n\n[결정 요약]\n고객님의 대출 신청이 승인되었으며, 예측 부도 확률 0.0190으로 고객님께서 대출금을 성실히 상환하실 것으로 판단됩니다.\n\n[긍정적으로 평가된 요인]\n* 상당한 저축 보유 (1,000 DM 이상)\n* 4년 이상 7년 미만의 안정적인 재직 기간\n* 자가 주택 소유\n\n[개선 권고]\n* 활성 체크 계좌를 개설하고 유지하여 금융 거래 내역을 확보하시면 신용 평가에 더욱 긍정적입니다.\n* 기존 대출 및 신용 이력을 꾸준히 성실하게 관리하시어 신용도를 더욱 강화하시는 것이 좋습니다.\n\n[면책 고지]\n본 신용 평가는 현재 제공된 정보를 바탕으로 한 예측 결과이며, 향후 고객님의 금융 행동 및 시장 상황에 따라 변동될 수 있습니다. 본 설명은 인공지능 모델의 분석 결과에 기반하며, 최종 대출 조건은 개별 상담을 통해 확정됩니다.",
+  "usage_metadata": {
+    "prompt_token_count": 361,
+    "candidates_token_count": 257,
+    "total_token_count": 2603
+  },
+  "context_sent": {
+    "sample_idx": 79,
+    "default_probability": 0.019,
+    "threshold": 0.4562,
+    "decision": "APPROVE",
+    "customer_data": {
+      "체크 계좌 상태": "no checking",
+      "대출 기간(개월)": "12개월",
+      "신용 이력": "critical/other existing credit",
+      "대출 목적": "furniture/equipment",
+      "대출 금액(DM)": "1,592 DM",
+      "저축 상태": ">=1000",
+      "재직 기간": "4<=X<7",
+      "분할 상환 비율(%)": "3%",
+      "보증인/공동신청자": "none",
+      "현 거주지 거주 기간(년)": "2년",
+      "보유 자산": "life insurance",
+      "기타 지불 계획": "none",
+      "주거 형태": "own",
+      "기존 대출 건수": "1건",
+      "직업 분류": "skilled",
+      "부양 가족 수": "1명",
+      "전화 보유": "none"
+    },
+    "policy": "no_shap_raw_only"
+  },
+  "context_type": "german_no_shap"
+}

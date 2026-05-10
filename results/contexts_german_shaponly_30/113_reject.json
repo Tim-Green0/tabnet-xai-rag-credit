@@ -1,0 +1,49 @@
+{
+  "sample_idx": 113,
+  "default_probability": 0.883,
+  "threshold": 0.4562,
+  "decision": "REJECT",
+  "top_drivers_for_default": [
+    {
+      "feature": "체크 계좌 없음",
+      "feature_raw": "checking_status_no_checking",
+      "value": "비해당",
+      "shap": 0.4485,
+      "rank": 1
+    },
+    {
+      "feature": "교육",
+      "feature_raw": "purpose_education",
+      "value": "해당",
+      "shap": 0.4413,
+      "rank": 2
+    },
+    {
+      "feature": "실업 상태",
+      "feature_raw": "employment_unemployed",
+      "value": "해당",
+      "shap": 0.3633,
+      "rank": 3
+    },
+    {
+      "feature": "잔액 < 0 DM",
+      "feature_raw": "checking_status__0",
+      "value": "해당",
+      "shap": 0.296,
+      "rank": 4
+    }
+  ],
+  "top_drivers_against_default": [
+    {
+      "feature": "부동산",
+      "feature_raw": "property_magnitude_real_estate",
+      "value": "해당",
+      "shap": -0.1737,
+      "rank": 5
+    }
+  ],
+  "fairness_flags": [],
+  "model": "XGBoost + SHAP",
+  "explanation_policy": "fact_only_shap_top5",
+  "_meta_true_label": 1
+}

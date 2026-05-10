@@ -1,0 +1,115 @@
+{
+  "sample_idx": 50,
+  "decision": "APPROVE",
+  "true_label": 0,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "mode": "fusion",
+  "elapsed_sec": 12.75,
+  "explanation": "# 신용 평가 결과 안내\n\n## [결정 요약]\n고객님의 신용 신청이 **승인**되었습니다. (부도 가능성 2.3% / 기준 45.6%)  \nXGBoost 예측 모델과 SHAP·TabNet 분석이 공통으로 주목한 신호 1건을 포함하여 종합 평가하였습니다.\n\n## [긍정적으로 평가된 요인]\n1. **체크 계좌 없음** (해당)  \n   두 모델이 공통으로 주목한 신호로, 귀하의 경우 이 조건이 부도 가능성을 낮추는 요인으로 작용했습니다.\n\n2. **저축 ≥ 1000 DM** (해당)  \n   상당한 저축 잔액을 보유하고 계신 점이 신용도를 높이는 데 기여했습니다.\n\n3. **신용 이력 critical (위험) 항목** (해당)  \n   해당 이력 유형이 귀하의 경우 부도 가능성을 낮추는 방향으로 평가되었습니다.\n\n## [개선 권고]\n1. **대출 금액 관리**  \n   현재 신청하신 1,582 DM은 적정 수준으로 평가되었습니다. 향후에도 본인의 상환 능력 내에서 대출 규모를 유지하시길 권장합니다.\n\n2. **저축 습관 유지**  \n   현재 1000 DM 이상의 저축을 보유하고 계신 점이 긍정적으로 평가되었습니다. 이러한 저축 습관을 지속하시면 향후 신용 평가에도 도움이 됩니다.\n\n## [면책 고지]\n본 평가는 XGBoost 모델 예측과 SHAP·TabNet 분석을 기반으로 작성되었으며, 신용 결정의 참고 자료입니다. 개별 금융 상황에 따라 실제 결과는 달라질 수 있으며, 본 안내가 법적·재무적 자문을 대체하지 않습니다.",
+  "usage_metadata": {
+    "input_tokens": 1554,
+    "output_tokens": 679,
+    "total_token_count": 2233
+  },
+  "context_sent": {
+    "sample_idx": 50,
+    "decision": "APPROVE",
+    "default_probability": 0.0226,
+    "threshold": 0.4562,
+    "agreed_drivers": [
+      {
+        "feature": "체크 계좌 없음",
+        "feature_raw": "checking_status_no_checking",
+        "value": "해당",
+        "rank": 1,
+        "group": "agreed",
+        "shap": -0.8002,
+        "sign_for_default": "-",
+        "attention": 0.31429
+      }
+    ],
+    "shap_only_drivers": [
+      {
+        "feature": "신용 이력 critical (위험)",
+        "feature_raw": "credit_history_critical/other_existing_credit",
+        "value": "해당",
+        "rank": 1,
+        "group": "shap_only",
+        "shap": -0.8404,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "저축 ≥ 1000 DM",
+        "feature_raw": "savings_status__=1000",
+        "value": "해당",
+        "rank": 2,
+        "group": "shap_only",
+        "shap": -0.6812,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "대출 금액(DM)",
+        "feature_raw": "credit_amount",
+        "value": "1,582 DM",
+        "rank": 3,
+        "group": "shap_only",
+        "shap": -0.3273,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "저축 < 100 DM",
+        "feature_raw": "savings_status__100",
+        "value": "비해당",
+        "rank": 4,
+        "group": "shap_only",
+        "shap": -0.2951,
+        "sign_for_default": "-"
+      }
+    ],
+    "attention_only_drivers": [
+      {
+        "feature": "잔액 < 0 DM",
+        "feature_raw": "checking_status__0",
+        "value": "비해당",
+        "rank": 1,
+        "group": "attention_only",
+        "attention": 0.289497
+      },
+      {
+        "feature": "교육",
+        "feature_raw": "purpose_education",
+        "value": "비해당",
+        "rank": 2,
+        "group": "attention_only",
+        "attention": 0.287389
+      },
+      {
+        "feature": "기타 지불 계획 없음",
+        "feature_raw": "other_payment_plans_none",
+        "value": "비해당",
+        "rank": 3,
+        "group": "attention_only",
+        "attention": 0.268211
+      },
+      {
+        "feature": "부동산",
+        "feature_raw": "property_magnitude_real_estate",
+        "value": "비해당",
+        "rank": 4,
+        "group": "attention_only",
+        "attention": 0.219486
+      }
+    ],
+    "model_predict": "XGBoost",
+    "model_explain": [
+      "SHAP_xgb_local",
+      "TabNet_attention_local"
+    ],
+    "explanation_policy": "fact_only_with_agreement_labels",
+    "n_agreed": 1,
+    "n_shap_only": 4,
+    "n_attention_only": 4
+  },
+  "context_type": "german_fusion"
+}

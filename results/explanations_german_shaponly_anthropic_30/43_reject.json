@@ -1,0 +1,63 @@
+{
+  "sample_idx": 43,
+  "decision": "REJECT",
+  "true_label": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "mode": "shaponly",
+  "elapsed_sec": 12.64,
+  "explanation": "# 신용 평가 결과 안내문\n\n---\n\n## [결정 요약]\n종합 심사 결과, 현재 시점에서는 대출 승인이 어려우며, 부도 가능성이 90.4%로 평가되어 거절 결정되었습니다.\n\n---\n\n## [주요 거절 사유]\n1. **대출 기간(36개월)**: 신청하신 대출 기간이 상환 리스크를 높이는 요인으로 평가되었습니다.\n\n2. **체크 계좌 상태**: 현재 잔액이 0 DM 미만인 상태가 확인되어 재무 안정성에 부정적 영향을 미쳤습니다.\n\n3. **주거 형태(임대)**: 임대 거주 상태가 신용 평가에 불리하게 작용하였습니다.\n\n---\n\n## [긍정적으로 평가된 요인]\n현재 평가 기준에서 부도 가능성을 낮추는 긍정 요인은 확인되지 않았습니다.\n\n---\n\n## [개선 권고]\n1. **체크 계좌 잔액 개선**: 계좌 잔액을 플러스(+)로 유지하고, 최소 3~6개월간 안정적인 입출금 내역을 관리하시기 바랍니다.\n\n2. **대출 조건 재조정**: 대출 기간을 단축하거나 대출 금액을 줄여 재신청을 고려해보시기 바랍니다.\n\n3. **주거 안정성 강화**: 가능하다면 주거 소유 형태 전환 등 주거 안정성을 높이는 방안을 검토해보시기 바랍니다.\n\n---\n\n## [면책 고지]\n본 평가는 XGBoost + SHAP 모델 기반 통계적 분석 결과이며, 개별 상황에 따라 달라질 수 있습니다. 신용 개선 후 재신청이 가능하며, 구체적인 재무 상담은 전문가와 상의하시기 바랍니다.",
+  "usage_metadata": {
+    "input_tokens": 898,
+    "output_tokens": 656,
+    "total_token_count": 1554
+  },
+  "context_sent": {
+    "sample_idx": 43,
+    "default_probability": 0.904,
+    "threshold": 0.4562,
+    "decision": "REJECT",
+    "top_drivers_for_default": [
+      {
+        "feature": "대출 기간(개월)",
+        "feature_raw": "duration",
+        "value": "36개월",
+        "shap": 0.59,
+        "rank": 1
+      },
+      {
+        "feature": "체크 계좌 없음",
+        "feature_raw": "checking_status_no_checking",
+        "value": "비해당",
+        "shap": 0.5486,
+        "rank": 2
+      },
+      {
+        "feature": "잔액 < 0 DM",
+        "feature_raw": "checking_status__0",
+        "value": "해당",
+        "shap": 0.3435,
+        "rank": 3
+      },
+      {
+        "feature": "임대",
+        "feature_raw": "housing_rent",
+        "value": "해당",
+        "shap": 0.2499,
+        "rank": 4
+      },
+      {
+        "feature": "분할 상환 비율(%)",
+        "feature_raw": "installment_commitment",
+        "value": "4.0%",
+        "shap": 0.2404,
+        "rank": 5
+      }
+    ],
+    "top_drivers_against_default": [],
+    "fairness_flags": [],
+    "model": "XGBoost + SHAP",
+    "explanation_policy": "fact_only_shap_top5"
+  },
+  "context_type": "german_shaponly"
+}

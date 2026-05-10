@@ -1,0 +1,63 @@
+{
+  "sample_idx": 144,
+  "decision": "APPROVE",
+  "true_label": 0,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "mode": "shaponly",
+  "elapsed_sec": 12.84,
+  "explanation": "# 신용 평가 결과 안내\n\n---\n\n## [결정 요약]\n고객님의 신용 평가 결과, 대출이 **승인**되었습니다. (부도 예측 확률: 3.19%)\n\n---\n\n## [주요 거절 사유]\n해당 없음 (승인 건)\n\n---\n\n## [긍정적으로 평가된 요인]\n\n1. **대출 기간 6개월**  \n   상환 기간이 짧아 신용 위험이 크게 낮아졌습니다. 단기 대출은 상환 불확실성을 줄이는 긍정적 요소로 평가되었습니다.\n\n2. **체크 계좌 미보유**  \n   체크 계좌가 없는 점이 이번 평가에서는 긍정적으로 작용하였습니다.\n\n3. **기존 신용 이력 관리 기록**  \n   다른 기존 신용 거래에 대한 관리 이력이 신용 평가에 긍정적으로 반영되었습니다.\n\n---\n\n## [개선 권고]\n\n- 현재 저축액이 100 DM 이상으로 확인되어 긍정적입니다. 이러한 저축 습관을 유지하시면 향후 더 유리한 조건의 금융 서비스를 이용하실 수 있습니다.\n- 단기 대출의 장점을 활용하되, 약정된 상환 일정을 철저히 준수하시어 신용 이력을 더욱 개선해 나가시기 바랍니다.\n\n---\n\n## [면책 고지]\n본 평가 결과는 XGBoost 모델 기반 예측이며, 실제 상환 능력을 보증하지 않습니다. 신용 거래 시 본인의 상환 능력을 신중히 고려하시기 바랍니다.",
+  "usage_metadata": {
+    "input_tokens": 918,
+    "output_tokens": 584,
+    "total_token_count": 1502
+  },
+  "context_sent": {
+    "sample_idx": 144,
+    "default_probability": 0.0319,
+    "threshold": 0.4562,
+    "decision": "APPROVE",
+    "top_drivers_for_default": [],
+    "top_drivers_against_default": [
+      {
+        "feature": "대출 기간(개월)",
+        "feature_raw": "duration",
+        "value": "6개월",
+        "shap": -0.9113,
+        "rank": 1
+      },
+      {
+        "feature": "체크 계좌 없음",
+        "feature_raw": "checking_status_no_checking",
+        "value": "해당",
+        "shap": -0.6339,
+        "rank": 2
+      },
+      {
+        "feature": "신용 이력 critical (위험)",
+        "feature_raw": "credit_history_critical/other_existing_credit",
+        "value": "해당",
+        "shap": -0.6067,
+        "rank": 3
+      },
+      {
+        "feature": "기타 지불 계획 없음",
+        "feature_raw": "other_payment_plans_none",
+        "value": "해당",
+        "shap": -0.2254,
+        "rank": 4
+      },
+      {
+        "feature": "저축 < 100 DM",
+        "feature_raw": "savings_status__100",
+        "value": "비해당",
+        "shap": -0.1873,
+        "rank": 5
+      }
+    ],
+    "fairness_flags": [],
+    "model": "XGBoost + SHAP",
+    "explanation_policy": "fact_only_shap_top5"
+  },
+  "context_type": "german_shaponly"
+}

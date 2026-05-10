@@ -1,0 +1,64 @@
+{
+  "sample_idx": 45,
+  "decision": "APPROVE",
+  "true_label": 0,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "mode": "shaponly",
+  "elapsed_sec": 12.71,
+  "explanation": "# 신용 평가 결과 안내\n\n## [결정 요약]\n고객님의 신용 평가 결과, 대출이 **승인**되었습니다. 부도 가능성은 4.11%로 평가되어 승인 기준(45.62%)을 충족하였습니다.\n\n## [주요 거절 사유]\n(승인 건으로 해당 사항 없음)\n\n## [긍정적으로 평가된 요인]\n1. **체크 계좌 미보유**: 현재 체크 계좌가 없는 상태가 이번 평가에서 긍정적으로 작용하였습니다.\n2. **신용 이력 특성**: 기존 신용 이력의 특정 유형이 긍정 요인으로 평가되었습니다.\n3. **대출 금액 규모**: 신청하신 대출 금액 2,872 DM이 적정 수준으로 판단되었습니다.\n4. **저축 상태**: 100 DM 미만의 저축 구간에 해당하지 않는 점이 긍정적으로 평가되었습니다.\n\n## [개선 권고]\n- **대출 기간 조정 검토**: 현재 신청하신 24개월의 대출 기간은 리스크 요인으로 작용할 수 있습니다. 향후 대출 시 가능하다면 더 짧은 기간을 고려하시면 더 유리한 평가를 받으실 수 있습니다.\n- 승인된 대출 조건을 잘 이행하시면 향후 신용 평가에 더욱 긍정적으로 작용할 것입니다.\n\n## [면책 고지]\n본 평가는 XGBoost + SHAP 모델 기반 통계적 분석 결과이며, 미래 상환 능력을 보장하지 않습니다. 궁금하신 사항은 담당 상담사에게 문의해 주시기 바랍니다.",
+  "usage_metadata": {
+    "input_tokens": 917,
+    "output_tokens": 617,
+    "total_token_count": 1534
+  },
+  "context_sent": {
+    "sample_idx": 45,
+    "default_probability": 0.0411,
+    "threshold": 0.4562,
+    "decision": "APPROVE",
+    "top_drivers_for_default": [
+      {
+        "feature": "대출 기간(개월)",
+        "feature_raw": "duration",
+        "value": "24개월",
+        "shap": 0.2155,
+        "rank": 5
+      }
+    ],
+    "top_drivers_against_default": [
+      {
+        "feature": "체크 계좌 없음",
+        "feature_raw": "checking_status_no_checking",
+        "value": "해당",
+        "shap": -0.9294,
+        "rank": 1
+      },
+      {
+        "feature": "신용 이력 critical (위험)",
+        "feature_raw": "credit_history_critical/other_existing_credit",
+        "value": "해당",
+        "shap": -0.6033,
+        "rank": 2
+      },
+      {
+        "feature": "대출 금액(DM)",
+        "feature_raw": "credit_amount",
+        "value": "2,872 DM",
+        "shap": -0.383,
+        "rank": 3
+      },
+      {
+        "feature": "저축 < 100 DM",
+        "feature_raw": "savings_status__100",
+        "value": "비해당",
+        "shap": -0.3418,
+        "rank": 4
+      }
+    ],
+    "fairness_flags": [],
+    "model": "XGBoost + SHAP",
+    "explanation_policy": "fact_only_shap_top5"
+  },
+  "context_type": "german_shaponly"
+}

@@ -1,0 +1,64 @@
+{
+  "sample_idx": 113,
+  "decision": "REJECT",
+  "true_label": 1,
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "mode": "shaponly",
+  "elapsed_sec": 9.41,
+  "explanation": "[결정 요약]\n신용 평가 결과, 고객님의 부도 확률은 0.883으로, 당사 기준치인 0.4562를 초과하여 대출 신청이 거절되었습니다.\n\n[주요 거절 사유]\n고객님의 체크 계좌가 없는 점이 부도 가능성을 높였습니다.\n대출 목적이 교육인 점 또한 부도 가능성을 높였습니다.\n현재 실업 상태이신 점도 부도 가능성을 높이는 요인으로 작용했습니다.\n\n[긍정적으로 평가된 요인]\n다만, 부동산을 보유하고 계신 점은 부도 가능성을 낮추는 긍정적인 요인으로 평가되었습니다.\n\n[개선 권고]\n재정 상황의 안정성을 높이는 노력을 통해 신용 평가에 긍정적인 영향을 줄 수 있습니다.\n안정적인 소득 활동을 유지하는 것이 신용도를 개선하는 데 도움이 될 수 있습니다.\n\n[면책 고지]\n이 설명은 제공된 정보를 기반으로 한 신용 평가 결과이며, 미래의 신용도를 보장하지 않습니다. 신용 평가는 다양한 요인을 종합적으로 고려하여 이루어지며, 추가적인 상황 변화에 따라 결과가 달라질 수 있습니다.",
+  "usage_metadata": {
+    "prompt_token_count": 726,
+    "candidates_token_count": 270,
+    "total_token_count": 2692
+  },
+  "context_sent": {
+    "sample_idx": 113,
+    "default_probability": 0.883,
+    "threshold": 0.4562,
+    "decision": "REJECT",
+    "top_drivers_for_default": [
+      {
+        "feature": "체크 계좌 없음",
+        "feature_raw": "checking_status_no_checking",
+        "value": "비해당",
+        "shap": 0.4485,
+        "rank": 1
+      },
+      {
+        "feature": "교육",
+        "feature_raw": "purpose_education",
+        "value": "해당",
+        "shap": 0.4413,
+        "rank": 2
+      },
+      {
+        "feature": "실업 상태",
+        "feature_raw": "employment_unemployed",
+        "value": "해당",
+        "shap": 0.3633,
+        "rank": 3
+      },
+      {
+        "feature": "잔액 < 0 DM",
+        "feature_raw": "checking_status__0",
+        "value": "해당",
+        "shap": 0.296,
+        "rank": 4
+      }
+    ],
+    "top_drivers_against_default": [
+      {
+        "feature": "부동산",
+        "feature_raw": "property_magnitude_real_estate",
+        "value": "해당",
+        "shap": -0.1737,
+        "rank": 5
+      }
+    ],
+    "fairness_flags": [],
+    "model": "XGBoost + SHAP",
+    "explanation_policy": "fact_only_shap_top5"
+  },
+  "context_type": "german_shaponly"
+}

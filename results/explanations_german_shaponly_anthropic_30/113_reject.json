@@ -1,0 +1,64 @@
+{
+  "sample_idx": 113,
+  "decision": "REJECT",
+  "true_label": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "mode": "shaponly",
+  "elapsed_sec": 12.72,
+  "explanation": "# 신용 평가 결과 안내\n\n---\n\n## [결정 요약]\n고객님의 신용 평가 결과, 부도 가능성이 88.3%로 승인 기준(45.6%)을 상회하여 **대출이 승인되지 않았습니다**.\n\n---\n\n## [주요 거절 사유]\n\n**1. 실업 상태**  \n현재 실업 상태로 확인되어 상환 능력 평가에 부정적 영향을 주었습니다(+0.36).\n\n**2. 체크 계좌 미보유**  \n체크 계좌가 없어 정기적인 금융 거래 이력 확인이 어려웠습니다(+0.45).\n\n**3. 체크 계좌 잔액 부족**  \n체크 계좌 잔액이 0 DM 미만으로 확인되어 재정 상태 평가에 부정적으로 작용했습니다(+0.30).\n\n---\n\n## [긍정적으로 평가된 요인]\n\n**1. 부동산 보유**  \n부동산을 보유하고 계신 점이 신용 평가에 긍정적으로 반영되었습니다(-0.17).\n\n---\n\n## [개선 권고]\n\n**• 안정적인 소득원 확보**  \n정규 고용 등 안정적인 소득원을 마련하시면 향후 평가에서 상환 능력을 입증하는 데 도움이 됩니다.\n\n**• 체크 계좌 개설 및 관리**  \n체크 계좌를 개설하고 정기적으로 입출금 거래를 유지하시면 금융 거래 이력 구축에 유리합니다.\n\n**• 계좌 잔액 개선**  \n체크 계좌에 플러스 잔액을 유지하시면 재정 관리 능력을 보여줄 수 있습니다.\n\n---\n\n## [면책 고지]\n본 평가는 XGBoost + SHAP 모델 기반 통계적 분석 결과이며, 개별 상황을 완전히 반영하지 못할 수 있습니다. 추가 상담이나 이의 제기를 원하시면 고객센터로 연락해 주시기 바랍니다.",
+  "usage_metadata": {
+    "input_tokens": 895,
+    "output_tokens": 704,
+    "total_token_count": 1599
+  },
+  "context_sent": {
+    "sample_idx": 113,
+    "default_probability": 0.883,
+    "threshold": 0.4562,
+    "decision": "REJECT",
+    "top_drivers_for_default": [
+      {
+        "feature": "체크 계좌 없음",
+        "feature_raw": "checking_status_no_checking",
+        "value": "비해당",
+        "shap": 0.4485,
+        "rank": 1
+      },
+      {
+        "feature": "교육",
+        "feature_raw": "purpose_education",
+        "value": "해당",
+        "shap": 0.4413,
+        "rank": 2
+      },
+      {
+        "feature": "실업 상태",
+        "feature_raw": "employment_unemployed",
+        "value": "해당",
+        "shap": 0.3633,
+        "rank": 3
+      },
+      {
+        "feature": "잔액 < 0 DM",
+        "feature_raw": "checking_status__0",
+        "value": "해당",
+        "shap": 0.296,
+        "rank": 4
+      }
+    ],
+    "top_drivers_against_default": [
+      {
+        "feature": "부동산",
+        "feature_raw": "property_magnitude_real_estate",
+        "value": "해당",
+        "shap": -0.1737,
+        "rank": 5
+      }
+    ],
+    "fairness_flags": [],
+    "model": "XGBoost + SHAP",
+    "explanation_policy": "fact_only_shap_top5"
+  },
+  "context_type": "german_shaponly"
+}

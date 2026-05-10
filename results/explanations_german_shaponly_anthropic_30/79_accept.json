@@ -1,0 +1,56 @@
+{
+  "sample_idx": 79,
+  "decision": "APPROVE",
+  "true_label": 0,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "mode": "shaponly",
+  "elapsed_sec": 10.91,
+  "explanation": "# 신용 평가 결과 안내\n\n## [결정 요약]\n고객님의 신용 평가 결과, 대출이 **승인**되었습니다. (부도 가능성: 1.9%)\n\n## [주요 거절 사유]\n해당 없음 (승인 건)\n\n## [긍정적으로 평가된 요인]\n1. **안정적인 재직 기간**: 4~7년의 재직 기간은 소득 안정성을 보여주는 긍정적 요소로 평가되었습니다.\n2. **충분한 저축 보유**: 1,000 DM 이상의 저축 잔고는 재정 관리 능력과 상환 여력을 나타내는 중요한 강점입니다.\n3. **신용 이력 관리**: 기존 신용 거래 이력이 평가에 긍정적으로 반영되었습니다.\n\n## [개선 권고]\n1. **체크 계좌 개설 검토**: 현재 체크 계좌가 없는 상태입니다. 향후 체크 계좌 개설 및 정기적인 거래 이력 관리는 금융 프로필 강화에 도움이 될 수 있습니다.\n2. **저축 습관 유지**: 현재의 우수한 저축 수준을 지속적으로 유지하시어 재무 안정성을 계속 강화하시기 바랍니다.\n\n## [면책 고지]\n본 평가는 제출하신 정보 기반 XGBoost 모델 분석 결과이며, 향후 상환 능력을 보장하지 않습니다. 신용 상태 변화 시 재평가가 필요할 수 있습니다.",
+  "usage_metadata": {
+    "input_tokens": 859,
+    "output_tokens": 539,
+    "total_token_count": 1398
+  },
+  "context_sent": {
+    "sample_idx": 79,
+    "default_probability": 0.019,
+    "threshold": 0.4562,
+    "decision": "APPROVE",
+    "top_drivers_for_default": [],
+    "top_drivers_against_default": [
+      {
+        "feature": "체크 계좌 없음",
+        "feature_raw": "checking_status_no_checking",
+        "value": "해당",
+        "shap": -0.6921,
+        "rank": 2
+      },
+      {
+        "feature": "재직 4~7년",
+        "feature_raw": "employment_4_=X_7",
+        "value": "해당",
+        "shap": -0.6068,
+        "rank": 3
+      },
+      {
+        "feature": "저축 ≥ 1000 DM",
+        "feature_raw": "savings_status__=1000",
+        "value": "해당",
+        "shap": -0.5643,
+        "rank": 4
+      },
+      {
+        "feature": "신용 이력 critical (위험)",
+        "feature_raw": "credit_history_critical/other_existing_credit",
+        "value": "해당",
+        "shap": -0.4563,
+        "rank": 5
+      }
+    ],
+    "fairness_flags": [],
+    "model": "XGBoost + SHAP",
+    "explanation_policy": "fact_only_shap_top5"
+  },
+  "context_type": "german_shaponly"
+}

@@ -1,0 +1,64 @@
+{
+  "sample_idx": 45,
+  "decision": "APPROVE",
+  "true_label": 0,
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "mode": "shaponly",
+  "elapsed_sec": 8.45,
+  "explanation": "[결정 요약]\n고객님의 신용 평가 결과, 대출 승인 결정이 내려졌습니다.\n\n[주요 거절 사유]\n해당 사항 없음\n\n[긍정적으로 평가된 요인]\n*   고객님의 체크 계좌가 없으신 점은 부도 가능성을 낮추는 데 긍정적인 영향을 주었습니다.\n*   신용 이력 중 'critical (위험)'에 해당하시는 점 또한 긍정적으로 평가되었습니다.\n*   요청하신 대출 금액 2,872 DM은 부도 가능성을 낮추는 데 긍정적인 영향을 미쳤습니다.\n\n[개선 권고]\n*   현재 대출 기간 24개월은 부도 가능성을 다소 높이는 요인으로 분석되었습니다. 향후 대출 계획 시 이 부분을 고려해 보시는 것을 권고드립니다.\n\n[면책 고지]\n본 신용 평가는 제공된 정보만을 바탕으로 하며, 미래 결과를 단정적으로 예측하거나 법률 자문을 제공하지 않습니다. 본 평가는 참고 자료로 활용되어야 합니다.",
+  "usage_metadata": {
+    "prompt_token_count": 748,
+    "candidates_token_count": 237,
+    "total_token_count": 2585
+  },
+  "context_sent": {
+    "sample_idx": 45,
+    "default_probability": 0.0411,
+    "threshold": 0.4562,
+    "decision": "APPROVE",
+    "top_drivers_for_default": [
+      {
+        "feature": "대출 기간(개월)",
+        "feature_raw": "duration",
+        "value": "24개월",
+        "shap": 0.2155,
+        "rank": 5
+      }
+    ],
+    "top_drivers_against_default": [
+      {
+        "feature": "체크 계좌 없음",
+        "feature_raw": "checking_status_no_checking",
+        "value": "해당",
+        "shap": -0.9294,
+        "rank": 1
+      },
+      {
+        "feature": "신용 이력 critical (위험)",
+        "feature_raw": "credit_history_critical/other_existing_credit",
+        "value": "해당",
+        "shap": -0.6033,
+        "rank": 2
+      },
+      {
+        "feature": "대출 금액(DM)",
+        "feature_raw": "credit_amount",
+        "value": "2,872 DM",
+        "shap": -0.383,
+        "rank": 3
+      },
+      {
+        "feature": "저축 < 100 DM",
+        "feature_raw": "savings_status__100",
+        "value": "비해당",
+        "shap": -0.3418,
+        "rank": 4
+      }
+    ],
+    "fairness_flags": [],
+    "model": "XGBoost + SHAP",
+    "explanation_policy": "fact_only_shap_top5"
+  },
+  "context_type": "german_shaponly"
+}

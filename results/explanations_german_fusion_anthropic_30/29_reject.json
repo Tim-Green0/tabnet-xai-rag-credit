@@ -1,0 +1,115 @@
+{
+  "sample_idx": 29,
+  "decision": "REJECT",
+  "true_label": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "mode": "fusion",
+  "elapsed_sec": 17.67,
+  "explanation": "# 신용 평가 결과 안내\n\n**고객님 안녕하세요.**  \n금번 신용 평가 결과를 안내드립니다.\n\n---\n\n## [결정 요약]\n\n예측 부도 확률 81.8%로 승인 기준(45.6%)을 초과하여 **대출이 거절**되었습니다.  \nXGBoost 모델과 TabNet 모델이 공통으로 주목한 주요 요인 1개, SHAP 분석 보완 요인 4개를 확인하였습니다.\n\n---\n\n## [주요 거절 사유]\n\n**1. 체크 계좌 미보유 (양 모델 공통 주목)**  \n현재 체크 계좌(당좌예금 계좌)를 보유하고 계시지 않은 것으로 확인되며, 이는 상환 능력 평가에서 부도 가능성을 높이는 강력한 신호로 작용하였습니다.\n\n**2. 대출 기간 28개월**  \n상환 기간이 비교적 장기로 설정되어 있어, 리스크 평가에서 부도 가능성을 증가시키는 요인으로 분석되었습니다.\n\n**3. 체크 계좌 잔액 마이너스 상태**  \n체크 계좌 잔액이 0 DM 미만(마이너스)인 상태로, 현재 유동성 부족이 부도 가능성을 높이는 요인으로 작용하였습니다.\n\n---\n\n## [긍정적으로 평가된 요인]\n\n**1. 대출 금액 4,006 DM**  \n신청하신 대출 금액 규모는 상환 부담 측면에서 긍정적으로 평가되었으며, 부도 가능성을 낮추는 방향으로 작용하였습니다.\n\n---\n\n## [개선 권고]\n\n**1. 체크 계좌 개설 및 거래 이력 구축**  \n정기적인 입출금 내역이 확인되는 체크 계좌를 개설하시고, 최소 3~6개월 이상 안정적인 거래 이력을 만드시면 향후 평가에 도움이 됩니다.\n\n**2. 체크 계좌 잔액 정상화**  \n현재 마이너스 상태인 계좌 잔액을 플러스(+)로 전환하고, 최소 100 DM 이상의 잔액을 유지하시면 유동성 평가가 개선됩니다.\n\n**3. 저축 계좌 보유액 증대**  \n현재 저축액이 100 DM 미만으로 확인되므로, 꾸준한 저축을 통해 비상 자금을 확보하시면 신용도 향상에 도움이 됩니다.\n\n---\n\n## [면책 고지]\n\n본 평가는 통계 모델 기반 예측 결과이며, 개인의 미래 상환 능력을 보장하거나 단정하는 것이 아닙니다.  \n신용 개선 권고사항은 일반적인 참고 정보이며, 개별 재무 상황에 따라 전문가 상담을 권장드립니다.",
+  "usage_metadata": {
+    "input_tokens": 1535,
+    "output_tokens": 1004,
+    "total_token_count": 2539
+  },
+  "context_sent": {
+    "sample_idx": 29,
+    "decision": "REJECT",
+    "default_probability": 0.8177,
+    "threshold": 0.4562,
+    "agreed_drivers": [
+      {
+        "feature": "체크 계좌 없음",
+        "feature_raw": "checking_status_no_checking",
+        "value": "비해당",
+        "rank": 1,
+        "group": "agreed",
+        "shap": 0.5478,
+        "sign_for_default": "+",
+        "attention": 0.132489
+      }
+    ],
+    "shap_only_drivers": [
+      {
+        "feature": "대출 기간(개월)",
+        "feature_raw": "duration",
+        "value": "28개월",
+        "rank": 1,
+        "group": "shap_only",
+        "shap": 0.539,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "대출 금액(DM)",
+        "feature_raw": "credit_amount",
+        "value": "4,006 DM",
+        "rank": 2,
+        "group": "shap_only",
+        "shap": -0.4454,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "잔액 < 0 DM",
+        "feature_raw": "checking_status__0",
+        "value": "해당",
+        "rank": 3,
+        "group": "shap_only",
+        "shap": 0.3402,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "저축 < 100 DM",
+        "feature_raw": "savings_status__100",
+        "value": "해당",
+        "rank": 4,
+        "group": "shap_only",
+        "shap": 0.2694,
+        "sign_for_default": "+"
+      }
+    ],
+    "attention_only_drivers": [
+      {
+        "feature": "저축 정보 없음",
+        "feature_raw": "savings_status_no_known_savings",
+        "value": "비해당",
+        "rank": 1,
+        "group": "attention_only",
+        "attention": 0.140772
+      },
+      {
+        "feature": "공동 신청자",
+        "feature_raw": "other_parties_co_applicant",
+        "value": "비해당",
+        "rank": 2,
+        "group": "attention_only",
+        "attention": 0.057054
+      },
+      {
+        "feature": "부동산",
+        "feature_raw": "property_magnitude_real_estate",
+        "value": "비해당",
+        "rank": 3,
+        "group": "attention_only",
+        "attention": 0.0527
+      },
+      {
+        "feature": "교육",
+        "feature_raw": "purpose_education",
+        "value": "비해당",
+        "rank": 4,
+        "group": "attention_only",
+        "attention": 0.047409
+      }
+    ],
+    "model_predict": "XGBoost",
+    "model_explain": [
+      "SHAP_xgb_local",
+      "TabNet_attention_local"
+    ],
+    "explanation_policy": "fact_only_with_agreement_labels",
+    "n_agreed": 1,
+    "n_shap_only": 4,
+    "n_attention_only": 4
+  },
+  "context_type": "german_fusion"
+}

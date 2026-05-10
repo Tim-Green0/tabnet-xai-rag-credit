@@ -1,0 +1,115 @@
+{
+  "sample_idx": 105,
+  "decision": "REJECT",
+  "true_label": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "mode": "fusion",
+  "elapsed_sec": 17.03,
+  "explanation": "# 신용 평가 결과 안내\n\n---\n\n## [결정 요약]\n\n고객님의 신청 건은 **승인이 어렵습니다(REJECT)**. 부도 가능성이 86.79%로 평가되어 내부 기준(45.62%)을 상회하였습니다. XGBoost 예측 모델과 TabNet 어텐션 모델 모두 1개 항목에서 일치된 신호를 포착하였습니다.\n\n---\n\n## [주요 거절 사유]\n\n**1. 체크 계좌 정보 부재 (최우선 요인)**\n- 현황: 체크 계좌 없음 = 비해당\n- 두 모델이 공통으로 주목한 가장 강력한 신호입니다.\n- 체크 계좌가 없는 상황이 상환 능력 평가에 불리하게 작용하였습니다.\n\n**2. 대출 금액 규모**\n- 신청 금액: 15,945 DM\n- 해당 금액 수준이 위험도를 높이는 요인으로 분석되었습니다.\n\n**3. 저축액 부족**\n- 저축 < 100 DM 조건에 해당\n- 비상 시 가용 가능한 완충 자금이 매우 제한적으로 평가되었습니다.\n\n---\n\n## [긍정적으로 평가된 요인]\n\n컨텍스트 내 부호가 '-'(부도 가능성 감소)인 항목이 확인되지 않았습니다. 현재 제출하신 정보 중 위험도를 낮추는 강력한 요소는 포착되지 않았습니다.\n\n---\n\n## [개선 권고]\n\n**1. 체크 계좌 개설 및 거래 이력 축적**\n- 정기적인 입출금 내역은 금융 건전성을 입증하는 핵심 자료입니다.\n\n**2. 저축 잔액 확보**\n- 최소 100 DM 이상의 저축 실적을 구축하시면 재평가 시 유리하게 작용할 수 있습니다.\n\n**3. 대출 금액 조정 또는 주거 안정성 개선**\n- 신청 금액을 축소하거나, 임대에서 자가/전세 등으로 주거 형태가 변경되면 재신청 시 긍정적 영향을 줄 수 있습니다.\n\n---\n\n## [면책 고지]\n\n본 평가는 통계 모델 기반 참고 자료이며, 고객님의 미래 상환 능력을 단정하는 것이 아닙니다. 신용 상태는 변동 가능하므로, 개선 후 재신청을 환영합니다.",
+  "usage_metadata": {
+    "input_tokens": 1529,
+    "output_tokens": 856,
+    "total_token_count": 2385
+  },
+  "context_sent": {
+    "sample_idx": 105,
+    "decision": "REJECT",
+    "default_probability": 0.8679,
+    "threshold": 0.4562,
+    "agreed_drivers": [
+      {
+        "feature": "체크 계좌 없음",
+        "feature_raw": "checking_status_no_checking",
+        "value": "비해당",
+        "rank": 1,
+        "group": "agreed",
+        "shap": 0.5017,
+        "sign_for_default": "+",
+        "attention": 0.183772
+      }
+    ],
+    "shap_only_drivers": [
+      {
+        "feature": "대출 금액(DM)",
+        "feature_raw": "credit_amount",
+        "value": "15,945 DM",
+        "rank": 1,
+        "group": "shap_only",
+        "shap": 0.2898,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "저축 < 100 DM",
+        "feature_raw": "savings_status__100",
+        "value": "해당",
+        "rank": 2,
+        "group": "shap_only",
+        "shap": 0.2667,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "임대",
+        "feature_raw": "housing_rent",
+        "value": "해당",
+        "rank": 3,
+        "group": "shap_only",
+        "shap": 0.2254,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "분할 상환 비율(%)",
+        "feature_raw": "installment_commitment",
+        "value": "3.0%",
+        "rank": 4,
+        "group": "shap_only",
+        "shap": 0.2157,
+        "sign_for_default": "+"
+      }
+    ],
+    "attention_only_drivers": [
+      {
+        "feature": "저축 정보 없음",
+        "feature_raw": "savings_status_no_known_savings",
+        "value": "비해당",
+        "rank": 1,
+        "group": "attention_only",
+        "attention": 0.401919
+      },
+      {
+        "feature": "교육",
+        "feature_raw": "purpose_education",
+        "value": "비해당",
+        "rank": 2,
+        "group": "attention_only",
+        "attention": 0.23245
+      },
+      {
+        "feature": "공동 신청자",
+        "feature_raw": "other_parties_co_applicant",
+        "value": "비해당",
+        "rank": 3,
+        "group": "attention_only",
+        "attention": 0.196477
+      },
+      {
+        "feature": "가전",
+        "feature_raw": "purpose_domestic_appliance",
+        "value": "비해당",
+        "rank": 4,
+        "group": "attention_only",
+        "attention": 0.123836
+      }
+    ],
+    "model_predict": "XGBoost",
+    "model_explain": [
+      "SHAP_xgb_local",
+      "TabNet_attention_local"
+    ],
+    "explanation_policy": "fact_only_with_agreement_labels",
+    "n_agreed": 1,
+    "n_shap_only": 4,
+    "n_attention_only": 4
+  },
+  "context_type": "german_fusion"
+}

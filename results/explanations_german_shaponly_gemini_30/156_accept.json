@@ -1,0 +1,63 @@
+{
+  "sample_idx": 156,
+  "decision": "APPROVE",
+  "true_label": 0,
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "mode": "shaponly",
+  "elapsed_sec": 8.39,
+  "explanation": "[결정 요약]\n고객님의 예상 부도 확률은 0.0237로, 당사의 기준(0.4562)보다 낮아 대출이 승인되었습니다.\n\n[긍정적으로 평가된 요인]\n고객님의 신용도에 긍정적인 영향을 준 요인들은 다음과 같습니다.\n*   대출 목적이 중고차 구매에 \"해당\"합니다.\n*   저축액이 1000 DM 이상에 \"해당\"합니다.\n*   신용 이력이 critical (위험)에 \"해당\"함에도 불구하고 부도 가능성을 낮추는 요인으로 평가되었습니다.\n\n[개선 권고]\n고객님의 현재 신용 상태는 긍정적으로 평가되었습니다. 앞으로도 건전한 금융 습관을 유지해 주시는 것을 권고드립니다.\n\n[면책 고지]\n이 설명은 현재 제공된 정보와 모델 분석에 기반하며, 미래의 금융 상황을 보장하지 않습니다. 본 정보는 금융 자문이 아니므로, 추가적인 금융 관련 결정은 신중하게 고려하시기 바랍니다.",
+  "usage_metadata": {
+    "prompt_token_count": 754,
+    "candidates_token_count": 244,
+    "total_token_count": 2469
+  },
+  "context_sent": {
+    "sample_idx": 156,
+    "default_probability": 0.0237,
+    "threshold": 0.4562,
+    "decision": "APPROVE",
+    "top_drivers_for_default": [],
+    "top_drivers_against_default": [
+      {
+        "feature": "중고차",
+        "feature_raw": "purpose_used_car",
+        "value": "해당",
+        "shap": -0.8366,
+        "rank": 1
+      },
+      {
+        "feature": "저축 ≥ 1000 DM",
+        "feature_raw": "savings_status__=1000",
+        "value": "해당",
+        "shap": -0.7042,
+        "rank": 2
+      },
+      {
+        "feature": "신용 이력 critical (위험)",
+        "feature_raw": "credit_history_critical/other_existing_credit",
+        "value": "해당",
+        "shap": -0.6742,
+        "rank": 3
+      },
+      {
+        "feature": "체크 계좌 없음",
+        "feature_raw": "checking_status_no_checking",
+        "value": "해당",
+        "shap": -0.5626,
+        "rank": 4
+      },
+      {
+        "feature": "저축 < 100 DM",
+        "feature_raw": "savings_status__100",
+        "value": "비해당",
+        "shap": -0.3214,
+        "rank": 5
+      }
+    ],
+    "fairness_flags": [],
+    "model": "XGBoost + SHAP",
+    "explanation_policy": "fact_only_shap_top5"
+  },
+  "context_type": "german_shaponly"
+}

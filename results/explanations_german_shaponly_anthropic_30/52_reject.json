@@ -1,0 +1,64 @@
+{
+  "sample_idx": 52,
+  "decision": "REJECT",
+  "true_label": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "mode": "shaponly",
+  "elapsed_sec": 14.91,
+  "explanation": "# 신용 평가 결과 안내\n\n---\n\n## [결정 요약]\n고객님의 신청 건은 종합 신용 평가 결과 **승인이 어렵다는 판단**입니다(부도 가능성 83.28%, 기준 45.62%).\n\n---\n\n## [주요 거절 사유]\n\n1. **체크 계좌 미보유**  \n   현재 체크 계좌를 보유하고 계시지 않은 점이 평가에 가장 부정적으로 작용하였습니다.\n\n2. **잔액 < 0 DM (마이너스 잔고)**  \n   계좌 잔액이 마이너스 상태로 확인되어 상환 능력 평가에 불리하게 반영되었습니다.\n\n3. **대출 기간(24개월)**  \n   신청하신 대출 기간이 24개월로, 장기 상환 리스크가 높게 평가되었습니다.\n\n---\n\n## [긍정적으로 평가된 요인]\n\n1. **재직 4~7년 해당**  \n   현재 직장에서 4~7년 근속 중이신 점이 안정적인 소득원으로 평가되어 긍정적으로 작용하였습니다.\n\n2. **저축 < 100 DM 비해당**  \n   저축액이 일정 수준 이상 유지되고 있는 점이 재무 안정성 측면에서 긍정적으로 평가되었습니다.\n\n---\n\n## [개선 권고]\n\n1. **체크 계좌 개설 및 정상 잔고 유지**  \n   체크 계좌를 개설하시고, 마이너스 잔고를 해소하여 0 DM 이상의 잔액을 지속적으로 유지해 주시기 바랍니다.\n\n2. **대출 기간 단축 재검토**  \n   가능하시다면 대출 기간을 단축하여 재신청하시면 평가 결과가 개선될 수 있습니다.\n\n3. **재무 상태 개선 후 재신청**  \n   현재의 긍정 요인(안정적 재직 기간, 저축액)을 유지하시면서 잔고 관리를 개선하신 후 일정 기간 경과 후 재신청을 권장드립니다.\n\n---\n\n## [면책 고지]\n본 평가는 XGBoost + SHAP 모델 기반 통계적 분석 결과이며, 개별 상황에 따라 달라질 수 있습니다. 최종 의사결정 참고 자료로만 활용하시기 바라며, 구체적인 금융 상담은 전문가와 별도 상담을 권장드립니다.",
+  "usage_metadata": {
+    "input_tokens": 913,
+    "output_tokens": 850,
+    "total_token_count": 1763
+  },
+  "context_sent": {
+    "sample_idx": 52,
+    "default_probability": 0.8328,
+    "threshold": 0.4562,
+    "decision": "REJECT",
+    "top_drivers_for_default": [
+      {
+        "feature": "체크 계좌 없음",
+        "feature_raw": "checking_status_no_checking",
+        "value": "비해당",
+        "shap": 0.5618,
+        "rank": 1
+      },
+      {
+        "feature": "잔액 < 0 DM",
+        "feature_raw": "checking_status__0",
+        "value": "해당",
+        "shap": 0.4235,
+        "rank": 3
+      },
+      {
+        "feature": "대출 기간(개월)",
+        "feature_raw": "duration",
+        "value": "24개월",
+        "shap": 0.3001,
+        "rank": 5
+      }
+    ],
+    "top_drivers_against_default": [
+      {
+        "feature": "재직 4~7년",
+        "feature_raw": "employment_4_=X_7",
+        "value": "해당",
+        "shap": -0.5249,
+        "rank": 2
+      },
+      {
+        "feature": "저축 < 100 DM",
+        "feature_raw": "savings_status__100",
+        "value": "비해당",
+        "shap": -0.4084,
+        "rank": 4
+      }
+    ],
+    "fairness_flags": [],
+    "model": "XGBoost + SHAP",
+    "explanation_policy": "fact_only_shap_top5"
+  },
+  "context_type": "german_shaponly"
+}

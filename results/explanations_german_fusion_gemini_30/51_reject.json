@@ -1,0 +1,107 @@
+{
+  "sample_idx": 51,
+  "decision": "REJECT",
+  "true_label": 1,
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "mode": "fusion",
+  "elapsed_sec": 19.89,
+  "explanation": "고객님께, 대출 신청 결과에 대해 설명해 드리겠습니다.\n\n[결정 요약]\n고객님의 신용 평가 결과, 대출 신청이 거절되었습니다. 부도 발생 확률은 0.859로 측정되었으며, 이는 내부 기준(0.4562)을 상회합니다. 이번 평가는 XGBoost와 TabNet 두 가지 모델의 분석이 1가지 요인에서 일치했습니다.\n\n[주요 거절 사유]\n*   '체크 계좌 없음' 항목이 '비해당'으로 나타난 점이 부도 가능성을 높이는 주요 요인 중 하나로 분석되었습니다. (XGBoost와 TabNet 모델이 모두 주목한 요인입니다.)\n*   대출 기간이 24개월로 평가된 점이 부도 가능성을 높이는 요인으로 작용했습니다.\n*   체크 계좌의 잔액이 0 DM 미만인 점이 부도 가능성을 높이는 요인으로 나타났습니다.\n\n[긍정적으로 평가된 요인]\n*   신청하신 대출 금액(3,234 DM)은 부도 가능성을 낮추는 긍정적인 요인으로 평가되었습니다.\n\n[개선 권고]\n1.  체크 계좌의 잔액을 긍정적인 수준으로 유지하는 것을 고려해볼 수 있습니다.\n2.  향후 대출 신청 시 대출 기간을 더 짧게 설정하는 방안을 고려해볼 수 있습니다.\n3.  '체크 계좌 없음'이 '비해당'인 점이 위험을 높이는 요인으로 분석된 만큼, 체크 계좌 관리에 대한 추가적인 검토나 개선 방안을 모색해보시는 것을 권고합니다.\n\n[면책 고지]\n본 설명은 제공된 정보를 바탕으로 한 신용 평가 결과에 대한 안내이며, 미래의 대출 승인을 보장하지 않습니다. 본 정보는 금융 자문이 아니므로, 추가적인 금융 의사결정은 전문가와 상담하시기를 권장합니다.",
+  "usage_metadata": {
+    "prompt_token_count": 1241,
+    "candidates_token_count": 445,
+    "total_token_count": 5712
+  },
+  "context_sent": {
+    "sample_idx": 51,
+    "decision": "REJECT",
+    "default_probability": 0.859,
+    "threshold": 0.4562,
+    "agreed_drivers": [
+      {
+        "feature": "체크 계좌 없음",
+        "feature_raw": "checking_status_no_checking",
+        "value": "비해당",
+        "rank": 1,
+        "group": "agreed",
+        "shap": 0.4474,
+        "sign_for_default": "+",
+        "attention": 0.176372
+      }
+    ],
+    "shap_only_drivers": [
+      {
+        "feature": "대출 기간(개월)",
+        "feature_raw": "duration",
+        "value": "24개월",
+        "rank": 1,
+        "group": "shap_only",
+        "shap": 0.4991,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "대출 금액(DM)",
+        "feature_raw": "credit_amount",
+        "value": "3,234 DM",
+        "rank": 2,
+        "group": "shap_only",
+        "shap": -0.3284,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "잔액 < 0 DM",
+        "feature_raw": "checking_status__0",
+        "value": "해당",
+        "rank": 3,
+        "group": "shap_only",
+        "shap": 0.3066,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "임대",
+        "feature_raw": "housing_rent",
+        "value": "해당",
+        "rank": 4,
+        "group": "shap_only",
+        "shap": 0.2881,
+        "sign_for_default": "+"
+      }
+    ],
+    "attention_only_drivers": [
+      {
+        "feature": "저축 정보 없음",
+        "feature_raw": "savings_status_no_known_savings",
+        "value": "비해당",
+        "rank": 1,
+        "group": "attention_only",
+        "attention": 0.307363
+      },
+      {
+        "feature": "부동산",
+        "feature_raw": "property_magnitude_real_estate",
+        "value": "해당",
+        "rank": 2,
+        "group": "attention_only",
+        "attention": 0.217659
+      },
+      {
+        "feature": "재직 < 1년",
+        "feature_raw": "employment__1",
+        "value": "해당",
+        "rank": 3,
+        "group": "attention_only",
+        "attention": 0.112297
+      }
+    ],
+    "model_predict": "XGBoost",
+    "model_explain": [
+      "SHAP_xgb_local",
+      "TabNet_attention_local"
+    ],
+    "explanation_policy": "fact_only_with_agreement_labels",
+    "n_agreed": 1,
+    "n_shap_only": 4,
+    "n_attention_only": 3
+  },
+  "context_type": "german_fusion"
+}

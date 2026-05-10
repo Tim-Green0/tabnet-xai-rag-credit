@@ -1,0 +1,48 @@
+{
+  "sample_idx": 19,
+  "default_probability": 0.914,
+  "threshold": 0.4562,
+  "decision": "REJECT",
+  "top_drivers_for_default": [
+    {
+      "feature": "대출 금액(DM)",
+      "feature_raw": "credit_amount",
+      "value": "339 DM",
+      "shap": 0.4831,
+      "rank": 1
+    },
+    {
+      "feature": "체크 계좌 없음",
+      "feature_raw": "checking_status_no_checking",
+      "value": "비해당",
+      "shap": 0.3514,
+      "rank": 2
+    },
+    {
+      "feature": "기타 지불 계획 없음",
+      "feature_raw": "other_payment_plans_none",
+      "value": "비해당",
+      "shap": 0.3121,
+      "rank": 3
+    },
+    {
+      "feature": "잔액 < 0 DM",
+      "feature_raw": "checking_status__0",
+      "value": "해당",
+      "shap": 0.2664,
+      "rank": 4
+    },
+    {
+      "feature": "모든 대출 상환 완료",
+      "feature_raw": "credit_history_all_paid",
+      "value": "해당",
+      "shap": 0.2142,
+      "rank": 5
+    }
+  ],
+  "top_drivers_against_default": [],
+  "fairness_flags": [],
+  "model": "XGBoost + SHAP",
+  "explanation_policy": "fact_only_shap_top5",
+  "_meta_true_label": 0
+}

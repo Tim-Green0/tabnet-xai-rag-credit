@@ -1,0 +1,63 @@
+{
+  "sample_idx": 55,
+  "decision": "APPROVE",
+  "true_label": 0,
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "mode": "shaponly",
+  "elapsed_sec": 12.57,
+  "explanation": "고객님, 신용 평가 결과에 대해 친절하게 설명해 드리겠습니다.\n\n[결정 요약]\n고객님의 신용 평가 결과, 대출이 승인되었습니다. 현재 고객님의 부도 확률은 3.3%로 평가되었습니다.\n\n[주요 거절 사유]\n해당 사항이 없습니다.\n\n[긍정적으로 평가된 요인]\n고객님의 신용 평가에서 긍정적으로 작용하여 부도 가능성을 낮춘 주요 요인은 다음과 같습니다: 체크 계좌를 보유하고 있지 않으신 점(-0.7539), 신용 이력이 'critical (위험)'으로 분류된 점(-0.7095), 그리고 대출 목적이 '중고차'인 점(-0.5646)이 긍정적으로 평가되었습니다.\n\n[개선 권고]\n현재의 안정적인 재정 관리 습관을 꾸준히 유지하시는 것이 좋습니다.\n향후 정확하고 시기적절한 금융 정보 제공은 지속적인 신용도 유지에 도움이 될 수 있습니다.\n\n[면책 고지]\n본 신용 평가는 제공된 정보를 바탕으로 한 결과이며, 미래의 재정 상태를 단정적으로 보장하지 않습니다.\n신용 평가 결과는 금융 기관의 정책 및 시장 상황에 따라 달라질 수 있습니다.",
+  "usage_metadata": {
+    "prompt_token_count": 747,
+    "candidates_token_count": 287,
+    "total_token_count": 3484
+  },
+  "context_sent": {
+    "sample_idx": 55,
+    "default_probability": 0.033,
+    "threshold": 0.4562,
+    "decision": "APPROVE",
+    "top_drivers_for_default": [],
+    "top_drivers_against_default": [
+      {
+        "feature": "체크 계좌 없음",
+        "feature_raw": "checking_status_no_checking",
+        "value": "해당",
+        "shap": -0.7539,
+        "rank": 1
+      },
+      {
+        "feature": "신용 이력 critical (위험)",
+        "feature_raw": "credit_history_critical/other_existing_credit",
+        "value": "해당",
+        "shap": -0.7095,
+        "rank": 2
+      },
+      {
+        "feature": "중고차",
+        "feature_raw": "purpose_used_car",
+        "value": "해당",
+        "shap": -0.5646,
+        "rank": 3
+      },
+      {
+        "feature": "저축 < 100 DM",
+        "feature_raw": "savings_status__100",
+        "value": "비해당",
+        "shap": -0.2658,
+        "rank": 4
+      },
+      {
+        "feature": "기타 지불 계획 없음",
+        "feature_raw": "other_payment_plans_none",
+        "value": "해당",
+        "shap": -0.2501,
+        "rank": 5
+      }
+    ],
+    "fairness_flags": [],
+    "model": "XGBoost + SHAP",
+    "explanation_policy": "fact_only_shap_top5"
+  },
+  "context_type": "german_shaponly"
+}

@@ -1,0 +1,63 @@
+{
+  "sample_idx": 50,
+  "decision": "APPROVE",
+  "true_label": 0,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "mode": "shaponly",
+  "elapsed_sec": 12.91,
+  "explanation": "# 신용 평가 결과 안내\n\n---\n\n## [결정 요약]\n고객님의 신용 평가 결과, 대출이 **승인**되었습니다. (부도 가능성 2.26%, 기준 45.62%)\n\n---\n\n## [주요 거절 사유]\n해당 사항 없음 (승인 건)\n\n---\n\n## [긍정적으로 평가된 요인]\n1. **기존 신용 이력 관리**: 다른 기존 대출에 대해 위험 수준의 신용 이력을 보유하고 계신 점이 긍정적으로 평가되었습니다.\n\n2. **저축 자산 보유**: 1,000 DM 이상의 저축 잔액을 보유하고 계신 점이 상환 능력의 긍정적 지표로 작용했습니다.\n\n3. **적정 대출 규모**: 신청하신 대출 금액(1,582 DM)이 상환 가능한 적정 수준으로 평가되었습니다.\n\n---\n\n## [개선 권고]\n- 현재 체크 계좌가 없는 상태이나, 향후 정기적인 입출금 내역을 관리할 수 있는 체크 계좌 개설을 고려해보시면 차후 신용 평가 시 더욱 유리할 수 있습니다.\n- 현재의 양호한 저축 수준(1,000 DM 이상)을 꾸준히 유지하시기를 권장드립니다.\n- 승인된 대출을 성실히 상환하시면 향후 신용 등급 향상에 도움이 됩니다.\n\n---\n\n## [면책 고지]\n본 평가는 XGBoost + SHAP 모델 기반 통계적 분석 결과이며, 미래 상환 이행을 보장하지 않습니다. 신용 상태 변화 시 평가 결과가 달라질 수 있으며, 구체적인 금융 상담이 필요하신 경우 전문 상담사와 개별 상담하시기 바랍니다.",
+  "usage_metadata": {
+    "input_tokens": 925,
+    "output_tokens": 654,
+    "total_token_count": 1579
+  },
+  "context_sent": {
+    "sample_idx": 50,
+    "default_probability": 0.0226,
+    "threshold": 0.4562,
+    "decision": "APPROVE",
+    "top_drivers_for_default": [],
+    "top_drivers_against_default": [
+      {
+        "feature": "신용 이력 critical (위험)",
+        "feature_raw": "credit_history_critical/other_existing_credit",
+        "value": "해당",
+        "shap": -0.8404,
+        "rank": 1
+      },
+      {
+        "feature": "체크 계좌 없음",
+        "feature_raw": "checking_status_no_checking",
+        "value": "해당",
+        "shap": -0.8002,
+        "rank": 2
+      },
+      {
+        "feature": "저축 ≥ 1000 DM",
+        "feature_raw": "savings_status__=1000",
+        "value": "해당",
+        "shap": -0.6812,
+        "rank": 3
+      },
+      {
+        "feature": "대출 금액(DM)",
+        "feature_raw": "credit_amount",
+        "value": "1,582 DM",
+        "shap": -0.3273,
+        "rank": 4
+      },
+      {
+        "feature": "저축 < 100 DM",
+        "feature_raw": "savings_status__100",
+        "value": "비해당",
+        "shap": -0.2951,
+        "rank": 5
+      }
+    ],
+    "fairness_flags": [],
+    "model": "XGBoost + SHAP",
+    "explanation_policy": "fact_only_shap_top5"
+  },
+  "context_type": "german_shaponly"
+}

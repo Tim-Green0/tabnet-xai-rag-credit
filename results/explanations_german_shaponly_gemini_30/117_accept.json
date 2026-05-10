@@ -1,0 +1,63 @@
+{
+  "sample_idx": 117,
+  "decision": "APPROVE",
+  "true_label": 0,
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "mode": "shaponly",
+  "elapsed_sec": 17.96,
+  "explanation": "[결정 요약]\n고객님의 신용 평가 결과, 대출 승인이 결정되었습니다.\n\n[주요 거절 사유]\n\n[긍정적으로 평가된 요인]\n- 고객님께서는 '체크 계좌 없음'에 해당하여 부도 가능성을 낮추는 데 기여했습니다.\n- 고객님의 '신용 이력 critical (위험)'이 긍정적으로 평가되어 부도 가능성을 낮추는 데 기여했습니다.\n- 고객님께서 '저축 ≥ 1000 DM'에 해당하시는 점도 긍정적으로 작용하여 부도 가능성을 감소시켰습니다.\n\n[개선 권고]\n\n[면책 고지]\n이 신용 평가 결과는 고객님의 현재 정보를 바탕으로 한 예측이며, 미래의 금융 상황을 단정적으로 보장하지 않습니다. 본 결과는 금융 모델의 분석에 따른 것이며, 법률 또는 의료 자문으로 해석될 수 없습니다.",
+  "usage_metadata": {
+    "prompt_token_count": 759,
+    "candidates_token_count": 207,
+    "total_token_count": 4508
+  },
+  "context_sent": {
+    "sample_idx": 117,
+    "default_probability": 0.0345,
+    "threshold": 0.4562,
+    "decision": "APPROVE",
+    "top_drivers_for_default": [],
+    "top_drivers_against_default": [
+      {
+        "feature": "체크 계좌 없음",
+        "feature_raw": "checking_status_no_checking",
+        "value": "해당",
+        "shap": -0.8155,
+        "rank": 1
+      },
+      {
+        "feature": "신용 이력 critical (위험)",
+        "feature_raw": "credit_history_critical/other_existing_credit",
+        "value": "해당",
+        "shap": -0.7685,
+        "rank": 2
+      },
+      {
+        "feature": "저축 ≥ 1000 DM",
+        "feature_raw": "savings_status__=1000",
+        "value": "해당",
+        "shap": -0.5848,
+        "rank": 3
+      },
+      {
+        "feature": "저축 < 100 DM",
+        "feature_raw": "savings_status__100",
+        "value": "비해당",
+        "shap": -0.3541,
+        "rank": 4
+      },
+      {
+        "feature": "기타 지불 계획 없음",
+        "feature_raw": "other_payment_plans_none",
+        "value": "해당",
+        "shap": -0.2555,
+        "rank": 5
+      }
+    ],
+    "fairness_flags": [],
+    "model": "XGBoost + SHAP",
+    "explanation_policy": "fact_only_shap_top5"
+  },
+  "context_type": "german_shaponly"
+}

@@ -1,0 +1,107 @@
+{
+  "sample_idx": 148,
+  "decision": "REJECT",
+  "true_label": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "mode": "fusion",
+  "elapsed_sec": 16.36,
+  "explanation": "# 신용 평가 결과 안내\n\n## [결정 요약]\n고객님의 신용 신청 건을 신중히 검토한 결과, **승인이 어렵다는 결론**에 도달하였습니다. (XGBoost 모델과 TabNet 모델이 공통적으로 주목한 요인 1개를 포함하여 종합 평가하였습니다)\n\n## [주요 거절 사유]\n1. **체크 계좌 미보유**: 체크 계좌가 없으신 점이 상환 능력 평가에 부정적 영향을 주었습니다. 두 평가 모델이 공통으로 주목한 주요 요인입니다.\n\n2. **대출 기간 48개월**: 대출 기간이 48개월로 비교적 장기인 점이 리스크 요인으로 평가되었습니다.\n\n3. **체크 계좌 잔액 부족**: 체크 계좌 잔액이 0 DM 미만인 상태가 재무 안정성 평가에 부정적으로 작용하였습니다.\n\n## [긍정적으로 평가된 요인]\n현재 제출하신 정보에서는 리스크를 상쇄할 만큼 강력한 긍정 요인이 확인되지 않았습니다. 다만, 평가 모델은 저축 정보, 부동산 보유 여부, 대출 금액 등의 정보를 함께 검토하였습니다.\n\n## [개선 권고]\n1. **체크 계좌 개설 및 관리**: 체크 계좌를 개설하시고 안정적인 잔액을 유지하시면 향후 신용 평가에 긍정적 영향을 줄 수 있습니다.\n\n2. **대출 기간 단축 검토**: 가능하시다면 대출 기간을 줄이거나, 월 상환 능력을 보여줄 수 있는 추가 소득·자산 증빙을 준비해 주시기 바랍니다.\n\n3. **재무 안정성 강화**: 정기적인 저축이나 자산 형성을 통해 재무 건전성을 개선하신 후 재신청을 고려해 주십시오.\n\n## [면책 고지]\n본 평가는 제출하신 정보를 바탕으로 한 통계 모델의 분석 결과이며, 고객님의 미래 상환 능력을 단정하는 것이 아닙니다. 추가 상담이나 이의 제기를 원하시면 고객센터로 연락 주시기 바랍니다.",
+  "usage_metadata": {
+    "input_tokens": 1459,
+    "output_tokens": 823,
+    "total_token_count": 2282
+  },
+  "context_sent": {
+    "sample_idx": 148,
+    "decision": "REJECT",
+    "default_probability": 0.9084,
+    "threshold": 0.4562,
+    "agreed_drivers": [
+      {
+        "feature": "체크 계좌 없음",
+        "feature_raw": "checking_status_no_checking",
+        "value": "비해당",
+        "rank": 1,
+        "group": "agreed",
+        "shap": 0.4291,
+        "sign_for_default": "+",
+        "attention": 0.210825
+      }
+    ],
+    "shap_only_drivers": [
+      {
+        "feature": "대출 기간(개월)",
+        "feature_raw": "duration",
+        "value": "48개월",
+        "rank": 1,
+        "group": "shap_only",
+        "shap": 0.3983,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "잔액 < 0 DM",
+        "feature_raw": "checking_status__0",
+        "value": "해당",
+        "rank": 2,
+        "group": "shap_only",
+        "shap": 0.3208,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "임대",
+        "feature_raw": "housing_rent",
+        "value": "해당",
+        "rank": 3,
+        "group": "shap_only",
+        "shap": 0.284,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "분할 상환 비율(%)",
+        "feature_raw": "installment_commitment",
+        "value": "3.0%",
+        "rank": 4,
+        "group": "shap_only",
+        "shap": 0.2605,
+        "sign_for_default": "+"
+      }
+    ],
+    "attention_only_drivers": [
+      {
+        "feature": "저축 정보 없음",
+        "feature_raw": "savings_status_no_known_savings",
+        "value": "비해당",
+        "rank": 1,
+        "group": "attention_only",
+        "attention": 0.376233
+      },
+      {
+        "feature": "부동산",
+        "feature_raw": "property_magnitude_real_estate",
+        "value": "비해당",
+        "rank": 2,
+        "group": "attention_only",
+        "attention": 0.18474
+      },
+      {
+        "feature": "대출 금액(DM)",
+        "feature_raw": "credit_amount",
+        "value": "0 DM",
+        "rank": 3,
+        "group": "attention_only",
+        "attention": 0.178286
+      }
+    ],
+    "model_predict": "XGBoost",
+    "model_explain": [
+      "SHAP_xgb_local",
+      "TabNet_attention_local"
+    ],
+    "explanation_policy": "fact_only_with_agreement_labels",
+    "n_agreed": 1,
+    "n_shap_only": 4,
+    "n_attention_only": 3
+  },
+  "context_type": "german_fusion"
+}

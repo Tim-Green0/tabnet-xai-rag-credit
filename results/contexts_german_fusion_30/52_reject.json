@@ -1,0 +1,85 @@
+{
+  "sample_idx": 52,
+  "decision": "REJECT",
+  "default_probability": 0.8328,
+  "threshold": 0.4562,
+  "agreed_drivers": [
+    {
+      "feature": "체크 계좌 없음",
+      "feature_raw": "checking_status_no_checking",
+      "value": "비해당",
+      "rank": 1,
+      "group": "agreed",
+      "shap": 0.5618,
+      "sign_for_default": "+",
+      "attention": 0.079464
+    },
+    {
+      "feature": "잔액 < 0 DM",
+      "feature_raw": "checking_status__0",
+      "value": "해당",
+      "rank": 2,
+      "group": "agreed",
+      "shap": 0.4235,
+      "sign_for_default": "+",
+      "attention": 0.044308
+    }
+  ],
+  "shap_only_drivers": [
+    {
+      "feature": "재직 4~7년",
+      "feature_raw": "employment_4_=X_7",
+      "value": "해당",
+      "rank": 1,
+      "group": "shap_only",
+      "shap": -0.5249,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "저축 < 100 DM",
+      "feature_raw": "savings_status__100",
+      "value": "비해당",
+      "rank": 2,
+      "group": "shap_only",
+      "shap": -0.4084,
+      "sign_for_default": "-"
+    },
+    {
+      "feature": "대출 기간(개월)",
+      "feature_raw": "duration",
+      "value": "24개월",
+      "rank": 3,
+      "group": "shap_only",
+      "shap": 0.3001,
+      "sign_for_default": "+"
+    }
+  ],
+  "attention_only_drivers": [
+    {
+      "feature": "전화 보유",
+      "feature_raw": "own_telephone_yes",
+      "value": "비해당",
+      "rank": 1,
+      "group": "attention_only",
+      "attention": 0.062368
+    },
+    {
+      "feature": "교육",
+      "feature_raw": "purpose_education",
+      "value": "비해당",
+      "rank": 2,
+      "group": "attention_only",
+      "attention": 0.035184
+    }
+  ],
+  "model_predict": "XGBoost",
+  "model_explain": [
+    "SHAP_xgb_local",
+    "TabNet_attention_local"
+  ],
+  "explanation_policy": "fact_only_with_agreement_labels",
+  "n_agreed": 2,
+  "n_shap_only": 3,
+  "n_attention_only": 2,
+  "_meta_true_label": 1
+}

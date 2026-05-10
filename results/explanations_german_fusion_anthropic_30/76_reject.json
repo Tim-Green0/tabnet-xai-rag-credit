@@ -1,0 +1,115 @@
+{
+  "sample_idx": 76,
+  "decision": "REJECT",
+  "true_label": 0,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "mode": "fusion",
+  "elapsed_sec": 14.61,
+  "explanation": "# 신용 평가 결과 안내\n\n## [결정 요약]\n고객님의 신용 평가 결과, **대출 승인이 어렵다는 결론**이 도출되었습니다(부도 가능성 84.6%, 승인 기준 45.62%). XGBoost 모델과 TabNet 모델이 공통으로 주목한 요인 1건을 포함하여 종합 평가되었습니다.\n\n## [주요 거절 사유]\n1. **체크 계좌 미보유** - 체크 계좌가 없는 상태로, 이는 상환 능력 검증을 어렵게 만드는 요인으로 평가되었습니다.\n\n2. **대출 기간 24개월** - 신청하신 대출 기간이 리스크 관점에서 부담 요인으로 작용하였습니다.\n\n3. **잔액 < 0 DM** - 현재 체크 계좌 잔액이 마이너스 상태인 점이 재정 안정성에 부정적 신호로 판단되었습니다.\n\n## [긍정적으로 평가된 요인]\n1. **적정한 대출 금액** - 신청 금액 3,149 DM은 과도하지 않은 수준으로 긍정 평가되었습니다.\n\n## [개선 권고]\n1. **체크 계좌 개설 및 관리** - 정기적인 입출금 내역이 확인 가능한 체크 계좌를 개설하시고, 최소 3~6개월간 안정적인 거래 이력을 구축하시기 바랍니다.\n\n2. **계좌 잔액 개선** - 현재 마이너스 잔액을 해소하고 플러스 잔액을 유지하시면 재정 안정성을 입증하는 데 도움이 됩니다.\n\n3. **대출 조건 조정 검토** - 대출 기간을 단축하거나, 재정 상태 개선 후 재신청을 고려해 주시기 바랍니다.\n\n## [면책 고지]\n본 평가는 통계 모델 기반 참고 정보이며, 개별 상황에 따라 결과가 달라질 수 있습니다. 신용 개선 후 재신청이 가능하며, 구체적인 상담은 담당 금융 전문가와 진행하시기 바랍니다.",
+  "usage_metadata": {
+    "input_tokens": 1540,
+    "output_tokens": 756,
+    "total_token_count": 2296
+  },
+  "context_sent": {
+    "sample_idx": 76,
+    "decision": "REJECT",
+    "default_probability": 0.846,
+    "threshold": 0.4562,
+    "agreed_drivers": [
+      {
+        "feature": "체크 계좌 없음",
+        "feature_raw": "checking_status_no_checking",
+        "value": "비해당",
+        "rank": 1,
+        "group": "agreed",
+        "shap": 0.2516,
+        "sign_for_default": "+",
+        "attention": 0.11079
+      }
+    ],
+    "shap_only_drivers": [
+      {
+        "feature": "대출 기간(개월)",
+        "feature_raw": "duration",
+        "value": "24개월",
+        "rank": 1,
+        "group": "shap_only",
+        "shap": 0.4466,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "대출 금액(DM)",
+        "feature_raw": "credit_amount",
+        "value": "3,149 DM",
+        "rank": 2,
+        "group": "shap_only",
+        "shap": -0.3701,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "잔액 < 0 DM",
+        "feature_raw": "checking_status__0",
+        "value": "해당",
+        "rank": 3,
+        "group": "shap_only",
+        "shap": 0.3116,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "기타 지불 계획 없음",
+        "feature_raw": "other_payment_plans_none",
+        "value": "비해당",
+        "rank": 4,
+        "group": "shap_only",
+        "shap": 0.2832,
+        "sign_for_default": "+"
+      }
+    ],
+    "attention_only_drivers": [
+      {
+        "feature": "저축 정보 없음",
+        "feature_raw": "savings_status_no_known_savings",
+        "value": "비해당",
+        "rank": 1,
+        "group": "attention_only",
+        "attention": 0.162016
+      },
+      {
+        "feature": "부동산",
+        "feature_raw": "property_magnitude_real_estate",
+        "value": "비해당",
+        "rank": 2,
+        "group": "attention_only",
+        "attention": 0.077677
+      },
+      {
+        "feature": "공동 신청자",
+        "feature_raw": "other_parties_co_applicant",
+        "value": "비해당",
+        "rank": 3,
+        "group": "attention_only",
+        "attention": 0.062911
+      },
+      {
+        "feature": "교육",
+        "feature_raw": "purpose_education",
+        "value": "비해당",
+        "rank": 4,
+        "group": "attention_only",
+        "attention": 0.053182
+      }
+    ],
+    "model_predict": "XGBoost",
+    "model_explain": [
+      "SHAP_xgb_local",
+      "TabNet_attention_local"
+    ],
+    "explanation_policy": "fact_only_with_agreement_labels",
+    "n_agreed": 1,
+    "n_shap_only": 4,
+    "n_attention_only": 4
+  },
+  "context_type": "german_fusion"
+}

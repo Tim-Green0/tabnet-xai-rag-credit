@@ -1,0 +1,115 @@
+{
+  "sample_idx": 194,
+  "decision": "REJECT",
+  "true_label": 1,
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "mode": "fusion",
+  "elapsed_sec": 18.83,
+  "explanation": "안녕하세요, 고객님. 신청하신 신용 평가 결과에 대해 친절하게 설명해 드리겠습니다.\n\n[결정 요약]\n신청하신 신용 평가 결과, 대출 승인이 어렵다는 결론이 도출되었습니다. 시스템 분석 결과, 부도 가능성이 0.9454로 평가되었으며, 이는 내부 기준인 0.4562를 상회합니다. 이번 평가는 XGBoost와 TabNet 모델의 종합적인 분석을 통해 진행되었습니다.\n\n[주요 거절 사유]\n다음은 고객님의 신청에서 부도 가능성을 높이는 주요 요인으로 분석된 사항들입니다.\n1.  대출 기간(개월)이 24개월로 확인되었습니다.\n2.  기타 지불 계획 없음이 비해당으로 나타난 점이 부도 가능성에 영향을 미쳤습니다.\n3.  잔액 < 0 DM이 해당으로 확인되었습니다.\n\n[긍정적으로 평가된 요인]\n반면, 고객님의 신청에서 부도 가능성을 낮추는 긍정적인 요인으로 평가된 사항도 있습니다.\n1.  대출 금액(DM)이 4,110 DM으로 확인된 점입니다. 이 요인은 XGBoost와 TabNet 두 모델에서 모두 긍정적인 영향을 미친 것으로 나타났습니다.\n\n[개선 권고]\n향후 신용 평가 시 긍정적인 결과를 얻기 위해 다음 사항들을 고려해 보시면 도움이 될 수 있습니다.\n1.  대출 기간을 조정하는 것을 고려해 볼 수 있습니다.\n2.  계좌 잔액 관리에 더욱 주의를 기울이는 것이 도움이 될 수 있습니다.\n3.  다른 지불 계획의 규모나 내용을 점검해 보는 것을 고려해 볼 수 있습니다.\n\n[면책 고지]\n본 설명은 제공된 정보를 바탕으로 한 시스템 분석 결과이며, 미래의 재정 상태를 단정적으로 예측하는 것은 아닙니다. 추가적인 정보나 상세한 상담이 필요하시면 언제든지 문의해 주시기 바랍니다.",
+  "usage_metadata": {
+    "prompt_token_count": 1327,
+    "candidates_token_count": 433,
+    "total_token_count": 5759
+  },
+  "context_sent": {
+    "sample_idx": 194,
+    "decision": "REJECT",
+    "default_probability": 0.9454,
+    "threshold": 0.4562,
+    "agreed_drivers": [
+      {
+        "feature": "대출 금액(DM)",
+        "feature_raw": "credit_amount",
+        "value": "4,110 DM",
+        "rank": 1,
+        "group": "agreed",
+        "shap": -0.3942,
+        "sign_for_default": "-",
+        "attention": 0.100799
+      }
+    ],
+    "shap_only_drivers": [
+      {
+        "feature": "대출 기간(개월)",
+        "feature_raw": "duration",
+        "value": "24개월",
+        "rank": 1,
+        "group": "shap_only",
+        "shap": 0.4412,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "기타 지불 계획 없음",
+        "feature_raw": "other_payment_plans_none",
+        "value": "비해당",
+        "rank": 2,
+        "group": "shap_only",
+        "shap": 0.3442,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "잔액 < 0 DM",
+        "feature_raw": "checking_status__0",
+        "value": "해당",
+        "rank": 3,
+        "group": "shap_only",
+        "shap": 0.2774,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "임대",
+        "feature_raw": "housing_rent",
+        "value": "해당",
+        "rank": 4,
+        "group": "shap_only",
+        "shap": 0.2626,
+        "sign_for_default": "+"
+      }
+    ],
+    "attention_only_drivers": [
+      {
+        "feature": "저축 정보 없음",
+        "feature_raw": "savings_status_no_known_savings",
+        "value": "비해당",
+        "rank": 1,
+        "group": "attention_only",
+        "attention": 0.201377
+      },
+      {
+        "feature": "상점 분할 지불",
+        "feature_raw": "other_payment_plans_stores",
+        "value": "비해당",
+        "rank": 2,
+        "group": "attention_only",
+        "attention": 0.155792
+      },
+      {
+        "feature": "체크 계좌 없음",
+        "feature_raw": "checking_status_no_checking",
+        "value": "비해당",
+        "rank": 3,
+        "group": "attention_only",
+        "attention": 0.133884
+      },
+      {
+        "feature": "공동 신청자",
+        "feature_raw": "other_parties_co_applicant",
+        "value": "비해당",
+        "rank": 4,
+        "group": "attention_only",
+        "attention": 0.079744
+      }
+    ],
+    "model_predict": "XGBoost",
+    "model_explain": [
+      "SHAP_xgb_local",
+      "TabNet_attention_local"
+    ],
+    "explanation_policy": "fact_only_with_agreement_labels",
+    "n_agreed": 1,
+    "n_shap_only": 4,
+    "n_attention_only": 4
+  },
+  "context_type": "german_fusion"
+}

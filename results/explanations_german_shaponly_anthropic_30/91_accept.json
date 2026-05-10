@@ -1,0 +1,64 @@
+{
+  "sample_idx": 91,
+  "decision": "APPROVE",
+  "true_label": 0,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "mode": "shaponly",
+  "elapsed_sec": 10.04,
+  "explanation": "# 신용 평가 결과 안내\n\n---\n\n## [결정 요약]\n고객님의 신용 평가 결과, **승인(APPROVE)** 되었습니다. 부도 가능성은 5.56%로 평가되었으며, 이는 승인 기준(45.62%)을 충분히 하회하는 수준입니다.\n\n---\n\n## [긍정적으로 평가된 요인]\n1. **대출 기간(개월): 7개월** — 짧은 상환 기간이 신용도를 크게 높이는 요인으로 평가되었습니다.\n2. **보증인 있음: 해당** — 보증인이 있어 상환 안전성이 강화되었습니다.\n3. **부동산: 해당** — 부동산 보유가 재무 안정성을 높이는 긍정 요인으로 작용하였습니다.\n4. **대출 금액(DM): 2,415 DM** — 적정한 대출 규모가 긍정적으로 평가되었습니다.\n\n---\n\n## [개선 권고]\n- **체크 계좌 개설 고려**: 현재 체크 계좌가 없는 점이 일부 부정적 요인으로 작용하였습니다. 향후 체크 계좌를 개설하고 거래 이력을 쌓으시면 신용도 향상에 도움이 될 수 있습니다.\n\n---\n\n## [면책 고지]\n본 평가는 XGBoost + SHAP 모델 기반 통계적 분석 결과이며, 개별 상황에 따라 달라질 수 있습니다. 본 안내는 참고 목적이며 법률·재무 자문이 아닙니다.",
+  "usage_metadata": {
+    "input_tokens": 905,
+    "output_tokens": 541,
+    "total_token_count": 1446
+  },
+  "context_sent": {
+    "sample_idx": 91,
+    "default_probability": 0.0556,
+    "threshold": 0.4562,
+    "decision": "APPROVE",
+    "top_drivers_for_default": [
+      {
+        "feature": "체크 계좌 없음",
+        "feature_raw": "checking_status_no_checking",
+        "value": "비해당",
+        "shap": 0.3089,
+        "rank": 3
+      }
+    ],
+    "top_drivers_against_default": [
+      {
+        "feature": "대출 기간(개월)",
+        "feature_raw": "duration",
+        "value": "7개월",
+        "shap": -1.5845,
+        "rank": 1
+      },
+      {
+        "feature": "보증인 있음",
+        "feature_raw": "other_parties_guarantor",
+        "value": "해당",
+        "shap": -0.5895,
+        "rank": 2
+      },
+      {
+        "feature": "부동산",
+        "feature_raw": "property_magnitude_real_estate",
+        "value": "해당",
+        "shap": -0.2639,
+        "rank": 4
+      },
+      {
+        "feature": "대출 금액(DM)",
+        "feature_raw": "credit_amount",
+        "value": "2,415 DM",
+        "shap": -0.2227,
+        "rank": 5
+      }
+    ],
+    "fairness_flags": [],
+    "model": "XGBoost + SHAP",
+    "explanation_policy": "fact_only_shap_top5"
+  },
+  "context_type": "german_shaponly"
+}

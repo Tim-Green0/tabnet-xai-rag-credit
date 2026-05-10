@@ -1,0 +1,120 @@
+{
+  "shape": [
+    1000,
+    22
+  ],
+  "target_pos_rate": 0.3,
+  "target_counts": {
+    "0": 700,
+    "1": 300
+  },
+  "n_numeric": 8,
+  "n_categorical": 14,
+  "missing_count": 0,
+  "numeric_stats": {
+    "duration": {
+      "count": 1000.0,
+      "mean": 20.9,
+      "std": 12.06,
+      "min": 4.0,
+      "25%": 12.0,
+      "50%": 18.0,
+      "75%": 24.0,
+      "max": 72.0
+    },
+    "credit_amount": {
+      "count": 1000.0,
+      "mean": 3271.26,
+      "std": 2822.74,
+      "min": 250.0,
+      "25%": 1365.5,
+      "50%": 2319.5,
+      "75%": 3972.25,
+      "max": 18424.0
+    },
+    "installment_commitment": {
+      "count": 1000.0,
+      "mean": 2.97,
+      "std": 1.12,
+      "min": 1.0,
+      "25%": 2.0,
+      "50%": 3.0,
+      "75%": 4.0,
+      "max": 4.0
+    },
+    "residence_since": {
+      "count": 1000.0,
+      "mean": 2.84,
+      "std": 1.1,
+      "min": 1.0,
+      "25%": 2.0,
+      "50%": 3.0,
+      "75%": 4.0,
+      "max": 4.0
+    },
+    "age": {
+      "count": 1000.0,
+      "mean": 35.55,
+      "std": 11.38,
+      "min": 19.0,
+      "25%": 27.0,
+      "50%": 33.0,
+      "75%": 42.0,
+      "max": 75.0
+    },
+    "existing_credits": {
+      "count": 1000.0,
+      "mean": 1.41,
+      "std": 0.58,
+      "min": 1.0,
+      "25%": 1.0,
+      "50%": 1.0,
+      "75%": 2.0,
+      "max": 4.0
+    },
+    "num_dependents": {
+      "count": 1000.0,
+      "mean": 1.16,
+      "std": 0.36,
+      "min": 1.0,
+      "25%": 1.0,
+      "50%": 1.0,
+      "75%": 1.0,
+      "max": 2.0
+    }
+  },
+  "cat_cardinality": {
+    "checking_status": 4,
+    "credit_history": 5,
+    "purpose": 10,
+    "savings_status": 5,
+    "employment": 5,
+    "personal_status": 4,
+    "other_parties": 3,
+    "property_magnitude": 4,
+    "other_payment_plans": 3,
+    "housing": 3,
+    "job": 4,
+    "own_telephone": 2,
+    "foreign_worker": 2,
+    "GENDER": 2
+  },
+  "gender_dist": {
+    "M": 690,
+    "F": 310
+  },
+  "age_stats": {
+    "mean": 35.546,
+    "std": 11.375468574317512,
+    "min": 19,
+    "max": 75
+  },
+  "default_by_gender": {
+    "M": 0.2768115942028985,
+    "F": 0.35161290322580646
+  },
+  "default_by_age": {
+    "young (< median)": 0.34782608695652173,
+    "old (>= median)": 0.2553191489361702
+  }
+}

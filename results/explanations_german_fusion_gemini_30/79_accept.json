@@ -1,0 +1,106 @@
+{
+  "sample_idx": 79,
+  "decision": "APPROVE",
+  "true_label": 0,
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "mode": "fusion",
+  "elapsed_sec": 17.41,
+  "explanation": "고객님의 신용 평가 결과에 대해 친절하게 설명해 드리겠습니다.\n\n[결정 요약]\n고객님의 신용 평가 결과, 대출이 승인되었습니다. 고객님의 부도 가능성은 0.019로 낮게 평가되었습니다. 이번 평가는 두 가지 설명 모델이 공통적으로 주목한 1가지 요인을 포함하여 여러 긍정적인 요소를 종합적으로 고려하였습니다.\n\n[주요 거절 사유]\n해당 없음\n\n[긍정적으로 평가된 요인]\n1.  체크 계좌가 없으신 점이 부도 가능성을 낮추는 데 크게 기여했습니다. (두 가지 설명 모델이 공통적으로 주목한 강한 신호입니다.)\n2.  4~7년의 재직 기간을 가지신 점 또한 부도 가능성을 낮추는 긍정적인 요인으로 평가되었습니다.\n3.  1000 DM 이상의 저축액을 보유하신 점도 부도 가능성을 낮추는 데 영향을 주었습니다.\n\n[개선 권고]\n1.  현재 긍정적으로 평가된 재직 기간, 저축 수준과 같은 요인들을 안정적으로 유지하시는 것이 중요합니다.\n2.  신중한 지출 관리와 정기적인 재정 계획 수립을 통해 안정적인 신용 상태를 유지하시기를 권고합니다.\n\n[면책 고지]\n본 신용 평가는 제공된 정보를 기반으로 한 모델의 분석 결과이며, 미래의 금융 상황을 단정적으로 예측하지 않습니다. 개인의 재정 상황 및 시장 변화에 따라 신용도 변동 가능성이 있습니다.",
+  "usage_metadata": {
+    "prompt_token_count": 1255,
+    "candidates_token_count": 349,
+    "total_token_count": 5092
+  },
+  "context_sent": {
+    "sample_idx": 79,
+    "decision": "APPROVE",
+    "default_probability": 0.019,
+    "threshold": 0.4562,
+    "agreed_drivers": [
+      {
+        "feature": "체크 계좌 없음",
+        "feature_raw": "checking_status_no_checking",
+        "value": "해당",
+        "rank": 1,
+        "group": "agreed",
+        "shap": -0.6921,
+        "sign_for_default": "-",
+        "attention": 0.300159
+      }
+    ],
+    "shap_only_drivers": [
+      {
+        "feature": "재직 4~7년",
+        "feature_raw": "employment_4_=X_7",
+        "value": "해당",
+        "rank": 1,
+        "group": "shap_only",
+        "shap": -0.6068,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "저축 ≥ 1000 DM",
+        "feature_raw": "savings_status__=1000",
+        "value": "해당",
+        "rank": 2,
+        "group": "shap_only",
+        "shap": -0.5643,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "신용 이력 critical (위험)",
+        "feature_raw": "credit_history_critical/other_existing_credit",
+        "value": "해당",
+        "rank": 3,
+        "group": "shap_only",
+        "shap": -0.4563,
+        "sign_for_default": "-"
+      }
+    ],
+    "attention_only_drivers": [
+      {
+        "feature": "기타 지불 계획 없음",
+        "feature_raw": "other_payment_plans_none",
+        "value": "비해당",
+        "rank": 1,
+        "group": "attention_only",
+        "attention": 0.351209
+      },
+      {
+        "feature": "교육",
+        "feature_raw": "purpose_education",
+        "value": "비해당",
+        "rank": 2,
+        "group": "attention_only",
+        "attention": 0.275244
+      },
+      {
+        "feature": "부동산",
+        "feature_raw": "property_magnitude_real_estate",
+        "value": "비해당",
+        "rank": 3,
+        "group": "attention_only",
+        "attention": 0.252945
+      },
+      {
+        "feature": "잔액 < 0 DM",
+        "feature_raw": "checking_status__0",
+        "value": "비해당",
+        "rank": 4,
+        "group": "attention_only",
+        "attention": 0.190264
+      }
+    ],
+    "model_predict": "XGBoost",
+    "model_explain": [
+      "SHAP_xgb_local",
+      "TabNet_attention_local"
+    ],
+    "explanation_policy": "fact_only_with_agreement_labels",
+    "n_agreed": 1,
+    "n_shap_only": 3,
+    "n_attention_only": 4
+  },
+  "context_type": "german_fusion"
+}

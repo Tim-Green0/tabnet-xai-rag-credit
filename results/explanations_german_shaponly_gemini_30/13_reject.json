@@ -1,0 +1,64 @@
+{
+  "sample_idx": 13,
+  "decision": "REJECT",
+  "true_label": 0,
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "mode": "shaponly",
+  "elapsed_sec": 8.68,
+  "explanation": "[결정 요약]\n고객님의 신용 평가 결과, 현재 신청하신 대출의 승인이 어렵다는 결정이 내려졌습니다.\n\n[주요 거절 사유]\n*   체크 계좌가 없으신 점이 부도 가능성을 높이는 요인으로 작용했습니다.\n*   주거 형태가 임대이신 점이 부도 가능성을 높이는 요인으로 평가되었습니다.\n*   분할 상환 비율 4.0%가 부도 가능성을 높이는 요인으로 고려되었습니다.\n\n[긍정적으로 평가된 요인]\n*   신청하신 대출 금액 2,606 DM은 부도 가능성을 낮추는 긍정적인 요인으로 평가되었습니다.\n\n[개선 권고]\n*   체크 계좌를 개설하고 꾸준히 이용하는 것이 신용 평가에 긍정적인 영향을 줄 수 있습니다.\n*   총 분할 상환 비율을 낮출 수 있는 방법을 검토하시는 것이 도움이 될 수 있습니다.\n\n[면책 고지]\n본 신용 평가 결과는 제출된 정보에 기반하며, 미래의 재정 상태를 단정적으로 예측하는 것은 아닙니다. 이 설명은 신용 평가 모델의 결과를 친절하게 안내하기 위한 것이며, 법률적 또는 의료적 자문으로 활용될 수 없습니다.",
+  "usage_metadata": {
+    "prompt_token_count": 743,
+    "candidates_token_count": 290,
+    "total_token_count": 2660
+  },
+  "context_sent": {
+    "sample_idx": 13,
+    "default_probability": 0.8279,
+    "threshold": 0.4562,
+    "decision": "REJECT",
+    "top_drivers_for_default": [
+      {
+        "feature": "체크 계좌 없음",
+        "feature_raw": "checking_status_no_checking",
+        "value": "비해당",
+        "shap": 0.4871,
+        "rank": 1
+      },
+      {
+        "feature": "임대",
+        "feature_raw": "housing_rent",
+        "value": "해당",
+        "shap": 0.2643,
+        "rank": 3
+      },
+      {
+        "feature": "분할 상환 비율(%)",
+        "feature_raw": "installment_commitment",
+        "value": "4.0%",
+        "shap": 0.2116,
+        "rank": 4
+      },
+      {
+        "feature": "신용 이력 critical (위험)",
+        "feature_raw": "credit_history_critical/other_existing_credit",
+        "value": "비해당",
+        "shap": 0.202,
+        "rank": 5
+      }
+    ],
+    "top_drivers_against_default": [
+      {
+        "feature": "대출 금액(DM)",
+        "feature_raw": "credit_amount",
+        "value": "2,606 DM",
+        "shap": -0.2859,
+        "rank": 2
+      }
+    ],
+    "fairness_flags": [],
+    "model": "XGBoost + SHAP",
+    "explanation_policy": "fact_only_shap_top5"
+  },
+  "context_type": "german_shaponly"
+}

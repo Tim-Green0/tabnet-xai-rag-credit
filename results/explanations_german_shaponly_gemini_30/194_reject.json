@@ -1,0 +1,64 @@
+{
+  "sample_idx": 194,
+  "decision": "REJECT",
+  "true_label": 1,
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "mode": "shaponly",
+  "elapsed_sec": 12.48,
+  "explanation": "[결정 요약]\n고객님의 신용 평가 결과, 부도 가능성이 당사의 기준(0.4562)을 상회하는 0.9454로 확인되어 대출 신청이 거절되었습니다.\n\n[주요 거절 사유]\n*   '대출 기간(개월)'이 '24개월'로 확인된 점이 부도 가능성을 높이는 주요 요인 중 하나였습니다.\n*   '기타 지불 계획 없음' 항목의 값이 '비해당'으로 확인된 점이 부도 가능성을 높이는 요인으로 작용했습니다.\n*   '잔액 < 0 DM'에 '해당'하시는 점이 부도 가능성을 높이는 요인으로 작용했습니다.\n\n[긍정적으로 평가된 요인]\n*   '대출 금액(DM)'이 '4,110 DM'인 점은 부도 가능성을 낮추는 긍정적인 요인이었습니다.\n\n[개선 권고]\n*   향후 대출 신청 시 대출 기간을 가능한 범위 내에서 조정하는 것을 고려해 볼 수 있습니다.\n*   현재 잔액 상태를 개선하는 노력이 필요할 수 있습니다.\n\n[면책 고지]\n본 신용 평가는 제공된 정보를 기반으로 한 현재 시점의 결과이며, 향후 조건 변화에 따라 달라질 수 있습니다. 자세한 내용은 당사 상담사와 추가 논의를 통해 확인하시기 바랍니다.",
+  "usage_metadata": {
+    "prompt_token_count": 733,
+    "candidates_token_count": 315,
+    "total_token_count": 3426
+  },
+  "context_sent": {
+    "sample_idx": 194,
+    "default_probability": 0.9454,
+    "threshold": 0.4562,
+    "decision": "REJECT",
+    "top_drivers_for_default": [
+      {
+        "feature": "대출 기간(개월)",
+        "feature_raw": "duration",
+        "value": "24개월",
+        "shap": 0.4412,
+        "rank": 1
+      },
+      {
+        "feature": "기타 지불 계획 없음",
+        "feature_raw": "other_payment_plans_none",
+        "value": "비해당",
+        "shap": 0.3442,
+        "rank": 3
+      },
+      {
+        "feature": "잔액 < 0 DM",
+        "feature_raw": "checking_status__0",
+        "value": "해당",
+        "shap": 0.2774,
+        "rank": 4
+      },
+      {
+        "feature": "임대",
+        "feature_raw": "housing_rent",
+        "value": "해당",
+        "shap": 0.2626,
+        "rank": 5
+      }
+    ],
+    "top_drivers_against_default": [
+      {
+        "feature": "대출 금액(DM)",
+        "feature_raw": "credit_amount",
+        "value": "4,110 DM",
+        "shap": -0.3942,
+        "rank": 2
+      }
+    ],
+    "fairness_flags": [],
+    "model": "XGBoost + SHAP",
+    "explanation_policy": "fact_only_shap_top5"
+  },
+  "context_type": "german_shaponly"
+}

@@ -1,0 +1,108 @@
+{
+  "sample_idx": 65,
+  "decision": "APPROVE",
+  "true_label": 0,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "mode": "fusion",
+  "elapsed_sec": 12.4,
+  "explanation": "# 신용 평가 결과 안내\n\n## [결정 요약]\n고객님의 신용 평가 결과, **승인(APPROVE)**되었습니다. 부도 가능성은 4.79%로 평가되어 기준(45.62%)보다 충분히 낮게 산출되었습니다. 이번 평가에서는 2개의 정보가 XGBoost와 TabNet 두 모델 모두에서 주요 요인으로 일치하게 확인되었습니다.\n\n## [긍정적으로 평가된 요인]\n1. **대출 기간 7개월**: 짧은 대출 기간은 상환 위험을 낮추는 요인으로 평가되었습니다.\n2. **보증인 있음**: 보증인이 계신 점이 신용도를 높이는 중요한 긍정 요소로 작용했습니다.\n3. **부동산 보유**: 부동산을 보유하고 계신 점이 재무 안정성을 긍정적으로 뒷받침했습니다.\n\n추가로 대출 금액 2,576 DM이 적정 수준으로 평가되었습니다.\n\n## [개선 권고]\n- **체크 계좌 개설 고려**: 현재 체크 계좌가 없는 점이 일부 주목되었습니다. 향후 체크 계좌를 개설하고 거래 이력을 쌓으시면 차후 신용 평가 시 더욱 유리하게 작용할 수 있습니다.\n- 현재 승인된 대출 조건을 성실히 이행하시면 향후 신용 이력이 더욱 개선될 것입니다.\n\n## [면책 고지]\n본 평가는 제출하신 정보와 통계 모델을 기반으로 산출된 결과이며, 미래 상환 능력을 보장하지 않습니다. 구체적인 대출 조건은 별도 안내드리는 약관을 확인해 주시기 바랍니다.",
+  "usage_metadata": {
+    "input_tokens": 1465,
+    "output_tokens": 637,
+    "total_token_count": 2102
+  },
+  "context_sent": {
+    "sample_idx": 65,
+    "decision": "APPROVE",
+    "default_probability": 0.0479,
+    "threshold": 0.4562,
+    "agreed_drivers": [
+      {
+        "feature": "체크 계좌 없음",
+        "feature_raw": "checking_status_no_checking",
+        "value": "비해당",
+        "rank": 1,
+        "group": "agreed",
+        "shap": 0.2831,
+        "sign_for_default": "+",
+        "attention": 0.148341
+      },
+      {
+        "feature": "부동산",
+        "feature_raw": "property_magnitude_real_estate",
+        "value": "해당",
+        "rank": 2,
+        "group": "agreed",
+        "shap": -0.2598,
+        "sign_for_default": "-",
+        "attention": 0.11041
+      }
+    ],
+    "shap_only_drivers": [
+      {
+        "feature": "대출 기간(개월)",
+        "feature_raw": "duration",
+        "value": "7개월",
+        "rank": 1,
+        "group": "shap_only",
+        "shap": -1.48,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "보증인 있음",
+        "feature_raw": "other_parties_guarantor",
+        "value": "해당",
+        "rank": 2,
+        "group": "shap_only",
+        "shap": -0.5725,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "대출 금액(DM)",
+        "feature_raw": "credit_amount",
+        "value": "2,576 DM",
+        "rank": 3,
+        "group": "shap_only",
+        "shap": -0.2361,
+        "sign_for_default": "-"
+      }
+    ],
+    "attention_only_drivers": [
+      {
+        "feature": "교육",
+        "feature_raw": "purpose_education",
+        "value": "비해당",
+        "rank": 1,
+        "group": "attention_only",
+        "attention": 0.127787
+      },
+      {
+        "feature": "재직 ≥ 7년",
+        "feature_raw": "employment__=7",
+        "value": "비해당",
+        "rank": 2,
+        "group": "attention_only",
+        "attention": 0.119334
+      },
+      {
+        "feature": "저축 정보 없음",
+        "feature_raw": "savings_status_no_known_savings",
+        "value": "비해당",
+        "rank": 3,
+        "group": "attention_only",
+        "attention": 0.118302
+      }
+    ],
+    "model_predict": "XGBoost",
+    "model_explain": [
+      "SHAP_xgb_local",
+      "TabNet_attention_local"
+    ],
+    "explanation_policy": "fact_only_with_agreement_labels",
+    "n_agreed": 2,
+    "n_shap_only": 3,
+    "n_attention_only": 3
+  },
+  "context_type": "german_fusion"
+}

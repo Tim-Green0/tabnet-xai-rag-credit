@@ -1,0 +1,63 @@
+{
+  "sample_idx": 19,
+  "decision": "REJECT",
+  "true_label": 0,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "mode": "shaponly",
+  "elapsed_sec": 13.6,
+  "explanation": "# 신용 평가 결과 안내\n\n## [결정 요약]\n고객님의 신용 평가 결과, 부도 가능성이 91.4%로 산정되어 승인 기준(45.62%)을 초과함에 따라 대출 신청이 **거절**되었습니다.\n\n## [주요 거절 사유]\n1. **대출 금액 339 DM** – 신청하신 대출 금액이 현재 신용 상태 대비 부도 위험을 높이는 요인으로 평가되었습니다.\n\n2. **체크 계좌 미보유** – 일상 거래용 체크 계좌가 확인되지 않아 금융 활동 이력 검증이 제한되었습니다.\n\n3. **기타 지불 계획 부재** – 별도의 지불 보증 수단이나 계획이 확인되지 않아 상환 안정성 평가에 불리하게 작용하였습니다.\n\n## [긍정적으로 평가된 요인]\n현재 평가 기준에서 부도 가능성을 낮추는 긍정 요인이 확인되지 않았습니다.\n\n## [개선 권고]\n1. **체크 계좌 개설** – 정기적인 입출금 거래 내역을 쌓아 금융 활동의 안정성을 입증하시기 바랍니다.\n\n2. **대출 금액 조정** – 더 적은 금액으로 재신청하시거나, 추가 담보·보증 수단을 마련하시면 승인 가능성을 높일 수 있습니다.\n\n3. **지불 계획 수립** – 저축 예금, 보험, 보증인 등 별도의 상환 보장 수단을 준비하신 후 재신청을 권장드립니다.\n\n## [면책 고지]\n본 평가는 XGBoost + SHAP 모델 기반 통계적 분석 결과이며, 개별 상황에 따라 달라질 수 있습니다. 금융 상담 전문가와의 개별 상담을 통해 구체적인 개선 방안을 확인하시기 바랍니다.",
+  "usage_metadata": {
+    "input_tokens": 919,
+    "output_tokens": 683,
+    "total_token_count": 1602
+  },
+  "context_sent": {
+    "sample_idx": 19,
+    "default_probability": 0.914,
+    "threshold": 0.4562,
+    "decision": "REJECT",
+    "top_drivers_for_default": [
+      {
+        "feature": "대출 금액(DM)",
+        "feature_raw": "credit_amount",
+        "value": "339 DM",
+        "shap": 0.4831,
+        "rank": 1
+      },
+      {
+        "feature": "체크 계좌 없음",
+        "feature_raw": "checking_status_no_checking",
+        "value": "비해당",
+        "shap": 0.3514,
+        "rank": 2
+      },
+      {
+        "feature": "기타 지불 계획 없음",
+        "feature_raw": "other_payment_plans_none",
+        "value": "비해당",
+        "shap": 0.3121,
+        "rank": 3
+      },
+      {
+        "feature": "잔액 < 0 DM",
+        "feature_raw": "checking_status__0",
+        "value": "해당",
+        "shap": 0.2664,
+        "rank": 4
+      },
+      {
+        "feature": "모든 대출 상환 완료",
+        "feature_raw": "credit_history_all_paid",
+        "value": "해당",
+        "shap": 0.2142,
+        "rank": 5
+      }
+    ],
+    "top_drivers_against_default": [],
+    "fairness_flags": [],
+    "model": "XGBoost + SHAP",
+    "explanation_policy": "fact_only_shap_top5"
+  },
+  "context_type": "german_shaponly"
+}

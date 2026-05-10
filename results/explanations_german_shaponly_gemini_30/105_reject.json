@@ -1,0 +1,63 @@
+{
+  "sample_idx": 105,
+  "decision": "REJECT",
+  "true_label": 1,
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "mode": "shaponly",
+  "elapsed_sec": 28.97,
+  "explanation": "고객님, 안녕하세요. 고객님의 신용 평가 결과에 대해 친절하게 설명해 드리겠습니다.\n\n[결정 요약]\n고객님의 신용 평가 결과, 부도 가능성(0.8679)이 기준치(0.4562)보다 높게 평가되어 안타깝게도 대출 신청이 거절되었습니다.\n\n[주요 거절 사유]\n*   고객님의 '체크 계좌 없음' 항목 값이 '비해당'으로 나타난 점은 부도 가능성을 높이는 주요 요인으로 평가되었습니다.\n*   신청하신 대출 금액인 15,945 DM은 부도 가능성을 높이는 요인으로 작용했습니다.\n*   현재 저축액이 100 DM 미만인 점 또한 부도 가능성을 높이는 요인으로 분석되었습니다.\n\n[긍정적으로 평가된 요인]\n고객님의 신용 평가에서 긍정적으로 작용한 요인은 발견되지 않았습니다.\n\n[개선 권고]\n*   저축액을 늘려 100 DM 이상으로 관리하시면 신용 평가에 긍정적인 영향을 줄 수 있습니다.\n*   희망하시는 대출 금액을 재조정하는 것을 고려해 보시는 것이 좋습니다.\n\n[면책 고지]\n본 설명은 고객님의 현재 데이터를 기반으로 한 신용 평가 모델의 분석 결과이며, 미래의 신용도를 보장하지 않습니다. 더 자세한 상담을 원하시면 언제든지 문의해 주십시오.",
+  "usage_metadata": {
+    "prompt_token_count": 738,
+    "candidates_token_count": 330,
+    "total_token_count": 7160
+  },
+  "context_sent": {
+    "sample_idx": 105,
+    "default_probability": 0.8679,
+    "threshold": 0.4562,
+    "decision": "REJECT",
+    "top_drivers_for_default": [
+      {
+        "feature": "체크 계좌 없음",
+        "feature_raw": "checking_status_no_checking",
+        "value": "비해당",
+        "shap": 0.5017,
+        "rank": 1
+      },
+      {
+        "feature": "대출 금액(DM)",
+        "feature_raw": "credit_amount",
+        "value": "15,945 DM",
+        "shap": 0.2898,
+        "rank": 2
+      },
+      {
+        "feature": "저축 < 100 DM",
+        "feature_raw": "savings_status__100",
+        "value": "해당",
+        "shap": 0.2667,
+        "rank": 3
+      },
+      {
+        "feature": "임대",
+        "feature_raw": "housing_rent",
+        "value": "해당",
+        "shap": 0.2254,
+        "rank": 4
+      },
+      {
+        "feature": "분할 상환 비율(%)",
+        "feature_raw": "installment_commitment",
+        "value": "3.0%",
+        "shap": 0.2157,
+        "rank": 5
+      }
+    ],
+    "top_drivers_against_default": [],
+    "fairness_flags": [],
+    "model": "XGBoost + SHAP",
+    "explanation_policy": "fact_only_shap_top5"
+  },
+  "context_type": "german_shaponly"
+}
