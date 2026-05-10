@@ -160,6 +160,33 @@ def add_page_break(doc):
     run.add_break(WD_BREAK.PAGE)
 
 
+def add_toc_field(doc, instr=' TOC \\o "1-3" \\h \\z \\u ',
+                    placeholder_text="(목차 — Word에서 마우스 우클릭 → '필드 업데이트' 또는 F9)"):
+    """Word ToC 필드 삽입. 열 때 자동 갱신 가능."""
+    from docx.oxml import OxmlElement
+    p = doc.add_paragraph()
+    run = p.add_run()
+    set_run(run, size_pt=11)
+    fldChar_begin = OxmlElement("w:fldChar")
+    fldChar_begin.set(qn("w:fldCharType"), "begin")
+    instrText = OxmlElement("w:instrText")
+    instrText.set(qn("xml:space"), "preserve")
+    instrText.text = instr
+    fldChar_sep = OxmlElement("w:fldChar")
+    fldChar_sep.set(qn("w:fldCharType"), "separate")
+    placeholder = OxmlElement("w:t")
+    placeholder.text = placeholder_text
+    fldChar_end = OxmlElement("w:fldChar")
+    fldChar_end.set(qn("w:fldCharType"), "end")
+    r = run._r
+    r.append(fldChar_begin)
+    r.append(instrText)
+    r.append(fldChar_sep)
+    r.append(placeholder)
+    r.append(fldChar_end)
+    return p
+
+
 # ─────────────────────────────────────────────────────────────
 # 별지 양식 (3호 겉표지, 4호 제출문, 5호 인준서)
 # ─────────────────────────────────────────────────────────────
@@ -419,21 +446,20 @@ def main():
     # 4. 감사의 글
     add_acknowledgement(doc)
 
-    # 5. 목차 placeholder (Word에서 자동 갱신)
+    # 5. 목차 / 표 차례 / 그림 차례 — Word ToC 필드 사용 (열 때 자동 갱신)
     add_heading(doc, "목   차", level=1)
-    add_para(doc, "(MS Word에서 [참조 → 목차]로 자동 갱신)",
-             size=11, alignment=WD_ALIGN_PARAGRAPH.CENTER, space_after=12)
+    add_toc_field(doc, instr=' TOC \\o "1-3" \\h \\z \\u ',
+                   placeholder_text="(목차가 여기에 자동 생성됩니다. Word에서 마우스 우클릭 → 필드 업데이트 또는 F9)")
     add_page_break(doc)
 
-    # 표 차례 / 그림 차례 placeholder
     add_heading(doc, "표 차례", level=1)
-    add_para(doc, "(본문에 출현한 표 1, 표 2, ... 일련번호로 자동 정리 예정)",
-             size=11, alignment=WD_ALIGN_PARAGRAPH.CENTER)
+    add_toc_field(doc, instr=' TOC \\h \\z \\c "표" ',
+                   placeholder_text="(본문 캡션을 [참조 → 캡션 삽입]으로 등록 후 [F9]로 갱신)")
     add_page_break(doc)
 
     add_heading(doc, "그림 차례", level=1)
-    add_para(doc, "(본문에 출현한 그림 1, 그림 2, ... 일련번호로 자동 정리 예정)",
-             size=11, alignment=WD_ALIGN_PARAGRAPH.CENTER)
+    add_toc_field(doc, instr=' TOC \\h \\z \\c "그림" ',
+                   placeholder_text="(본문 캡션을 [참조 → 캡션 삽입]으로 등록 후 [F9]로 갱신)")
     add_page_break(doc)
 
     # 6. 영문 Abstract / 국문 초록
