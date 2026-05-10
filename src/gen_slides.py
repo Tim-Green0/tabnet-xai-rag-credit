@@ -1129,11 +1129,57 @@ def make_slides():
                   size=11, color=COLOR_HIGHLIGHT)
 
     # ════════════════════════════════════════════════════════
-    # 슬라이드 20 — 종합 + 핵심 메시지 (기존 #18, 번호 갱신)
+    # 슬라이드 20 (NEW) — Step 5-C: Pilot Human-Proxy Evaluation
     # ════════════════════════════════════════════════════════
     s = add_blank_slide(prs)
-    add_header_bar(s, SW, "19. 종합 — 본 연구의 가치 6가지",
-                       "Step 1 + 2-A + 3-B + 3-C + 5-A + 5-B 마무리")
+    add_header_bar(s, SW, "19. ★ Step 5-C — Pilot Human-Proxy Evaluation",
+                       "3 personas pilot — 사실성 vs 친근함 trade-off 정량 발견")
+
+    # 좌측: persona figure
+    fig_path = FIG_DIR / "36_human_proxy_personas.png"
+    if fig_path.exists():
+        pic = s.shapes.add_picture(str(fig_path),
+                                       Cm(0.6), Cm(3.0),
+                                       width=Cm(19))
+        if pic.height > Cm(13):
+            pic.height = Cm(13)
+            pic.width = Cm(19)
+
+    # 우측 상단: 설계
+    add_textbox(s, Cm(20.5), Cm(3.0), Cm(13), Cm(1.0),
+                  "Pilot 설계 (정식 IRB 대안)",
+                  size=14, bold=True, color=COLOR_PRIMARY)
+    add_bullets(s, Cm(20.7), Cm(4.0), Cm(13), Cm(3.5), [
+        "3 personas: Credit Expert / Customer / Regulator",
+        "3 metrics × 4 modes × 2 LLM × 15 inst = 360 평가",
+        "5점 척도: trustworthiness / clarity / actionability",
+        "Judge: Claude (안정성 검증됨)",
+    ], size=11)
+
+    # 우측 중간: 충격적 발견
+    add_textbox(s, Cm(20.5), Cm(8.0), Cm(13), Cm(1.0),
+                  "★ 충격적 발견 — Trade-off 명확",
+                  size=14, bold=True, color=COLOR_ACCENT)
+    add_bullets(s, Cm(20.7), Cm(9.0), Cm(13), Cm(5.5), [
+        "Persona 관점: generic_rag(4.91) > fusion(4.31) > shaponly(4.13)",
+        "Customer clarity: SHAP-RAG/Fusion 2.67~2.80 ⚠️",
+        "→ SHAP 부호·agreement 라벨이 일반 고객에 어려움",
+        "NLI/G-Eval: fusion 1위 / Persona: generic 1위",
+        "★ 응용에 따른 mode 선택 trade-off 정량 입증",
+    ], size=11)
+
+    # 우측 하단: 결론
+    add_textbox(s, Cm(20.5), Cm(15.0), Cm(13), Cm(2),
+                  "★ 약점 #2 부분 해소 (정식 IRB는 future work)\n"
+                  "★ 본 연구 메시지 정교화 — 단순 우월 X, trade-off 정량",
+                  size=11, color=COLOR_HIGHLIGHT)
+
+    # ════════════════════════════════════════════════════════
+    # 슬라이드 21 — 종합 + 핵심 메시지 (기존 #19, 번호 갱신)
+    # ════════════════════════════════════════════════════════
+    s = add_blank_slide(prs)
+    add_header_bar(s, SW, "20. 종합 — 본 연구의 가치 6가지 + Trade-off",
+                       "Step 1 + 2-A + 3-B + 3-C + 5-A + 5-B + 5-C 마무리")
 
     # 5개 컬럼 카드
     cards = [
@@ -1202,31 +1248,31 @@ def make_slides():
     # 슬라이드 15 — 한계 + 향후 계획
     # ════════════════════════════════════════════════════════
     s = add_blank_slide(prs)
-    add_header_bar(s, SW, "20. 한계와 향후 계획",
-                       "Step 3-B/3-C/5-A/5-B 완료 / 잔여는 본 논문 확장")
+    add_header_bar(s, SW, "21. 한계와 향후 계획",
+                       "Step 3-B/3-C/5-A/5-B/5-C 완료 / 잔여는 본 논문 확장")
 
     add_textbox(s, Cm(1.0), Cm(3.0), Cm(15), Cm(1),
                   "현재 한계 / 진행 중", size=16, bold=True, color=COLOR_ACCENT)
     add_bullets(s, Cm(1.5), Cm(4.0), Cm(15), Cm(13), [
-        "Fusion 평가 표본 30명 — 100명+ 확장 검토",
-        "인간평가 (Plausibility) 미수행 — IRB 절차 필요 ★ 1순위",
+        "★ Customer clarity 약점 (SHAP-RAG/Fusion 2.67~2.80) — 표현 정제 필요",
+        "정식 IRB 인간평가 미수행 (pilot human-proxy로 부분 해소) ★ 1순위 (장기)",
         "데이터 단일 (Home Credit) — UCI German Credit 미검증 ★ 2순위",
-        "보조 테이블 2/6개 활용 (Step 3-B) — 4개 잔여",
-        "Bureau의 SHAP 미진입 — EXT_SOURCE 응축 가설 검증 필요",
+        "Fusion 평가 표본 30명 — 100명+ 확장 검토",
+        "보조 테이블 2/6개 활용 — 4개 잔여",
+        "Bureau의 SHAP 미진입 — EXT_SOURCE 응축 가설 검증",
         "TabNet-only 컨텍스트 ablation 미수행 (3-way)",
-        "no_shap 표본 작음 (n=2 in 30 idx) — 표본 확장 필요",
     ], size=13)
 
     add_textbox(s, Cm(17), Cm(3.0), Cm(15), Cm(1),
                   "향후 계획", size=16, bold=True, color=COLOR_HIGHLIGHT)
     add_bullets(s, Cm(17.5), Cm(4.0), Cm(15), Cm(13), [
-        "인간 평가 (Plausibility) — IRB + 5점 척도, Cohen's κ ★ 1순위",
-        "UCI German Credit 일반화 ★ 2순위",
-        "3-way ablation: SHAP-only / Attn-only / Fusion ★ 3순위",
-        "Bureau ablation — EXT_SOURCE 응축 가설 검증",
-        "Fusion 표본 100명 확장 + counterfactual 결합",
-        "잔여 보조 테이블 4개로 AUROC 0.78+",
-        "Adversarial Debiasing (TabNet head) — Reweighing 보완",
+        "UCI German Credit 일반화 ★ 1순위",
+        "Customer-friendly 표현 정제 — Step 5-C 발견 대응",
+        "정식 IRB 인간평가 (Cohen's κ + 다수 평가자)",
+        "3-way ablation: SHAP-only / Attn-only / Fusion",
+        "Bureau ablation + 잔여 보조 테이블 4개",
+        "Fusion 표본 100명 확장",
+        "Adversarial Debiasing (TabNet head)",
     ], size=13)
 
     # ════════════════════════════════════════════════════════

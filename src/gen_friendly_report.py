@@ -1144,7 +1144,87 @@ def main():
 
     PageBreak(doc)
 
-    H(doc, "17. 한계와 향후 계획 (Future Work)", level=1)
+    # ── 17. Step 5-C — Pilot Human-Proxy Evaluation (NEW) ──
+    H(doc, "17. Step 5-C — 사람 perspective에서는 다른 결과가 나온다", level=1)
+    P(doc, "정식 IRB 인간평가는 1.5~2개월 행정 부담이라 미팅 시점 진행이 어렵습니다. "
+            "Step 5-C는 그 pilot 대안 — LLM persona를 사람 대리(human proxy)로 사용해 "
+            "3가지 stakeholder 관점에서 plausibility를 정량 측정합니다.")
+    Quote(doc, "이 step의 결과는 본 연구의 가장 정직한 발견을 만들어냅니다 — "
+                "**본 연구의 fusion 메커니즘이 모든 평가 차원에서 1위가 아니라는 점**.")
+
+    H(doc, "17.1 3 personas 설계", level=2)
+    Bullet(doc, "Credit Expert (10년 경력 신용 분석가) — 전문가 신뢰성")
+    Bullet(doc, "Customer (대출 신청자 본인) — 일반 고객 납득도")
+    Bullet(doc, "Regulator (금융감독원 평가자) — 규제 요건 만족도")
+    P(doc, "각 persona × 5점 척도 (trustworthiness / clarity / actionability) × "
+            "4 modes × 2 LLM target × 15 instances = 360 평가 (실제 276, no_shap 표본 작음).")
+
+    H(doc, "17.2 결과 — 4 modes × 3 personas (Anthropic target, n=15)", level=2)
+    Table(doc,
+        ["Persona / Metric", "no_shap*", "generic_rag", "shaponly", "fusion"],
+        [["Credit Expert / trust", "(2.0)", "4.80 ★", "4.33", "4.73"],
+         ["Credit Expert / clarity", "(4.0)", "4.93 ★", "4.67", "4.73"],
+         ["Credit Expert / action", "(3.0)", "4.73 ★", "3.40", "3.73"],
+         ["Customer / trust", "(5.0)", "4.93 ★", "3.53", "3.67"],
+         ["Customer / clarity ⚠️", "(5.0)", "4.93 ★", "2.80", "2.67"],
+         ["Customer / action", "(5.0)", "4.33 ★", "2.33", "2.80"],
+         ["Regulator / trust", "(5.0)", "5.00 ★", "4.53", "4.53"],
+         ["Regulator / clarity", "(5.0)", "5.00 ★", "4.40", "4.53"],
+         ["Regulator / action", "(5.0)", "5.00 ★", "3.33", "3.60"]])
+    P(doc, "* no_shap n=1, 통계적 의미 없음")
+    Fig(doc, FIG_DIR / "36_human_proxy_personas.png",
+        "그림 17-1. 3 metrics × 3 personas × 4 modes × 2 LLM target")
+
+    H(doc, "17.3 충격적 발견 — fusion이 1위가 아니다", level=2)
+    P(doc, "Persona 관점에서 모든 personas × 거의 모든 metrics에서 **Generic RAG가 1위**입니다. "
+            "본 연구의 fusion은 통상 SHAP-only보다는 약간 우위지만, Generic RAG에는 미치지 "
+            "못합니다.")
+    Quote(doc, "특히 Customer perspective에서 SHAP-RAG/Fusion clarity 2.67~2.80(만점 5)은 "
+                "큰 약점입니다. \"두 모델이 동의한 강한 신호\", \"부도 가능성↑\" 같은 기술적 "
+                "표기가 일반 고객에게 이해하기 어렵게 작용합니다. Generic RAG는 도메인 chunks의 "
+                "자연스러운 한국어 + raw value만 인용하므로 customer-facing 시나리오에서 "
+                "압도적입니다.")
+
+    H(doc, "17.4 Trade-off 정량 입증 — 평가 차원에 따른 1위 다름", level=2)
+    Table(doc,
+        ["평가 차원", "1위", "비고"],
+        [["사실성 (NLI Entailment)", "fusion 0.62", "Step 3-C-2 결과"],
+         ["충실성 (G-Eval Completeness)", "fusion 4.97", "Step 5-B 결과"],
+         ["사람 친화성 (Persona trust)", "generic_rag 4.91 ★", "Step 5-C 발견 — fusion 1위 아님"],
+         ["Customer clarity ⚠️", "generic_rag 4.93 ★", "fusion 2.67, shaponly 2.80 — 큰 차이"]])
+    Quote(doc, "이건 단순한 약점이 아니라 \"응용 시나리오에 따른 mode 선택 trade-off\"의 "
+                "정량 입증입니다. fusion은 audit/regulation 시나리오에 적합 (사실성·충실성 압도), "
+                "Generic RAG는 customer-facing UI에 적합 (친근함). "
+                "또는 향후 두 표현을 결합하는 hybrid 형태도 가능합니다.")
+
+    H(doc, "17.5 본 연구 메시지의 단계별 정교화", level=2)
+    Bullet(doc, "Step 1: \"환각 차단 0% vs 45.5%\" — 강력하지만 trivial 반박 가능")
+    Bullet(doc, "Step 5-B: \"환각 차단은 hard constraints로도 가능, 차별성은 fact-grounded 정확성\"")
+    Bullet(doc, "★ Step 5-C: \"사실성 1위 + 친근함은 trade-off, 응용에 따라 선택\"")
+    P(doc, "각 step마다 메시지가 더 정교해지고 한계도 더 정직하게 인정됩니다 — "
+            "이건 학술 논문의 표준적 진행 방식입니다.")
+
+    H(doc, "17.6 Pilot의 본질적 한계", level=2)
+    Bullet(doc, "LLM persona는 사람 proxy — 진짜 인간 사고는 다를 수 있음")
+    Bullet(doc, "Judge LLM은 Claude 단일 — Cross-judge cross-validation은 future work")
+    Bullet(doc, "n=15 표본 — 95% CI 큼, 효과 크기는 명확하지만 정밀도 제한")
+    Bullet(doc, "no_shap n=1 — 통계적 의미 없음, 표본 확장 필요")
+    Bullet(doc, "Customer persona의 \"일반 고객\" 정의 — 실제 고객 다양성 못 반영")
+
+    H(doc, "17.7 Step 5-C 종합", level=2)
+    Bullet(doc, "★ 약점 #2 부분 해소 — informal pilot, 정식 IRB는 future work")
+    Bullet(doc, "★ Customer clarity 약점 발견 — 본 연구 한계 honest 인정")
+    Bullet(doc, "★ Trade-off 정량 입증 — 응용에 따른 mode 선택 가이드")
+    Bullet(doc, "메시지 정교화 — \"단순 우월 X, 다층 우위와 trade-off\"")
+    P(doc, "")
+    P(doc, "★ Step 5-C 한 줄 메시지", bold=True, size=14, color=(0xC4, 0x4E, 0x52))
+    P(doc, "\"본 연구의 fusion 메커니즘은 사실성에 압도적이지만, 사람 친화성은 Generic RAG가 "
+            "우위. 응용 시나리오에 따른 mode 선택 trade-off가 정량 입증되었다.\"",
+       bold=True, size=12)
+
+    PageBreak(doc)
+
+    H(doc, "18. 한계와 향후 계획 (Future Work)", level=1)
     Bullet(doc, "인간 평가 (Plausibility) — IRB 간소판 신청, 5점 리커트 척도, Cohen's κ 신뢰도. **약점 1번 완전 해소를 위해 미팅 후 1순위.**")
     Bullet(doc, "UCI German Credit — 데이터 다양성, 일반화 입증 ★ 2순위.")
     Bullet(doc, "no_shap 표본 확장 — 현재 30 idx 중 2개만 평가 가능, 통계적 견고성 강화 필요.")
@@ -1170,7 +1250,9 @@ def main():
                 "Step 3-C-2 — NLI로 평가 객관성 보강 (3-tier 평가 체계 완성). "
                 "Step 3-C-2-f — Cross-Judge G-Eval로 평가 종속성 제거. "
                 "Step 5-A — Fairness mitigation (Reweighing 4/4 통과). "
-                "이후 인간평가 + Generic RAG baseline 등으로 본 논문 완성을 향해 확장합니다.")
+                "Step 5-B — Generic RAG baseline (약점 #3 해소, 차별성 재정의). "
+                "Step 5-C — Pilot human-proxy (약점 #2 부분 해소, trade-off 발견). "
+                "이후 UCI German Credit + 정식 IRB + Customer-friendly 표현 정제로 확장합니다.")
 
     out = PAPER_DIR / "midterm_report_friendly.docx"
     doc.save(out)

@@ -693,12 +693,66 @@ def main():
     add_bullet(doc, "본 연구 차별성 재정의 — 의미적 충실성 + 값 정확 인용으로 메시지 강화")
     add_bullet(doc, "흥미로운 발견 — Generic RAG가 G-Eval Completeness에서 SHAP-only보다 높지만 NLI/val_match는 Fusion이 압도")
 
-    # ── 14. Future Work ──
-    add_heading(doc, "14. 향후 계획 (Future Work)", level=1)
-    add_bullet(doc, "인간 평가 (Plausibility) — IRB 간소판, 5점 리커트 척도, Cohen's κ 신뢰도 측정 ★ 1순위")
-    add_bullet(doc, "UCI German Credit — 데이터 다양성, 일반화 입증 ★ 2순위")
-    add_bullet(doc, "no_shap 표본 확장 (현재 n=2 in 30 idx) — 통계적 견고성")
-    add_bullet(doc, "Adversarial Debiasing (TabNet head) — Reweighing 보완, AGE 추가 개선 시도")
+    # ── 14. Step 5-C — Pilot Human-Proxy Evaluation (NEW) ──
+    add_heading(doc, "14. Step 5-C — Pilot Human-Proxy Evaluation (3 Personas)",
+                  level=1)
+    add_para(doc, "정식 IRB 인간평가의 pilot 대안으로 LLM persona를 사람 대리(human proxy)로 "
+                  "사용해 3가지 stakeholder 관점에서 plausibility를 정량 측정. "
+                  "Credit Expert / Customer / Regulator 3 personas × 5점 척도 "
+                  "(trustworthiness / clarity / actionability) × 4 modes × 2 LLM target × "
+                  "15 instances = 360 평가 (no_shap는 표본 작아 실제 276).")
+
+    add_heading(doc, "14.1 Persona 결과 (Anthropic target, n=15)", level=2)
+    add_table_from_data(doc,
+        headers=["Persona / Metric", "no_shap*", "generic_rag", "shaponly", "fusion"],
+        rows=[
+            ["Credit Expert / trust", "(2.0)", "4.80 ★", "4.33", "4.73"],
+            ["Credit Expert / clarity", "(4.0)", "4.93 ★", "4.67", "4.73"],
+            ["Credit Expert / action", "(3.0)", "4.73 ★", "3.40", "3.73"],
+            ["Customer / trust", "(5.0)", "4.93 ★", "3.53", "3.67"],
+            ["Customer / clarity ⚠️", "(5.0)", "4.93 ★", "2.80", "2.67"],
+            ["Customer / action", "(5.0)", "4.33 ★", "2.33", "2.80"],
+            ["Regulator / trust", "(5.0)", "5.00 ★", "4.53", "4.53"],
+            ["Regulator / clarity", "(5.0)", "5.00 ★", "4.40", "4.53"],
+            ["Regulator / action", "(5.0)", "5.00 ★", "3.33", "3.60"],
+        ])
+    add_para(doc, "* no_shap n=1, 통계적 의미 없음")
+
+    add_heading(doc, "14.2 ★ 충격적 발견 — Trade-off 명확", level=2)
+    add_table_from_data(doc,
+        headers=["평가 차원", "1위", "비고"],
+        rows=[
+            ["사실성 (NLI Entailment)", "fusion 0.62", "Step 3-C-2 결과"],
+            ["충실성 (G-Eval Completeness)", "fusion 4.97", "Step 5-B 결과"],
+            ["사람 친화성 (Persona trust)", "generic_rag 4.91 ★", "Step 5-C 발견 — 본 연구 fusion 1위 아님"],
+            ["Customer clarity ⚠️", "generic_rag 4.93 ★", "fusion 2.67, shaponly 2.80 — 큰 차이"],
+        ])
+    add_para(doc, "")
+    add_bullet(doc, "본 연구의 fusion 메커니즘은 사실성 1위지만 사람 친화성은 1위 아님 — 단순 우월성 주장 X")
+    add_bullet(doc, "Customer perspective에서 SHAP-RAG/Fusion clarity 2.67~2.80 — \"두 모델이 동의한\", \"부도 가능성↑\" 등 기술적 표기가 일반 고객에 어려움")
+    add_bullet(doc, "★ 응용 시나리오에 따른 mode 선택 trade-off 정량 입증 — audit/regulation은 fusion, customer UI는 generic RAG, 또는 hybrid")
+    add_figure(doc, FIG_DIR / "36_human_proxy_personas.png",
+                "그림 14-1. 3 personas × 3 metrics × 4 modes × 2 LLM target")
+
+    add_heading(doc, "14.3 본 연구 메시지 정교화", level=2)
+    add_para(doc, "각 step마다 메시지 정교화 + 한계 정직 인정:")
+    add_bullet(doc, "Step 1: \"환각 차단 0% vs 45.5%\" — 강력하지만 trivial 반박 가능")
+    add_bullet(doc, "Step 5-B: \"환각 차단은 hard constraints로도 가능, 차별성은 fact-grounded 정확성\"")
+    add_bullet(doc, "★ Step 5-C: \"사실성 1위 + 친근함은 trade-off, 응용에 따라 선택\"")
+
+    add_heading(doc, "14.4 Step 5-C 핵심 메시지", level=2)
+    add_bullet(doc, "★ 약점 #2 (LLM 평가 객관성) 부분 해소 — pilot human-proxy로 informal 인간평가")
+    add_bullet(doc, "★ 충격적 발견: Persona 관점에서 generic_rag가 fusion/shaponly 압도")
+    add_bullet(doc, "★ Customer clarity 약점 — 본 연구의 한계 honest 인정, future work에 표현 정제 명시")
+    add_bullet(doc, "Pilot의 본질적 한계 명시 (LLM persona ≠ 진짜 인간, n=15, judge 단일)")
+
+    # ── 15. Future Work ──
+    add_heading(doc, "15. 향후 계획 (Future Work)", level=1)
+    add_bullet(doc, "★ UCI German Credit 일반화 — 약점 #5 해소, 데이터 다양성")
+    add_bullet(doc, "★ Customer-friendly 표현 정제 — Step 5-C clarity 약점 대응 (예: SHAP 부호 → 자연어 풀어쓰기, agreement 라벨 → 직관 표현)")
+    add_bullet(doc, "정식 IRB 인간평가 (Cohen's κ + 다수 평가자) — 약점 #2 완전 해소, 장기 (1.5~2개월)")
+    add_bullet(doc, "no_shap 표본 확장 — 통계적 견고성")
+    add_bullet(doc, "Adversarial Debiasing (TabNet head) — Reweighing 보완")
     add_bullet(doc, "Fusion 표본 30 → 100 확장 + counterfactual 결합")
     add_bullet(doc, "3-way ablation: SHAP-only vs Attention-only vs Fusion")
     add_bullet(doc, "잔여 보조 테이블 4개(POS_CASH_balance, credit_card_balance, installments_payments, bureau_balance 추가 활용) → AUROC 0.78+ 추가 향상")
@@ -710,6 +764,7 @@ def main():
     add_bullet(doc, "(완료) Gemini judge로 양방향 G-Eval cross-validation — Step 3-C-2-f에서 진행")
     add_bullet(doc, "(완료) Fairness-aware 학습 — Step 5-A에서 Reweighing 4/4 통과 입증")
     add_bullet(doc, "(완료) Generic RAG baseline — Step 5-B에서 약점 #3 정량 해소")
+    add_bullet(doc, "(부분 완료) Pilot human-proxy 평가 — Step 5-C에서 약점 #2 부분 해소 + trade-off 발견")
 
     # 저장
     out = PAPER_DIR / "midterm_report.docx"
