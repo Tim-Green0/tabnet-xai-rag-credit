@@ -16,7 +16,7 @@ ls results/step*_summary.md        # Step 보고서
 cat thesis/CLAUDE.md                # ← 본 파일
 ```
 
-**현재 위치**: Step 5-E 완료 (tag `step5e`, 2026-05-10).
+**현재 위치**: Step 5-D 완료 (tag `step5d`, 2026-05-10).
 - Step 1 (`step1`) — 미팅 프로토타입
 - Step 2-A (`step2a`) — 평가 신뢰성
 - Step 3-B (`step3b`) — 보조 테이블
@@ -26,8 +26,7 @@ cat thesis/CLAUDE.md                # ← 본 파일
 - Step 5-A (`step5a`) — Fairness-aware Learning (Reweighing 4/4 통과)
 - Step 5-B (`step5b`) — Generic RAG Baseline (4-way 비교, 약점 #3 해소)
 - Step 5-C (`step5c`) — Pilot Human-Proxy Evaluation (3 personas, trade-off 발견)
-- Step 5-D (`step5d`) — UCI German Credit 일반화 (약점 #5 해소)
-- **Step 5-E (`step5e`) — Customer-friendly fusion** ★ 현재 마일스톤 (사실성 vs 친화성 trade-off 정량 입증, 데이터셋 복잡도가 결정적)
+- **Step 5-D (`step5d`) — UCI German Credit 일반화** ★ 현재 마일스톤 (약점 #5 해소, NLI fusion 0.711 1위, G-Eval completeness 데이터셋별 차이 발견)
 
 **미팅 데드라인**: 2026-05-10 → 연기됨 (사용자 통보, 정확 일정 미확정).
 **미팅 자료**: `paper/midterm_slides.pptx` (23 슬라이드), `paper/midterm_report.docx` (15 섹션), `paper/midterm_report_friendly.docx` (18 섹션) — step5c 통합 완료, step5d 추가는 future work.
@@ -41,7 +40,7 @@ cat thesis/CLAUDE.md                # ← 본 파일
 | #4 Fairness mitigation | ✅ 해소 | Step 5-A (Reweighing 4/4 통과) |
 | #5 데이터 다양성 | ✅ 해소 | **Step 5-D (UCI German Credit 일반화)** |
 
-**다음 후보**: §4 참조. 새 1순위는 **3-way ablation (Attention-only 단독 검증)** 또는 **하이브리드 prompt** (사실성 손실 최소화하면서 friendly 효과 일부 유지).
+**다음 후보**: §4 참조. 1순위는 **Customer-friendly 표현 정제** (Step 5-C+5-D 양쪽에서 fusion의 LLM judge factual / customer clarity 약점 일관 재현 → 학술 가치 큼).
 
 ---
 
@@ -51,12 +50,10 @@ cat thesis/CLAUDE.md                # ← 본 파일
 
 **전공**: DS·AI 석사 / **학번**: A70067 / **이름**: 오현택 / **지도교수**: 박운상
 
-### 핵심 메시지 (Step 5-E 후 정교화)
+### 핵심 메시지 (Step 5-C 후 정교화)
 - Step 1: "환각 0% vs 45.5%" — 강력하지만 trivial 반박 가능
 - Step 5-B: "환각 차단은 hard constraints로도 가능, 차별성은 fact-grounded 정확성"
-- Step 5-C: "사실성 1위 + 친근함은 trade-off, 응용에 따라 mode 선택"
-- Step 5-D: "데이터 복잡도가 fusion 우월성에 영향 — 복잡 도메인 fusion ↑, 단순 도메인 generic_rag ↑"
-- **Step 5-E: "Mode 선택 = 응용 시나리오 × 평가 차원 × 데이터 복잡도 3차원 trade-off"** ★ 현재 메시지
+- **Step 5-C: "사실성 1위 + 친근함은 trade-off, 응용에 따라 mode 선택"** ★ 현재 메시지
 
 ### 4단계 파이프라인
 ```
@@ -234,57 +231,23 @@ cat thesis/CLAUDE.md                # ← 본 파일
 > **fusion 메커니즘은 NLI 사실성에서 일관 1위**지만, **데이터 복잡도에 따라 G-Eval 충실성 우월성이 달라지고**, customer clarity·LLM judge factual에서 over-explain 약점.
 > → **응용 시나리오 + 데이터 복잡도** 두 차원에 따른 mode 선택 trade-off.
 
-### Step 5-E (tag `step5e`) — Customer-friendly fusion (`step5e_summary`)
-> Step 5-C+5-D fusion 약점 보완 시도
-
-- 같은 fusion context 그대로 사용, prompt만 변경: SHAP 부호 자연어화, agreement 라벨 직관 표현, 정성 표현 추가, 친근한 톤
-- 새 mode: `fusion_friendly`
-- 양 데이터셋 (Home + German) × 2 LLM × 30 instances = 120 explanations + 120 G-Eval
-
-#### ★ 핵심 발견 — 데이터셋 복잡도가 결정적
-| 차원 | Home (복잡, 214 f) | German (단순, 63 f) |
-|---|---|---|
-| NLI Entailment | 0.625 → 0.506 ⬇️ | 0.711 → 0.541 ⬇️ |
-| Val Match | 0.882 → 0.608 ⬇️ | 0.695 → 0.441 ⬇️ |
-| **G-Eval Factual** | 4.83 → 4.70 (=) | **3.47 → 3.93** ⬆️ |
-| **G-Eval Completeness** | 4.82 → 4.60 ⬇️ | **3.77 → 4.25** ⬆️ |
-| **G-Eval Style** | 4.97 → 4.97 (=) | **4.68 → 4.85** ⬆️ |
-
-- 사실성 (NLI/value match): 양 데이터셋 일관 손실 (-0.12~-0.27)
-  - 원인: 정성 표현 추가가 raw 표현 매칭 약화, 출력 길이 증가로 value 인용 비율 감소
-- G-Eval (LLM judge): 데이터셋별 정반대
-  - **German (단순)**: friendly가 fusion 약점 보완 (Step 5-D 발견 차원) — factual +0.47, completeness +0.48, style +0.17
-  - **Home (복잡)**: fusion이 이미 우수, friendly 효과 없음 (오히려 약간 손실)
-
-#### 비용 (실측, ~$2.75)
-| 호출 | 수 | 비용 |
-|---|---|---|
-| Anthropic friendly explanation | 60 | $1.45 |
-| Gemini friendly explanation | 60 | ~$0.02 |
-| Anthropic G-Eval (friendly만) | 120 | ~$1.30 |
-
-#### 메시지 정교화 (Step 5-E 통합) ★ 현재 메시지
-> **Mode 선택 trade-off는 3 차원 결합**:
-> (1) 응용 시나리오 (audit/regulation vs customer-facing)
-> (2) 평가 차원 (NLI fact-grounding vs LLM judge satisfaction)
-> (3) **데이터 복잡도** (단순한 도메인에서만 friendly 효과 큼)
-
 ---
 
-## 4. 다음 단계 후보 (Step 5-F ~)
+## 4. 다음 단계 후보 (Step 5-E ~)
 
-### 🥇 1순위 — 3-way ablation (Attention-only 단독 검증)
+### 🥇 1순위 — Customer-friendly 표현 정제 (★ Step 5-C+5-D 양쪽 재현)
+- **근거**: Step 5-C에서 fusion customer clarity 2.67 약점, Step 5-D에서 fusion G-Eval factual 2.97 (Gemini), generic_rag 5.0과 큰 격차 — **양 데이터셋에서 fusion over-explain 일관 재현**
+- 작업: SHAP 부호("+/-") 자연어화 ("부도 가능성을 높이는/낮추는"), agreement 라벨 직관 표현 ("두 모델이 모두 본"), 동일 인스턴스 재호출 + persona 평가
+- **2~3일**
+
+### 🥈 2순위 — 3-way ablation (Attention-only 단독 검증)
 - **근거**: 현재 `shaponly vs fusion` 비교만 있고 Attention-only 단독 mode 미검증. Fusion 우월성이 attention의 추가적 기여인지 단순 union 효과인지 isolate 안 됨
 - 작업: TabNet attention top-k만 → LLM 4-mode 비교 (no_shap / attention_only / shaponly / fusion)
 - **3~4일**
 
-### 🥈 2순위 — 하이브리드 prompt (사실성 손실 최소화 + friendly 효과 일부)
-- **근거**: Step 5-E에서 friendly가 NLI -0.12~-0.17 손실. 정성 표현 옵션화, agreement 자연어화만 유지하는 등 부분 적용으로 trade-off 완화 가능성
-- 작업: 3개 prompt variant (full friendly / partial friendly / sign only)
-- **2~3일**
-
-### 🥉 3순위 — Step 5-D/E 보강 (표본 확장 + persona)
+### 🥉 3순위 — Step 5-D 보강 (표본 확장 + persona)
 - 표본 30 → 100 (양 데이터셋), Step 5-C persona pilot을 German에도 적용 (trade-off 일반화 입증)
+- 하이브리드 mode (fusion + customer-friendly) 실험
 - **3~5일**
 
 ### 🎖 4순위 — 보강 작업 (Home Credit 차원)
@@ -293,7 +256,7 @@ cat thesis/CLAUDE.md                # ← 본 파일
 - **TabNet/LightGBM에 aux 효과 일반화** — 3~4일
 
 ### 🏅 5순위 — 추가 데이터셋 (확장 일반화)
-- **Australian Credit** (UCI, 690 × 14, 복잡도 중간) — 3~4일
+- **Australian Credit** (UCI, 690 × 14) — 3~4일
 - **Lending Club** (Kaggle, ~1.3M × 150) — 5~7일
 
 ### ⚠️ 6순위 — 정식 IRB 인간평가 (장기, 본 논문 심사 직전)
@@ -302,9 +265,9 @@ cat thesis/CLAUDE.md                # ← 본 파일
 
 ### 권장 진행 순서
 ```
-1순위 3-way ablation (3~4일) ★ 본 연구 fusion 메커니즘 정확한 isolate
-→ 2순위 하이브리드 prompt (2~3일)
-→ 3순위 Step 5-D/E 보강 — 표본 100 + persona (3~5일)
+1순위 Customer-friendly 표현 정제 (2~3일)
+→ 2순위 3-way ablation (3~4일)
+→ 3순위 Step 5-D 보강 — 표본 100 + persona (3~5일)
 → 5순위 추가 데이터셋 — Australian (3~4일)
 → 본 논문 초안 작성
 → 6순위 IRB 인간평가 (심사 전)
