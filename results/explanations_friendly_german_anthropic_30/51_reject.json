@@ -1,0 +1,108 @@
+{
+  "sample_idx": 51,
+  "decision": "REJECT",
+  "true_label": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "mode": "fusion_friendly",
+  "dataset": "german",
+  "elapsed_sec": 21.3,
+  "explanation": "# 신용 평가 결과 안내\n\n## [결정 요약]\n고객님, 안타깝게도 이번 대출 신청은 **승인이 어려운** 것으로 평가되었습니다. 부도 가능성이 85.9%로 산출되어 기준치(45.6%)를 크게 상회하였습니다.\n\n## [주요 거절 사유]\n고객님의 신청이 승인되지 못한 주요 이유를 말씀드립니다.\n\n**1. 체크 계좌 미보유 (두 분석 방법 모두 동의한 강한 신호)**\n- 현재 체크 계좌를 보유하고 계시지 않은 점이 **부도 가능성을 높이는 요인**으로 매우 강하게 작용했습니다\n- SHAP과 TabNet 어텐션 분석 모두 이 점에 주목하였으며, 영향도는 0.45로 평가되었습니다\n\n**2. 대출 기간 24개월 (SHAP 분석이 추가로 주목)**\n- 요청하신 대출 기간이 24개월인 점이 **부도 가능성을 높이는 요인**으로 작용했습니다\n- 가장 큰 영향을 준 요소로, SHAP 점수 0.50으로 매우 높게 평가되었습니다\n\n**3. 체크 계좌 잔액 마이너스 (SHAP 분석이 추가로 주목)**\n- 현재 체크 계좌 잔액이 0 DM 미만인 점이 **부도 가능성을 높이는 요인**으로 작용했습니다\n- 영향도 0.31로 상당한 수준입니다\n\n## [긍정적으로 평가된 요인]\n다행히 고객님께 유리하게 작용한 부분도 있습니다.\n\n**대출 금액 3,234 DM (SHAP 분석이 추가로 주목)**\n- 요청하신 대출 금액 3,234 DM은 비교적 적정한 수준으로, **부도 가능성을 낮추는 요인**으로 평가되었습니다\n- 이 부분은 긍정적 영향(SHAP -0.33)을 주었으나, 다른 위험 요인들을 상쇄하기에는 부족했습니다\n\n## [개선 권고]\n향후 신용도 개선을 위해 다음 사항을 고려해 보시기 바랍니다.\n\n1. **체크 계좌 개설 및 관리**: 체크 계좌를 개설하시고 안정적인 잔액을 유지하시면 신용 평가에 크게 도움이 될 것입니다\n\n2. **대출 기간 조정 검토**: 가능하다면 더 짧은 기간의 대출을 고려해 보시는 것도 좋은 방법입니다\n\n3. **계좌 잔액 개선**: 현재 마이너스 잔액을 해소하시고 양(+)의 잔액을 유지하시면 신용도 향상에 도움이 됩니다\n\n## [면책 고지]\n본 평가는 XGBoost 모델과 SHAP 분석, TabNet 어텐션 분석을 통한 참고 정보이며, 실제 신용 결정은 금융기관의 종합적 판단에 따릅니다. 구체적인 금융 상담이 필요하시면 전문 상담사와 상의해 주시기 바랍니다.",
+  "usage_metadata": {
+    "input_tokens": 1997,
+    "output_tokens": 1106,
+    "total_token_count": 3103
+  },
+  "context_sent": {
+    "sample_idx": 51,
+    "decision": "REJECT",
+    "default_probability": 0.859,
+    "threshold": 0.4562,
+    "agreed_drivers": [
+      {
+        "feature": "체크 계좌 없음",
+        "feature_raw": "checking_status_no_checking",
+        "value": "비해당",
+        "rank": 1,
+        "group": "agreed",
+        "shap": 0.4474,
+        "sign_for_default": "+",
+        "attention": 0.176372
+      }
+    ],
+    "shap_only_drivers": [
+      {
+        "feature": "대출 기간(개월)",
+        "feature_raw": "duration",
+        "value": "24개월",
+        "rank": 1,
+        "group": "shap_only",
+        "shap": 0.4991,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "대출 금액(DM)",
+        "feature_raw": "credit_amount",
+        "value": "3,234 DM",
+        "rank": 2,
+        "group": "shap_only",
+        "shap": -0.3284,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "잔액 < 0 DM",
+        "feature_raw": "checking_status__0",
+        "value": "해당",
+        "rank": 3,
+        "group": "shap_only",
+        "shap": 0.3066,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "임대",
+        "feature_raw": "housing_rent",
+        "value": "해당",
+        "rank": 4,
+        "group": "shap_only",
+        "shap": 0.2881,
+        "sign_for_default": "+"
+      }
+    ],
+    "attention_only_drivers": [
+      {
+        "feature": "저축 정보 없음",
+        "feature_raw": "savings_status_no_known_savings",
+        "value": "비해당",
+        "rank": 1,
+        "group": "attention_only",
+        "attention": 0.307363
+      },
+      {
+        "feature": "부동산",
+        "feature_raw": "property_magnitude_real_estate",
+        "value": "해당",
+        "rank": 2,
+        "group": "attention_only",
+        "attention": 0.217659
+      },
+      {
+        "feature": "재직 < 1년",
+        "feature_raw": "employment__1",
+        "value": "해당",
+        "rank": 3,
+        "group": "attention_only",
+        "attention": 0.112297
+      }
+    ],
+    "model_predict": "XGBoost",
+    "model_explain": [
+      "SHAP_xgb_local",
+      "TabNet_attention_local"
+    ],
+    "explanation_policy": "fact_only_with_agreement_labels",
+    "n_agreed": 1,
+    "n_shap_only": 4,
+    "n_attention_only": 3
+  },
+  "context_type": "german_fusion_friendly"
+}

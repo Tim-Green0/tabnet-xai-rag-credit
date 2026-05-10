@@ -1,0 +1,102 @@
+{
+  "sample_idx": 113,
+  "decision": "REJECT",
+  "true_label": 1,
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "mode": "fusion_friendly",
+  "dataset": "german",
+  "elapsed_sec": 14.38,
+  "explanation": "고객님, 안녕하세요! 고객님의 신용 평가 결과를 친근하고 명료하게 설명해 드리겠습니다.\n\n---\n\n[결정 요약]\n고객님의 신용 평가 결과, 아쉽게도 대출 승인이 어렵게 되었습니다. 현재 정보로는 대출 상환이 어려울 수 있다는 가능성이 매우 높은 88.3%로 평가되어, 저희가 정한 기준인 45.62%를 넘어섰기 때문입니다.\n\n[주요 거절 사유]\n다음은 고객님의 부도 가능성을 높이는 주요 요인들입니다.\n*   **체크 계좌 없음**: 두 분석 방법(SHAP과 TabNet 어텐션)이 모두 동의한 강한 신호로, 고객님께 체크 계좌가 없는 점은 부도 가능성을 높이는 매우 큰 요인으로 평가되었습니다 (SHAP 0.4485).\n*   **교육**: 마찬가지로 두 분석 방법이 모두 동의한 강한 신호로, 대출 목적이 '교육'인 점이 부도 가능성을 높이는 매우 큰 요인으로 작용했습니다 (SHAP 0.4413).\n*   **실업 상태**: SHAP 분석이 추가로 주목한 신호로, 고객님께서 현재 실업 상태이신 점이 부도 가능성을 높이는 요인으로 나타났습니다 (SHAP 0.3633).\n\n[긍정적으로 평가된 요인]\n다음은 고객님의 신용 평가에 긍정적인 영향을 준 요인입니다.\n*   **부동산**: 두 분석 방법이 모두 동의한 강한 신호로, 고객님께서 부동산을 소유하고 계시다는 점은 부도 가능성을 낮추는 긍정적인 요인으로 평가되었습니다 (SHAP -0.1737).\n\n[개선 권고]\n대출 승인 가능성을 높이기 위해 다음과 같은 점들을 고려해 보실 수 있습니다.\n*   현재 체크 계좌가 없는 것으로 확인되었습니다. 체크 계좌를 개설하고 꾸준히 관리하시면 신용 평가에 긍정적인 영향을 줄 수 있습니다.\n*   현재 실업 상태이신 점이 평가에 영향을 미쳤습니다. 안정적인 소득원을 확보하시면 다음 심사 시 유리하게 작용할 수 있습니다.\n*   체크 계좌 잔액을 긍정적으로 유지하고 전반적인 재정 상태를 개선하기 위한 노력이 필요합니다.\n\n[면책 고지]\n본 분석 결과는 고객님의 현재 정보에 기반한 예측이며, 특정 금융 상품을 추천하거나 미래를 단정적으로 보장하는 것은 아닙니다. 본 정보는 금융 자문이 아니며, 대출 심사 시 참고 자료로만 활용됩니다.",
+  "usage_metadata": {
+    "prompt_token_count": 1520,
+    "candidates_token_count": 591,
+    "total_token_count": 4609
+  },
+  "context_sent": {
+    "sample_idx": 113,
+    "decision": "REJECT",
+    "default_probability": 0.883,
+    "threshold": 0.4562,
+    "agreed_drivers": [
+      {
+        "feature": "체크 계좌 없음",
+        "feature_raw": "checking_status_no_checking",
+        "value": "비해당",
+        "rank": 1,
+        "group": "agreed",
+        "shap": 0.4485,
+        "sign_for_default": "+",
+        "attention": 0.068616
+      },
+      {
+        "feature": "교육",
+        "feature_raw": "purpose_education",
+        "value": "해당",
+        "rank": 2,
+        "group": "agreed",
+        "shap": 0.4413,
+        "sign_for_default": "+",
+        "attention": 0.037501
+      },
+      {
+        "feature": "부동산",
+        "feature_raw": "property_magnitude_real_estate",
+        "value": "해당",
+        "rank": 3,
+        "group": "agreed",
+        "shap": -0.1737,
+        "sign_for_default": "-",
+        "attention": 0.03888
+      }
+    ],
+    "shap_only_drivers": [
+      {
+        "feature": "실업 상태",
+        "feature_raw": "employment_unemployed",
+        "value": "해당",
+        "rank": 1,
+        "group": "shap_only",
+        "shap": 0.3633,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "잔액 < 0 DM",
+        "feature_raw": "checking_status__0",
+        "value": "해당",
+        "rank": 2,
+        "group": "shap_only",
+        "shap": 0.296,
+        "sign_for_default": "+"
+      }
+    ],
+    "attention_only_drivers": [
+      {
+        "feature": "저축 정보 없음",
+        "feature_raw": "savings_status_no_known_savings",
+        "value": "비해당",
+        "rank": 1,
+        "group": "attention_only",
+        "attention": 0.057988
+      },
+      {
+        "feature": "전화 보유",
+        "feature_raw": "own_telephone_yes",
+        "value": "비해당",
+        "rank": 2,
+        "group": "attention_only",
+        "attention": 0.025654
+      }
+    ],
+    "model_predict": "XGBoost",
+    "model_explain": [
+      "SHAP_xgb_local",
+      "TabNet_attention_local"
+    ],
+    "explanation_policy": "fact_only_with_agreement_labels",
+    "n_agreed": 3,
+    "n_shap_only": 2,
+    "n_attention_only": 2
+  },
+  "context_type": "german_fusion_friendly"
+}

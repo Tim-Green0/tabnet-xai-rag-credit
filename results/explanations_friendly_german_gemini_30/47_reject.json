@@ -1,0 +1,116 @@
+{
+  "sample_idx": 47,
+  "decision": "REJECT",
+  "true_label": 1,
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "mode": "fusion_friendly",
+  "dataset": "german",
+  "elapsed_sec": 12.2,
+  "explanation": "고객님, 안녕하세요. 고객님의 신용 평가 결과에 대해 친근하고 명료하게 설명해 드리겠습니다.\n\n---\n\n**[결정 요약]**\n고객님의 신용 평가 결과, 현재 시점에서는 안타깝게도 대출 승인이 어렵다는 결정이 내려졌습니다.\n\n**[주요 거절 사유]**\n이번 평가에서는 고객님의 부도 가능성을 높이는 몇 가지 요인이 분석되었습니다.\n\n*   **체크 계좌 없음**: 고객님께서는 체크 계좌가 없는 것으로 확인되었는데, 이는 **두 분석 방법(SHAP과 TabNet 어텐션)이 모두 동의한 강한 신호**로, 고객님의 **부도 가능성을 높이는** 요인으로 분석되었습니다 (SHAP 점수 0.4922로 상당히 큰 영향).\n*   **대출 기간(개월)**: 또한, 고객님께서 신청하신 대출 기간이 45개월로 다소 긴 점은 **SHAP 분석이 추가로 주목한 신호**이며, **부도 가능성을 매우 높이는** 요인으로 작용했습니다 (SHAP 점수 0.5719로 매우 큰 영향).\n*   **잔액 < 0 DM**: 현재 계좌 잔액이 0 DM 미만인 것으로 나타난 점 또한 **SHAP 분석이 추가로 주목한 신호**이며, **부도 가능성을 높이는** 요인으로 평가되었습니다 (SHAP 점수 0.3834로 상당히 큰 영향).\n\n**[긍정적으로 평가된 요인]**\n이번 분석에서는 고객님의 부도 가능성을 낮추는 긍정적인 요인이 명확하게 발견되지 않았습니다.\n\n**[개선 권고]**\n향후 금융 거래에 도움이 되실 수 있도록 몇 가지를 제안 드립니다.\n\n*   **체크 계좌 개설 및 활용**: 활발한 금융 활동을 위해 체크 계좌를 개설하고 꾸준히 이용하시는 것을 고려해볼 수 있습니다.\n*   **대출 기간 및 금액 조정**: 다음 대출을 신청하실 때에는 상환 기간을 단축하거나 대출 희망 금액을 조정하여 재정적 부담을 줄이는 방법을 모색해보시는 것이 좋겠습니다.\n*   **계좌 잔액 및 저축 관리**: 계좌 잔액을 일정 수준 이상으로 유지하고, 소액이라도 꾸준히 저축하여 재정 건전성을 높이는 노력이 필요할 수 있습니다.\n\n**[면책 고지]**\n이 설명은 제공된 데이터 분석 결과에 기반한 것이며, 대출 승인에 대한 절대적인 보증이나 향후 결과를 확정적으로 예측하는 것은 아닙니다. 자세한 금융 상담은 전문가와 상의하시기 바랍니다.",
+  "usage_metadata": {
+    "prompt_token_count": 1658,
+    "candidates_token_count": 594,
+    "total_token_count": 4361
+  },
+  "context_sent": {
+    "sample_idx": 47,
+    "decision": "REJECT",
+    "default_probability": 0.8619,
+    "threshold": 0.4562,
+    "agreed_drivers": [
+      {
+        "feature": "체크 계좌 없음",
+        "feature_raw": "checking_status_no_checking",
+        "value": "비해당",
+        "rank": 1,
+        "group": "agreed",
+        "shap": 0.4922,
+        "sign_for_default": "+",
+        "attention": 0.065916
+      }
+    ],
+    "shap_only_drivers": [
+      {
+        "feature": "대출 기간(개월)",
+        "feature_raw": "duration",
+        "value": "45개월",
+        "rank": 1,
+        "group": "shap_only",
+        "shap": 0.5719,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "잔액 < 0 DM",
+        "feature_raw": "checking_status__0",
+        "value": "해당",
+        "rank": 2,
+        "group": "shap_only",
+        "shap": 0.3834,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "분할 상환 비율(%)",
+        "feature_raw": "installment_commitment",
+        "value": "4.0%",
+        "rank": 3,
+        "group": "shap_only",
+        "shap": 0.2699,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "저축 < 100 DM",
+        "feature_raw": "savings_status__100",
+        "value": "해당",
+        "rank": 4,
+        "group": "shap_only",
+        "shap": 0.2142,
+        "sign_for_default": "+"
+      }
+    ],
+    "attention_only_drivers": [
+      {
+        "feature": "저축 정보 없음",
+        "feature_raw": "savings_status_no_known_savings",
+        "value": "비해당",
+        "rank": 1,
+        "group": "attention_only",
+        "attention": 0.070641
+      },
+      {
+        "feature": "전화 보유",
+        "feature_raw": "own_telephone_yes",
+        "value": "해당",
+        "rank": 2,
+        "group": "attention_only",
+        "attention": 0.043963
+      },
+      {
+        "feature": "교육",
+        "feature_raw": "purpose_education",
+        "value": "비해당",
+        "rank": 3,
+        "group": "attention_only",
+        "attention": 0.039674
+      },
+      {
+        "feature": "기존 대출 없거나 모두 상환",
+        "feature_raw": "credit_history_no_credits/all_paid",
+        "value": "비해당",
+        "rank": 4,
+        "group": "attention_only",
+        "attention": 0.03921
+      }
+    ],
+    "model_predict": "XGBoost",
+    "model_explain": [
+      "SHAP_xgb_local",
+      "TabNet_attention_local"
+    ],
+    "explanation_policy": "fact_only_with_agreement_labels",
+    "n_agreed": 1,
+    "n_shap_only": 4,
+    "n_attention_only": 4
+  },
+  "context_type": "german_fusion_friendly"
+}

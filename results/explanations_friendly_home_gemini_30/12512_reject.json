@@ -1,0 +1,161 @@
+{
+  "sample_idx": 12512,
+  "decision": "REJECT",
+  "true_label": 1,
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "mode": "fusion_friendly",
+  "dataset": "home",
+  "elapsed_sec": 20.54,
+  "explanation": "고객님의 신용 평가 결과에 대해 자세히 안내해 드리겠습니다.\n\n**[결정 요약]**\n고객님의 신용 평가 결과, 안타깝게도 현재 신청하신 대출은 승인되기 어렵다는 점을 안내드립니다. 현재 고객님의 부도 가능성은 92.99%로, 저희 내부 승인 기준인 47.6%를 상회합니다.\n\n**[주요 거절 사유]**\n고객님의 대출 승인이 어려운 주요 요인들은 다음과 같습니다.\n*   **외부 신용평가 점수 3 (0.0739651):** 두 분석 방법(SHAP과 TabNet 어텐션)이 모두 동의한 강한 신호로, 고객님의 외부 신용평가 점수가 0.0739651로 매우 낮게 평가되어 부도 가능성을 높이는 핵심 요인으로 분석되었습니다.\n*   **구매 대상 상품 가격 (450,000원):** SHAP 분석이 추가로 주목한 요인으로, 구매하시려는 상품의 가격이 450,000원으로 높게 책정된 점이 부도 가능성을 높이는 요인으로 작용했습니다.\n*   **대출 신청 금액 (640,080원):** 마찬가지로 SHAP 분석에서 주목한 점으로, 신청하신 대출 금액 640,080원이 부도 가능성을 높이는 요인 중 하나였습니다.\n\n**[긍정적으로 평가된 요인]**\n반면에 고객님의 신용 평가에 긍정적으로 작용한 요인들도 있었습니다.\n*   **재직 일수 (7년 재직):** 고객님의 재직 기간이 약 7년으로 비교적 길다는 점은 SHAP 분석이 추가로 주목한, 부도 가능성을 낮추는 긍정적인 요인이었습니다.\n*   **직업 분류 (타깃 인코딩 값 0.0640):** SHAP 분석상 고객님의 직업 분류가 부도 가능성을 낮추는 요인으로 평가되었습니다 (타깃 인코딩 값 0.0640).\n*   **근무 전화 등록 여부 (아니오):** SHAP 분석이 주목한 또 다른 긍정적인 요인은 근무 전화가 등록되어 있지 않은 점이었습니다 (확인된 값: 아니오).\n\n**[개선 권고]**\n향후 성공적인 금융 거래를 위해 다음과 같은 점들을 고려해보실 수 있습니다.\n*   신용 점수를 꾸준히 관리하시고 개선하는 노력을 기울여 주시면 좋습니다.\n*   현재 계획하고 계신 구매 상품의 가격이나 대출 신청 금액을 재조정하여 상환 부담을 줄이는 방안을 모색해보시는 것을 권해드립니다.\n*   전반적인 재정 상황을 면밀히 검토하고, 안정적인 상환 계획을 수립하는 데 집중하는 것이 중요합니다.\n\n**[면책 고지]**\n본 안내는 고객님의 정보를 바탕으로 한 현재 시점의 신용 평가 결과이며, 미래의 금융 결과를 단정하거나 특정 금융 상품을 추천하는 것은 아닙니다. 이는 법률 또는 의료 자문으로 해석될 수 없습니다.",
+  "usage_metadata": {
+    "prompt_token_count": 2233,
+    "candidates_token_count": 705,
+    "total_token_count": 6911
+  },
+  "context_sent": {
+    "sample_idx": 12512,
+    "decision": "REJECT",
+    "default_probability": 0.9299,
+    "threshold": 0.476,
+    "agreed_drivers": [
+      {
+        "feature": "외부 신용평가 점수 3",
+        "feature_raw": "EXT_SOURCE_3",
+        "value": "0.0739651",
+        "value_raw": 0.0739651461172267,
+        "rank": 1,
+        "group": "agreed",
+        "shap": 1.2939,
+        "attention": 0.63733,
+        "sign_for_default": "+"
+      }
+    ],
+    "shap_only_drivers": [
+      {
+        "feature": "구매 대상 상품 가격",
+        "feature_raw": "AMT_GOODS_PRICE",
+        "value": "450,000",
+        "value_raw": 450000.0,
+        "rank": 1,
+        "group": "shap_only",
+        "shap": 0.2729,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "대출 신청 금액",
+        "feature_raw": "AMT_CREDIT",
+        "value": "640,080",
+        "value_raw": 640080.0,
+        "rank": 2,
+        "group": "shap_only",
+        "shap": 0.2173,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "연 환산 상환액",
+        "feature_raw": "AMT_ANNUITY",
+        "value": "31,262",
+        "value_raw": 31261.5,
+        "rank": 3,
+        "group": "shap_only",
+        "shap": 0.1556,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "재직 일수(음수: 신청일 기준)",
+        "feature_raw": "DAYS_EMPLOYED",
+        "value": "7년 재직",
+        "value_raw": -2803.0,
+        "rank": 4,
+        "group": "shap_only",
+        "shap": -0.0983,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "직업 분류 (타깃 인코딩 값)",
+        "feature_raw": "OCCUPATION_TYPE_TE",
+        "value": "0.0640 (타깃 인코딩 값)",
+        "value_raw": 0.0640062976868112,
+        "rank": 5,
+        "group": "shap_only",
+        "shap": -0.0708,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "근무 전화 등록 여부",
+        "feature_raw": "FLAG_WORK_PHONE",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "rank": 6,
+        "group": "shap_only",
+        "shap": -0.0151,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "거주지 등록 후 경과 일수",
+        "feature_raw": "DAYS_REGISTRATION",
+        "value": "1년 전 등록",
+        "value_raw": -604.0,
+        "rank": 7,
+        "group": "shap_only",
+        "shap": -0.0103,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "거주지(도시 가중) 등급",
+        "feature_raw": "REGION_RATING_CLIENT_W_CITY",
+        "value": "2",
+        "value_raw": 2.0,
+        "rank": 8,
+        "group": "shap_only",
+        "shap": -0.0101,
+        "sign_for_default": "-"
+      }
+    ],
+    "attention_only_drivers": [
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "-0.451458",
+        "value_raw": -0.45145785034755587,
+        "rank": 1,
+        "group": "attention_only",
+        "attention": 0.887677
+      },
+      {
+        "feature": "차량 보유: 있음",
+        "feature_raw": "FLAG_OWN_CAR_Y",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "rank": 2,
+        "group": "attention_only",
+        "attention": 0.380847
+      },
+      {
+        "feature": "학력: 고등교육 이상",
+        "feature_raw": "NAME_EDUCATION_TYPE_Higher education",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "rank": 3,
+        "group": "attention_only",
+        "attention": 0.334646
+      }
+    ],
+    "fairness_flags": [],
+    "model_predict": "XGBoost",
+    "model_explain": [
+      "SHAP_xgb_local",
+      "TabNet_attention_local"
+    ],
+    "explanation_policy": "fact_only_with_agreement_labels",
+    "masked_sensitive_features": [
+      "CODE_GENDER_M",
+      "DAYS_BIRTH"
+    ],
+    "n_agreed": 1,
+    "n_shap_only": 8,
+    "n_attention_only": 3
+  },
+  "context_type": "home_fusion_friendly"
+}

@@ -1,0 +1,145 @@
+{
+  "sample_idx": 57037,
+  "decision": "APPROVE",
+  "true_label": 0,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "mode": "fusion_friendly",
+  "dataset": "home",
+  "elapsed_sec": 17.37,
+  "explanation": "# 신용 평가 결과 안내\n\n## [결정 요약]\n고객님의 대출 신청이 **승인**되었습니다. 부도 가능성은 2.16%로 매우 낮게 평가되었습니다.\n\n## [긍정적으로 평가된 요인]\n고객님의 신용 상태를 긍정적으로 평가한 주요 요인들을 안내드립니다.\n\n**✓ 두 분석 방법(SHAP과 TabNet 어텐션)이 모두 동의한 강한 신호:**\n- **외부 신용평가 점수 2**: 0.76으로 매우 우수한 수준이며, 부도 가능성을 크게 낮추는 가장 중요한 요인입니다 (영향도 0.88)\n- **외부 신용평가 점수 3**: 0.74로 높은 신용 점수를 보유하고 계시며, 부도 가능성을 낮추는 두 번째로 강한 요인입니다 (영향도 0.75)\n\n**✓ SHAP 분석이 추가로 주목한 신호:**\n- **재직 기간**: 15년의 장기 재직 이력이 안정적인 소득원으로 평가되어 부도 가능성을 낮추는 요인으로 작용했습니다 (영향도 0.33)\n- **신분증 발급 경과 기간**: 약 13.5년 전 발급된 신분증으로, 장기 거주 안정성을 나타내며 부도 가능성을 낮추는 요인입니다 (영향도 0.32)\n- **근무 조직 특성**: 고객님의 근무 조직 유형이 통계적으로 신용도가 높은 그룹에 속하며, 부도 가능성을 낮추는 요인으로 평가되었습니다 (영향도 0.40)\n\n## [개선 권고]\n더욱 유리한 조건의 대출을 위해 참고하실 사항을 안내드립니다.\n\n- **고등교육 이력**: 현재 고등교육(대학 이상) 학력이 등록되어 있지 않아 소폭 불리하게 작용했습니다. 학력 정보가 있으시다면 업데이트를 고려해보시기 바랍니다.\n- **구매 상품 가격**: 247,500원의 대출 금액은 고객님의 소득 대비 적정 수준이나, 필요 금액을 최소화하면 더욱 유리한 평가를 받으실 수 있습니다.\n- **거주지 특성**: 인구 밀도가 낮은 지역에 거주하시는 것으로 나타났으며, 이는 일반적으로 소폭 불리하게 작용할 수 있습니다.\n\n## [면책 고지]\n본 결과는 통계 모델 기반 참고 정보이며, 실제 상환 능력이나 미래 신용 상태를 보장하지 않습니다. 구체적인 대출 조건은 금융기관의 최종 심사에 따라 달라질 수 있습니다.",
+  "usage_metadata": {
+    "input_tokens": 2504,
+    "output_tokens": 991,
+    "total_token_count": 3495
+  },
+  "context_sent": {
+    "sample_idx": 57037,
+    "decision": "APPROVE",
+    "default_probability": 0.0216,
+    "threshold": 0.476,
+    "agreed_drivers": [
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "0.762569",
+        "value_raw": 0.7625693717655919,
+        "rank": 1,
+        "group": "agreed",
+        "shap": -0.8804,
+        "attention": 0.605201,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "외부 신용평가 점수 3",
+        "feature_raw": "EXT_SOURCE_3",
+        "value": "0.740799",
+        "value_raw": 0.7407990879702335,
+        "rank": 2,
+        "group": "agreed",
+        "shap": -0.7455,
+        "attention": 0.456655,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "학력: 고등교육 이상",
+        "feature_raw": "NAME_EDUCATION_TYPE_Higher education",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "rank": 3,
+        "group": "agreed",
+        "shap": 0.0643,
+        "attention": 0.331329,
+        "sign_for_default": "+"
+      }
+    ],
+    "shap_only_drivers": [
+      {
+        "feature": "근무 조직 유형 (타깃 인코딩 값)",
+        "feature_raw": "ORGANIZATION_TYPE_TE",
+        "value": "0.0473 (타깃 인코딩 값)",
+        "value_raw": 0.0472972972972973,
+        "rank": 1,
+        "group": "shap_only",
+        "shap": -0.4032,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "재직 일수(음수: 신청일 기준)",
+        "feature_raw": "DAYS_EMPLOYED",
+        "value": "15년 재직",
+        "value_raw": -5822.0,
+        "rank": 2,
+        "group": "shap_only",
+        "shap": -0.3272,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "신분증 발급 후 경과 일수",
+        "feature_raw": "DAYS_ID_PUBLISH",
+        "value": "-4954",
+        "value_raw": -4954.0,
+        "rank": 3,
+        "group": "shap_only",
+        "shap": -0.3248,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "구매 대상 상품 가격",
+        "feature_raw": "AMT_GOODS_PRICE",
+        "value": "247,500",
+        "value_raw": 247500.0,
+        "rank": 4,
+        "group": "shap_only",
+        "shap": 0.094,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "거주지 인구 밀도(상대값)",
+        "feature_raw": "REGION_POPULATION_RELATIVE",
+        "value": "0.04622",
+        "value_raw": 0.04622,
+        "rank": 5,
+        "group": "shap_only",
+        "shap": 0.0526,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "COMMONAREA_MEDI",
+        "feature_raw": "COMMONAREA_MEDI",
+        "value": "0.001",
+        "value_raw": 0.001,
+        "rank": 6,
+        "group": "shap_only",
+        "shap": 0.0482,
+        "sign_for_default": "+"
+      }
+    ],
+    "attention_only_drivers": [
+      {
+        "feature": "신청 대출 유형: 리볼빙(한도 대출)",
+        "feature_raw": "NAME_CONTRACT_TYPE_Revolving loans",
+        "value": "예",
+        "value_raw": 1.0,
+        "rank": 1,
+        "group": "attention_only",
+        "attention": 6.758369
+      }
+    ],
+    "fairness_flags": [],
+    "model_predict": "XGBoost",
+    "model_explain": [
+      "SHAP_xgb_local",
+      "TabNet_attention_local"
+    ],
+    "explanation_policy": "fact_only_with_agreement_labels",
+    "masked_sensitive_features": [
+      "CODE_GENDER_M",
+      "DAYS_BIRTH"
+    ],
+    "n_agreed": 3,
+    "n_shap_only": 6,
+    "n_attention_only": 1
+  },
+  "context_type": "home_fusion_friendly"
+}

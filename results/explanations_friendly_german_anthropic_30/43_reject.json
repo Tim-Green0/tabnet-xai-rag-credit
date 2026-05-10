@@ -1,0 +1,116 @@
+{
+  "sample_idx": 43,
+  "decision": "REJECT",
+  "true_label": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "mode": "fusion_friendly",
+  "dataset": "german",
+  "elapsed_sec": 20.82,
+  "explanation": "# 신용 평가 결과 안내\n\n## [결정 요약]\n고객님, 죄송하지만 이번 신용 평가 결과 대출 승인이 어렵다는 결정이 나왔습니다. 부도 가능성이 90.4%로 평가되어 기준치(45.6%)를 크게 초과하였습니다.\n\n## [주요 거절 사유]\n고객님의 신용 평가에서 다음 요인들이 **부도 가능성을 높이는** 주요 원인으로 파악되었습니다:\n\n1. **대출 기간 36개월** (SHAP 분석이 추가로 주목)  \n   현재 신청하신 대출 기간이 36개월로, 이는 매우 큰 영향(SHAP 0.59)을 미치는 부도 가능성을 높이는 요인입니다. 장기 대출일수록 상환 리스크가 증가하는 것으로 평가되었습니다.\n\n2. **체크 계좌 미보유** (두 분석 방법이 모두 동의한 강한 신호)  \n   고객님께서 체크 계좌를 보유하고 계시지 않은 점이 상당한 영향(SHAP 0.55)을 미쳤습니다. 이는 SHAP과 TabNet 어텐션 분석 모두에서 강하게 주목한 신호입니다.\n\n3. **체크 계좌 잔액 0 DM 미만** (SHAP 분석이 추가로 주목)  \n   체크 계좌의 잔액이 마이너스 상태인 점이 큰 영향(SHAP 0.34)을 주는 부도 가능성을 높이는 요인으로 확인되었습니다.\n\n## [긍정적으로 평가된 요인]\n현재 제공된 분석 결과에서는 **부도 가능성을 낮추는** 긍정적 요인이 두드러지게 나타나지 않았습니다. 이는 전반적인 신용 프로필 개선이 필요함을 시사합니다.\n\n## [개선 권고]\n향후 신용 평가 개선을 위해 다음 사항들을 고려해 보시기를 권장드립니다:\n\n1. **대출 기간 단축 검토**: 가능하시다면 더 짧은 기간의 대출 상품을 고려해 보십시오. 상환 기간이 짧을수록 리스크가 감소합니다.\n\n2. **체크 계좌 관리 개선**: 체크 계좌를 개설하시고 안정적인 잔액을 유지하시면, 향후 평가에서 긍정적으로 작용할 수 있습니다. 특히 마이너스 잔액을 플러스로 전환하는 것이 중요합니다.\n\n3. **주거 안정성 확보**: 현재 임대 거주 중이신 점도 영향(SHAP 0.25)을 미쳤습니다. 장기적으로 주거 안정성을 높이는 것이 신용도 향상에 도움이 됩니다.\n\n## [면책 고지]\n본 안내는 AI 기반 신용 평가 시스템의 분석 결과를 설명한 것이며, 고객님의 개별 상황에 대한 금융 자문이 아닙니다. 구체적인 금융 결정은 전문 상담사와의 상담을 통해 신중히 결정하시기 바랍니다.",
+  "usage_metadata": {
+    "input_tokens": 2067,
+    "output_tokens": 1108,
+    "total_token_count": 3175
+  },
+  "context_sent": {
+    "sample_idx": 43,
+    "decision": "REJECT",
+    "default_probability": 0.904,
+    "threshold": 0.4562,
+    "agreed_drivers": [
+      {
+        "feature": "체크 계좌 없음",
+        "feature_raw": "checking_status_no_checking",
+        "value": "비해당",
+        "rank": 1,
+        "group": "agreed",
+        "shap": 0.5486,
+        "sign_for_default": "+",
+        "attention": 0.152391
+      }
+    ],
+    "shap_only_drivers": [
+      {
+        "feature": "대출 기간(개월)",
+        "feature_raw": "duration",
+        "value": "36개월",
+        "rank": 1,
+        "group": "shap_only",
+        "shap": 0.59,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "잔액 < 0 DM",
+        "feature_raw": "checking_status__0",
+        "value": "해당",
+        "rank": 2,
+        "group": "shap_only",
+        "shap": 0.3435,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "임대",
+        "feature_raw": "housing_rent",
+        "value": "해당",
+        "rank": 3,
+        "group": "shap_only",
+        "shap": 0.2499,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "분할 상환 비율(%)",
+        "feature_raw": "installment_commitment",
+        "value": "4.0%",
+        "rank": 4,
+        "group": "shap_only",
+        "shap": 0.2404,
+        "sign_for_default": "+"
+      }
+    ],
+    "attention_only_drivers": [
+      {
+        "feature": "저축 정보 없음",
+        "feature_raw": "savings_status_no_known_savings",
+        "value": "비해당",
+        "rank": 1,
+        "group": "attention_only",
+        "attention": 0.123532
+      },
+      {
+        "feature": "부동산",
+        "feature_raw": "property_magnitude_real_estate",
+        "value": "비해당",
+        "rank": 2,
+        "group": "attention_only",
+        "attention": 0.065094
+      },
+      {
+        "feature": "교육",
+        "feature_raw": "purpose_education",
+        "value": "비해당",
+        "rank": 3,
+        "group": "attention_only",
+        "attention": 0.059675
+      },
+      {
+        "feature": "공동 신청자",
+        "feature_raw": "other_parties_co_applicant",
+        "value": "비해당",
+        "rank": 4,
+        "group": "attention_only",
+        "attention": 0.042786
+      }
+    ],
+    "model_predict": "XGBoost",
+    "model_explain": [
+      "SHAP_xgb_local",
+      "TabNet_attention_local"
+    ],
+    "explanation_policy": "fact_only_with_agreement_labels",
+    "n_agreed": 1,
+    "n_shap_only": 4,
+    "n_attention_only": 4
+  },
+  "context_type": "german_fusion_friendly"
+}

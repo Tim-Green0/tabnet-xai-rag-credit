@@ -1,0 +1,162 @@
+{
+  "sample_idx": 716,
+  "decision": "REJECT",
+  "true_label": 0,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "mode": "fusion_friendly",
+  "dataset": "home",
+  "elapsed_sec": 27.32,
+  "explanation": "# 신용 평가 결과 안내\n\n## [결정 요약]\n고객님, 안타깝게도 이번 대출 신청은 **승인이 어렵다**는 판정이 나왔습니다. 부도 가능성이 91.1%로 평가되어 승인 기준(47.6%)을 크게 상회하였습니다.\n\n---\n\n## [주요 거절 사유]\n\n### 1. **외부 신용평가 점수 3번이 매우 낮음** (0.0634)\n두 분석 방법(SHAP과 TabNet 어텐션)이 **모두 동의한** 가장 강한 신호입니다. 이 점수가 매우 낮은 수준(0.0634)으로 나타나, **부도 가능성을 높이는** 핵심 요인으로 작용했습니다. 외부 신용평가 기관의 평가가 상당히 낮다는 의미로, 매우 큰 영향(SHAP 1.152)을 미쳤습니다.\n\n### 2. **외부 신용평가 점수 2번도 낮음** (0.202)\n마찬가지로 **두 분석 방법 모두 동의한** 중요한 신호입니다. 이 점수 역시 낮은 수준(0.202)으로, **부도 가능성을 높이는** 요인으로 평가되었습니다(SHAP 0.465).\n\n### 3. **구매 대상 상품 가격** (225,000원)\nSHAP 분석이 **추가로 주목한** 요인입니다. 신청하신 상품 가격 22만 5천원이 고객님의 현재 신용 상태 대비 **부도 가능성을 높이는** 요인으로 작용했습니다(SHAP 0.244).\n\n---\n\n## [긍정적으로 평가된 요인]\n\n다행히 고객님께는 **부도 가능성을 낮추는** 긍정적인 요소들도 있습니다.\n\n### 1. **연 환산 상환액이 적절함** (13,833원)\nSHAP 분석이 **추가로 주목한** 요인으로, 연 단위로 환산한 상환 금액이 고객님의 상황에 비해 적절한 수준이어서 **부도 가능성을 낮추는** 긍정 요인으로 평가되었습니다(SHAP -0.106).\n\n### 2. **대출 신청 금액이 무리하지 않음** (284,400원)\n신청하신 대출 금액 28만 4천원이 **부도 가능성을 낮추는** 요인으로 작용했습니다(SHAP -0.081). 과도하지 않은 대출 신청이 긍정적으로 평가되었습니다.\n\n### 3. **기혼 상태**\n혼인 상태가 **부도 가능성을 낮추는** 요인으로 작용했으며(SHAP -0.038), 4명의 가족 구성원 수도 긍정적으로 평가되었습니다(SHAP -0.022).\n\n---\n\n## [개선 권고]\n\n### 1. **외부 신용평가 점수 개선에 집중하세요**\n이번 거절의 가장 큰 원인은 외부 신용평가 기관들의 낮은 점수입니다. 기존 대출이나 신용카드 연체를 해소하고, 꾸준한 금융 거래 이력을 쌓으시면 향후 점수가 개선될 수 있습니다.\n\n### 2. **재직 기간을 더 쌓아보세요**\n현재 1년 재직 중이신데, 이 점이 **부도 가능성을 높이는** 요인(SHAP 0.081)으로 작용했습니다. 좀 더 긴 재직 기간을 확보하신 후 재신청하시면 유리할 수 있습니다.\n\n### 3. **소액 대출부터 시작해 신용 이력을 쌓으세요**\n현재 신용 상태에서는 더 작은 금액부터 시작해 성실히 상환하여 신용 이력을 개선하신 후, 단계적으로 대출 한도를 높여가시는 것을 권장드립니다.\n\n---\n\n## [면책 고지]\n본 안내는 AI 모델 분석 결과를 바탕으로 한 참고 정보이며, 실제 심사는 금융기관의 종합적인 판단에 따릅니다. 신용 개선이나 재무 상담은 전문가와 상의하시기 바랍니다.",
+  "usage_metadata": {
+    "input_tokens": 2662,
+    "output_tokens": 1452,
+    "total_token_count": 4114
+  },
+  "context_sent": {
+    "sample_idx": 716,
+    "decision": "REJECT",
+    "default_probability": 0.911,
+    "threshold": 0.476,
+    "agreed_drivers": [
+      {
+        "feature": "외부 신용평가 점수 3",
+        "feature_raw": "EXT_SOURCE_3",
+        "value": "0.0633754",
+        "value_raw": 0.0633753623099886,
+        "rank": 1,
+        "group": "agreed",
+        "shap": 1.152,
+        "attention": 0.803719,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "0.201654",
+        "value_raw": 0.2016540822157123,
+        "rank": 2,
+        "group": "agreed",
+        "shap": 0.4648,
+        "attention": 1.12529,
+        "sign_for_default": "+"
+      }
+    ],
+    "shap_only_drivers": [
+      {
+        "feature": "구매 대상 상품 가격",
+        "feature_raw": "AMT_GOODS_PRICE",
+        "value": "225,000",
+        "value_raw": 225000.0,
+        "rank": 1,
+        "group": "shap_only",
+        "shap": 0.2444,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "연 환산 상환액",
+        "feature_raw": "AMT_ANNUITY",
+        "value": "13,833",
+        "value_raw": 13833.0,
+        "rank": 2,
+        "group": "shap_only",
+        "shap": -0.1063,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "근무 조직 유형 (타깃 인코딩 값)",
+        "feature_raw": "ORGANIZATION_TYPE_TE",
+        "value": "0.1029 (타깃 인코딩 값)",
+        "value_raw": 0.10291033036182486,
+        "rank": 3,
+        "group": "shap_only",
+        "shap": 0.1026,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "재직 일수(음수: 신청일 기준)",
+        "feature_raw": "DAYS_EMPLOYED",
+        "value": "1년 재직",
+        "value_raw": -511.0,
+        "rank": 4,
+        "group": "shap_only",
+        "shap": 0.0808,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "대출 신청 금액",
+        "feature_raw": "AMT_CREDIT",
+        "value": "284,400",
+        "value_raw": 284400.0,
+        "rank": 5,
+        "group": "shap_only",
+        "shap": -0.0805,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "AMT_REQ_CREDIT_BUREAU_YEAR",
+        "feature_raw": "AMT_REQ_CREDIT_BUREAU_YEAR",
+        "value": "0",
+        "value_raw": 0.0,
+        "rank": 6,
+        "group": "shap_only",
+        "shap": -0.0434,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "NAME_FAMILY_STATUS_Married",
+        "feature_raw": "NAME_FAMILY_STATUS_Married",
+        "value": "예",
+        "value_raw": 1.0,
+        "rank": 7,
+        "group": "shap_only",
+        "shap": -0.0378,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "가족 구성원 수",
+        "feature_raw": "CNT_FAM_MEMBERS",
+        "value": "4",
+        "value_raw": 4.0,
+        "rank": 8,
+        "group": "shap_only",
+        "shap": -0.0219,
+        "sign_for_default": "-"
+      }
+    ],
+    "attention_only_drivers": [
+      {
+        "feature": "FONDKAPREMONT_MODE_org spec account",
+        "feature_raw": "FONDKAPREMONT_MODE_org spec account",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "rank": 1,
+        "group": "attention_only",
+        "attention": 1.105012
+      },
+      {
+        "feature": "차량 보유: 있음",
+        "feature_raw": "FLAG_OWN_CAR_Y",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "rank": 2,
+        "group": "attention_only",
+        "attention": 0.463288
+      }
+    ],
+    "fairness_flags": [],
+    "model_predict": "XGBoost",
+    "model_explain": [
+      "SHAP_xgb_local",
+      "TabNet_attention_local"
+    ],
+    "explanation_policy": "fact_only_with_agreement_labels",
+    "masked_sensitive_features": [
+      "CODE_GENDER_M"
+    ],
+    "n_agreed": 2,
+    "n_shap_only": 8,
+    "n_attention_only": 2
+  },
+  "context_type": "home_fusion_friendly"
+}

@@ -1,0 +1,154 @@
+{
+  "sample_idx": 19592,
+  "decision": "APPROVE",
+  "true_label": 0,
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "mode": "fusion_friendly",
+  "dataset": "home",
+  "elapsed_sec": 16.43,
+  "explanation": "고객님, 안녕하세요! 고객님의 신용 평가 결과에 대해 친근하고 명료하게 안내해 드리겠습니다.\n\n---\n\n**[결정 요약]**\n고객님의 신용 평가 결과, 대출 승인이 결정되었습니다. 축하드립니다!\n\n**[긍정적으로 평가된 요인]**\n고객님의 신용 평가에 긍정적인 영향을 주어 대출 승인에 크게 기여한 요인들은 다음과 같습니다.\n\n*   **외부 신용평가 점수 2 (0.72853):** 고객님의 외부 신용평가 점수 2가 **매우 높은 0.72853**으로 평가되어, 부도 가능성을 낮추는 데 **매우 큰 영향**을 주었습니다. 이는 두 분석 방법(SHAP과 TabNet 어텐션)이 모두 동의한 강한 신호입니다.\n*   **외부 신용평가 점수 3 (0.758393):** 마찬가지로, 외부 신용평가 점수 3도 **매우 높은 0.758393**으로 나타나 부도 가능성을 낮추는 데 긍정적인 영향을 미쳤습니다. 이 또한 두 분석 방법이 모두 동의한 강한 신호입니다.\n*   **학력: 고등교육 이상 (예):** 고객님께서 **고등교육 이상의 학력**을 가지신 점도 부도 가능성을 낮추는 요인으로 평가되었습니다. 이 역시 두 분석 방법이 모두 동의한 강한 신호입니다.\n\n**[개선 권고]**\n현재 대출 승인이 결정되셨지만, SHAP 분석이 추가로 주목한 신호 중 향후 더 유리한 금융 기회를 위해 참고하실 만한 몇 가지 요인들을 안내해 드립니다.\n\n*   **대출 신청 금액 (900,000원) 및 연 환산 상환액 (45,000원):** 현재 대출 신청 금액이 900,000원이고 연 환산 상환액이 45,000원인 점은 SHAP 분석에서 부도 가능성을 소폭 높이는 요인으로 작용했습니다. 향후 더 유리한 조건의 대출을 고려하실 경우, 대출 규모를 신중하게 검토해 보시는 것이 도움이 될 수 있습니다.\n*   **외부 신용평가 1 정보 결측 여부 (예):** 외부 신용평가 1 정보가 결측되었다는 점(값이 없는 상태) 또한 SHAP 분석에서 부도 가능성을 소폭 높이는 요인으로 파악했습니다. 가능하시다면 해당 정보를 보완하시는 것이 신용 평가에 긍정적으로 작용할 수 있습니다.\n\n**[면책 고지]**\n본 신용평가 결과는 고객님께서 제공해주신 정보를 바탕으로 한 것이며, 미래의 금융 상황을 단정적으로 예측하거나 특정 금융 상품을 추천하는 것은 아닙니다. 자세한 내용은 금융 전문가와 상담하시길 권해드립니다.",
+  "usage_metadata": {
+    "prompt_token_count": 2183,
+    "candidates_token_count": 659,
+    "total_token_count": 5949
+  },
+  "context_sent": {
+    "sample_idx": 19592,
+    "decision": "APPROVE",
+    "default_probability": 0.0177,
+    "threshold": 0.476,
+    "agreed_drivers": [
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "0.72853",
+        "value_raw": 0.7285297302487084,
+        "rank": 1,
+        "group": "agreed",
+        "shap": -0.8177,
+        "attention": 0.700242,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "외부 신용평가 점수 3",
+        "feature_raw": "EXT_SOURCE_3",
+        "value": "0.758393",
+        "value_raw": 0.7583930617144343,
+        "rank": 2,
+        "group": "agreed",
+        "shap": -0.7601,
+        "attention": 0.528369,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "학력: 고등교육 이상",
+        "feature_raw": "NAME_EDUCATION_TYPE_Higher education",
+        "value": "예",
+        "value_raw": 1.0,
+        "rank": 3,
+        "group": "agreed",
+        "shap": -0.2054,
+        "attention": 0.383361,
+        "sign_for_default": "-"
+      }
+    ],
+    "shap_only_drivers": [
+      {
+        "feature": "신청 대출 유형: 현금대출",
+        "feature_raw": "NAME_CONTRACT_TYPE_Cash loans",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "rank": 1,
+        "group": "shap_only",
+        "shap": -0.3149,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "구매 대상 상품 가격",
+        "feature_raw": "AMT_GOODS_PRICE",
+        "value": "900,000",
+        "value_raw": 900000.0,
+        "rank": 2,
+        "group": "shap_only",
+        "shap": -0.1824,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "대출 신청 금액",
+        "feature_raw": "AMT_CREDIT",
+        "value": "900,000",
+        "value_raw": 900000.0,
+        "rank": 3,
+        "group": "shap_only",
+        "shap": 0.1427,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "연 환산 상환액",
+        "feature_raw": "AMT_ANNUITY",
+        "value": "45,000",
+        "value_raw": 45000.0,
+        "rank": 4,
+        "group": "shap_only",
+        "shap": 0.1079,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "재직 일수(음수: 신청일 기준)",
+        "feature_raw": "DAYS_EMPLOYED",
+        "value": "2년 재직",
+        "value_raw": -873.0,
+        "rank": 5,
+        "group": "shap_only",
+        "shap": 0.0601,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "근무 조직 유형 (타깃 인코딩 값)",
+        "feature_raw": "ORGANIZATION_TYPE_TE",
+        "value": "0.0920 (타깃 인코딩 값)",
+        "value_raw": 0.09198407075321884,
+        "rank": 6,
+        "group": "shap_only",
+        "shap": 0.0556,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "외부 신용평가 1 결측 여부",
+        "feature_raw": "EXT_SOURCE_1_MISSING_FLAG",
+        "value": "예",
+        "value_raw": 1.0,
+        "rank": 7,
+        "group": "shap_only",
+        "shap": 0.0341,
+        "sign_for_default": "+"
+      }
+    ],
+    "attention_only_drivers": [
+      {
+        "feature": "신청 대출 유형: 리볼빙(한도 대출)",
+        "feature_raw": "NAME_CONTRACT_TYPE_Revolving loans",
+        "value": "예",
+        "value_raw": 1.0,
+        "rank": 1,
+        "group": "attention_only",
+        "attention": 6.758369
+      }
+    ],
+    "fairness_flags": [],
+    "model_predict": "XGBoost",
+    "model_explain": [
+      "SHAP_xgb_local",
+      "TabNet_attention_local"
+    ],
+    "explanation_policy": "fact_only_with_agreement_labels",
+    "masked_sensitive_features": [
+      "CODE_GENDER_M"
+    ],
+    "n_agreed": 3,
+    "n_shap_only": 7,
+    "n_attention_only": 1
+  },
+  "context_type": "home_fusion_friendly"
+}

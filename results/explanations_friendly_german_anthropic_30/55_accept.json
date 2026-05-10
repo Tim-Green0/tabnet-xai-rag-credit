@@ -1,0 +1,122 @@
+{
+  "sample_idx": 55,
+  "decision": "APPROVE",
+  "true_label": 0,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "mode": "fusion_friendly",
+  "dataset": "german",
+  "elapsed_sec": 25.43,
+  "explanation": "# 신용 평가 결과 안내\n\n## [결정 요약]\n\n고객님의 신용 평가 결과, **승인(APPROVE)**되었습니다. 부도 가능성은 3.3%로 평가되었으며, 이는 기준치(45.62%)를 크게 하회하는 안정적인 수준입니다.\n\n---\n\n## [긍정적으로 평가된 요인]\n\n고객님의 신용 평가에서 **부도 가능성을 낮추는** 긍정적인 요인들이 확인되었습니다. 이들은 **SHAP 분석이 추가로 주목한** 신호들입니다.\n\n1. **체크 계좌가 없다는 점 (SHAP -0.75)**  \n   고객님께서 별도의 체크 계좌를 보유하지 않으신 점이, 이번 평가에서는 오히려 매우 큰 긍정적 영향을 주었습니다. 이는 특정 금융 행태 패턴과 관련된 것으로 분석됩니다.\n\n2. **과거 신용 이력이 critical 등급이라는 점 (SHAP -0.71)**  \n   일반적으로 위험 신호로 여겨질 수 있는 이력이지만, 이번 평가 맥락에서는 매우 큰 긍정적 신호로 작용했습니다. 현재 상환 패턴이나 다른 보완 요인들이 함께 고려된 결과로 해석됩니다.\n\n3. **중고차 구매 목적 (SHAP -0.56)**  \n   대출 목적이 중고차 구매라는 점이 부도 가능성을 낮추는 큰 긍정 요인으로 평가되었습니다. 실용적인 자산 구매 목적이 신용도에 긍정적으로 반영되었습니다.\n\n추가로, 저축 잔액이 100 DM 이상이라는 점(SHAP -0.27)과 기타 지불 계획이 없다는 점(SHAP -0.25)도 부도 가능성을 낮추는 요인으로 작용했습니다.\n\n---\n\n## [개선 권고]\n\n고객님께서는 이미 승인 기준을 충족하셨지만, 향후 더 나은 신용 관리를 위해 아래 사항을 참고해 주시기 바랍니다.\n\n1. **저축 습관 유지 및 강화**  \n   현재 저축 정보가 명확하지 않은 것으로 확인되었습니다(**TabNet 어텐션이 추가로 참고한** 정보). 정기적인 저축 기록을 쌓으시면 향후 신용 평가에서 더욱 유리하게 작용할 수 있습니다.\n\n2. **안정적인 재직 기간 지속**  \n   현재 7년 이상 재직 중이신 점이 긍정적으로 참고되었습니다. 이러한 고용 안정성을 계속 유지하시면 신용도 향상에 도움이 됩니다.\n\n3. **체계적인 금융 기록 관리**  \n   체크 계좌 보유 여부, 보유 자산 등 금융 기록을 체계적으로 관리하시면, 다양한 분석 방법에서 일관되게 긍정적인 평가를 받으실 수 있습니다.\n\n---\n\n## [면책 고지]\n\n본 평가 결과는 통계 모델(XGBoost 및 TabNet)에 기반한 참고 정보이며, 실제 신용 결정은 금융기관의 종합적인 심사 정책에 따라 달라질 수 있습니다. 구체적인 금융 상품 선택이나 개인 재무 계획은 전문 상담사와 상의하시기 바랍니다.",
+  "usage_metadata": {
+    "input_tokens": 2154,
+    "output_tokens": 1214,
+    "total_token_count": 3368
+  },
+  "context_sent": {
+    "sample_idx": 55,
+    "decision": "APPROVE",
+    "default_probability": 0.033,
+    "threshold": 0.4562,
+    "agreed_drivers": [],
+    "shap_only_drivers": [
+      {
+        "feature": "체크 계좌 없음",
+        "feature_raw": "checking_status_no_checking",
+        "value": "해당",
+        "rank": 1,
+        "group": "shap_only",
+        "shap": -0.7539,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "신용 이력 critical (위험)",
+        "feature_raw": "credit_history_critical/other_existing_credit",
+        "value": "해당",
+        "rank": 2,
+        "group": "shap_only",
+        "shap": -0.7095,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "중고차",
+        "feature_raw": "purpose_used_car",
+        "value": "해당",
+        "rank": 3,
+        "group": "shap_only",
+        "shap": -0.5646,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "저축 < 100 DM",
+        "feature_raw": "savings_status__100",
+        "value": "비해당",
+        "rank": 4,
+        "group": "shap_only",
+        "shap": -0.2658,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "기타 지불 계획 없음",
+        "feature_raw": "other_payment_plans_none",
+        "value": "해당",
+        "rank": 5,
+        "group": "shap_only",
+        "shap": -0.2501,
+        "sign_for_default": "-"
+      }
+    ],
+    "attention_only_drivers": [
+      {
+        "feature": "교육",
+        "feature_raw": "purpose_education",
+        "value": "비해당",
+        "rank": 1,
+        "group": "attention_only",
+        "attention": 0.265347
+      },
+      {
+        "feature": "잔액 < 0 DM",
+        "feature_raw": "checking_status__0",
+        "value": "비해당",
+        "rank": 2,
+        "group": "attention_only",
+        "attention": 0.256123
+      },
+      {
+        "feature": "보유 자산 없음",
+        "feature_raw": "property_magnitude_no_known_property",
+        "value": "비해당",
+        "rank": 3,
+        "group": "attention_only",
+        "attention": 0.125235
+      },
+      {
+        "feature": "재직 ≥ 7년",
+        "feature_raw": "employment__=7",
+        "value": "해당",
+        "rank": 4,
+        "group": "attention_only",
+        "attention": 0.103909
+      },
+      {
+        "feature": "저축 정보 없음",
+        "feature_raw": "savings_status_no_known_savings",
+        "value": "해당",
+        "rank": 5,
+        "group": "attention_only",
+        "attention": 0.103501
+      }
+    ],
+    "model_predict": "XGBoost",
+    "model_explain": [
+      "SHAP_xgb_local",
+      "TabNet_attention_local"
+    ],
+    "explanation_policy": "fact_only_with_agreement_labels",
+    "n_agreed": 0,
+    "n_shap_only": 5,
+    "n_attention_only": 5
+  },
+  "context_type": "german_fusion_friendly"
+}

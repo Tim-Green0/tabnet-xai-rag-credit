@@ -1,0 +1,116 @@
+{
+  "sample_idx": 29,
+  "decision": "REJECT",
+  "true_label": 1,
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "mode": "fusion_friendly",
+  "dataset": "german",
+  "elapsed_sec": 13.56,
+  "explanation": "고객님, 안녕하세요! 고객님의 신용 평가 결과에 대해 친절하게 설명해 드리겠습니다. 저희 시스템은 두 가지 첨단 분석 방법(XGBoost SHAP과 TabNet 어텐션)을 활용하여 고객님의 신용도를 평가했습니다.\n\n---\n\n**[결정 요약]**\n고객님의 신용 평가 결과, 현재 시점에서는 안타깝게도 대출 신청이 거절되었습니다. 저희 시스템의 부도 예상 확률은 0.8177로, 내부 기준치인 0.4562보다 높게 나타났습니다.\n\n**[주요 거절 사유]**\n고객님의 신용 평가에 가장 큰 영향을 미친 요인들은 다음과 같습니다.\n\n*   **체크 계좌 없음 (비해당)**: 고객님께서는 체크 계좌가 없는 것으로 나타났는데, 이는 **두 분석 방법(SHAP과 TabNet 어텐션)이 모두 동의한 강한 신호**로 부도 가능성을 높이는 매우 큰 요인으로 작용했습니다.\n*   **대출 기간(28개월)**: 신청하신 대출 기간이 28개월이라는 점은 **SHAP 분석이 추가로 주목한** 부도 가능성을 높이는 매우 큰 요인이었습니다.\n*   **잔액 0 DM 미만 (해당)**: 계좌 잔액이 0 DM 미만인 것으로 확인된 점 역시 **SHAP 분석이 추가로 주목한** 부도 가능성을 높이는 요인이었습니다.\n\n**[긍정적으로 평가된 요인]**\n반면, 고객님의 신용 평가에 긍정적인 영향을 준 요인도 있었습니다.\n\n*   **대출 금액(4,006 DM)**: 고객님께서 신청하신 대출 금액 4,006 DM은 **SHAP 분석이 추가로 주목한** 부도 가능성을 낮추는 상당히 긍정적인 요인이었습니다.\n\n**[개선 권고]**\n향후 신용 평가에서 더 좋은 결과를 얻으시려면 다음 사항들을 고려해 보실 수 있습니다.\n\n*   **체크 계좌 보유**: 체크 계좌를 개설하고 꾸준히 관리하시는 것이 신용도 개선에 긍정적인 영향을 줄 수 있습니다.\n*   **대출 기간 조정**: 대출 기간을 더 짧게 설정하시는 방안을 고려해 보시는 것도 좋습니다.\n*   **계좌 잔액 유지**: 계좌 잔액을 일정 수준 이상으로 유지하시는 것이 신용도를 높이는 데 도움이 될 수 있습니다.\n\n**[면책 고지]**\n이 설명은 고객님의 현재 신용 평가 결과를 이해하는 데 도움을 드리기 위한 것이며, 법률 또는 재정 자문으로 간주될 수 없습니다. 특정 금융 상품 추천이나 미래 신용 승인을 단정하는 내용은 포함되어 있지 않습니다.",
+  "usage_metadata": {
+    "prompt_token_count": 1650,
+    "candidates_token_count": 613,
+    "total_token_count": 4635
+  },
+  "context_sent": {
+    "sample_idx": 29,
+    "decision": "REJECT",
+    "default_probability": 0.8177,
+    "threshold": 0.4562,
+    "agreed_drivers": [
+      {
+        "feature": "체크 계좌 없음",
+        "feature_raw": "checking_status_no_checking",
+        "value": "비해당",
+        "rank": 1,
+        "group": "agreed",
+        "shap": 0.5478,
+        "sign_for_default": "+",
+        "attention": 0.132489
+      }
+    ],
+    "shap_only_drivers": [
+      {
+        "feature": "대출 기간(개월)",
+        "feature_raw": "duration",
+        "value": "28개월",
+        "rank": 1,
+        "group": "shap_only",
+        "shap": 0.539,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "대출 금액(DM)",
+        "feature_raw": "credit_amount",
+        "value": "4,006 DM",
+        "rank": 2,
+        "group": "shap_only",
+        "shap": -0.4454,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "잔액 < 0 DM",
+        "feature_raw": "checking_status__0",
+        "value": "해당",
+        "rank": 3,
+        "group": "shap_only",
+        "shap": 0.3402,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "저축 < 100 DM",
+        "feature_raw": "savings_status__100",
+        "value": "해당",
+        "rank": 4,
+        "group": "shap_only",
+        "shap": 0.2694,
+        "sign_for_default": "+"
+      }
+    ],
+    "attention_only_drivers": [
+      {
+        "feature": "저축 정보 없음",
+        "feature_raw": "savings_status_no_known_savings",
+        "value": "비해당",
+        "rank": 1,
+        "group": "attention_only",
+        "attention": 0.140772
+      },
+      {
+        "feature": "공동 신청자",
+        "feature_raw": "other_parties_co_applicant",
+        "value": "비해당",
+        "rank": 2,
+        "group": "attention_only",
+        "attention": 0.057054
+      },
+      {
+        "feature": "부동산",
+        "feature_raw": "property_magnitude_real_estate",
+        "value": "비해당",
+        "rank": 3,
+        "group": "attention_only",
+        "attention": 0.0527
+      },
+      {
+        "feature": "교육",
+        "feature_raw": "purpose_education",
+        "value": "비해당",
+        "rank": 4,
+        "group": "attention_only",
+        "attention": 0.047409
+      }
+    ],
+    "model_predict": "XGBoost",
+    "model_explain": [
+      "SHAP_xgb_local",
+      "TabNet_attention_local"
+    ],
+    "explanation_policy": "fact_only_with_agreement_labels",
+    "n_agreed": 1,
+    "n_shap_only": 4,
+    "n_attention_only": 4
+  },
+  "context_type": "german_fusion_friendly"
+}

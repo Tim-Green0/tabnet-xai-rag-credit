@@ -1,0 +1,153 @@
+{
+  "sample_idx": 8657,
+  "decision": "REJECT",
+  "true_label": 0,
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "mode": "fusion_friendly",
+  "dataset": "home",
+  "elapsed_sec": 15.93,
+  "explanation": "고객님의 신용 평가 결과에 대해 친근하고 명료하게 설명해 드리겠습니다.\n\n---\n\n[결정 요약]\n고객님의 신용 평가 결과, 아쉽게도 이번 대출 신청은 현재 기준으로 승인이 어렵다는 결정이 내려졌습니다.\n\n[주요 거절 사유]\n고객님의 신용 평가에 특히 큰 영향을 미친 요인들은 다음과 같습니다.\n1.  첫째, 두 분석 방법(SHAP과 TabNet 어텐션)이 모두 동의한 강한 신호로, 고객님의 '외부 신용평가 점수 2'가 매우 낮은 0.0680609로 평가되어 부도 가능성을 높이는 핵심 요인으로 분석되었습니다. 이는 모델에 매우 큰 영향(SHAP 0.7969, 어텐션 0.725865)을 미쳤습니다.\n2.  둘째, 동일하게 두 분석 방법이 모두 동의한 강한 신호인 '외부 신용평가 점수 3' 또한 낮은 0.223831로 나타나 부도 가능성을 높이는 요인으로 주목받았습니다. 이 역시 상당한 영향(SHAP 0.65, 어텐션 0.517485)을 주었습니다.\n3.  셋째, SHAP 분석이 추가로 주목한 신호 중 '외부 신용평가 점수 1'이 매우 낮은 0.0826038로 평가되어 부도 가능성을 높이는 데 큰 영향(SHAP 0.7584)을 미쳤습니다.\n\n[긍정적으로 평가된 요인]\n고객님께서는 몇몇 긍정적인 요인도 가지고 계셨습니다.\n1.  SHAP 분석이 추가로 주목한 신호 중 고객님께서 신청하신 '대출 신청 금액' 153,576원이 부도 가능성을 낮추는 요인으로 평가되었습니다.\n2.  마찬가지로 '연 환산 상환액' 7,466원도 부도 가능성을 낮추는 데 기여했습니다.\n3.  또한, 고객님의 '최근 휴대폰 변경 후 경과 일수'가 -2253일로 나타나, 비교적 장기간 유지하고 계신 점이 부도 가능성을 낮추는 요인으로 작용했습니다.\n\n[개선 권고]\n앞으로 신용도를 개선하는 데 도움이 될 만한 몇 가지 권고사항을 드립니다.\n1.  현재 가장 큰 영향을 미치는 요인은 여러 외부 신용평가 점수가 낮은 수준으로 나타난 점입니다. 앞으로 신용카드 사용이나 대출 상환 등 금융 거래 시 연체 없이 성실하게 관리하시어 신용도를 꾸준히 개선해 나가시는 것을 권해드립니다.\n2.  현재의 재정 상황과 비교하여 대출 신청 금액이나 구매 대상 상품 가격 등 자금 계획을 전반적으로 검토해 보시는 것도 도움이 될 수 있습니다.\n3.  장기적인 관점에서 안정적인 금융 활동을 유지하시는 것이 신용 평가에 긍정적인 영향을 미칠 것입니다.\n\n[면책 고지]\n이 설명은 시스템이 제공한 분석 결과를 토대로 작성되었으며, 고객님의 신용 평가에 대한 최종 결정은 다양한 요소를 종합적으로 고려하여 이루어집니다. 본 정보는 금융 자문이 아니며, 고객님의 미래 신용을 보장하거나 예측하지 않습니다.",
+  "usage_metadata": {
+    "prompt_token_count": 2154,
+    "candidates_token_count": 757,
+    "total_token_count": 5667
+  },
+  "context_sent": {
+    "sample_idx": 8657,
+    "decision": "REJECT",
+    "default_probability": 0.892,
+    "threshold": 0.476,
+    "agreed_drivers": [
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "0.0680609",
+        "value_raw": 0.0680609250796578,
+        "rank": 1,
+        "group": "agreed",
+        "shap": 0.7969,
+        "attention": 0.725865,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "외부 신용평가 점수 3",
+        "feature_raw": "EXT_SOURCE_3",
+        "value": "0.223831",
+        "value_raw": 0.2238313174701554,
+        "rank": 2,
+        "group": "agreed",
+        "shap": 0.65,
+        "attention": 0.517485,
+        "sign_for_default": "+"
+      }
+    ],
+    "shap_only_drivers": [
+      {
+        "feature": "외부 신용평가 점수 1",
+        "feature_raw": "EXT_SOURCE_1",
+        "value": "0.0826038",
+        "value_raw": 0.08260377007595121,
+        "rank": 1,
+        "group": "shap_only",
+        "shap": 0.7584,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "구매 대상 상품 가격",
+        "feature_raw": "AMT_GOODS_PRICE",
+        "value": "121,500",
+        "value_raw": 121500.0,
+        "rank": 2,
+        "group": "shap_only",
+        "shap": 0.2671,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "대출 신청 금액",
+        "feature_raw": "AMT_CREDIT",
+        "value": "153,576",
+        "value_raw": 153576.0,
+        "rank": 3,
+        "group": "shap_only",
+        "shap": -0.2487,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "연 환산 상환액",
+        "feature_raw": "AMT_ANNUITY",
+        "value": "7,466",
+        "value_raw": 7465.5,
+        "rank": 4,
+        "group": "shap_only",
+        "shap": -0.1773,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "최근 휴대폰 변경 후 경과 일수",
+        "feature_raw": "DAYS_LAST_PHONE_CHANGE",
+        "value": "-2253",
+        "value_raw": -2253.0,
+        "rank": 5,
+        "group": "shap_only",
+        "shap": -0.1288,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "거주지 등록 후 경과 일수",
+        "feature_raw": "DAYS_REGISTRATION",
+        "value": "4년 전 등록",
+        "value_raw": -1743.0,
+        "rank": 6,
+        "group": "shap_only",
+        "shap": -0.0424,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "외부 신용평가 1 결측 여부",
+        "feature_raw": "EXT_SOURCE_1_MISSING_FLAG",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "rank": 7,
+        "group": "shap_only",
+        "shap": -0.0392,
+        "sign_for_default": "-"
+      }
+    ],
+    "attention_only_drivers": [
+      {
+        "feature": "차량 보유: 있음",
+        "feature_raw": "FLAG_OWN_CAR_Y",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "rank": 1,
+        "group": "attention_only",
+        "attention": 0.350312
+      },
+      {
+        "feature": "학력: 고등교육 이상",
+        "feature_raw": "NAME_EDUCATION_TYPE_Higher education",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "rank": 2,
+        "group": "attention_only",
+        "attention": 0.257743
+      }
+    ],
+    "fairness_flags": [],
+    "model_predict": "XGBoost",
+    "model_explain": [
+      "SHAP_xgb_local",
+      "TabNet_attention_local"
+    ],
+    "explanation_policy": "fact_only_with_agreement_labels",
+    "masked_sensitive_features": [
+      "CODE_GENDER_M",
+      "DAYS_BIRTH"
+    ],
+    "n_agreed": 2,
+    "n_shap_only": 7,
+    "n_attention_only": 2
+  },
+  "context_type": "home_fusion_friendly"
+}

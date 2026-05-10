@@ -1,0 +1,153 @@
+{
+  "sample_idx": 50140,
+  "decision": "APPROVE",
+  "true_label": 0,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "mode": "fusion_friendly",
+  "dataset": "home",
+  "elapsed_sec": 19.08,
+  "explanation": "# 신용 평가 결과 안내\n\n---\n\n## [결정 요약]\n\n고객님의 대출 신청을 **승인**해 드립니다. 부도 가능성은 3.3%로 낮게 평가되었습니다.\n\n---\n\n## [긍정적으로 평가된 요인]\n\n고객님의 신용 프로필에서 **부도 가능성을 낮추는** 강력한 긍정 요인들이 발견되었습니다.\n\n### 1. **두 분석 방법이 모두 동의한 강한 신호**\n- **외부 신용평가 점수 2 (0.746)**: 매우 우수한 수준의 외부 신용 점수로, 상환 능력을 **부도 가능성을 낮추는** 가장 강력한 요인입니다 (영향도 -0.76)\n- **외부 신용평가 점수 3 (0.742)**: 마찬가지로 매우 높은 외부 신용 평가 결과로, **부도 가능성을 낮추는** 두 번째 핵심 요인입니다 (영향도 -0.69)\n\n### 2. **SHAP 분석이 추가로 주목한 긍정 신호**\n- **장기 재직 기록 (14년)**: 안정적인 고용 상태가 **부도 가능성을 낮추는** 요인으로 작용했습니다 (영향도 -0.27)\n- **외부 신용평가 점수 1 (0.618)**: 또 다른 외부 신용 평가에서도 양호한 점수를 받아 **부도 가능성을 낮추는** 요인으로 평가되었습니다 (영향도 -0.23)\n- **신청 대출 유형**: 현금대출이 아닌 리볼빙(한도 대출) 신청이 긍정적으로 평가되었습니다 (영향도 -0.41)\n\n---\n\n## [개선 권고]\n\n고객님의 신용 프로필은 전반적으로 우수하지만, 다음 사항들은 **부도 가능성을 높이는** 요인으로 분석되었습니다. 향후 신용 관리에 참고하시면 도움이 될 수 있습니다.\n\n1. **구매 대상 상품 가격 (450,000원)**: 대출 금액 대비 구매 상품 가격이 리스크 요인으로 작용했습니다. 가능하다면 자기자본 비율을 높이시는 것이 좋습니다.\n\n2. **신분증 발급 경과 기간**: 신분증 발급 후 약 4년 3개월이 경과했는데, 이는 소폭의 리스크 신호로 해석되었습니다. 정기적인 신분증 갱신을 권장드립니다.\n\n3. **휴대폰 변경 이력**: 최근 약 1년 8개월 전 휴대폰을 변경하신 기록이 작은 리스크 요인으로 분석되었습니다. 연락처 안정성 유지가 도움이 됩니다.\n\n---\n\n## [면책 고지]\n\n본 평가 결과는 통계 모델(XGBoost, SHAP 분석, TabNet 어텐션)에 기반한 참고 정보이며, 고객님의 미래 상환 능력을 보장하거나 단정하지 않습니다. 구체적인 대출 조건 및 금융 상담은 담당 상담사와 별도로 진행해 주시기 바랍니다.",
+  "usage_metadata": {
+    "input_tokens": 2579,
+    "output_tokens": 1116,
+    "total_token_count": 3695
+  },
+  "context_sent": {
+    "sample_idx": 50140,
+    "decision": "APPROVE",
+    "default_probability": 0.033,
+    "threshold": 0.476,
+    "agreed_drivers": [
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "0.746122",
+        "value_raw": 0.7461220608168586,
+        "rank": 1,
+        "group": "agreed",
+        "shap": -0.7647,
+        "attention": 0.702036,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "외부 신용평가 점수 3",
+        "feature_raw": "EXT_SOURCE_3",
+        "value": "0.742182",
+        "value_raw": 0.7421816117614419,
+        "rank": 2,
+        "group": "agreed",
+        "shap": -0.6851,
+        "attention": 0.529723,
+        "sign_for_default": "-"
+      }
+    ],
+    "shap_only_drivers": [
+      {
+        "feature": "신청 대출 유형: 현금대출",
+        "feature_raw": "NAME_CONTRACT_TYPE_Cash loans",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "rank": 1,
+        "group": "shap_only",
+        "shap": -0.4126,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "재직 일수(음수: 신청일 기준)",
+        "feature_raw": "DAYS_EMPLOYED",
+        "value": "14년 재직",
+        "value_raw": -5221.0,
+        "rank": 2,
+        "group": "shap_only",
+        "shap": -0.2674,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "외부 신용평가 점수 1",
+        "feature_raw": "EXT_SOURCE_1",
+        "value": "0.618406",
+        "value_raw": 0.6184064861528148,
+        "rank": 3,
+        "group": "shap_only",
+        "shap": -0.2332,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "구매 대상 상품 가격",
+        "feature_raw": "AMT_GOODS_PRICE",
+        "value": "450,000",
+        "value_raw": 450000.0,
+        "rank": 4,
+        "group": "shap_only",
+        "shap": 0.15,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "신분증 발급 후 경과 일수",
+        "feature_raw": "DAYS_ID_PUBLISH",
+        "value": "-1558",
+        "value_raw": -1558.0,
+        "rank": 5,
+        "group": "shap_only",
+        "shap": 0.0954,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "NONLIVINGAPARTMENTS_MEDI",
+        "feature_raw": "NONLIVINGAPARTMENTS_MEDI",
+        "value": "0.0116",
+        "value_raw": 0.0116,
+        "rank": 6,
+        "group": "shap_only",
+        "shap": 0.0433,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "최근 휴대폰 변경 후 경과 일수",
+        "feature_raw": "DAYS_LAST_PHONE_CHANGE",
+        "value": "-617",
+        "value_raw": -617.0,
+        "rank": 7,
+        "group": "shap_only",
+        "shap": 0.043,
+        "sign_for_default": "+"
+      }
+    ],
+    "attention_only_drivers": [
+      {
+        "feature": "신청 대출 유형: 리볼빙(한도 대출)",
+        "feature_raw": "NAME_CONTRACT_TYPE_Revolving loans",
+        "value": "예",
+        "value_raw": 1.0,
+        "rank": 1,
+        "group": "attention_only",
+        "attention": 6.718672
+      },
+      {
+        "feature": "학력: 고등교육 이상",
+        "feature_raw": "NAME_EDUCATION_TYPE_Higher education",
+        "value": "예",
+        "value_raw": 1.0,
+        "rank": 2,
+        "group": "attention_only",
+        "attention": 0.384343
+      }
+    ],
+    "fairness_flags": [],
+    "model_predict": "XGBoost",
+    "model_explain": [
+      "SHAP_xgb_local",
+      "TabNet_attention_local"
+    ],
+    "explanation_policy": "fact_only_with_agreement_labels",
+    "masked_sensitive_features": [
+      "CODE_GENDER_M",
+      "DAYS_BIRTH"
+    ],
+    "n_agreed": 2,
+    "n_shap_only": 7,
+    "n_attention_only": 2
+  },
+  "context_type": "home_fusion_friendly"
+}

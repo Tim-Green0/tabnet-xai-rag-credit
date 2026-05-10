@@ -1,0 +1,107 @@
+{
+  "sample_idx": 79,
+  "decision": "APPROVE",
+  "true_label": 0,
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "mode": "fusion_friendly",
+  "dataset": "german",
+  "elapsed_sec": 21.71,
+  "explanation": "[결정 요약]\n고객님의 신용 평가 결과, 신청하신 대출이 승인되셨음을 기쁜 마음으로 안내해 드립니다.\n\n[긍정적으로 평가된 요인]\n*   고객님께서 현재 체크 계좌를 가지고 있지 않으신 점은 두 분석 방법(SHAP과 TabNet 어텐션)이 모두 동의한 강한 신호로, 부도 가능성을 매우 크게 낮추는 요인으로 평가되었습니다 (SHAP -0.6921).\n*   SHAP 분석이 추가로 주목한 신호로는 고객님께서 현재 4년 이상 7년 미만의 재직 기간을 가지고 계신 점이 부도 가능성을 매우 크게 낮추는 긍정적인 요인으로 작용했습니다 (SHAP -0.6068).\n*   또한, 1000 DM 이상의 저축액을 보유하고 계신 점도 부도 가능성을 크게 낮추는 요인으로 평가받았습니다 (SHAP -0.5643).\n\n[개선 권고]\n*   고객님께서는 현재 안정적인 재직 기간과 충분한 저축액을 보유하고 계신 점이 긍정적으로 평가되었습니다. 앞으로도 꾸준한 저축 습관을 유지하시고, 안정적인 직업 활동을 지속해 주시는 것이 재정 건강을 유지하는 데 매우 중요합니다.\n*   지속적으로 건전한 신용 및 재정 관리 습관을 유지하시는 것이 좋습니다.\n\n[면책 고지]\n본 설명은 제공된 데이터와 모델 분석에 기반하며, 미래의 재정 상황을 단정적으로 예측하거나 특정 금융 상품을 추천하는 것은 아닙니다. 고객님의 개별적인 재정 결정에 대한 최종 책임은 고객님께 있습니다.",
+  "usage_metadata": {
+    "prompt_token_count": 1584,
+    "candidates_token_count": 385,
+    "total_token_count": 5847
+  },
+  "context_sent": {
+    "sample_idx": 79,
+    "decision": "APPROVE",
+    "default_probability": 0.019,
+    "threshold": 0.4562,
+    "agreed_drivers": [
+      {
+        "feature": "체크 계좌 없음",
+        "feature_raw": "checking_status_no_checking",
+        "value": "해당",
+        "rank": 1,
+        "group": "agreed",
+        "shap": -0.6921,
+        "sign_for_default": "-",
+        "attention": 0.300159
+      }
+    ],
+    "shap_only_drivers": [
+      {
+        "feature": "재직 4~7년",
+        "feature_raw": "employment_4_=X_7",
+        "value": "해당",
+        "rank": 1,
+        "group": "shap_only",
+        "shap": -0.6068,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "저축 ≥ 1000 DM",
+        "feature_raw": "savings_status__=1000",
+        "value": "해당",
+        "rank": 2,
+        "group": "shap_only",
+        "shap": -0.5643,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "신용 이력 critical (위험)",
+        "feature_raw": "credit_history_critical/other_existing_credit",
+        "value": "해당",
+        "rank": 3,
+        "group": "shap_only",
+        "shap": -0.4563,
+        "sign_for_default": "-"
+      }
+    ],
+    "attention_only_drivers": [
+      {
+        "feature": "기타 지불 계획 없음",
+        "feature_raw": "other_payment_plans_none",
+        "value": "비해당",
+        "rank": 1,
+        "group": "attention_only",
+        "attention": 0.351209
+      },
+      {
+        "feature": "교육",
+        "feature_raw": "purpose_education",
+        "value": "비해당",
+        "rank": 2,
+        "group": "attention_only",
+        "attention": 0.275244
+      },
+      {
+        "feature": "부동산",
+        "feature_raw": "property_magnitude_real_estate",
+        "value": "비해당",
+        "rank": 3,
+        "group": "attention_only",
+        "attention": 0.252945
+      },
+      {
+        "feature": "잔액 < 0 DM",
+        "feature_raw": "checking_status__0",
+        "value": "비해당",
+        "rank": 4,
+        "group": "attention_only",
+        "attention": 0.190264
+      }
+    ],
+    "model_predict": "XGBoost",
+    "model_explain": [
+      "SHAP_xgb_local",
+      "TabNet_attention_local"
+    ],
+    "explanation_policy": "fact_only_with_agreement_labels",
+    "n_agreed": 1,
+    "n_shap_only": 3,
+    "n_attention_only": 4
+  },
+  "context_type": "german_fusion_friendly"
+}

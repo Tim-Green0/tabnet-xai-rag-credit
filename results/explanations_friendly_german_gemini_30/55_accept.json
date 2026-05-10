@@ -1,0 +1,122 @@
+{
+  "sample_idx": 55,
+  "decision": "APPROVE",
+  "true_label": 0,
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "mode": "fusion_friendly",
+  "dataset": "german",
+  "elapsed_sec": 20.38,
+  "explanation": "고객님께, 신청하신 신용 평가 결과에 대해 친절하게 설명해 드리겠습니다.\n\n---\n\n### [결정 요약]\n고객님의 신용 평가 결과, 신청하신 금융 상품에 대해 '승인' 결정이 내려졌습니다. 고객님의 부도 예상 확률은 0.033으로, 당사의 기준점인 0.4562보다 매우 낮아 긍정적으로 평가되었습니다.\n\n### [주요 거절 사유]\n(승인 결정이므로 해당 사항이 없습니다.)\n\n### [긍정적으로 평가된 요인]\n고객님의 신용 평가에 긍정적인 영향을 미친 주요 요인들은 다음과 같습니다.\n\n*   **체크 계좌 없음**: 고객님께 체크 계좌가 없는 점이 SHAP 분석이 추가로 주목한, 부도 가능성을 매우 크게 낮추는 요인으로 평가되었습니다 (SHAP -0.7539).\n*   **신용 이력 critical (위험)**: 고객님의 신용 이력이 'critical (위험)'으로 분류된 부분이 SHAP 분석이 추가로 주목한, 부도 가능성을 낮추는 요인으로 작용했습니다 (SHAP -0.7095).\n*   **중고차**: 고객님의 대출 목적이 '중고차' 구매인 점이 SHAP 분석이 추가로 주목한, 부도 가능성을 낮추는 요인으로 나타났습니다 (SHAP -0.5646).\n\n### [개선 권고]\n현재 고객님의 신용 상태는 매우 양호하여 별도의 심각한 개선이 필요한 부분은 확인되지 않았습니다. 다만, 앞으로도 더욱 견고한 신용도를 유지하시고 관리하시는데 도움이 될 수 있는 몇 가지 제안을 드립니다.\n\n*   **저축 내역 관리**: TabNet 어텐션이 추가로 참고한 정보 중 '저축 정보 없음' 항목이 있었습니다. 이는 고객님의 저축 내역이 모델에 명확하게 확인되지 않았다는 의미일 수 있습니다. 만약 고객님의 저축 내역이 명확하게 확인되지 않는 경우, 이를 투명하게 관리하고 증명할 수 있는 기록을 만드시는 것이 좋습니다. 이는 향후 신용 평가 시 더 확실한 긍정적 요인으로 작용할 수 있습니다.\n*   **안정적인 재직 유지**: 현재 고객님의 재직 기간(재직 ≥ 7년)은 TabNet 어텐션이 추가로 참고한 바와 같이 매우 긍정적인 요인입니다. 앞으로도 안정적인 직업 유지와 꾸준한 소득 활동은 고객님의 신용도를 더욱 튼튼하게 만드는 기반이 될 것입니다.\n\n### [면책 고지]\n본 신용 평가 결과는 인공지능 모델을 기반으로 한 참고 자료이며, 고객님의 재정적 판단에 대한 의료적·법률적 자문이나 미래를 단정적으로 예측하는 것이 아닙니다. 특정 금융 상품 추천의 목적이 없음을 알려드립니다.",
+  "usage_metadata": {
+    "prompt_token_count": 1722,
+    "candidates_token_count": 646,
+    "total_token_count": 6174
+  },
+  "context_sent": {
+    "sample_idx": 55,
+    "decision": "APPROVE",
+    "default_probability": 0.033,
+    "threshold": 0.4562,
+    "agreed_drivers": [],
+    "shap_only_drivers": [
+      {
+        "feature": "체크 계좌 없음",
+        "feature_raw": "checking_status_no_checking",
+        "value": "해당",
+        "rank": 1,
+        "group": "shap_only",
+        "shap": -0.7539,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "신용 이력 critical (위험)",
+        "feature_raw": "credit_history_critical/other_existing_credit",
+        "value": "해당",
+        "rank": 2,
+        "group": "shap_only",
+        "shap": -0.7095,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "중고차",
+        "feature_raw": "purpose_used_car",
+        "value": "해당",
+        "rank": 3,
+        "group": "shap_only",
+        "shap": -0.5646,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "저축 < 100 DM",
+        "feature_raw": "savings_status__100",
+        "value": "비해당",
+        "rank": 4,
+        "group": "shap_only",
+        "shap": -0.2658,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "기타 지불 계획 없음",
+        "feature_raw": "other_payment_plans_none",
+        "value": "해당",
+        "rank": 5,
+        "group": "shap_only",
+        "shap": -0.2501,
+        "sign_for_default": "-"
+      }
+    ],
+    "attention_only_drivers": [
+      {
+        "feature": "교육",
+        "feature_raw": "purpose_education",
+        "value": "비해당",
+        "rank": 1,
+        "group": "attention_only",
+        "attention": 0.265347
+      },
+      {
+        "feature": "잔액 < 0 DM",
+        "feature_raw": "checking_status__0",
+        "value": "비해당",
+        "rank": 2,
+        "group": "attention_only",
+        "attention": 0.256123
+      },
+      {
+        "feature": "보유 자산 없음",
+        "feature_raw": "property_magnitude_no_known_property",
+        "value": "비해당",
+        "rank": 3,
+        "group": "attention_only",
+        "attention": 0.125235
+      },
+      {
+        "feature": "재직 ≥ 7년",
+        "feature_raw": "employment__=7",
+        "value": "해당",
+        "rank": 4,
+        "group": "attention_only",
+        "attention": 0.103909
+      },
+      {
+        "feature": "저축 정보 없음",
+        "feature_raw": "savings_status_no_known_savings",
+        "value": "해당",
+        "rank": 5,
+        "group": "attention_only",
+        "attention": 0.103501
+      }
+    ],
+    "model_predict": "XGBoost",
+    "model_explain": [
+      "SHAP_xgb_local",
+      "TabNet_attention_local"
+    ],
+    "explanation_policy": "fact_only_with_agreement_labels",
+    "n_agreed": 0,
+    "n_shap_only": 5,
+    "n_attention_only": 5
+  },
+  "context_type": "german_fusion_friendly"
+}

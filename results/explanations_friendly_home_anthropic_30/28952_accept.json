@@ -1,0 +1,162 @@
+{
+  "sample_idx": 28952,
+  "decision": "APPROVE",
+  "true_label": 0,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "mode": "fusion_friendly",
+  "dataset": "home",
+  "elapsed_sec": 17.6,
+  "explanation": "# 신용 평가 결과 안내\n\n## [결정 요약]\n고객님의 대출 신청이 **승인**되었습니다. 부도 가능성은 0.85%로 매우 낮게 평가되었습니다.\n\n## [주요 거절 사유]\n해당 없음 (승인 건입니다)\n\n## [긍정적으로 평가된 요인]\n고객님의 신용을 긍정적으로 평가한 주요 요인들을 안내드립니다.\n\n1. **외부 신용평가 점수 2 (0.782)** - 두 분석 방법(SHAP과 TabNet 어텐션)이 모두 동의한 가장 강력한 신호입니다. 매우 높은 점수로, **부도 가능성을 낮추는** 핵심 요인입니다. (영향도 SHAP -0.82, 어텐션 80%)\n\n2. **외부 신용평가 점수 3 (0.682)** - 두 분석 방법 모두가 주목한 또 다른 강한 신호입니다. 양호한 점수로 **부도 가능성을 낮추는** 중요한 요인입니다. (영향도 SHAP -0.59, 어텐션 60%)\n\n3. **외부 신용평가 점수 1 (0.757)** - SHAP 분석이 추가로 주목한 요인입니다. 이 역시 높은 점수로 **부도 가능성을 낮추는** 데 기여했습니다. (영향도 SHAP -0.45)\n\n추가로, 신분증 발급 후 충분한 시간이 경과한 점(-5,436일), 리볼빙 대출 방식 선택, 고등교육 이상의 학력도 긍정적으로 참고되었습니다.\n\n## [개선 권고]\n승인되었으나, 향후 더 나은 조건을 위해 아래 사항을 고려해 보시기를 권장드립니다.\n\n1. **구매 대상 상품 가격 (337,500원)** - SHAP 분석에서 이 금액이 **부도 가능성을 소폭 높이는** 요인으로 나타났습니다. 필요 금액을 줄이거나 자기자금 비율을 높이시면 더욱 유리합니다.\n\n2. **혼인 상태** - 현재 미혼 상태가 약간의 리스크 요인으로 평가되었습니다. 단, 이는 통계적 패턴일 뿐이며 개인의 상황에 따라 다를 수 있습니다.\n\n3. **외부 신용평가 점수 유지** - 현재 매우 우수한 신용 점수를 유지하고 계십니다. 앞으로도 대출 상환과 신용카드 사용을 성실히 관리하셔서 이 점수를 계속 유지하시길 권장드립니다.\n\n## [면책 고지]\n본 설명은 AI 모델 분석 결과를 안내하는 참고 자료이며, 금융·법률 자문이 아닙니다. 구체적인 금융 상담은 담당 전문가와 상의하시기 바랍니다.",
+  "usage_metadata": {
+    "input_tokens": 2657,
+    "output_tokens": 1014,
+    "total_token_count": 3671
+  },
+  "context_sent": {
+    "sample_idx": 28952,
+    "decision": "APPROVE",
+    "default_probability": 0.0085,
+    "threshold": 0.476,
+    "agreed_drivers": [
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "0.782201",
+        "value_raw": 0.7822010598410312,
+        "rank": 1,
+        "group": "agreed",
+        "shap": -0.8183,
+        "attention": 0.799961,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "외부 신용평가 점수 3",
+        "feature_raw": "EXT_SOURCE_3",
+        "value": "0.681706",
+        "value_raw": 0.6817058776720116,
+        "rank": 2,
+        "group": "agreed",
+        "shap": -0.5875,
+        "attention": 0.603612,
+        "sign_for_default": "-"
+      }
+    ],
+    "shap_only_drivers": [
+      {
+        "feature": "외부 신용평가 점수 1",
+        "feature_raw": "EXT_SOURCE_1",
+        "value": "0.756963",
+        "value_raw": 0.7569629976475155,
+        "rank": 1,
+        "group": "shap_only",
+        "shap": -0.4497,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "신분증 발급 후 경과 일수",
+        "feature_raw": "DAYS_ID_PUBLISH",
+        "value": "-5436",
+        "value_raw": -5436.0,
+        "rank": 2,
+        "group": "shap_only",
+        "shap": -0.3131,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "신청 대출 유형: 현금대출",
+        "feature_raw": "NAME_CONTRACT_TYPE_Cash loans",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "rank": 3,
+        "group": "shap_only",
+        "shap": -0.3044,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "구매 대상 상품 가격",
+        "feature_raw": "AMT_GOODS_PRICE",
+        "value": "337,500",
+        "value_raw": 337500.0,
+        "rank": 4,
+        "group": "shap_only",
+        "shap": 0.1127,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "NAME_FAMILY_STATUS_Married",
+        "feature_raw": "NAME_FAMILY_STATUS_Married",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "rank": 5,
+        "group": "shap_only",
+        "shap": 0.1055,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "LIVINGAPARTMENTS_AVG",
+        "feature_raw": "LIVINGAPARTMENTS_AVG",
+        "value": "0.453",
+        "value_raw": 0.453,
+        "rank": 6,
+        "group": "shap_only",
+        "shap": 0.0805,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "COMMONAREA_MEDI",
+        "feature_raw": "COMMONAREA_MEDI",
+        "value": "0.2114",
+        "value_raw": 0.2114,
+        "rank": 7,
+        "group": "shap_only",
+        "shap": 0.0503,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "NONLIVINGAPARTMENTS_MEDI",
+        "feature_raw": "NONLIVINGAPARTMENTS_MEDI",
+        "value": "0.0932",
+        "value_raw": 0.0932,
+        "rank": 8,
+        "group": "shap_only",
+        "shap": 0.0474,
+        "sign_for_default": "+"
+      }
+    ],
+    "attention_only_drivers": [
+      {
+        "feature": "신청 대출 유형: 리볼빙(한도 대출)",
+        "feature_raw": "NAME_CONTRACT_TYPE_Revolving loans",
+        "value": "예",
+        "value_raw": 1.0,
+        "rank": 1,
+        "group": "attention_only",
+        "attention": 6.584664
+      },
+      {
+        "feature": "학력: 고등교육 이상",
+        "feature_raw": "NAME_EDUCATION_TYPE_Higher education",
+        "value": "예",
+        "value_raw": 1.0,
+        "rank": 2,
+        "group": "attention_only",
+        "attention": 0.437954
+      }
+    ],
+    "fairness_flags": [],
+    "model_predict": "XGBoost",
+    "model_explain": [
+      "SHAP_xgb_local",
+      "TabNet_attention_local"
+    ],
+    "explanation_policy": "fact_only_with_agreement_labels",
+    "masked_sensitive_features": [
+      "CODE_GENDER_M"
+    ],
+    "n_agreed": 2,
+    "n_shap_only": 8,
+    "n_attention_only": 2
+  },
+  "context_type": "home_fusion_friendly"
+}

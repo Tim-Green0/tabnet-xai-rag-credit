@@ -1,0 +1,135 @@
+{
+  "sample_idx": 12908,
+  "decision": "REJECT",
+  "true_label": 1,
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "mode": "fusion_friendly",
+  "dataset": "home",
+  "elapsed_sec": 14.83,
+  "explanation": "고객님의 신용 평가 결과를 친근하고 명료하게 설명해 드리겠습니다.\n\n---\n\n### [결정 요약]\n고객님의 신용 평가 결과, 현재 시점에서는 안타깝게도 대출 신청이 어렵게 되었습니다.\n\n### [주요 거절 사유]\n고객님의 대출 신청이 어렵게 된 주요 요인들은 다음과 같습니다.\n\n*   **외부 신용평가 점수 3**: 두 분석 방법(SHAP과 TabNet 어텐션)이 모두 동의한 강한 신호로, 고객님의 '외부 신용평가 점수 3'이 0.184116으로 나타나 부도 가능성을 높이는 매우 큰 영향(SHAP 0.7295)을 주었습니다.\n*   **외부 신용평가 점수 2**: 마찬가지로, '외부 신용평가 점수 2'가 0.244844로 나타나 부도 가능성을 높이는 요인으로 평가되었습니다.\n*   **구매 대상 상품 가격**: SHAP 분석이 추가로 주목한 신호로는, 고객님께서 구매하시려는 상품의 가격이 450,000원으로 대출 규모에 영향을 주어 부도 가능성을 높이는 요인으로 작용했습니다.\n\n### [긍정적으로 평가된 요인]\n고객님의 신용 평가에 긍정적인 영향을 준 요인들도 있었습니다.\n\n*   **재직 일수(음수: 신청일 기준)**: 두 분석 방법(SHAP과 TabNet 어텐션)이 모두 동의한 강한 신호로, 고객님께서 현재 직장에 5년 재직하셨다는 점은 신용 안정성을 보여주어 부도 가능성을 낮추는 긍정적인 요인으로 평가되었습니다.\n*   **최근 휴대폰 변경 후 경과 일수**: SHAP 분석이 추가로 주목한 신호 중 하나로, 고객님께서 최근 휴대폰을 변경하신 후 1377일이 경과했다는 점(오래 사용하셨다는 의미)이 부도 가능성을 낮추는 요인으로 작용했습니다.\n*   **결혼 여부(기혼)**: 또한, SHAP 분석이 추가로 주목한 정보에 따르면, 고객님의 결혼 여부(기혼으로 '예'에 해당) 역시 부도 가능성을 낮추는 요인으로 평가되었습니다.\n\n### [개선 권고]\n고객님의 신용도를 높이기 위해 다음과 같은 점들을 고려해 보시는 것을 권장해 드립니다.\n\n*   고객님의 외부 신용평가 점수를 개선하기 위한 꾸준한 노력이 필요해 보입니다. 이는 현재 대출이 어렵게 된 주요 원인 중 하나입니다.\n*   다음 대출 신청 시에는 현재 신청하시는 금액(대출 신청 금액 640,080원)이나 구매 대상 상품의 가격(450,000원)을 다시 한번 고려해보시는 것을 권장해 드립니다.\n\n### [면책 고지]\n본 설명은 고객님의 신용 평가를 위해 사용된 두 가지 인공지능 모델의 분석 결과를 바탕으로 제공되는 참고 자료입니다. 이는 법적 자문으로 해석될 수 없으며, 미래의 대출 승인 또는 거절을 보장하지 않습니다.",
+  "usage_metadata": {
+    "prompt_token_count": 1965,
+    "candidates_token_count": 723,
+    "total_token_count": 5349
+  },
+  "context_sent": {
+    "sample_idx": 12908,
+    "decision": "REJECT",
+    "default_probability": 0.8927,
+    "threshold": 0.476,
+    "agreed_drivers": [
+      {
+        "feature": "외부 신용평가 점수 3",
+        "feature_raw": "EXT_SOURCE_3",
+        "value": "0.184116",
+        "value_raw": 0.1841161559307151,
+        "rank": 1,
+        "group": "agreed",
+        "shap": 0.7295,
+        "attention": 0.498595,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "0.244844",
+        "value_raw": 0.2448437991412138,
+        "rank": 2,
+        "group": "agreed",
+        "shap": 0.373,
+        "attention": 0.701182,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "재직 일수(음수: 신청일 기준)",
+        "feature_raw": "DAYS_EMPLOYED",
+        "value": "5년 재직",
+        "value_raw": -1976.0,
+        "rank": 3,
+        "group": "agreed",
+        "shap": -0.0346,
+        "attention": 0.335517,
+        "sign_for_default": "-"
+      }
+    ],
+    "shap_only_drivers": [
+      {
+        "feature": "구매 대상 상품 가격",
+        "feature_raw": "AMT_GOODS_PRICE",
+        "value": "450,000",
+        "value_raw": 450000.0,
+        "rank": 1,
+        "group": "shap_only",
+        "shap": 0.2494,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "대출 신청 금액",
+        "feature_raw": "AMT_CREDIT",
+        "value": "640,080",
+        "value_raw": 640080.0,
+        "rank": 2,
+        "group": "shap_only",
+        "shap": 0.2014,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "연 환산 상환액",
+        "feature_raw": "AMT_ANNUITY",
+        "value": "29,970",
+        "value_raw": 29970.0,
+        "rank": 3,
+        "group": "shap_only",
+        "shap": 0.1587,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "최근 휴대폰 변경 후 경과 일수",
+        "feature_raw": "DAYS_LAST_PHONE_CHANGE",
+        "value": "-1377",
+        "value_raw": -1377.0,
+        "rank": 4,
+        "group": "shap_only",
+        "shap": -0.0285,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "NAME_FAMILY_STATUS_Married",
+        "feature_raw": "NAME_FAMILY_STATUS_Married",
+        "value": "예",
+        "value_raw": 1.0,
+        "rank": 5,
+        "group": "shap_only",
+        "shap": -0.0205,
+        "sign_for_default": "-"
+      }
+    ],
+    "attention_only_drivers": [
+      {
+        "feature": "FONDKAPREMONT_MODE_org spec account",
+        "feature_raw": "FONDKAPREMONT_MODE_org spec account",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "rank": 1,
+        "group": "attention_only",
+        "attention": 1.265139
+      }
+    ],
+    "fairness_flags": [],
+    "model_predict": "XGBoost",
+    "model_explain": [
+      "SHAP_xgb_local",
+      "TabNet_attention_local"
+    ],
+    "explanation_policy": "fact_only_with_agreement_labels",
+    "masked_sensitive_features": [
+      "CODE_GENDER_F",
+      "CODE_GENDER_M"
+    ],
+    "n_agreed": 3,
+    "n_shap_only": 5,
+    "n_attention_only": 1
+  },
+  "context_type": "home_fusion_friendly"
+}

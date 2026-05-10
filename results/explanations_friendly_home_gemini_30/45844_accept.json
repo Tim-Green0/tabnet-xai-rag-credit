@@ -1,0 +1,161 @@
+{
+  "sample_idx": 45844,
+  "decision": "APPROVE",
+  "true_label": 0,
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "mode": "fusion_friendly",
+  "dataset": "home",
+  "elapsed_sec": 22.7,
+  "explanation": "[결정 요약]\n고객님의 신용 평가 결과, 대출이 승인되었습니다. (예상 부도 확률: 1.44%)\n\n[주요 거절 사유]\n(대출이 승인되어 해당 사항이 없습니다.)\n\n[긍정적으로 평가된 요인]\n1.  **외부 신용평가 점수 2 (값: 0.782041)**: 두 분석 방법(SHAP과 TabNet 어텐션)이 모두 동의한 강한 신호로, 고객님의 신용도가 매우 우수하여 부도 가능성을 크게 낮추는 요인으로 평가되었습니다. (SHAP -0.8903)\n2.  **외부 신용평가 점수 3 (값: 0.80502)**: 이 역시 두 분석 방법이 모두 동의한 강한 신호로, 고객님의 신용도가 높아 부도 가능성을 낮추는 데 큰 영향을 미쳤습니다. (SHAP -0.5161)\n3.  **대출 신청 금액 (값: 495,000원)**: 두 분석 방법이 모두 동의한 강한 신호로, 신청하신 대출 금액이 고객님의 전반적인 신용 상황을 고려할 때 부도 가능성을 낮추는 긍정적인 요인으로 작용했습니다. (SHAP -0.215)\n\n[개선 권고]\n1.  **주택의 특정 상태 (값: 0.1678)**: SHAP 분석이 추가로 주목한 정보에 따르면, 거주하시는 주택의 특정 조건이 부도 가능성을 미미하게 높이는 요인으로 분석되었습니다. (SHAP 0.1323)\n2.  **주택 내 거주 공간의 평균 상태 (값: 0.3421)**: 이 역시 SHAP 분석이 추가로 주목한 정보로, 거주 공간의 평균적인 상태가 부도 가능성을 미미하게 높이는 요인으로 파악되었습니다. (SHAP 0.0656)\n3.  **최근 휴대폰 변경 후 경과 일수 (값: -537일)**: SHAP 분석이 추가로 주목한 정보로, 휴대폰 변경 후 경과 일수가 길지 않은 점이 부도 가능성을 미미하게 높이는 요인으로 나타났습니다. (SHAP 0.0366)\n\n[면책 고지]\n본 안내는 고객님의 신용 평가 결과를 설명하기 위한 보조 자료이며, 의료·법률 자문 또는 특정 금융 상품 추천으로 간주될 수 없습니다. 미래의 예측이나 단정적인 내용이 포함되어 있지 않습니다.",
+  "usage_metadata": {
+    "prompt_token_count": 2273,
+    "candidates_token_count": 593,
+    "total_token_count": 7662
+  },
+  "context_sent": {
+    "sample_idx": 45844,
+    "decision": "APPROVE",
+    "default_probability": 0.0144,
+    "threshold": 0.476,
+    "agreed_drivers": [
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "0.782041",
+        "value_raw": 0.7820408243872593,
+        "rank": 1,
+        "group": "agreed",
+        "shap": -0.8903,
+        "attention": 0.834033,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "외부 신용평가 점수 3",
+        "feature_raw": "EXT_SOURCE_3",
+        "value": "0.80502",
+        "value_raw": 0.8050196619153701,
+        "rank": 2,
+        "group": "agreed",
+        "shap": -0.5161,
+        "attention": 0.629321,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "대출 신청 금액",
+        "feature_raw": "AMT_CREDIT",
+        "value": "495,000",
+        "value_raw": 495000.0,
+        "rank": 3,
+        "group": "agreed",
+        "shap": -0.215,
+        "attention": 0.458939,
+        "sign_for_default": "-"
+      }
+    ],
+    "shap_only_drivers": [
+      {
+        "feature": "외부 신용평가 점수 1",
+        "feature_raw": "EXT_SOURCE_1",
+        "value": "0.762174",
+        "value_raw": 0.7621738275117058,
+        "rank": 1,
+        "group": "shap_only",
+        "shap": -0.501,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "신청 대출 유형: 현금대출",
+        "feature_raw": "NAME_CONTRACT_TYPE_Cash loans",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "rank": 2,
+        "group": "shap_only",
+        "shap": -0.3678,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "BASEMENTAREA_MODE",
+        "feature_raw": "BASEMENTAREA_MODE",
+        "value": "0.1678",
+        "value_raw": 0.1678,
+        "rank": 3,
+        "group": "shap_only",
+        "shap": 0.1323,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "LIVINGAPARTMENTS_AVG",
+        "feature_raw": "LIVINGAPARTMENTS_AVG",
+        "value": "0.3421",
+        "value_raw": 0.3421,
+        "rank": 4,
+        "group": "shap_only",
+        "shap": 0.0656,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "NAME_FAMILY_STATUS_Married",
+        "feature_raw": "NAME_FAMILY_STATUS_Married",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "rank": 5,
+        "group": "shap_only",
+        "shap": 0.0533,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "최근 휴대폰 변경 후 경과 일수",
+        "feature_raw": "DAYS_LAST_PHONE_CHANGE",
+        "value": "-537",
+        "value_raw": -537.0,
+        "rank": 6,
+        "group": "shap_only",
+        "shap": 0.0366,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "근무 조직 유형 (타깃 인코딩 값)",
+        "feature_raw": "ORGANIZATION_TYPE_TE",
+        "value": "0.0920 (타깃 인코딩 값)",
+        "value_raw": 0.09198407075321884,
+        "rank": 7,
+        "group": "shap_only",
+        "shap": 0.0289,
+        "sign_for_default": "+"
+      }
+    ],
+    "attention_only_drivers": [
+      {
+        "feature": "신청 대출 유형: 리볼빙(한도 대출)",
+        "feature_raw": "NAME_CONTRACT_TYPE_Revolving loans",
+        "value": "예",
+        "value_raw": 1.0,
+        "rank": 1,
+        "group": "attention_only",
+        "attention": 5.662216
+      },
+      {
+        "feature": "학력: 고등교육 이상",
+        "feature_raw": "NAME_EDUCATION_TYPE_Higher education",
+        "value": "예",
+        "value_raw": 1.0,
+        "rank": 2,
+        "group": "attention_only",
+        "attention": 0.456607
+      }
+    ],
+    "fairness_flags": [],
+    "model_predict": "XGBoost",
+    "model_explain": [
+      "SHAP_xgb_local",
+      "TabNet_attention_local"
+    ],
+    "explanation_policy": "fact_only_with_agreement_labels",
+    "masked_sensitive_features": [],
+    "n_agreed": 3,
+    "n_shap_only": 7,
+    "n_attention_only": 2
+  },
+  "context_type": "home_fusion_friendly"
+}

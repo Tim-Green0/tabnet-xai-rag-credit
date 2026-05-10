@@ -1,0 +1,145 @@
+{
+  "sample_idx": 33173,
+  "decision": "REJECT",
+  "true_label": 1,
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-5",
+  "mode": "fusion_friendly",
+  "dataset": "home",
+  "elapsed_sec": 24.98,
+  "explanation": "# 신용 평가 결과 안내\n\n## [결정 요약]\n고객님, 안타깝게도 이번 신청은 **승인이 어렵다는** 판정을 받으셨습니다. 부도 가능성이 89.1%로 분석되어 승인 기준(47.6%)을 크게 초과하였습니다.\n\n---\n\n## [주요 거절 사유]\n\n### 1. **외부 신용평가 점수 2 (매우 낮은 수준)**\n고객님의 외부 신용평가 점수 2가 **0.0666으로 매우 낮게** 기록되었습니다. 이는 **부도 가능성을 높이는 가장 강력한 요인**으로, 두 분석 방법(SHAP과 TabNet 어텐션)이 모두 동의한 신호입니다. 일반적으로 이 점수가 낮을수록 신용 리스크가 높다고 평가됩니다.\n\n### 2. **외부 신용평가 점수 3 (낮은 수준)**\n외부 신용평가 점수 3 역시 **0.275로 낮은 편**이며, 이 또한 **부도 가능성을 높이는 중요한 요인**입니다. 두 분석 방법 모두 이 점수에 주목하였습니다.\n\n### 3. **재직 일수 (현재 무직 상태)**\n현재 재직 일수가 **0년**으로 기록되어 있어, 안정적인 소득원이 확인되지 않는 점이 **부도 가능성을 높이는 요인**으로 작용했습니다. 두 분석 방법 모두 이를 중요하게 판단하였습니다.\n\n**추가로 SHAP 분석이 주목한 사항:**\n- **구매 대상 상품 가격**(378,000원)이 고객님의 현재 상황 대비 부담으로 평가되어 **부도 가능성을 높이는 요인**으로 작용했습니다.\n- **등록 도시와 실거주 도시가 불일치**하는 점도 **부도 가능성을 높이는 추가 요인**으로 파악되었습니다.\n\n---\n\n## [긍정적으로 평가된 요인]\n\n고객님께서 가지고 계신 몇 가지 긍정적인 요소도 있습니다:\n\n### 1. **최근 분기 신용조회 이력**\n최근 분기에 신용조회를 2회 하신 점이 **부도 가능성을 낮추는 요인**으로 작용했습니다. 적절한 신용 관리 활동으로 평가되었습니다.\n\n### 2. **장기 휴대폰 사용**\n휴대폰을 변경하신 지 1,642일(약 4.5년)이 경과한 점이 **부도 가능성을 낮추는 긍정 요인**입니다. 생활의 안정성을 보여주는 지표로 해석됩니다.\n\n### 3. **신분증 장기 보유**\n신분증 발급 후 4,404일(약 12년)이 경과하여, 이 또한 **부도 가능성을 낮추는 요인**으로 평가받았습니다.\n\n---\n\n## [개선 권고]\n\n### 1. **안정적인 소득 확보가 최우선입니다**\n현재 재직 상태가 확인되지 않는 점이 가장 큰 걸림돌입니다. 정규 직장에 취업하시거나 안정적인 소득을 증명할 수 있는 자료를 확보하신 후 재신청하시면 승인 가능성이 크게 높아집니다.\n\n### 2. **외부 신용평가 점수 개선이 필요합니다**\n신용평가 기관의 점수를 높이기 위해 기존 금융 거래 이력을 성실히 관리하시고, 소액이라도 연체 없이 상환하는 이력을 쌓으시길 권장합니다.\n\n### 3. **대출 금액 조정을 고려해보세요**\n현재 신청하신 상품 가격(378,000원)이 부담으로 평가되었으니, 보다 낮은 금액부터 시작하여 신용 이력을 쌓아가시는 것도 좋은 방법입니다.\n\n---\n\n## [면책 고지]\n본 설명은 AI 분석 결과를 바탕으로 한 참고 정보이며, 최종 신용 결정은 금융 기관의 종합적인 심사를 통해 이루어집니다. 구체적인 금융 상담이 필요하시면 전문 상담사와 상의하시기 바랍니다.",
+  "usage_metadata": {
+    "input_tokens": 2498,
+    "output_tokens": 1495,
+    "total_token_count": 3993
+  },
+  "context_sent": {
+    "sample_idx": 33173,
+    "decision": "REJECT",
+    "default_probability": 0.8906,
+    "threshold": 0.476,
+    "agreed_drivers": [
+      {
+        "feature": "외부 신용평가 점수 2",
+        "feature_raw": "EXT_SOURCE_2",
+        "value": "0.0666461",
+        "value_raw": 0.0666461075667823,
+        "rank": 1,
+        "group": "agreed",
+        "shap": 0.8981,
+        "attention": 0.655933,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "외부 신용평가 점수 3",
+        "feature_raw": "EXT_SOURCE_3",
+        "value": "0.275",
+        "value_raw": 0.2750003523983893,
+        "rank": 2,
+        "group": "agreed",
+        "shap": 0.4303,
+        "attention": 0.471057,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "재직 일수(음수: 신청일 기준)",
+        "feature_raw": "DAYS_EMPLOYED",
+        "value": "0년 재직",
+        "value_raw": -177.0,
+        "rank": 3,
+        "group": "agreed",
+        "shap": 0.1736,
+        "attention": 0.504857,
+        "sign_for_default": "+"
+      }
+    ],
+    "shap_only_drivers": [
+      {
+        "feature": "구매 대상 상품 가격",
+        "feature_raw": "AMT_GOODS_PRICE",
+        "value": "378,000",
+        "value_raw": 378000.0,
+        "rank": 1,
+        "group": "shap_only",
+        "shap": 0.2299,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "등록 도시와 실거주 도시 불일치",
+        "feature_raw": "REG_CITY_NOT_LIVE_CITY",
+        "value": "1",
+        "value_raw": 1.0,
+        "rank": 2,
+        "group": "shap_only",
+        "shap": 0.215,
+        "sign_for_default": "+"
+      },
+      {
+        "feature": "AMT_REQ_CREDIT_BUREAU_QRT",
+        "feature_raw": "AMT_REQ_CREDIT_BUREAU_QRT",
+        "value": "2",
+        "value_raw": 2.0,
+        "rank": 3,
+        "group": "shap_only",
+        "shap": -0.0761,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "FLAG_OWN_CAR_N",
+        "feature_raw": "FLAG_OWN_CAR_N",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "rank": 4,
+        "group": "shap_only",
+        "shap": -0.0683,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "최근 휴대폰 변경 후 경과 일수",
+        "feature_raw": "DAYS_LAST_PHONE_CHANGE",
+        "value": "-1642",
+        "value_raw": -1642.0,
+        "rank": 5,
+        "group": "shap_only",
+        "shap": -0.0523,
+        "sign_for_default": "-"
+      },
+      {
+        "feature": "신분증 발급 후 경과 일수",
+        "feature_raw": "DAYS_ID_PUBLISH",
+        "value": "-4404",
+        "value_raw": -4404.0,
+        "rank": 6,
+        "group": "shap_only",
+        "shap": -0.0399,
+        "sign_for_default": "-"
+      }
+    ],
+    "attention_only_drivers": [
+      {
+        "feature": "FONDKAPREMONT_MODE_org spec account",
+        "feature_raw": "FONDKAPREMONT_MODE_org spec account",
+        "value": "아니오",
+        "value_raw": 0.0,
+        "rank": 1,
+        "group": "attention_only",
+        "attention": 0.847706
+      }
+    ],
+    "fairness_flags": [],
+    "model_predict": "XGBoost",
+    "model_explain": [
+      "SHAP_xgb_local",
+      "TabNet_attention_local"
+    ],
+    "explanation_policy": "fact_only_with_agreement_labels",
+    "masked_sensitive_features": [
+      "CODE_GENDER_F",
+      "CODE_GENDER_M"
+    ],
+    "n_agreed": 3,
+    "n_shap_only": 6,
+    "n_attention_only": 1
+  },
+  "context_type": "home_fusion_friendly"
+}
