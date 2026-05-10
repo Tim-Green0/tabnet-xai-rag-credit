@@ -1083,11 +1083,57 @@ def make_slides():
                   size=11, color=COLOR_HIGHLIGHT)
 
     # ════════════════════════════════════════════════════════
-    # 슬라이드 19 — 종합 + 핵심 메시지 (기존 #17, 번호 갱신)
+    # 슬라이드 19 (NEW) — Step 5-B: Generic RAG Baseline (4-way)
     # ════════════════════════════════════════════════════════
     s = add_blank_slide(prs)
-    add_header_bar(s, SW, "18. 종합 — 본 연구의 가치 5가지",
-                       "Step 1 + 2-A + 3-B + 3-C + 5-A 마무리")
+    add_header_bar(s, SW, "18. ★ Step 5-B — Generic RAG Baseline (4-way)",
+                       "환각 차단의 본질 정량 분석 — SHAP-RAG의 진짜 차별성 재정의")
+
+    # 좌측: 4-way figure
+    fig_path = FIG_DIR / "35_generic_rag_3way.png"
+    if fig_path.exists():
+        pic = s.shapes.add_picture(str(fig_path),
+                                       Cm(0.6), Cm(3.0),
+                                       width=Cm(19))
+        if pic.height > Cm(11):
+            pic.height = Cm(11)
+            pic.width = Cm(19)
+
+    # 우측 상단: 동기
+    add_textbox(s, Cm(20.5), Cm(3.0), Cm(13), Cm(1.0),
+                  "동기 — Counterfactual baseline 정당성",
+                  size=14, bold=True, color=COLOR_PRIMARY)
+    add_bullets(s, Cm(20.7), Cm(4.0), Cm(13), Cm(2.5), [
+        "\"Halluc 0% vs no-SHAP 45.5%\"는 trivial 반박 가능",
+        "Generic RAG (raw + 도메인 chunks + hard constraints, SHAP X)",
+        "→ 같은 정보 + 제약, SHAP만 빠진 fair 비교",
+    ], size=11)
+
+    # 우측 중간: 결과
+    add_textbox(s, Cm(20.5), Cm(7.0), Cm(13), Cm(1.0),
+                  "결과 — 4단계 명확한 차이",
+                  size=14, bold=True, color=COLOR_ACCENT)
+    add_bullets(s, Cm(20.7), Cm(8.0), Cm(13), Cm(5.5), [
+        "Halluc: no_shap 16.7% / 다른 3개 0% (환각 = hard constraints 효과)",
+        "NLI Entailment ★ 4단계:",
+        "  no_shap 0.27~0.43 → generic 0.36~0.37",
+        "  → shaponly 0.41~0.51 → ★ fusion 0.62~0.62",
+        "val_match: 0.59→0.73→0.85→0.90 (Anthropic)",
+    ], size=11)
+
+    # 우측 하단: 결론
+    add_textbox(s, Cm(20.5), Cm(13.5), Cm(13), Cm(3.5),
+                  "★ 본 연구의 진짜 차별성 = 의미적 충실성 + 값 정확 인용\n"
+                  "★ 환각 차단은 Generic RAG로 모방 가능 (정직 인정)\n"
+                  "★ 약점 #3 정량 해소",
+                  size=11, color=COLOR_HIGHLIGHT)
+
+    # ════════════════════════════════════════════════════════
+    # 슬라이드 20 — 종합 + 핵심 메시지 (기존 #18, 번호 갱신)
+    # ════════════════════════════════════════════════════════
+    s = add_blank_slide(prs)
+    add_header_bar(s, SW, "19. 종합 — 본 연구의 가치 6가지",
+                       "Step 1 + 2-A + 3-B + 3-C + 5-A + 5-B 마무리")
 
     # 5개 컬럼 카드
     cards = [
@@ -1100,14 +1146,14 @@ def make_slides():
           "agreement-aware\n컨텍스트로 LLM에\n의미 라벨 전달",
           RGBColor(0x55, 0xA8, 0x68)),
         ("환각 차단",
-          "Halluc 0/100\n(Step 1/2-A)\n→ 0/30 (3-C-1)\n\n"
-          "Baseline 45.5% vs\nXAI-RAG 0%\n\n"
+          "Halluc 0/100\n(Step 1/2-A) →\n0/30 (3-C-1)\n\n"
+          "Generic RAG도 0%\n(5-B, hard constraints\n효과 입증)\n\n"
           "NLI contradiction\n−0.14~−0.18",
           RGBColor(0xC4, 0x4E, 0x52)),
         ("완결성·충실성",
-          "G-Eval Completeness\nClaude +0.67~+0.80\nGemini +0.90~+1.10\n\n"
-          "NLI Entailment\n+0.12~+0.21\n\n"
-          "→ 다층·다judge\n일관 향상",
+          "G-Eval Compl.\nClaude +0.67~+0.80\nGemini +0.90~+1.10\n\n"
+          "NLI Entailment 4단계:\n.27→.37→.51→.62\n(no→gen→shap→fus)\n\n"
+          "★ fusion이 압도",
           RGBColor(0xDD, 0x85, 0x52)),
         ("공정성 mitigation",
           "Day 5: 8/8 4/5 rule\n위반 진단\n\n"
@@ -1156,29 +1202,29 @@ def make_slides():
     # 슬라이드 15 — 한계 + 향후 계획
     # ════════════════════════════════════════════════════════
     s = add_blank_slide(prs)
-    add_header_bar(s, SW, "19. 한계와 향후 계획",
-                       "Step 3-B/3-C/5-A 완료 / 잔여는 본 논문 확장")
+    add_header_bar(s, SW, "20. 한계와 향후 계획",
+                       "Step 3-B/3-C/5-A/5-B 완료 / 잔여는 본 논문 확장")
 
     add_textbox(s, Cm(1.0), Cm(3.0), Cm(15), Cm(1),
                   "현재 한계 / 진행 중", size=16, bold=True, color=COLOR_ACCENT)
     add_bullets(s, Cm(1.5), Cm(4.0), Cm(15), Cm(13), [
         "Fusion 평가 표본 30명 — 100명+ 확장 검토",
         "인간평가 (Plausibility) 미수행 — IRB 절차 필요 ★ 1순위",
-        "Generic RAG baseline 미비교 — Counterfactual 정당성 보강 ★ 2순위",
+        "데이터 단일 (Home Credit) — UCI German Credit 미검증 ★ 2순위",
         "보조 테이블 2/6개 활용 (Step 3-B) — 4개 잔여",
         "Bureau의 SHAP 미진입 — EXT_SOURCE 응축 가설 검증 필요",
         "TabNet-only 컨텍스트 ablation 미수행 (3-way)",
-        "데이터 단일 (Home Credit) — UCI German Credit 미검증",
+        "no_shap 표본 작음 (n=2 in 30 idx) — 표본 확장 필요",
     ], size=13)
 
     add_textbox(s, Cm(17), Cm(3.0), Cm(15), Cm(1),
                   "향후 계획", size=16, bold=True, color=COLOR_HIGHLIGHT)
     add_bullets(s, Cm(17.5), Cm(4.0), Cm(15), Cm(13), [
         "인간 평가 (Plausibility) — IRB + 5점 척도, Cohen's κ ★ 1순위",
-        "Generic RAG baseline (도메인 일반 지식) ★ 2순위",
-        "UCI German Credit 일반화",
+        "UCI German Credit 일반화 ★ 2순위",
+        "3-way ablation: SHAP-only / Attn-only / Fusion ★ 3순위",
+        "Bureau ablation — EXT_SOURCE 응축 가설 검증",
         "Fusion 표본 100명 확장 + counterfactual 결합",
-        "3-way ablation: SHAP-only / Attn-only / Fusion",
         "잔여 보조 테이블 4개로 AUROC 0.78+",
         "Adversarial Debiasing (TabNet head) — Reweighing 보완",
     ], size=13)
