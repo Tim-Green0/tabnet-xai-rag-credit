@@ -14,7 +14,7 @@
 
 한편 정형 데이터(tabular data) 영역에서는 딥러닝 모델의 적용이 비교적 늦게 진행되었으며, MLP(Multi-Layer Perceptron)와 같은 단순한 구조로는 부스팅 트리 모델을 안정적으로 추월하지 못하는 한계가 보고되어 왔다 [14]. 이러한 상황에서 Arik과 Pfister가 2021년에 제안한 TabNet [4]은 정형 데이터에 특화된 sparse 어텐션 기반 변수 선택 메커니즘을 도입함으로써 부스팅 트리에 견줄 만한 성능을 달성하면서 동시에 인스턴스 수준의 해석 가능성을 제공할 수 있는 모델로 주목받았다. TabNet의 핵심 구성 요소인 *sequential attention*은 매 step마다 sparsemax 함수를 통해 일부 변수만을 선택하여 처리하므로, 결과적으로 산출되는 어텐션 마스크는 인스턴스별로 어떤 변수가 의사결정에 기여했는지를 직접적으로 나타낸다.
 
-손지민(2024)의 연구 [15]는 본 연구와 동일한 학과·지도교수 환경에서 진행된 선행 연구로, HELOC 데이터셋 위에서 로지스틱 회귀, 의사결정나무, SVM, XGBoost, CNN, RNN 등 다양한 모델의 신용 리스크 예측 성능을 비교 분석하였다. 분석 결과 SVM과 하이퍼파라미터 튜닝을 거친 XGBoost가 머신러닝 모델 중 가장 우수한 성능을 보였으며, 딥러닝 모델에서는 RNN에 Dropout을 적용한 구조가 가장 안정적인 일반화 성능을 나타냄을 보고하였다. 본 연구는 손지민의 연구가 다룬 *모델 성능 비교* 의 관점을 넘어, 동일한 신용평가 도메인에서 *예측 모델의 해석 정보* 를 활용한 자연어 설명 생성으로 연구 범위를 확장한다는 점에서 차별성을 갖는다.
+본 연구는 기존 신용평가 연구가 다룬 *모델 성능 비교* 의 관점을 넘어, 동일한 신용평가 도메인에서 *예측 모델의 해석 정보* 를 활용한 자연어 설명 생성으로 연구 범위를 확장한다는 점에서 차별성을 갖는다.
 
 ## 2.3 설명 가능한 인공지능(XAI)
 
@@ -24,7 +24,7 @@ SHAP(SHapley Additive exPlanations) [6]은 게임 이론의 Shapley 값을 머�
 
 > **수식 2-1**: f(x) = phi_0 + sum_{i=1 to n} phi_i
 
-여기서 phi_0 은 기준 예측값(base value)이며 phi_i 는 각 변수의 SHAP 기여도이다. SHAP의 핵심 강점은 가산성(local accuracy) 외에도 일관성(consistency)과 결측 값 처리(missingness) 등 여러 바람직한 성질을 동시에 만족한다는 점에 있다. 특히 트리 기반 모델에는 효율적인 다항 시간 알고리즘인 TreeSHAP이 제안되어 [16] 대규모 데이터에서도 합리적인 시간에 SHAP 값을 산출할 수 있다.
+여기서 phi_0 은 기준 예측값(base value)이며 phi_i 는 각 변수의 SHAP 기여도이다. SHAP의 핵심 강점은 가산성(local accuracy) 외에도 일관성(consistency)과 결측 값 처리(missingness) 등 여러 바람직한 성질을 동시에 만족한다는 점에 있다. 특히 트리 기반 모델에는 효율적인 다항 시간 알고리즘인 TreeSHAP이 제안되어 [15] 대규모 데이터에서도 합리적인 시간에 SHAP 값을 산출할 수 있다.
 
 신용평가 분야에서 SHAP은 변수별 기여도의 절댓값 평균(mean(|SHAP|))을 통한 *전역 해석(global interpretation)* 과 단일 인스턴스에 대한 *지역 해석(local interpretation)* 양 측면에서 활발히 활용되고 있다. 본 연구에서는 SHAP local 값을 LLM 컨텍스트의 핵심 정보원으로 활용하며, 특히 부호(sign) 정보를 통해 *부도 가능성을 높이는/낮추는 요인* 의 구분을 자연어로 표현한다.
 
@@ -36,7 +36,7 @@ TabNet [4]의 *sequential attention*은 모델 내부에서 산출되는 변수 
 
 ### 2.3.3 SHAP과 어텐션의 일관성에 관한 선행 연구
 
-XAI 분야에서는 attention이 진정한 모델 해석으로 신뢰될 수 있는지에 대한 논쟁이 지속되어 왔다 [17]. Jain과 Wallace는 *Attention is not Explanation* 에서 어텐션 가중치가 SHAP과 같은 기여도 기반 해석과 항상 일치하지는 않음을 실험적으로 보였으며, 이는 어텐션을 단독 해석 도구로 활용하는 것이 위험할 수 있음을 시사한다. 그러나 동일한 비판이 다른 관점에서는 *서로 다른 해석 모델의 융합* 의 가치를 강조하는 근거가 될 수 있다. 즉 SHAP과 어텐션이 동시에 주목한 변수는 두 해석 모델 모두가 동의한 강한 신호로 해석될 수 있으며, 이는 단일 해석 모델보다 더 신뢰할 수 있는 의사결정 근거가 된다.
+XAI 분야에서는 attention이 진정한 모델 해석으로 신뢰될 수 있는지에 대한 논쟁이 지속되어 왔다 [16]. Jain과 Wallace는 *Attention is not Explanation* 에서 어텐션 가중치가 SHAP과 같은 기여도 기반 해석과 항상 일치하지는 않음을 실험적으로 보였으며, 이는 어텐션을 단독 해석 도구로 활용하는 것이 위험할 수 있음을 시사한다. 그러나 동일한 비판이 다른 관점에서는 *서로 다른 해석 모델의 융합* 의 가치를 강조하는 근거가 될 수 있다. 즉 SHAP과 어텐션이 동시에 주목한 변수는 두 해석 모델 모두가 동의한 강한 신호로 해석될 수 있으며, 이는 단일 해석 모델보다 더 신뢰할 수 있는 의사결정 근거가 된다.
 
 본 연구는 이 관점을 채택하여 *동의 기반(agreement-aware)* 융합 컨텍스트를 설계하며, SHAP top-k와 TabNet 어텐션 top-k의 교집합·차집합을 명시적으로 분류한 정보를 LLM 프롬프트에 전달한다.
 
@@ -46,27 +46,27 @@ XAI 분야에서는 attention이 진정한 모델 해석으로 신뢰될 수 있
 
 거대언어모델(Large Language Model, LLM)은 수백억~수천억 개 매개변수를 갖는 트랜스포머(Transformer) 기반의 시퀀스 생성 모델로, 자연어 이해와 생성 양 측면에서 인간 수준에 근접한 성능을 보이며 다양한 응용 분야에서 활용되고 있다 [7]. 본 연구에서는 Anthropic Claude Sonnet 4.5와 Google Gemini 2.5 Flash 두 모델을 동시에 활용하여 모델 의존성을 줄이고 cross-LLM 비교를 통한 robust한 결과를 얻고자 한다.
 
-LLM의 자연어 생성 능력은 강력하지만, 모델이 학습 데이터에 없는 정보를 *환각(hallucination)* 하여 생성하는 본질적 위험을 동반한다 [18]. 신용평가와 같은 고위험 도메인에서 환각은 즉각적인 신뢰 손상으로 이어지므로 차단이 필수적이다. 검색 증강 생성(Retrieval-Augmented Generation, RAG) [8]은 LLM의 입력 컨텍스트에 외부 지식 자료를 검색·삽입함으로써 환각을 줄이는 핵심 기법으로, 신용평가에서는 변수 정의·도메인 지식·SHAP 해석 정보 등을 컨텍스트에 명시적으로 포함하여 LLM이 사실에 기반한 설명을 생성하도록 유도할 수 있다.
+LLM의 자연어 생성 능력은 강력하지만, 모델이 학습 데이터에 없는 정보를 *환각(hallucination)* 하여 생성하는 본질적 위험을 동반한다 [17]. 신용평가와 같은 고위험 도메인에서 환각은 즉각적인 신뢰 손상으로 이어지므로 차단이 필수적이다. 검색 증강 생성(Retrieval-Augmented Generation, RAG) [8]은 LLM의 입력 컨텍스트에 외부 지식 자료를 검색·삽입함으로써 환각을 줄이는 핵심 기법으로, 신용평가에서는 변수 정의·도메인 지식·SHAP 해석 정보 등을 컨텍스트에 명시적으로 포함하여 LLM이 사실에 기반한 설명을 생성하도록 유도할 수 있다.
 
 본 연구의 fusion 컨텍스트는 RAG의 일반 원리를 따르되, 인스턴스별 SHAP local 값과 TabNet 어텐션을 *retrieval* 의 결과로 간주하여 LLM에 전달하는 신용평가 특화 변형으로 이해할 수 있다.
 
 ### 2.4.2 환각의 정의와 정량 평가
 
-자연어 생성에서의 환각은 *입력 컨텍스트에 없는 사실의 생성* 으로 정의되며 [18], 측정 방법에 따라 (1) 룰 기반 토큰 매칭, (2) NLI 기반 의미적 함의도, (3) LLM 기반 평가 등 다양한 접근이 존재한다. 룰 기반 환각률은 LLM 출력에 등장한 특정 패턴(예: 영문 대문자 변수명)이 입력 컨텍스트에 명시된 변수 집합에 속하는지 검사하여 산출되며, 검색이 빠르고 결정적이라는 장점이 있지만 표현의 다양성을 충분히 잡지 못한다는 한계가 있다. NLI 기반 평가는 컨텍스트를 *전제(premise)*, LLM 출력을 *가설(hypothesis)* 로 간주하여 함의(entailment)/중립(neutral)/모순(contradiction) 분포를 측정하며, 의미적 일관성을 정량화할 수 있다는 점에서 룰 기반의 한계를 보완한다.
+자연어 생성에서의 환각은 *입력 컨텍스트에 없는 사실의 생성* 으로 정의되며 [17], 측정 방법에 따라 (1) 룰 기반 토큰 매칭, (2) NLI 기반 의미적 함의도, (3) LLM 기반 평가 등 다양한 접근이 존재한다. 룰 기반 환각률은 LLM 출력에 등장한 특정 패턴(예: 영문 대문자 변수명)이 입력 컨텍스트에 명시된 변수 집합에 속하는지 검사하여 산출되며, 검색이 빠르고 결정적이라는 장점이 있지만 표현의 다양성을 충분히 잡지 못한다는 한계가 있다. NLI 기반 평가는 컨텍스트를 *전제(premise)*, LLM 출력을 *가설(hypothesis)* 로 간주하여 함의(entailment)/중립(neutral)/모순(contradiction) 분포를 측정하며, 의미적 일관성을 정량화할 수 있다는 점에서 룰 기반의 한계를 보완한다.
 
-LLM 평가에서 자주 활용되는 *G-Eval* [19]은 평가용 프롬프트를 통해 또 다른 LLM(judge)이 평가 대상 LLM(target)의 출력을 다차원 척도로 점수화하는 *LLM-as-a-Judge* 패러다임이다. 본 연구에서는 Anthropic Claude를 judge로, Google Gemini를 target으로(또는 그 반대로) 교차 평가함으로써 self-bias를 회피한다.
+LLM 평가에서 자주 활용되는 *G-Eval* [18]은 평가용 프롬프트를 통해 또 다른 LLM(judge)이 평가 대상 LLM(target)의 출력을 다차원 척도로 점수화하는 *LLM-as-a-Judge* 패러다임이다. 본 연구에서는 Anthropic Claude를 judge로, Google Gemini를 target으로(또는 그 반대로) 교차 평가함으로써 self-bias를 회피한다.
 
 ## 2.5 신용평가의 공정성
 
 ### 2.5.1 4/5 규칙과 Disparate Impact
 
-신용평가는 성별·연령·인종 등 보호 속성(protected attribute)에 대하여 차별적 영향이 없도록 평가되어야 한다. 미국 EEOC(Equal Employment Opportunity Commission)는 1978년 *4/5 규칙(80% rule)* [20]을 제시하였는데, 이는 보호 속성 그룹 간 합격률 비율(또는 본 연구에서는 부도 예측 비율)이 0.8 미만일 경우 *불리한 영향(adverse impact)* 으로 판단하는 규제 기준이다. 정량 지표로는 *Disparate Impact ratio*(DI ratio)가 활용되며 다음과 같이 정의된다.
+신용평가는 성별·연령·인종 등 보호 속성(protected attribute)에 대하여 차별적 영향이 없도록 평가되어야 한다. 미국 EEOC(Equal Employment Opportunity Commission)는 1978년 *4/5 규칙(80% rule)* [19]을 제시하였는데, 이는 보호 속성 그룹 간 합격률 비율(또는 본 연구에서는 부도 예측 비율)이 0.8 미만일 경우 *불리한 영향(adverse impact)* 으로 판단하는 규제 기준이다. 정량 지표로는 *Disparate Impact ratio*(DI ratio)가 활용되며 다음과 같이 정의된다.
 
 > **수식 2-2**: DI = P(ŷ=1 | protected) / P(ŷ=1 | non-protected)
 
 DI 값이 [0.8, 1.25] 범위 내에 있으면 4/5 규칙을 통과한 것으로 간주된다.
 
-이외에도 *Demographic Parity*(DP, 그룹 간 양성 예측률 차이)와 *Equal Opportunity*(EO, 양성 클래스에 한정한 진양성률 차이) 등이 추가 공정성 지표로 활용된다 [21]. DP는 그룹 간 절대 차이만을 보지만 EO는 양성 클래스의 정확도까지 반영한다는 점에서 보완 관계에 있다.
+이외에도 *Demographic Parity*(DP, 그룹 간 양성 예측률 차이)와 *Equal Opportunity*(EO, 양성 클래스에 한정한 진양성률 차이) 등이 추가 공정성 지표로 활용된다 [20]. DP는 그룹 간 절대 차이만을 보지만 EO는 양성 클래스의 정확도까지 반영한다는 점에서 보완 관계에 있다.
 
 ### 2.5.2 공정성 보정 기법
 
@@ -78,22 +78,22 @@ Kamiran-Calders Reweighing [9]은 대표적인 사전 처리 기법으로, 학�
 
 여기서 s 는 보호 속성, y 는 결과 변수이다. Reweighing은 학습 알고리즘의 변경 없이 단순히 가중치만을 재계산하므로 적용이 간단하면서도 강력한 효과를 보인다.
 
-도중 처리 기법으로는 Microsoft의 Fairlearn [22] 라이브러리가 제공하는 *Exponentiated Gradient* 가 있다. 이는 라그랑주 형태의 공정성 제약을 학습 알고리즘에 직접 통합하여 보호 속성 간 결과 분포의 편차를 명시적으로 최소화하는 방식이다. 본 연구에서는 사전 처리(Reweighing)와 도중 처리(Fairlearn DP·EO) 모두를 비교 적용하여, 신용평가 도메인에서 어느 기법이 가장 효과적인지 정량 평가한다.
+도중 처리 기법으로는 Microsoft의 Fairlearn [21] 라이브러리가 제공하는 *Exponentiated Gradient* 가 있다. 이는 라그랑주 형태의 공정성 제약을 학습 알고리즘에 직접 통합하여 보호 속성 간 결과 분포의 편차를 명시적으로 최소화하는 방식이다. 본 연구에서는 사전 처리(Reweighing)와 도중 처리(Fairlearn DP·EO) 모두를 비교 적용하여, 신용평가 도메인에서 어느 기법이 가장 효과적인지 정량 평가한다.
 
 ## 2.6 LLM 평가 방법론
 
 ### 2.6.1 G-Eval과 LLM-as-a-Judge
 
-G-Eval [19]은 LLM이 평가자(judge) 역할을 수행하여 다른 LLM의 출력을 4~5차원의 정량 척도로 점수화하는 평가 프레임워크이다. 평가 차원은 일반적으로 (1) 사실 정확성(factual accuracy), (2) 충실성(completeness/coherence), (3) 민감 정보 노출(sensitivity/safety), (4) 표현 적합성(style)으로 구성된다. 본 연구는 이 4차원 척도를 신용평가 도메인에 맞게 변용하여 *factual_accuracy / completeness / sensitive_leak / style* 의 4개 항목을 1~5점 척도로 평가한다.
+G-Eval [18]은 LLM이 평가자(judge) 역할을 수행하여 다른 LLM의 출력을 4~5차원의 정량 척도로 점수화하는 평가 프레임워크이다. 평가 차원은 일반적으로 (1) 사실 정확성(factual accuracy), (2) 충실성(completeness/coherence), (3) 민감 정보 노출(sensitivity/safety), (4) 표현 적합성(style)으로 구성된다. 본 연구는 이 4차원 척도를 신용평가 도메인에 맞게 변용하여 *factual_accuracy / completeness / sensitive_leak / style* 의 4개 항목을 1~5점 척도로 평가한다.
 
-LLM-as-a-Judge 패러다임의 본질적 한계는 *self-bias* 로, 평가자가 자신과 동일하거나 유사한 모델의 출력을 더 우호적으로 평가하는 경향이다 [23]. 이를 완화하기 위해 본 연구는 *교차 평가(cross-judge)* 를 도입하여 Claude가 Gemini의 출력을, Gemini가 Claude의 출력을 평가하도록 구성한다.
+LLM-as-a-Judge 패러다임의 본질적 한계는 *self-bias* 로, 평가자가 자신과 동일하거나 유사한 모델의 출력을 더 우호적으로 평가하는 경향이다 [22]. 이를 완화하기 위해 본 연구는 *교차 평가(cross-judge)* 를 도입하여 Claude가 Gemini의 출력을, Gemini가 Claude의 출력을 평가하도록 구성한다.
 
 ### 2.6.2 NLI 기반 의미적 충실성 평가
 
-자연어 추론(Natural Language Inference, NLI) 모델은 두 문장의 관계를 *함의(entailment)*, *중립(neutral)*, *모순(contradiction)* 으로 분류하는 분류기이다. 본 연구는 다국어 NLI 모델인 mDeBERTa-v3-base-xnli [24]를 활용하여 한국어 문장에 대한 함의도 평가를 수행한다. 평가 대상 LLM 출력의 각 문장을 가설로, fusion 컨텍스트의 자연어 변환을 전제로 입력하여 함의 확률의 평균을 instance-level 충실성 지표로 사용한다.
+자연어 추론(Natural Language Inference, NLI) 모델은 두 문장의 관계를 *함의(entailment)*, *중립(neutral)*, *모순(contradiction)* 으로 분류하는 분류기이다. 본 연구는 다국어 NLI 모델인 mDeBERTa-v3-base-xnli [23]를 활용하여 한국어 문장에 대한 함의도 평가를 수행한다. 평가 대상 LLM 출력의 각 문장을 가설로, fusion 컨텍스트의 자연어 변환을 전제로 입력하여 함의 확률의 평균을 instance-level 충실성 지표로 사용한다.
 
 ### 2.6.3 페르소나 기반 평가
 
-자연어 설명은 동일한 내용이라도 신용 전문가·고객·규제기관 등 이해관계자 관점에 따라 적합성이 달라진다. 정식 인간 평가(human evaluation)는 IRB(Institutional Review Board) 승인이 필요하여 연구 단계에서 즉각 적용이 어려우므로, 본 연구는 LLM을 페르소나 평가자로 대리(proxy)하여 활용하는 *pilot human-proxy* 접근을 채택한다 [25]. 3개의 페르소나(신용 전문가 / 고객 / 규제기관)에 대하여 *신뢰도(trustworthiness)*, *명료도(clarity)*, *행동 가능성(actionability)* 의 3가지 척도를 5점 만점으로 평가하도록 LLM judge에게 지시한다.
+자연어 설명은 동일한 내용이라도 신용 전문가·고객·규제기관 등 이해관계자 관점에 따라 적합성이 달라진다. 정식 인간 평가(human evaluation)는 IRB(Institutional Review Board) 승인이 필요하여 연구 단계에서 즉각 적용이 어려우므로, 본 연구는 LLM을 페르소나 평가자로 대리(proxy)하여 활용하는 *pilot human-proxy* 접근을 채택한다 [24]. 3개의 페르소나(신용 전문가 / 고객 / 규제기관)에 대하여 *신뢰도(trustworthiness)*, *명료도(clarity)*, *행동 가능성(actionability)* 의 3가지 척도를 5점 만점으로 평가하도록 LLM judge에게 지시한다.
 
 이상의 이론적 배경을 바탕으로, 본 연구는 다음 제3장에서 데이터셋과 전처리 정책을, 제4장에서 본 연구가 제안하는 4단계 파이프라인을 구체적으로 기술한다.

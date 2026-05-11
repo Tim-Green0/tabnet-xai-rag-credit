@@ -35,41 +35,28 @@
 
 [14] R. Shwartz-Ziv and A. Armon, "Tabular data: Deep learning is not all you need", *Information Fusion*, vol. 81, pp. 84-90, 2022.
 
-[15] 손지민, "머신러닝 및 딥러닝 모델을 이용한 개인 신용 리스크 예측 성능 비교 분석", 서강대학교 AI·SW대학원 석사학위논문, 2024년 12월.
+[15] S. M. Lundberg, G. Erion, H. Chen, et al., "From local explanations to global understanding with explainable AI for trees", *Nature Machine Intelligence*, vol. 2, no. 1, pp. 56-67, 2020.
 
-[16] S. M. Lundberg, G. Erion, H. Chen, et al., "From local explanations to global understanding with explainable AI for trees", *Nature Machine Intelligence*, vol. 2, no. 1, pp. 56-67, 2020.
+[16] S. Jain and B. C. Wallace, "Attention is not Explanation", *Proceedings of NAACL-HLT 2019*, pp. 3543-3556, 2019.
 
-[17] S. Jain and B. C. Wallace, "Attention is not Explanation", *Proceedings of NAACL-HLT 2019*, pp. 3543-3556, 2019.
+[17] Z. Ji, N. Lee, R. Frieske, et al., "Survey of hallucination in natural language generation", *ACM Computing Surveys*, vol. 55, no. 12, pp. 1-38, 2023.
 
-[18] Z. Ji, N. Lee, R. Frieske, et al., "Survey of hallucination in natural language generation", *ACM Computing Surveys*, vol. 55, no. 12, pp. 1-38, 2023.
+[18] Y. Liu, D. Iter, Y. Xu, et al., "G-Eval: NLG evaluation using GPT-4 with better human alignment", *Proceedings of EMNLP 2023*, pp. 2511-2522, 2023.
 
-[19] Y. Liu, D. Iter, Y. Xu, et al., "G-Eval: NLG evaluation using GPT-4 with better human alignment", *Proceedings of EMNLP 2023*, pp. 2511-2522, 2023.
+[19] U.S. Equal Employment Opportunity Commission, "Uniform Guidelines on Employee Selection Procedures", *29 CFR Part 1607*, 1978.
 
-[20] U.S. Equal Employment Opportunity Commission, "Uniform Guidelines on Employee Selection Procedures", *29 CFR Part 1607*, 1978.
+[20] M. Hardt, E. Price, and N. Srebro, "Equality of opportunity in supervised learning", *Advances in Neural Information Processing Systems 29 (NIPS 2016)*, pp. 3315-3323, 2016.
 
-[21] M. Hardt, E. Price, and N. Srebro, "Equality of opportunity in supervised learning", *Advances in Neural Information Processing Systems 29 (NIPS 2016)*, pp. 3315-3323, 2016.
+[21] S. Bird, M. Dudík, R. Edgar, et al., "Fairlearn: A toolkit for assessing and improving fairness in AI", *Microsoft Technical Report MSR-TR-2020-32*, 2020.
 
-[22] S. Bird, M. Dudík, R. Edgar, et al., "Fairlearn: A toolkit for assessing and improving fairness in AI", *Microsoft Technical Report MSR-TR-2020-32*, 2020.
+[22] L. Zheng, W.-L. Chiang, Y. Sheng, et al., "Judging LLM-as-a-judge with MT-Bench and Chatbot Arena", *Advances in Neural Information Processing Systems 36 (NeurIPS 2023)*, pp. 46595-46623, 2023.
 
-[23] L. Zheng, W.-L. Chiang, Y. Sheng, et al., "Judging LLM-as-a-judge with MT-Bench and Chatbot Arena", *Advances in Neural Information Processing Systems 36 (NeurIPS 2023)*, pp. 46595-46623, 2023.
+[23] M. Laurer, W. van Atteveldt, A. Casas, and K. Welbers, "Less annotating, more classifying: Addressing the data scarcity issue of supervised machine learning with deep transfer learning and BERT-NLI", *Political Analysis*, vol. 32, no. 1, pp. 84-100, 2024.
 
-[24] M. Laurer, W. van Atteveldt, A. Casas, and K. Welbers, "Less annotating, more classifying: Addressing the data scarcity issue of supervised machine learning with deep transfer learning and BERT-NLI", *Political Analysis*, vol. 32, no. 1, pp. 84-100, 2024.
-
-[25] J. Park, J. C. O'Brien, C. J. Cai, et al., "Generative agents: Interactive simulacra of human behavior", *Proceedings of UIST 2023*, pp. 1-22, 2023.
+[24] J. Park, J. C. O'Brien, C. J. Cai, et al., "Generative agents: Interactive simulacra of human behavior", *Proceedings of UIST 2023*, pp. 1-22, 2023.
 
 ---
 
-## 추가 예정 (Phase 3~5에서 인용 시)
+## 한국어 문헌
 
-- 본 연구의 paid LLM API: Anthropic Claude Sonnet 4.5, Google Gemini 2.5 Flash 공식 문서
-- pytorch-tabnet 라이브러리 [Github citation]
-- shap 라이브러리 (Lundberg)
-- 본 연구 GitHub repo: `Tim-Green0/tabnet-xai-rag-credit`
-- (Step 5-A) Demographic Parity 정의: Calders & Verwer, 2010
-- 일반화 검증 관련: 추가 데이터셋 (Lending Club, Australian Credit) 인용은 future work 부분에만
-- LLM 평가 방법론 추가: ROUGE, BLEU, BERTScore 등 (간단 비교용)
-
-## 한국어 문헌 (가나다순, 본문 인용 시 별도 정리 가능)
-
-- 손지민 [15]
 - 금융위원회 [5]

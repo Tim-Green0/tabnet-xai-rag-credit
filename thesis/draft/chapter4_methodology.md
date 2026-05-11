@@ -8,7 +8,7 @@
 
 1. **예측 단계**: XGBoost가 메인 예측 모델로 부도 확률 p (0~1 범위)을 산출한다. TabNet은 보조 모델로서 별도의 부도 확률 예측을 수행하면서, 동시에 인스턴스 수준의 어텐션 마스크 M_att 를 추출한다.
 
-2. **해석 단계**: XGBoost의 예측에 대해 TreeSHAP [16]을 적용하여 인스턴스별 변수 SHAP 값 phi (n차원 실수 벡터)을 산출하고, TabNet의 어텐션 마스크 M_att (값 범위 [0, 1]의 n차원 벡터)와 비교 가능한 형태로 정렬한다.
+2. **해석 단계**: XGBoost의 예측에 대해 TreeSHAP [15]을 적용하여 인스턴스별 변수 SHAP 값 phi (n차원 실수 벡터)을 산출하고, TabNet의 어텐션 마스크 M_att (값 범위 [0, 1]의 n차원 벡터)와 비교 가능한 형태로 정렬한다.
 
 3. **융합 컨텍스트 구성 단계**: SHAP 상위 k_shap 변수와 어텐션 상위 k_att 변수를 *동의 그룹(agreed)*, *SHAP 단독(shap_only)*, *어텐션 단독(attention_only)* 의 세 그룹으로 분류한 JSON 컨텍스트를 생성한다. 이 단계에서 보호 속성에 해당하는 변수는 명시적으로 마스킹된다.
 
@@ -179,7 +179,7 @@ LLM 기반 자연어 설명에서 차주에게 노출되는 텍스트에 보호 
 
 ### 4.6.2 Fairlearn ExpGrad — 도중 처리
 
-비교 baseline으로 Microsoft Fairlearn의 Exponentiated Gradient(ExpGrad) 알고리즘 [22]을 적용한다. 이는 라그랑주 형태의 공정성 제약(Demographic Parity 또는 Equal Opportunity)을 학습 알고리즘에 직접 통합하는 도중 처리 기법으로, 보호 속성 그룹 간의 결과 분포 편차를 명시적으로 최소화한다.
+비교 baseline으로 Microsoft Fairlearn의 Exponentiated Gradient(ExpGrad) 알고리즘 [21]을 적용한다. 이는 라그랑주 형태의 공정성 제약(Demographic Parity 또는 Equal Opportunity)을 학습 알고리즘에 직접 통합하는 도중 처리 기법으로, 보호 속성 그룹 간의 결과 분포 편차를 명시적으로 최소화한다.
 
 본 연구는 두 가지 제약 형태(DP, EO)를 모두 적용하여 비교한다. 사전 결과로는 ExpGrad+DP는 AUROC 손실이 큰 반면 4/5 규칙은 통과하지 못하는 경우가 있고, ExpGrad+EO는 4/5 규칙(이는 DP 기반)을 직접 보장하지 않는 본질적 한계가 관찰되었다. 자세한 비교는 6장에서 보고한다.
 

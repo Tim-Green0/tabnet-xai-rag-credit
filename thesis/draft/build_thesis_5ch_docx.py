@@ -105,12 +105,11 @@ def main():
     sec.left_margin = Cm(3.0)
     sec.right_margin = Cm(2.5)
 
-    # 별지 양식
+    # 별지 양식 (감사의 글 제거 — 사용자 결정)
     add_cover_page(doc)
     add_inner_cover(doc)
     add_submission_page(doc)
     add_approval_page(doc)
-    add_acknowledgement(doc)
 
     # 목차/표차례/그림차례 — Word 필드
     add_heading(doc, "목   차", level=1)
@@ -305,7 +304,7 @@ def main():
     # 부록
     add_chapter_from_md(doc, DRAFT_DIR / "appendix.md")
 
-    out = DRAFT_DIR / "thesis_draft_5ch.docx"
+    out = DRAFT_DIR / "thesis_draft.docx"
     doc.save(str(out))
     print(f"[OK] thesis 5장 docx 빌드 완료: {out}")
     print(f"     파일 크기: {out.stat().st_size / 1024:.1f} KB")

@@ -41,7 +41,7 @@ Hallucination Rate는 LLM 출력에 등장한 변수 토큰 중 컨텍스트에 
 
 ### 5.3.1 mDeBERTa 다국어 NLI 모델
 
-본 연구는 NLI 평가용 모델로 `MoritzLaurer/mDeBERTa-v3-base-xnli-multilingual-nli-2mil7` [24]을 활용한다. 이는 mDeBERTa-v3 기반 다국어 NLI 모델로 2.7M개 다국어 NLI 표본으로 fine-tuning되었으며, 한국어를 포함한 다국어 추론 능력을 보유한다. 본 연구의 자연어 설명은 한국어로 작성되므로 한국어 추론 능력이 필수적이며, 본 모델은 이 요건을 충족한다.
+본 연구는 NLI 평가용 모델로 `MoritzLaurer/mDeBERTa-v3-base-xnli-multilingual-nli-2mil7` [23]을 활용한다. 이는 mDeBERTa-v3 기반 다국어 NLI 모델로 2.7M개 다국어 NLI 표본으로 fine-tuning되었으며, 한국어를 포함한 다국어 추론 능력을 보유한다. 본 연구의 자연어 설명은 한국어로 작성되므로 한국어 추론 능력이 필수적이며, 본 모델은 이 요건을 충족한다.
 
 원래 한국어 전용 NLI 모델(예: `Huffon/klue-roberta-base-nli`)도 후보였으나, 최신 PyTorch 2.5와 transformers 5.7 환경에서 보안 이슈(CVE-2025-32434, .bin 파일 차단)로 인해 safetensors 형식의 mDeBERTa-v3로 최종 결정하였다.
 
@@ -70,7 +70,7 @@ LLM 출력 텍스트를 문장 단위로 분리한 후(섹션 헤더, [개선 �
 
 ### 5.4.1 4차원 척도
 
-G-Eval [19]은 LLM이 평가자(judge) 역할을 수행하여 다른 LLM의 출력을 다차원 척도로 점수화하는 프레임워크이다. 본 연구는 신용평가 도메인에 맞춰 4가지 척도를 1~5점 정수 척도로 정의한다.
+G-Eval [18]은 LLM이 평가자(judge) 역할을 수행하여 다른 LLM의 출력을 다차원 척도로 점수화하는 프레임워크이다. 본 연구는 신용평가 도메인에 맞춰 4가지 척도를 1~5점 정수 척도로 정의한다.
 
 - **factual_accuracy**: 설명의 모든 변수명·수치·SHAP 부호가 컨텍스트와 일치하는 정도. (1=다수 불일치, 5=완벽 일치)
 - **completeness**: 컨텍스트의 top driver를 충분히 다루며 결정 사유를 명확히 전달하는 정도. (1=핵심 누락, 5=완결)
@@ -133,7 +133,7 @@ Equal Opportunity는 양성 클래스에 한정한 *진양성률(TPR)* 의 그�
 
 ### 5.6.3 Disparate Impact ratio (DI ratio)
 
-Disparate Impact ratio는 EEOC의 4/5 규칙 [20]에 직접 대응하는 지표이다.
+Disparate Impact ratio는 EEOC의 4/5 규칙 [19]에 직접 대응하는 지표이다.
 
 > **수식 5-3**: DI_ratio = min[ P(ŷ=1|s=0), P(ŷ=1|s=1) ] / max[ P(ŷ=1|s=0), P(ŷ=1|s=1) ]
 

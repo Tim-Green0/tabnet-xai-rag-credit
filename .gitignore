@@ -42,7 +42,6 @@ paper/*
 !paper/midterm_report_friendly.docx
 !paper/midterm_slides.pptx
 !thesis/draft/thesis_draft.docx
-!thesis/draft/thesis_draft_5ch.docx
 
 # ─── Logs / 임시 ─────────────────────────────────────────
 *.log

@@ -45,7 +45,7 @@ from docx.shared import Cm, Pt, RGBColor
 DRAFT_DIR = Path(__file__).resolve().parent
 KOREAN_FONT = "맑은 고딕"  # Malgun Gothic — Windows 기본, 학위논문지침 허용 범위
 ENG_FONT = "Times New Roman"
-LINE_SPACING = 2.0  # 200%
+LINE_SPACING = 1.6  # 160% (학위논문지침 최소값, 손지민 양식 유사)
 
 # 정보
 TITLE = "정형 데이터 특화 딥러닝(TabNet)과 거대언어모델(LLM) 기반 XAI-RAG를 활용한 설명 가능한 신용 평가 및 사용자 맞춤형 리포트 생성"
