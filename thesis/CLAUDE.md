@@ -13,23 +13,32 @@ git log --oneline -10              # 최근 작업 확인
 git tag -l                         # 마일스톤 태그 (step1 → step5d)
 ls results/day*_summary.md         # Day별 보고서 (Day 1~15)
 ls results/step*_summary.md        # Step 보고서
+ls thesis/draft/                   # 학위논문 초안 (★ 현재 작업)
 cat thesis/CLAUDE.md                # ← 본 파일
 ```
 
-**현재 위치**: Step 5-D 완료 (tag `step5d`, 2026-05-10).
+**현재 위치**: ★ **학위논문 초안 작성 중** (2026-05-11, branch `claude/thesis-draft`).
+- Step 1~5-D 모든 실험 완료 (5가지 약점 해소)
+- Step 5-E (Customer-friendly fusion) 시도 → **revert** (negative result, 핵심 메시지 약화 우려)
+- **학위논문 5장 구조 초안 완성**: `thesis/draft/thesis_draft.docx` (~815 KB, 한국어 본문 ~36,000 단어)
+- 교수님 1차 미팅 완료 → 환각률 0% 정의 명확화 + AUROC 0.76 실무 수준 평가 절 추가
+- 다음: 교수님 2차 검토 대기
+
+**완료된 Step 마일스톤** (git tag):
 - Step 1 (`step1`) — 미팅 프로토타입
 - Step 2-A (`step2a`) — 평가 신뢰성
-- Step 3-B (`step3b`) — 보조 테이블
+- Step 3-B (`step3b`) — 보조 테이블 (AUROC +2.22%)
 - Step 3-C-1 (`step3c1` = `step3`) — TabNet 어텐션 × SHAP 융합
 - Step 3-C-2 (`step3c2`) — NLI 평가
 - Step 3-C-2-f (`step4`) — Cross-Judge G-Eval
 - Step 5-A (`step5a`) — Fairness-aware Learning (Reweighing 4/4 통과)
 - Step 5-B (`step5b`) — Generic RAG Baseline (4-way 비교, 약점 #3 해소)
 - Step 5-C (`step5c`) — Pilot Human-Proxy Evaluation (3 personas, trade-off 발견)
-- **Step 5-D (`step5d`) — UCI German Credit 일반화** ★ 현재 마일스톤 (약점 #5 해소, NLI fusion 0.711 1위, G-Eval completeness 데이터셋별 차이 발견)
+- Step 5-D (`step5d`) — UCI German Credit 일반화 (약점 #5 해소, NLI fusion 0.711 1위)
+- ~~Step 5-E~~ — revert됨 (Customer-friendly fusion, NLI/value_match 손실 vs G-Eval 일부 개선 trade-off — 본 contribution 아님)
 
-**미팅 데드라인**: 2026-05-10 → 연기됨 (사용자 통보, 정확 일정 미확정).
-**미팅 자료**: `paper/midterm_slides.pptx` (23 슬라이드), `paper/midterm_report.docx` (15 섹션), `paper/midterm_report_friendly.docx` (18 섹션) — step5c 통합 완료, step5d 추가는 future work.
+**미팅 데드라인**: 2026-05-10 → 연기됨 → 2026-05-11 1차 미팅 완료, 2차 미정.
+**미팅 자료**: `paper/midterm_slides.pptx` (23 슬라이드), `paper/midterm_report.docx` (15 섹션), `paper/midterm_report_friendly.docx` (18 섹션) — step5c 통합 완료, step5d/학위논문 초안은 별도.
 
 **5가지 약점 진척** (★ 모두 해소 / 부분 해소):
 | 약점 | 상태 | 해소 step |
@@ -40,7 +49,11 @@ cat thesis/CLAUDE.md                # ← 본 파일
 | #4 Fairness mitigation | ✅ 해소 | Step 5-A (Reweighing 4/4 통과) |
 | #5 데이터 다양성 | ✅ 해소 | **Step 5-D (UCI German Credit 일반화)** |
 
-**다음 후보**: §4 참조. 1순위는 **Customer-friendly 표현 정제** (Step 5-C+5-D 양쪽에서 fusion의 LLM judge factual / customer clarity 약점 일관 재현 → 학술 가치 큼).
+**다음 후보**: §4 참조. **교수님 2차 검토 대기 중**. 검토 후보강 방향:
+1. 교수님 추가 피드백 반영
+2. (선택) 3-way ablation (Attention 단독 검증)
+3. (선택) 잔여 보조 테이블 4개 활용 (AUROC 0.81+ 가능)
+4. (선택) 정식 IRB 인간평가 (장기, 심사 직전)
 
 ---
 
@@ -50,10 +63,27 @@ cat thesis/CLAUDE.md                # ← 본 파일
 
 **전공**: DS·AI 석사 / **학번**: A70067 / **이름**: 오현택 / **지도교수**: 박운상
 
-### 핵심 메시지 (Step 5-C 후 정교화)
+### 핵심 메시지 (학위논문 초안 기준)
 - Step 1: "환각 0% vs 45.5%" — 강력하지만 trivial 반박 가능
 - Step 5-B: "환각 차단은 hard constraints로도 가능, 차별성은 fact-grounded 정확성"
-- **Step 5-C: "사실성 1위 + 친근함은 trade-off, 응용에 따라 mode 선택"** ★ 현재 메시지
+- Step 5-C: "사실성 1위 + 친근함은 trade-off, 응용에 따라 mode 선택"
+- Step 5-D: "데이터 복잡도가 fusion 우월성에 영향 — 복잡 도메인 fusion ↑, 단순 도메인 generic_rag ↑"
+- ~~Step 5-E~~: revert됨 (사실성 vs 친화성 trade-off 입증했으나 본 contribution 아님)
+- **학위논문 메시지** ★ 현재:
+  > "본 연구는 *예측 정확도 갱신* 이 아니라 *Fusion XAI + LLM RAG + 공정성 보정의 통합 시스템* 을 구축.
+  > Baseline 예측 (XGBoost AUROC 0.76, mainstream)을 honest 하게 보고하고,
+  > Fusion의 차별성을 **NLI Entailment 0.625** + **Value Match 0.88** 에서 정량 입증."
+
+### 환각률 0%의 정확한 의미 (★ 교수 미팅 피드백 후 명확화, §4.3.2)
+본 시스템은 3 가지 정확도 차원을 *분리하여* 측정하고 보고한다:
+
+| 차원 | 측정 대상 | 도구 | 본 연구 결과 |
+|---|---|---|---|
+| A. 부도 예측 정확도 | XGBoost가 실제 부도/정상 맞춤 | AUROC, AUPRC, KS | 0.7587 (Home), 0.7714 (German) |
+| **B. LLM 변수명 환각률** | LLM이 없는 변수명 생성 | 룰 기반 영문 토큰 매칭 | **0%** (모든 4-mode) |
+| C. LLM 의미적 충실성 | 설명이 입력과 의미 일치 | NLI Entailment | fusion 0.625, no_shap 0.30 |
+
+"환각률 0%"는 차원 B만 보장. 차원 A는 모델 성능 (§4.1), 차원 C는 의미 충실성 (§4.3.3) 별도 측정.
 
 ### 4단계 파이프라인
 ```
@@ -231,46 +261,73 @@ cat thesis/CLAUDE.md                # ← 본 파일
 > **fusion 메커니즘은 NLI 사실성에서 일관 1위**지만, **데이터 복잡도에 따라 G-Eval 충실성 우월성이 달라지고**, customer clarity·LLM judge factual에서 over-explain 약점.
 > → **응용 시나리오 + 데이터 복잡도** 두 차원에 따른 mode 선택 trade-off.
 
+### ~~Step 5-E~~ (revert됨, 2026-05-11) — Customer-friendly fusion
+
+- 시도: fusion 컨텍스트 그대로 + prompt만 친근하게 변경 (SHAP 부호 자연어화, agreement 라벨 직관 표현, 정성 표현)
+- 양 데이터셋 × 2 LLM × 30 instances = 120 explanations + 120 G-Eval (Anthropic judge)
+- 결과:
+  - 사실성 (NLI/Value Match): 양 데이터셋 일관 **손실** (NLI -0.12~0.17, Val Match -0.25~0.27)
+  - G-Eval: 데이터셋별 정반대 (Home 변화 미미, German factual +0.47/completeness +0.48)
+- **결론**: trade-off 정량 입증했으나 본 contribution의 핵심 메시지 (NLI 1위) 약화 우려 → **revert** (commit `916a3ac` revert)
+- LLM 비용: explanation $1.45 + G-Eval ~$1.30 = ~$2.75 (학습 비용)
+
+### 학위논문 초안 작성 (2026-05-11 진행 중, branch `claude/thesis-draft`)
+
+- **5장 구조** (한국 석사 표준, 손지민 2024 패턴 일부 참조하되 직접 인용 제거)
+  - 1장 서론 / 2장 이론적 배경 / 3장 연구 방법론 / 4장 분석 결과 / 5장 결론 및 시사점
+- **본문 분량**: 한국어 ~36,000 단어, ~70-80 페이지
+- **양식**: 학위논문지침 준수 (Malgun Gothic, 11pt, 줄간격 160%, IEEE [N] 인용)
+- **별지**: 3호 겉표지 / 4호 제출문 (지도교수 박운상) / 5호 인준서 + 목차/표차례/그림차례 (Word ToC field 자동 갱신)
+- **figures**: 그림 4-1 시스템 파이프라인 (matplotlib 신규) + 4-2~4-6 실험 결과 (6개)
+- **참고문헌**: IEEE 양식 24개
+- **산출**: `thesis/draft/thesis_draft.docx` (815 KB, 5장 구조)
+
+#### 교수 미팅 1차 (2026-05-11) 피드백 반영
+1. **환각률 0% 정의 명확화** (§4.3.2) — A/B/C 3차원 분리:
+   - A. 부도 예측 정확도 (XGBoost AUROC, 별도)
+   - B. LLM 변수명 환각률 (0%, 본 절)
+   - C. LLM 의미적 충실성 (NLI Entailment, §4.3.3)
+2. **AUROC 0.76 실무 수준 평가** (§4.1.4) — Lessmann et al. 2015 벤치마크 비교, 실무 도입 보강 5항목
+
 ---
 
-## 4. 다음 단계 후보 (Step 5-E ~)
+## 4. 다음 단계 후보 (학위논문 초안 → 교수 검토 후)
 
-### 🥇 1순위 — Customer-friendly 표현 정제 (★ Step 5-C+5-D 양쪽 재현)
-- **근거**: Step 5-C에서 fusion customer clarity 2.67 약점, Step 5-D에서 fusion G-Eval factual 2.97 (Gemini), generic_rag 5.0과 큰 격차 — **양 데이터셋에서 fusion over-explain 일관 재현**
-- 작업: SHAP 부호("+/-") 자연어화 ("부도 가능성을 높이는/낮추는"), agreement 라벨 직관 표현 ("두 모델이 모두 본"), 동일 인스턴스 재호출 + persona 평가
-- **2~3일**
+### 🥇 1순위 — 교수님 2차 검토 피드백 반영
+- 미정 (검토 후 결정)
+- **현재**: thesis/draft/thesis_draft.docx 작성 완료, 교수 검토 대기
 
 ### 🥈 2순위 — 3-way ablation (Attention-only 단독 검증)
 - **근거**: 현재 `shaponly vs fusion` 비교만 있고 Attention-only 단독 mode 미검증. Fusion 우월성이 attention의 추가적 기여인지 단순 union 효과인지 isolate 안 됨
 - 작업: TabNet attention top-k만 → LLM 4-mode 비교 (no_shap / attention_only / shaponly / fusion)
 - **3~4일**
 
-### 🥉 3순위 — Step 5-D 보강 (표본 확장 + persona)
-- 표본 30 → 100 (양 데이터셋), Step 5-C persona pilot을 German에도 적용 (trade-off 일반화 입증)
-- 하이브리드 mode (fusion + customer-friendly) 실험
+### 🥉 3순위 — Step 5-D 보강 (표본 확장)
+- 표본 30 → 100 (양 데이터셋)
+- Step 5-C persona pilot을 German에도 적용 (trade-off 일반화 입증)
 - **3~5일**
 
 ### 🎖 4순위 — 보강 작업 (Home Credit 차원)
 - **Bureau ablation** (EXT_SOURCE 응축 가설) — 1~2일
-- **잔여 보조 테이블 4개** (POS_CASH, credit_card, installments + bureau_balance) — 1주
+- **잔여 보조 테이블 4개** (POS_CASH, credit_card, installments + bureau_balance) — 1주, AUROC 0.81+ 가능
 - **TabNet/LightGBM에 aux 효과 일반화** — 3~4일
 
 ### 🏅 5순위 — 추가 데이터셋 (확장 일반화)
-- **Australian Credit** (UCI, 690 × 14) — 3~4일
+- **Australian Credit** (UCI, 690 × 14, 복잡도 중간) — 3~4일
 - **Lending Club** (Kaggle, ~1.3M × 150) — 5~7일
 
-### ⚠️ 6순위 — 정식 IRB 인간평가 (장기, 본 논문 심사 직전)
+### ⚠️ 6순위 — 정식 IRB 인간평가 (장기, 심사 직전)
 - 약점 #2 완전 해소. IRB 간소판 + 5점 척도 + 다수 평가자 + Cohen's κ
 - **1.5~2개월**
 
 ### 권장 진행 순서
 ```
-1순위 Customer-friendly 표현 정제 (2~3일)
-→ 2순위 3-way ablation (3~4일)
-→ 3순위 Step 5-D 보강 — 표본 100 + persona (3~5일)
-→ 5순위 추가 데이터셋 — Australian (3~4일)
-→ 본 논문 초안 작성
-→ 6순위 IRB 인간평가 (심사 전)
+교수님 검토 (2차 미팅) 대기
+→ 2차 피드백 반영 (논문 본문 수정)
+→ (선택) 보강 실험 (3-way ablation 또는 보조 테이블 활용)
+→ 추가 검토
+→ 정식 IRB 인간평가 (심사 전)
+→ 최종 제출
 ```
 
 ---
@@ -349,7 +406,27 @@ D:\paper\
 │   # 35: Step 5-B generic RAG 4-way
 │   # 36: Step 5-C human-proxy personas
 │   # 37-41: Step 5-D German Credit (EDA / CV / SHAP / 4-way / generalization)
-└─ thesis/CLAUDE.md (이 파일) / kaggle_data_setup.md / llm_options.md
+│   # 42: 학위논문 그림 4-1 시스템 파이프라인 (matplotlib 신규)
+├─ thesis/
+│   ├─ CLAUDE.md (이 파일) / kaggle_data_setup.md / llm_options.md
+│   └─ draft/                       # ★ 학위논문 초안 (branch claude/thesis-draft)
+│       ├─ outline.md                  # Phase 진행 노트, 결정사항
+│       ├─ abstract.md                 # 영문 (~250 words) + 국문 (~600자)
+│       ├─ chapter1_introduction.md    # 1장 서론
+│       ├─ chapter2_related_work.md    # 2장 이론적 배경
+│       ├─ chapter3_data.md            # 3.1 데이터셋 및 전처리
+│       ├─ chapter4_methodology.md     # 3.2 시스템 구조 (★ Fusion §4.4)
+│       ├─ chapter5_evaluation.md      # 3.3 평가 프레임워크
+│       ├─ chapter6_results.md         # 4장 분석 결과 (§4.1.4 AUROC 실무 평가)
+│       ├─ chapter7_discussion.md      # 5.1 논의 (5장 build에서 합쳐짐)
+│       ├─ chapter8_conclusion.md      # 5.2 결론
+│       ├─ references.md               # IEEE 24개 (손지민 제거됨)
+│       ├─ appendix.md                 # 부록 A~F
+│       ├─ build_thesis_docx.py        # 8장 build (현재 unused, 호환성 유지)
+│       ├─ build_thesis_5ch_docx.py    # ★ 5장 build (현재 사용)
+│       ├─ make_pipeline_figure.py     # 그림 4-1 생성
+│       ├─ thesis_draft.docx           # ★ 최종 docx (815 KB, 5장 구조)
+│       └─ refs/                       # 학위논문지침 + 학교 발간 6개 논문 텍스트
 ```
 
 ---
@@ -417,6 +494,14 @@ python -m src.gen_report               # 15 섹션
 python -m src.gen_friendly_report      # 18 섹션
 python -m src.gen_slides               # 23 슬라이드
 
+# 학위논문 (★ 현재 작업)
+# 1) 그림 4-1 시스템 파이프라인 재생성 (matplotlib)
+PYTHONIOENCODING=utf-8 .venv/Scripts/python.exe thesis/draft/make_pipeline_figure.py
+# 2) 5장 구조 docx 빌드 (★ 사용 중)
+PYTHONIOENCODING=utf-8 .venv/Scripts/python.exe -W ignore -c "import sys; sys.path.insert(0, 'thesis/draft'); import build_thesis_5ch_docx; build_thesis_5ch_docx.main()"
+# → 출력: thesis/draft/thesis_draft.docx
+# Word에서 [F9]로 목차/표차례/그림차례 자동 갱신
+
 # Git
 git log --oneline -10
 git tag -l                              # step1 ~ step5d
@@ -480,6 +565,14 @@ git -C D:/paper merge --ff-only claude/<worktree-branch>
 | **Step 5-D** | TabNet hyperparams 재조정 (n_d=8, batch_size=128 등 — 1000 샘플 작은 데이터) |
 | **Step 5-D** | German custom humanize 매핑 (GERMAN_GLOSSARY/VALUE_LABELS) — 한국어 컬럼/값 라벨 |
 | **Step 5-D** | G-Eval Anthropic judge로 Anthropic+Gemini 양 출력 평가 (cross-judge는 future work) |
+| **Step 5-E** | revert (negative result, 핵심 메시지 약화 우려) — fusion_friendly mode 폐기, tag 제거 |
+| **학위논문 v1** | 8장 구조로 작성 시도 → 사용자 결정: 5장 구조 (학교 표준, 손지민 2024 패턴) |
+| **학위논문 v2** | 손지민 직접 인용 제거 (학과/교수 명시 우려) + reference 번호 재정렬 [16~25]→[15~24] |
+| **학위논문 v3** | 줄간격 200% → 160% (학위논문지침 최소값) + 감사의 글 제거 |
+| **학위논문 v4** | 그림 4-1 시스템 파이프라인 (matplotlib 자체 작성) + Word ToC 자동 필드 |
+| **학위논문 v5** | 교수 미팅 후 §4.3.2 환각률 A/B/C 3차원 분리 + §4.1.4 AUROC 실무 평가 추가 |
+| **Poppler 설치** | pdftotext 활용 위해 winget으로 Poppler 25.07 설치 (PATH 등록) |
+| **Worktree 워크플로** | 매 step은 `claude/<branch>`에서 commit → main fast-forward → push (이전 세션부터 채택) |
 
 ---
 
@@ -505,28 +598,54 @@ git -C D:/paper merge --ff-only claude/<worktree-branch>
 | **Worktree merge 시 main 디렉토리에 partial 변경 잔여** | **`git -C D:/paper checkout -- <files>` + untracked rm 후 재시도** |
 | Fairlearn ExpGrad EO+AGE 안티 패턴 | EO는 DP를 보장 안 함, 본 데이터의 4/5 rule(DI 기반) 통과엔 부적합 |
 | no_shap 표본 작음 (Step 1 데이터 30 idx 중 1~2개만) | 표본 확장 future work, 현재는 통계 의미 약함 명시 |
+| **python-docx 수식($) 미지원** | LaTeX 수식 → 자연어/유니코드 (ρ, ŷ 등) + `> **수식 N-N**: ...` 박스로 표현 |
+| **python-docx Word ToC 미지원** | OXML 필드 (`w:fldChar` + `TOC \\o "1-3"`) 직접 삽입 → 사용자가 [F9]로 갱신 |
+| **build_thesis_5ch_docx cascade 매핑 버그** | substring replace 시 깊은 헤딩(### X.Y.Z)부터 먼저, ## X.Y 그 다음 — 일반 `## ` 패턴 금지 |
+| **Read tool PDF 변환 실패** | Poppler `pdftoppm` 필요 → winget 설치 후 새 Claude Code 세션 재시작 (PATH 갱신) |
+| **한국어 PDF 우회 추출** | `pdftotext.exe -layout <pdf> <out.txt>` → Read tool로 텍스트 읽기 |
 
 ---
 
 ## 10. 다음 세션 첫 메시지 권장 형식
 
+**★ 현재 상태**: 학위논문 초안(5장 구조, 815 KB docx) 완성, 교수 2차 미팅 대기.
+
 새 세션 시작 시 사용자가 입력하면 좋은 첫 메시지 예:
 
-> "CLAUDE.md 읽고 step5c까지의 진행 상황 확인해줘. 그 다음 UCI German Credit 일반화 (Step 5-D) 시작."
+> "CLAUDE.md 읽고 현재 상태 확인해줘. thesis/draft/thesis_draft.docx 학위논문 초안이 최신 상태야."
 
-또는
+또는 (교수님 2차 미팅 후)
 
-> "Customer-friendly 표현 정제 시작 — Step 5-C에서 발견한 SHAP-RAG의 customer clarity 약점 (2.67~2.80)에 대응."
+> "교수님 2차 피드백: [내용]. 본문 어디 수정할지 정리해줘."
 
-또는
+또는 (보강 실험 진행 시)
 
-> "현재 어디까지 진행됐는지 요약해주고, 다음 후보들 다시 보여줘."
+> "3-way ablation 시작 — Attention-only 단독 검증. Fusion 우월성이 attention 기여인지 isolate."
 
-또는 (미팅 일정 확정 시)
+또는 (추가 데이터셋 진행 시)
 
-> "미팅이 [날짜]로 확정됐어. 그 전까지 우선순위 어떻게 잡을까?"
+> "Australian Credit 추가 — 690 × 14, 복잡도 중간. Step 5-D 패턴 그대로 이식."
+
+또는 (논문 수정)
+
+> "thesis/draft/chapter[1~8]_*.md 수정 후 build_thesis_5ch_docx로 재빌드해줘."
 
 이 파일(§3 진행 흐름)이 최신이면 새 세션이 컨텍스트를 즉시 회복할 수 있다.
+
+### 학위논문 docx 재빌드 빠른 명령
+
+```bash
+PYTHONIOENCODING=utf-8 .venv/Scripts/python.exe -W ignore -c \
+  "import sys; sys.path.insert(0, 'thesis/draft'); import build_thesis_5ch_docx; build_thesis_5ch_docx.main()"
+```
+
+### 환각률 / AUROC 등 교수 미팅 자주 나오는 질문
+
+§3 학위논문 초안 작성 부분 + §1.5 환각률 0%의 정확한 의미 참조. 핵심:
+
+- "환각률 0%" = LLM 변수명 환각률 (차원 B)만 보장. 부도 예측 정확도 (차원 A, AUROC 0.76)와 LLM 의미 충실성 (차원 C, NLI 0.625)은 별도 측정
+- AUROC 0.76은 신용평가 mainstream (Lessmann et al. 2015 0.70~0.80 범위), 실무 가능 수준
+- 본 연구 contribution은 *예측 정확도 갱신* 이 아니라 *통합 시스템 + 4-tier 평가 프레임워크*
 
 ---
 
