@@ -47,7 +47,7 @@ COLOR_LIGHT_BG = RGBColor(0xF4, 0xF6, 0xFA)
 COLOR_WHITE = RGBColor(0xFF, 0xFF, 0xFF)
 
 KOREAN_FONT = "Malgun Gothic"
-TOTAL = 25
+TOTAL = 26
 
 
 # ─────────────────────────────────────────────────────────────
@@ -795,40 +795,120 @@ def make_slides():
     add_footer(s, SW, SH, 14)
 
     # ═══════════════════════════════════════════════════
-    # Slide 15 — 환각률 0%
+    # Slide 15 — 환각률 0% 결과 + Hard Constraints 5항목
     # ═══════════════════════════════════════════════════
     s = add_blank_slide(prs)
-    add_header_bar(s, SW, "13. 환각률 0 % — Hard Constraints의 견고함",
-                       "모든 4-mode × 2 LLM × 30 instance에서 환각 0건")
+    add_header_bar(s, SW, "13. 환각률 0 % 결과 + Hard Constraints",
+                       "모든 4-mode × 2 LLM × 데이터셋에서 환각 0건 — 그 메커니즘")
 
-    add_textbox(s, Cm(1.0), Cm(3.4), Cm(31), Cm(0.8),
-                  "환각률 측정 결과 (4-mode × 2 LLM, Home + German)",
-                  size=15, bold=True, color=COLOR_PRIMARY)
-
+    # 좌측 — 환각률 결과 표
+    add_textbox(s, Cm(1.0), Cm(3.2), Cm(15.5), Cm(0.8),
+                  "(1) 환각률 측정 결과 (300 호출, 양 데이터셋)",
+                  size=13, bold=True, color=COLOR_PRIMARY)
     halluc_rows = [
-        ["Mode", "Home (Claude)", "Home (Gemini)",
-            "German (Claude)", "German (Gemini)"],
-        ["no_shap", "0 / 30", "0 / 30", "0 / 30", "0 / 30"],
-        ["generic_rag", "0 / 30", "0 / 30", "0 / 30", "0 / 30"],
-        ["shaponly", "0 / 30", "0 / 30", "0 / 30", "0 / 30"],
-        ["fusion", "0 / 30", "0 / 30", "0 / 30", "0 / 30"],
+        ["Mode", "Home", "German"],
+        ["no_shap", "0 / 60", "0 / 60"],
+        ["generic_rag", "0 / 60", "0 / 60"],
+        ["shaponly", "0 / 60", "0 / 60"],
+        ["fusion ★", "0 / 60", "0 / 60"],
     ]
-    add_table(s, Cm(2.0), Cm(4.4),
-                [Cm(7), Cm(5.7), Cm(5.7), Cm(5.7), Cm(5.7)],
-                [Cm(1.0)] * len(halluc_rows), halluc_rows, font_size=12)
+    add_table(s, Cm(1.0), Cm(4.2),
+                [Cm(6.5), Cm(4.5), Cm(4.5)],
+                [Cm(0.95)] * len(halluc_rows), halluc_rows, font_size=12)
 
-    add_callout_box(s, Cm(2.0), Cm(11.5), Cm(29.5), Cm(2.5),
-                      "환각 0 % 정의 (§4.3.2): LLM 변수명 환각률 (차원 B)\n"
-                      "→ 본 결과는 hard constraints만으로 충분히 달성됨을 의미 — "
-                      "Fusion의 차별성은 사실 기반 정확성(차원 C)에서 입증되어야 함",
-                      size=14, color=COLOR_ACCENT)
+    add_callout_box(s, Cm(1.0), Cm(10.0), Cm(15.5), Cm(2.5),
+                      "★ 모든 mode에서 0 %\n"
+                      "→ Fusion의 차별성 근거가 아님\n"
+                      "  단순 hard constraint만으로 충분",
+                      size=12, color=COLOR_ACCENT)
+
+    # 우측 — Hard Constraints 5항목 (메커니즘)
+    add_textbox(s, Cm(17.0), Cm(3.2), Cm(15.5), Cm(0.8),
+                  "(2) 0 % 달성 메커니즘 — Hard Constraints 5항목",
+                  size=13, bold=True, color=COLOR_PRIMARY)
+    add_bullets(s, Cm(17.0), Cm(4.0), Cm(15.5), Cm(11), [
+        {"text": "컨텍스트에 없는 변수명 생성 금지",
+            "bold": True, "color": COLOR_DARK,
+            "sub": ["LLM 출력의 영문 토큰 = 입력 변수 집합 ⊆"]},
+        {"text": "민감 속성 언급 금지",
+            "bold": True, "color": COLOR_DARK,
+            "sub": ["성별·연령 등 마스킹된 컨텍스트만 사용"]},
+        {"text": "값(value) 정확 인용 강제",
+            "bold": True, "color": COLOR_DARK,
+            "sub": ["임의 추정·반올림·생략 금지"]},
+        {"text": "5-section 출력 형식 고정",
+            "bold": True, "color": COLOR_DARK,
+            "sub": ["위험도·핵심 근거·세부 분석·추천·요약"]},
+        {"text": "컨텍스트 외 외부 데이터 인용 금지",
+            "bold": True, "color": COLOR_DARK,
+            "sub": ["LLM 내부 지식만으로 변수·값 생성 금지"]},
+    ], size=11)
+
+    add_callout_box(s, Cm(1.0), Cm(15.5), Cm(31.5), Cm(1.5),
+                      "→ 다음 슬라이드: 환각률 0 %의 정확한 의미 — "
+                      "3 가지 정확도 차원 분리 + Counterfactual 대비",
+                      size=12, color=COLOR_PRIMARY)
     add_footer(s, SW, SH, 15)
 
     # ═══════════════════════════════════════════════════
-    # Slide 16 — ★ NLI Entailment 4-mode 단조증가
+    # Slide 16 — 환각률 0 %의 정확한 의미 (3차원 분리 + Counterfactual)
     # ═══════════════════════════════════════════════════
     s = add_blank_slide(prs)
-    add_header_bar(s, SW, "14. ★ NLI Entailment 4-mode 단조증가",
+    add_header_bar(s, SW, "14. 환각률 0 %의 정확한 의미",
+                       "세 가지 정확도 차원 분리 + Counterfactual 45.5 % → 0 % 대비")
+
+    # 3 차원 분리 표
+    add_textbox(s, Cm(1.0), Cm(3.2), Cm(31), Cm(0.8),
+                  "본 시스템의 3 가지 정확도 차원 — 환각률 0 %는 차원 B만 보장",
+                  size=14, bold=True, color=COLOR_PRIMARY)
+
+    dim_rows = [
+        ["차원", "측정 대상", "측정 도구", "본 연구 결과"],
+        ["A. 부도 예측 정확도",
+            "XGBoost가 실제 부도/정상 맞춤",
+            "AUROC · AUPRC · KS",
+            "0.7587 (Home) / 0.7714 (German)"],
+        ["B. LLM 변수명 환각률 ★",
+            "LLM이 없는 변수명 생성 비율",
+            "룰 기반 영문 토큰 매칭",
+            "★ 0 % (모든 mode)"],
+        ["C. LLM 의미적 충실성",
+            "설명과 컨텍스트의 의미 일치",
+            "NLI Entailment (mDeBERTa)",
+            "fusion 0.625 / no_shap 0.30"],
+    ]
+    add_table(s, Cm(1.0), Cm(4.2),
+                [Cm(7), Cm(9), Cm(7), Cm(8.5)],
+                [Cm(1.4), Cm(1.4), Cm(1.4), Cm(1.4)],
+                dim_rows, font_size=11)
+
+    # 보장 / 미보장
+    add_callout_box(s, Cm(1.0), Cm(10.8), Cm(15.5), Cm(3.5),
+                      "✓ 0 %가 보장하는 것\n"
+                      "LLM이 출력에 등장시킨 변수 토큰이 모두 입력 컨텍스트 또는 "
+                      "데이터셋 변수 집합에 존재한다는 것",
+                      size=11, color=COLOR_HIGHLIGHT)
+    add_callout_box(s, Cm(17.0), Cm(10.8), Cm(15.5), Cm(3.5),
+                      "✗ 0 %가 보장하지 않는 것\n"
+                      "① 부도 예측이 실제와 일치 (차원 A) "
+                      "② 값을 100 % 정확히 인용 (Value Match) "
+                      "③ 설명 의미가 입력과 100 % 일치 (차원 C)",
+                      size=11, color=COLOR_ACCENT)
+
+    # Counterfactual 대비
+    add_callout_box(s, Cm(1.0), Cm(15.0), Cm(31.5), Cm(2.0),
+                      "★ Counterfactual 검증 (§4.3.6) — Hard Constraint 제거 시 "
+                      "Gemini 환각률 45.5 % → 적용 후 0 %\n"
+                      "즉 0 %는 무에서 나온 결과가 아니라 45.5 %를 차단한 정량 효과 "
+                      "— Hard Constraint 정책의 견고함 입증",
+                      size=12, color=COLOR_PRIMARY)
+    add_footer(s, SW, SH, 16)
+
+    # ═══════════════════════════════════════════════════
+    # Slide 17 — ★ NLI Entailment 4-mode 단조증가
+    # ═══════════════════════════════════════════════════
+    s = add_blank_slide(prs)
+    add_header_bar(s, SW, "15. ★ NLI Entailment 4-mode 단조증가",
                        "Fusion 일관 1위 — 두 데이터셋에서 동일 패턴")
 
     add_textbox(s, Cm(1.0), Cm(3.3), Cm(31), Cm(0.8),
@@ -857,13 +937,13 @@ def make_slides():
                       "→ Fusion이 컨텍스트 값을 가장 정확히 인용\n"
                       "fact-grounded faithfulness 정량 입증",
                       size=14, color=COLOR_PRIMARY)
-    add_footer(s, SW, SH, 16)
+    add_footer(s, SW, SH, 17)
 
     # ═══════════════════════════════════════════════════
-    # Slide 17 — G-Eval Cross-judge
+    # Slide 18 — G-Eval Cross-judge
     # ═══════════════════════════════════════════════════
     s = add_blank_slide(prs)
-    add_header_bar(s, SW, "15. G-Eval Cross-judge",
+    add_header_bar(s, SW, "16. G-Eval Cross-judge",
                        "Claude × Gemini 양방향 평가 — Completeness 일관, "
                        "Factual은 judge bias 입증")
 
@@ -881,13 +961,13 @@ def make_slides():
                       "Claude judge -0.13 vs Gemini judge +0.47\n"
                       "→ Self-preference bias 직접 입증",
                       size=13, color=COLOR_ACCENT)
-    add_footer(s, SW, SH, 17)
+    add_footer(s, SW, SH, 18)
 
     # ═══════════════════════════════════════════════════
-    # Slide 18 — ★ Persona Trade-off
+    # Slide 19 — ★ Persona Trade-off
     # ═══════════════════════════════════════════════════
     s = add_blank_slide(prs)
-    add_header_bar(s, SW, "16. ★ Persona Trade-off — Honest Reporting",
+    add_header_bar(s, SW, "17. ★ Persona Trade-off — Honest Reporting",
                        "사실성 = fusion, 친근함 = generic_rag")
 
     pp_path = FIG_DIR / "36_human_proxy_personas.png"
@@ -910,13 +990,13 @@ def make_slides():
     add_table(s, Cm(1.5), Cm(13.0),
                 [Cm(9), Cm(7), Cm(7), Cm(8.5)],
                 [Cm(0.9)] * len(pp_rows), pp_rows, font_size=11)
-    add_footer(s, SW, SH, 18)
+    add_footer(s, SW, SH, 19)
 
     # ═══════════════════════════════════════════════════
-    # Slide 19 — 공정성 Reweighing 4/4 통과
+    # Slide 20 — 공정성 Reweighing 4/4 통과
     # ═══════════════════════════════════════════════════
     s = add_blank_slide(prs)
-    add_header_bar(s, SW, "17. 공정성 Reweighing — 4 / 4 조합 통과",
+    add_header_bar(s, SW, "18. 공정성 Reweighing — 4 / 4 조합 통과",
                        "AUROC 손실 0.004 이내, 4/5 규칙 모두 통과")
 
     rw_path = FIG_DIR / "34_mitigation_bars.png"
@@ -934,13 +1014,13 @@ def make_slides():
     add_table(s, Cm(2.0), Cm(12.2),
                 [Cm(9), Cm(5), Cm(5), Cm(6), Cm(5)],
                 [Cm(0.9)] * len(rw_rows), rw_rows, font_size=11)
-    add_footer(s, SW, SH, 19)
+    add_footer(s, SW, SH, 20)
 
     # ═══════════════════════════════════════════════════
-    # Slide 20 — 일반화 검증 (Home vs German)
+    # Slide 21 — 일반화 검증 (Home vs German)
     # ═══════════════════════════════════════════════════
     s = add_blank_slide(prs)
-    add_header_bar(s, SW, "18. 일반화 검증 — Home Credit vs UCI German",
+    add_header_bar(s, SW, "19. 일반화 검증 — Home Credit vs UCI German",
                        "메커니즘 일관성 입증 — 약점 #5 해소")
 
     gen_path = FIG_DIR / "41_generalization.png"
@@ -960,13 +1040,13 @@ def make_slides():
     add_table(s, Cm(1.5), Cm(12.0),
                 [Cm(7.5), Cm(6), Cm(7), Cm(9.5)],
                 [Cm(0.85)] * len(gen_rows), gen_rows, font_size=11)
-    add_footer(s, SW, SH, 20)
+    add_footer(s, SW, SH, 21)
 
     # ═══════════════════════════════════════════════════
-    # Slide 21 — 핵심 발견 통합 (3가지)
+    # Slide 22 — 핵심 발견 통합 (3가지)
     # ═══════════════════════════════════════════════════
     s = add_blank_slide(prs)
-    add_header_bar(s, SW, "19. 핵심 발견 통합",
+    add_header_bar(s, SW, "20. 핵심 발견 통합",
                        "본 연구가 학술적으로 정량 입증한 3 가지")
 
     findings = [
@@ -1004,13 +1084,13 @@ def make_slides():
                       title, size=17, bold=True, color=color)
         add_textbox(s, Cm(4.5), y + Cm(1.1), Cm(28), Cm(2.5),
                       desc, size=12, color=COLOR_DARK)
-    add_footer(s, SW, SH, 21)
+    add_footer(s, SW, SH, 22)
 
     # ═══════════════════════════════════════════════════
-    # Slide 22 — Honest Reporting — 한계 4가지
+    # Slide 23 — Honest Reporting — 한계 4가지
     # ═══════════════════════════════════════════════════
     s = add_blank_slide(prs)
-    add_header_bar(s, SW, "20. Honest Reporting — 연구의 한계",
+    add_header_bar(s, SW, "21. Honest Reporting — 연구의 한계",
                        "학술 논문의 정직성 표준에 따라 명시적 한계 보고")
 
     limits = [
@@ -1035,13 +1115,13 @@ def make_slides():
                       title, size=16, bold=True, color=COLOR_PRIMARY)
         add_textbox(s, Cm(3.0), y + Cm(0.9), Cm(29), Cm(2.0),
                       desc, size=11, color=COLOR_DARK)
-    add_footer(s, SW, SH, 22)
+    add_footer(s, SW, SH, 23)
 
     # ═══════════════════════════════════════════════════
-    # Slide 23 — 응용 시나리오별 Mode 선택 가이드
+    # Slide 24 — 응용 시나리오별 Mode 선택 가이드
     # ═══════════════════════════════════════════════════
     s = add_blank_slide(prs)
-    add_header_bar(s, SW, "21. 응용 시나리오별 Mode 선택 가이드",
+    add_header_bar(s, SW, "22. 응용 시나리오별 Mode 선택 가이드",
                        "본 연구가 제시하는 실무 적용 권고")
 
     scenarios = [
@@ -1092,13 +1172,13 @@ def make_slides():
         p4 = tf.add_paragraph()
         r4 = p4.add_run(); r4.text = "\n" + why
         _set_korean_font(r4, size=10, color=COLOR_WHITE)
-    add_footer(s, SW, SH, 23)
+    add_footer(s, SW, SH, 24)
 
     # ═══════════════════════════════════════════════════
-    # Slide 24 — 향후 연구 방향
+    # Slide 25 — 향후 연구 방향
     # ═══════════════════════════════════════════════════
     s = add_blank_slide(prs)
-    add_header_bar(s, SW, "22. 향후 연구 방향",
+    add_header_bar(s, SW, "23. 향후 연구 방향",
                        "본 연구를 확장할 수 있는 4 가지 방향")
 
     add_bullets(s, Cm(1.0), Cm(3.3), Cm(31), Cm(14), [
@@ -1123,10 +1203,10 @@ def make_slides():
             "Future: Hybrid 표현 — agreement 라벨 자연어화, "
             "기술 용어 직관 변환"]},
     ], size=12)
-    add_footer(s, SW, SH, 24)
+    add_footer(s, SW, SH, 25)
 
     # ═══════════════════════════════════════════════════
-    # Slide 25 — Q&A + 감사
+    # Slide 26 — Q&A + 감사
     # ═══════════════════════════════════════════════════
     s = add_blank_slide(prs)
     bg = s.shapes.add_shape(MSO_SHAPE.RECTANGLE, Cm(0), Cm(0), SW, SH)
