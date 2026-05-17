@@ -43,7 +43,7 @@ from docx.shared import Cm, Pt, RGBColor
 # 상수
 # ─────────────────────────────────────────────────────────────
 DRAFT_DIR = Path(__file__).resolve().parent
-KOREAN_FONT = "맑은 고딕"  # Malgun Gothic — Windows 기본, 학위논문지침 허용 범위
+KOREAN_FONT = "바탕"  # 학위논문지침 ⑷③ 명시 폰트 4종(명조/신명조/바탕체/굴림체) 중 표준 명조계열
 ENG_FONT = "Times New Roman"
 LINE_SPACING = 1.6  # 160% (학위논문지침 최소값, 손지민 양식 유사)
 
@@ -128,8 +128,77 @@ def add_heading(doc, text, level=1):
     return p
 
 
+def _add_seq_field(paragraph, label: str):
+    """캡션 paragraph 끝에 hidden SEQ 필드를 삽입.
+
+    TOC `\\c "표"` / `\\c "그림"` 옵션은 SEQ 필드를 포함한 paragraph만 수집한다.
+    캡션 텍스트의 chapter-internal 번호(예 "표 4-1")는 그대로 보이되,
+    SEQ 필드 자체는 w:vanish 속성으로 화면에 숨긴다.
+    """
+    from docx.oxml import OxmlElement
+
+    def _hidden_run():
+        r = OxmlElement("w:r")
+        rPr = OxmlElement("w:rPr")
+        rPr.append(OxmlElement("w:vanish"))
+        r.append(rPr)
+        return r
+
+    # begin
+    r1 = _hidden_run()
+    fld_begin = OxmlElement("w:fldChar")
+    fld_begin.set(qn("w:fldCharType"), "begin")
+    r1.append(fld_begin)
+    paragraph._element.append(r1)
+    # instr
+    r2 = _hidden_run()
+    instr = OxmlElement("w:instrText")
+    instr.set(qn("xml:space"), "preserve")
+    instr.text = f' SEQ {label} \\* ARABIC '
+    r2.append(instr)
+    paragraph._element.append(r2)
+    # separate
+    r3 = _hidden_run()
+    fld_sep = OxmlElement("w:fldChar")
+    fld_sep.set(qn("w:fldCharType"), "separate")
+    r3.append(fld_sep)
+    paragraph._element.append(r3)
+    # placeholder text (Word가 F9 시 자동 번호로 대체)
+    r4 = _hidden_run()
+    t = OxmlElement("w:t")
+    t.text = "1"
+    r4.append(t)
+    paragraph._element.append(r4)
+    # end
+    r5 = _hidden_run()
+    fld_end = OxmlElement("w:fldChar")
+    fld_end.set(qn("w:fldCharType"), "end")
+    r5.append(fld_end)
+    paragraph._element.append(r5)
+
+
+def _apply_caption_style(paragraph):
+    """캡션 paragraph에 Caption 스타일 적용 (TOC \\t 호환). 스타일 없으면 무시."""
+    try:
+        paragraph.style = paragraph.part.document.styles["Caption"]
+    except (KeyError, AttributeError):
+        pass
+
+
+def add_caption_para(doc, caption_text: str, label: str):
+    """캡션 paragraph (10pt 진하게 중앙) + hidden SEQ 필드 + Caption 스타일.
+
+    label: "표" 또는 "그림" — TOC `\\c "<label>"` 와 매칭.
+    """
+    p = add_para(doc, caption_text, size=10, bold=True,
+                 alignment=WD_ALIGN_PARAGRAPH.CENTER, space_after=12)
+    _add_seq_field(p, label)
+    _apply_caption_style(p)
+    return p
+
+
 def add_image(doc, image_path: str, caption: str, width_cm: float = 14.0):
-    """Markdown ![caption](path) → docx 이미지 + 캡션."""
+    """Markdown ![caption](path) → docx 이미지 + 캡션 (SEQ "그림" 필드 자동 삽입)."""
     from pathlib import Path as _P
     p_img = _P(image_path)
     if not p_img.is_absolute():
@@ -139,8 +208,7 @@ def add_image(doc, image_path: str, caption: str, width_cm: float = 14.0):
         # 그림 없는 경우 placeholder 텍스트
         add_para(doc, f"[그림 누락: {image_path}]", size=10,
                  alignment=WD_ALIGN_PARAGRAPH.CENTER, space_after=0)
-        add_para(doc, caption, size=10, bold=True,
-                 alignment=WD_ALIGN_PARAGRAPH.CENTER, space_after=12)
+        add_caption_para(doc, caption, label="그림")
         return
     # 이미지 삽입 (단락 + 중앙 정렬)
     p = doc.add_paragraph()
@@ -149,9 +217,8 @@ def add_image(doc, image_path: str, caption: str, width_cm: float = 14.0):
     run.add_picture(str(p_img), width=Cm(width_cm))
     set_paragraph_format(p, alignment=WD_ALIGN_PARAGRAPH.CENTER,
                          space_before=12, space_after=0, line_spacing=1.0)
-    # 캡션 (10pt, 진하게, 중앙)
-    add_para(doc, caption, size=10, bold=True,
-             alignment=WD_ALIGN_PARAGRAPH.CENTER, space_after=12)
+    # 캡션 — SEQ "그림" 필드 포함
+    add_caption_para(doc, caption, label="그림")
 
 
 def add_page_break(doc):
@@ -248,8 +315,12 @@ def add_submission_page(doc):
     add_page_break(doc)
 
 
-def add_approval_page(doc):
-    """별지 5호 — 논문 인준서."""
+def add_approval_page(doc, page_break: bool = True):
+    """별지 5호 — 논문 인준서.
+
+    page_break=False 로 호출하면 마지막 page_break를 생략한다.
+    (다음에 새 섹션을 NEW_PAGE 로 시작할 때 중복 페이지를 방지).
+    """
     for _ in range(4):
         add_para(doc, "", size=11, space_after=0)
     add_para(doc, "논 문 인 준 서", size=24, bold=True,
@@ -276,7 +347,66 @@ def add_approval_page(doc):
              alignment=WD_ALIGN_PARAGRAPH.CENTER, space_after=18)
     add_para(doc, "부심                            (인)", size=14,
              alignment=WD_ALIGN_PARAGRAPH.CENTER, space_after=18)
-    add_page_break(doc)
+    if page_break:
+        add_page_break(doc)
+
+
+def setup_page_numbering_from_here(doc):
+    """현재 위치에서 새 섹션을 NEW_PAGE 로 시작 + 다음 페이지부터 페이지 번호.
+
+    적용:
+      - 새 섹션의 footer 중앙에 PAGE 필드
+      - 페이지 번호 1부터 시작 (Decimal)
+      - 첫 섹션(별지 표지~인준서)은 footer 비움 (linked_to_previous=False)
+    """
+    from docx.enum.section import WD_SECTION_START
+    from docx.oxml import OxmlElement
+
+    new_section = doc.add_section(WD_SECTION_START.NEW_PAGE)
+    new_section.footer.is_linked_to_previous = False
+
+    # 시작 번호 1 (Decimal)
+    sectPr = new_section._sectPr
+    pgNumType = sectPr.find(qn("w:pgNumType"))
+    if pgNumType is None:
+        pgNumType = OxmlElement("w:pgNumType")
+        sectPr.append(pgNumType)
+    pgNumType.set(qn("w:start"), "1")
+    pgNumType.set(qn("w:fmt"), "decimal")
+
+    # footer paragraph — 중앙 정렬 PAGE 필드
+    footer = new_section.footer
+    para = footer.paragraphs[0]
+    para.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    para.paragraph_format.line_spacing = 1.0
+
+    # 기존 run 정리
+    for r in list(para._element.findall(qn("w:r"))):
+        r.getparent().remove(r)
+
+    run = para.add_run()
+    set_run(run, size_pt=10)
+
+    fld_begin = OxmlElement("w:fldChar")
+    fld_begin.set(qn("w:fldCharType"), "begin")
+    instr = OxmlElement("w:instrText")
+    instr.set(qn("xml:space"), "preserve")
+    instr.text = " PAGE "
+    fld_sep = OxmlElement("w:fldChar")
+    fld_sep.set(qn("w:fldCharType"), "separate")
+    fld_text = OxmlElement("w:t")
+    fld_text.text = "1"
+    fld_end = OxmlElement("w:fldChar")
+    fld_end.set(qn("w:fldCharType"), "end")
+
+    r = run._r
+    r.append(fld_begin)
+    r.append(instr)
+    r.append(fld_sep)
+    r.append(fld_text)
+    r.append(fld_end)
+
+    return new_section
 
 
 def add_acknowledgement(doc):
@@ -377,6 +507,15 @@ def parse_chapter_markdown(doc, md_text: str):
             run.font.size = Pt(9)
             set_paragraph_format(p, line_spacing=1.15, space_after=6)
             i = j + 1
+            continue
+        # 캡션 패턴: "**표 N-N. 설명**" / "**그림 N-N. 설명**" — SEQ 필드 자동 삽입
+        # (이미지 캡션은 ![...](...)에서 add_image가 처리하므로 여기는 표 캡션 위주)
+        cap_match = re.match(r"^\s*\*\*(표|그림)\s+(.+?)\*\*\s*$", line)
+        if cap_match:
+            label = cap_match.group(1)
+            body = cap_match.group(2).strip()
+            add_caption_para(doc, f"{label} {body}", label=label)
+            i += 1
             continue
         # Markdown 표
         if line.startswith("|") and i + 1 < len(lines) and lines[i + 1].startswith("|"):

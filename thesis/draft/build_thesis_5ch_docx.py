@@ -35,7 +35,7 @@ from build_thesis_docx import (  # type: ignore
     set_run, set_paragraph_format, add_para, add_heading, add_page_break,
     add_toc_field, add_image, add_markdown_table,
     add_cover_page, add_inner_cover, add_submission_page, add_approval_page,
-    add_acknowledgement,
+    add_acknowledgement, setup_page_numbering_from_here,
 )
 
 DRAFT_DIR = Path(__file__).resolve().parent
@@ -117,7 +117,10 @@ def main():
     add_cover_page(doc)
     add_inner_cover(doc)
     add_submission_page(doc)
-    add_approval_page(doc)
+    add_approval_page(doc, page_break=False)
+
+    # 차례부터 페이지 번호 적용 (하단 중앙, 1부터 시작)
+    setup_page_numbering_from_here(doc)
 
     # 목차/표차례/그림차례 — Word 필드
     add_heading(doc, "목   차", level=1)
