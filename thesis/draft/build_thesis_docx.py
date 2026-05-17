@@ -350,6 +350,15 @@ def parse_chapter_markdown(doc, md_text: str):
             add_heading(doc, line[3:].strip(), level=2)
             i += 1
             continue
+        if line.startswith("#### "):
+            # level 4 — sub-sub-heading (작은 진하게)
+            p = doc.add_paragraph()
+            run = p.add_run(line[5:].strip())
+            set_run(run, size_pt=11, bold=True)
+            set_paragraph_format(p, alignment=WD_ALIGN_PARAGRAPH.LEFT,
+                                 space_before=10, space_after=4)
+            i += 1
+            continue
         if line.startswith("### "):
             add_heading(doc, line[4:].strip(), level=3)
             i += 1
