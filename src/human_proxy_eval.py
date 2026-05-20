@@ -253,7 +253,12 @@ def plot_persona_results(summary: pd.DataFrame,
     fig, axes = plt.subplots(3, 3, figsize=(18, 14))
     palette = {"no_shap": "#C44E52", "generic_rag": "#55A868",
                 "shaponly": "#A0A0A0", "fusion": "#DD8452"}
-    persona_titles = {k: PERSONAS[k]["title"] for k in PERSONAS}
+    # 영어 라벨 (matplotlib 한글 폰트 fallback 회피 — CLAUDE.md §9)
+    persona_titles = {
+        "credit_expert": "Credit Expert",
+        "customer": "Customer",
+        "regulator": "Regulator",
+    }
 
     for r_idx, m in enumerate(metrics):
         for c_idx, persona in enumerate(["credit_expert", "customer", "regulator"]):
