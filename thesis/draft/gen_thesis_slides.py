@@ -47,7 +47,7 @@ COLOR_LIGHT_BG = RGBColor(0xF4, 0xF6, 0xFA)
 COLOR_WHITE = RGBColor(0xFF, 0xFF, 0xFF)
 
 KOREAN_FONT = "Malgun Gothic"
-TOTAL = 26
+TOTAL = 27
 
 
 # ─────────────────────────────────────────────────────────────
@@ -1043,54 +1043,92 @@ def make_slides():
     add_footer(s, SW, SH, 21)
 
     # ═══════════════════════════════════════════════════
-    # Slide 22 — 핵심 발견 통합 (3가지)
+    # Slide 22 — 정량 결과 종합 (한 표로 모든 핵심 수치)
     # ═══════════════════════════════════════════════════
     s = add_blank_slide(prs)
-    add_header_bar(s, SW, "20. 핵심 발견 통합",
-                       "본 연구가 학술적으로 정량 입증한 3 가지")
+    add_header_bar(s, SW, "20. 정량 결과 종합",
+                       "본 연구가 학술적으로 입증한 모든 핵심 수치 — 한 눈에")
 
-    findings = [
-        ("①", "Fusion 메커니즘은 NLI 사실성에서 일관 1 위",
-            "양 데이터셋(Home 0.625, German 0.711) 모두에서 "
-            "no_shap < generic_rag < shaponly < fusion 단조증가 패턴 — "
-            "Agreement-aware 융합의 효과 정량 확인",
-            COLOR_HIGHLIGHT),
-        ("②", "환각 차단 ≠ Fact-grounded 정확성",
-            "Hard constraints만으로도 4-mode × 2 LLM 모든 환각률 0 % 달성 — "
-            "Fusion의 차별성은 환각 차단이 아닌 NLI 함의도와 Value Match Rate에서 입증",
-            COLOR_PRIMARY),
-        ("③", "Mode 선택 = 응용 시나리오 × 데이터 복잡도 trade-off",
-            "사실성 1 위 = fusion, 사람 친근성 1 위 = generic_rag (Persona) — "
-            "Home에서 fusion 우월, German에서 generic_rag 우월 (G-Eval Completeness)",
-            COLOR_ACCENT),
+    add_textbox(s, Cm(1.0), Cm(3.0), Cm(31), Cm(0.7),
+                  "9 개 영역 × 양 데이터셋 정량 결과 종합표",
+                  size=13, bold=True, color=COLOR_PRIMARY)
+
+    result_rows = [
+        ["영역", "지표", "Home Credit", "UCI German", "결과 해석"],
+        ["예측 성능", "XGBoost AUROC",
+            "0.7587", "0.7714", "Mainstream 표준 (0.70~0.80)"],
+        ["해석 일관성", "SHAP × Attn ρ",
+            "0.117", "0.114", "거의 동일 — 메커니즘 일반화 ★"],
+        ["환각률 (차원 B)", "LLM 변수명 환각",
+            "0 / 60", "0 / 60", "Hard Constraints 견고"],
+        ["사실성 (차원 C)", "NLI Entailment (fusion)",
+            "0.625", "0.711", "4-mode 1 위 / 단조증가 ★"],
+        ["값 정확성", "Value Match (fusion)",
+            "0.90", "0.88", "4-mode 1 위 (0.59 → 0.90)"],
+        ["충실성", "G-Eval Completeness 1 위",
+            "fusion 4.82", "generic_rag 4.58", "데이터 복잡도 의존 ⚠"],
+        ["사람 친화성", "Persona Trust 1 위",
+            "generic_rag 4.91", "—", "fusion 2 위 (4.31) — Trade-off ★"],
+        ["공정성", "DI ratio (Reweighing)",
+            "0.62 → 0.90", "—", "4/4 통과, AUROC Δ ±0.003"],
+        ["일반화", "양 데이터셋 일관성",
+            "기준", "메커니즘 일관", "★ 본 연구 contribution"],
     ]
-    for i, (num, title, desc, color) in enumerate(findings):
-        y = Cm(3.5 + i * 4.0)
-        # 번호 배지
-        badge = s.shapes.add_shape(MSO_SHAPE.OVAL,
-                                         Cm(1.5), y, Cm(2.2), Cm(2.2))
-        badge.fill.solid()
-        badge.fill.fore_color.rgb = color
-        badge.line.fill.background()
-        btf = badge.text_frame
-        btf.vertical_anchor = MSO_ANCHOR.MIDDLE
-        bp = btf.paragraphs[0]
-        bp.alignment = PP_ALIGN.CENTER
-        brun = bp.add_run()
-        brun.text = num
-        _set_korean_font(brun, size=26, bold=True, color=COLOR_WHITE)
-        # 제목 + 설명
-        add_textbox(s, Cm(4.5), y, Cm(28), Cm(1.0),
-                      title, size=17, bold=True, color=color)
-        add_textbox(s, Cm(4.5), y + Cm(1.1), Cm(28), Cm(2.5),
-                      desc, size=12, color=COLOR_DARK)
+    add_table(s, Cm(1.0), Cm(3.9),
+                [Cm(5.0), Cm(7.0), Cm(5.8), Cm(5.8), Cm(8.0)],
+                [Cm(0.95)] * len(result_rows), result_rows, font_size=10)
     add_footer(s, SW, SH, 22)
 
     # ═══════════════════════════════════════════════════
-    # Slide 23 — Honest Reporting — 한계 4가지
+    # Slide 23 — 본 연구의 5 가지 학술적 기여 + 정량 입증
     # ═══════════════════════════════════════════════════
     s = add_blank_slide(prs)
-    add_header_bar(s, SW, "21. Honest Reporting — 연구의 한계",
+    add_header_bar(s, SW, "21. 본 연구의 5 가지 학술적 기여",
+                       "각 기여를 정량 결과로 입증 — 도입 RQ(슬라이드 5)에 대한 답")
+
+    add_textbox(s, Cm(1.0), Cm(3.0), Cm(31), Cm(0.7),
+                  "C1 ~ C5 기여 정리 + 정량 입증 근거 매핑",
+                  size=13, bold=True, color=COLOR_PRIMARY)
+
+    contrib_rows = [
+        ["기여", "내용", "정량 입증 근거"],
+        ["C1",
+            "Agreement-aware Fusion Context 신규 설계\n"
+            "(agreed · shap_only · attention_only 3 그룹 분해)",
+            "SHAP × Attn ρ 0.117 / 0.114 (보완성)\n"
+            "Agreement mean = 2.12 (n=100)"],
+        ["C2",
+            "4-tier 다중 평가 프레임워크 구축\n"
+            "(Rules + NLI + Cross-Judge G-Eval + Persona)",
+            "NLI 0.625, G-Eval +0.67 Completeness\n"
+            "Persona 3 차원 × 5 점 척도"],
+        ["C3",
+            "4-mode 비교로 차별성 입증\n"
+            "(환각 차단 ≠ fact-grounded 정확성)",
+            "환각 0 % (모든 mode) vs NLI 단조증가\n"
+            "Value Match 0.59 → 0.90 (no_shap → fusion)"],
+        ["C4",
+            "두 데이터셋 일반화 검증\n"
+            "(Home Credit + UCI German Credit)",
+            "양 데이터셋 SHAP × Attn ρ 거의 동일\n"
+            "NLI 4-mode 단조증가 패턴 일관"],
+        ["C5",
+            "Reweighing 무손실 공정성 보정\n"
+            "(4 / 4 조합 모두 4/5 규칙 통과)",
+            "DI 0.62 → 0.90, 0.56 → 0.90\n"
+            "AUROC 손실 ≤ 0.004"],
+    ]
+    add_table(s, Cm(1.0), Cm(3.9),
+                [Cm(2.0), Cm(15.0), Cm(14.5)],
+                [Cm(1.1), Cm(2.2), Cm(2.2), Cm(2.2), Cm(2.2), Cm(2.2)],
+                contrib_rows, font_size=11)
+    add_footer(s, SW, SH, 23)
+
+    # ═══════════════════════════════════════════════════
+    # Slide 24 — Honest Reporting — 한계 4가지
+    # ═══════════════════════════════════════════════════
+    s = add_blank_slide(prs)
+    add_header_bar(s, SW, "22. Honest Reporting — 연구의 한계",
                        "학술 논문의 정직성 표준에 따라 명시적 한계 보고")
 
     limits = [
@@ -1115,13 +1153,13 @@ def make_slides():
                       title, size=16, bold=True, color=COLOR_PRIMARY)
         add_textbox(s, Cm(3.0), y + Cm(0.9), Cm(29), Cm(2.0),
                       desc, size=11, color=COLOR_DARK)
-    add_footer(s, SW, SH, 23)
+    add_footer(s, SW, SH, 24)
 
     # ═══════════════════════════════════════════════════
-    # Slide 24 — 응용 시나리오별 Mode 선택 가이드
+    # Slide 25 — 응용 시나리오별 Mode 선택 가이드
     # ═══════════════════════════════════════════════════
     s = add_blank_slide(prs)
-    add_header_bar(s, SW, "22. 응용 시나리오별 Mode 선택 가이드",
+    add_header_bar(s, SW, "23. 응용 시나리오별 Mode 선택 가이드",
                        "본 연구가 제시하는 실무 적용 권고")
 
     scenarios = [
@@ -1172,13 +1210,13 @@ def make_slides():
         p4 = tf.add_paragraph()
         r4 = p4.add_run(); r4.text = "\n" + why
         _set_korean_font(r4, size=10, color=COLOR_WHITE)
-    add_footer(s, SW, SH, 24)
+    add_footer(s, SW, SH, 25)
 
     # ═══════════════════════════════════════════════════
-    # Slide 25 — 향후 연구 방향
+    # Slide 26 — 향후 연구 방향
     # ═══════════════════════════════════════════════════
     s = add_blank_slide(prs)
-    add_header_bar(s, SW, "23. 향후 연구 방향",
+    add_header_bar(s, SW, "24. 향후 연구 방향",
                        "본 연구를 확장할 수 있는 4 가지 방향")
 
     add_bullets(s, Cm(1.0), Cm(3.3), Cm(31), Cm(14), [
@@ -1203,10 +1241,10 @@ def make_slides():
             "Future: Hybrid 표현 — agreement 라벨 자연어화, "
             "기술 용어 직관 변환"]},
     ], size=12)
-    add_footer(s, SW, SH, 25)
+    add_footer(s, SW, SH, 26)
 
     # ═══════════════════════════════════════════════════
-    # Slide 26 — Q&A + 감사
+    # Slide 27 — Q&A + 감사
     # ═══════════════════════════════════════════════════
     s = add_blank_slide(prs)
     bg = s.shapes.add_shape(MSO_SHAPE.RECTANGLE, Cm(0), Cm(0), SW, SH)
