@@ -110,7 +110,8 @@ def plot_generalization(df: pd.DataFrame, name: str = "41_generalization") -> Pa
             ax.bar_label(container, fmt="%.2f", fontsize=8, padding=3)
         if ax.get_legend():
             ax.legend(title="mode", loc="best", fontsize=8, ncol=2)
-    plt.suptitle("Step 5-D — 일반화 검증: Home Credit vs UCI German Credit (4-mode 평균)",
+    # suptitle 영어 (matplotlib 한글 fallback 회피 — CLAUDE.md §9)
+    plt.suptitle("Step 5-D — Generalization Validation: Home Credit vs UCI German Credit (4-mode averaged)",
                   fontsize=14, y=0.998)
     plt.tight_layout()
     return savefig(fig, name)
